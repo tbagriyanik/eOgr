@@ -1,0 +1,109 @@
+/*
+Copyright &copy; 2008 Pippa http://www.spacegirlpippa.co.uk
+Contact: sthlm.pippa@gmail.com
+
+This file is part of wTag mini chat - shoutbox.
+
+wTag is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+wTag is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with wTag.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/* ie-style.css is fixing display bugs in IE */
+
+/* #box is the main div of the shoutbox layout.
+It uses slightly different size images with rounded corners,
+one for IE and one for Opera. 
+You can remove the #box div completely from the shoutbox html code
+if you wish to redesign the layout.
+*/
+#box {
+width: 294px;
+height: 239px;
+background-color: transparent;
+background-image: url('../img/rounded_ie.gif');
+
+}
+
+/* #chat div is nested inside the #box div and
+containing all other divs of the shoutbox layout */
+#chat {
+width: 282px;
+height: 227px;
+}
+
+/* Messages area div */
+#container {
+width: 280px;
+}
+
+/* No right border in IE */
+#wtag, #emo, #refresh {
+border-right:none;
+}
+
+/* Scroll bar */
+#scrollArea {
+height: 153px;
+}
+
+/* Form div */
+#form {
+top: 163px;
+height: 42px;
+}
+
+/* Name field */
+input#name {
+height:18px;
+}
+
+/* Url field */
+input#url {
+height:18px;
+}
+
+/*------ Start of the the shoutbox menu --------------------------------------*/
+#chat_menu {
+top:205px;
+}
+
+/* Smileys panel */
+#emo li.over ul {
+position:absolute;
+display:block;
+top:18px;
+right:0px;
+width:211px;
+padding-left:12px;
+height:60px;
+background-color: #eee;
+border: 1px solid #ccc;
+z-index:99;
+cursor:default;
+list-style-type:none;
+}
+
+/* Submit button on mouse over */
+#submit p.over {
+color: #00BFFF;
+background-color: #eee;
+cursor:pointer;
+}
+
+/* Refresh button on mouse over */
+#refresh p.over {
+color: #00BFFF;
+background-color: #eee;
+cursor:pointer;
+}
+

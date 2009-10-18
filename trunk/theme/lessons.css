@@ -1,0 +1,127 @@
+@charset "iso-8859-9";
+
+td {
+	color: #000;
+}
+#kapsayici {
+	position:absolute;
+	top:5px;
+	z-index:auto;
+	float: left;
+	height: 420px;
+	width: 640px;
+	overflow: auto;
+	color: #333;
+	background: #fff;
+	border: 1px outset #666;
+	padding: 2px;
+}
+#anaMetin {
+	height: 290px;
+	text-align: justify;
+}
+#navigation {
+	position:absolute;
+	left:655px;
+	top:5px;
+	width:210px;
+	z-index:0;
+	float: left;
+	right: 5px;
+	color: #333;	
+	font-size: 12px;	
+	text-align:left;	
+	
+	border:solid #647aae;
+ 	border-width:0 1px;
+	background:#FFF;
+
+}
+
+#navigation div {
+  position:relative;
+  top: -1px;
+  left: 0;
+  border:solid #647aae;
+  border-width:1px 0 0;
+}
+#navigation div div {
+	top: 2px;
+	border-width:0 0 1px;
+	padding: .3em .3em .1em;
+}
+
+#navigation2 {
+	position:absolute;
+	left:655px;
+	top:225px;
+	width:210px;
+	height:auto;
+	z-index:0;
+	float: left;
+	margin-right: 5px;
+	right: 5px;
+	overflow: auto;
+	padding: 2px;
+	margin-top: 3px;
+	font-size: 12px;
+	text-align:left;
+}
+#hazirlayan {
+	font-weight: bold;
+}
+#sayfaNo, #sayfaSayisi {
+	font-weight: bold;
+	font-size: 16px;
+}
+#geriDugmesi, #ileriDugmesi {
+	width: 24px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#konuAdi {
+	font-weight: bold;
+	font-variant: small-caps;
+}
+#searchterm {
+	font-size: 12px;
+	border: thin outset #666;
+}
+#bitirmeYuzdesi {
+	width: 100px;
+	background-color: #CCC;
+	display: block;
+	margin-top: 5px;
+}
+#oncekiKonu {
+	position:absolute;
+	left:2px;
+	top:435px;
+	overflow: hidden;
+	padding: 5px;
+	margin-top: 3px;
+	text-align:left;
+	height: 20px;
+	z-index: auto;
+	width:250px;
+}
+#oncekiKonu a {
+	color: #F60;
+	text-decoration:underline;
+}
+#sonrakiKonu {
+	position:absolute;
+	left:380px;
+	top:435px;
+	overflow: hidden;
+	padding: 5px;
+	margin-top: 3px;
+	text-align:right;
+	height: 20px;
+	z-index: auto;
+	width:250px;
+}
+#sonrakiKonu a {
+	color: #F60;
+	text-decoration:underline;
+}
