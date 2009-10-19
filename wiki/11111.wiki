@@ -1,0 +1,55 @@
+#labels Featured,Phase-Implementation,Deprecated
+Using google's free SVN repository with Eclipse
+Ok - here are some very quick notes on getting a google svn hosting account set up with eclipse; as google is offering us all such an amazing resource, I have a feeling I'll be doing this again some time whilst working on other projects...
+
+If you already have a gmail account, make sure you're logged in (that way, your repository and your account will be linked).
+
+Start here:
+http://code.google.com/hosting/
+Go to the 'Create a new Project' link and create your project...
+
+Install eclipse if you haven't already (current recent version is 3.5):
+http://www.eclipse.org/downloads/
+
+Now you need to install the subclipse plugin from within eclipse..
+Here are some step-by-step instructions:
+http://subclipse.tigris.org/install.html
+
+Once that's done you should be able to open your repository as a new project within eclipse.
+
+Within the package explorer (the panel on the left if you're in the java developer perspective), right click to get the context menu and go to 'New' and 'Other...'
+
+expand the SVN folder and select 'Checkout Projects from SVN' and select Next
+
+Select the Create a new repository location and select Next
+
+The URL will be:
+
+https://[YOUR_PROJECT_NAME].googlecode.com/svn
+
+If you don't use https:// you'll check out the repository as read only
+
+Select (highlight) the folder to check out as an eclipse project (e.g. trunk) and select Next.
+
+Select the check out as a project configured using the New Project Wizard and select 'Finish'
+
+For this exercise, I'm checking mine out as a java project, so I'm selecting Java Project and Next on the wizard box.
+
+Give the Project a name (e.g. myProject), select Finish and OK
+
+Let it check out your project...
+
+You should see something like myProject [trunk] in the package explorer.
+You can now right click on the folder and go to New > Folder and create a new folder
+
+When you're ready, right click on the folder you've created, go to the Team context menu and select 'Add to Version Control'; you'll probably need to do this for any new files you subsequently add...
+
+From then, commit will add new changes and update will refresh a stale repository.
+
+One other note: to check out the project, I used my gmail username. The svn password isn't the same as your gmail password though.
+
+I found the password for the code repository (when logged in) here - so hopefully this will help:
+
+http://code.google.com/hosting/settings
+
+NB: I've seen situations where subclipse (or subversion) would keep asking for a password; I managed to stop it from doing this by going into the Eclipse > Window > Preferences, expanding the Team folder, selecting SVN and ensuring that the SVN interface was selection was set to SVNKit (Pure Java). 
