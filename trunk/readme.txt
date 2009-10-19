@@ -23,7 +23,7 @@ Developer Name: Tarik Bagriyanik
 Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
 Start Date: 	15-11-2008
-Last Update: 	17-10-2009
+Last Update: 	19-10-2009
 Process Time : 	380 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 
@@ -66,3 +66,5 @@ CSS, RSS and HTML Validations:
 Note: 
 Older browsers (like Internet Explorer 6, Firefox 2) are not recomended. There are lots of problems detected.
 These are fully tested: Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0
+
+License: LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html
