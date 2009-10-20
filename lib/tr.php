@@ -433,4 +433,20 @@
 		$metin[350]="Sorunun Se&ccedil;enekleri Yok!";
 		$metin[351]="Cevab&#305; G&ouml;nder";
 		
+		$metin[352]="Dershane veya okulda bulunan okul türleri olabilir";
+		$metin[353]="Belli bir okul türü içindeki sýnýflar olabilir, yýl olarak belirtilebilir";
+		$metin[354]="Belli bir sýnýfa ait ders adlarý olabilir";
+		$metin[355]="Belli bir derse ait konu yani üniteler olabilir, içinde ise sayfalar bulunur";
+	
+		$metin[356]="numaral&#305; kay&#305;t";
+		$metin[357]="50 karakterden uzun olamaz.";
+		$metin[358]="_ karakteri ile arama yap&#305;ld&#305;&#287;&#305;nda t&uuml;m kay&#305;tlar getirilir.";
+
+		$metin[359]="Okul Ad&#305;";
+		$metin[360]="Ekle";
+		$metin[361]="Güncelle";
+		$metin[362]="S&#305;n&#305;f Ad&#305;";
+		$metin[363]="Ders Ad&#305;";
+		$metin[364]="Konu Ad&#305;";
+		
 ?>
