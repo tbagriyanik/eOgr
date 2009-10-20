@@ -26,10 +26,10 @@ td {
 	display: block;
 }
 .LinkYanAktif {
-	color: #333;
+	color: #000;
 	padding: 2px;
-	width: 615px;
-	margin-left:-15px;
+	width: 600px;
+
 	list-style-type: none;
 	background-color: #F9E9A9;
 	background-image: url(img/buttonbg.png);

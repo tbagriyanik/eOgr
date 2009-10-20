@@ -421,4 +421,20 @@
 		$metin[350]="There are no answer options!";
 		$metin[351]="Submit my answer";
 		
+		$metin[352]="School types in your school";
+		$metin[353]="Classes that belong to a spesific school, you can give their names with year values";
+		$metin[354]="Lessons that belong to a spesific class";
+		$metin[355]="Subjects that belong to a spesific lesson, they contain pages";
+		
+		$metin[356]="record number";
+		$metin[357]="Maximum characters can be 50.";
+		$metin[358]="Search with _ character to see all the records.";
+		
+		$metin[359]="School Name";
+		$metin[360]="Add";
+		$metin[361]="Update";
+		$metin[362]="Class Name";
+		$metin[363]="Lesson Name";
+		$metin[364]="Subject Name";
+		
 ?>
