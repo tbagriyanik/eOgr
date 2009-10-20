@@ -22,8 +22,9 @@ Available language support is English and Turkish.
 Developer Name: Tarik Bagriyanik
 Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
+Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	19-10-2009
+Last Update: 	20-10-2009
 Process Time : 	380 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 

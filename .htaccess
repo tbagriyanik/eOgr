@@ -15,3 +15,17 @@ RewriteCond %{QUERY_STRING} (\;|\'|\"|\%22).*(union|insert|where|select|update|d
 RewriteRule ^(.*)$ hata.html [NC] 
 
 RewriteRule (,|;|<|>|'|`) hata.html [NC]
+
+ErrorDocument 404 /eogr/hata.html
+#not found error redirection
+
+AddDefaultCharset ISO_8859-9 		
+#avoid the 500 error display
+
+DirectoryIndex index.php
+IndexIgnore *
+#no site directory browsing
+
+<ifModule mod_php4.c>
+php_value zlib.output_compression 16386
+</ifModule>
