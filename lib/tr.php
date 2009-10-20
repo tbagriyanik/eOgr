@@ -420,8 +420,8 @@
 		$metin[340]="Kayýtlý kullanýcýlar görebilir <br/><a href=newUser.php>Yeni Üyelik!</a>";	
 		
 		$metin[341]="Toplam";	
-		$metin[342]="Son 25 günlük çalýþma sayýlarý (en fazla 30 deðer)";
-		$metin[343]="Son 25 günlük iþlem sayýlarý (en fazla 30 deðer)";
+		$metin[342]="Son 20 günlük çalýþma sayýlarý (en fazla 30 deðer)";
+		$metin[343]="Son 20 günlük iþlem sayýlarý (en fazla 30 deðer)";
 		
 		$metin[344]="Cevap Vereceðim!";
 		$metin[345]="Dersinizi tamamlamadýnýz! Ýptal veya Vazgeç düðmesine týklatarak derse devam edebilirsiniz.";
