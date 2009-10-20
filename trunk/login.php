@@ -301,12 +301,12 @@ include_once "lib/simpleChart.php";
 <?php
 if(getGrafikRecordCount()>5) {
  echo "<div class='ikiKolon'>";
-	$sampleData = getGrafikValues();
-	$labels = getGrafikLabels();
+	$sampleData = getGrafikValues(20);
+	$labels = getGrafikLabels(20);
 
     $chart = new simpleChart($sampleData,$labels);
-    $chart->verticalPoints = getGrafikMax()+1;
-    $chart->setMaxValue(getGrafikMax()+1);
+    $chart->verticalPoints = getGrafikMax(20)+1;
+    $chart->setMaxValue(getGrafikMax(20)+1);
     $chart->setTitle("$metin[342]");	
 	
 	echo $chart->showChart();   
@@ -314,12 +314,12 @@ echo "</div>";
 }
 if(getGrafikRecordCount2()>5) {
  echo "<div class='ikiKolon'>";
-	$sampleData2 = getGrafikValues2();
-	$labels2 = getGrafikLabels2();
+	$sampleData2 = getGrafikValues2(20);
+	$labels2 = getGrafikLabels2(20);
 
     $chart2 = new simpleChart($sampleData2,$labels2);
-    $chart2->verticalPoints = getGrafikMax2() +1;
-    $chart2->setMaxValue(getGrafikMax2()+1);
+    $chart2->verticalPoints = getGrafikMax2(20) +1;
+    $chart2->setMaxValue(getGrafikMax2(20)+1);
     $chart2->setTitle("$metin[343]");	
 	
 	echo $chart2->showChart();   

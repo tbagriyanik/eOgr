@@ -1442,10 +1442,10 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 	return $result1;
 }
 
-function getGrafikValues(){
+function getGrafikValues($lmt){
 	global $yol1;
 	
-		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24  <= 25 GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y') order by calismaTarihi";
+		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24  <= $lmt GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y') order by calismaTarihi";
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
@@ -1457,10 +1457,10 @@ function getGrafikValues(){
 		return $data['values'];
 }
 
-function getGrafikLabels(){
+function getGrafikLabels($lmt){
 	global $yol1;
 	
-		$sql = "SELECT DATE_FORMAT(calismaTarihi, '%d') AS date FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24  <= 25 GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y') order by calismaTarihi";
+		$sql = "SELECT DATE_FORMAT(calismaTarihi, '%d') AS date FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24  <= $lmt GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y') order by calismaTarihi";
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
@@ -1469,10 +1469,10 @@ function getGrafikLabels(){
 		return $data['labels'];
 }
 
-function getGrafikMax(){
+function getGrafikMax($lmt){
 	global $yol1;
 	
-		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24 <= 25 GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y')  order by count DESC limit 0,1";
+		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y')  order by count DESC limit 0,1";
 		$result = mysql_query($sql, $yol1);
 		$row = mysql_fetch_assoc($result);
 			if($row['count']>30) 
@@ -1490,10 +1490,10 @@ function getGrafikRecordCount(){
 		return $row['count'];
 }
 
-function getGrafikValues2(){
+function getGrafikValues2($lmt){
 	global $yol1;
 	
-		$sql = "SELECT COUNT(*) AS count FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= 25 GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y') order by dateTime";
+		$sql = "SELECT COUNT(*) AS count FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y') order by dateTime";
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
@@ -1505,10 +1505,10 @@ function getGrafikValues2(){
 		return $data['values'];
 }
 
-function getGrafikLabels2(){
+function getGrafikLabels2($lmt){
 	global $yol1;
 	
-		$sql = "SELECT DATE_FORMAT(dateTime, '%d') AS date FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= 25 GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y') order by dateTime";
+		$sql = "SELECT DATE_FORMAT(dateTime, '%d') AS date FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y') order by dateTime";
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
@@ -1517,10 +1517,10 @@ function getGrafikLabels2(){
 		return $data['labels'];
 }
 
-function getGrafikMax2(){
+function getGrafikMax2($lmt){
 	global $yol1;
 	
-		$sql = "SELECT COUNT(*) AS count FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= 25 GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y')  order by count DESC limit 0,1";
+		$sql = "SELECT COUNT(*) AS count FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y')  order by count DESC limit 0,1";
 		$result = mysql_query($sql, $yol1);
 		$row = mysql_fetch_assoc($result);
 			if($row['count']>30) 

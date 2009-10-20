@@ -408,8 +408,8 @@
 		$metin[340]="Only visible for registered users<br/><a href=newUser.php>New Membership!</a>";	
 		
 		$metin[341]="Total";	
-		$metin[342]="Last 25 days work (maximum 30 values)";
-		$metin[343]="Last 25 days data actions (maximum 30 values)";
+		$metin[342]="Last 20 days work (maximum 30 values)";
+		$metin[343]="Last 20 days data actions (maximum 30 values)";
 
 		$metin[344]="I will Answer!";
 		$metin[345]="You did not finish your lesson! You can go on by clicking Cancel";
