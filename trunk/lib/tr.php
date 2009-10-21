@@ -449,4 +449,53 @@
 		$metin[363]="Ders Ad&#305;";
 		$metin[364]="Konu Ad&#305;";
 		
+		$metin[365]="Okul Ekle";
+		$metin[366]="Sýnýf Ekle";
+		$metin[367]="Ders Ekle";
+		$metin[368]="Konu Ekle";
+		$metin[369]="Sayfa veya Soru Ekle";
+		
+		$metin[370]="Okul Güncelle";
+		$metin[371]="Sýnýf Güncelle";
+		$metin[372]="Ders Güncelle";
+		$metin[373]="Konu Güncelle";
+		$metin[374]="Sayfa veya Soru Güncelle";
+		
+		$metin[375]="Bu Sýnýfa Öðrenci Dahil Et";
+		$metin[376]="Tüm Öðrenciler";
+		$metin[377]="Seçilen Öðrenciler";
+		$metin[378]="<ul>
+                        <li>Bir &ouml;ðrenci birden fazla sýnýfa dahil olabilir.</li>
+                        <li>Her bir &ouml;ðrenci &quot;Sýnýfa Dahil &Ouml;ðrenciler G&ouml;rebilir&quot; kýsýtlamasý se&ccedil;ilmemiþ ise derslere katýlabilir.</li>
+                        <li>&Ccedil;oklu se&ccedil;im yaparken Ctrl veya Shift tuþlarýný kullanabilirsiniz.</li>
+                      </ul>";
+		$metin[379]="Aþaðýdaki seçenekler zorunlu olmayan seçeneklerdir. Konuda \"kýsýtlama\" yapýlabilir.";
+		$metin[380]="Önceki Baðýmlý Konu";
+		$metin[381]="Son Çalýþýlabilme Tarihi";
+		$metin[382]="Bu Konuyu Kilitle";
+		$metin[383]="Sadece Kayýtlý Kullanýcýlar Görebilir";
+		$metin[384]="Seçili ise bu seçenekleri de kullanabilirsiniz!";
+		$metin[385]="Çalýþma Zamaný (dakika)";
+		$metin[386]="Çalýþma Hak Sayýsý";
+		$metin[387]="Sýnýfa Dahil Öðrenciler Görebilir";
+		$metin[388]="Bu konuyu &ouml;nizlemek i&ccedil;in <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> t&#305;klat&#305;n&#305;z</a>. Konudaki sayfalarý düzenlenmesi i&ccedil;in <a href='lessonsEdit.php?tab=4&amp;seciliKonu=%s'> t&#305;klat&#305;n&#305;z</a>.<br/><br/>";
+		$metin[389]="Bu konuyu &ouml;nizlemek i&ccedil;in <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> t&#305;klat&#305;n&#305;z</a>. Konunun düzenlenmesi i&ccedil;in <a href='lessonsEdit.php?tab=3&amp;id=%s&amp;upd=1'>t&#305;klat&#305;n&#305;z</a>. Sayfalar&#305;n yerlerini de&#287;i&#351;tirmek i&ccedil;in a&#351;a&#287;&#305;daki \"<a href=#sayfaSiralamasi>Sayfa S&#305;ralamas&#305;</a>\" panelini kullanabilirsiniz.<br/><br/>";
+
+		$metin[390]="Ana Metin";
+		$metin[391]="Cevap";
+		$metin[392]="Seçenek";
+		$metin[393]='<ul>
+                      <li style="list-style-type:none">Þýksýz soru tipi için, sadece "cevap" bilgisi girilmesi yeterlidir. Mesela 1923 gibi. 
+                      <li style="list-style-type:none">Þýklý sorularda, 5 seçeneðin en az 2\'si girilmelidir. Cevabý A, B, C, D veya E olarak belirtiniz.
+                      <li style="list-style-type:none">Sýnav sýrasýnda, þýklý sorularýn seçeneklerinin yerleri otomatik olarak deðiþtirilir.
+                      <li style="list-style-type:none">Sorunun cevap süresi 30 saniyedir.
+                    </ul>';
+		$metin[394]="Film ve içerik kýsmýnda tavsiye edilen boyut :<br/>430 pixel geniþlik ve 350 pixel yükseklik ";
+		$metin[395]="Sayfa Sýralamasý";
+		$metin[396]="Sayfa önceliðini deðiþtirmek için istenen sayfayý tutup yukarý veya aþaðý sürükleyiniz :";
+		$metin[397]="";
+		$metin[398]="";
+		$metin[399]="";
+		$metin[400]="";
+				
 ?>

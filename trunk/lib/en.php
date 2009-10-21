@@ -437,4 +437,54 @@
 		$metin[363]="Lesson Name";
 		$metin[364]="Subject Name";
 		
+		$metin[365]="Add School";
+		$metin[366]="Add Class";
+		$metin[367]="Add Lesson";
+		$metin[368]="Add Subject";
+		$metin[369]="Add Page or Question";
+		
+		$metin[370]="Update School";
+		$metin[371]="Update Class";
+		$metin[372]="Update Lesson";
+		$metin[373]="Update Subject";
+		$metin[374]="Update Page or Question";		
+		
+		$metin[375]="Include Students into this Class";
+		$metin[376]="All Students";
+		$metin[377]="Included Students";
+		$metin[378]="<ul>
+                        <li>Students can be included into more than one class.</li>
+                        <li>Each student that is \"only class included students can see\" limitation of the classes chosen to participate.</li>
+                        <li>You can use Ctrl or Shift key when making multiple selections.</li>
+                      </ul>";
+		$metin[379]="The following options are non-mandatory options. Limitations can be made.";		  
+		$metin[380]="Previous Dependent Lesson";
+		$metin[381]="Last Workable Date";
+		$metin[382]="Lock This Subject";
+		$metin[383]="Make visible for only registered users";
+		$metin[384]="You can also use this option for lower options!";
+		$metin[385]="Working Time Limit (minute)";
+		$metin[386]="Number of Working Rights";
+		$metin[387]="Only Class included students can see";
+		$metin[388]="To preview this lesson <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> click</a>. To edit pages in this lesson <a href='lessonsEdit.php?tab=4&amp;seciliKonu=%s'> click</a>.<br/><br/>";
+		$metin[389]="To preview this lesson <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> click</a>. To edit subject settings <a href='lessonsEdit.php?tab=3&amp;id=%s&amp;upd=1'>click</a>. To reorder pages, use \"<a href=#sayfaSiralamasi>Page Order</a>\" panel.<br/><br/>";
+		
+		$metin[390]="Main Text";
+		$metin[391]="Answer";
+		$metin[392]="Option";
+		$metin[393]='<ul>
+                      <li style="list-style-type:none">For a classic question, just fill the right "answer". Like 1923 year data. 
+                      <li style="list-style-type:none">For an options question, you need to write at last 2 option text. And the answer must be A, B, C, D or E.
+                      <li style="list-style-type:none">Questions options are mixed automatically on examination.
+                      <li style="list-style-type:none">Questions answering time limit is 30 seconds.
+                    </ul>';
+		$metin[394]="Video and content size advice :<br/>430 pixel width and 350 pixel height";
+		$metin[395]="Page Order";
+		$metin[396]="Drag upwards or downwards a page for reordering :";
+		$metin[397]="";
+		$metin[398]="";
+		$metin[399]="";
+		$metin[400]="";
+				
+				
 ?>
