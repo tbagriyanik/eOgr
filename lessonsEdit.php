@@ -373,7 +373,6 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
                     <li class="<?php echo ($seciliSekme=="2")?"LinkYanAktif":"LinkYan";?>"><a href="lessonsEdit.php?tab=2"><img src="img/bullet.png" border="0" style="vertical-align: baseline;" alt="edit"/> <?php echo $metin[298];?></a> <?php echo $metin[354];?></li>
                     <li class="<?php echo ($seciliSekme=="3" or $seciliSekme=="4")?"LinkYanAktif":"LinkYan";?>"><a href="lessonsEdit.php?tab=3"><img src="img/bullet.png" border="0" style="vertical-align: baseline;" alt="edit"/> <?php echo $metin[299];?></a> <?php echo $metin[355];?></li>
                   </ol>
-                  
                   <?php
  if(!isset($_POST["blokSayi"]))
 	 {
@@ -501,7 +500,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=0&amp;islem=E" method="post" name="okulEkle" id="okulEkle">
                       <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Yeni Okul Ekle</th>
+                          <th colspan="2"><?php echo $metin[365]?></th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="okulAdi"><?php echo $metin[359]?> : </label></td>
@@ -529,7 +528,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=0&amp;islem=G" method="post" name="okulGuncelle" id="okulGuncelle">
                       <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Okul Bilgilerini Düzenle (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
+                          <th colspan="2"><?php echo $metin[370]?> (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="okulAdi"><?php echo $metin[359]?> : </label></td>
@@ -672,7 +671,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=1&amp;islem=E" method="post" name="sinifEkle" id="sinifEkle">
                       <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Yeni S&#305;n&#305;f Ekle</th>
+                          <th colspan="2"><?php echo $metin[366]?></th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="sinifAdi"><?php echo $metin[362] ?> : </label></td>
@@ -719,7 +718,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=1&amp;islem=G" method="post" name="sinifGuncelle" id="sinifGuncelle">
                       <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">S&#305;n&#305;f Bilgilerini Düzenle (<?php echo $seciliKayit?>  <?php echo $metin[356]?>)</th>
+                          <th colspan="2"><?php echo $metin[371]?> (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="sinifAdi"><?php echo $metin[362] ?> : </label></td>
@@ -769,12 +768,12 @@ if($seciliSekme=="0") {
                         <input type="hidden" name="secOgr" value="1" />
                         <table align="center" cellpadding="3" cellspacing="0">
                           <tr>
-                            <th colspan="3">Bu Sýnýfa &Ouml;ðrenci Dahil Et :</th>
+                            <th colspan="3"><?php echo $metin[375]?> :</th>
                           </tr>
                           <tr>
-                            <td width="200" align="center" style="background-color:#FFC"><strong>T&uuml;m &Ouml;ðrenciler</strong></td>
+                            <td width="200" align="center" style="background-color:#FFC"><strong><?php echo $metin[376]?></strong></td>
                             <td width="30" style="background-color:#FFC">&nbsp;</td>
-                            <td width="200" align="center" style="background-color:#FFC"><strong>Se&ccedil;ilen &Ouml;ðrenciler</strong></td>
+                            <td width="200" align="center" style="background-color:#FFC"><strong><?php echo $metin[377]?></strong></td>
                           </tr>
                           <tr>
                             <td align="center"><select name="ogrenciler1[]" multiple="multiple" size="15" style="width:150px;">
@@ -833,12 +832,7 @@ if($seciliSekme=="0") {
                           </tr>
                         </table>
                       </form>
-                      <ul>
-                        <li>Bir &ouml;ðrenci birden fazla sýnýfa dahil olabilir.</li>
-                        <li>Her bir &ouml;ðrenci &quot;Sýnýfa Dahil &Ouml;ðrenciler G&ouml;rebilir&quot; kýsýtlamasý se&ccedil;ilmemiþ ise derslere katýlabilir.</li>
-                        <li>&Ccedil;oklu se&ccedil;im yaparken Ctrl veya Shift tuþlarýný kullanabilirsiniz.</li>
-                      </ul>
-                    </div>
+                      <?php echo $metin[378]?> </div>
                     <?php		  
 	  }
 ?>
@@ -907,7 +901,7 @@ if($seciliSekme=="0") {
                         <th width="308" nowrap="nowrap"><?php if ($sirAlan=="sinifAdi") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="sinifAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                           <?php } ?>
-                          <a href="lessonsEdit.php?sirAlan=sinifAdi&amp;tab=2&amp;siraYap=OK"><?php echo $metin[362] ?> (Okul)</a></th>
+                          <a href="lessonsEdit.php?sirAlan=sinifAdi&amp;tab=2&amp;siraYap=OK"><?php echo $metin[362] ?> (<?php echo $metin[296] ?>)</a></th>
                       </tr>
                       <?php
 			$limitleme = sprintf("LIMIT %d, %d", $startRow1, $blokBuyuklugu);				 
@@ -977,7 +971,7 @@ if($seciliSekme=="0") {
 ?>
                     <br />
                     <form action="lessonsEdit.php?tab=2" method="post" name="araFiltrele2" id="araFiltrele2">
-                      <?php echo $metin[363] ?>na g&ouml;re arama :
+                      <?php echo $metin[29] ?> :
                       <input type="text" maxlength="50" size="32" name="filtreleme2" value="<?php echo $filtreleme2?>" title="<?php echo $metin[358] ?>" />
                       <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                     </form>
@@ -985,7 +979,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=2&amp;islem=E" method="post" name="dersEkle" id="dersEkle">
                       <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Yeni Ders Ekle</th>
+                          <th colspan="2"><?php echo $metin[367]?></th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="dersAdi"><?php echo $metin[363] ?> : </label></td>
@@ -1033,7 +1027,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=2&amp;islem=G" method="post" name="dersGuncelle" id="dersGuncelle">
                       <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Ders Bilgilerini Düzenle (<?php echo $seciliKayit?>  <?php echo $metin[356]?>)</th>
+                          <th colspan="2"><?php echo $metin[372]?> (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="dersAdi"><?php echo $metin[363] ?> : </label></td>
@@ -1138,11 +1132,11 @@ if($seciliSekme=="0") {
                         <th width="220" nowrap="nowrap"><?php if ($sirAlan=="konuAdi") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="konuAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                           <?php } ?>
-                          <a href="lessonsEdit.php?sirAlan=konuAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[364] ?> (Sayfa Sayýsý)</a></th>
+                          <a href="lessonsEdit.php?sirAlan=konuAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[364] ?> (<?php echo $metin[329] ?>)</a></th>
                         <th width="396" nowrap="nowrap"><?php if ($sirAlan=="dersAdi") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="dersAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                           <?php } ?>
-                          <a href="lessonsEdit.php?sirAlan=dersAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[363] ?> (Okul - Sýnýf)</a></th>
+                          <a href="lessonsEdit.php?sirAlan=dersAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[363] ?> (<?php echo $metin[296] ?> - <?php echo $metin[297] ?>)</a></th>
                       </tr>
                       <?php
 		
@@ -1230,7 +1224,7 @@ if($seciliSekme=="0") {
 ?>
                     <br />
                     <form action="lessonsEdit.php?tab=3" method="post" name="araFiltrele" id="araFiltrele">
-                      <?php echo $metin[364] ?>na g&ouml;re arama :
+                      <?php echo $metin[29] ?> :
                       <input type="text" maxlength="50" size="32" name="filtreleme" value="<?php echo $filtreleme?>" title="<?php echo $metin[358] ?>" />
                       <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                     </form>
@@ -1238,7 +1232,7 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=3&amp;islem=E" method="post" name="konular" id="konular">
                       <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Yeni Konu Ekle</th>
+                          <th colspan="2"><?php echo $metin[368]?></th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="konuAdi"><?php echo $metin[364] ?> : </label></td>
@@ -1270,10 +1264,10 @@ if($seciliSekme=="0") {
                             </div></td>
                         </tr>
                         <tr>
-                          <td colspan="2"><tt>A&#351;a&#287;&#305;daki se&ccedil;enekler zorunlu olmayan seçeneklerdir. Konuda &quot;k&#305;s&#305;tlama&quot; yap&#305;labilir.</tt></td>
+                          <td colspan="2"><tt><?php echo $metin[379] ?></tt></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap"><label for="oncekiKonuID">&Ouml;nceki Ba&#287;&#305;ml&#305; Konu : </label></td>
+                          <td align="right" nowrap="nowrap"><label for="oncekiKonuID"><?php echo $metin[380] ?> : </label></td>
                           <td ><select name="oncekiKonuID" id="oncekiKonuID">
                               <option value=""><?php echo $metin[106] ?></option>
                               <?php
@@ -1292,30 +1286,30 @@ if($seciliSekme=="0") {
                             </select></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap"><label for="bitisTarihi">Son &Ccedil;al&#305;&#351;&#305;labilme Tarihi : </label></td>
+                          <td align="right" nowrap="nowrap"><label for="bitisTarihi"><?php echo $metin[381] ?> : </label></td>
                           <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" /></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> Bu Konuyu Kilitle : </label></td>
+                          <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> <?php echo $metin[382] ?> : </label></td>
                           <td ><span id="konuyuKilitlesi">
                             <input name="konuyuKilitle" type="checkbox" id="konuyuKilitle" value="1" />
                             </span></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> Sadece Kay&#305;tl&#305; Kullan&#305;c&#305;lar G&ouml;rebilir : </label></td>
+                          <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> <?php echo $metin[383] ?> : </label></td>
                           <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" onclick="chekDisable();" />
-                            <font size="-1">Se&ccedil;ili ise bu se&ccedil;enekleri de kullanabilirsiniz!</font>
+                            <font size="-1"><?php echo $metin[384] ?></font>
                             <table>
                               <tr>
-                                <td align="right" nowrap="nowrap"><label for="calismaSuresiDakika"><?php echo "<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[169]."' title='".$metin[169]."' />";?> &Ccedil;al&#305;&#351;ma Zaman&#305; (dakika) : </label></td>
+                                <td align="right" nowrap="nowrap"><label for="calismaSuresiDakika"><?php echo "<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[169]."' title='".$metin[169]."' />";?> <?php echo $metin[385] ?> : </label></td>
                                 <td ><input name="calismaSuresiDakika" type="text" id="calismaSuresiDakika" size="10" maxlength="50" value="0"  /></td>
                               </tr>
                               <tr>
-                                <td align="right" nowrap="nowrap"><label for="calismaHakSayisi">&Ccedil;al&#305;&#351;ma Hak Say&#305;s&#305; : </label></td>
+                                <td align="right" nowrap="nowrap"><label for="calismaHakSayisi"><?php echo $metin[386] ?> : </label></td>
                                 <td ><input name="calismaHakSayisi" type="text" id="calismaHakSayisi" size="10" maxlength="50" value="0"  /></td>
                               </tr>
                               <tr>
-                                <td align="right" nowrap="nowrap"><label for="sinifaDahilKullaniciGorebilir">S&#305;n&#305;fa Dahil &Ouml;ðrenciler G&ouml;rebilir : </label></td>
+                                <td align="right" nowrap="nowrap"><label for="sinifaDahilKullaniciGorebilir"><?php echo $metin[387] ?> : </label></td>
                                 <td ><input name="sinifaDahilKullaniciGorebilir" type="checkbox" id="sinifaDahilKullaniciGorebilir" value="1"  /></td>
                               </tr>
                             </table></td>
@@ -1336,15 +1330,15 @@ if($seciliSekme=="0") {
 		  $result2 = mysql_query($sql2, $yol);
 		  
 			if ($seciliKayit!="") {
-   				echo "<h2>Konu: <font style='font-variant: small-caps;color: #0a0;'>".mysql_result($result2, 0, "konuAdi")."</font></h2><br/>";
-				echo "Bu konuyu &ouml;nizlemek i&ccedil;in <a href='lessons.php?konu=$seciliKayit'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> t&#305;klat&#305;n&#305;z</a>. Konudaki sayfalarý düzenlenmesi i&ccedil;in <a href='lessonsEdit.php?tab=4&amp;seciliKonu=$seciliKayit'> t&#305;klat&#305;n&#305;z</a>.<br/><br/>";
+   				echo "<h2>$metin[299] : <font style='font-variant: small-caps;color: #0a0;'>".mysql_result($result2, 0, "konuAdi")."</font></h2><br/>";
+				printf($metin[388],$seciliKayit,$seciliKayit);
 			}
 		  
 ?>
                     <form action="lessonsEdit.php?tab=3&amp;islem=G" method="post" name="konular" id="konular">
                       <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Konu Bilgilerini Düzenle (<?php echo $seciliKayit?>  <?php echo $metin[356]?>)</th>
+                          <th colspan="2"><?php echo $metin[373]?> (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="konuAdi"><?php echo $metin[364] ?> : </label></td>
@@ -1376,10 +1370,10 @@ if($seciliSekme=="0") {
                             </select></td>
                         </tr>
                         <tr>
-                          <td colspan="2"><tt>A&#351;a&#287;&#305;daki se&ccedil;enekler zorunlu olmayan seçeneklerdir. Konuda &quot;k&#305;s&#305;tlama&quot; yap&#305;labilir.</tt></td>
+                          <td colspan="2"><tt><?php echo $metin[379] ?></tt></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap"><label for="oncekiKonuID">&Ouml;nceki Ba&#287;&#305;ml&#305; Konu : </label></td>
+                          <td align="right" nowrap="nowrap"><label for="oncekiKonuID"><?php echo $metin[380] ?> : </label></td>
                           <td ><select name="oncekiKonuID" id="oncekiKonuID">
                               <option value=""><?php echo $metin[106] ?></option>
                               <?php
@@ -1400,32 +1394,32 @@ if($seciliSekme=="0") {
                             </select></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap"><label for="bitisTarihi">Son &Ccedil;al&#305;&#351;&#305;labilme Tarihi : </label></td>
+                          <td align="right" nowrap="nowrap"><label for="bitisTarihi"><?php echo $metin[381] ?> : </label></td>
                           <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" value="<?php echo (mysql_result($result2, 0, "bitisTarihi")=="0000-00-00")?"":tarihOku(mysql_result($result2, 0, "bitisTarihi"))?>" /></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> Bu Konuyu Kilitle : </label></td>
+                          <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> <?php echo $metin[382] ?> : </label></td>
                           <td ><span id="konuyuKilitlesi">
                             <input name="konuyuKilitle" type="checkbox" id="konuyuKilitle" value="1"
               <?php echo (mysql_result($result2, 0, "konuyuKilitle")!="0") ? "checked=\"checked\"" : ""?> />
                             </span></td>
                         </tr>
                         <tr>
-                          <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> Sadece Kay&#305;tl&#305; Kullan&#305;c&#305;lar G&ouml;rebilir : </label></td>
+                          <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> <?php echo $metin[383] ?> : </label></td>
                           <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" 
               <?php echo (mysql_result($result2, 0, "sadeceKayitlilarGorebilir")!="0") ? "checked=\"checked\"" : ""?> onclick="chekDisable();"/>
-                            <font size="-1">Se&ccedil;ili ise bu se&ccedil;enekleri de kullanabilirsiniz!</font>
+                            <font size="-1"><?php echo $metin[384] ?></font>
                             <table>
                               <tr>
-                                <td align="right" nowrap="nowrap"><label for="calismaSuresiDakika"><?php echo "<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[169]."' title='".$metin[169]."' />";?> &Ccedil;al&#305;&#351;ma Zaman&#305; (dakika) : </label></td>
+                                <td align="right" nowrap="nowrap"><label for="calismaSuresiDakika"><?php echo "<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[169]."' title='".$metin[169]."' />";?> <?php echo $metin[385] ?> : </label></td>
                                 <td ><input name="calismaSuresiDakika" type="text" id="calismaSuresiDakika" size="10" maxlength="50" value="<?php echo mysql_result($result2, 0, "calismaSuresiDakika")?>"   /></td>
                               </tr>
                               <tr>
-                                <td align="right" nowrap="nowrap"><label for="calismaHakSayisi">&Ccedil;al&#305;&#351;ma Hak Say&#305;s&#305; : </label></td>
+                                <td align="right" nowrap="nowrap"><label for="calismaHakSayisi"><?php echo $metin[386] ?> : </label></td>
                                 <td ><input name="calismaHakSayisi" type="text" id="calismaHakSayisi" size="10" maxlength="50" value="<?php echo mysql_result($result2, 0, "calismaHakSayisi")?>"  /></td>
                               </tr>
                               <tr>
-                                <td align="right" nowrap="nowrap"><label for="sinifaDahilKullaniciGorebilir">S&#305;n&#305;fa Dahil &Ouml;ðrenciler G&ouml;rebilir : </label></td>
+                                <td align="right" nowrap="nowrap"><label for="sinifaDahilKullaniciGorebilir"><?php echo $metin[387] ?> : </label></td>
                                 <td ><input name="sinifaDahilKullaniciGorebilir" type="checkbox" id="sinifaDahilKullaniciGorebilir" value="1" <?php echo (mysql_result($result2, 0, "sinifaDahilKullaniciGorebilir")!="0") ? "checked=\"checked\"" : ""?>   /></td>
                               </tr>
                             </table></td>
@@ -1495,8 +1489,8 @@ if($seciliSekme=="0") {
 				$sayfaSayisi = ceil($kayitSayisi/$blokBuyuklugu)-1;
 				}
 			if (getKonuAdi($seciliKonu)!="") {
-   				echo "<h2>Konu: <font style='font-variant: small-caps;color: #0a0;'>".getKonuAdi($seciliKonu)."</font></h2><br/>";
-				echo "Bu konuyu &ouml;nizlemek i&ccedil;in <a href='lessons.php?konu=$seciliKonu'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> t&#305;klat&#305;n&#305;z</a>. Konunun düzenlenmesi i&ccedil;in <a href='lessonsEdit.php?tab=3&amp;id=$seciliKonu&amp;upd=1'>t&#305;klat&#305;n&#305;z</a>. Sayfalar&#305;n yerlerini de&#287;i&#351;tirmek i&ccedil;in a&#351;a&#287;&#305;daki \"<a href=#sayfaSiralamasi>Sayfa S&#305;ralamas&#305;</a>\" panelini kullanabilirsiniz.<br/><br/>";
+   				echo "<h2>$metin[299] : <font style='font-variant: small-caps;color: #0a0;'>".getKonuAdi($seciliKonu)."</font></h2><br/>";
+				printf($metin[389],$seciliKonu,$seciliKonu);
 			}
 
 ?>
@@ -1506,7 +1500,7 @@ if($seciliSekme=="0") {
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                           <?php } ?>
                           <?php echo $metin[26]?></th>
-                        <th width="445" nowrap="nowrap">Ana Metin</th>
+                        <th width="445" nowrap="nowrap"><?php echo $metin[390]?></th>
                       </tr>
                       <?php 			
 	if (@mysql_numrows($result)==0)
@@ -1569,41 +1563,36 @@ if($seciliSekme=="0") {
                     <form action="lessonsEdit.php?tab=4&amp;islem=E" method="post" name="sayfaForm" id="sayfaForm">
                       <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Yeni Sayfa veya Soru Ekle</th>
+                          <th colspan="2"><?php echo $metin[369]?></th>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="anaMetin">Ana Metin : </label></td>
+                          <td width="100" align="right"><label for="anaMetin"><?php echo $metin[390]?> : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"></textarea></td>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="cevap">Cevap : </label></td>
-                          <td  style="background-color:#FFF;"><input type="text" name="cevap" id="cevap" size="50" maxlength="50" value=""/><br />
-                          <ul>
-                          <li style="list-style-type:none">Þýksýz soru tipi için, sadece "cevap" bilgisi girilmesi yeterlidir. Mesela 1923 gibi. 
-                          <li style="list-style-type:none">Þýklý sorularda, 5 seçeneðin en az 2'si girilmelidir. Cevabý A, B, C, D veya E olarak belirtiniz.
-                          <li style="list-style-type:none">Sýnav sýrasýnda, þýklý sorularýn seçeneklerinin yerleri otomatik olarak deðiþtirilir.
-                          <li style="list-style-type:none">Sorunun süresi, cevap ve seçeneklerdeki yazý uzunluðuna göre otomatik belirlenir.
-                          </ul>
-                          </td>
+                          <td width="100" align="right"><label for="cevap"><?php echo $metin[391]?> : </label></td>
+                          <td  style="background-color:#FFF;"><input type="text" name="cevap" id="cevap" size="50" maxlength="50" value=""/>
+                            <br />
+                            <?php echo $metin[393]?></td>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="secenek1">Seçenek A : </label></td>
+                          <td width="100" align="right"><label for="secenek1"><?php echo $metin[392]?> A : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek1" cols="60" rows="3" id="secenek1"></textarea></td>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="secenek2">Seçenek B : </label></td>
+                          <td width="100" align="right"><label for="secenek2"><?php echo $metin[392]?> B : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek2" cols="60" rows="3" id="secenek2"></textarea></td>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="secenek3">Seçenek C : </label></td>
+                          <td width="100" align="right"><label for="secenek3"><?php echo $metin[392]?> C : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek3" cols="60" rows="3" id="secenek3"></textarea></td>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="secenek4">Seçenek D : </label></td>
+                          <td width="100" align="right"><label for="secenek4"><?php echo $metin[392]?> D : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek4" cols="60" rows="3" id="secenek4"></textarea></td>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="secenek5">Seçenek E : </label></td>
+                          <td width="100" align="right"><label for="secenek5"><?php echo $metin[392]?> E : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"></textarea></td>
                         </tr>
                         <tr>
@@ -1614,9 +1603,7 @@ if($seciliSekme=="0") {
                             <input type="button" name="gonderme" id="gonderme"  onclick="location.href = &quot;lessonsEdit.php?tab=3&quot;;" value="<?php echo $metin[28]?>" /></td>
                         </tr>
                         <tr>
-                          <td colspan="2" ><p>Film ve i&ccedil;erik k&#305;sm&#305;nda tavsiye edilen boyut : <br />
-                              430 pixel geni&#351;lik ve 350 pixel y&uuml;kseklik
-                              </p></td>
+                          <td colspan="2" ><p><?php echo $metin[394]?> </p></td>
                         </tr>
                       </table>
                     </form>
@@ -1637,10 +1624,10 @@ bkLib.onDomLoaded(function() {
                     <form name="sayfaForm" action="lessonsEdit.php?tab=4&amp;islem=G" method="post" id="sayfaForm">
                       <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
-                          <th colspan="2">Sayfa Bilgilerini Düzenle (<?php echo $seciliKayit?>  <?php echo $metin[356]?>)</th>
+                          <th colspan="2"><?php echo $metin[374]?> (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
                         </tr>
                         <tr>
-                          <td width="100" align="right"><label for="konuID">Konu : </label></td>                         
+                          <td width="100" align="right"><label for="konuID"><?php echo $metin[299]?> : </label></td>
                           <td  style="background-color:#FFF;"><select name="konuID" id="konuID">
                               <option value=""><?php echo $metin[106] ?></option>
                               <?php
@@ -1657,42 +1644,36 @@ bkLib.onDomLoaded(function() {
 			}
      ?>
                             </select></td>
-
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="anaMetin">Ana Metin : </label></td>
+                          <td width="87" align="right"><label for="anaMetin"><?php echo $metin[390]?> : </label></td>
                           <td style="background-color:#FFF;" ><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"><?php echo htmlspecialchars_decode( mysql_result($result2, 0, "anaMetin"))?>
               </textarea></td>
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="cevap">Cevap : </label></td>
-                          <td  style="background-color:#FFF;"><input type="text" name="cevap" id="cevap" size="50" maxlength="50" value="<?php echo mysql_result($result2, 0, "cevap");?>"/><br />
-                          <ul>
-                          <li style="list-style-type:none">Þýksýz soru tipi için, sadece "cevap" bilgisi girilmesi yeterlidir. Mesela 1923 gibi. 
-                          <li style="list-style-type:none">Þýklý sorularda, 5 seçeneðin en az 2'si girilmelidir. Cevabý A, B, C, D veya E olarak belirtiniz.
-                          <li style="list-style-type:none">Sýnav sýrasýnda, þýklý sorularýn seçeneklerinin yerleri otomatik olarak deðiþtirilir.
-                          <li style="list-style-type:none">Sorunun süresi, cevap ve seçeneklerdeki yazý uzunluðuna göre otomatik belirlenir.
-                          </ul>
-                          </td>
+                          <td width="87" align="right"><label for="cevap"><?php echo $metin[391]?> : </label></td>
+                          <td  style="background-color:#FFF;"><input type="text" name="cevap" id="cevap" size="50" maxlength="50" value="<?php echo mysql_result($result2, 0, "cevap");?>"/>
+                            <br />
+                            <?php echo $metin[393]?></td>
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="secenek1">Seçenek A : </label></td>
+                          <td width="87" align="right"><label for="secenek1"><?php echo $metin[392]?> A : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek1" cols="60" rows="3" id="secenek1"><?php echo mysql_result($result2, 0, "secenek1");?></textarea></td>
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="secenek2">Seçenek B : </label></td>
+                          <td width="87" align="right"><label for="secenek2"><?php echo $metin[392]?> B : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek2" cols="60" rows="3" id="secenek2"><?php echo mysql_result($result2, 0, "secenek2");?></textarea></td>
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="secenek3">Seçenek C : </label></td>
+                          <td width="87" align="right"><label for="secenek3"><?php echo $metin[392]?> C : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek3" cols="60" rows="3" id="secenek3"><?php echo mysql_result($result2, 0, "secenek3");?></textarea></td>
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="secenek4">Seçenek D : </label></td>
+                          <td width="87" align="right"><label for="secenek4"><?php echo $metin[392]?> D : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek4" cols="60" rows="3" id="secenek4"><?php echo mysql_result($result2, 0, "secenek4");?></textarea></td>
                         </tr>
                         <tr>
-                          <td width="87" align="right"><label for="secenek5">Seçenek E : </label></td>
+                          <td width="87" align="right"><label for="secenek5"><?php echo $metin[392]?> E : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"><?php echo mysql_result($result2, 0, "secenek5");?></textarea></td>
                         </tr>
                         <tr>
@@ -1704,8 +1685,7 @@ bkLib.onDomLoaded(function() {
                             </label></td>
                         </tr>
                         <tr>
-                          <td colspan="2" ><p>Film ve i&ccedil;erik k&#305;sm&#305;nda tavsiye edilen boyut : <br />
-                              430 pixel geni&#351;lik ve 350 pixel y&uuml;kseklik</p></td>
+                          <td colspan="2" ><p><?php echo $metin[394]?></p></td>
                         </tr>
                       </table>
                     </form>
@@ -1759,8 +1739,8 @@ bkLib.onDomLoaded(function() {
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><a name="sayfaSiralamasi"></a>Sayfa S&#305;ralamas&#305;</span> </h2>
-                <div class="PostContent"> Sayfa &ouml;nceli&#287;ini de&#287;i&#351;tirmek i&ccedil;in istenen sayfay&#305; tutup yukar&#305; veya a&#351;a&#287;&#305; s&uuml;r&uuml;kleyiniz.<br />
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><a name="sayfaSiralamasi"></a><?php echo $metin[395]?></span> </h2>
+                <div class="PostContent"><?php echo $metin[396]?><br />
                   <br />
                   <div id="contentLeft">
                     <?php
