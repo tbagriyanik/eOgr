@@ -52,7 +52,7 @@
         $metin[44]="Continue";   
         
         $metin[45]="The database name to be installed :";   
-        $metin[46]="Install";   
+        $metin[46]="Automatic Install";   
         $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
   	
 		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings.php?dump=1&quot;;' value=\"Click\"/> for the tables' backup";   
@@ -481,9 +481,10 @@
 		$metin[394]="Video and content size advice :<br/>430 pixel width and 350 pixel height";
 		$metin[395]="Page Order";
 		$metin[396]="Drag upwards or downwards a page for reordering :";
-		$metin[397]="";
-		$metin[398]="";
-		$metin[399]="";
+		
+		$metin[397]="Click to edit pages in this subject";
+		$metin[398]="Just download the minimal installation database file for phpMyAdmin";
+		$metin[399]="Download";
 		$metin[400]="";
 				
 				

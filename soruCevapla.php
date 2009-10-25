@@ -166,7 +166,7 @@ function secenekleriGetir($id)
 	   return ("");
 	}
 }
-		echo iconv( "ISO-8859-9","UTF-8", "<h4>$metin[347]</h4>");
+		echo iconv( "ISO-8859-9","ISO-8859-9", "<h4>$metin[347]</h4>");
 ?>
 
 <div id="cevapSonucu"></div>
@@ -174,7 +174,7 @@ function secenekleriGetir($id)
   <?php
 /*main*/
  if (isset($_GET['sayfa']) && is_numeric($_GET['sayfa']) && $_GET['sayfa']>0  ) {
-		echo iconv( "ISO-8859-9","UTF-8", secenekleriGetir(temizle2($_GET['sayfa'])));
+		echo iconv( "ISO-8859-9","ISO-8859-9", secenekleriGetir(temizle2($_GET['sayfa'])));
  		}
 ?>
 </div>

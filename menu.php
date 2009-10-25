@@ -16,7 +16,7 @@ if($seceneklerimiz[5]=="1"){
                             varname:"input",
                             json:true,
                             shownoresults:false,
-                            maxresults:4,
+                            maxresults:5,
                             callback: function (obj) { 							
 								location.href = eval('\"lessons.php?konu='+obj.id+'\"');
 							}

@@ -166,7 +166,7 @@ ob_start (); // Buffer output
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
                     <span id="soruGeriSayim"></span><br/>
                     
-                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span> 
+                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>&nbsp; 
                     <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
 </div></div>
                     </div>
@@ -359,12 +359,13 @@ window.onunload = function () {
 }
 
 function cevapSureBasla(){
-				document.getElementById('cevapVer').style.visibility = 'hidden' ;
-				
+
+		if(document.getElementById('cevapSuresi').innerHTML==""){		
 				$("#cevapSuresi").everyTime(1000,function(i) {
 						if(i>31){
 						  	$("#cevapSuresi").stopTime();
 							document.getElementById('cevapSuresi').innerHTML = '' ;
+							document.getElementById('cevapVer').style.visibility = 'hidden' ;
 							document.getElementById('cevapSonucu').style.visibility = 'hidden' ;
 							document.getElementById('cevapDegerlendirmeYeri').innerHTML = "<"+"font id='hata'><?php echo $metin[346];?><"+"/font>";
 							}
@@ -373,6 +374,7 @@ function cevapSureBasla(){
 						 	}
 					});	
 		}
+	}
 </script>
           <?php	 
 	 if(isset($_GET["konu"]) && isKonu($_GET["konu"])){

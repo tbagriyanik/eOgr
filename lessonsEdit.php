@@ -1178,7 +1178,7 @@ if($seciliSekme=="0") {
                       <tr>
                         <td align="right" nowrap="nowrap"  
 		  <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
-                        <td nowrap="nowrap" title="Bu konudaki sayfalar&#305; düzenlemek i&ccedil;in t&#305;klat&#305;n&#305;z" onmouseover	="javascript:this.style.backgroundColor='#FFFF55';" 
+                        <td nowrap="nowrap" title="<?php echo $metin[397]?>" onmouseover	="javascript:this.style.backgroundColor='#FFFF55';" 
           onmouseout	="javascript:this.style.backgroundColor='<?php echo $row_color?>';" <?php echo "style=\"background-color: $row_color;\""?>><a href="lessonsEdit.php?tab=4&amp;seciliKonu=<?php echo mysql_result($result, $i, "id")?>"><?php echo mysql_result($result, $i, "konuAdi")?> (<?php echo mysql_result($result, $i, "sayfasi")?>)</a> <?php echo (mysql_result($result,$i,"konuyuKilitle")?"<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[179]."\" title=\"".$metin[179]."\" />":"")?> <?php echo (mysql_result($result,$i,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[181]."\" title=\"".$metin[181]."\" />":"")?> <?php echo (mysql_result($result,$i,"calismaSuresiDakika")?"<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[169]."\" title=\"".$metin[169]."\" />":"")?>
                           <?php 
 						  if($s_sayisi==0) 

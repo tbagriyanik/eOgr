@@ -27,7 +27,7 @@ class simpleChart {
         $maxValue,          // max value
         $title,             // chart title
         $barColors,         // color for every bar in chart
-        $cellWidth = "14",
+        $cellWidth = "10",
         $cellHeight = "10", 
         $scale;             // scale value 
         
@@ -153,7 +153,7 @@ class simpleChart {
     *
     */
     function showChart() {
-        $html = "<center><TABLE class=chartTable cellspacing=0 cellpadding=1  >";
+        $html = "<center><TABLE class=chartTable cellspacing=0 cellpadding=1 border=0 >";
         $html = $html . $this->getTitleHtml($this->title);
         // rows
         for($row = $this->verticalPoints;$row > 0;$row=$row -    1) {
