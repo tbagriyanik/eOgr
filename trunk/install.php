@@ -57,8 +57,7 @@ function dilCevir($dil){
 			  case "2":	$seciliTema="lightGreen";break;
 			  default:	$seciliTema="silverModern"; 			  
 		  }
-	  }
-	
+	  }	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,7 +68,7 @@ function dilCevir($dil){
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[71]?></title>
+<title>eOgr -<?php echo $metin[71]?></title>
 <link href="stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
@@ -115,12 +114,8 @@ function dilCevir($dil){
       </div>
       <div class="nav">
         <ul class="artmenu">
-          <li><a href="index.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/>
-            <?php echo $metin[54]?>
-            </span></span></a></li>
-          <li><a href="install.php" class=" active"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/>
-            <?php echo $metin[71]?>
-            </span></span></a></li>
+          <li><a href="index.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a></li>
+          <li><a href="install.php" class=" active"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/> <?php echo $metin[71]?> </span></span></a></li>
         </ul>
         <div class="l"> </div>
         <div class="r">
@@ -155,9 +150,7 @@ function dilCevir($dil){
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> -
-                  <?php echo $metin[71]?>
-                  </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[71]?> </span> </h2>
                 <div class="PostContent">
                   <?php
     $protect = new flood_protection();
@@ -177,10 +170,8 @@ function dilCevir($dil){
 	
 	if($currentFile!="install.php") echo ("<font id='hata'>Dosya uyumlu deðil!</font><br/>"); 
 
-
 	if(isset($_POST['submit']))
 	{
-
 $sql = 	"CREATE TABLE  eo_floodprotection (      
   IP char(32) NOT NULL,   
   TIME char(20) NOT NULL, 
@@ -441,12 +432,14 @@ $sql .= "CREATE TABLE eo_comments (
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
-                  <p><strong>
-                    <?php echo $metin[73]?>
-                    </strong></p>
+                  <p><strong> <?php echo $metin[73]?> </strong></p>
                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <input name="submit" type="submit" value="<?php echo $metin[46]?>" />
                   </form>
+                  <?php if(file_exists("installation_Database.sql")):?>
+                  <p><strong> <?php echo $metin[398]?> </strong></p>
+                  <a href="installation_Database.sql"><?php echo $metin[399]?> - <?php echo filesize("installation_Database.sql")?> B</a>
+                  <?php endif?>
                 </div>
                 <div class="cleared"></div>
               </div>
@@ -456,10 +449,8 @@ $sql .= "CREATE TABLE eo_comments (
       </div>
       <div class="cleared"></div>
       <div class="Footer">
-        <div class="Footer-inner"> 
-          <div class="Footer-text"> <a href='index.php?lng=<?php echo $taraDili?>&amp;oldPath=install.php' title='Dil se&ccedil;iniz Choose a language'>
-            <?php echo ($taraDili=="TR")?"<img src='img/turkish.png' border='0' alt='dil' style='vertical-align: bottom;' />":"<img src='img/english.png' border='0' alt='language' style='vertical-align: bottom;'/>"?>
-            </a> </div>
+        <div class="Footer-inner">
+          <div class="Footer-text"> <a href='index.php?lng=<?php echo $taraDili?>&amp;oldPath=install.php' title='Dil se&ccedil;iniz Choose a language'> <?php echo ($taraDili=="TR")?"<img src='img/turkish.png' border='0' alt='dil' style='vertical-align: bottom;' />":"<img src='img/english.png' border='0' alt='language' style='vertical-align: bottom;'/>"?> </a> </div>
         </div>
         <div class="Footer-background"></div>
       </div>

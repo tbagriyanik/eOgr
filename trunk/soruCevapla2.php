@@ -65,13 +65,13 @@ function cevapKontrol($cevap, $id)
 
     if ($result1 && mysql_numrows($result1) == 1)
     {
-	   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[348]";   
+	   $sonuc = "<span><img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[348]</span>";   
 	   
 	   $_SESSION["cevaplar"][$id] = "D";
 	   
        return $sonuc;
     }else {
-	   return "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[349]<br/>";
+	   return "<p><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[349]</p>";
 	}
 }
 

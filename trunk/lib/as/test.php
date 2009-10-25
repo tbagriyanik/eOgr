@@ -34,7 +34,7 @@ $aInfo	=array();
 	$input = strtolower($_GET['input']);
 																					
 	$len = strlen($input);
-	$limit = 4;
+	$limit = 5;
 	
 	
 	$aResults = array();

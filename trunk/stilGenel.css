@@ -29,7 +29,6 @@ td {
 	color: #000;
 	padding: 2px;
 	width: 600px;
-
 	list-style-type: none;
 	background-color: #F9E9A9;
 	background-image: url(img/buttonbg.png);
@@ -278,7 +277,7 @@ label {
 .ikiKolon {
 	position: relative;
 	float:left;
-	width:45%;
+	width:46%;
 	border-top: 5px solid #F90;
 	min-width: 10em;
 	margin: 0.5em;
@@ -295,7 +294,7 @@ label {
 .tekKolon {
 	position: relative;
 	float:left;
-	width:93%;
+	width:95%;
 	border-top: 5px solid #6C0;
 	background-color:#FFC;
 	color:#000;
@@ -452,5 +451,10 @@ label.error {
 	margin-bottom:5px;
 }
 h1, h2, h3 {
-	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);	
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
+}
+#cevapVer {
+	padding:3px;
+	margin: 3px;
+	font-weight: bolder;
 }

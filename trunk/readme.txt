@@ -1,4 +1,4 @@
-eOgr - v112
+eOgr - v113
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -21,27 +21,28 @@ Available language support is English and Turkish.
 
 Developer Name: Tarik Bagriyanik
 Developer Site: http://yunus.sourceforge.net
-Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
+Demo Site:		http://tbagriyanik.xtreemhost.com/eogr
 Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	21-10-2009
+Last Update: 	25-10-2009
 Process Time : 	385 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
-Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
+Programs: 		Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 
 INSTALLATION:
 -------------
 (1) Edit your settings in "database.php" with an editor
-(2) " http://localhost/eogr/install.php " is for installation. Your MySQL user must have CREATE permission
+(2) " http://localhost/eogr/install.php " is for installation. Your MySQL user must have "CREATE TABLE" permission!
 (3) Login as administrator user: name "admin" and password "11111"
  
 	:For Clients (web users):
-	- Javascript (Ajax) enabled browser 
-	- Cookies enabled
-	- Flash player installed
+	- Javascript (Ajax) enabled browser (especially for lessons page)
+	- Cookies enabled (theme, language and user name)
+	- Flash player installed 
 
 	:Installation (administrators):
 	- This project needs PHP 5 (GD Library)
 	- MySQL 5 database server 
+	- .htaccess enabled for security
 
 Used Classes:
 - autosuggest: http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html v2.1.3
@@ -65,7 +66,7 @@ CSS, RSS and HTML Validations:
 - Mozilla Firefox "HTML Validator" extension is also very helpful
 
 Note: 
-Older browsers (like Internet Explorer 6, Firefox 2) are not recomended. There are lots of problems detected.
+Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.
 These are fully tested: Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0
 
 License: LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html

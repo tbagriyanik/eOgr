@@ -52,7 +52,7 @@
         $metin[44]="Devam Et";           
         
         $metin[45]="Olu&#351;turulacak veritaban&#305; ad&#305; :";   
-        $metin[46]="Kurulum";   
+        $metin[46]="Otomatik Kurulum";   
         $metin[47]="eOgr projesini kullanmaya ba&#351;lamak i&ccedil;in <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> t&#305;klat&#305;n&#305;z</a>!";   
         
         $metin[48]="Tablolar&#305;n yede&#287;inin al&#305;nmas&#305; i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings.php?dump=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
@@ -493,9 +493,10 @@
 		$metin[394]="Film ve içerik kýsmýnda tavsiye edilen boyut :<br/>430 pixel geniþlik ve 350 pixel yükseklik ";
 		$metin[395]="Sayfa Sýralamasý";
 		$metin[396]="Sayfa önceliðini deðiþtirmek için istenen sayfayý tutup yukarý veya aþaðý sürükleyiniz :";
-		$metin[397]="";
-		$metin[398]="";
-		$metin[399]="";
+		
+		$metin[397]="Bu konudaki sayfalar&#305; düzenlemek i&ccedil;in t&#305;klat&#305;n&#305;z";
+		$metin[398]="Sadece minimum kurulum veritabaný dosyasýný indir (phpMyAdmin ile kurmak için)";
+		$metin[399]="Ýndir";
 		$metin[400]="";
 				
 ?>
