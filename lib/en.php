@@ -408,8 +408,8 @@
 		$metin[340]="Only visible for registered users<br/><a href=newUser.php>New Membership!</a>";	
 		
 		$metin[341]="Total";	
-		$metin[342]="Last 20 days work (maximum 30 values)";
-		$metin[343]="Last 20 days data actions (maximum 30 values)";
+		$metin[342]="Last 20 days work (maximum 20 values)";
+		$metin[343]="Last 20 days data actions (maximum 20 values)";
 
 		$metin[344]="I will Answer!";
 		$metin[345]="You did not finish your lesson! You can go on by clicking Cancel";
@@ -483,7 +483,7 @@
 		$metin[396]="Drag upwards or downwards a page for reordering :";
 		
 		$metin[397]="Click to edit pages in this subject";
-		$metin[398]="Just download the minimal installation database file for phpMyAdmin";
+		$metin[398]="Or just download the minimal installation database file for phpMyAdmin : ";
 		$metin[399]="Download";
 		
 		$metin[400]="Sorry, unable to login.";
@@ -506,7 +506,7 @@
 		$metin[417]="Your user name or email does not exists.";
 		$metin[418]="Your user name or email was empty.";
 		$metin[419]="Your password can not be changed. Ignore the incoming email from us.";
-		$metin[420]="";
+		$metin[420]="Are you sure to delete?";
 		$metin[421]="";			
 				
 ?>

@@ -951,7 +951,7 @@ function getStats($num)
 						for($i=0; $i<$donguSon ;$i++){
 							$data = mysql_fetch_assoc($result);
 							$ekle .=  "<li style='list-style-type:none;'>";
-							$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."#yorumlar\">".$data["kadi"]."</a> <font size='-3'>".($data["toplam"])."</font>";
+							$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a> <font size='-3'>".($data["toplam"])."</font>";
 								
 							$ekle .=  "</li>";
 							}
@@ -1449,8 +1449,8 @@ function getGrafikValues($lmt){
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
-			if($row['count']>30) 
-			  $data['values'][] = 30;
+			if($row['count']>20) 
+			  $data['values'][] = 20;
 			else
 		      $data['values'][] = $row['count'];
 		}
@@ -1475,8 +1475,8 @@ function getGrafikMax($lmt){
 		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y')  order by count DESC limit 0,1";
 		$result = mysql_query($sql, $yol1);
 		$row = mysql_fetch_assoc($result);
-			if($row['count']>30) 
-			  return 30;
+			if($row['count']>20) 
+			  return 20;
 			else
 		      return $row['count'];
 }
@@ -1497,8 +1497,8 @@ function getGrafikValues2($lmt){
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
-			if($row['count']>30) 
-			  $data['values'][] = 30;
+			if($row['count']>20) 
+			  $data['values'][] = 20;
 			else
 		      $data['values'][] = $row['count'];
 		}
@@ -1523,8 +1523,8 @@ function getGrafikMax2($lmt){
 		$sql = "SELECT COUNT(*) AS count FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y')  order by count DESC limit 0,1";
 		$result = mysql_query($sql, $yol1);
 		$row = mysql_fetch_assoc($result);
-			if($row['count']>30) 
-			  return 30;
+			if($row['count']>20) 
+			  return 20;
 			else
 		      return $row['count'];
 }
@@ -1848,7 +1848,7 @@ function dersAgaci($gelen=null){
 					while($i<@mysql_numrows($okulAdlari)){
 				?>
 				
-				<li style="color:#CC0;list-style-type:none;" title='<?php echo $metin[296]?>'>
+				<li style="color:#C9F;list-style-type:none;" title='<?php echo $metin[296]?>'>
 				  <?php echo (@mysql_result($okulAdlari,$i,"okulAdi"))?>
 				  
 					<?php
@@ -1858,7 +1858,7 @@ function dersAgaci($gelen=null){
 								if(@mysql_numrows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_numrows($sinifAdlari)){		   
 						   ?>
-					<li style="list-style-type:none;color:#C69" title='<?php echo $metin[297]?>'>
+					<li style="list-style-type:none;color:#C3F" title='<?php echo $metin[297]?>'>
 					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> 
 						<?php
 										$sqlDers 	= "select * from eo_3ders where sinifID = '".@mysql_result($sinifAdlari,$j,"id")."' order by dersAdi";
@@ -1867,7 +1867,7 @@ function dersAgaci($gelen=null){
 										if(@mysql_numrows($dersAdlari)>0) echo "<ul>";										
 										while($k<@mysql_numrows($dersAdlari)){		   
 									?>
-						<li style="list-style-type:none;color:#F30" title='<?php echo $metin[298]?>'>
+						<li style="list-style-type:none;color:#C0F" title='<?php echo $metin[298]?>'>
 						  <?php echo (@mysql_result($dersAdlari,$k,"dersAdi"))?>
 						  
 						  <?php

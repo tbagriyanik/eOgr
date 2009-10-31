@@ -136,7 +136,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 
 	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
 	   sessionDestroy();
-		die("<font id='hata'> Oturum a&ccedil;ma hatasý meydana geldi.</font>"); //session?
+		die("<font id='hata'>$metin[400]</font>"); //session?
 		exit;
 	}
 		

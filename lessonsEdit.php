@@ -262,7 +262,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $secenek4	=temizle($_POST["secenek4"]);
 				        $secenek5	=temizle($_POST["secenek5"]);
 				        $konuID		=temizle($_POST["konuID"]);
-						if (!empty($anaMetin))
+						if (!empty($anaMetin) && !empty($konuID))
    							$sql="Update $tabloAdi set 
 									anaMetin='$anaMetin', cevap = '$cevap',
 									secenek1='$secenek1', secenek2 = '$secenek2',
@@ -321,12 +321,13 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $secenek3	=temizle($_POST["secenek3"]);
 				        $secenek4	=temizle($_POST["secenek4"]);
 				        $secenek5	=temizle($_POST["secenek5"]);
+						$konuID		=temizle($_SESSION["seciliKonu"]);
 						
 				        $anaMetin= trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
-						if (!empty($anaMetin))
+						if (!empty($anaMetin) && !empty($konuID))
 						   $sql="Insert into $tabloAdi 
 						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5)
-						   	values ('$anaMetin', '".temizle($_SESSION["seciliKonu"])."', '$datem', '$userID', '$toplamSayfaSay',
+						   	values ('$anaMetin', '".$konuID."', '$datem', '$userID', '$toplamSayfaSay',
 									'$cevap','$secenek1','$secenek2','$secenek3','$secenek4','$secenek5'								  
 									)";
 					 } 	 
@@ -461,7 +462,7 @@ if($seciliSekme=="0") {
                       <tr>
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "okulAdi")?></td>
-                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=0&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=0&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'Kay&#305;t silinmesini onayl&#305;yor musunuz?');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
+                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=0&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=0&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
   				 $i++;
@@ -632,7 +633,7 @@ if($seciliSekme=="0") {
                         <td align="right"  <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
                         <td  <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "sinifAdi")?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo (mysql_result($result, $i, "okulAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "okulAdi"))?></td>
-                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=1&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=1&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'Kay&#305;t silinmesini onayl&#305;yor musunuz?');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
+                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=1&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=1&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
   				 $i++;
@@ -933,7 +934,7 @@ if($seciliSekme=="0") {
                         <td align="right"  <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "dersAdi")?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo (mysql_result($result, $i, "sinifAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "sinifAdi"))?> ( <?php echo (mysql_result($result, $i, "okulAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "okulAdi"))?> )</td>
-                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=2&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=2&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'Kay&#305;t silinmesini onayl&#305;yor musunuz?');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
+                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=2&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=2&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
   				 $i++;
@@ -1186,7 +1187,7 @@ if($seciliSekme=="0") {
 						  ?>
                           <a href="dersBilgisi.php?ders=<?php echo mysql_result($result, $i, "id")?>" rel="facebox"> <img src="img/info.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[301]?>" /></a></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo (mysql_result($result, $i, "dersAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "dersAdi"))?> ( <?php echo (mysql_result($result, $i, "okulAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "okulAdi"))?> - <?php echo (mysql_result($result, $i, "sinifAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "sinifAdi"))?> )</td>
-                        <td width="60" align="center" valign="middle" nowrap="nowrap"><a href="<?php echo $currentPage;?>?tab=3&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=3&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'Kay&#305;t silinmesini onayl&#305;yor musunuz?');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
+                        <td width="60" align="center" valign="middle" nowrap="nowrap"><a href="<?php echo $currentPage;?>?tab=3&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=3&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
   				 $i++;
@@ -1523,7 +1524,7 @@ if($seciliSekme=="0") {
                       <tr>
                         <td align="right"   <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
                         <td  <?php echo "style=\"background-color: $row_color;\""?>><?php echo (strlen(strip_tags(mysql_result($result, $i, "anaMetin")))>50)?substr(strip_tags(mysql_result($result, $i, "anaMetin")),0,50)."...":strip_tags(mysql_result($result, $i, "anaMetin"));?></td>
-                        <td width="60" align="center" valign="middle" ><a href="<?php echo $currentPage;?>?tab=4&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=4&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'Kay&#305;t silinmesini onayl&#305;yor musunuz?');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
+                        <td width="60" align="center" valign="middle" ><a href="<?php echo $currentPage;?>?tab=4&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=4&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
   				 $i++;
