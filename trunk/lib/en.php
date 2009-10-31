@@ -485,7 +485,28 @@
 		$metin[397]="Click to edit pages in this subject";
 		$metin[398]="Just download the minimal installation database file for phpMyAdmin";
 		$metin[399]="Download";
-		$metin[400]="";
-				
+		
+		$metin[400]="Sorry, unable to login.";
+		$metin[401]="Sorry, unable to respond so quickly! <br/> Please, retry soon.";
+		$metin[402]="To go to the main page, <a href='index.php'>click here</a>";
+		$metin[403]="Your user name or password was empty.";
+		$metin[404]="Your user name or password was wrong. Your account may be passive.";
+		$metin[405]="There are no news or this section is disabled.";
+		$metin[406]="Code error! <a href=# onclick=history.go(-1);>Click here</a> to retry.";
+		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><a href=# onclick=history.go(-1);>Click here</a> to retry.";
+		$metin[408]="<font id='uyari'> You are a new member now!</font> To login, please <a href='index.php'>click here</a> to go to main page";
+		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'>Click here</a>  to go to main page.";
+		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'>Click here</a> to go to main page.";
+		$metin[411]="This user name has been used previously";
+		$metin[412]="This email has been used previously";
+		$metin[413]="New password process is not finished!";
+		$metin[414]="New password process is finished!";
+		$metin[415]="Sorry, we can not send email now.";
+		$metin[416]="Your email is not confirmed.";
+		$metin[417]="Your user name or email does not exists.";
+		$metin[418]="Your user name or email was empty.";
+		$metin[419]="Your password can not be changed. Ignore the incoming email from us.";
+		$metin[420]="";
+		$metin[421]="";			
 				
 ?>

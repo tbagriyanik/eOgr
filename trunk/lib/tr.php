@@ -497,6 +497,29 @@
 		$metin[397]="Bu konudaki sayfalar&#305; düzenlemek i&ccedil;in t&#305;klat&#305;n&#305;z";
 		$metin[398]="Sadece minimum kurulum veritabaný dosyasýný indir (phpMyAdmin ile kurmak için)";
 		$metin[399]="Ýndir";
-		$metin[400]="";
+		
+		$metin[400]="&Ouml;z&uuml;r dileriz. Oturum a&ccedil;ma hatasý meydana geldi.";
+		$metin[401]="&#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
+		  '<br/>L&#252;ften bir s&#252;re sonra tekrar deneyiniz!";
+		$metin[402]="Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
+		$metin[403]="Kullanýcý adý veya parola boþ olamaz.";
+		$metin[404]="Kullanýcý adý veya parolanýz hatalýdýr. Hesabýnýz pasif halde olabilir.";
+		$metin[405]="Þimdilik bir haber bulunmuyor veya haberler kapatýlmýþ.";
+		$metin[406]="Kod boþ veya hatalý girildi! Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>.";
+		$metin[407]="<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>";
+		$metin[408]="<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Giriþ yapmak i&ccedil;in <a href='index.php'>týklatýnýz</a>";
+		$metin[409]="<font id='hata'> &Uuml;yelik iþleminiz tamamlanamadý! Boþ ve izin verilmeyen deðerler var, kullanýcý adý veya eposta adresi kullanýlýyor olabilir.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
+		$metin[410]="<font id='hata'> Tekrar baþvuru yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
+		$metin[411]="Kullan&#305;lan bir kullan&#305;c&#305; ad&#305; girdiniz!";
+		$metin[412]="Kullan&#305;lan bir eposta adresi girdiniz!";
+		$metin[413]="Parola yenileme isteðiniz tamamlanamadý!";
+		$metin[414]="Parola yenileme isteðiniz tamamlandý!";
+		$metin[415]="Þu anda eposta g&ouml;nderemiyoruz.";
+		$metin[416]="Eposta bilginiz doðrulanamadý.";
+		$metin[417]="Kullanýcý adý veya eposta bilgileriniz bulunamadý.";
+		$metin[418]="Kullanýcý adý veya eposta boþ býrakýldý.";
+		$metin[419]="Parola g&uuml;ncellenemiyor. Gelecek olan epostayý g&ouml;zardý ediniz.";
+		$metin[420]="";
+		$metin[421]="";
 				
 ?>

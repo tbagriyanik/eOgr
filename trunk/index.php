@@ -34,7 +34,7 @@
 	if ($_SESSION['aThing'] != "") {   	
   	 if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
 	    sessionDestroy();
-		die("<font id='hata'> Oturum a&ccedil;ma hatasý meydana geldi.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //session?
+		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
 		exit;
 	 }
 	}
@@ -316,7 +316,7 @@ if (isset($_COOKIE["remUser"]))
       <div class="sidebar1">
         <?php
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-	if($seceneklerimiz[11]=="1") {
+
 ?>
         <div class="Block">
           <div class="Block-tl"></div>
@@ -341,8 +341,9 @@ if (isset($_COOKIE["remUser"]))
             <div class="BlockContent">
               <div class="BlockContent-body">
                 <div>
-                  <ul>
+                  <ul>                  
                     <?php									
+						if($seceneklerimiz[11]=="1") {
 										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");
 										$result1= 	@mysql_query($sql1,$yol1);										
 										$i=0;
@@ -370,7 +371,10 @@ if (isset($_COOKIE["remUser"]))
 												}
 										 }
 										 else
-										  echo "<li>Þimdilik bir haber bulunmuyor veya haberler kapatýlmýþ.</li>";
+										  echo "<li>$metin[405]</li>";
+						}
+						else
+						  echo "<li>$metin[405]</li>";
                                         ?>
                   </ul>
                 </div>
@@ -379,7 +383,7 @@ if (isset($_COOKIE["remUser"]))
           </div>
         </div>
         <?php
-	}
+	
 if($seceneklerimiz[12]=="1" && getStats(16)!="") {
 ?>
         <div class="Block">

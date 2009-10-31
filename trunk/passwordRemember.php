@@ -112,8 +112,7 @@
                   <?php
 
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;" alt="warning"/> &#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
-		  '<br/>L&#252;ften bir s&#252;re sonra <a href='.$_SERVER['PHP_SELF'].'>tekrar</a> deneyiniz!'); // die there flooding
+	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;" alt="warning"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
 	currentFileCheck("passwordRemember.php");
@@ -132,7 +131,7 @@
 					$sent = array_keys($_POST);
 					if ($allowed != $sent)
 					{
-						die("<font id='hata'> Formda bir hata meydana geldi!</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //form data?
+						die("<font id='hata'> ".$metin[400]." (1)</font><br/>".$metin[402]); //form data?
 						exit;
 					}
 					break;
@@ -145,37 +144,33 @@
 				switch ($sonuc){
 					case 'mailErr':
 					    trackUser($currentFile,"fail,$sonuc",$_POST['userName']);
-						echo ("<font id='hata'> Parola yenileme isteðiniz tamamlanamadý! Þu anda eposta g&ouml;nderemiyoruz.</font><br/>".
-						  "Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 	
+						echo ("<font id='hata'> $metin[413] $metin[415]</font><br/>".$metin[402]); 	
 						break;
 					case 'notValid':
 					    trackUser($currentFile,"fail,$sonuc",$_POST['userName']);
-						echo ("<font id='hata'> Parola yenileme isteðiniz tamamlanamadý! Eposta bilginiz doðrulanamadý.</font><br/>".
-						  "Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 	
+						echo ("<font id='hata'> $metin[413] $metin[416]</font><br/>".$metin[402]); 	
 						break;
 					case 'noUser':
 					    trackUser($currentFile,"fail,$sonuc",$_POST['userName']);
-						echo ("<font id='hata'> Parola yenileme isteðiniz tamamlanamadý! Kullanýcý adý veya eposta bilgileriniz bulunamadý.</font><br/>".
-						  "Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 	
+						echo ("<font id='hata'> $metin[413] $metin[417]</font><br/>".$metin[402]); 	
 						break;
 					case 'emptyData':
 					    trackUser($currentFile,"fail,$sonuc",$_POST['userName']);
-						echo ("<font id='hata'> Parola yenileme isteðiniz tamamlanamadý! Kullanýcý adý veya eposta boþ býrakýldý.</font><br/>".
-						  "Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 	
+						echo ("<font id='hata'> $metin[413] $metin[418]</font><br/>".$metin[402]); 	
 						break;
 					case 'allOK':
 					    trackUser($currentFile,"success,NewPwd",$_POST['userName']);
-						echo ("<font id='tamam'> Parola yenileme isteðiniz tamamlandý!</font>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 				
+						echo ("<font id='tamam'> $metin[414] </font>".$metin[402]); 				
 						break;
 					case 'noChange':
 					    trackUser($currentFile,"fail,$sonuc",$_POST['userName']);
-						echo ("<font id='hata'> Parola yenileme isteðiniz tamamlanamadý! Kullanýcý adý veya eposta bilgileriniz g&uuml;ncellenemiyor. Gelecek olan epostayý g&ouml;zardý ediniz.</font>"."Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 	
+						echo ("<font id='hata'> $metin[413] $metin[419]</font>".$metin[402]); 	
 						break;
 				}
 		
 	}else{		
 
-if($_SESSION["passRem"]=="yes") die("<font id='hata'> Tekrar yeni parola baþvurusu yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //form data?
+if($_SESSION["passRem"]=="yes") die($metin[410]); //form data?
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <div id="contact-wrapper">
