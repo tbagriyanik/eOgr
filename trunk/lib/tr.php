@@ -420,8 +420,8 @@
 		$metin[340]="Kayýtlý kullanýcýlar görebilir <br/><a href=newUser.php>Yeni Üyelik!</a>";	
 		
 		$metin[341]="Toplam";	
-		$metin[342]="Son 20 günlük çalýþma sayýlarý (en fazla 30 deðer)";
-		$metin[343]="Son 20 günlük iþlem sayýlarý (en fazla 30 deðer)";
+		$metin[342]="Son 20 günlük çalýþma sayýlarý (en fazla 20 deðer)";
+		$metin[343]="Son 20 günlük iþlem sayýlarý (en fazla 20 deðer)";
 		
 		$metin[344]="Cevap Vereceðim!";
 		$metin[345]="Dersinizi tamamlamadýnýz! Ýptal veya Vazgeç düðmesine týklatarak derse devam edebilirsiniz.";
@@ -495,7 +495,7 @@
 		$metin[396]="Sayfa önceliðini deðiþtirmek için istenen sayfayý tutup yukarý veya aþaðý sürükleyiniz :";
 		
 		$metin[397]="Bu konudaki sayfalar&#305; düzenlemek i&ccedil;in t&#305;klat&#305;n&#305;z";
-		$metin[398]="Sadece minimum kurulum veritabaný dosyasýný indir (phpMyAdmin ile kurmak için)";
+		$metin[398]="Veya sadece minimum kurulum veritabaný dosyasýný indir (phpMyAdmin ile kurmak için) : ";
 		$metin[399]="Ýndir";
 		
 		$metin[400]="&Ouml;z&uuml;r dileriz. Oturum a&ccedil;ma hatasý meydana geldi.";
@@ -519,7 +519,7 @@
 		$metin[417]="Kullanýcý adý veya eposta bilgileriniz bulunamadý.";
 		$metin[418]="Kullanýcý adý veya eposta boþ býrakýldý.";
 		$metin[419]="Parola g&uuml;ncellenemiyor. Gelecek olan epostayý g&ouml;zardý ediniz.";
-		$metin[420]="";
+		$metin[420]="Kay&#305;t silinmesini onayl&#305;yor musunuz?";
 		$metin[421]="";
 				
 ?>

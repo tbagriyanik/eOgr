@@ -55,7 +55,8 @@ body, td, th {
 	currentFileCheck("chat.php");
 
 	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-		die("<font id='hata'> Oturum a&ccedil;ma hatasý meydana geldi.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //session?
+	sessionDestroy();
+		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
 		exit;
 	}
    $adi	=temizle(substr($_SESSION["usern"],0,15));

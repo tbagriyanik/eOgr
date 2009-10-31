@@ -160,8 +160,7 @@ function dilCevir($dil){
     $protect -> db             = $_db; 
     
     if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-      die('<br/><img src="img/warning.png" align="absmiddle" border="0" style="vertical-align: middle;" alt=\"warning\"/> &#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
-          '<br/>L&#252;ften bir s&#252;re sonra <a href='.$_SERVER['PHP_SELF'].'>tekrar</a> deneyiniz!'); // die there flooding
+      die('<br/><img src="img/warning.png" align="absmiddle" border="0" style="vertical-align: middle;" alt=\"warning\"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 }
 
 	$currentFile = $_SERVER["PHP_SELF"];

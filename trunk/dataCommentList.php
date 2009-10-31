@@ -138,13 +138,13 @@ function delWithCon(deletepage_url,field_value,messagetext) {
    $adi	=temizle(substr($_SESSION["usern"],0,15));
    $par	=temizle($_SESSION["userp"]);
   
-	if($adi==""|| $par=="") die("<font id='hata'> Kullanýcý adý veya parola boþ olamaz.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //EMPTY?
+	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
  
    $tur=checkRealUser($adi,$par);
 	
 	if ($tur<=-1 || $tur>2) { 
 	   sessionDestroy();
-	   die ("<font id='hata'> Kullanýcý adý veya parolanýz hatalýdýr. Hesabýnýz pasif halde olabilir.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>");
+	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
 	  }
 	  else 
 	  {
@@ -153,8 +153,9 @@ function delWithCon(deletepage_url,field_value,messagetext) {
     	$_SESSION["userp"] 	= $par;
 	  }	
 
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-		die("<font id='hata'> Oturum a&ccedil;ma hatasý meydana geldi.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //session?
+	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) { 
+	sessionDestroy();
+		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
 		exit;
 	}
   

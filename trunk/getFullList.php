@@ -244,7 +244,7 @@ function listeGetir($userID, $durum){
 									for($i=0;$i<@mysql_numrows($result);$i++){
 										$data = mysql_fetch_assoc($result);
 										$ekle .=  "<li style='list-style-type:disc;'>";
-										$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."#yorumlar\">".$data["kadi"]."</a> <font size='-3'>".($data["toplam"])."</font>";
+										$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a> <font size='-3'>".($data["toplam"])."</font>";
 											
 										$ekle .=  "</li>";
 										}
