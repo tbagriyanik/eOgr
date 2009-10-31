@@ -225,7 +225,7 @@ addLoadEvent(prepareInputsForHints);
 					if ($allowed != $sent)
 					{
 						$_SESSION["ccode2"]="";	
-						die("<font id='hata'> Formda bir hata meydana geldi!</font><br/>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //form data?
+						die("<font id='hata'> ".$metin[400]." (1)</font><br/>".$metin[402]); //form data?
 						exit;
 					}
 					break;
@@ -233,58 +233,60 @@ addLoadEvent(prepareInputsForHints);
 			
 			if ($_POST["ccode2"] != $_SESSION["ccode2"]) {
 				$_SESSION["ccode2"]="";
-			  die ("<font id='hata'> Kod boþ veya hatalý girildi! Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>.</font>");
+			  die ("<font id='hata'> ".$metin[406]."</font>");
 			}
 			else
 			{
 			
 				if($_POST["userPassword2"]!=$_POST["userPassword1"] ||$_POST["userName"]==$_POST["userPassword1"] || substr_count($_POST["userPassword1"], substr($_POST["userPassword1"],0,1))==8 || $_POST["userPassword1"]=="12345678" ) {
 				$_SESSION["ccode2"]="";
-				  die("<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>");
+				  die($metin[407]);
 				}
 			
 				$_SESSION["newUser"]="yes";
 				$_SESSION["ccode2"]="";
 				if (addnewUser($_POST['realN'], $_POST['userName'], $_POST['userPassword1'], $_POST['email'], $_POST['birth'])) {
 					trackUser($currentFile,"success,NewUser",$_POST['userName']);
-					echo "<br/>Merhaba, ".temizle($_POST["realN"])."<br/><br/>";	
-					echo ("<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Giriþ yapmak i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 
+					echo "<br/>$metin[7], ".temizle($_POST["realN"])."<br/><br/>";	
+					echo ($metin[408]); 
 						if(ayarGetir("ayar4char")!="") {
 						if (newUserMail($_POST['userName'], $_POST['email'])=="allOK")
 							 {
-								 echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlýdýr.";
+								 //echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlýdýr.";
 							 }
 							 else
 							 {
-								 echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlý olamadý!";
+								 //echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlý olamadý!";
 							 }
 						}
 				   }
 				else {
 					trackUser($currentFile,"fail,NewUser",$_POST['userName']);
-					echo ("<font id='hata'> &Uuml;yelik iþleminiz tamamlanamadý! Boþ ve izin verilmeyen deðerler var, kullanýcý adý veya eposta adresi kullanýlýyor olabilir.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); 				
+					echo ($metin[409]); 				
 				}
 			}
 	}else{		
 
 if($_SESSION["newUser"]=="yes") {
 	$_SESSION["ccode2"]="";
-	die("<font id='hata'> Tekrar yeni kullanýcý baþvurusu yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>"); //form data?
+	die($metin[410]); //form data?
 }
 	
 require_once("lib/phplivex.php");
 function validate($username){ 
+  global $metin;
   if(strlen($username)>=5) {
 	//usleep(250000);
     if(checkUserName($username)) 
-	    $msg = "Kullan&#305;lan bir kullan&#305;c&#305; ad&#305; girdiniz!";  
+	    $msg = $metin[411];  
   }
     return $msg;  
 }  
 function validate2($email){ 
+  global $metin;
   if(strlen($email)>=5){     
 	//usleep(250000);
-    if(checkEmail($email)) $msg = "Kullan&#305;lan bir eposta adresi girdiniz!";  	
+    if(checkEmail($email)) $msg = $metin[412];  	
   }
     return $msg;  
 }  
