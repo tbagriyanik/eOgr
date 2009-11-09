@@ -310,19 +310,46 @@
 		$metin[259]="Comments";				
 		$metin[260]="Rating";				
 
-		$metin[261]="What is eOgr and what are the properties?";				
-		$metin[262]="Basic Information and Installation Needs";				
+		$metin[261]="What is eOgr?";				
+		$metin[262]="Basic Information";				
 		$metin[263]="Licence Information";				
 		$metin[264]="Design Programs and Libraries";				
 		$metin[265]="Installation";				
 		$metin[266]="eOgr is an elearning project.<p><strong>Students :</strong> They can participate lessons, read information and try quizes.<br/><strong>Teachers :</strong> They can modify lesson materials, follow student actions.<br/><strong>Administrators :</strong> They manage users and site, and observe data actions.</p>";				
-		$metin[267]="Setup things";				
-		$metin[268]="eOgr is Freeware Open Source project.";				
-		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, Artisteer";				
-		$metin[270]="Setup Steps";				
+		$metin[267]="<strong>Web users</strong> :<br/>
+	- Javascript (Ajax) enabled browser (especially for lessons page)<br/>
+	- Cookies enabled (theme, language and user name)<br/>
+	- Flash player installed <br/><br/>
+
+	 <strong>Installation</strong> (site administrators) :<br/>
+	- This project needs PHP 5 (GD Library)<br/>
+	- MySQL 5 database server <br/>
+	- enable .htaccess for security<br/><br/>
+	Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.<br/>
+These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0";				
+		$metin[268]="eOgr is Freeware Open Source project.<br/> Please, read the licence from <a href='http://www.gnu.org/licenses/lgpl-3.0-standalone.html'>LGPL - LESSER GENERAL PUBLIC LICENSE</a>";				
+		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, Artisteer, PHP Manual<br/><br/>
+		Used Classes :<br/>
+- <a href='http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html'>autosuggest</a><br/>
+- <a href='http://famspam.com/facebox'>facebox</a><br/>
+- <a href='http://archive.free-php.org.uk/'>flood-protection</a><br/>
+- <a href='http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html'>Form field hints</a><br/>
+- <a href='http://bulletproofajax.com'>hijax</a><br/>
+- <a href='http://jquery.com/'>jQuery</a><br/>
+- <a href='http://jqueryui.com'>jQuery UI</a><br/>
+- <a href='http://www.nicedit.com/'>nicEdit</a><br/>
+- <a href='http://www.phplivex.com/'>phplivex</a><br/>
+- <a href='http://www.sourceworkshop.com/free-php-script-18.htmlsimpleChart'>Simple chart</a><br/>
+- <a href='http://www.phpclasses.org/browse/file/7633.html'>SQL_Export</a><br/>
+- <a href='http://www.phpclasses.org/browse/package/4898.html'>SQL_Import</a><br/>
+- <a href='http://spacegirlpippa.co.uk/'>wtag</a>
+";				
+		$metin[270]="(1) Edit your settings in <b>database.php</b> with an editor<br/>
+(2) http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<br/>
+(3) Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong>";				
 		
 		$metin[271]="Contents";				
-		$metin[272]="<h4>eOgr Project Help Page</h4>Click any subject on the left.";				
+		$metin[272]="<h4>eOgr Project Help Page</h4>Please, click any subject on the left.";				
 		
 		$metin[273]="Ratings";
 		$metin[274]="Average";
@@ -507,6 +534,29 @@
 		$metin[418]="Your user name or email was empty.";
 		$metin[419]="Your password can not be changed. Ignore the incoming email from us.";
 		$metin[420]="Are you sure to delete?";
-		$metin[421]="";			
+		
+		$metin[421]="Site Settings";
+		$metin[422]="Data Actions";
+		$metin[423]="Lesson Editing";
+		$metin[424]="Lesson Limitations";
+		$metin[425]="Checking Students Works";
+		$metin[426]="Lesson Working";
+		$metin[427]="User Profile";
+		$metin[428]="Security Advices";
+		$metin[429]="Frequently Asked Questions";
+		$metin[430]="Tips and Troubleshoot";
+		$metin[431]="Announcements and Thanks";
+		
+		$metin[432]="In the site settings page; you can see user list, add new user, database backup, orphan records and other general site settings.";
+		$metin[433]="These actions can be general data, chat data, lesson work list, rating data and comment data.";
+		$metin[434]="";
+		$metin[435]="";
+		$metin[436]="";
+		$metin[437]="";
+		$metin[438]="";
+		$metin[439]="";
+		$metin[440]="";
+		$metin[441]="";
+		$metin[442]="";
 				
 ?>

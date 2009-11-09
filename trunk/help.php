@@ -41,20 +41,20 @@
 	width:30%;
 	z-index:1;
 	float: left;
-	border-top-width: 5px;
+	border-top-width: 4px;
 	border-top-style: solid;
-	border-top-color: #CCd;
+	border-top-color: #930;
 	margin: 5px;
 	padding: 3px;
 }
 #icerisi {
 	position:relative;
-	width:60%;
+	width:65%;
 	z-index:2;
 	float: left;
-	border-top-width: 5px;
+	border-top-width: 4px;
 	border-top-style: solid;
-	border-top-color: #cc9;
+	border-top-color: #06F;
 	margin: 5px;
 	padding: 3px;
 }
@@ -144,23 +144,24 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                   <div id="menu">
                     <h4><?php echo $metin[271]?> </h4>
                     <ul>
+                    
                       <li><a href="#" onclick="yardimGoster(1);return false;"><?php echo $metin[261]?></a></li>
                       <li><a href="#" onclick="yardimGoster(2);return false;"><?php echo $metin[262]?></a></li>
                       <li><a href="#" onclick="yardimGoster(3);return false;"><?php echo $metin[263]?></a></li>
                       <li><a href="#" onclick="yardimGoster(4);return false;"><?php echo $metin[264]?></a></li>
                       <li><a href="#" onclick="yardimGoster(5);return false;"><?php echo $metin[265]?></a></li>
-                      <li>Men&uuml;ler</li>
-                      <li>Site Se&ccedil;enekleri (Kontrol Paneli)</li>
-                      <li>Veri Hareketleri</li>
-                      <li>Ders D&uuml;zenleme</li>
-                      <li>Ders Kýsýtlamalarý</li>
-                      <li>&Ouml;ðrenci Ýþlerini Takip Etmek</li>
-                      <li>Ders &Ccedil;alýþma</li>
-                      <li>Kullanýcý Se&ccedil;enekleri</li>
-                      <li>G&uuml;venlik Tavsiyeleri</li>
-                      <li>Sýk Sorulan Sorular (Nasýl Yapýlýr?)</li>
-                      <li>Ýpu&ccedil;larý ve Sorun Giderme</li>
-                      <li>Bildiriler ve Teþekk&uuml;rler</li>
+                      <li><a href="#" onclick="yardimGoster(6);return false;"><?php echo $metin[421]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(7);return false;"><?php echo $metin[422]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(8);return false;"><?php echo $metin[423]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(9);return false;"><?php echo $metin[424]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(10);return false;"><?php echo $metin[425]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(11);return false;"><?php echo $metin[426]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(12);return false;"><?php echo $metin[427]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(13);return false;"><?php echo $metin[428]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(14);return false;"><?php echo $metin[429]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(15);return false;"><?php echo $metin[430]?></a></li>
+                      <li><a href="#" onclick="yardimGoster(16);return false;"><?php echo $metin[431]?></a></li>
+
                     </ul>
                   </div>
                   <div id="icerisi"> <?php echo $metin[272]?> <?php echo $metin[75]?> </div>
