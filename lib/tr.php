@@ -317,23 +317,51 @@
 		$metin[259]="Yorumlar";				
 		$metin[260]="Oy Ver";				
 	
-		$metin[261]="eOgr Nedir ve &Ouml;zellikleri Nelerdir?";				
-		$metin[262]="Gereksinimler ve Temel Bilgiler";				
+		$metin[261]="eOgr Nedir?";				
+		$metin[262]="Temel Gereksinimler";				
 		$metin[263]="Lisans Bilgisi";				
 		$metin[264]="Kullanýlan Programlar ve K&uuml;t&uuml;phaneler";				
 		$metin[265]="Kurulum";				
-		$metin[266]="eOgr bir e&ouml;ðrenme projesidir.                  <p><strong>&Ouml;ðrenciler :</strong> Ders materyallerine ulaþabilir, okuma
+		$metin[266]="eOgr bir e&ouml;ðrenme projesidir.                  
+		           <p><strong>&Ouml;ðrenciler :</strong> Ders materyallerine ulaþabilir, okuma
                     par&ccedil;alarýný okuyabilir ve sýnavlar ile kendini deneyebilir.</p>
                   <p><strong>&Ouml;ðretmenler : </strong>Ders d&uuml;zenleyebilir, &ouml;ðrenci
                     iþlerini takip edebilir.</p>
                   <p><strong>Y&ouml;neticiler :</strong> Kullanýcý ve site y&ouml;netimini yapabilir, veri hareketlerini izleyebilir.</p>";				
-		$metin[267]="Kurulumda gereken þeyler...";				
-		$metin[268]="eOgr a&ccedil;ýk kaynak &uuml;cretsiz bir projedir";				
-		$metin[269]="Adobe Dreamweaver, Xampp, Notepad++, Artisteer";				
-		$metin[270]="Kurulum Adýmlarý:";				
+		$metin[267]="<strong>Web kullanýcýlarý</strong> :<br/>
+	- Javascript (Ajax) destekli web tarayýcý (özellikle ders sayfasý için)<br/>
+	- Çerez desteði (tema, dil ve kullanýcý adý saklanýr)<br/>
+	- Flash oynatýcý (ders içeriðinde gerekebilir)<br/><br/>
+
+	 <strong>Kurulum</strong> (site yöneticisi) :<br/>
+	- PHP 5 (GD kütüphanesi)<br/>
+	- MySQL 5 veritabaný sunucusu<br/>
+	- .htaccess güvenlik için<br/><br/>
+	Eski web tarayýcýlarý (Internet Explorer 6, Firefox 2 gibi) Ajax nedeni ile sorun çýkarabilir.<br/>
+Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0";				
+		$metin[268]="eOgr a&ccedil;ýk kaynak &uuml;cretsiz bir projedir.<br/> Lütfen, lisans bilgisini okuyunuz : <a href='http://www.gnu.org/licenses/lgpl-3.0-standalone.html'>LGPL - LESSER GENERAL PUBLIC LICENSE</a>";				
+		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, Artisteer, PHP El Kitabý<br/><br/>
+		Kullanýlan Kütüphaneler :<br/>
+- <a href='http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html'>autosuggest</a><br/>
+- <a href='http://famspam.com/facebox'>facebox</a><br/>
+- <a href='http://archive.free-php.org.uk/'>flood-protection</a><br/>
+- <a href='http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html'>Form field hints</a><br/>
+- <a href='http://bulletproofajax.com'>hijax</a><br/>
+- <a href='http://jquery.com/'>jQuery</a><br/>
+- <a href='http://jqueryui.com'>jQuery UI</a><br/>
+- <a href='http://www.nicedit.com/'>nicEdit</a><br/>
+- <a href='http://www.phplivex.com/'>phplivex</a><br/>
+- <a href='http://www.sourceworkshop.com/free-php-script-18.htmlsimpleChart'>Simple chart</a><br/>
+- <a href='http://www.phpclasses.org/browse/file/7633.html'>SQL_Export</a><br/>
+- <a href='http://www.phpclasses.org/browse/package/4898.html'>SQL_Import</a><br/>
+- <a href='http://spacegirlpippa.co.uk/'>wtag</a>
+";				
+		$metin[270]="(1) <strong>database.php</strong> dosyasýný düzenleyiniz<br/>
+(2)  http://localhost/eogr/install.php adresi veritabaný kurulum adresidir. MySQL kullanýcýnýzýn <b>CREATE TABLE</b> izni olmalýdýr!<br/>
+(3) Yönetici kullanýcý olarak girmek için : isim <strong>admin</strong> ve parola <strong>11111</strong>";				
 
 		$metin[271]="Ý&ccedil;indekiler";				
-		$metin[272]="<h4>eOgr Projesi Yardým Sayfasý</h4>Sol taraftaki bir konu &uuml;zerine týklatýnýz.";				
+		$metin[272]="<h4>eOgr Projesi Yardým Sayfasý</h4>Lütfen, sol taraftaki bir konu &uuml;zerine týklatýnýz.";				
 		
 		$metin[273]="Oy Sayýsý";
 		$metin[274]="Ortalama";
@@ -520,6 +548,29 @@
 		$metin[418]="Kullanýcý adý veya eposta boþ býrakýldý.";
 		$metin[419]="Parola g&uuml;ncellenemiyor. Gelecek olan epostayý g&ouml;zardý ediniz.";
 		$metin[420]="Kay&#305;t silinmesini onayl&#305;yor musunuz?";
-		$metin[421]="";
-				
+		
+		$metin[421]="Site Se&ccedil;enekleri";
+		$metin[422]="Veri Hareketleri";
+		$metin[423]="Ders D&uuml;zenleme";
+		$metin[424]="Ders Kýsýtlamalarý";
+		$metin[425]="&Ouml;ðrenci Ýþlerini Takip Etmek";
+		$metin[426]="Ders &Ccedil;alýþma";
+		$metin[427]="Kullanýcý Se&ccedil;enekleri";
+		$metin[428]="G&uuml;venlik Tavsiyeleri";
+		$metin[429]="Sýk Sorulan Sorular";
+		$metin[430]="Ýpu&ccedil;larý ve Sorun Giderme";
+		$metin[431]="Bildiriler ve Teþekk&uuml;rler";
+		
+		$metin[432]="Site yönetim paneli sayfasýnda; kullanýcý listesi, yeni üye ekleme, veri yedekleme, yetim kayýt listesi ve diðer genel ayarlar bulunur.";
+		$metin[433]="Veri hareketleri genel veriler, sohbet bilgisi, ders çalýþma listesi, oy verileri ve yorum verileridir.";
+		$metin[434]="";
+		$metin[435]="";
+		$metin[436]="";
+		$metin[437]="";
+		$metin[438]="";
+		$metin[439]="";
+		$metin[440]="";
+		$metin[441]="";
+		$metin[442]="";
+		
 ?>
