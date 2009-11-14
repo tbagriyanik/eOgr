@@ -86,7 +86,7 @@
 		$metin[72]="Database Patch Installation";    
 		$metin[73]="Be sure that you have edited the settings in 'database.php' for MySQL!";    
 		$metin[74]="";    
-		$metin[75]="<p><strong>Developer : </strong>Tarik Bagriyanik<br /><strong>Official Site : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Start Date :</strong> November 2008<br /><strong>Programs : </strong><a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe</a></p>";    
+		$metin[75]="<p><strong>Developer : </strong>Tarik Bagriyanik<br /><strong>Official Site : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Start Date :</strong> November 2008<br /></p>";    
 		$metin[76]="<p>Welcome to <strong>eOgr </strong> project!</p>";    
 		$metin[77]="What is eOgr?";    
 		$metin[78]="Registration Form";    
@@ -322,7 +322,7 @@
 	- Flash player installed <br/><br/>
 
 	 <strong>Installation</strong> (site administrators) :<br/>
-	- This project needs PHP 5 (GD Library)<br/>
+	- This project needs PHP 5<br/>
 	- MySQL 5 database server <br/>
 	- enable .htaccess for security<br/><br/>
 	Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.<br/>
@@ -344,9 +344,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 - <a href='http://www.phpclasses.org/browse/package/4898.html'>SQL_Import</a><br/>
 - <a href='http://spacegirlpippa.co.uk/'>wtag</a>
 ";				
-		$metin[270]="(1) Edit your settings in <b>database.php</b> with an editor<br/>
-(2) http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<br/>
-(3) Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong>";				
+		$metin[270]="<ol><li>Edit your settings in <b>database.php</b> with an editor<li>http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<li>Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong></ol>";				
 		
 		$metin[271]="Contents";				
 		$metin[272]="<h4>eOgr Project Help Page</h4>Please, click any subject on the left.";				
@@ -549,14 +547,14 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[432]="In the site settings page; you can see user list, add new user, database backup, orphan records and other general site settings.";
 		$metin[433]="These actions can be general data, chat data, lesson work list, rating data and comment data.";
-		$metin[434]="";
-		$metin[435]="";
-		$metin[436]="";
-		$metin[437]="";
-		$metin[438]="";
-		$metin[439]="";
-		$metin[440]="";
-		$metin[441]="";
-		$metin[442]="";
+		$metin[434]="Lessons can contain plain text, pictures, video, internet links and formatted text. Any time, a page can be directed questions to the students. Question can multiple-choice questions or classic.";
+		$metin[435]="Lesson Limitations : <br/> - <strong>Locked</strong> : Disabled for everybody<br/> - Make visible for only registered users<br/> - Working Time Limit in minutes<br/> - Number of Working Rights : Students can work for that times, then the lesson is locked.<br/> - Only Class included students can see : This setting depends on Class page.";
+		$metin[436]="Teachers and administrators can see the students daily works. These works contain working time, percentage and date.";
+		$metin[437]="Lesson working is this projects main page. If administrator has allowed, users can add comments lesson, can score and see statistical information.";
+		$metin[438]="Profile information or password can be changed, members can see their statistics.";
+		$metin[439]="<ul style='list-style-type:none;'><li>Do not forget to logout at public places after working.<li>Do not write your password anywhere.</ul>";
+		$metin[440]="eOgr codes can be reviewed to be a news, sports or sharing site. Pages are for sliding any information continuously.";
+		$metin[441]="Be sure to edit exactly database.php file. Report error messages to your administrator.";
+		$metin[442]="Thanks to people for testing this project. Many thanks to library coders that distributing their code freely.";
 				
 ?>

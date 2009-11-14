@@ -87,7 +87,7 @@
 		$metin[72]="Veritaban&#305; Yama Kurulumu";    
 		$metin[73]="'database.php' dosyas&#305;ndaki MySQL ayarlar&#305;n&#305;z&#305; yapt&#305;&#287;&#305;n&#305;zdan emin olunuz!";    
 		$metin[74]="";    
-		$metin[75]="<p><strong>Geli&#351;tirici : </strong>Tar&#305;k Ba&#287;r&#305;yan&#305;k<br /><strong>Ana sayfa : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Ba&#351;lang&#305;&ccedil; Tarihi :</strong> Kas&#305;m 2008<br /><strong>Programlar : </strong><a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe</a></p>";    
+		$metin[75]="<p><strong>Geli&#351;tirici : </strong>Tar&#305;k Ba&#287;r&#305;yan&#305;k<br /><strong>Ana sayfa : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Ba&#351;lang&#305;&ccedil; Tarihi :</strong> Kas&#305;m 2008</p>";    
 		$metin[76]="<p><strong>eOgr </strong> projesine Ho&#351; Geldiniz!</p>";    
 		$metin[77]="eOgr Nedir?";    
 
@@ -334,7 +334,7 @@
 	- Flash oynatýcý (ders içeriðinde gerekebilir)<br/><br/>
 
 	 <strong>Kurulum</strong> (site yöneticisi) :<br/>
-	- PHP 5 (GD kütüphanesi)<br/>
+	- PHP 5<br/>
 	- MySQL 5 veritabaný sunucusu<br/>
 	- .htaccess güvenlik için<br/><br/>
 	Eski web tarayýcýlarý (Internet Explorer 6, Firefox 2 gibi) Ajax nedeni ile sorun çýkarabilir.<br/>
@@ -356,9 +356,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 - <a href='http://www.phpclasses.org/browse/package/4898.html'>SQL_Import</a><br/>
 - <a href='http://spacegirlpippa.co.uk/'>wtag</a>
 ";				
-		$metin[270]="(1) <strong>database.php</strong> dosyasýný düzenleyiniz<br/>
-(2)  http://localhost/eogr/install.php adresi veritabaný kurulum adresidir. MySQL kullanýcýnýzýn <b>CREATE TABLE</b> izni olmalýdýr!<br/>
-(3) Yönetici kullanýcý olarak girmek için : isim <strong>admin</strong> ve parola <strong>11111</strong>";				
+		$metin[270]="<ol><li><strong>database.php</strong> dosyasýný düzenleyiniz<li>http://localhost/eogr/install.php adresi veritabaný kurulum adresidir. MySQL kullanýcýnýzýn <b>CREATE TABLE</b> izni olmalýdýr!<li>Yönetici kullanýcý olarak girmek için : isim <strong>admin</strong> ve parola <strong>11111</strong></ol>";				
 
 		$metin[271]="Ý&ccedil;indekiler";				
 		$metin[272]="<h4>eOgr Projesi Yardým Sayfasý</h4>Lütfen, sol taraftaki bir konu &uuml;zerine týklatýnýz.";				
@@ -563,14 +561,14 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[432]="Site yönetim paneli sayfasýnda; kullanýcý listesi, yeni üye ekleme, veri yedekleme, yetim kayýt listesi ve diðer genel ayarlar bulunur.";
 		$metin[433]="Veri hareketleri genel veriler, sohbet bilgisi, ders çalýþma listesi, oy verileri ve yorum verileridir.";
-		$metin[434]="";
-		$metin[435]="";
-		$metin[436]="";
-		$metin[437]="";
-		$metin[438]="";
-		$metin[439]="";
-		$metin[440]="";
-		$metin[441]="";
-		$metin[442]="";
+		$metin[434]="Ders yapýmýnda düz yazý, resim, video, internet baðlantýlarý ve biçimlendirilmiþ yazýlar olabilir. Ýstenen sayfada öðrenciye soru yöneltilebilir. Sorular klasik veya çoktan seçmeli olabilir.";
+		$metin[435]="Kýsýtlamalar aþaðýdaki gibi olabilir : <br/> - <strong>Kilitli</strong> : Ders tamamen kapalý<br/> - Sadece Kayýtlý Kullanýcýlar Görebilir <br/> - <strong>Çalýþma Zamaný Sýnýrý</strong> : Dakika cinsinden süreli çalýþma <br/> - Çalýþma Hak Sayýsý : Belli sayýda çalýþýlabilir, sonra öðrenci derse katýlamaz<br/> - Sýnýfa Dahil Öðrenciler Görebilir : Sýnýf sekmesindeki belirlenen öðrenciler sadece bu derse katýlabilir";
+		$metin[436]="Öðretmen ve yöneticiler öðrenci çalýþmalarýný takip edebilirler. Çalýþma bilgilerinde çalýþma süresi, yüzdesi ve tarih vardýr.";
+		$metin[437]="Ders çalýþma bu projenin ana sayfasýdýr. Yönetici izin vermiþ ise derse yorum eklenebilir, puan verilebilir ve istatistik bilgilerine ulaþýlabilir.";
+		$metin[438]="Profil bilgileri deðiþtirilebilir, kendi istastik bilgilerine ulaþabilir veya parola deðiþtirilebilir.";
+		$metin[439]="<ul style='list-style-type:none;'><li>Halka açýk yerlerde çalýþtýktan sonra oturumu kaptmayý unutmayýnýz.<li>Parola bilginizi bir yerlere yazmayýnýz.</ul>";
+		$metin[440]="eOgr projesi kodlarý elden geçirilerek, bir haber, spor, paylaþým sitesi olarak da kullanýlabilir. Sayfalama halinde peþpeþe gösterilen maddeler ile istenen konu kullanýcýlara iletilebilir.";
+		$metin[441]="database.php dosyasýndaki ayarlarýn tam yapýldýðýndan emin olunuz. Hata mesajlarýný yöneticinize bildiriniz.";
+		$metin[442]="Test aþamasýnda yardýmcý olan kiþilere teþekkürler. Özellikle kütüphane kodlarýný serbest daðýtan programcýlara teþekkürler.";
 		
 ?>
