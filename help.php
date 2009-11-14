@@ -28,7 +28,7 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[243]?></title>
+<title>eOgr -<?php echo " ".$metin[243]?></title>
 <script language="JavaScript" type="text/javascript" src="lib/dataFill.js"></script>
 <link href="stilGenel.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -145,22 +145,22 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                     <h4><?php echo $metin[271]?> </h4>
                     <ul>
                     
-                      <li><a href="#" onclick="yardimGoster(1);return false;"><?php echo $metin[261]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(2);return false;"><?php echo $metin[262]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(3);return false;"><?php echo $metin[263]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(4);return false;"><?php echo $metin[264]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(5);return false;"><?php echo $metin[265]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(6);return false;"><?php echo $metin[421]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(7);return false;"><?php echo $metin[422]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(8);return false;"><?php echo $metin[423]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(9);return false;"><?php echo $metin[424]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(10);return false;"><?php echo $metin[425]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(11);return false;"><?php echo $metin[426]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(12);return false;"><?php echo $metin[427]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(13);return false;"><?php echo $metin[428]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(14);return false;"><?php echo $metin[429]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(15);return false;"><?php echo $metin[430]?></a></li>
-                      <li><a href="#" onclick="yardimGoster(16);return false;"><?php echo $metin[431]?></a></li>
+                      <li><a href="#1" onclick="yardimGoster(1);return false;"><?php echo $metin[261]?></a></li>
+                      <li><a href="#2" onclick="yardimGoster(2);return false;"><?php echo $metin[262]?></a></li>
+                      <li><a href="#3" onclick="yardimGoster(3);return false;"><?php echo $metin[263]?></a></li>
+                      <li><a href="#4" onclick="yardimGoster(4);return false;"><?php echo $metin[264]?></a></li>
+                      <li><a href="#5" onclick="yardimGoster(5);return false;"><?php echo $metin[265]?></a></li>
+                      <li><a href="#6" onclick="yardimGoster(6);return false;"><?php echo $metin[421]?></a></li>
+                      <li><a href="#7" onclick="yardimGoster(7);return false;"><?php echo $metin[422]?></a></li>
+                      <li><a href="#8" onclick="yardimGoster(8);return false;"><?php echo $metin[423]?></a></li>
+                      <li><a href="#9" onclick="yardimGoster(9);return false;"><?php echo $metin[424]?></a></li>
+                      <li><a href="#10" onclick="yardimGoster(10);return false;"><?php echo $metin[425]?></a></li>
+                      <li><a href="#11" onclick="yardimGoster(11);return false;"><?php echo $metin[426]?></a></li>
+                      <li><a href="#12" onclick="yardimGoster(12);return false;"><?php echo $metin[427]?></a></li>
+                      <li><a href="#13" onclick="yardimGoster(13);return false;"><?php echo $metin[428]?></a></li>
+                      <li><a href="#14" onclick="yardimGoster(14);return false;"><?php echo $metin[429]?></a></li>
+                      <li><a href="#15" onclick="yardimGoster(15);return false;"><?php echo $metin[430]?></a></li>
+                      <li><a href="#16" onclick="yardimGoster(16);return false;"><?php echo $metin[431]?></a></li>
 
                     </ul>
                   </div>

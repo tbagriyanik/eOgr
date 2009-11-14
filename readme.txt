@@ -1,21 +1,14 @@
-eOgr - v114
+eOgr - v115
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
 ABOUT:
 ------
-Simply you can get online "education". 
-With animations and videos, you can learn any subject better. 
-And also you can interact with teachers or other students at real time or send email. 
+Simply you can get online "education". With animations and videos, you can learn any subject better. And also you can interact with teachers or other students at real time or send email. 
 
 This project is simple and has easy usage, and has free membership...
 
-Students can register for online education resources. 
-Materials (pages) are in the lesson modules. 
-Each module has reading pages, quizes and many activities. 
-Teachers can follow the students works, they can add and modify lesson modules. 
-Administrator users manage the site maintenance like editing users, 
-database optimization and site settings.
+Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages, quizes and many activities. Teachers can follow the students works, they can add and modify lesson modules. Administrator users manage the site maintenance like editing users, database optimization and site settings.
 
 Available language support is English and Turkish.
 
@@ -24,8 +17,8 @@ Developer Site: http://yunus.sourceforge.net
 Demo Site:		http://tbagriyanik.xtreemhost.com/eogr
 Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	09-11-2009
-Process Time : 	390 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
+Last Update: 	13-11-2009
+Process Time : 	395 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 		Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 
 INSTALLATION:
@@ -40,7 +33,7 @@ INSTALLATION:
 	- Flash player installed 
 
 	:Installation (administrators):
-	- This project needs PHP 5 (GD Library)
+	- This project needs PHP 5 
 	- MySQL 5 database server 
 	- .htaccess enabled for security
 
