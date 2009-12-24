@@ -157,7 +157,7 @@ ob_start (); // Buffer output
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
                   <div id="kapsayici"><div><div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div></div></div>
-                  <div id="navigation"><div><div><span id="konuAdi">-</span><br />
+                  <div id="navigation"><span id="konuAdi">-</span><br />
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span> (<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
                     <span id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span></span> &nbsp;&nbsp; <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
@@ -168,7 +168,7 @@ ob_start (); // Buffer output
                     
                     <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>&nbsp; 
                     <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
-</div></div>
+
                     </div>
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />

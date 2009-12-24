@@ -28,27 +28,12 @@ td {
 	z-index:0;
 	float: left;
 	right: 5px;
-	color: #333;	
-	font-size: 12px;	
-	text-align:left;	
-	
-	border:solid #647aae;
- 	border-width:0 1px;
+	color: #333;
+	font-size: 12px;
+	text-align:left;
 	background:#FFF;
+	height: 157px;
 
-}
-
-#navigation div {
-  position:relative;
-  top: -1px;
-  left: 0;
-  border:solid #647aae;
-  border-width:1px 0 0;
-}
-#navigation div div {
-	top: 2px;
-	border-width:0 0 1px;
-	padding: .3em .3em .1em;
 }
 
 #navigation2 {

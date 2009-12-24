@@ -204,7 +204,7 @@ class simpleChart {
         for($i = 0;$i <= sizeof($this->data);$i++) {
             $val = $this->data[$i];
             if ($val >= $verticalPointValue) {
-                $html = $html . $this->showCell($i,'full');       
+                $html = $html . $this->showCell($i,'full', $val);       
             } else {
                 $html = $html . $this->showCell($i,'empty');       
             }
@@ -229,7 +229,7 @@ class simpleChart {
             case 'empty': { 
                     return "<TD class=emptyCell >&nbsp;</TD>";
             }
-            case 'full' : { return "<TD class=dataCell style='background-color:$barColor;'>&nbsp;</TD>";
+            case 'full' : { return "<TD class=dataCell style='background-color:$barColor;' title='$val'>&nbsp;</TD>";
             }
         }
     }    
