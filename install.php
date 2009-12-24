@@ -255,7 +255,7 @@ $sql .= "INSERT INTO eo_4konu (id, konuAdi, dersID) VALUES
 
 $sql .= "CREATE TABLE eo_5sayfa (
   id int(11) NOT NULL auto_increment  PRIMARY KEY ,
-  anaMetin varchar(1000) NOT NULL,
+  anaMetin varchar(10000) NOT NULL,
   konuID int(11) NOT NULL,
   secenek1 varchar(1000) NOT NULL,
   secenek2 varchar(1000) NOT NULL,
