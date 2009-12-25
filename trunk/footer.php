@@ -23,13 +23,13 @@ if($seceneklerimiz[1]=="1") {
 ?>
                        <label for="theme"><?php echo $metin[154]?> : </label>
                         <select name="theme" id="theme" onchange="document.themeSelect.submit();">
-                        <option value="0" <?php if (!(strcmp("0", $_COOKIE['theme']))) {echo "selected=\"selected\"";} ?>>
+                        <option value="0" <?php if (!(strcmp("0", temizle($_COOKIE['theme'])))) {echo "selected=\"selected\"";} ?>>
                          <?php echo $metin[159]?>
                         </option>
-                        <option value="1" <?php if (!(strcmp("1", $_COOKIE['theme']))) {echo "selected=\"selected\"";} ?>>
+                        <option value="1" <?php if (!(strcmp("1", temizle($_COOKIE['theme'])))) {echo "selected=\"selected\"";} ?>>
                          <?php echo $metin[160]?>
                         </option>
-                        <option value="2" <?php if (!(strcmp("2", $_COOKIE['theme']))) {echo "selected=\"selected\"";} ?>>
+                        <option value="2" <?php if (!(strcmp("2", temizle($_COOKIE['theme'])))) {echo "selected=\"selected\"";} ?>>
                          <?php echo $metin[161]?>
                         </option>
                         </select>
