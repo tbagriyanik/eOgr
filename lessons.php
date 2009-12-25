@@ -203,7 +203,7 @@ if(isKonu($_GET["konu"])){
 ?>
                     <br />
                     <br />
-                    <a href="dersBilgisi.php?ders=<?php echo $_GET["konu"]?>&amp;set=1" rel="facebox"> <img src="img/info.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[301]?>" /> <?php echo $metin[301]?></a>
+                    <a href="dersBilgisi.php?ders=<?php echo RemoveXSS($_GET["konu"])?>&amp;set=1" rel="facebox"> <img src="img/info.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[301]?>" /> <?php echo $metin[301]?></a>
                     <?php
 					  }
                     ?>
@@ -221,7 +221,7 @@ if($seceneklerimiz[9]=="1"){
                     <br />
                     <div class="rating">
                       <?php
-						$id = temizle($_GET["konu"]);
+						$id = RemoveXSS($_GET["konu"]);
 						include "rating.php";
                     ?>
                     </div>
@@ -260,7 +260,7 @@ if($seceneklerimiz[8]=="1" && isKonu($_GET["konu"]) && $tur>-2){
                       <?php
 					if($tur!="-2"){ 
                   	?>
-                      <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo $_GET["konu"];?>" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a><br />
+                      <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a><br />
                       <br />
                       <?php 
 					}
@@ -380,7 +380,7 @@ function cevapSureBasla(){
 	 if(isset($_GET["konu"]) && isKonu($_GET["konu"])){
 		  echo "<script type=\"text/javascript\">
 		  	document.getElementById('konu_id').value=".
-			temizle($_GET["konu"]).
+			RemoveXSS($_GET["konu"]).
 			";document.getElementById('sonSayfaHidden').value=0;konuSec2(1);</script>";
 			
 			$pageContents = ob_get_contents (); // Get all the page's HTML into a string

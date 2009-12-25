@@ -410,8 +410,7 @@ label.error {
 /*sliding lesson tree*/
 .msg_list {
 	margin: 2px;
-	padding: 0px;
-	width: 300px;
+	padding: 0px;	
 }
 .msg_head {
 	padding: 5px;

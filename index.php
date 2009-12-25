@@ -54,9 +54,9 @@
     }
    else
     {
-		if(isset($_COOKIE["lng"])) $taraDili=$_COOKIE["lng"];	
+		if(isset($_COOKIE["lng"])) $taraDili=RemoveXSS($_COOKIE["lng"]);	
 		
-		if(isset($_GET["lng"])) $taraDili=$_GET["lng"];		 
+		if(isset($_GET["lng"])) $taraDili=RemoveXSS($_GET["lng"]);		 
 		
 		if(!empty($_GET["lng"])) {
 		if($taraDili=="TR") 
@@ -436,6 +436,8 @@ if($seceneklerimiz[12]=="1" && getStats(16)!="") {
 <!--
 if (document.getElementById("userN")!=null && document.getElementById("userN").value=="")  document.getElementById("userN").focus();
 if (document.getElementById("userN")!=null && document.getElementById("userN").value!="")  document.getElementById("userP").focus();
+if (document.getElementById("userP")!=null) document.getElementById("userP").setAttribute( "autocomplete","off" );
+
 //-->
 </script>
 </body>

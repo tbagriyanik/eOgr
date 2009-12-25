@@ -33,6 +33,7 @@ td {
 	text-align:left;
 	background:#FFF;
 	height: 157px;
+	padding:2px;
 
 }
 
@@ -51,6 +52,7 @@ td {
 	margin-top: 3px;
 	font-size: 12px;
 	text-align:left;
+	padding:2px;
 }
 #hazirlayan {
 	font-weight: bold;
@@ -73,8 +75,7 @@ td {
 	border: thin outset #666;
 }
 #bitirmeYuzdesi {
-	width: 100px;
-	background-color: #CCC;
+	width: 100px;	
 	display: block;
 	margin-top: 5px;
 }
