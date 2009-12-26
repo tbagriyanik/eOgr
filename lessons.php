@@ -158,7 +158,7 @@ ob_start (); // Buffer output
                   <div id="sonrakiKonu"></div>
                   <div id="kapsayici"><div><div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div></div></div>
                   <div id="navigation"><span id="konuAdi">-</span><br />
-                    <?php echo $metin[174]?> : <span id="hazirlayan">-</span> (<span id="eklenmeTarihi">-</span>)<br />
+                    <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>(<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
                     <span id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span></span> &nbsp;&nbsp; <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
                     <span id="bitirmeYuzdesi"></span><br />
