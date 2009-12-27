@@ -379,7 +379,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[284]="Eposta adresinizi giriniz. <br/>En az 5, en fazla 50 karakter olabilir.<br/> <strong>Boþ ge&ccedil;ilemez.</strong>";
 		$metin[285]="Doðum tarihinizi g&uuml;n-ay-yýl olarak giriniz. <br/>En fazla 10 karakter olabilir.<br/> <strong>Boþ ge&ccedil;ilemez.</strong>";
 		
-		$metin[286]="eOgr - kolay eöðrenme";
+		$metin[286]="eOgr - kolay eÖðrenme";
 		
 		$metin[287]="Oy Verileri";
 		$metin[288]="Yorum Verileri";
@@ -525,8 +525,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[399]="Ýndir";
 		
 		$metin[400]="&Ouml;z&uuml;r dileriz. Oturum a&ccedil;ma hatasý meydana geldi.";
-		$metin[401]="&#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
-		  '<br/>L&#252;ften bir s&#252;re sonra tekrar deneyiniz!";
+		$metin[401]="&#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.<br/>L&#252;ften bir s&#252;re sonra tekrar deneyiniz!";
 		$metin[402]="Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
 		$metin[403]="Kullanýcý adý veya parola boþ olamaz.";
 		$metin[404]="Kullanýcý adý veya parolanýz hatalýdýr. Hesabýnýz pasif halde olabilir.";
