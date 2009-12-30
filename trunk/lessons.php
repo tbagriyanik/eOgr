@@ -56,11 +56,11 @@ ob_start (); // Buffer output
     })
 	
 	$(document).ready(function(){
-		$(".msg_body").hide();
+		//$(".msg_body").hide();
 		$(".msg_head").click(function(){
 			$(this).next(".msg_body").slideToggle(200);
 		});
-		$(".msg_body2").hide();
+		//$(".msg_body2").hide();
 		$(".msg_head2").click(function(){
 			$(this).next(".msg_body2").slideToggle(200);
 		});

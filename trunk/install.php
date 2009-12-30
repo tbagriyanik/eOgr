@@ -346,7 +346,7 @@ $sql .= "CREATE TABLE eo_comments (
 		  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 		  userID int(11) NOT NULL,
 		  konuID int(11) NOT NULL,
-		  comment varchar(150) NOT NULL,
+		  comment varchar(1000) NOT NULL,
 		  commentDate datetime NOT NULL,
 		  active tinyint(1) NOT NULL
 		);";
