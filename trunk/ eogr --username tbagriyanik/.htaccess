@@ -1,0 +1,31 @@
+RewriteEngine On
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ hata.html [F,L]
+
+RewriteCond %{QUERY_STRING} (\"|%22).*(\>|%3E|<|%3C).* [NC] 
+RewriteRule ^(.*)$ hata.html [NC] 
+
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC] 
+RewriteRule ^(.*)$ hata.html [NC] 
+
+RewriteCond %{QUERY_STRING} (\;|\'|\"|\%22).*(union|insert|where|select|update|drop|md5|or|and|if).* [NC] 
+RewriteRule ^(.*)$ hata.html [NC] 
+
+RewriteRule (,|;|<|>|'|`) hata.html [NC]
+
+ErrorDocument 404 /eogr/hata.html
+#not found error redirection
+
+AddDefaultCharset ISO_8859-9 		
+#avoid the 500 error display
+
+DirectoryIndex index.php
+IndexIgnore *
+#no site directory browsing
+
+<ifModule mod_php4.c>
+php_value zlib.output_compression 16386
+</ifModule>
