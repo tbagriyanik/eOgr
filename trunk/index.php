@@ -291,7 +291,8 @@ if (isset($_COOKIE["remUser"]))
 						 }
 						 ?>
                   <br />
-                  <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> <a href="help.php" class="external" onclick="window.open('help.php');return false;" target="_blank"><img src="img/passwRenew.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a> </div>
+                  <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> 
+<a href="help.php" class="external" onclick="window.open('help.php');return false;" target="_blank"><img src="img/passwRenew.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a><br /> &nbsp;</div>
                 <div class="cleared"></div>
               </div>
             </div>
@@ -442,3 +443,6 @@ if (document.getElementById("userP")!=null) document.getElementById("userP").set
 </script>
 </body>
 </html>
+
+
+

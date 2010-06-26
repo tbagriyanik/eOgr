@@ -44,7 +44,7 @@ function temizle2($metin)
     $metin = str_replace("\n", "", $metin);
     $metin = str_replace("\r", "", $metin);
     $metin = str_replace("'", "`", $metin);
-    $metin = str_replace('"', '¨', $metin);
+    //$metin = str_replace('"', '¨', $metin);
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "‹", $metin);
     $metin = str_replace(">", "›", $metin);

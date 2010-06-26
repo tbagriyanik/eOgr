@@ -26,7 +26,7 @@ header("Pragma: no-cache");
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[288]?></title>
+<title>eOgr -<?php echo $metin[288]?></title>
 <link href="stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -260,8 +260,8 @@ if (empty($_SESSION["siraYonu2"])) {
 	  if ($sirAlan!="")
 	    $query_eoUsers = "SELECT eo_comments.id as id, eo_comments.konuID as konuID, eo_users.id as userID, eo_comments.active, eo_comments.comment, eo_comments.commentDate,eo_users.userName as userName, eo_4konu.konuAdi as konuAdi FROM eo_comments $filtr2 ORDER BY $sirAlan $siraYonu";   
 	   else {
-	    $query_eoUsers = "SELECT eo_comments.id as id, eo_comments.konuID as konuID, eo_users.id as userID, eo_comments.active,eo_comments.comment, eo_comments.commentDate, eo_users.userName as userName, eo_4konu.konuAdi as konuAdi FROM eo_comments $filtr2 ORDER BY active ASC";  
-		$sirAlan="active";
+	    $query_eoUsers = "SELECT eo_comments.id as id, eo_comments.konuID as konuID, eo_users.id as userID, eo_comments.active,eo_comments.comment, eo_comments.commentDate, eo_users.userName as userName, eo_4konu.konuAdi as konuAdi FROM eo_comments $filtr2 ORDER BY eo_comments.commentDate DESC";  
+		$sirAlan="commentDate";
 	   }
 
  if ($_GET["upd"]=="1")
@@ -362,9 +362,7 @@ if ($totalRows_eoUsers>0)
                       </tr>
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
                       <tr>
-                        <td colspan="7" align="left" valign="middle" class="tabloAlt" >
-                        <?php echo $metin[292]?>
-                        </td>
+                        <td colspan="7" align="left" valign="middle" class="tabloAlt" ><?php echo $metin[292]?></td>
                       </tr>
                       <tr>
                         <td colspan="7" align="center" valign="middle" class="tabloAlt" ><label>

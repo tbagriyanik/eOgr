@@ -556,5 +556,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[440]="eOgr codes can be reviewed to be a news, sports or sharing site. Pages are for sliding any information continuously.";
 		$metin[441]="Be sure to edit exactly database.php file. Report error messages to your administrator.";
 		$metin[442]="Thanks to people for testing this project. Many thanks to library coders that distributing their code freely.";
-				
+	
+		$metin[443]	= "All Lessons";			
 ?>

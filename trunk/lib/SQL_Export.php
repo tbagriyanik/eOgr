@@ -1,10 +1,10 @@
 <?php
 function _mysqldump($mysql_database)
 {
-			echo ("SET NAMES 'latin1';\n");
-			echo ("SET CHARACTER SET latin1;\n");
-			echo ("SET COLLATION_CONNECTION = 'latin1_swedish_ci';\n");
-			echo "/*For Turkish Settings*/\n\n";
+			$sonuc = ("SET NAMES 'latin1';\n");
+			$sonuc .=  ("SET CHARACTER SET latin1;\n");
+			$sonuc .=  ("SET COLLATION_CONNECTION = 'latin1_swedish_ci';\n");
+			$sonuc .=  "/*For Turkish Settings*/\n\n";
 			
 	$sql="SHOW TABLES IN $mysql_database LIKE 'eo_%'";
 	$result= mysql_query($sql);
@@ -12,21 +12,22 @@ function _mysqldump($mysql_database)
 	{
 		while( $row= mysql_fetch_row($result))
 		{
-			_mysqldump_table_structure($row[0]);
-			_mysqldump_table_data($row[0]);
+			$sonuc .= _mysqldump_table_structure($row[0]);
+			$sonuc .= _mysqldump_table_data($row[0]);
 		}
 	}
 	else
 	{
-		echo "/* no tables in $mysql_database */\n";
+			$sonuc .=  "/* no tables in $mysql_database */\n";
 	}
 	mysql_free_result($result);
+	return $sonuc;
 }
 
 function _mysqldump_table_structure($table)
 {
-	echo "/* Table structure for table `$table` */\n";
-		echo "DROP TABLE IF EXISTS `$table`;\n\n";
+		$sonuc .= "/* Table structure for table `$table` */\n";
+		$sonuc .= "DROP TABLE IF EXISTS `$table`;\n\n";
 
 		$sql="show create table `$table`; ";
 		$result=mysql_query($sql);
@@ -34,10 +35,11 @@ function _mysqldump_table_structure($table)
 		{
 			if($row= mysql_fetch_assoc($result))
 			{
-				echo $row['Create Table'].";\n\n";
+				$sonuc .= $row['Create Table'].";\n\n";
 			}
 		}
 		mysql_free_result($result);
+		return $sonuc; 
 }
 
 function _mysqldump_table_data($table)
@@ -52,7 +54,7 @@ function _mysqldump_table_data($table)
 
 		if( $num_rows > 0)
 		{
-			echo "/* dumping data for table `$table` */\n";
+			$sonuc .= "/* dumping data for table `$table` */\n";
 
 			$field_type=array();
 			$i=0;
@@ -64,45 +66,45 @@ function _mysqldump_table_data($table)
 			}
 
 			//print_r( $field_type);
-			echo "insert into `$table` values\n";
+			$sonuc .= "insert into `$table` values\n";
 			$index=0;
 			while( $row= mysql_fetch_row($result))
 			{
-				echo "(";
+				$sonuc .= "(";
 				for( $i=0; $i < $num_fields; $i++)
 				{
 					if( is_null( $row[$i]))
-						echo "null";
+						$sonuc .= "null";
 					else
 					{
 						switch( $field_type[$i])
 						{
 							case 'int':
-								echo $row[$i];
+								$sonuc .= $row[$i];
 								break;
 							case 'string':
 							case 'blob' :
 							default:
-								echo "'".($row[$i])."'";
+								$sonuc .= "'".($row[$i])."'";
 
 						}
 					}
 					if( $i < $num_fields-1)
-						echo ",";
+						$sonuc .= ",";
 				}
-				echo ")";
+				$sonuc .= ")";
 
 				if( $index < $num_rows-1)
-					echo ",";
+					$sonuc .= ",";
 				else
-					echo ";";
-				echo "\n";
+					$sonuc .= ";";
+				$sonuc .= "\n";
 
 				$index++;
 			}
 		}
 	}
 	mysql_free_result($result);
-	//echo "\n";
+	return $sonuc;
 }
 ?>
