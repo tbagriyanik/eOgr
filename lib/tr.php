@@ -569,5 +569,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[440]="eOgr projesi kodlarý elden geçirilerek, bir haber, spor, paylaþým sitesi olarak da kullanýlabilir. Sayfalama halinde peþpeþe gösterilen maddeler ile istenen konu kullanýcýlara iletilebilir.";
 		$metin[441]="database.php dosyasýndaki ayarlarýn tam yapýldýðýndan emin olunuz. Hata mesajlarýný yöneticinize bildiriniz.";
 		$metin[442]="Test aþamasýnda yardýmcý olan kiþilere teþekkürler. Özellikle kütüphane kodlarýný serbest daðýtan programcýlara teþekkürler.";
-		
+	
+		$metin[443]	= "Tüm Dersler";
 ?>

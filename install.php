@@ -171,11 +171,21 @@ function dilCevir($dil){
 
 	if(isset($_POST['submit']))
 	{
+
 $sql = 	"CREATE TABLE  eo_floodprotection (      
   IP char(32) NOT NULL,   
   TIME char(20) NOT NULL, 
   PRIMARY KEY (IP)                  
- ) ;";
+ ) ;
+ CREATE TABLE eo_users (  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+								   userName varchar(30) NOT NULL UNIQUE KEY ,
+									  userPassword varchar(40) NOT NULL,
+									  realName varchar(50) NOT NULL,
+									  userEmail varchar(50) NOT NULL UNIQUE KEY ,
+									  userBirthDate date NOT NULL,
+									  userType tinyint(4) NOT NULL DEFAULT '0',
+									  requestDate datetime NOT NULL
+									  ) ;";
 
 $sql .= "INSERT INTO eo_users (id, userName, userPassword, realName, userEmail, userBirthDate, userType, requestDate) VALUES 
 	(1, \"admin\", \"7b21848ac9af35be0ddb2d6b9fc3851934db8420\", \"super kullanici\", \"admin@eogr.com\", \"2008-11-15\", 2, \"2008-11-15 00:00:00\");";
@@ -364,9 +374,17 @@ $sql .= "CREATE TABLE eo_comments (
 					else{
 					$yol22 = $baglan2;
 					$vtSec = @mysql_select_db( $_db, $yol22);
-					if(!$vtSec)echo("<font id='hata'>MySQL veritabaný bulunamadý! L&#252;ften, 'database.php' dosyasýný d&uuml;zenleyiniz.</font>Tekrar denemek i&ccedil;in <a href=install.php>týklatýnýz</a>!");
-						else {
-							$result = @mysql_query("CREATE TABLE eo_users (  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+					if(!$vtSec){							 
+							  $vtYapsql = "CREATE DATABASE $db_name;";
+							  $result = @mysql_query($vtYapsql);
+							  if(!$result) 
+								die ("<font id='hata'>Veritabaný oluþturulamadý. Yetkilerinizi kontrol ediniz!</font>");
+								else
+								 echo("<font id='tamam'>$db_name veritabaný oluþturuldu!</font>");
+					  	}
+						
+						 {
+							/*$result = @mysql_query("CREATE TABLE eo_users (  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 								   userName varchar(30) NOT NULL UNIQUE KEY ,
 									  userPassword varchar(40) NOT NULL,
 									  realName varchar(50) NOT NULL,
@@ -379,7 +397,7 @@ $sql .= "CREATE TABLE eo_comments (
 							{
 							echo "<font id='hata'>Veritabaný zaten kurulmuþ haldedir. Tekrar kurmak i&ccedil;in baþka bir veritabaný se&ccedil;ebilirsiniz.</font>";
 							}
-							else					
+							else*/					
 							 {
 							
 									$newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);								
@@ -389,8 +407,8 @@ $sql .= "CREATE TABLE eo_comments (
 										echo "<font id='tamam'>Tablolar Oluþturuldu: $db_name (veritabaný). </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111<br/>";
 									 else {
 										$sql = "DROP TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_rating,eo_comments;";
-										mysql_query($sql, $yol22);
-										echo "<font id='hata'>Ýþlem hata(lar) oluþarak tamamlandý, bu sebeple varolan tablolar silindi. Tekrar Kurulum d&uuml;ðmesine basýnýz.</font><br/>".$importumuz."<br/>";
+										//mysql_query($sql, $yol22);
+										echo "<font id='hata'>Veritabaný kurulmuþ haldedir.<br/>Kuruluma devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.</font>";
 									 }
 											
 							}	

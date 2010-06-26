@@ -56,7 +56,7 @@ ob_start (); // Buffer output
     })
 	
 	$(document).ready(function(){
-		//$(".msg_body").hide();
+		$(".msg_body").hide();
 		$(".msg_head").click(function(){
 			$(this).next(".msg_body").slideToggle(200);
 		});
@@ -298,7 +298,7 @@ if($seceneklerimiz[6]=="1"){
                   <div class="BlockContent-body">
                     <div>
                       <div class="msg_list">
-                        <p class="msg_head"><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/><?php echo $metin[55]?></p>
+                        <p class="msg_head"><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></p>
                         <div class="msg_body"> <?php echo dersAgaci(1)?> </div>
                       </div>
                     </div>

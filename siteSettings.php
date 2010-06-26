@@ -10,27 +10,37 @@
      }
  if(isset($_GET[dump]) && $_GET[dump]=="1")
   {
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur!=2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> Bu iþlemi yapmak i&ccedil;in yetkiniz yoktur. </font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>");
-	  }
-	$mysql_host = $_host;
-	$mysql_database= $_db;	
-	$mysql_username= $_username;	
-	$mysql_password=$_password;		
-	$print_form=0;
-	header('Content-type: text/plain;charset=UTF-8');
-	header('Content-Disposition: attachment; filename="'.$mysql_host."_".$mysql_database."_".date('YmdHis').'.sql"');
-	_mysqldump($mysql_database);
-	die('');	
+		   $adi	=temizle(substr($_SESSION["usern"],0,15));
+		   $par	=temizle($_SESSION["userp"]);
+		  
+			if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
+		 
+		   $tur=checkRealUser($adi,$par);
+			
+			if ($tur!=2) { 
+			   sessionDestroy();
+			   die ("<font id='hata'> Bu iþlemi yapmak i&ccedil;in yetkiniz yoktur. </font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>");
+			  }
+			$mysql_host = $_host;
+			$mysql_database= $_db;	
+			$mysql_username= $_username;	
+			$mysql_password=$_password;		
+			$print_form=0;
+		
+		  ob_start(); /* start buffering */  
+		  echo "your cvs or sql output!";    
+		  $content = _mysqldump($mysql_database); /* get the buffer */
+		  ob_end_clean();
+		  $content = gzencode($content, 9);    
+		  header("Content-Type: application/force-download");
+		  header("Content-Type: application/octet-stream");
+		  header("Content-Type: application/download");
+		  header("Content-Description: Download SQL Export");  
+		  header('Content-Disposition: attachment; filename="'.$mysql_host."_".$mysql_database."_".date('YmdHis').'.txt.zip"'); 
+		  echo $content;
+		  die('');		
   }
+  
    $taraDili=$_COOKIE["lng"];    
    if(!($taraDili=="TR" || $taraDili=="EN")) 
     $taraDili="EN";
@@ -476,7 +486,7 @@ if ($_GET["upd"]=="1")
 						echo "<font id='tamam'>Veritabanýnda deðiþiklik(ler) yapýldý!</font><br/>";
 					 else
 						echo "<font id='hata'>".$importumuz."</font><br/>";
-				mysql_close($yol22);			
+				//mysql_close($yol22);			
 			}		
 			 
   }
