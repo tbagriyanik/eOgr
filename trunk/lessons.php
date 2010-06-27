@@ -42,9 +42,11 @@ ob_start (); // Buffer output
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.7.1.custom.min.js"></script>
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="lib/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -65,6 +67,7 @@ ob_start (); // Buffer output
 			$(this).next(".msg_body2").slideToggle(200);
 		});
 	});
+
 </script>
 </head>
 <body id="intro">
