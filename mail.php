@@ -31,7 +31,7 @@
 <title>eOgr -<?php echo $metin[69]?></title>
 <link href="stilGenel.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->

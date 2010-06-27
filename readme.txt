@@ -1,4 +1,4 @@
-eOgr - v116c
+eOgr - v116d
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -17,7 +17,7 @@ Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
 Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	26-06-2010
+Last Update: 	27-06-2010
 Process Time : 	400 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 
@@ -41,10 +41,10 @@ Used Classes:
 - autosuggest: http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html v2.1.3
 - flood-protection: http://archive.free-php.org.uk/ v1.0
 - hijax: http://bulletproofajax.com 
-- jQuery: http://jquery.com/ v1.3.2 					< 1.4.2
-- jQuery UI: http://jqueryui.com v1.7.1 				< 1.8.2
+- jQuery: http://jquery.com/ 1.4.2
+- jQuery UI: http://jqueryui.com 1.8.2
 - nicEdit: http://www.nicedit.com/ v0.9 r23
-- phplivex: http://www.phplivex.com/ v2.5.1 				< 2.6
+- phplivex: http://www.phplivex.com/ v2.6
 - SQL_Export: http://www.phpclasses.org/browse/file/7633.html
 - SQL_Import: http://www.phpclasses.org/browse/package/4898.html
 - wtag: http://spacegirlpippa.co.uk/ v1.0Beta

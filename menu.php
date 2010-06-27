@@ -3,7 +3,7 @@ $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 if($seceneklerimiz[5]=="1"){
 ?>
 
-<script  type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
+<script  type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script  type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
 
