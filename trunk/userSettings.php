@@ -22,8 +22,8 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[57]?></title>
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<title>eOgr -<?php echo $metin[57]?></title>
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -158,6 +158,45 @@
 
 $editFormAction = $_SERVER['PHP_SELF'];
 
+if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
+
+			if(empty($_POST['ayarlar1'])) $_POST['ayarlar1']="0"; else $_POST['ayarlar1']="1";
+			if(empty($_POST['ayarlar2'])) $_POST['ayarlar2']="0"; else $_POST['ayarlar2']="1";
+			if(empty($_POST['ayarlar3'])) $_POST['ayarlar3']="0"; else $_POST['ayarlar3']="1";
+			if(empty($_POST['ayarlar4'])) $_POST['ayarlar4']="0"; else $_POST['ayarlar4']="1";
+			if(empty($_POST['ayarlar5'])) $_POST['ayarlar5']="0"; else $_POST['ayarlar5']="1";
+			if(empty($_POST['ayarlar6'])) $_POST['ayarlar6']="0"; else $_POST['ayarlar6']="1";
+			if(empty($_POST['ayarlar7'])) $_POST['ayarlar7']="0"; else $_POST['ayarlar7']="1";
+			if(empty($_POST['ayarlar8'])) $_POST['ayarlar8']="0"; else $_POST['ayarlar8']="1";
+			if(empty($_POST['ayarlar9'])) $_POST['ayarlar9']="0"; else $_POST['ayarlar9']="1";
+			if(empty($_POST['ayarlar10'])) $_POST['ayarlar10']="0"; else $_POST['ayarlar10']="1";
+			if(empty($_POST['ayarlar11'])) $_POST['ayarlar11']="0"; else $_POST['ayarlar11']="1";
+			if(empty($_POST['ayarlar12'])) $_POST['ayarlar12']="0"; else $_POST['ayarlar12']="1";
+			if(empty($_POST['ayarlar13'])) $_POST['ayarlar13']="0"; else $_POST['ayarlar13']="1";
+			if(empty($_POST['ayarlar14'])) $_POST['ayarlar14']="0"; else $_POST['ayarlar14']="1";
+			if(empty($_POST['ayarlar15'])) $_POST['ayarlar15']="0"; else $_POST['ayarlar15']="1";
+			
+			$ayarlar = temizle($_POST['ayarlar1']."-".$_POST['ayarlar2']."-".$_POST['ayarlar3']."-".
+						         $_POST['ayarlar4']."-".$_POST['ayarlar5']."-".$_POST['ayarlar6']."-".
+								 $_POST['ayarlar7']."-".$_POST['ayarlar8']."-".$_POST['ayarlar9']."-".
+								 $_POST['ayarlar10']."-".$_POST['ayarlar11']."-".$_POST['ayarlar12']."-".
+								 $_POST['ayarlar13']."-".$_POST['ayarlar14']."-".$_POST['ayarlar15']);
+
+			$updateSQL = sprintf("UPDATE eo_users SET ayarlar='%s' WHERE userName='$adi'",
+							   $ayarlar
+							   );
+							   
+		  mysql_select_db($database_baglanti, $yol);
+		  $Result1 = mysql_query($updateSQL, $yol);
+		  if($Result1) {
+			   	trackUser($currentFile,"success,userSiteSet",$adi);
+				echo ("<font id='tamam'> Site ayarlarýný g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+		    }
+			else {
+			    trackUser($currentFile,"fail,userSiteSet",$adi);
+				echo ("<font id='hata'> Site ayarlarýnýzda hata olduðundan g&uuml;ncelleme iþleminiz tamamlanamadý!</font>");
+			}
+}
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
   if (      
@@ -165,7 +204,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
      GetSQLValueString($_POST['userEmail'], "text")=='NULL' || 
      GetSQLValueString($_POST['userBirthDate'], "text")=='NULL' 
       )
-	 echo "<p>&nbsp;</p><font id='hata'>&Uuml;ye bilgilerinizde eksik alanlar vardýr.</font>";
+	 echo "<font id='hata'>&Uuml;ye bilgilerinizde eksik alanlar vardýr.</font>";
 	else{   
         
 		if ($_POST['prldeg']!="secili" 
@@ -223,34 +262,29 @@ $eoUsers = mysql_query($query_eoUsers, $yol);
 $row_eoUsers = mysql_fetch_row($eoUsers);
 
 ?>
-
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <div id="contact-wrapper">
                     <form action="<?php echo $editFormAction; ?>" method="post" id="form1">
                       <fieldset>
-                        <?php echo $metin[17]?> : <?php echo GetSQLValueStringNo($row_eoUsers[1], "text"); ?> (<?php echo $row_eoUsers[0]; ?>)&nbsp;&nbsp;
-                        <a href='profil.php?kim=<?php echo $upID;?>&amp;set=1' rel="facebox"><?php echo $metin[311]?></a> <br />
-
+                        <?php echo $metin[17]?> : <?php echo GetSQLValueStringNo($row_eoUsers[1], "text"); ?> (<?php echo $row_eoUsers[0]; ?>)&nbsp;&nbsp; <a href='profil.php?kim=<?php echo $upID;?>&amp;set=1' rel="facebox"><?php echo $metin[311]?></a> <br />
                         <?php echo $metin[22]?> :
                         <?php if (!(strcmp("", GetSQLValueStringNo($row_eoUsers[6], "text")))) {echo $metin[92];} ?>
                         <?php if (!(strcmp(-1, GetSQLValueStringNo($row_eoUsers[6], "text")))) {echo "<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> ".$metin[93];} ?>
                         <?php if (!(strcmp(0, GetSQLValueStringNo($row_eoUsers[6], "text")))) {echo "<img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[94];} ?>
                         <?php if (!(strcmp(1, GetSQLValueStringNo($row_eoUsers[6], "text")))) {echo "<img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[95];} ?>
-                        <?php if (!(strcmp(2, GetSQLValueStringNo($row_eoUsers[6], "text")))) {echo "<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> ".$metin[96];} ?><br />
-                        <?php echo $metin[23]?> : <?php echo tarihOku(GetSQLValueStringNo($row_eoUsers[7], "text")); ?><br /><br />
-
+                        <?php if (!(strcmp(2, GetSQLValueStringNo($row_eoUsers[6], "text")))) {echo "<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> ".$metin[96];} ?>
+                        <br />
+                        <?php echo $metin[23]?> : <?php echo tarihOku(GetSQLValueStringNo($row_eoUsers[7], "text")); ?><br />
+                        <br />
                         <label for="userPassword"> <?php echo $metin[18]?> :</label>
                         <div>
                           <input name="userPassword" id="userPassword" type="password" value="" size="32" maxlength="40" style="width:150px"  />
                           <font color="red"> <strong> <?php echo $metin[90]?> </strong></font> </div>
-                        <label for="userPassword2">
-						<?php echo $metin[152]?> :</label>
+                        <label for="userPassword2"> <?php echo $metin[152]?> :</label>
                         <div>
                           <input name="userPassword2" id="userPassword2" type="password" value="" size="32" maxlength="40" style="width:150px" />
                         </div>
-                        
-                        <label for="realName"> 
-						<?php echo $metin[38]?> :</label>
+                        <label for="realName"> <?php echo $metin[38]?> :</label>
                         <div>
                           <input name="realName" id="realName" type="text" value="<?php echo GetSQLValueStringNo($row_eoUsers[3], "text"); ?>" size="32" maxlength="50" style="width:150px"  class="required" />
                         </div>
@@ -261,16 +295,16 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                         <label for="userBirthDate"> <?php echo $metin[21]?> :</label>
                         <div>
                           <input name="userBirthDate" id="userBirthDate" type="text" value="<?php echo tarihOku(GetSQLValueStringNo($row_eoUsers[5], "text")); ?>" size="32" maxlength="50" class="required" style="width:150px" />
-                        </div>                        
+                        </div>
                         <label>
                           <input name="prldeg" type="checkbox" id="prldeg" checked="checked"  value="secili"/>
-                          <?php echo $metin[24]?> </label><br />
+                          <?php echo $metin[24]?> </label>
+                        <br />
                         <label>
                           <input type="submit" value="<?php echo $metin[25]?>" />
                         </label>
                         <br />
                         <?php echo $metin[91]?>
-
                         <input type="hidden" name="MM_update" value="form3" />
                         <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
                       </fieldset>
@@ -280,11 +314,169 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
   $(document).ready(function(){
     $("#form1").validate();
   });
-  </script>
+  </script> 
                 </div>
                 <div class="cleared"></div>
               </div>
-              &nbsp;</div>
+              <div class="Post">
+                <div class="Post-tl"></div>
+                <div class="Post-tr">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-bl">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-br">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-tc">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-bc">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-cl">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-cr">
+                  <div>&nbsp;</div>
+                </div>
+                <div class="Post-cc"></div>
+                <div class="Post-body">
+                  <div class="Post-inner">
+                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <?php echo $metin[112]?> </span> </h2>
+                    <div class="PostContent">
+                      <form name="form5"  action="userSettings.php" method="post">
+                        <table width="90%" border="0" cellspacing="0" cellpadding="3">
+                          <tr>
+                            <th colspan="2"><?php echo $metin[113]?></th>
+                          </tr>
+                          <tr>
+                            <td width="400" align="right"><?php echo $metin[216]?> :</td>
+                            <?php
+								  $secenekler = explode("-",ayarGetir3($adi));					  
+
+ 							?>
+                            <td><label>
+                                <input type="checkbox" name="ayarlar1" 
+            id="ayarlar1" value="1" <?php if($secenekler[0]=="1") 
+			echo " checked='checked'"; else echo ""; ?> />
+                                RSS</label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar2" 
+            id="ayarlar2" value="1" <?php if($secenekler[1]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[154];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar3" 
+            id="ayarlar3" value="1" <?php if($secenekler[2]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[139];?></label>
+                              <br/>
+                              <label>
+                                <input type="checkbox" name="ayarlar4" 
+            id="ayarlar4" value="1" <?php if($secenekler[3]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[155];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar5" 
+            id="ayarlar5" value="1" <?php if($secenekler[4]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[217];?></label>
+                              <br /></td>
+                          </tr>
+                          <tr>
+                            <td align="right"><?php echo $metin[255]?> :</td>
+                            <td><label>
+                                <input type="checkbox" name="ayarlar7" 
+            id="ayarlar7" value="1" <?php if($secenekler[6]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[257];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar8" 
+            id="ayarlar8" value="1" <?php if($secenekler[7]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[258];?></label>
+                              <br/>
+                              <label>
+                                <input type="checkbox" name="ayarlar9" 
+            id="ayarlar9" value="1" <?php if($secenekler[8]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[259];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar10" 
+            id="ayarlar10" value="1" <?php if($secenekler[9]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[260];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar14" 
+            id="ayarlar14" value="1" <?php if($secenekler[13]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[307];?></label>
+                              <br /></td>
+                          </tr>
+                          <tr>
+                            <td align="right"><?php echo $metin[303]?> :</td>
+                            <td><label>
+                                <input type="checkbox" name="ayarlar6" 
+            id="ayarlar6" value="1" <?php if($secenekler[5]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[256];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar11" 
+            id="ayarlar11" value="1" <?php if($secenekler[10]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[304];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar12" 
+            id="ayarlar12" value="1" <?php if($secenekler[11]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[305];?></label>
+                              <br />
+                              <label>
+                                <input type="checkbox" name="ayarlar13" 
+            id="ayarlar13" value="1" <?php if($secenekler[12]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[306];?></label>
+                              <br/>
+                              <label>
+                                <input type="checkbox" name="ayarlar15" 
+            id="ayarlar15" value="1" <?php if($secenekler[14]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[308];?></label>
+                              <br /></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />
+                              <input type="submit" value="<?php echo $metin[121]?>" /></td>
+                          </tr>
+                        </table>
+                      </form>
+                      <ul>
+                      <li>
+                      Seçenek aktif olduðu halde istediðiniz gözükmüyor ise, yönetici bu seçeneði kapatmýþ olabilir.
+                      </li>
+                      <li>
+                      Bazý deðiþikliklerin etkin olabilmesi için sayfayý yenilemeniz gerekebilir.
+                      </li>
+                      <li>
+                      Bazý deðiþiklikler ile sitenin çalýþma hýzý artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz.
+                      </li>
+                      </ul>
+                    </div>
+                    <div class="cleared"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="cleared"></div>
           <div class="Footer">

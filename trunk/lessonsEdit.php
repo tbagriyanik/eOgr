@@ -26,7 +26,7 @@
 <title>eOgr -<?php echo $metin[62]?></title>
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="JavaScript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->

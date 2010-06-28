@@ -5,7 +5,7 @@ th {
 	color: #036;
 	font-size: 11pt;
 	background-color: #999;
-	background: #F9E9A9 url(img/off_bg.gif) repeat-x top left;
+	background: #F9E9A9 url(../img/off_bg.gif) repeat-x top left;
 }
 td {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -16,7 +16,7 @@ td {
 .LinkYan {
 	color: #333;
 	border-color: #727377;
-	background: #F9E9A9 url(img/off_bg.gif) repeat-x top left;
+	background: #F9E9A9 url(../img/off_bg.gif) repeat-x top left;
 	width: 600px;
 	list-style-type: none;
 	list-style-image: none;
@@ -31,7 +31,7 @@ td {
 	width: 600px;
 	list-style-type: none;
 	background-color: #F9E9A9;
-	background-image: url(img/buttonbg.png);
+	background-image: url(../img/buttonbg.png);
 	background-repeat: repeat-x;
 	background-position: left top;
 	border-top-color: #727377;
@@ -62,7 +62,7 @@ td {
 	display: block;
 	width: 60%;
 	background-attachment: scroll;
-	background-image: url(img/error.png);
+	background-image: url(../img/error.png);
 	background-repeat: no-repeat;
 	background-position: 5px center;
 	padding-left: 35px;
@@ -83,7 +83,7 @@ td {
 	display: block;
 	width: 60%;
 	background-attachment: scroll;
-	background-image: url(img/tick_circle.png);
+	background-image: url(../img/tick_circle.png);
 	background-repeat: no-repeat;
 	background-position: 5px center;
 	padding-left: 35px;
@@ -104,7 +104,7 @@ td {
 	display: block;
 	width: 60%;
 	background-attachment: scroll;
-	background-image: url(img/information.png);
+	background-image: url(../img/information.png);
 	background-repeat: no-repeat;
 	background-position: 5px center;
 	padding-left: 35px;
@@ -127,7 +127,7 @@ td {
 	z-index:1;
 	left: auto;
 	right: 12px;
-	background-image: url(img/close.gif);
+	background-image: url(../img/close.gif);
 	background-repeat: no-repeat;
 	background-position: 3px 3px;
 	padding-top: 3px;
@@ -147,7 +147,7 @@ td {
 	background:#999;
 	color:#444;
 	font-weight:bold;
-	background:url(img/buttonbg.png) repeat-x left top;
+	background:url(../img/buttonbg.png) repeat-x left top;
 	padding-top: 2px;
 	padding-right: 5px;
 	padding-bottom: 2px;
@@ -158,7 +158,7 @@ td {
 	width: 99%;
 	margin: 0;
 	list-style: none;
-	background: #FFCB2D url(img/nav_bg.gif) repeat-x bottom left;
+	background: #FFCB2D url(../img/nav_bg.gif) repeat-x bottom left;
 	padding-top: 5px;
 	padding-right: 0;
 	padding-bottom: 1px;
@@ -181,12 +181,12 @@ td {
 	text-decoration: none;
 	border: 1px solid #9B8748;
 	border-bottom: none;
-	background: #F9E9A9 url(img/off_bg.gif) repeat-x top left;
+	background: #F9E9A9 url(../img/off_bg.gif) repeat-x top left;
 }
 #nav a:hover, body#intro #t-intro a {
 	color: #333;
 	border-color: #727377;
-	background: #fff url(img/on_bg.gif) repeat-x top left;
+	background: #fff url(../img/on_bg.gif) repeat-x top left;
 }
 #msg, #msg2 {
 	font-weight: bold;
@@ -348,13 +348,15 @@ form#form1 textarea {
 }
 label.error {
 	color: #F00;
-	font-size: 10pt;
+	font-size: 8pt;
 	font-weight: bold;
-	background-image: url(img/error.png);
+	background-image: url(../img/error.png);
 	background-repeat: no-repeat;
+	background-position:left top;
 	width: 30px;
 	height:20px;
 	padding-left: 20px;
+	cursor: pointer;
 }
 .yorumItem {
 	margin: 5px;
@@ -386,11 +388,11 @@ label.error {
 	z-index:9999;
 	color:#fff;
 	font-size:10px;
-	width:180px;
+	width:200px;
 }
 #tooltip .tipHeader {
 	height:8px;
-	background:url(img/tipHeader.gif) no-repeat;
+	background:url(../img/tipHeader.gif) no-repeat;
 }
 #tooltip .tipBody {
 	background-color:#000;
@@ -398,13 +400,13 @@ label.error {
 }
 #tooltip .tipFooter {
 	height:8px;
-	background:url(img/tipFooter.gif) no-repeat;
+	background:url(../img/tipFooter.gif) no-repeat;
 }
 .clear {
 	clear:both
 }
 .external {
-	background: url(img/external.png) center right no-repeat;
+	background: url(../img/external.png) center right no-repeat;
 	padding-right: 12px;
 }
 /*sliding lesson tree*/
@@ -439,7 +441,7 @@ label.error {
 	float:right;
 	font-weight:bold;
 	display:block;
-	background-image: url(img/page-next.gif);
+	background-image: url(../img/page-next.gif);
 	background-repeat: no-repeat;
 	background-position: 3px 3px;
 	padding-top: 3px;

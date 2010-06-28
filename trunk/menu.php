@@ -1,6 +1,17 @@
 <?php
+
+	$adi	=substr(temizle($_POST["userN"]),0,15);
+	$par	=sha1(substr(temizle($_POST["userP"]),0,15));
+	
+   if ($adi=="") {
+	   $adi	=temizle(substr($_SESSION["usern"],0,15));
+	   $par	=temizle($_SESSION["userp"]);
+	  }
+	  
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-if($seceneklerimiz[5]=="1"){
+$kullaniciSecen = explode("-",ayarGetir3($adi));
+
+if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 ?>
 
 <script  type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
@@ -25,17 +36,8 @@ if($seceneklerimiz[5]=="1"){
                     </script>
 <?php
 }
-?>                    
-                    
-<?php
 
-	$adi	=substr(temizle($_POST["userN"]),0,15);
-	$par	=sha1(substr(temizle($_POST["userP"]),0,15));
-  
-   if ($adi=="") {
-	   $adi	=temizle(substr($_SESSION["usern"],0,15));
-	   $par	=temizle($_SESSION["userp"]);
-	  }
+
 	$tur=checkRealUser($adi,$par);
 	if($tur=="-2") 
 	{
@@ -105,7 +107,7 @@ if($seceneklerimiz[5]=="1"){
     </ul>
   </li>
   <?php
-  if($seceneklerimiz[10]=="1"){
+  if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
 	echo ("<li><a href=\"chat.php\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=310,height=330,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56]."</span></span></a></li>");
   }
 ?>

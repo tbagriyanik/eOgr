@@ -17,7 +17,7 @@ Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
 Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	27-06-2010
+Last Update: 	28-06-2010
 Process Time : 	400 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 

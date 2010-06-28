@@ -69,7 +69,7 @@ function dilCevir($dil){
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[71]?></title>
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -184,11 +184,12 @@ $sql = 	"CREATE TABLE  eo_floodprotection (
 									  userEmail varchar(50) NOT NULL UNIQUE KEY ,
 									  userBirthDate date NOT NULL,
 									  userType tinyint(4) NOT NULL DEFAULT '0',
-									  requestDate datetime NOT NULL
+									  requestDate datetime NOT NULL,
+  									  ayarlar varchar(50) DEFAULT NULL
 									  ) ;";
 
 $sql .= "INSERT INTO eo_users (id, userName, userPassword, realName, userEmail, userBirthDate, userType, requestDate) VALUES 
-	(1, \"admin\", \"7b21848ac9af35be0ddb2d6b9fc3851934db8420\", \"super kullanici\", \"admin@eogr.com\", \"2008-11-15\", 2, \"2008-11-15 00:00:00\");";
+	(1, \"admin\", \"7b21848ac9af35be0ddb2d6b9fc3851934db8420\", \"super kullanici\", \"admin@eogr.com\", \"2008-11-15\", 2, \"2008-11-15 00:00:00\",\"1-1-1-1-1-1-1-1-1-1-1-1-1-1-1\");";
 
 	
 $sql .= "CREATE TABLE eo_usertrack (
@@ -381,38 +382,17 @@ $sql .= "CREATE TABLE eo_comments (
 								die ("<font id='hata'>Veritabaný oluþturulamadý. Yetkilerinizi kontrol ediniz!</font>");
 								else
 								 echo("<font id='tamam'>$db_name veritabaný oluþturuldu!</font>");
-					  	}
-						
-						 {
-							/*$result = @mysql_query("CREATE TABLE eo_users (  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-								   userName varchar(30) NOT NULL UNIQUE KEY ,
-									  userPassword varchar(40) NOT NULL,
-									  realName varchar(50) NOT NULL,
-									  userEmail varchar(50) NOT NULL UNIQUE KEY ,
-									  userBirthDate date NOT NULL,
-									  userType tinyint(4) NOT NULL DEFAULT '0',
-									  requestDate datetime NOT NULL
-									  ) ;");
-							if (!$result)
-							{
-							echo "<font id='hata'>Veritabaný zaten kurulmuþ haldedir. Tekrar kurmak i&ccedil;in baþka bir veritabaný se&ccedil;ebilirsiniz.</font>";
-							}
-							else*/					
-							 {
+					  	}						 
 							
-									$newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);								
-									$importumuz = $newImport -> importa ();
-									
-									if ($importumuz == "")
-										echo "<font id='tamam'>Tablolar Oluþturuldu: $db_name (veritabaný). </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111<br/>";
-									 else {
-										$sql = "DROP TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_rating,eo_comments;";
-										//mysql_query($sql, $yol22);
-										echo "<font id='hata'>Veritabaný kurulmuþ haldedir.<br/>Kuruluma devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.</font>";
-									 }
-											
-							}	
-						}
+					  $newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);								
+					  $importumuz = $newImport -> importa ();
+					  
+					  if ($importumuz == "")
+						  echo "<font id='tamam'>Tablolar Oluþturuldu: $db_name (veritabaný). </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111<br/>";
+					   else {
+						  echo "<font id='hata'>Veritabaný kurulmuþ haldedir.<br/>Kuruluma devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.</font>";
+					   }						
+						
 					}
 	  mysql_close($yol22);	
 	}
