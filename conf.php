@@ -1697,6 +1697,26 @@ function ayarGetir2($ayarAdi)
 	return $sonuc;
 }
 
+function ayarGetir3($adi)
+{
+	global $yol1;
+	
+	$sql1	= 	"select ayarlar from eo_users where userName='$adi'";
+	 
+	$result1= 	mysql_query($sql1,$yol1);
+
+   if(mysql_num_rows($result1)>0){
+	if(mysql_result($result1,0,"ayarlar")!="")
+		$sonuc = @mysql_result($result1,0,"ayarlar");
+		else	
+		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";
+	}else	
+		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";			 
+
+   @mysql_free_result($result1);
+	return $sonuc;
+}
+
 function haberGetir($kayno, $alanAdi)
 {
 	global $yol1;

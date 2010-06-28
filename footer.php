@@ -1,6 +1,11 @@
 <?php
+
+	$adi	=temizle(substr($_SESSION["usern"],0,15));
+	
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-if($seceneklerimiz[0]=="1") {
+$kullaniciSecen = explode("-",ayarGetir3($adi));
+
+if($seceneklerimiz[0]=="1" and $kullaniciSecen[0]=="1") {
 ?>            
  <a href="rss.php" class="rss-tag-icon" title="RSS"></a>
 <?php
@@ -19,7 +24,7 @@ if (document.getElementById("uyari")!=null) fadeUp(document.getElementById("uyar
 if (document.getElementById("tamam")!=null) fadeUp(document.getElementById("tamam"),0,255,0,0,150,0);  
   </script>
 <?php
-if($seceneklerimiz[1]=="1") {
+if($seceneklerimiz[1]=="1" and $kullaniciSecen[1]=="1") {
 ?>
                        <label for="theme"><?php echo $metin[154]?> : </label>
                         <select name="theme" id="theme" onchange="document.themeSelect.submit();">
@@ -36,7 +41,7 @@ if($seceneklerimiz[1]=="1") {
 <?php
 }
 
-if($seceneklerimiz[2]=="1") {
+if($seceneklerimiz[2]=="1" and $kullaniciSecen[2]=="1") {
 ?>
   <a href='index.php?lng=<?php echo $taraDili?>&amp;oldPath=<?php echo $currentFile?>' title='Dil se&ccedil;iniz Choose a language'>
   <?php echo ($taraDili=="TR")?"<img src='img/turkish.png' border='0' alt='Dil' style='vertical-align: middle;' />":"<img src='img/english.png' border='0' alt='Language' style='vertical-align: middle;'/>"?></a>
@@ -46,9 +51,9 @@ if($seceneklerimiz[2]=="1") {
   
 						<?php
 						
-if($seceneklerimiz[3]=="1") 
+if($seceneklerimiz[3]=="1" and $kullaniciSecen[3]=="1") 
 echo ("&nbsp;<font size='-3'>".$metin[155]." ".round(getmicrotime() - $time,3)."s</font>");
-if($seceneklerimiz[4]=="1") 
+if($seceneklerimiz[4]=="1" and $kullaniciSecen[4]=="1") 
 echo ("&nbsp;<font size='-3'>".$metin[217]." ".date("d-m-Y", filemtime($currentFile))."</font>");
 
 ?> 

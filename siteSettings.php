@@ -61,7 +61,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr - <?php echo $metin[58]?>
 </title>
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -228,7 +228,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
      temizle($_POST['ayar3int'])=="" || 
      temizle($_POST['veriHareketleriSayisi'])==""
       )
-	   echo "<p>&nbsp;</p><font id='hata'>Site bilgilerinde eksik alanlar vardýr.</font>";
+	   echo "<font id='hata'>Site bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
 			
 			if(empty($_POST['ayar5char1'])) $_POST['ayar5char1']="0"; else $_POST['ayar5char1']="1";
@@ -269,11 +269,11 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,SiteInfo",$adi);
-				echo ("<p>&nbsp;</p><font id='tamam'> Site bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<font id='tamam'> Site bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,SiteInfo",$adi);
-				echo ("<p>&nbsp;</p><font id='hata'> Site bilgilerinde hata olduðunda g&uuml;ncelleme iþleminiz tamamlanamadý!</font>");
+				echo ("<font id='hata'> Site bilgilerinde hata olduðunda g&uuml;ncelleme iþleminiz tamamlanamadý!</font>");
 			}
 	}
 }
@@ -285,27 +285,30 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
      GetSQLValueString($_POST['userEmail'], "text")=='NULL' || 
      GetSQLValueString($_POST['userBirthDate'], "text")=='NULL' || 
      GetSQLValueString($_POST['requestDate'], "text")=='NULL' || 
-     GetSQLValueString($_POST['userType'], "text")=='NULL' 
+     GetSQLValueString($_POST['userType'], "text")=='NULL' ||
+     GetSQLValueString($_POST['ayarlar'], "text")=='NULL'  	 
       )
-	   echo "<p>&nbsp;</p><font id='hata'>&Uuml;ye bilgilerinde eksik alanlar vardýr.</font>";
+	   echo "<font id='hata'>&Uuml;ye bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
 
 		if ($_POST['prldeg']!="secili" && GetSQLValueString($_POST['userPassword'], "text")=='NULL')
-          	 echo "<p>&nbsp;</p><font id='hata'>Yeni bir parola yazmadýnýz!</font>";
+          	 echo "<font id='hata'>Yeni bir parola yazmadýnýz!</font>";
 			 
 		else {  
 
 		  if ($_POST['prldeg']=="secili") 
-			$updateSQL = sprintf("UPDATE eo_users SET userName=%s, realName=%s, userEmail=%s, userBirthDate='%s', userType=%s, requestDate='%s' WHERE id=%s",
+			$updateSQL = sprintf("UPDATE eo_users SET userName=%s, realName=%s, userEmail=%s, userBirthDate='%s', userType=%s, requestDate='%s', ayarlar=%s WHERE id=%s",
 							   temizle(GetSQLValueString($_POST['userName'], "text")),
 							   temizle(GetSQLValueString($_POST['realName'], "text")),
 							   temizle(GetSQLValueString($_POST['userEmail'], "text")),
 							   tarihYap(temizle($_POST['userBirthDate'])),
 							   temizle(GetSQLValueString($_POST['userType'], "int")),
 							   tarihYap2(temizle($_POST['requestDate'])),
-							   temizle(GetSQLValueString($_POST['id'], "int")));
+							   temizle(GetSQLValueString($_POST['ayarlar'], "text")),
+							   temizle(GetSQLValueString($_POST['id'], "int"))
+							   );
 			else  
-			$updateSQL = sprintf("UPDATE eo_users SET userName=%s, userPassword=sha1(%s), realName=%s, userEmail=%s, userBirthDate='%s', userType=%s, requestDate='%s' WHERE id=%s",
+			$updateSQL = sprintf("UPDATE eo_users SET userName=%s, userPassword=sha1(%s), realName=%s, userEmail=%s, userBirthDate='%s', userType=%s, requestDate='%s', ayarlar=%s WHERE id=%s",
 							   temizle(GetSQLValueString($_POST['userName'], "text")),
 							   temizle(GetSQLValueString($_POST['userPassword'], "text")),
 							   temizle(GetSQLValueString($_POST['realName'], "text")),
@@ -313,17 +316,19 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 							   tarihYap(temizle($_POST['userBirthDate'])),
 							   temizle(GetSQLValueString($_POST['userType'], "int")),
 							   tarihYap2(temizle($_POST['requestDate'])),
-							   temizle(GetSQLValueString($_POST['id'], "int")));
+							   temizle(GetSQLValueString($_POST['ayarlar'], "text")),
+							   temizle(GetSQLValueString($_POST['id'], "int"))
+							   );
 		
 		  mysql_select_db($database_baglanti, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,MemberInfo",$adi);
-				echo ("<p>&nbsp;</p><font id='tamam'> &Uuml;ye bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<font id='tamam'> &Uuml;ye bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,MemberInfo",$adi);
-				echo ("<p>&nbsp;</p><font id='hata'> &Uuml;ye bilgilerinde hata olduðunda g&uuml;ncelleme iþleminiz tamamlanamadý!</font>");
+				echo ("<font id='hata'> &Uuml;ye bilgilerinde hata olduðundan g&uuml;ncelleme iþleminiz tamamlanamadý!</font>");
 			}
 		}
 	}			
@@ -338,7 +343,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
      GetSQLValueString($_POST['userBirthDate2'], "text")=='NULL' || 
      GetSQLValueString($_POST['userType2'], "text")=='NULL' 
       )
-	   echo "<p>&nbsp;</p><font id='hata'>Yeni &uuml;ye bilgilerinde eksik alanlar vardýr.</font>";
+	   echo "<font id='hata'>Yeni &uuml;ye bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
 	  
   $insertSQL = sprintf("INSERT INTO eo_users (userName, userPassword, realName, userEmail, userBirthDate, userType, requestDate) VALUES (%s, sha1(%s), %s, %s, '%s', %s, '%s')",
@@ -355,11 +360,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $Result1 = mysql_query($insertSQL, $yol);
   if ($Result1) {
 			  trackUser($currentFile,"success,NewMember",$adi);
-			  echo "<p>&nbsp;</p><font id='tamam'> Yeni &uuml;ye ekleme iþleminiz tamamlandý!</font>";
+			  echo "<font id='tamam'> Yeni &uuml;ye ekleme iþleminiz tamamlandý!</font>";
   }
   else{
 			  trackUser($currentFile,"fail,NewMember",$adi);
-			  echo "<p>&nbsp;</p><font id='hata'>Yeni &uuml;ye iþleminiz tamamlanamadý! &Ouml;rneðin, ayný isimde bir &uuml;yelik zaten varolabilir.</font>";
+			  echo "<font id='hata'>Yeni &uuml;ye iþleminiz tamamlanamadý! &Ouml;rneðin, ayný isimde bir &uuml;yelik zaten varolabilir.</font>";
   }
   }
 }
@@ -376,11 +381,11 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $Result1 = mysql_query($deleteSQL, $yol);
  if ($Result1) {
 			  trackUser($currentFile,"success,DelMember",$adi);
-			  echo "<p>&nbsp;</p><font id='uyari'> &Uuml;ye silme iþleminiz tamamlandý!</font>";
+			  echo "<font id='uyari'> &Uuml;ye silme iþleminiz tamamlandý!</font>";
   }
   else{
 			  trackUser($currentFile,"fail,DelMember",$adi);
-			  echo "<p>&nbsp;</p><font id='hata'>&Uuml;ye silme iþleminiz tamamlanamadý!</font>";
+			  echo "<font id='hata'>&Uuml;ye silme iþleminiz tamamlanamadý!</font>";
   }
 
 }
@@ -637,7 +642,7 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
                   <?php 
    }
    }
-if ($totalRows_eoUsers==0) die( "<p>&nbsp;</p><font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
+if ($totalRows_eoUsers==0) die( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
 
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 ?>
@@ -716,7 +721,14 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                         <td bgcolor="#CCFFFF"><input type="text" name="requestDate" id="requestDate" value="<?php echo tarihOku2($row_eoUsers['requestDate']); ?>" size="32" /></td>
                       </tr>
                       <tr valign="baseline">
-                        <td colspan="2" align="center" nowrap="nowrap" bgcolor="#CCFFFF"><label>
+                        <td align="right" nowrap="nowrap" bgcolor="#CCFFFF"><label>
+						<?php echo $metin[113]?> :
+                          </label></td>
+                          <td><input type="text" name="ayarlar" id="ayarlar" value="<?php echo $row_eoUsers['ayarlar']; ?>" size="35" />
+                          </td>
+                      </tr>
+                      <tr valign="baseline">
+                        <td colspan="2" align="center" nowrap="nowrap"><label>
                             <input name="prldeg" type="checkbox" id="prldeg" checked="checked"  value="secili"/>
                             <?php echo $metin[24]?>
                           </label></td>
@@ -852,7 +864,7 @@ if ($_GET["upd"]!="1"){
 		}
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrenci veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die("<font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrenci veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
 	
 ?>
                 </div>

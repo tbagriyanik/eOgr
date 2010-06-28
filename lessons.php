@@ -33,20 +33,19 @@ ob_start (); // Buffer output
 <!--TITLE-->
 </title>
 <script type="text/javascript" src="lib/script.js"></script>
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/hijax.js"></script>
 <link href="theme/ratings.css" rel="stylesheet" type="text/css" />
 <link href="theme/lessons.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.7.1.custom.min.js"></script>
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="lib/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" charset="utf-8" />
+<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -111,10 +110,11 @@ ob_start (); // Buffer output
 	currentFileCheck("lessons.php");
 	
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
+	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 	
 	require("menu.php");
 	
-	if($seceneklerimiz[13]=="1" ) require("ping.php");
+	if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
                 ?>
         <div class="l"> </div>
         <div class="r">
@@ -159,24 +159,24 @@ ob_start (); // Buffer output
 ?>
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
-                  <div id="kapsayici"><div><div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div></div></div>
-                  <div id="navigation"><span id="konuAdi">-</span><br />
-                    <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>(<span id="eklenmeTarihi">-</span>)<br />
+                  <div id="kapsayici">
+                    <div>
+                      <div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div>
+                    </div>
+                  </div>
+                  <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo"></span><br />
+                    <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
+                    (<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
                     <span id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span></span> &nbsp;&nbsp; <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
                     <span id="bitirmeYuzdesi"></span><br />
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
                     <span id="soruGeriSayim"></span><br/>
-                    
-                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>&nbsp; 
-                    <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
-
-                    </div>
+                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>&nbsp; <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span> </div>
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />
-                  
                   <?php
 				    $adi	=temizle(substr($_SESSION["usern"],0,15));
 	   				$par	=temizle($_SESSION["userp"]);
@@ -193,7 +193,7 @@ ob_start (); // Buffer output
 					  }
                     ?>
                     <?php
-if($seceneklerimiz[7]=="1" && isKonu($_GET["konu"])){
+if($seceneklerimiz[7]=="1"  and $kullaniciSecen[7]=="1" and isKonu($_GET["konu"])){
 ?>
                     <br />
                     <br />
@@ -214,7 +214,7 @@ if(isKonu($_GET["konu"])){
                     <br />
                     <label onclick="CreateBookmarkLink();" title="<?php echo $metin[300]?>" > <img src="img/favcenter.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[244]?>"/> <?php echo $metin[244]?></label>
                     <?php
-if($seceneklerimiz[9]=="1"){
+if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
    if(isset($_GET["konu"]) && !empty($_GET["konu"]))
 	  if(isKonu($_GET["konu"]))
 	   {		  
@@ -242,7 +242,7 @@ if($seceneklerimiz[9]=="1"){
               &nbsp;</div>
           </div>
           <?php
-if($seceneklerimiz[8]=="1" && isKonu($_GET["konu"]) && $tur>-2){
+if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"]) && $tur>-2){
 ?>
           <div class="Post">
             <div class="Block">
@@ -283,7 +283,7 @@ if($seceneklerimiz[8]=="1" && isKonu($_GET["konu"]) && $tur>-2){
 }
 ?>
           <?php
-if($seceneklerimiz[6]=="1"){
+if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
 ?>
           <div class="Post">
             <div class="Block">
@@ -371,6 +371,8 @@ function cevapSureBasla(){
 							document.getElementById('cevapVer').style.visibility = 'hidden' ;
 							document.getElementById('cevapSonucu').style.visibility = 'hidden' ;
 							document.getElementById('cevapDegerlendirmeYeri').innerHTML = "<"+"font id='hata'><?php echo $metin[346];?><"+"/font>";
+							$("#calismaSuresi").stopTime();
+							saveUserWork();
 							}
 						 else {
 							$(this).html(31-i);							

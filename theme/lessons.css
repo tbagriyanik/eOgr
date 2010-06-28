@@ -1,10 +1,9 @@
 @charset "iso-8859-9";
-
 td {
 	color: #000;
 }
 #kapsayici {
-	position:absolute;
+	position:relative;
 	top:5px;
 	z-index:auto;
 	float: left;
@@ -18,7 +17,7 @@ td {
 }
 #anaMetin {
 	height: 290px;
-	text-align: justify;
+	width: 100%;	
 }
 #navigation {
 	position:absolute;
@@ -34,9 +33,7 @@ td {
 	background:#FFF;
 	height: 157px;
 	padding:2px;
-
 }
-
 #navigation2 {
 	position:absolute;
 	left:655px;
@@ -75,7 +72,7 @@ td {
 	border: thin outset #666;
 }
 #bitirmeYuzdesi {
-	width: 100px;	
+	width: 100px;
 	display: block;
 	margin-top: 5px;
 }

@@ -22,8 +22,8 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[64]?></title>
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<title>eOgr -<?php echo $metin[64]?></title>
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
@@ -70,12 +70,12 @@ dd {
 	padding: 10px 12px;
 	background: #ffc url(img/pointer.gif) no-repeat -10px 5px;
 	color:#000;
-	text-align:left;
+	text-align:justify;
 }
 .hint .hint-pointer {
 	position: absolute;
 	left: -10px;
-	top: 5px;
+	top: 0px;
 	width: 10px;
 	height: 19px;
 	background: url(img/pointer.gif) left top no-repeat;
@@ -326,10 +326,10 @@ $ajax->Run();
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent">
+                <div class="PostContent"> 
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <div id="contact-wrapper">
-                  <?php
+                    <?php
 					$ccode2 = newPassw();
 					$_SESSION["ccode2"]=$ccode2;
                   ?>
@@ -344,7 +344,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="realN" type="text" id="realN" size="20" maxlength="30" class="required"  style="width:150px"/>
+                              <input name="realN" type="text" id="realN" size="35" maxlength="30" class="required"  style="width:150px"/>
                               <span class="hint"><?php echo $metin[280];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dt>
@@ -352,15 +352,16 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="userName" type="text" id="userName" size="20" maxlength="15" class="required"  style="width:150px" onkeyup="test();"/>
-                              <span class="hint"><?php echo $metin[281];?><span class="hint-pointer">&nbsp;</span></span> </div> <span id="msg"></span><span id="pr" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></span>
-                          </dd>
+                              <input name="userName" type="text" id="userName" size="35" maxlength="15" class="required"  style="width:150px" onkeyup="test();"/>
+                              <span class="hint"><?php echo $metin[281];?><br />
+<span id="msg"></span><span id="pr" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
+                             </dd>
                           <dt>
                             <label for="userPassword1"> <?php echo $metin[40]?> :</label>
                           </dt>
                           <dd>
                             <div>
-                              <input name="userPassword1" type="password" id="userPassword1" size="20"  style="width:150px" maxlength="15"  class="required password"  />
+                              <input name="userPassword1" type="password" id="userPassword1" size="35"  style="width:150px" maxlength="15"  class="required password"  />
                               <span class="hint"><?php echo $metin[282];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dt>
@@ -368,7 +369,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="userPassword2" id="userPassword2" type="password" value="" size="20" maxlength="15"   class="required" style="width:150px" />
+                              <input name="userPassword2" id="userPassword2" type="password" value="" size="35" maxlength="15"   class="required" style="width:150px" />
                               <span class="hint"><?php echo $metin[283];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dt>
@@ -376,15 +377,16 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="email" type="text" id="email" size="20" maxlength="50"  style="width:150px" class="required email"  onkeyup="test2();"/>
-                              <span class="hint"><?php echo $metin[284];?><span class="hint-pointer">&nbsp;</span></span> </div>
-                            <span id="msg2"></span><span id="pr2" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" style="vertical-align: middle;"  alt="loading" /></span> </dd>
+                              <input name="email" type="text" id="email" size="35" maxlength="50"  style="width:150px" class="required email"  onkeyup="test2();"/>
+                              <span class="hint"><?php echo $metin[284];?><br />
+<span id="msg2"></span><span id="pr2" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" style="vertical-align: middle;"  alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
+                             </dd>
                           <dt>
                             <label for="birth"> <?php echo $metin[42]?> :</label>
                           </dt>
                           <dd>
                             <div>
-                              <input name="birth" type="text" id="birth" size="20" maxlength="30"  style="width:150px" class="required" value="31-12-1990" />
+                              <input name="birth" type="text" id="birth" size="35" maxlength="30"  style="width:150px" class="required" value="31-12-1990" />
                               <span class="hint"><?php echo $metin[285];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dd>
@@ -395,7 +397,7 @@ $ajax->Run();
                             </div>
                           </dd>
                           <dd>
-	                        <input type="hidden" name="ccode2" value="<?php echo $ccode2 ?>" />
+                            <input type="hidden" name="ccode2" value="<?php echo $ccode2 ?>" />
                             <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[44]?>" />
                           </dd>
                         </dl>

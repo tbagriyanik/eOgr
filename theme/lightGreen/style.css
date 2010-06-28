@@ -199,7 +199,7 @@ div.Header {
 	position: relative;
 	z-index:0;
 	width: 900px;
-	height: 100px;
+	height: 75px;
 }
 div.Header-jpeg {
 	position: absolute;
@@ -207,7 +207,7 @@ div.Header-jpeg {
 	top: 0;
 	left: 0;
 	width: 900px;
-	height: 100px;
+	height: 75px;
 	background-image: url('images/Header.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -218,13 +218,13 @@ div.Header-jpeg {
 .logo {
 	display : block;
 	position: absolute;
-	left: 21px;
-	top: 21px;
+	right: 21px;
+	top: 5px;
 	width: 880px;
 }
 h1.logo-name {
 	display: block;
-	text-align: left;
+	text-align: right;
 }
 h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.logo-name a:hover {
 	font-family: Arial, Helvetica, Sans-Serif;
@@ -238,7 +238,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 }
 .logo-text {
 	display: block;
-	text-align: left;
+	text-align: right;
 }
 .logo-text, .logo-text a {
 	font-family: Tahoma, Arial, Helvetica, Sans-Serif;

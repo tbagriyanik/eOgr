@@ -9,7 +9,7 @@
   if($_GET["logout"]=="1") 
   {
 	  sessionDestroy();
-	  $_SESSION["usern"]="";
+	  unset($_SESSION["usern"]);
   }
 
    if(isset($_GET["oldPath"]))
@@ -84,7 +84,7 @@
 <script type="text/javascript" src="lib/script.js"></script>
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<link href="stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -317,7 +317,7 @@ if (isset($_COOKIE["remUser"]))
       <div class="sidebar1">
         <?php
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-
+	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
         <div class="Block">
           <div class="Block-tl"></div>
@@ -344,7 +344,7 @@ if (isset($_COOKIE["remUser"]))
                 <div>
                   <ul>                  
                     <?php									
-						if($seceneklerimiz[11]=="1") {
+						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
 										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");
 										$result1= 	@mysql_query($sql1,$yol1);										
 										$i=0;
@@ -385,7 +385,7 @@ if (isset($_COOKIE["remUser"]))
         </div>
         <?php
 	
-if($seceneklerimiz[12]=="1" && getStats(16)!="") {
+if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") {
 ?>
         <div class="Block">
           <div class="Block-tl"></div>
