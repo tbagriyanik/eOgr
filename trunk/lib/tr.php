@@ -446,8 +446,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[340]="Kayýtlý kullanýcýlar görebilir <br/><a href=newUser.php>Yeni Üyelik!</a>";	
 		
 		$metin[341]="Toplam";	
-		$metin[342]="Son 20 günlük çalýþma sayýlarý (en fazla 20 deðer)";
-		$metin[343]="Son 20 günlük iþlem sayýlarý (en fazla 20 deðer)";
+		$metin[342]="Son 15 günlük çalýþma sayýlarý";
+		$metin[343]="Son 15 günlük iþlem sayýlarý";
 		
 		$metin[344]="Cevap Vereceðim!";
 		$metin[345]="Dersinizi tamamlamadýnýz! Ýptal veya Vazgeç düðmesine týklatarak derse devam edebilirsiniz.";

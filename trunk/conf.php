@@ -1444,6 +1444,136 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 	return $result1;
 }
 
+function grafikGunNormallestirData($dataArray = null,$labelArray = null) {
+		$newData = array();
+		$newLabel = array();
+		
+		$baslangic = (int)$labelArray[0];
+		$icIndex = 0;
+ 	    $newLabel[$icIndex] = $labelArray[0];
+		$newData[$icIndex] = $dataArray[0];
+ 	    $icIndex++;	  
+		
+		for($i=1;$i<sizeof($dataArray);$i++) //kaç eleman var ise dön
+		 {
+		 	if ( (int)($labelArray[$i]) - $baslangic> 1) //en az 2 gün fark
+			  {
+				   for($j=0;$j<((int)($labelArray[$i]) - $baslangic - 1 );$j++){
+					  if($j + 1 + (int)($baslangic)<10)  
+					   $newLabel[$icIndex] = "0". ($j + 1 + (int)($baslangic));
+					  else
+					   $newLabel[$icIndex] = $j + 1 + (int)($baslangic);
+					   
+					   $newData[$icIndex] = 0;
+					   $icIndex++;	  
+				   }
+				   
+			   $newLabel[$icIndex] = $labelArray[$i];
+			   $newData[$icIndex] = $dataArray[$i];
+			   $icIndex++;	  
+				   
+			  }
+			  elseif ( (int)($labelArray[$i]) - $baslangic == 1) {//1 gün fark varmýþ yani normal
+			   $newLabel[$icIndex] = $labelArray[$i];
+			   $newData[$icIndex] = $dataArray[$i];
+			   $icIndex++;	  
+			  } else { //negatif yani 2 - 31 gibi
+	
+    $last_month = date('m')-1;$year=date('Y');
+	$timestamp = strtotime("$year-$last_month-01");    
+	$number_of_days = date('t',$timestamp);
+	
+			    for($j=$baslangic;$j<$number_of_days;$j++){
+					   $newLabel[$icIndex] = $j + 1 ;					   
+					   $newData[$icIndex] = 0;
+					   $icIndex++;	  					
+				}
+			    for($j=1;$j<(int)($labelArray[$i]);$j++){
+					  if($j<10)  
+					   $newLabel[$icIndex] = "0". ($j);
+					  else
+					   $newLabel[$icIndex] = $j ;					   
+					   $newData[$icIndex] = 0;
+					   $icIndex++;	  					
+				}
+				
+			   $newLabel[$icIndex] = $labelArray[$i];
+			   $newData[$icIndex] = $dataArray[$i];
+			   $icIndex++;	  
+				   
+			  }
+			
+			$baslangic = (int)$labelArray[$i];
+		 }
+		 
+        return $newData;
+}
+
+function grafikGunNormallestirLabel($dataArray = null,$labelArray = null) {
+		$newData = array();
+		$newLabel = array();
+		
+		$baslangic = (int)$labelArray[0];
+		$icIndex = 0;
+ 	    $newLabel[$icIndex] = $labelArray[0];
+		$newData[$icIndex] = $dataArray[0];
+ 	    $icIndex++;	  
+		
+		for($i=1;$i<sizeof($dataArray);$i++) //kaç eleman var ise dön
+		 {
+		 	if ( (int)($labelArray[$i]) - $baslangic> 1) //en az 2 gün fark
+			  {
+				   for($j=0;$j<((int)($labelArray[$i]) - $baslangic - 1 );$j++){
+					  if($j + 1 + (int)($baslangic)<10)  
+					   $newLabel[$icIndex] = "0". ($j + 1 + (int)($baslangic));
+					  else
+					   $newLabel[$icIndex] = $j + 1 + (int)($baslangic);
+					   
+					   $newData[$icIndex] = 0;
+					   $icIndex++;	  
+				   }
+				   
+			   $newLabel[$icIndex] = $labelArray[$i];
+			   $newData[$icIndex] = $dataArray[$i];
+			   $icIndex++;	  
+				   
+			  }
+			  elseif ( (int)($labelArray[$i]) - $baslangic == 1) {//1 gün fark varmýþ yani normal
+			   $newLabel[$icIndex] = $labelArray[$i];
+			   $newData[$icIndex] = $dataArray[$i];
+			   $icIndex++;	  
+			  } else { //negatif yani 2 - 31 gibi
+	
+    $last_month = date('m')-1;$year=date('Y');
+	$timestamp = strtotime("$year-$last_month-01");    
+	$number_of_days = date('t',$timestamp);
+	
+			    for($j=$baslangic;$j<$number_of_days;$j++){
+					   $newLabel[$icIndex] = $j + 1 ;					   
+					   $newData[$icIndex] = 0;
+					   $icIndex++;	  					
+				}
+			    for($j=1;$j<(int)($labelArray[$i]);$j++){
+					  if($j<10)  
+					   $newLabel[$icIndex] = "0". ($j);
+					  else
+					   $newLabel[$icIndex] = $j ;					   
+					   $newData[$icIndex] = 0;
+					   $icIndex++;	  					
+				}
+				
+			   $newLabel[$icIndex] = $labelArray[$i];
+			   $newData[$icIndex] = $dataArray[$i];
+			   $icIndex++;	  
+				   
+			  }
+			
+			$baslangic = (int)$labelArray[$i];
+		 }
+		 
+        return $newLabel;
+}
+
 function getGrafikValues($lmt){
 	global $yol1;
 	
@@ -1451,9 +1581,6 @@ function getGrafikValues($lmt){
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
-			if($row['count']>20) 
-			  $data['values'][] = 20;
-			else
 		      $data['values'][] = $row['count'];
 		}
 		return $data['values'];
@@ -1499,9 +1626,6 @@ function getGrafikValues2($lmt){
 		$result = mysql_query($sql, $yol1);
 		$data = array();
 		while($row = mysql_fetch_assoc($result)) {
-			if($row['count']>20) 
-			  $data['values'][] = 20;
-			else
 		      $data['values'][] = $row['count'];
 		}
 		return $data['values'];

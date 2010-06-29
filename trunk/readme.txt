@@ -1,4 +1,4 @@
-eOgr - v116d
+eOgr - v117a
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -17,7 +17,7 @@ Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
 Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	28-06-2010
+Last Update: 	29-06-2010
 Process Time : 	400 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 
@@ -50,7 +50,7 @@ Used Classes:
 - wtag: http://spacegirlpippa.co.uk/ v1.0Beta
 - field hint: http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html
 - facebox: http://famspam.com/facebox v1.2
-- simpleChart: http://www.sourceworkshop.com/free-php-script-18.html v1.0
+- HTML Graphs: http://www.gerd-tentler.de/tools/phpgraphs v4.8
 
 CSS, RSS and HTML Validations:  
 - http://jigsaw.w3.org/css-validator/validator
