@@ -433,8 +433,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[340]="Only visible for registered users<br/><a href=newUser.php>New Membership!</a>";	
 		
 		$metin[341]="Total";	
-		$metin[342]="Last 20 days work (maximum 20 values)";
-		$metin[343]="Last 20 days data actions (maximum 20 values)";
+		$metin[342]="Last 15 days work";
+		$metin[343]="Last 15 days data actions";
 
 		$metin[344]="I will Answer!";
 		$metin[345]="You did not finish your lesson! You can go on by clicking Cancel";

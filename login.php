@@ -37,8 +37,8 @@
 		die("<font id='hata'>$metin[400] (2)</font>"); //session?
 		exit;
 	}
-	
-include_once "lib/simpleChart.php";
+
+include('lib/graphs.inc.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,7 +52,6 @@ include_once "lib/simpleChart.php";
 <title>eOgr -<?php echo $metin[60]?></title>
 <script type="text/javascript" src="lib/script.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="theme/grafik.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -299,30 +298,38 @@ include_once "lib/simpleChart.php";
 					 ?>
 <?php
 if(getGrafikRecordCount()>5) {
- echo "<div class='ikiKolon'>";
-	$sampleData = getGrafikValues(20);
-	$labels = getGrafikLabels(20);
+	echo "<div class='ikiKolon'>";
+	echo $metin[342];
+	$sampleData = getGrafikValues(15);
+	$labels = getGrafikLabels(15);
 
-    $chart = new simpleChart($sampleData,$labels);
-    $chart->verticalPoints = getGrafikMax(20)+1;
-    $chart->setMaxValue(getGrafikMax(20)+1);
-    $chart->setTitle("$metin[342]");	
-	
-	echo $chart->showChart();   
-echo "</div>";
+    $chart = new BAR_GRAPH("vBar");
+	$chart->values = grafikGunNormallestirData($sampleData,$labels);
+	$chart->labels = grafikGunNormallestirLabel($sampleData,$labels);
+	$chart->showValues = 2;	
+	$chart->labelSize =9;
+	$chart->titleSize =9;
+	$chart->absValuesSize  =9;
+	$chart->absValuesBorder = "0px";
+	echo $chart->create();   
+	echo "</div>";
 }
 if(getGrafikRecordCount2()>5) {
- echo "<div class='ikiKolon'>";
-	$sampleData2 = getGrafikValues2(20);
-	$labels2 = getGrafikLabels2(20);
+	echo "<div class='ikiKolon'>";
+	echo $metin[343];
+	$sampleData2 = getGrafikValues2(15);
+	$labels2 = getGrafikLabels2(15);
 
-    $chart2 = new simpleChart($sampleData2,$labels2);
-    $chart2->verticalPoints = getGrafikMax2(20) +1;
-    $chart2->setMaxValue(getGrafikMax2(20)+1);
-    $chart2->setTitle("$metin[343]");	
-	
-	echo $chart2->showChart();   
-echo "</div>";
+    $chart2 = new BAR_GRAPH("vBar");
+	$chart2->values = grafikGunNormallestirData($sampleData2,$labels2);
+	$chart2->labels = grafikGunNormallestirLabel($sampleData2,$labels2);
+	$chart2->showValues = 2;	
+	$chart2->labelSize =9;
+	$chart2->titleSize =9;
+	$chart2->absValuesSize  =9;
+	$chart2->absValuesBorder = "0px";
+	echo $chart2->create();   
+	echo "</div>";
 }
 ?>
                 </div>

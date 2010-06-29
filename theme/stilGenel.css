@@ -286,10 +286,15 @@ label {
 	padding-top: 10px;
 	padding-right: 5px;
 	padding-bottom: 5px;
-	padding-left: 5px;
+	padding-left: 5px;	
 }
 .ikiKolon ul li {
 	color:	#000;
+}
+.ikiKolon table {
+	text-align: center;
+	margin: auto;
+	clear: both;
 }
 .tekKolon {
 	position: relative;
