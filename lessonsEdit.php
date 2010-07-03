@@ -25,6 +25,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[62]?></title>
 <script type="text/javascript" src="lib/script.js"></script>
+<script type="text/javascript" src="lib/flashMode.js"></script>
 <script language="JavaScript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -391,7 +392,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
    
 if($seciliSekme=="0") {
 ?>
-                  <div id="TabbedPanelsContent">
+                  <div id="TabbedPanelsContent"> 
                     <!-- *********************************************************OKUL ba&#351;lad&#305; **********************************************************************-->
                     <?php
    if($_GET["upd"]!=1 || $seciliSekme!="0") {
@@ -1444,7 +1445,7 @@ if($seciliSekme=="0") {
 	 if($seciliSekme=="4" )
 	 {
 ?>
-                  <div id="TabbedPanelsContent">
+                  <div id="TabbedPanelsContent"> 
                     <!-- *************************************SAYFA ba&#351;lad&#305; *************************************************-->
                     <?php
    if($_GET["upd"]!=1) {
@@ -1567,6 +1568,13 @@ if($seciliSekme=="0") {
                           <th colspan="2"><?php echo $metin[369]?></th>
                         </tr>
                         <tr>
+                          <td colspan="2" align="center" class="tabloAlt"><label>
+                              <input type="submit" name="gonder9" id="gonder9" value="<?php echo $metin[360]?>" />
+                            </label>
+                            &nbsp;
+                            <input type="button" name="gonderme" id="gonderme"  onclick="location.href = &quot;lessonsEdit.php?tab=3&quot;;" value="<?php echo $metin[28]?>" /></td>
+                        </tr>
+                        <tr>
                           <td width="100" align="right"><label for="anaMetin"><?php echo $metin[390]?> : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"></textarea></td>
                         </tr>
@@ -1597,18 +1605,11 @@ if($seciliSekme=="0") {
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"></textarea></td>
                         </tr>
                         <tr>
-                          <td colspan="2" align="center" class="tabloAlt"><label>
-                              <input type="submit" name="gonder9" id="gonder9" value="<?php echo $metin[360]?>" />
-                            </label>
-                            &nbsp;
-                            <input type="button" name="gonderme" id="gonderme"  onclick="location.href = &quot;lessonsEdit.php?tab=3&quot;;" value="<?php echo $metin[28]?>" /></td>
-                        </tr>
-                        <tr>
                           <td colspan="2" ><p><?php echo $metin[394]?> </p></td>
                         </tr>
                       </table>
                     </form>
-                    <script language="JavaScript" type="text/javascript" src="lib/nicEdit.js"></script>
+                    <script language="JavaScript" type="text/javascript" src="lib/nicEdit.js"></script> 
                     <script type="text/javascript">
 bkLib.onDomLoaded(function() {
 	new nicEditor({fullPanel  :  true}).panelInstance('anaMetin');
@@ -1626,6 +1627,14 @@ bkLib.onDomLoaded(function() {
                       <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
                           <th colspan="2"><?php echo $metin[374]?> (<?php echo $seciliKayit?> <?php echo $metin[356]?>)</th>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center" class="tabloAlt"><label>
+                              <input name="id" type="hidden" value="<?php echo mysql_result($result2, 0, "id")?>" />
+                              <input type="submit" name="gonder2" id="gonder2" value="<?php echo $metin[361]?>" />
+                              &nbsp;
+                              <input type="button" name="gonderme" id="gonderme"  onclick="location.href = &quot;lessonsEdit.php?tab=4&quot;;" value="<?php echo $metin[28]?>" />
+                            </label></td>
                         </tr>
                         <tr>
                           <td width="100" align="right"><label for="konuID"><?php echo $metin[299]?> : </label></td>
@@ -1678,19 +1687,11 @@ bkLib.onDomLoaded(function() {
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"><?php echo mysql_result($result2, 0, "secenek5");?></textarea></td>
                         </tr>
                         <tr>
-                          <td colspan="2" align="center" class="tabloAlt"><label>
-                              <input name="id" type="hidden" value="<?php echo mysql_result($result2, 0, "id")?>" />
-                              <input type="submit" name="gonder2" id="gonder2" value="<?php echo $metin[361]?>" />
-                              &nbsp;
-                              <input type="button" name="gonderme" id="gonderme"  onclick="location.href = &quot;lessonsEdit.php?tab=4&quot;;" value="<?php echo $metin[28]?>" />
-                            </label></td>
-                        </tr>
-                        <tr>
                           <td colspan="2" ><p><?php echo $metin[394]?></p></td>
                         </tr>
                       </table>
                     </form>
-                    <script language="JavaScript" type="text/javascript" src="lib/nicEdit.js"></script>
+                    <script language="JavaScript" type="text/javascript" src="lib/nicEdit.js"></script> 
                     <script type="text/javascript">
 bkLib.onDomLoaded(function() {
 	new nicEditor({fullPanel  :  true}).panelInstance('anaMetin');
@@ -1705,7 +1706,7 @@ bkLib.onDomLoaded(function() {
 	 else 
 	 echo "<font id='uyari'>Düzenlenecek i&#351;lemi <?php echo $metin[106] ?>.<br/> Sayfa düzenlemek i&ccedil;in &ouml;nce bir konu (kimlik s&uuml;tununa t&#305;klatarak) <?php echo $metin[106] ?>. </font> ";
 ?>
-                  <!-- ************************************************bitti!*********************************************************************-->
+                  <!-- ************************************************bitti!*********************************************************************--> 
                 </div>
                 <div class="cleared"></div>
               </div>
@@ -1770,7 +1771,7 @@ bkLib.onDomLoaded(function() {
 	 }
  
 ?>
-                    <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.8.2.custom.min.js"></script>
+                    <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.8.2.custom.min.js"></script> 
                     <script type="text/javascript">
 $(document).ready(function(){ 
 
@@ -1785,7 +1786,7 @@ $(document).ready(function(){
 	});
 
 });
-</script>
+</script> 
                   </div>
                 </div>
                 <div class="cleared"></div>
@@ -1831,7 +1832,7 @@ if (document.getElementById("anaMetin")!=null) document.sayfaForm.anaMetin.focus
 if (document.getElementById("sadeceKayitlilarGorebilir")!=null) {
 	 chekDisable();
 }
- 
+ fix_flash();
 //-->
 </script>
 </body>

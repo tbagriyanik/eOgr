@@ -702,7 +702,6 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	margin: 0 auto;
 	position: relative;
 	z-index: 0;
-	
 }
 .BlockContent-body {
 	position: relative;
@@ -1037,7 +1036,7 @@ a {
 a:link {
 	font-family: Tahoma, Arial, Helvetica, Sans-Serif;
 	text-decoration: none;
-	color: #6C0;
+	color: #066;
 }
 /* Adds special style to a visited link. */
 a:visited, a.visited {

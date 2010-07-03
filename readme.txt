@@ -1,4 +1,4 @@
-eOgr - v117a
+eOgr - v117b
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -14,17 +14,18 @@ Available language support is English and Turkish.
 
 Developer Name: Tarik Bagriyanik
 Developer Site: http://yunus.sourceforge.net
-Demo Site:	http://tbagriyanik.xtreemhost.com/eogr
+Demo Site:	http://www.tuzlaatl.k12.tr/eogr
 Source Track:	http://eogr.googlecode.com
 Start Date: 	15-11-2008
-Last Update: 	29-06-2010
-Process Time : 	400 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
+Last Update: 	03-07-2010
+Process Time : 	410 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
 
 INSTALLATION:
 -------------
 (1) Edit your settings in "database.php" with an editor
-(2) " http://localhost/eogr/install.php " is for installation. Your MySQL user must have "CREATE TABLE" permission!
+(2) " http://localhost/eogr/install.php " is for installation. 
+     Your MySQL user must have "CREATE TABLE" permission!
 (3) Login as administrator user: name "admin" and password "11111"
  
 	:For Clients (web users):
@@ -40,17 +41,18 @@ INSTALLATION:
 Used Classes:
 - autosuggest: http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html v2.1.3
 - flood-protection: http://archive.free-php.org.uk/ v1.0
-- hijax: http://bulletproofajax.com 
-- jQuery: http://jquery.com/ 1.4.2
-- jQuery UI: http://jqueryui.com 1.8.2
+- jQuery: http://jquery.com/ v1.4.2
+- jQuery UI: http://jqueryui.com v1.8.2
 - nicEdit: http://www.nicedit.com/ v0.9 r23
 - phplivex: http://www.phplivex.com/ v2.6
-- SQL_Export: http://www.phpclasses.org/browse/file/7633.html
-- SQL_Import: http://www.phpclasses.org/browse/package/4898.html
 - wtag: http://spacegirlpippa.co.uk/ v1.0Beta
-- field hint: http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html
 - facebox: http://famspam.com/facebox v1.2
 - HTML Graphs: http://www.gerd-tentler.de/tools/phpgraphs v4.8
+- SQL_Export: http://www.phpclasses.org/browse/file/7633.html
+- SQL_Import: http://www.phpclasses.org/browse/package/4898.html
+- hijax: http://bulletproofajax.com 
+- field hint: http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html
+- Flash Fix: http://www.onlineaspect.com/2009/08/13/javascript_to_fix_wmode_parameters
 
 CSS, RSS and HTML Validations:  
 - http://jigsaw.w3.org/css-validator/validator

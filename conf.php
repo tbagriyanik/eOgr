@@ -88,27 +88,19 @@ function temaBilgisi(){
 	$adresten = RemoveXSS($_GET["theme"]);
 	$cerezden = RemoveXSS($_COOKIE["theme"]);
 
-	if($adresten!="")
+	if($adresten!="" and is_dir('theme/'.$adresten))
 	  {
-
 		  setcookie("theme",$adresten,time()+60*60*24*30);
-		  
-		  switch ($adresten){
-			  case "0":	$result="silverModern";break;
-			  case "1":	$result="darkOrange";break;
-			  case "2":	$result="lightGreen";break;
-			  default:	$result="silverModern"; 			  
-		  }
+		  $result=$adresten;
 	  }
-	  else{
-		  switch ($cerezden){
-			  case "0":	$result="silverModern";break;
-			  case "1":	$result="darkOrange";break;
-			  case "2":	$result="lightGreen";break;
-			  default:	$result="silverModern"; 			  
-		  }
+	  else	if($cerezden!="" and is_dir('theme/'.$cerezden)){
+
+		  $result=$cerezden;
 	  }
 	  
+	  if(empty($cerezden)) 
+	    setcookie("theme",$result,time()+60*60*24*30);
+
 	  return $result;
 }
 
@@ -1423,21 +1415,21 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 	global $yol1;
 
 	$datem	=	date("Y-n-j H:i:s");
-     
+    
 	if (strlen($realName)<5 || strlen($userName)<5 ||  strlen($email)<5 ||  strlen($birth)<5 || strlen($password)<5 ||
 		strlen($realName)>30 || strlen($userName)>15 ||  strlen($email)>50 ||  strlen($birth)>10 || strlen($password)>15 ) return false; 
-	
+	     
 	if ($realName=="" || $userName=="" || $password=="" || $email=="" || $birth=="") return false;
-	
+	     
 	if ( !validInput($userName) || !validInput($password) ) return false;
-  
+      
 	$realName	=trim(substr(temizle($realName),0,30));
 	$userName	=trim(substr(temizle($userName),0,15));
   	$password	=trim(substr(temizle($password),0,15));
 	$email		=trim(substr(temizle($email),0,50));
   	$birth		=tarihYap(trim(substr(temizle($birth),0,10)));
 	
-	$sql1	= 	"Insert into eo_users VALUES (NULL , '$userName', '".sha1($password)."' , '$realName', '$email', '$birth', '0', '$datem')";
+	$sql1	= 	"Insert into eo_users VALUES (NULL , '$userName', '".sha1($password)."' , '$realName', '$email', '$birth', '0', '$datem','1-1-1-1-1-1-1-1-1-1-1-1-1-1-1')";
 
 	$result1= 	@mysql_query($sql1,$yol1);
 	@mysql_free_result($result1);

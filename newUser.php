@@ -63,14 +63,15 @@ dd {
 .hint {
 	display: none;
 	position: absolute;
-	right: -210px;
-	width: 250px;
+	right: -260px;
+	width: 300px;
 	margin-top: -4px;
 	border: 1px solid #c93;
 	padding: 10px 12px;
 	background: #ffc url(img/pointer.gif) no-repeat -10px 5px;
 	color:#000;
 	text-align:justify;
+	font-size:16px;
 }
 .hint .hint-pointer {
 	position: absolute;
@@ -245,6 +246,7 @@ addLoadEvent(prepareInputsForHints);
 			
 				$_SESSION["newUser"]="yes";
 				$_SESSION["ccode2"]="";
+				
 				if (addnewUser($_POST['realN'], $_POST['userName'], $_POST['userPassword1'], $_POST['email'], $_POST['birth'])) {
 					trackUser($currentFile,"success,NewUser",$_POST['userName']);
 					echo "<br/>$metin[7], ".temizle($_POST["realN"])."<br/><br/>";	
@@ -252,11 +254,11 @@ addLoadEvent(prepareInputsForHints);
 						if(ayarGetir("ayar4char")!="") {
 						if (newUserMail($_POST['userName'], $_POST['email'])=="allOK")
 							 {
-								 //echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlýdýr.";
+								 echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlýdýr.";
 							 }
 							 else
 							 {
-								 //echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlý olamadý!";
+								 echo "<br/><br/>Yeni &Uuml;yelik Epostasý Baþarýlý olamadý!";
 							 }
 						}
 				   }

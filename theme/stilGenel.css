@@ -286,10 +286,19 @@ label {
 	padding-top: 10px;
 	padding-right: 5px;
 	padding-bottom: 5px;
-	padding-left: 5px;	
+	padding-left: 5px;
 }
 .ikiKolon ul li {
 	color:	#000;
+}
+.ikiKolon a {
+	color:	#00f;
+}
+.tekKolon a {
+	color:	#00f;
+}
+tr a {
+	color:	#00f;
 }
 .ikiKolon table {
 	text-align: center;
@@ -299,7 +308,7 @@ label {
 .tekKolon {
 	position: relative;
 	float:left;
-	width:95%;
+	width:94.5%;
 	border-top: 5px solid #6C0;
 	background-color:#FFC;
 	color:#000;
@@ -417,7 +426,7 @@ label.error {
 /*sliding lesson tree*/
 .msg_list {
 	margin: 2px;
-	padding: 0px;	
+	padding: 0px;
 }
 .msg_head {
 	padding: 5px;

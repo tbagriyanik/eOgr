@@ -199,7 +199,7 @@
                   <p><em>&Uuml;cretsiz, kolay ve basit...</em></p>
 ";
 				  
-		$metin[165]=" <p>Varsayýlan olarak &quot;&ouml;ðrenci&quot; t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak istenmeyen kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li>Birden fazla &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola ayný olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya tekrarlanan deðerler olamaz.</li>                  </ul>";
+		$metin[165]=" <p>Varsayýlan olarak &quot;&ouml;ðrenci&quot; t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak istenmeyen kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li>Birden fazla &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola ayný olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya tekrarlanan deðerler olamaz.</li><li>Bu form sadece bir kere doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
 
 		$metin[166]="&Ouml;nceki Konu";
 		$metin[167]="Sonraki Konu";
