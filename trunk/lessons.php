@@ -33,6 +33,7 @@ ob_start (); // Buffer output
 <!--TITLE-->
 </title>
 <script type="text/javascript" src="lib/script.js"></script>
+<script type="text/javascript" src="lib/flashMode.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/hijax.js"></script>
 <link href="theme/ratings.css" rel="stylesheet" type="text/css" />
@@ -45,7 +46,6 @@ ob_start (); // Buffer output
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -380,6 +380,8 @@ function cevapSureBasla(){
 					});	
 		}
 	}
+	
+fix_flash();	
 </script>
           <?php	 
 	 if(isset($_GET["konu"]) && isKonu($_GET["konu"])){

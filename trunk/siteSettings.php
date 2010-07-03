@@ -61,7 +61,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr - <?php echo $metin[58]?>
 </title>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -69,6 +68,7 @@
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />			
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {

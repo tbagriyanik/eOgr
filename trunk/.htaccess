@@ -16,8 +16,10 @@ RewriteRule ^(.*)$ hata.html [NC]
 
 RewriteRule (,|;|<|>|'|`) hata.html [NC]
 
+ErrorDocument 403 /eogr/hata.html
 ErrorDocument 404 /eogr/hata.html
 #not found error redirection
+
 
 AddDefaultCharset ISO_8859-9 		
 #avoid the 500 error display

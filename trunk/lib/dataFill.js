@@ -136,7 +136,7 @@ function setOutputKonu(sayfaNo, konu, noCount){
 //			document.getElementById('sonSayfaHidden').value=0;
 
 		}
-		
+		fix_flash();
 		document.getElementById('yukleniyor').style.visibility = "hidden";	
 		
     }
