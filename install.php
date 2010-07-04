@@ -172,202 +172,12 @@ function dilCevir($dil){
 	if(isset($_POST['submit']))
 	{
 
-$sql = 	"CREATE TABLE  eo_floodprotection (      
-  IP char(32) NOT NULL,   
-  TIME char(20) NOT NULL, 
-  PRIMARY KEY (IP)                  
- ) ;
- CREATE TABLE eo_users (  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-								   userName varchar(30) NOT NULL UNIQUE KEY ,
-									  userPassword varchar(40) NOT NULL,
-									  realName varchar(50) NOT NULL,
-									  userEmail varchar(50) NOT NULL UNIQUE KEY ,
-									  userBirthDate date NOT NULL,
-									  userType tinyint(4) NOT NULL DEFAULT '0',
-									  requestDate datetime NOT NULL,
-  									  ayarlar varchar(50) DEFAULT NULL
-									  ) ;";
-
-$sql .= "INSERT INTO eo_users (id, userName, userPassword, realName, userEmail, userBirthDate, userType, requestDate) VALUES 
-	(1, \"admin\", \"7b21848ac9af35be0ddb2d6b9fc3851934db8420\", \"super kullanici\", \"admin@eogr.com\", \"2008-11-15\", 2, \"2008-11-15 00:00:00\",\"1-1-1-1-1-1-1-1-1-1-1-1-1-1-1\");";
-
-	
-$sql .= "CREATE TABLE eo_usertrack (
-  id int(11) NOT NULL auto_increment  PRIMARY KEY,
-  IP varchar(40) NOT NULL,
-  dateTime datetime NOT NULL,
-  processName varchar(20) NOT NULL,
-  userName varchar(15) NOT NULL,
-  otherInfo varchar(15) NOT NULL
-); ";
-
-$sql .= "CREATE TABLE eo_shoutbox (
-             messageid    int(11) not null auto_increment PRIMARY KEY,
-             name         varchar(30) not null,
-             url          varchar(100) not null,
-             message      text not null,
-             ip           int(11) not null,
-             date         datetime not null default '0000-00-00 00:00:00');
-       ";
-
-$sql .= "
-CREATE TABLE eo_1okul (
-  id int(11) NOT NULL auto_increment  PRIMARY KEY ,
-  okulAdi varchar(50) NOT NULL  UNIQUE KEY 
-);";
-
-$sql .= "INSERT INTO eo_1okul (id, okulAdi) VALUES
-(1, 'Meslek Lisesi');";
-
-$sql .= "CREATE TABLE eo_2sinif (
-  id int(11) NOT NULL auto_increment  PRIMARY KEY ,
-  sinifAdi varchar(50) NOT NULL ,
-  okulID int(11) NOT NULL
-);";
-
-$sql .= "INSERT INTO eo_2sinif (id, sinifAdi, okulID) VALUES
-(1, '10.sinif', 1),
-(2, '11.sinif', 1);
-";
-
-$sql .= "CREATE TABLE eo_3ders (
-id int(11) NOT NULL auto_increment  PRIMARY KEY ,
-  dersAdi varchar(50) NOT NULL ,
-  sinifID int(11) NOT NULL
-) ;";
-
-$sql .= "INSERT INTO eo_3ders (id, dersAdi, sinifID) VALUES
-(1, 'Matematik', 1),
-(2, 'Turkce', 1),
-(3, 'Turkce', 2),
-(4, 'Matematik', 2),
-(5, 'Bilisim Temelleri', 1),
-(6, 'Paket Programlama', 1);
-";
-
-$sql .= "CREATE TABLE eo_4konu (
-  id int(11) NOT NULL auto_increment  PRIMARY KEY ,
-  konuAdi varchar(50) NOT NULL,
-  dersID int(11) NOT NULL,
-  bitisTarihi date NOT NULL,
-  oncekiKonuID int(11) NOT NULL,
-  konuyuKilitle tinyint(1) NOT NULL,
-  sadeceKayitlilarGorebilir tinyint(1) NOT NULL,
-  sinifaDahilKullaniciGorebilir tinyint(1) NOT NULL,
-  calismaSuresiDakika int(11) NOT NULL,
-  calismaHakSayisi int(11) NOT NULL
-) ;";
-
-$sql .= "INSERT INTO eo_4konu (id, konuAdi, dersID) VALUES
-(1, 'Programlama Temelleri', 5),
-(2, 'Anakart', 5),
-(3, 'Kelime Islemci Programi', 6),
-(4, 'Hesap Tablosu Programi', 6);";
-
-$sql .= "CREATE TABLE eo_5sayfa (
-  id int(11) NOT NULL auto_increment  PRIMARY KEY ,
-  anaMetin varchar(10000) NOT NULL,
-  konuID int(11) NOT NULL,
-  secenek1 varchar(1000) NOT NULL,
-  secenek2 varchar(1000) NOT NULL,
-  secenek3 varchar(1000) NOT NULL,
-  secenek4 varchar(1000) NOT NULL,
-  secenek5 varchar(1000) NOT NULL,
-  cevap varchar(50) NOT NULL,
-  ekleyenID int(11) NOT NULL,
-  eklenmeTarihi datetime NOT NULL,
-  sayfaSirasi int(11) NOT NULL
-) ;";
-
-$sql .= "INSERT INTO eo_5sayfa (id, anaMetin, konuID, secenek1, secenek2, secenek3, secenek4, secenek5, cevap, ekleyenID, eklenmeTarihi) VALUES
-(1, 'ilk eklenen konu... algoritma nedir ne ise yarar', 1, 'sudur budur', 'falan filan', '', '', '', '', 1, '2009-01-20 18:29:54'),
-(2, 'programlama nedir ne ile yazilir neden ....', 1, 'sudur budur', 'falan filan', '', '', '', '', 1, '2009-01-20 18:29:54');
-";
-
-$sql .= "CREATE TABLE eo_sitesettings (
-  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  okulGenelAdi varchar(15) NOT NULL,
-  versiyon varchar(10) NOT NULL,
-  sayfaBlokSayisi int(11) NOT NULL,
-  sayfaKullaniciSayisi int(11) NOT NULL,
-  veriHareketleriSayisi int(11) NOT NULL,
-  ayar1int int(11) NOT NULL,
-  ayar2int int(11) NOT NULL,
-  ayar3int int(11) NOT NULL,
-  ayar4char varchar(50) DEFAULT NULL,
-  ayar5char varchar(50) DEFAULT NULL
-  );";
-
-$sql .= "INSERT INTO eo_sitesettings (id, okulGenelAdi, versiyon, sayfaBlokSayisi, sayfaKullaniciSayisi, veriHareketleriSayisi, ayar1int, ayar2int, ayar3int, ayar4char, ayar5char) VALUES (1, 'Net Okul', 'version', 5, 10, 10, 5, 10, 10, 'admin@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');";
-
-
-$sql .= "
-CREATE TABLE eo_webref_rss_details (
-  id int(11) NOT NULL auto_increment PRIMARY KEY,
-  title text NOT NULL,
-  description mediumtext NOT NULL,
-  link text,
-  language text,
-  image_title text,
-  image_url text,
-  image_link text,
-  image_width text,
-  image_height text
-);  ";
-
-$sql .= "INSERT INTO eo_webref_rss_details (id, title, description, link, language, image_title, image_url, image_link, image_width, image_height) VALUES
-(1, 'eOgr', 'eOgrenme - eLearning RSS Feed', 'http://eogr.com', 'TR', '', '', '', '', '');";
-
-$sql .= "CREATE TABLE eo_webref_rss_items (
-  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  title text NOT NULL,
-  description mediumtext NOT NULL,
-  link text,
-  pubDate DATETIME NOT NULL
-  );";
-
-$sql .= "INSERT INTO eo_webref_rss_items (id, title, description, link, pubDate) VALUES
-(1, 'eOgr', 'Bir haber ornegi...', '', '2009-06-14 21:29:13');";
-
-$sql .= "CREATE TABLE eo_userworks (
-	  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-	  userID int(11) NOT NULL,
-	  konuID int(11) NOT NULL,
-	  toplamZaman int(11) NOT NULL,
-	  lastPage int(11) NOT NULL,
-	  calismaTarihi datetime NOT NULL  
-		);";
-
- 
-$sql .= "CREATE TABLE eo_sinifogre (
-		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-		userID INT(11) NOT NULL ,
-		sinifID INT(11) NOT NULL
-		);";
-
-$sql .= "CREATE TABLE eo_rating (
-		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-		userID INT(11) NOT NULL ,
-		konuID INT(11) NOT NULL ,
-		value INT(11) NOT NULL ,
-		rateDate DATETIME NOT NULL
-		);";
-
-$sql .= "CREATE TABLE eo_comments (
-		  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-		  userID int(11) NOT NULL,
-		  konuID int(11) NOT NULL,
-		  comment varchar(1000) NOT NULL,
-		  commentDate datetime NOT NULL,
-		  active tinyint(1) NOT NULL
-		);";
-
-		  require("lib/SQL_Import.php");
+		  require("lib/SQL_Import2.php");
 		  
 					$host =  $_host;
 					$dbUser =  $_username;
 					$dbPassword =  $_password;
-					$sqlFile = $sql;
+					$sqlFile = "installation_Database.sql";
 					
 					$baglan2= @mysql_connect($host, $dbUser, $dbPassword);
 					
@@ -385,13 +195,19 @@ $sql .= "CREATE TABLE eo_comments (
 					  	}						 
 							
 					  $newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);								
-					  $importumuz = $newImport -> importa ();
-					  
-					  if ($importumuz == "")
-						  echo "<font id='tamam'>Tablolar Oluþturuldu: $db_name (veritabaný). </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111<br/>";
-					   else {
-						  echo "<font id='hata'>Veritabaný kurulmuþ haldedir.<br/>Kuruluma devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.</font>";
-					   }						
+					  //$importumuz = $newImport -> importa ();
+					  $newImport -> import ();
+				
+					  $import = $newImport -> ShowErr ();
+						
+						if ($import["exito"] != 1)
+						{
+							echo "<font id='tamam'><br/>";
+						} else {
+							echo $import ["errorCode"]." ".$import ["errorText"];
+							echo "<font id='tamam'>Veritabaný kurulmuþ haldedir.<br/>Tablo oluþturmaya devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.<br/>Tablolarý zaten oluþturdu iseniz, bu uyarýyý gözardý ediniz. </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111</font>";
+						}
+									
 						
 					}
 	  mysql_close($yol22);	
@@ -429,14 +245,18 @@ $sql .= "CREATE TABLE eo_comments (
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
+                  <?php if(file_exists("installation_Database.sql")){?>
                   <p><strong> <?php echo $metin[73]?> </strong></p>
+                  <p><strong> <?php echo $metin[398]?> </strong></p>
+                  <a href="installation_Database.sql"><?php echo $metin[399]?> - <?php echo filesize("installation_Database.sql")?> B</a><br />
+<br />
+
                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <input name="submit" type="submit" value="<?php echo $metin[46]?>" />
                   </form>
-                  <?php if(file_exists("installation_Database.sql")):?>
-                  <p><strong> <?php echo $metin[398]?> </strong></p>
-                  <a href="installation_Database.sql"><?php echo $metin[399]?> - <?php echo filesize("installation_Database.sql")?> B</a>
-                  <?php endif?>
+                  <?php }else{?>
+                   Veritabaný dosyanýz bulunamadý. Kurulum yapýlamýyor!
+                  <?php }?>
                 </div>
                 <div class="cleared"></div>
               </div>

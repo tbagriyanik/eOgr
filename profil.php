@@ -15,7 +15,10 @@ require 'database.php';
 require("conf.php");	
 		   
 if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-
+/*
+baglan2:
+veritabanýna baðlan
+*/
 function baglan2()
 {
 	global  $_host;
@@ -36,7 +39,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2:
+xss temizleme
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -52,7 +58,10 @@ function temizle2($metin)
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }
-
+/*
+getUserIDrate:
+kullanýcýnýn kimlik bilgisi
+*/
 function getUserIDrate($usernam, $passwor)
 {
 	global $yol1;
@@ -69,7 +78,10 @@ function getUserIDrate($usernam, $passwor)
 	   return ("");
 	}
 }
-
+/*
+Sec2Time22:
+saniyenin üst birime dönüþtürülmesi
+*/
 function Sec2Time22($time){
   if(is_numeric($time)){
     $value = "";
@@ -95,7 +107,10 @@ function Sec2Time22($time){
     return (bool) FALSE;
   }
 }
-
+/*
+kullAdi:
+kullanýcýnýn adý
+*/
 function kullAdi($id)
 {
 	global $yol1;	
@@ -109,7 +124,10 @@ function kullAdi($id)
 	   return ("");
 	}
 }
-
+/*
+kullGercekAdi:
+kullanýcýnýn gerçek adý
+*/
 function kullGercekAdi($id)
 {
 	global $yol1;	
@@ -123,7 +141,10 @@ function kullGercekAdi($id)
 	   return ("");
 	}
 }
-
+/*
+kullTur:
+kullanýcýnýn türü
+*/
 function kullTur($id)
 {
 	global $yol1;
@@ -149,7 +170,10 @@ function kullTur($id)
 	   return ("");
 	}
 }
-
+/*
+uyeTarihi:
+kullanýcýnýn üyelik tarihi
+*/
 function uyeTarihi($id)
 {
 	global $yol1;	
@@ -163,7 +187,10 @@ function uyeTarihi($id)
 	   return ("");
 	}
 }
-
+/*
+sonGiris:
+kullanýcýnýn son giriþ tarihi
+*/
 function sonGiris($id)
 {
 	global $yol1;	
@@ -177,7 +204,10 @@ function sonGiris($id)
 	   return ("");
 	}
 }
-
+/*
+girisSayisi:
+kullanýcýnýn giriþ sayýsý
+*/
 function girisSayisi($id)
 {
 	global $yol1;	
@@ -191,7 +221,10 @@ function girisSayisi($id)
 	   return ("");
 	}
 }
-
+/*
+girisSayisiRank:
+kullanýcýnýn giriþ sayýsý seviyesi
+*/
 function girisSayisiRank($id)
 {
 	global $yol1;	
@@ -216,7 +249,10 @@ function girisSayisiRank($id)
 	}
 	return 0;
 }
-
+/*
+sayfaEklemeSay:
+öðretmenin sayfa ekleme sayýsý
+*/
 function sayfaEklemeSay($id){
 				global $yol1;	
 				$id = substr(temizle2($id),0,15);
@@ -236,7 +272,10 @@ function sayfaEklemeSay($id){
 				   return ("");
 				}
 }
-
+/*
+dersCalismaSay:
+kullanýcýnýn ders çalýþmas sayýsý
+*/
 function dersCalismaSay($id)
 {
 	global $yol1;	
@@ -250,7 +289,10 @@ function dersCalismaSay($id)
 	   return ("");
 	}
 }
-
+/*
+dersCalismaSure:
+kullanýcýnýn ders çalýþma süresi
+*/
 function dersCalismaSure($id)
 {
 	global $yol1;	
@@ -264,7 +306,10 @@ function dersCalismaSure($id)
 	   return ("");
 	}
 }
-
+/*
+dersCalismaOrt:
+kullanýcýnýn ders çalýþma ortalamasý
+*/
 function dersCalismaOrt($id)
 {
 	global $yol1;	
@@ -278,7 +323,10 @@ function dersCalismaOrt($id)
 	   return ("");
 	}
 }
-
+/*
+yorumSay:
+kullanýcýnýn yorum sayýsý
+*/
 function yorumSay($id)
 {
 	global $yol1;	
@@ -292,7 +340,10 @@ function yorumSay($id)
 	   return ("");
 	}
 }
-
+/*
+yorumSayPasif:
+kullanýcýnýn pasif yorum sayýsý
+*/
 function yorumSayPasif($id)
 {
 	global $yol1;	
@@ -306,7 +357,10 @@ function yorumSayPasif($id)
 	   return ("");
 	}
 }
-
+/*
+oySay:
+kullanýcýnýn oy sayýsý
+*/
 function oySay($id)
 {
 	global $yol1;	
@@ -320,7 +374,10 @@ function oySay($id)
 	   return ("");
 	}
 }
-
+/*
+oyOrt:
+kullanýcýnýn oy ortalamasý 
+*/
 function oyOrt($id)
 {
 	global $yol1;	
@@ -334,7 +391,10 @@ function oyOrt($id)
 	   return ("");
 	}
 }
-
+/*
+getOgrenciSiniflari2:
+kullanýcýnýn sýnýf bilgileri
+*/
 function getOgrenciSiniflari2($id){
 	global $yol1;
 	$id = substr(temizle2($id),0,15);
@@ -356,7 +416,10 @@ function getOgrenciSiniflari2($id){
 				   return ("");
 				}
 }
-
+/*
+dersCalismaOrtRank:
+kullanýcýnýn ders çalýþma düzeyi
+*/
 function dersCalismaRank($id){
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
@@ -380,7 +443,10 @@ function dersCalismaRank($id){
 	}
 	return 0;
 }
-
+/*
+dersCalismaOrtRank:
+kullanýcýnýn ders çalýþma ortalama düzeyi
+*/
 function dersCalismaOrtRank($id){
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);

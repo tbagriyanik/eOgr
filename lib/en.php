@@ -193,7 +193,7 @@
 	
 		$metin[164]="eOgr is an application for all fields, you can participate any subject freely.<br/>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.<br/><br/><em>Free, easy and simple...</em><br/>";
 
-		$metin[165]=" <p>As default, you can join as &quot;student&quot; type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be passive or active by an administrator later.</li>                  <li>If there are more than one registration, administrators can erase any registration.</li>                    <li>Don't use same username and password.</li>                    <li>Don't use 12345678 or repeating values for password.</li><li>This is a one time usable form. On error, please go to main page.</li>                  </ul>";
+		$metin[165]=" <p>As default, you can join as &quot;student&quot; type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be passive or active by an administrator later.</li>                  <li>If there are more than one registration, administrators can erase any registration.</li>                    <li>Don't use same username and password.</li>                    <li>Don't use 12345678 or repeating values for the password.</li><li>This is a one time usable form. On error, please go to the main page.</li>                  </ul>";
 
 		$metin[166]="Previous Subject";
 		$metin[167]="Next Subject";
@@ -500,9 +500,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[393]='<ul>
                       <li style="list-style-type:none">For a classic question, just fill the right "answer". Like 1923 year data. 
                       <li style="list-style-type:none">For an options question, you need to write at last 2 option text. And the answer must be A, B, C, D or E.
-                      <li style="list-style-type:none">Questions options are mixed automatically on examination.
-                      <li style="list-style-type:none">Questions answering time limit is 30 seconds.
-                    </ul>';
+                      <li style="list-style-type:none">Questions options are mixed automatically on examinati                      </ul>';
 		$metin[394]="Video and content size advice :<br/>430 pixel width and 350 pixel height";
 		$metin[395]="Page Order";
 		$metin[396]="Drag upwards or downwards a page for reordering :";
@@ -519,9 +517,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[405]="There are no news or this section is disabled.";
 		$metin[406]="Code error! <a href=# onclick=history.go(-1);>Click here</a> to retry.";
 		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><a href=# onclick=history.go(-1);>Click here</a> to retry.";
-		$metin[408]="<font id='uyari'> You are a new member now!</font> To login, please <a href='index.php'>click here</a> to go to main page";
-		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'>Click here</a>  to go to main page.";
-		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'>Click here</a> to go to main page.";
+		$metin[408]="<font id='uyari'> You are a new member now!</font> To login, please <a href='index.php'>click here</a> to go to the main page";
+		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'>Click here</a>  to go to the main page.";
+		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'>Click here</a> to go to the main page.";
 		$metin[411]="This user name has been used previously";
 		$metin[412]="This email has been used previously";
 		$metin[413]="New password process is not finished!";

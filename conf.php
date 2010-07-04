@@ -12,7 +12,10 @@ require 'database.php';
 	$currentFile = $_SERVER["PHP_SELF"];
     $parts = Explode('/', $currentFile);
     $currentFile = $parts[count($parts) - 1];
-
+/*
+baglan: parametresiz, 
+veritabaný baðlantýsý
+*/
 function baglan()
 {
 	global  $_host;
@@ -40,7 +43,10 @@ $yol1	=	baglan();
 			die("<font id='hata'> Tablo <a href=install.php>kurulumunu (installation)</a> yapmad&#305;n&#305;z!</font>");
 		@mysql_free_result($result); 	
 	}
-
+/*
+temizle: metin giriþi, 
+XSS temizliði
+*/
 function temizle($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -56,14 +62,20 @@ function temizle($metin)
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }
-
+/*
+browserdili: parametresiz, 
+aktif tarayýcýnýn dil ayarýný bulma
+*/
 function browserdili() {
          $lang=split('[,;]',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
          $lang=strtoupper($lang[0]);
          $lang=split('[-]',$lang);
          return $lang[0];
 }
-
+/*
+check_source:  
+sayfa güvenliði için kontrol
+*/
 function check_source()  
 {  
 	global  $_source1;
@@ -77,12 +89,18 @@ function check_source()
   else  
     return false;  
 }  
-
+/*
+sessionDestroy:
+oturum bilgilerinin silinmesi
+*/
 function sessionDestroy(){
 	  @session_destroy();
 	  @session_start(); 	  
 }
-
+/*
+temaBilgisi:
+temanýn deðiþtirilmesi
+*/
 function temaBilgisi(){
 	$result = "silverModern";
 	$adresten = RemoveXSS($_GET["theme"]);
@@ -103,7 +121,10 @@ function temaBilgisi(){
 
 	  return $result;
 }
-
+/*
+dilCevir:
+dil ayarýnýn yapýldýðý yer
+*/
 function dilCevir($dil){
       if ($dil=="TR")
         require("lib/tr.php"); 
@@ -112,7 +133,10 @@ function dilCevir($dil){
       else 
         require("lib/en.php");         
 }
-
+/*
+araKalin:
+arama kelimesinin renklendirilmesi, TR sorunu var.
+*/
 function araKalin($neyi)
 {
 	$sonuc="";
@@ -136,12 +160,18 @@ function araKalin($neyi)
 
 	return $sonuc; 
 }
-
+/*
+tarihOku:
+TR formatýnda tarih bilgisi biçimi
+*/
 function tarihOku($gelenTarih){
 	//Y-m-d > d-m-Y 	
 	return date("d-m-Y", strtotime($gelenTarih));
 }
-
+/*
+tarihYap:
+TR formatýnda tarih bilgisi biçimi
+*/
 function tarihYap($gelenTarih){
 	//d-m-Y > Y-m-d 
 	if (date('Y-m-d', strtotime($gelenTarih))=="1970-01-01")
@@ -149,12 +179,18 @@ function tarihYap($gelenTarih){
 	else
 		return date('Y-m-d', strtotime($gelenTarih));
 }
-
+/*
+tarihOku2:
+TR formatýnda tarih bilgisi biçimi
+*/
 function tarihOku2($gelenTarih){
 	//Y-m-d H:i:s > d-m-Y H:i:s
 	return date('d-m-Y H:i:s', strtotime($gelenTarih));
 }
-
+/*
+tarihYap2:
+TR formatýnda tarih bilgisi biçimi
+*/
 function tarihYap2($gelenTarih){
 	//d-m-Y H:i:s > Y-m-d H:i:s
 	if (date('Y-m-d', strtotime($gelenTarih))=="1970-01-01 00:00:00")
@@ -162,12 +198,18 @@ function tarihYap2($gelenTarih){
 	else
 		return date('Y-m-d H:i:s', strtotime($gelenTarih));
 }
-
+/*
+currentFileCheck:
+dosya isminin güvenlik nedeni ile kontrol edilmesi
+*/
 function currentFileCheck($fileName){
 	global $currentFile; 
 	if($currentFile!=$fileName ) die ("<font id='hata'>Dosya uyumlu deðil!</font>");
 }	
-
+/*
+GetSQLValueString:
+tablodan String türünde veri alma
+*/
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   if (PHP_VERSION < 6) {
@@ -196,7 +238,10 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   }
   return $theValue;
 }
-
+/*
+GetSQLValueStringNo:
+tablodan Sayý türünde veri alma
+*/
 function GetSQLValueStringNo($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   if (PHP_VERSION < 6) {
@@ -225,7 +270,10 @@ function GetSQLValueStringNo($theValue, $theType, $theDefinedValue = "", $theNot
   }
   return $theValue;
 }
-
+/*
+validInput:
+TR ve boþluk harici karakter kontrolü
+*/
 function validInput($gelen)  
 {  
   $pattern 	= "[^a-z0-9A-Z]" ;  
@@ -235,7 +283,10 @@ function validInput($gelen)
    else
     return true;  
 }  
-
+/*
+getTableSize:
+tablo boyutunu Byte cinsinde alma
+*/
 function getTableSize($tableN){
 	
 	$yol1 = baglan();
@@ -251,7 +302,10 @@ function getTableSize($tableN){
 	
 	return 0;
 }
-
+/*
+yetimKayitNolar:
+bir tablonun yetim kayýtlarýnýn sayýsýný bulur
+*/
 function yetimKayitNolar($tablo){
 	$sonuc = "-";
 	$yol1 = baglan();
@@ -552,7 +606,10 @@ function yetimKayitNolar($tablo){
 	@mysql_free_result($result1); 
 	return $sonuc;
 }
-
+/*
+getStats:
+belli bir istatistik bilgisini elde etme
+*/
 function getStats($num)
 {
 	global $metin;
@@ -1000,7 +1057,10 @@ function getStats($num)
 
 return "";
 }
-
+/*
+yildizYap:
+gelen sayýya göre yýldýz üretme
+*/
 function yildizYap($num){
 	if($num>0 && $num<6){
 		for($i=1;$i<=$num;$i++){
@@ -1011,7 +1071,10 @@ function yildizYap($num){
 
 	return $sonuc;	
 }
-
+/*
+smileAdd:
+gelen metnin içine smiley resimleri ekleme
+*/
 function smileAdd($gelen){
 
 	$icos = array(":)",":(",";)",":-P","S-)","](",":*)","O:]",":-X","8-)","=/","=O","QQ",":-D");
@@ -1035,7 +1098,10 @@ function smileAdd($gelen){
 	$sonuc = str_replace($icos, $smileImg, $gelen);
  return $sonuc;	
 }
-
+/*
+yorumlariGetir:
+belli bir konuda yorum bilgilerini getirir
+*/
 function yorumlariGetir($konu){
     $sql1 = "SELECT eo_comments.id as comID ,eo_comments.comment, eo_comments.commentDate, eo_users.userName, eo_users.id as id
 				FROM eo_comments, eo_users, eo_4konu 
@@ -1064,6 +1130,10 @@ function yorumlariGetir($konu){
 	return ""; 
 }
 
+/*
+isKonu:
+kimlik numarasýna sahip bir konu var mý?
+*/
 function isKonu($id){
 	 
 	$id = substr($id,0,15);
@@ -1082,7 +1152,10 @@ function isKonu($id){
 	}
 	return false;
 }
-
+/*
+konuAdiGetir:
+kimlik numarasýna ait konunun adýný getirir
+*/
 function konuAdiGetir($id){
 	$id = substr($id,0,15);
     $sql1 = "SELECT konuAdi FROM eo_4konu where id='".temizle($id)."' limit 0,1";
@@ -1099,7 +1172,10 @@ function konuAdiGetir($id){
 	
 	return "";
 }
-
+/*
+konuYorumSayisiGetir:
+konu kimliðindeki yorumlarýn sayýsýný dönderir
+*/
 function konuYorumSayisiGetir($id){
 	$id = substr($id,0,15);
     $sql1 = "SELECT count(*) as toplam FROM eo_comments where konuID='".temizle($id)."' and active=1";
@@ -1118,7 +1194,10 @@ function konuYorumSayisiGetir($id){
 	
 	return "";
 }
-
+/*
+getOgrenciSiniflari
+öðrencinin ait olduðu sýnýflarý getirir
+*/
 function getOgrenciSiniflari(){
 	$usernam = getUserID($_SESSION["usern"],$_SESSION["userp"]); 
 	
@@ -1141,7 +1220,10 @@ function getOgrenciSiniflari(){
 				   return ("");
 				}
 }
-
+/*
+getpasifYorumlar:
+pasif haldeki yorumlarýn sayýsýný bulur
+*/
 function getpasifYorumlar(){
     $sql1 = "SELECT count(*) as sayac FROM eo_comments where active <> 1 ";
 	
@@ -1155,7 +1237,10 @@ function getpasifYorumlar(){
 				   return 0;
 				}	
 }
-
+/*
+checkRealUser:
+kullanýcýnýn var olup olmadýðýný kontrol eder
+*/
 function checkRealUser($usernam, $passwor)
 {
 	$usernam = substr($usernam,0,15);
@@ -1176,7 +1261,10 @@ function checkRealUser($usernam, $passwor)
 	   return (-2);
 	}
 }
-
+/*
+kullaniciHakSayisi:
+konuyu çalýþma sayýsýný bulur
+*/
 function kullaniciHakSayisi($gelen, $adi, $par){
 	
 	$kulID = getUserID($adi, $par);
@@ -1193,7 +1281,10 @@ function kullaniciHakSayisi($gelen, $adi, $par){
 	   return (0);
 	}
 }
-
+/*
+getUserType:
+kullanýcý türünü bulur, -2 bulunamadý,-1 pasif, 0 öðrenci, 1 öðretmen, 2 yönetici
+*/
 function getUserType($usernam)
 {
 	$usernam = substr($usernam,0,15);
@@ -1209,7 +1300,10 @@ function getUserType($usernam)
 	   return (-2);
 	}
 }
-
+/*
+getUserID:
+kullanýcýnýn kimlik numarasýný bulur
+*/
 function getUserID($usernam, $passwor)
 {
 	$usernam = substr($usernam,0,15);
@@ -1226,7 +1320,10 @@ function getUserID($usernam, $passwor)
 	   return (-1);
 	}
 }
-
+/*
+totalGet:
+istatistik bilgileri getirir
+*/
 function totalGet($numa)
 { 
   switch($numa) {
@@ -1248,7 +1345,10 @@ function totalGet($numa)
 	   return (0);
 	}
 }
-
+/*
+getTrackCount:
+kötü ve iyi iz sayýlarýný getirir
+*/
 function getTrackCount($isBad){
 	
 	if ($isBad) 	
@@ -1266,7 +1366,10 @@ function getTrackCount($isBad){
 	   return (0);
 	}	
 }
-
+/*
+GetVar:
+global sunucu deðiþkenleri
+*/
 function GetVar($name,$default) {
 	$ret = "";
     if($var = getenv($name)){
@@ -1283,7 +1386,10 @@ function GetVar($name,$default) {
     }
     return trim(htmlspecialchars(stripslashes($ret))); 
 }
-	
+/*
+trackUser:
+kullanýcý iþlemlerini kaydeder
+*/
 function trackUser($processName, $otherInfo, $userName)
 {
 	global $yol1;
@@ -1301,7 +1407,10 @@ function trackUser($processName, $otherInfo, $userName)
 	@mysql_free_result($result1);
 	return $sonuc;
 }
-
+/*
+trackUserLesson:
+çalýþma bilgilerini kaydeder
+*/
 function trackUserLesson($userID, $konuID, $zaman, $sonSayfa)
 {
 	global $yol1;
@@ -1318,7 +1427,10 @@ function trackUserLesson($userID, $konuID, $zaman, $sonSayfa)
 	@mysql_free_result($result1);
 	return $result1;
 }
-
+/*
+newPassw:
+yeni parola üretir
+*/
 function newPassw()
 {
    $seed="";
@@ -1326,12 +1438,18 @@ function newPassw()
        $seed .= substr('0123456789abcdefghijklmnoprstuvyz', rand(1,32), 1);
    return ($seed);
 }
-
+/*
+email_valid:
+eposta formatýný kontrol eder
+*/
 function email_valid ($email) {  
 	if (eregi("^[a-z0-9._-]+@[a-z0-9._-]+.[a-z]{2,6}$", $email)) 
     	{ return TRUE; } else { return FALSE; }      
 } 
-
+/*
+newParola:
+kullanýcýya yeni parola oluþturur
+*/
 function newParola($userName, $email)
 {
 	global $yol1;
@@ -1370,7 +1488,10 @@ function newParola($userName, $email)
    @mysql_free_result($result2);
 	return $result1;	
 }
-
+/*
+newUserMail:
+yeni üyelikte site ayarlarýndaki yöneticiye mail atýlýr
+*/
 function newUserMail($userName, $email)
 {
 	global $yol1;
@@ -1395,7 +1516,10 @@ function newUserMail($userName, $email)
 	
 	return $result1;	
 }
-
+/*
+getMailAddress:
+kullanýcýnýn mail adresini getirir
+*/
 function getMailAddress($id){	
 	global $yol1;
 	
@@ -1409,7 +1533,10 @@ function getMailAddress($id){
 	@mysql_free_result($result1);
 	return $result1;	
 }
-
+/*
+addnewUser:
+yeni kullanýcý ekler
+*/
 function addnewUser($realName, $userName, $password, $email, $birth)
 {
 	global $yol1;
@@ -1435,7 +1562,10 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 	@mysql_free_result($result1);
 	return $result1;
 }
-
+/*
+grafikGunNormallestirData:
+dizideki boþ günleri 0 ile doldurur
+*/
 function grafikGunNormallestirData($dataArray = null,$labelArray = null) {
 		$newData = array();
 		$newLabel = array();
@@ -1500,7 +1630,10 @@ function grafikGunNormallestirData($dataArray = null,$labelArray = null) {
 		 
         return $newData;
 }
-
+/*
+grafikGunNormallestirLabel:
+dizideki boþ günleri 0 ile doldurur
+*/
 function grafikGunNormallestirLabel($dataArray = null,$labelArray = null) {
 		$newData = array();
 		$newLabel = array();
@@ -1565,7 +1698,10 @@ function grafikGunNormallestirLabel($dataArray = null,$labelArray = null) {
 		 
         return $newLabel;
 }
-
+/*
+getGrafikValues:
+grafik deðerlerini dizi olarak getirir
+*/
 function getGrafikValues($lmt){
 	global $yol1;
 	
@@ -1577,7 +1713,10 @@ function getGrafikValues($lmt){
 		}
 		return $data['values'];
 }
-
+/*
+getGrafikLabels:
+grafik etiketlerinin dizi olarak getirir
+*/
 function getGrafikLabels($lmt){
 	global $yol1;
 	
@@ -1589,19 +1728,10 @@ function getGrafikLabels($lmt){
 		}
 		return $data['labels'];
 }
-
-function getGrafikMax($lmt){
-	global $yol1;
-	
-		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y')  order by count DESC limit 0,1";
-		$result = mysql_query($sql, $yol1);
-		$row = mysql_fetch_assoc($result);
-			if($row['count']>20) 
-			  return 20;
-			else
-		      return $row['count'];
-}
-
+/*
+getGrafikRecordCount:
+grafik deðerlerinin sayýsýný getirir
+*/
 function getGrafikRecordCount(){
 	global $yol1;
 	
@@ -1610,7 +1740,10 @@ function getGrafikRecordCount(){
 		$row = mysql_fetch_assoc($result);
 		return $row['count'];
 }
-
+/*
+getGrafikValues2:
+grafik deðerlerini getirir
+*/
 function getGrafikValues2($lmt){
 	global $yol1;
 	
@@ -1622,7 +1755,10 @@ function getGrafikValues2($lmt){
 		}
 		return $data['values'];
 }
-
+/*
+getGrafikLabels2:
+grafik etiketlerini getirir
+*/
 function getGrafikLabels2($lmt){
 	global $yol1;
 	
@@ -1634,19 +1770,10 @@ function getGrafikLabels2($lmt){
 		}
 		return $data['labels'];
 }
-
-function getGrafikMax2($lmt){
-	global $yol1;
-	
-		$sql = "SELECT COUNT(*) AS count FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= $lmt GROUP BY DATE_FORMAT(dateTime, '%d-%m-%y')  order by count DESC limit 0,1";
-		$result = mysql_query($sql, $yol1);
-		$row = mysql_fetch_assoc($result);
-			if($row['count']>20) 
-			  return 20;
-			else
-		      return $row['count'];
-}
-
+/*
+getGrafikRecordCount2:
+grafik deðerlerinin sayýsýný getirir
+*/
 function getGrafikRecordCount2(){
 	global $yol1;
 	
@@ -1655,7 +1782,10 @@ function getGrafikRecordCount2(){
 		$row = mysql_fetch_assoc($result);
 		return $row['count'];
 }
-
+/*
+ayTr:
+Türkçe ay isimlerini getirir
+*/
 function ayTr($sayi){
 	switch($sayi){
 		case 1: return "Ocak";
@@ -1672,6 +1802,10 @@ function ayTr($sayi){
 		case 12: return "Aralýk";
 	}
 }
+/*
+getSchoolNames:
+okul isimlerini getirir
+*/
 function getSchoolNames()
 {
 	global $yol1;
@@ -1689,7 +1823,10 @@ function getSchoolNames()
 	@mysql_free_result($result1);
 	return $sonuc;
 }
-
+/*
+checkUserName:
+kullanýcý adýnýn varlýðýný kontrol eder
+*/
 function checkUserName($name)
 {
 	global $yol1;
@@ -1707,7 +1844,10 @@ function checkUserName($name)
 	}else
 	return false;
 }
-
+/*
+getUserID2:
+kullanýcýnýn kimlik numarasýný getirir
+*/
 function getUserID2($name){
 	global $yol1;
 	
@@ -1719,7 +1859,10 @@ function getUserID2($name){
 	 else
   		return "(unknown)";	
 }
-
+/*
+getKonuAdi:
+kimlik bilgisi ile konunun adýný getirir
+*/
 function getKonuAdi($id){
 	global $yol1;
 	
@@ -1731,7 +1874,10 @@ function getKonuAdi($id){
 	 else
   		return "";	
 }
-
+/*
+checkEmail:
+kullanýcý mail adresinin kontrol edilmesi
+*/
 function checkEmail($name)
 {
 	global $yol1;
@@ -1747,7 +1893,10 @@ function checkEmail($name)
    }else
   		return false;
 }
-
+/*
+checkKonu:
+konu adý ile kimlik bilgisini bulma
+*/
 function checkKonu($name)
 {
 	global $yol1;
@@ -1761,7 +1910,10 @@ function checkKonu($name)
 	else
 	return "";
 }
-
+/*
+sayfaGetir:
+bir konudaki istenen sayfanýn ana metnini getirme
+*/
 function sayfaGetir($konuID, $sayfaNo)
 {
 	global $yol1;
@@ -1778,7 +1930,10 @@ function sayfaGetir($konuID, $sayfaNo)
    @mysql_free_result($result1);
 	return $msg;
 }
-
+/*
+ayarGetir:
+global site ayarlarýnýn getirilmesi
+*/
 function ayarGetir($ayarAdi)
 {
 	global $yol1;
@@ -1795,7 +1950,10 @@ function ayarGetir($ayarAdi)
    @mysql_free_result($result1);
 	return $sonuc;
 }
-
+/*
+ayarGetir2:
+istenen site ayarlarýnýn getirilmesi
+*/
 function ayarGetir2($ayarAdi)
 {
 	global $yol1;
@@ -1812,7 +1970,10 @@ function ayarGetir2($ayarAdi)
    @mysql_free_result($result1);
 	return $sonuc;
 }
-
+/*
+ayarGetir3:
+kullanýcýnýn site ayarlarýnýn getirilmesi
+*/
 function ayarGetir3($adi)
 {
 	global $yol1;
@@ -1832,7 +1993,10 @@ function ayarGetir3($adi)
    @mysql_free_result($result1);
 	return $sonuc;
 }
-
+/*
+haberGetir:
+rss haber içeriðinin getirilmesi
+*/
 function haberGetir($kayno, $alanAdi)
 {
 	global $yol1;
@@ -1842,11 +2006,17 @@ function haberGetir($kayno, $alanAdi)
    
 	return @mysql_result($result1,0,"$alanAdi");
 }
-
+/*
+smartShort:
+... noktalarýnýn eklenmesi
+*/
 function smartShort($gelen){
 	return (strlen($gelen)>20)?substr($gelen,0,17)."...":$gelen;
 }
-
+/*
+getDersIDileSinif:
+ders kimliðinden sýnýf kimliði bulma
+*/
 function getDersIDileSinif($gelen){
 	$sql1 = "SELECT distinct eo_2sinif.id as id FROM eo_4konu 
 	 		inner join eo_5sayfa on eo_4konu.id=eo_5sayfa.konuID 
@@ -1862,7 +2032,10 @@ function getDersIDileSinif($gelen){
 @mysql_free_result($result1);
 return "0";			
 }
-
+/*
+ogrenciSinifaDahil:
+öðrencinin sýnýfa dahil olduðunu kontrol eder
+*/
 function ogrenciSinifaDahil($adi, $par, $gelen){
 	$ogrID = getUserID($adi,$par);
 	
@@ -1877,7 +2050,10 @@ function ogrenciSinifaDahil($adi, $par, $gelen){
 @mysql_free_result($result1);
 return "0";
 }
-
+/*
+dersAgaci:
+menü ve ders sayfasýndaki ders aðacýnýn yapýmý
+*/
 function dersAgaci($gelen=null){
 	global $yol1;
 	global $metin;
@@ -2055,7 +2231,10 @@ function dersAgaci($gelen=null){
 					if(@mysql_numrows($okulAdlari)>0) echo "</ul>";
 	}
 }
-
+/*
+getDayCount:
+iki tarih arasýndaki gün sayýsýný bulur
+*/
 function getDayCount($fromDate, $toDate){
    $fst = explode("-", $fromDate);
    $first = date("Y-m-d", strtotime($fst[2] . "-" . $fst[1] . "-" . $fst[0]));
@@ -2071,7 +2250,10 @@ function getDayCount($fromDate, $toDate){
    }
    return $dayCount;
 }
-
+/*
+Sec2Time:
+saniyeyi üst zaman birimlerine çevirir
+*/
 function Sec2Time($time){
   if(is_numeric($time)){
     $value = array(
@@ -2100,7 +2282,10 @@ function Sec2Time($time){
     return (bool) FALSE;
   }
 }
-
+/*
+Sec2Time2:
+saniyeyi üst zaman birimlerine çevirir
+*/
 function Sec2Time2($time){
   if(is_numeric($time)){
     $value = "";
@@ -2126,13 +2311,19 @@ function Sec2Time2($time){
     return (bool) FALSE;
   }
 }
-
+/*
+getmicrotime:
+geçen zamaný ölçme
+*/
 function getmicrotime()
 { 
   list($usec, $sec) = explode(" ",microtime()); 
   return ((float)$usec + (float)$sec);
 }
-
+/*
+RemoveXSS:
+xss temizleme
+*/
 function RemoveXSS($val) {
    // remove all non-printable characters. CR(0a) and LF(0b) and TAB(9) are allowed
    // this prevents some character re-spacing such as <java\0script>

@@ -513,8 +513,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[393]='<ul>
                       <li style="list-style-type:none">Þýksýz soru tipi için, sadece "cevap" bilgisi girilmesi yeterlidir. Mesela 1923 gibi. 
                       <li style="list-style-type:none">Þýklý sorularda, 5 seçeneðin en az 2\'si girilmelidir. Cevabý A, B, C, D veya E olarak belirtiniz.
-                      <li style="list-style-type:none">Sýnav sýrasýnda, þýklý sorularýn seçeneklerinin yerleri otomatik olarak deðiþtirilir.
-                      <li style="list-style-type:none">Sorunun cevap süresi 30 saniyedir.
+                      <li style="list-style-type:none">Sýnav sýrasýnda, þýklý sorularýn seçeneklerinin yerleri otomatik olarak deðiþtirilir.                      
                     </ul>';
 		$metin[394]="Film ve içerik kýsmýnda tavsiye edilen boyut :<br/>430 pixel geniþlik ve 350 pixel yükseklik ";
 		$metin[395]="Sayfa Sýralamasý";

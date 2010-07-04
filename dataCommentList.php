@@ -47,6 +47,10 @@ header("Pragma: no-cache");
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript">
 <!--
+/*
+delWithCon:
+onay ile silme iþlemi
+*/
 function delWithCon(deletepage_url,field_value,messagetext) { 
   if (confirm(messagetext)==1){
     location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');

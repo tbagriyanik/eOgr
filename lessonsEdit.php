@@ -46,6 +46,10 @@
 <script language="JavaScript" type="text/javascript" src="lib/fade.js"></script>
 <script language="JavaScript" type="text/javascript">
 <!--
+/*
+delWithCon:
+onay ile silme
+*/
 function delWithCon(deletepage_url,field_value,messagetext) { 
   if (confirm(messagetext)==1){
     location.href = eval('\"'+deletepage_url+'&id='+field_value+'&delCon=1\"');
@@ -262,6 +266,8 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $secenek3	=temizle($_POST["secenek3"]);
 				        $secenek4	=temizle($_POST["secenek4"]);
 				        $secenek5	=temizle($_POST["secenek5"]);
+				        $slideGecisSuresi	=temizle($_POST["slideGecisSuresi"]);
+				        $cevapSuresi		=temizle($_POST["cevapSuresi"]);
 				        $konuID		=temizle($_POST["konuID"]);
 						if (!empty($anaMetin) && !empty($konuID))
    							$sql="Update $tabloAdi set 
@@ -269,7 +275,9 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 									secenek1='$secenek1', secenek2 = '$secenek2',
 									secenek3='$secenek3', secenek4 = '$secenek4',
 									secenek5='$secenek5', konuID = '$konuID', 
-									eklenmeTarihi='$datem', ekleyenID='$userID' where id=$seciliKayit";
+									eklenmeTarihi='$datem', ekleyenID='$userID',
+ 								    slideGecisSuresi='$slideGecisSuresi', cevapSuresi='$cevapSuresi'
+									where id=$seciliKayit";
 					 } 	 
 					 
 	            $result = mysql_query($sql, $yol);
@@ -322,14 +330,17 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $secenek3	=temizle($_POST["secenek3"]);
 				        $secenek4	=temizle($_POST["secenek4"]);
 				        $secenek5	=temizle($_POST["secenek5"]);
+				        $slideGecisSuresi	=temizle($_POST["slideGecisSuresi"]);
+				        $cevapSuresi		=temizle($_POST["cevapSuresi"]);
 						$konuID		=temizle($_SESSION["seciliKonu"]);
 						
 				        $anaMetin= trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
 						if (!empty($anaMetin) && !empty($konuID))
 						   $sql="Insert into $tabloAdi 
-						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5)
+						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,slideGecisSuresi,cevapSuresi)
 						   	values ('$anaMetin', '".$konuID."', '$datem', '$userID', '$toplamSayfaSay',
-									'$cevap','$secenek1','$secenek2','$secenek3','$secenek4','$secenek5'								  
+									'$cevap','$secenek1','$secenek2','$secenek3','$secenek4','$secenek5',
+									'$slideGecisSuresi','$cevapSuresi'								  
 									)";
 					 } 	 
 	            $result = mysql_query($sql, $yol);
@@ -1605,7 +1616,24 @@ if($seciliSekme=="0") {
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"></textarea></td>
                         </tr>
                         <tr>
+                          <td> Cevap Süresi: </td>
+                          <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="30"/>
+                            <?php echo $metin[172]?> </td>
+                        </tr>
+                        <tr>
+                          <td> Sunum Geçiþ Süresi: </td>
+                          <td  style="background-color:#FFF;"><input type="text" name="slideGecisSuresi" id="slideGecisSuresi" size="15" maxlength="30" value="60"/>
+                            <?php echo $metin[172]?> </td>
+                        </tr>
+                        <tr>
                           <td colspan="2" ><p><?php echo $metin[394]?> </p></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center" class="tabloAlt"><label>
+                              <input type="submit" name="gonder39" id="gonder39" value="<?php echo $metin[360]?>" />
+                            </label>
+                            &nbsp;
+                            <input type="button" name="gonderme2" id="gonderme2"  onclick="location.href = &quot;lessonsEdit.php?tab=3&quot;;" value="<?php echo $metin[28]?>" /></td>
                         </tr>
                       </table>
                     </form>
@@ -1620,7 +1648,7 @@ bkLib.onDomLoaded(function() {
 		if(isset($_GET["id"])) $seciliKayit=temizle($_GET["id"]); else $seciliKayit=-1;
 	 	if (!is_numeric($seciliKayit))	$seciliKayit=-1;
 	 
-		  $sql2= "select id, konuID, anaMetin, cevap, secenek1,secenek2,secenek3,secenek4,secenek5 from eo_5sayfa where id=$seciliKayit";
+		  $sql2= "select * from eo_5sayfa where id=$seciliKayit";
 		  $result2 = mysql_query($sql2, $yol);
 ?>
                     <form name="sayfaForm" action="lessonsEdit.php?tab=4&amp;islem=G" method="post" id="sayfaForm">
@@ -1687,7 +1715,25 @@ bkLib.onDomLoaded(function() {
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"><?php echo mysql_result($result2, 0, "secenek5");?></textarea></td>
                         </tr>
                         <tr>
+                          <td> Cevap Süresi: </td>
+                          <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="<?php echo mysql_result($result2, 0, "cevapSuresi");?>"/>
+                            <?php echo $metin[172]?> </td>
+                        </tr>
+                        <tr>
+                          <td> Sunum Geçiþ Süresi: </td>
+                          <td  style="background-color:#FFF;"><input type="text" name="slideGecisSuresi" id="slideGecisSuresi" size="15" maxlength="30" value="<?php echo mysql_result($result2, 0, "slideGecisSuresi");?>"/>
+                            <?php echo $metin[172]?> </td>
+                        </tr>
+                        <tr>
                           <td colspan="2" ><p><?php echo $metin[394]?></p></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center" class="tabloAlt"><label>
+                              <input name="id" type="hidden" value="<?php echo mysql_result($result2, 0, "id")?>" />
+                              <input type="submit" name="gonder22" id="gonder22" value="<?php echo $metin[361]?>" />
+                              &nbsp;
+                              <input type="button" name="gonderme2" id="gonderme2"  onclick="location.href = &quot;lessonsEdit.php?tab=4&quot;;" value="<?php echo $metin[28]?>" />
+                            </label></td>
                         </tr>
                       </table>
                     </form>
@@ -1813,6 +1859,10 @@ $(document).ready(function(){
 </div>
 <script type="text/javascript">
 <!--
+/*
+chekDisable:
+kayýtlý kullanýcý ayarlarý seçimi
+*/
 function chekDisable(){
 	if (document.getElementById("sinifaDahilKullaniciGorebilir")==null) exit();
 	var disable;

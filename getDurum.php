@@ -6,7 +6,10 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-
+/*
+getKonuKayitliKullanici:
+konunun sadece kayýtlý kullanýcýlar bilgisi
+*/
 function getKonuKayitliKullanici($gelenID){
 	global $yol1;
 	$sql1	= 	"select sadeceKayitlilarGorebilir from eo_4konu where id ='".temizle($gelenID)."'";

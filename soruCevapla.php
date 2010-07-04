@@ -14,7 +14,10 @@ require 'database.php';
 require("conf.php");	
 		   
 if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-
+/*
+baglan2:
+veritabaný baðlantýsý
+*/
 function baglan2()
 {
 	global  $_host;
@@ -35,7 +38,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2:
+xss temizleme
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -51,7 +57,10 @@ function temizle2($metin)
     $metin = iconv( "ISO-8859-9","ISO-8859-9",trim(htmlspecialchars($metin)));
     return $metin;
 }
-
+/*
+rasgeleCevapHazirla:
+cevap seçeneklerinin rasgele yerlerinin deðiþtirilmesi
+*/
 function &rasgeleCevapHazirla($toplamCevapAdet)
 	{
 		$aranolar="";				
@@ -65,7 +74,10 @@ function &rasgeleCevapHazirla($toplamCevapAdet)
 				
 		return ($aranolar);
 	}
-
+/*
+secenekleriGetir:
+soru seçeneklerinin getirilmesi
+*/
 function secenekleriGetir($id)
 {
 	global $yol1;
@@ -179,6 +191,10 @@ function secenekleriGetir($id)
 ?>
 </div>
 <script language="javascript">
+/*
+tekCevapFocus:
+tek cevaptaki metin kutusuna odaklanýr
+*/
 function tekCevapFocus()
 {
 if (document.getElementById("tekCevap")!=null)  document.getElementById("tekCevap").focus();

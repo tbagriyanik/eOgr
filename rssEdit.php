@@ -34,6 +34,10 @@
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="JavaScript" type="text/JavaScript">
 <!--
+/*
+delWithCon:
+onay ile silme
+*/
 function delWithCon(deletepage_url,field_value,messagetext) { 
   if (confirm(messagetext)==1){
     location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');
@@ -669,6 +673,10 @@ if ($_GET["upd"]!="1"){
 </div>
 
 <script type="text/javascript">
+/*
+getDefaults:
+rss varsayýlan deðerleri
+*/
 function getDefaults(){
 	document.getElementById('title3').value = "eOgr" ;
 	document.getElementById('description').value = "eOgrenme - eLearning RSS Feed" ;
