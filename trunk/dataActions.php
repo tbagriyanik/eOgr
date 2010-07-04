@@ -43,11 +43,19 @@
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="JavaScript" type="text/JavaScript">
 <!--
+/*
+delWithCon:
+onay ile silme iþlemi
+*/
 function delWithCon(deletepage_url,field_value,messagetext) { 
   if (confirm(messagetext)==1){
     location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');
   }
 }
+/*
+selAll:
+tüm onay kutularýnýn seçimini tersler
+*/
 function selAll()
 {
     for (var i=0;i<document.formSilme.elements.length;i++)

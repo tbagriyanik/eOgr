@@ -81,6 +81,10 @@
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="JavaScript" type="text/JavaScript">
 <!--
+/*
+delWithCon:
+onaylý olarak silme
+*/
 function delWithCon(deletepage_url,field_value,messagetext) { 
   if (confirm(messagetext)==1){
     location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');
@@ -1152,6 +1156,10 @@ eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?ph
 </div>
 
 <script type="text/javascript">
+/*
+getDefaults:
+site ayarlarýnýn varsayýlanlarýnýn atanmasý
+*/
 function getDefaults(){
 	document.getElementById('okulGenelAdi').value = "Net Okul" ;
 	document.getElementById('versiyon').value = "versiyon" ;

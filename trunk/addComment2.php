@@ -12,7 +12,10 @@ header("Content-Type: text/html; charset=iso-8859-9");
         require("lib/en.php");         
 
 require 'database.php'; 
-
+/*
+baglan2: parametresiz, 
+veritabaný baðlantýsý
+*/
 function baglan2()
 {
 	global  $_host;
@@ -33,7 +36,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2: metin giriþi, 
+XSS temizliði
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -49,7 +55,10 @@ function temizle2($metin)
     $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlspecialchars($metin)));
     return $metin;
 }
-
+/*
+getUserIDcomment: kullanýcý adý ve parola
+kullanýcý adý ve parolasý ile kimlik bilgisi elde edilir
+*/
 function getUserIDcomment($usernam, $passwor)
 {
 	global $yol1;
@@ -66,6 +75,10 @@ function getUserIDcomment($usernam, $passwor)
 	   return ("");
 	}
 }
+/*
+yorumGonder: kullanýcý adý,konu no ve yorum
+kullanýcý adý ile belli bir konuya yorum eklenir
+*/
 
 function yorumGonder($userID, $konuID, $yorum){
 	global $yol1;				

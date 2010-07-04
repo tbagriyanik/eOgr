@@ -15,7 +15,10 @@ require 'database.php';
 require("conf.php");	
 		   
 if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-
+/*
+baglan2:
+veritabaný baðlantýsý
+*/
 function baglan2()
 {
 	global  $_host;
@@ -36,7 +39,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2:
+xss temizleme iþlemi
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -52,7 +58,10 @@ function temizle2($metin)
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }
-
+/*
+getUserIDrate:
+kullanýcýnýn kimlik bilgisi getirir
+*/
 function getUserIDrate($usernam, $passwor)
 {
 	global $yol1;
@@ -69,7 +78,10 @@ function getUserIDrate($usernam, $passwor)
 	   return ("");
 	}
 }
-
+/*
+konuAdi:
+kimlik ile konunun adýnýn getirilmesi
+*/
 function konuAdi($id)
 {
 	global $yol1;	
@@ -83,7 +95,10 @@ function konuAdi($id)
 	   return ("");
 	}
 }
-
+/*
+dersOkulSinif:
+kimlik ile ders okul ve sýnýf bilgisini alma
+*/
 function dersOkulSinif($id)
 {
 	global $yol1;	
@@ -101,7 +116,10 @@ function dersOkulSinif($id)
 	   return ("");
 	}
 }
-
+/*
+sayfaSayisi:
+bir konudaki sayfa sayýsýný bulma
+*/
 function sayfaSayisi($id)
 {
 	global $yol1;	
@@ -117,7 +135,10 @@ function sayfaSayisi($id)
 	   return ("");
 	}
 }
-
+/*
+sonGuncellenmeTarihi:
+belli bir konunun son güncellenme tarihi
+*/
 function sonGuncellenmeTarihi($id)
 {
 	global $yol1;	
@@ -138,7 +159,10 @@ function sonGuncellenmeTarihi($id)
 	   return ("");
 	}
 }
-
+/*
+calisilmaSay:
+kimlik ile ders çalýþma sayýsý
+*/
 function calisilmaSay($id)
 {
 	global $yol1;	
@@ -154,7 +178,10 @@ function calisilmaSay($id)
 	   return ("");
 	}
 }
-
+/*
+calisilmaSureToplam:
+belli bir konudaki çalýþma süresi
+*/
 function calisilmaSureToplam($id)
 {
 	global $yol1;	
@@ -170,7 +197,10 @@ function calisilmaSureToplam($id)
 	   return ("");
 	}
 }
-
+/*
+calisilmaBitmeOrt:
+belli bir konunun bitirilme ortalamasý
+*/
 function calisilmaBitmeOrt($id)
 {
 	global $yol1;	
@@ -186,7 +216,10 @@ function calisilmaBitmeOrt($id)
 	   return ("");
 	}
 }
-
+/*
+oyOrani:
+konunun oy ortalamasý
+*/
 function oyOrani($id)
 {
 	global $yol1;	
@@ -202,7 +235,10 @@ function oyOrani($id)
 	   return ("");
 	}
 }
-
+/*
+oyOrani:
+konunun oy sayýsý
+*/
 function oySay($id)
 {
 	global $yol1;	
@@ -218,7 +254,10 @@ function oySay($id)
 	   return ("");
 	}
 }
-
+/*
+yorumSay:
+konunun yorum sayýsý
+*/
 function yorumSay($id)
 {
 	global $yol1;	
@@ -234,7 +273,10 @@ function yorumSay($id)
 	   return ("");
 	}
 }
-
+/*
+yorumPasifSay:
+konunun pasif oy sayýsý
+*/
 function yorumPasifSay($id)
 {
 	global $yol1;	
@@ -250,7 +292,10 @@ function yorumPasifSay($id)
 	   return ("");
 	}
 }
-
+/*
+konuKisitlamalari:
+konunun kýsýtlamalarý
+*/
 function konuKisitlamalari($id){
 	global $yol1;	
 	global $metin;

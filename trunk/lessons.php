@@ -164,7 +164,7 @@ ob_start (); // Buffer output
                       <div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div>
                     </div>
                   </div>
-                  <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo"></span><br />
+                  <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
                     (<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
@@ -177,6 +177,8 @@ ob_start (); // Buffer output
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />
+                  <span id="gercekCevapSuresi" style="visibility:hidden"></span>
+                  <span id="slideGecisSuresi" style="visibility:hidden"></span>
                   <?php
 				    $adi	=temizle(substr($_SESSION["usern"],0,15));
 	   				$par	=temizle($_SESSION["userp"]);
@@ -360,12 +362,18 @@ window.onunload = function () {
   if (parseInt(document.getElementById("calismaSuresi").innerHTML)> <?php echo ayarGetir("ayar3int");?>)	
    saveUserWork();
 }
-
+/*
+cevapSureBasla:
+cevaplama için süre baþlangýcý
+*/
 function cevapSureBasla(){
 
 		if(document.getElementById('cevapSuresi').innerHTML==""){		
 				$("#cevapSuresi").everyTime(1000,function(i) {
-						if(i>31){
+					
+					csur = document.getElementById('gercekCevapSuresi').innerHTML;
+						
+						if(i> csur ){
 						  	$("#cevapSuresi").stopTime();
 							document.getElementById('cevapSuresi').innerHTML = '' ;
 							document.getElementById('cevapVer').style.visibility = 'hidden' ;
@@ -375,7 +383,7 @@ function cevapSureBasla(){
 							saveUserWork();
 							}
 						 else {
-							$(this).html(31-i);							
+							$(this).html(csur -i);							
 						 	}
 					});	
 		}

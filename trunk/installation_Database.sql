@@ -1,19 +1,7 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.2.1
--- http://www.phpmyadmin.net
---
--- Anamakine: localhost
--- Üretim Zamanı: 25 Ekim 2009 saat 15:03:17
--- Sunucu sürümü: 5.1.37
--- PHP Sürümü: 5.3.0
+-- version 3.2.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Veritabanı: `eogr`
@@ -28,16 +16,16 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `eo_1okul` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `okulAdi` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `okulAdi` (`okulAdi`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='okul adlari' AUTO_INCREMENT=6 ;
 
 --
 -- Tablo döküm verisi `eo_1okul`
 --
 
 INSERT INTO `eo_1okul` (`id`, `okulAdi`) VALUES
-(1, 'Meslek Lisesi');
+(3, 'Meslek Lisesi'),
+(5, 'Teknik Lise');
 
 -- --------------------------------------------------------
 
@@ -50,15 +38,16 @@ CREATE TABLE IF NOT EXISTS `eo_2sinif` (
   `sinifAdi` varchar(50) NOT NULL,
   `okulID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='sinif adlari' AUTO_INCREMENT=12 ;
 
 --
 -- Tablo döküm verisi `eo_2sinif`
 --
 
 INSERT INTO `eo_2sinif` (`id`, `sinifAdi`, `okulID`) VALUES
-(1, '10.sinif', 1),
-(2, '11.sinif', 1);
+(2, '10.Sinif', 5),
+(5, '11.Sinif', 3),
+(10, 'Web11', 5);
 
 -- --------------------------------------------------------
 
@@ -71,19 +60,19 @@ CREATE TABLE IF NOT EXISTS `eo_3ders` (
   `dersAdi` varchar(50) NOT NULL,
   `sinifID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='ders adlari' AUTO_INCREMENT=19 ;
 
 --
 -- Tablo döküm verisi `eo_3ders`
 --
 
 INSERT INTO `eo_3ders` (`id`, `dersAdi`, `sinifID`) VALUES
-(1, 'Matematik', 1),
-(2, 'Turkce', 1),
-(3, 'Turkce', 2),
-(4, 'Matematik', 2),
-(5, 'Bilisim Temelleri', 1),
-(6, 'Paket Programlama', 1);
+(7, 'Bilisim Teknolojileri Temelleri', 2),
+(13, 'Ag S. ve Y. Switch', 5),
+(14, 'Grafik ve Animasyon', 10),
+(15, 'Web Tasarimi ve Programlama', 10),
+(17, 'Veritabani', 10),
+(18, 'Ag S. ve Y. Router', 5);
 
 -- --------------------------------------------------------
 
@@ -98,22 +87,19 @@ CREATE TABLE IF NOT EXISTS `eo_4konu` (
   `bitisTarihi` date NOT NULL,
   `oncekiKonuID` int(11) NOT NULL,
   `konuyuKilitle` tinyint(1) NOT NULL,
-  `sadeceKayitlilarGorebilir` tinyint(1) NOT NULL,
-  `sinifaDahilKullaniciGorebilir` tinyint(1) NOT NULL,
   `calismaSuresiDakika` int(11) NOT NULL,
   `calismaHakSayisi` int(11) NOT NULL,
+  `sadeceKayitlilarGorebilir` tinyint(1) NOT NULL,
+  `sinifaDahilKullaniciGorebilir` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='konu adlari' AUTO_INCREMENT=3;
 
 --
 -- Tablo döküm verisi `eo_4konu`
 --
 
-INSERT INTO `eo_4konu` (`id`, `konuAdi`, `dersID`, `bitisTarihi`, `oncekiKonuID`, `konuyuKilitle`, `sadeceKayitlilarGorebilir`, `sinifaDahilKullaniciGorebilir`, `calismaSuresiDakika`, `calismaHakSayisi`) VALUES
-(1, 'Programlama Temelleri', 5, '0000-00-00', 0, 0, 0, 0, 0, 0),
-(2, 'Anakart', 5, '0000-00-00', 0, 0, 0, 0, 0, 0),
-(3, 'Kelime Islemci Programi', 6, '0000-00-00', 0, 0, 0, 0, 0, 0),
-(4, 'Hesap Tablosu Programi', 6, '0000-00-00', 0, 0, 0, 0, 0, 0);
+INSERT INTO `eo_4konu` (`id`, `konuAdi`, `dersID`, `bitisTarihi`, `oncekiKonuID`, `konuyuKilitle`, `calismaSuresiDakika`, `calismaHakSayisi`, `sadeceKayitlilarGorebilir`, `sinifaDahilKullaniciGorebilir`) VALUES
+(2, 'Anakart', 7, '0000-00-00', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -123,7 +109,7 @@ INSERT INTO `eo_4konu` (`id`, `konuAdi`, `dersID`, `bitisTarihi`, `oncekiKonuID`
 
 CREATE TABLE IF NOT EXISTS `eo_5sayfa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `anaMetin` varchar(10000) NOT NULL,
+  `anaMetin` varchar(10000) DEFAULT NULL,
   `konuID` int(11) NOT NULL,
   `secenek1` varchar(1000) NOT NULL,
   `secenek2` varchar(1000) NOT NULL,
@@ -134,18 +120,18 @@ CREATE TABLE IF NOT EXISTS `eo_5sayfa` (
   `ekleyenID` int(11) NOT NULL,
   `eklenmeTarihi` datetime NOT NULL,
   `sayfaSirasi` int(11) NOT NULL,
+  `slideGecisSuresi` int(11) NOT NULL,
+  `cevapSuresi` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='sayfa icerigi' AUTO_INCREMENT=2;
 
 --
 -- Tablo döküm verisi `eo_5sayfa`
 --
 
-INSERT INTO `eo_5sayfa` (`id`, `anaMetin`, `konuID`, `secenek1`, `secenek2`, `secenek3`, `secenek4`, `secenek5`, `cevap`, `ekleyenID`, `eklenmeTarihi`, `sayfaSirasi`) VALUES
-(1, 'ilk eklenen konu... algoritma nedir ne ise yarar', 1, 'sudur budur', 'falan filan', '', '', '', '', 1, '2009-01-20 18:29:54', 0),
-(2, 'programlama nedir ne ile yazilir <span style="text-decoration: underline;">neden </span><span style="font-style: italic;">....</span>', 1, 'sudur budur', 'falan filan', '', '', '', '', 1, '2009-10-22 20:50:02', 0);
-
 -- --------------------------------------------------------
+INSERT INTO `eo_5sayfa` (`id`, `anaMetin`, `konuID`, `secenek1`, `secenek2`, `secenek3`, `secenek4`, `secenek5`, `cevap`, `ekleyenID`, `eklenmeTarihi`, `sayfaSirasi`, `slideGecisSuresi`, `cevapSuresi`) VALUES
+(1, 'anakart ne ise yarar', 2, '', '', '', '', '', '', 1, '2010-07-04 20:07:56', 0, 60, 30);
 
 --
 -- Tablo yapısı: `eo_comments`
@@ -155,16 +141,15 @@ CREATE TABLE IF NOT EXISTS `eo_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
   `konuID` int(11) NOT NULL,
-  `comment` varchar(1000) NOT NULL,
+  `comment` varchar(1000) DEFAULT NULL,
   `commentDate` datetime NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tablo döküm verisi `eo_comments`
 --
-
 
 -- --------------------------------------------------------
 
@@ -173,8 +158,8 @@ CREATE TABLE IF NOT EXISTS `eo_comments` (
 --
 
 CREATE TABLE IF NOT EXISTS `eo_floodprotection` (
-  `IP` char(32) NOT NULL,
-  `TIME` char(20) NOT NULL,
+  `IP` char(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `TIME` char(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`IP`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -183,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `eo_floodprotection` (
 --
 
 INSERT INTO `eo_floodprotection` (`IP`, `TIME`) VALUES
-(' 127.0.0.1', '1256233829');
+(' 127.0.0.1', '1278259471');
 
 -- --------------------------------------------------------
 
@@ -198,14 +183,11 @@ CREATE TABLE IF NOT EXISTS `eo_rating` (
   `value` int(11) NOT NULL,
   `rateDate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tablo döküm verisi `eo_rating`
 --
-
-INSERT INTO `eo_rating` (`id`, `userID`, `konuID`, `value`, `rateDate`) VALUES
-(1, 1, 2, 2, '2009-10-22 20:29:15');
 
 -- --------------------------------------------------------
 
@@ -221,12 +203,11 @@ CREATE TABLE IF NOT EXISTS `eo_shoutbox` (
   `ip` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`messageid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tablo döküm verisi `eo_shoutbox`
 --
-
 
 -- --------------------------------------------------------
 
@@ -239,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `eo_sinifogre` (
   `userID` int(11) NOT NULL,
   `sinifID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tablo döküm verisi `eo_sinifogre`
@@ -272,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `eo_sitesettings` (
 --
 
 INSERT INTO `eo_sitesettings` (`id`, `okulGenelAdi`, `versiyon`, `sayfaBlokSayisi`, `sayfaKullaniciSayisi`, `veriHareketleriSayisi`, `ayar1int`, `ayar2int`, `ayar3int`, `ayar4char`, `ayar5char`) VALUES
-(1, 'Net Okul', 'version', 5, 10, 10, 5, 10, 10, 'admin@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
+(1, 'Net Okul', '117a', 15, 10, 15, 10, 10, 60, 'admin@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
 
 -- --------------------------------------------------------
 
@@ -289,17 +270,18 @@ CREATE TABLE IF NOT EXISTS `eo_users` (
   `userBirthDate` date NOT NULL,
   `userType` tinyint(4) NOT NULL DEFAULT '0',
   `requestDate` datetime NOT NULL,
+  `ayarlar` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `userName` (`userName`),
-  UNIQUE KEY `userEmail` (`userEmail`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  UNIQUE KEY `userEmail` (`userEmail`),
+  UNIQUE KEY `userName` (`userName`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2;
 
 --
 -- Tablo döküm verisi `eo_users`
 --
 
-INSERT INTO `eo_users` (`id`, `userName`, `userPassword`, `realName`, `userEmail`, `userBirthDate`, `userType`, `requestDate`) VALUES
-(1, 'admin', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 'super kullanici', 'admin@eogr.com', '2008-11-15', 2, '2008-11-15 00:00:00');
+INSERT INTO `eo_users` (`id`, `userName`, `userPassword`, `realName`, `userEmail`, `userBirthDate`, `userType`, `requestDate`, `ayarlar`) VALUES
+(1, 'admin', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 'Super Kullanici', 'admin@eogr.com', '2008-11-15', 2, '2008-11-15 00:00:00', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
 
 -- --------------------------------------------------------
 
@@ -309,23 +291,17 @@ INSERT INTO `eo_users` (`id`, `userName`, `userPassword`, `realName`, `userEmail
 
 CREATE TABLE IF NOT EXISTS `eo_usertrack` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `IP` varchar(40) NOT NULL,
+  `IP` varchar(40) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `dateTime` datetime NOT NULL,
-  `processName` varchar(20) NOT NULL,
+  `processName` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `userName` varchar(15) NOT NULL,
-  `otherInfo` varchar(15) NOT NULL,
+  `otherInfo` varchar(15) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='user Tracking' AUTO_INCREMENT=1;
 
 --
 -- Tablo döküm verisi `eo_usertrack`
 --
-
-INSERT INTO `eo_usertrack` (`id`, `IP`, `dateTime`, `processName`, `userName`, `otherInfo`) VALUES
-(1, '127.0.0.1', '2009-10-22 20:25:19', 'login.php', 'admin', 'success,Login'),
-(2, '127.0.0.1', '2009-10-22 20:30:14', 'dataCommentList2.php', 'admin', 'CmtUpd-1-2'),
-(3, '127.0.0.1', '2009-10-22 20:50:02', 'lessonsEdit.php', 'admin', 'sayfa, Update'),
-(4, '127.0.0.1', '2009-10-22 20:50:29', 'login.php', 'admin', 'success,Login');
 
 -- --------------------------------------------------------
 
@@ -341,14 +317,11 @@ CREATE TABLE IF NOT EXISTS `eo_userworks` (
   `lastPage` int(11) NOT NULL,
   `calismaTarihi` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='kullanici calisma' AUTO_INCREMENT=1;
 
 --
 -- Tablo döküm verisi `eo_userworks`
 --
-
-INSERT INTO `eo_userworks` (`id`, `userID`, `konuID`, `toplamZaman`, `lastPage`, `calismaTarihi`) VALUES
-(1, 1, 1, 27, 50, '2009-10-22 20:31:26');
 
 -- --------------------------------------------------------
 
@@ -375,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `eo_webref_rss_details` (
 --
 
 INSERT INTO `eo_webref_rss_details` (`id`, `title`, `description`, `link`, `language`, `image_title`, `image_url`, `image_link`, `image_width`, `image_height`) VALUES
-(1, 'eOgr', 'eOgrenme - eLearning RSS Feed', 'http://eogr.com', 'TR', '', '', '', '', '');
+(1, 'eOgr', 'eOgrenme - eLearning RSS Feed', 'http://www.yoursite.com/eogr', 'TR', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -390,11 +363,12 @@ CREATE TABLE IF NOT EXISTS `eo_webref_rss_items` (
   `link` text,
   `pubDate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Tablo döküm verisi `eo_webref_rss_items`
 --
 
 INSERT INTO `eo_webref_rss_items` (`id`, `title`, `description`, `link`, `pubDate`) VALUES
-(1, 'eOgr', 'Bir haber ornegi...', '', '2009-06-14 21:29:13');
+(2, 'Ag Dersleri', 'Ogretmenimiz Aziz Bektas`a hazirladigi dersler icin tesekkur ederiz.', '', '2009-12-24 10:00:00'),
+(8, 'Uyelik Tekrarlari', 'Tekrar uyeliklerde eski uyelikler silinecektir. Parolanizi unuttuysaniz tekrar parola isteginde bulunabilirsiniz.', 'passwordRemember.php', '2010-05-01 13:15:44');

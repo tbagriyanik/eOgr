@@ -29,10 +29,18 @@
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <script type="text/javascript">  
+/*
+test:
+kullanýcý adý testi
+*/
 function test(){  
     val = document.getElementById("userName").value;  
     validate(val, {'target':'msg','preloader':'pr'});  
 }  
+/*
+test2:
+kullanýcý mail adresi testi
+*/
 function test2(){  
     val = document.getElementById("email").value;  
     validate2(val, {'target':'msg2','preloader':'pr2'});  
@@ -275,6 +283,10 @@ if($_SESSION["newUser"]=="yes") {
 }
 	
 require_once("lib/phplivex.php");
+/*
+validate:
+yeni kullanýcý adý testi
+*/
 function validate($username){ 
   global $metin;
   if(strlen($username)>=5) {
@@ -284,6 +296,10 @@ function validate($username){
   }
     return $msg;  
 }  
+/*
+validate2:
+yeni kullanýcý mail adresi testi
+*/
 function validate2($email){ 
   global $metin;
   if(strlen($email)>=5){     

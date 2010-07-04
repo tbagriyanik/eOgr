@@ -46,7 +46,12 @@ function anaMetniOku($gelen, $sayfaNo)
 	
 	if (empty($gelen)) return "<font id='uyari'><?php echo $metin[176]?></font>|-|-|-|-|-|-|-|-|-|-|-";
 	
-	$sql1	= 	"select eo_5sayfa.id,eo_5sayfa.anaMetin as ana,eo_5sayfa.cevap as cevap,eo_5sayfa.eklenmeTarihi as tarih,eo_users.userName as user, 
+	$sql1	= 	"select 
+	            eo_5sayfa.id,eo_5sayfa.anaMetin as ana,eo_5sayfa.cevap as cevap,
+				eo_5sayfa.eklenmeTarihi as tarih,				
+				eo_5sayfa.slideGecisSuresi as sgSuresi,
+				eo_5sayfa.cevapSuresi as cSuresi,
+				eo_users.userName as user, 
 				eo_4konu.konuAdi as konuAdi,eo_4konu.konuyuKilitle as konuyuKilitle,		
 				eo_4konu.oncekiKonuID as oncekiKonuID, eo_4konu.calismaHakSayisi as calismaHakSayisi,	
 				eo_4konu.calismaSuresiDakika as calismaSuresiDakika,
@@ -83,6 +88,8 @@ function anaMetniOku($gelen, $sayfaNo)
 		$aktifKonuNo	= @mysql_result($result1,$sayfaNo,"aktifKonuNo");
 		$oncekiKonuID	= @mysql_result($result1,$sayfaNo,"oncekiKonuID");
 		$calismaHakS	= @mysql_result($result1,$sayfaNo,"calismaHakSayisi");
+		$sgSuresi		= temizle(@mysql_result($result1,$sayfaNo,"sgSuresi"));
+		$cSuresi		= temizle(@mysql_result($result1,$sayfaNo,"cSuresi"));
 		$calismaSuresiD	= ($sKayitlilarG)?@mysql_result($result1,$sayfaNo,"calismaSuresiDakika"):"0";
 		$sinifOgreK		= ($sKayitlilarG)?@mysql_result($result1,$sayfaNo,"sinifaDahilKullaniciGorebilir"):"0";
 		$oncekiKonuAdi	= getOncekiKonuAdi($oncekiKonuID);
@@ -101,23 +108,23 @@ function anaMetniOku($gelen, $sayfaNo)
 	if($kayitSayisi>0) {
 			
 			if($sKayitlilarG=="1" && !in_array($tur, array("1","2","0"))) //login olmamýþ
-				return "<font id='hata'>'$konuAdi' ".$metin[181]."<br/><a href='newUser.php'><img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[149]."' title='".$metin[149]."' />$metin[3]!</a></font>|-|-|-|-|-|-|-|-|-|-|-|-";
+				return "<font id='hata'>'$konuAdi' ".$metin[181]."<br/><a href='newUser.php'><img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[149]."' title='".$metin[149]."' />$metin[3]!</a></font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 				
 			if($sKayitlilarG=="1" && in_array($tur, array("1","2","0"))) //login olmuþ, hak sayýsýna bak
 			  {
-				if (kullaniciHakSayisi($gelen, $adi, $par)>= $calismaHakS &&  $calismaHakS>0) return "<font id='hata'>'$konuAdi', ".$metin[208]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";
+				if (kullaniciHakSayisi($gelen, $adi, $par)>= $calismaHakS &&  $calismaHakS>0) return "<font id='hata'>'$konuAdi', ".$metin[208]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 			  }
 				
 			if($sKayitlilarG=="1" && $tur=="0") //login olmuþ, &ouml;ðrenci sýnýfa dahil mi?
 			  {				  
-				if (ogrenciSinifaDahil($adi, $par, $gelen)==0 &&  $sinifOgreK==1) return "<font id='hata'>'$konuAdi', ".$metin[214]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";
+				if (ogrenciSinifaDahil($adi, $par, $gelen)==0 &&  $sinifOgreK==1) return "<font id='hata'>'$konuAdi', ".$metin[214]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 			  }
 				
 			if($konuyuKilitle=="1") 
-				return "<font id='hata'><img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' /> '$konuAdi' ".$metin[179]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";
+				return "<font id='hata'><img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' /> '$konuAdi' ".$metin[179]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 				
 			if($gunFarki <= 0) 
-				return "<font id='hata'>'$konuAdi' ".$metin[180]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";				
+				return "<font id='hata'>'$konuAdi' ".$metin[180]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";				
 				
 			$cevaplanmisMi = array_key_exists(mysql_result($result1,$sayfaNo,"id"),$_SESSION["cevaplar"]);
 			
@@ -125,19 +132,21 @@ function anaMetniOku($gelen, $sayfaNo)
 			   $cevap = mysql_result($result1,$sayfaNo,"id");
 			   else
 			   $cevap = "-";
-
-			return html_entity_decode(@mysql_result($result1,$sayfaNo,"ana"))."| ".
+			
+			return html_entity_decode(@mysql_result($result1,$sayfaNo,"ana"))."|".
 					$tarih. "|".$user."|".$kayitSayisi."|".$sayfaNo."|".$konuAdi.
-					"|".$oncekiKonuID."|".$oncekiKonuAdi."|".$sonrakiKonuID."|".$sonrakiKonuAdi."|".$calismaSuresiD."|".$cevap."|".$aktifKonuNo;
+					"|".$oncekiKonuID."|".$oncekiKonuAdi."|".$sonrakiKonuID.
+					"|".$sonrakiKonuAdi."|".$calismaSuresiD."|".$cevap.
+					"|".$aktifKonuNo."|".$cSuresi."|".$sgSuresi;
 						
 			}
 		else
-		return "<font id='hata'><img src='img/empty.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[209]."' title='".$metin[209]."' />".$metin[182]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";
+		return "<font id='hata'><img src='img/empty.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[209]."' title='".$metin[209]."' />".$metin[182]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 	 }
 	else	
-        return "<font id='hata'>".$metin[183]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";
+        return "<font id='hata'>".$metin[183]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
  
- return "<font id='hata'>".$metin[184]."</font>|-|-|-|-|-|-|-|-|-|-|-|-";
+ return "<font id='hata'>".$metin[184]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 }
 
 if (isset($_POST['tur']) && isset($_POST['secilen'])){

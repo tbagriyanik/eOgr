@@ -14,7 +14,10 @@ require 'database.php';
 require("conf.php");	
 		   
 //if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-
+/*
+baglan2:
+veritabaný baðlantýsý
+*/
 function baglan2()
 {
 	global  $_host;
@@ -35,7 +38,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2:
+xss temizleme
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -51,7 +57,10 @@ function temizle2($metin)
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }
-
+/*
+cevapKontrol:
+sayfanýn cevabýnýn kontrol edilmesi
+*/
 function cevapKontrol($cevap, $id)
 {
 	global $yol1;	

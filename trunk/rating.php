@@ -12,7 +12,10 @@ session_start();
         require("lib/en.php");         
 
 require 'database.php'; 
-
+/*
+baglan2:
+veritabaný baðlantýsý
+*/
 function baglan2()
 {
 	global  $_host;
@@ -33,7 +36,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2:
+xss temizliði
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -49,7 +55,10 @@ function temizle2($metin)
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }
-
+/*
+getUserIDrate:
+kullanýcý kimlik bilgisi
+*/
 function getUserIDrate($usernam, $passwor)
 {
 	global $yol1;
@@ -66,7 +75,10 @@ function getUserIDrate($usernam, $passwor)
 	   return ("");
 	}
 }
-
+/*
+oyGonder:
+konuya oy verme
+*/
 function oyGonder($userID, $konuID, $rate){
 	global $yol1;
 				
@@ -95,7 +107,10 @@ function oyGonder($userID, $konuID, $rate){
 		
 	return "";
 }
-
+/*
+oyGetir:
+konunun kullanýcý oy bilgisi
+*/
 function oyGetir($userID, $konuID){
 	global $yol1;
 	
@@ -109,7 +124,10 @@ function oyGetir($userID, $konuID){
 	}
 	return 0;
 }
-
+/*
+oyToplam:
+konunun oy toplamý
+*/
 function oyToplam($konuID){
 	global $yol1;
 	
@@ -123,7 +141,10 @@ function oyToplam($konuID){
 	}
 	return 0;
 }
-
+/*
+oyOrtalama:
+konunun oy ortalamasý
+*/
 function oyOrtalama($konuID){
 	global $yol1;
 	

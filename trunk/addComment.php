@@ -19,6 +19,10 @@
  onclick="islemYap();" />
 </div>
 <script type="text/javascript">
+/*
+islemYap: parametresiz, 
+yorum girildiðini kontrol eder
+*/
 function islemYap(){
     if (document.getElementById('acomment').value!="") {
 			yorumGonder(<?php echo $_GET['konu3']?>  , document.getElementById('acomment').value);	

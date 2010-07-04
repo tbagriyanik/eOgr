@@ -1,4 +1,4 @@
-eOgr - v117b
+eOgr - v117c
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -13,19 +13,23 @@ Students can register for online education resources. Materials (pages) are in t
 Available language support is English and Turkish.
 
 Developer Name: Tarik Bagriyanik
+
 Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://www.tuzlaatl.k12.tr/eogr
-Source Track:	http://eogr.googlecode.com
+Source Track:	http://eogr.googlecode.com 
+Support:	http://www.ohloh.net/p/eogr
+	
 Start Date: 	15-11-2008
-Last Update: 	03-07-2010
+Last Update: 	04-07-2010
 Process Time : 	410 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
-Programs: 	Xampp, Adobe Dreamweaver, Fireworks, Artisteer, PHP Manual
+Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual
 
 INSTALLATION:
 -------------
 (1) Edit your settings in "database.php" with an editor
 (2) " http://localhost/eogr/install.php " is for installation. 
-     Your MySQL user must have "CREATE TABLE" permission!
+    Your MySQL user must have "CREATE TABLE" permission!
+    After a successful installation, you can remove "installation_Database.sql" file.
 (3) Login as administrator user: name "admin" and password "11111"
  
 	:For Clients (web users):
