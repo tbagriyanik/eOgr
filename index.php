@@ -81,7 +81,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <title>eOgr</title>
-<script type="text/javascript" src="lib/script.js"></script>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="lib/script.js"></script>
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
@@ -441,6 +441,9 @@ if (document.getElementById("userP")!=null) document.getElementById("userP").set
 
 //-->
 </script>
+<?php  						
+ require "feedback.php";
+?>
 </body>
 </html>
 

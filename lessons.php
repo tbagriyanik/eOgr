@@ -32,7 +32,7 @@ ob_start (); // Buffer output
 <title>eOgr -<?php echo $metin[55]?>
 <!--TITLE-->
 </title>
-<script type="text/javascript" src="lib/script.js"></script>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="lib/script.js"></script>
 <script type="text/javascript" src="lib/flashMode.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/hijax.js"></script>
@@ -152,9 +152,12 @@ ob_start (); // Buffer output
                 <div class="PostContent" style="height:450px;">
                   <?php  
 
-	$_SESSION["cevaplar"] = ""; //eskiler silinir
-	$_SESSION["cevaplar"][0] = ""; //dizi oluþturuldu
-	$_SESSION['cevapSuresi'] = ""; //eski deðeri yok edelim 
+	$_SESSION["cevaplar"] = ""; 
+	//eskiler silinir
+	$_SESSION["cevaplar"][0] = ""; 
+	//dizi oluþturuldu
+	$_SESSION['cevapSuresi'] = ""; 
+	//eski deðeri yok edelim 
 
 ?>
                   <div id="oncekiKonu"></div>
@@ -177,8 +180,7 @@ ob_start (); // Buffer output
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />
-                  <span id="gercekCevapSuresi" style="visibility:hidden"></span>
-                  <span id="slideGecisSuresi" style="visibility:hidden"></span>
+                  <span id="gercekCevapSuresi" style="visibility:hidden"></span> <span id="slideGecisSuresi" style="visibility:hidden"></span>
                   <?php
 				    $adi	=temizle(substr($_SESSION["usern"],0,15));
 	   				$par	=temizle($_SESSION["userp"]);
@@ -319,7 +321,10 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
 		  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
-
+/*
+CreateBookmarkLink:
+sayfayý sýk kullanýlanlara ekleme
+*/
 function CreateBookmarkLink() {
 	var strTitle	= document.title;
 	var strURL		= location.href;
@@ -346,7 +351,10 @@ function CreateBookmarkLink() {
 	return false;
 
 }
-
+/*
+konuDuzenle:
+konu düzenleme baðýnýn çalýþmasý
+*/
 function konuDuzenle(){
 	if(document.getElementById('konu_id').value>0)
 		location.href = "lessonsEdit.php?tab=4"+"&"+"seciliKonu=" + document.getElementById('konu_id').value;
@@ -424,5 +432,8 @@ fix_flash();
     </div>
   </div>
 </div>
+<?php  						
+ require "feedback.php";
+?>
 </body>
 </html>

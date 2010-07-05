@@ -23,6 +23,7 @@
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[57]?></title>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -493,5 +494,8 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
     </div>
   </div>
 </div>
+<?php  						
+ require "feedback.php";
+?>
 </body>
 </html>

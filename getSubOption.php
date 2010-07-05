@@ -12,7 +12,10 @@ require("conf.php");
    dilCevir($taraDili);
    
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-
+/*
+getOncekiKonuAdi:
+önceki konunun adýný getirme
+*/
 function getOncekiKonuAdi($gelenID){
 	global $yol1;
 	$sql1	= 	"select konuAdi from eo_4konu where id ='".temizle($gelenID)."'";
@@ -25,7 +28,10 @@ function getOncekiKonuAdi($gelenID){
 	else
 		return "";
 }
-
+/*
+getSonrakiKonu:
+sonraki konunun bilgisi
+*/
 function getSonrakiKonu($suAnkiID, $alanAdi){
 	global $yol1;
 	$sql1	= 	"select $alanAdi from eo_4konu where oncekiKonuID ='".temizle($suAnkiID)."'";
@@ -38,7 +44,10 @@ function getSonrakiKonu($suAnkiID, $alanAdi){
 	else
 		return "";
 }
-
+/*
+anaMetniOku:
+sayfa bilgisinin ana metnini getirir
+*/
 function anaMetniOku($gelen, $sayfaNo)
 {
 	global $yol1;

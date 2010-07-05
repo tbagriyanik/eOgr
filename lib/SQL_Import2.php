@@ -26,7 +26,7 @@ class sqlImport {
            if ($this -> con !== false) 
            {
 
-         $f = fopen($this -> ArchivoSql,"r+");
+         $f = fopen($this -> ArchivoSql,"r");
          $sqlFile = fread($f, filesize($this -> ArchivoSql));
          $sqlArray = explode(';', $sqlFile);
 

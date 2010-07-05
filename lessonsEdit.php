@@ -24,6 +24,7 @@
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[62]?></title>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script type="text/javascript" src="lib/flashMode.js"></script>
 <script language="JavaScript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
@@ -1818,6 +1819,7 @@ bkLib.onDomLoaded(function() {
  
 ?>
                     <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.8.2.custom.min.js"></script> 
+                    <script language="JavaScript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script> 
                     <script type="text/javascript">
 $(document).ready(function(){ 
 
@@ -1885,5 +1887,8 @@ if (document.getElementById("sadeceKayitlilarGorebilir")!=null) {
  fix_flash();
 //-->
 </script>
+<?php
+   require "feedback.php";
+?>
 </body>
 </html>

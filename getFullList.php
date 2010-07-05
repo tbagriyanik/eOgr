@@ -12,7 +12,10 @@ header("Content-Type: text/html; charset=iso-8859-9");
         require("lib/en.php");         
 
 require 'database.php'; 
-
+/*
+baglan2:
+veritabaný baðlantýsý
+*/
 function baglan2()
 {
 	global  $_host;
@@ -33,7 +36,10 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-
+/*
+temizle2:
+xss temizleme
+*/
 function temizle2($metin)
 {
     $metin = str_replace("&", "", $metin);
@@ -49,7 +55,10 @@ function temizle2($metin)
     $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlspecialchars($metin)));
     return $metin;
 }
-
+/*
+getUserIDcomment:
+kullanýcý kimlik numarasý
+*/
 function getUserIDcomment($usernam, $passwor)
 {
 	global $yol1;
@@ -66,7 +75,10 @@ function getUserIDcomment($usernam, $passwor)
 	   return ("");
 	}
 }
-
+/*
+listeGetir:
+belli bir tablodan istenen veri listesini alma (facebox için)
+*/
 function listeGetir($userID, $durum){
 	global $yol1;							
 	global $metin;	
@@ -299,12 +311,18 @@ function listeGetir($userID, $durum){
 		
 	return false;
 }
-
+/*
+tarihOku:
+TR tarih formatý
+*/
 function tarihOku($gelenTarih){
 	//Y-m-d > d-m-Y 	
 	return date("d-m-Y", strtotime($gelenTarih));
 }
-
+/*
+Sec2Time2:
+saniyenin üst birime çevrilmesi
+*/
 function Sec2Time2($time){
   if(is_numeric($time)){
     $value = "";
