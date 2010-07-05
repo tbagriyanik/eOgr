@@ -1521,9 +1521,12 @@ getMailAddress:
 kullanýcýnýn mail adresini getirir
 */
 function getMailAddress($id){	
+  if($id=="-1"){
+	  return ayarGetir("ayar4char"); 
+  }else{    
 	global $yol1;
 	
-	$sql1	= 	"select userEmail from eo_users where id=".$id. " limit 0,1";
+	$sql1	= 	"select userEmail from eo_users where id='".$id."' limit 0,1";
 	$result1= 	@mysql_query($sql1,$yol1);
 	
 	if ($result1)
@@ -1532,6 +1535,7 @@ function getMailAddress($id){
 		}	     
 	@mysql_free_result($result1);
 	return $result1;	
+  }
 }
 /*
 addnewUser:

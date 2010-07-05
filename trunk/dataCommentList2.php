@@ -27,7 +27,7 @@ header("Pragma: no-cache");
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr - <?php echo $metin[288]?></title>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -388,6 +388,9 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
     </div>
   </div>
 </div>
+<?php  						
+ require "feedback.php";
+?>
 </body>
 </html>
 <?php 

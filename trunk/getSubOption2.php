@@ -15,7 +15,10 @@ require("conf.php");
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 
 //Bu sayfa printIt içindir...   ********************************************************************************/
-
+/*
+anaMetniOku:
+sayfa bilgisinin ana metnini getirir
+*/
 function anaMetniOku($konuID)
 {
 	global $yol1;

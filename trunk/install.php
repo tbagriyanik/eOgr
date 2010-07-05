@@ -14,14 +14,20 @@ $db_host 		= $_host ;
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-
+/*
+browserdili:
+tarayýcýnýn dil bilgisini alýr
+*/
 function browserdili() {
          $lang=split('[,;]',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
          $lang=strtoupper($lang[0]);
          $lang=split('[-]',$lang);
          return $lang[0];
 }
-
+/*
+dilCevir:
+dil deðiþtirme yeri
+*/
 function dilCevir($dil){
       if ($dil=="TR")
         require("lib/tr.php"); 

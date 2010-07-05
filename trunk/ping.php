@@ -1,7 +1,9 @@
-<script  type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
-<script  type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script  type="text/javascript" src="lib/jquery.ping.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.ping.js"></script>
 <script type="text/javascript">
+/*
+pingTest:
+sayfadan sunucuya ping testi
+*/
 $(document).ready(function (){
 	$('#pingTest').ping({
 		interval : 3, 

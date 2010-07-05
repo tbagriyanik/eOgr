@@ -1,4 +1,8 @@
 // Get the HTTP Object
+/*
+getHTTPObject:
+Ajax nesnesinin hazýrlanmasý
+*/
 function getHTTPObject(){
    if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
    else if (window.XMLHttpRequest)  {
@@ -13,11 +17,17 @@ function getHTTPObject(){
       return null;
    }		 
 } 
-
+/*
+bitirmeYuzdesi:
+ders çalýþmada ilerleme çubuðunun deðerinin bulunmasý
+*/
 function bitirmeYuzdesi(){
 	return parseInt(document.getElementById('sonSayfaHidden').value) * 100 / parseInt(document.getElementById('sayfaSayisi').innerHTML);
 }
- 
+/*
+sureDolduTemizle:
+genel olarak ders sayfasýndaki bölümlerin temizlenmesi
+*/
 function sureDolduTemizle(){
 		$("#calismaSuresi").stopTime();
 		$("#cevapSuresi").stopTime();
@@ -32,6 +42,7 @@ function sureDolduTemizle(){
 		document.getElementById('gercekCevapSuresi').innerHTML =   "";		
 		document.getElementById('slideGecisSuresi').innerHTML =   "";		
 		document.getElementById('sayfaNo').innerHTML =  "-";
+		document.getElementById('calismaSuresi').innerHTML =  "-";
 		document.getElementById('bitirmeYuzdesi').innerHTML =  "";
 		document.getElementById('geriDugmesi').innerHTML  ='<img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/>';
 		document.getElementById('ileriDugmesi').innerHTML ='<img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/>';
@@ -40,7 +51,10 @@ function sureDolduTemizle(){
 		document.getElementById('cevapVer').style.visibility = 'hidden' ;
 		if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 }
- 
+/*
+setOutputKonu:
+konudaki bilgilerin ekrana getirilmesi
+*/
 function setOutputKonu(sayfaNo, konu, noCount){
 	
 	if(noCount === undefined) noCount=0;
@@ -147,14 +161,20 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		
     }
 }
-
+/*
+sayacTetik:
+sayfadaki çalýþma süresinin çalýþmasý
+*/
 function sayacTetik()  {
 					$("#calismaSuresi").everyTime(1000,function(i) {
 						$(this).html(i);
 						loginDurumu();
 					});
 };
- 
+/*
+sayacTetik2:
+cevap verme süresinin çalýþmasý
+*/ 
 function sayacTetik2(sure)  {
 					$("#soruGeriSayim").oneTime((sure*60) + "s",function() {																		
 						$("#calismaSuresi").stopTime();
@@ -162,8 +182,10 @@ function sayacTetik2(sure)  {
 						sureDolduTemizle();
 					});
 };
-
-
+/*
+konuSec2:
+alt seçeneklerin veritabanýndan istenmesi
+*/
 function konuSec2(sayfaNo, noCount){    
 	
 	if(noCount === undefined) noCount=0;
@@ -183,13 +205,19 @@ function konuSec2(sayfaNo, noCount){
 		if (document.getElementById("tamam")!=null) fadeUp(document.getElementById("tamam"),0,255,0,0,150,0);  
     }
 }
- 
+/*
+setOutputOda:
+sohbet odasýnýn iþlemi
+*/ 
 function setOutputOda(){
     if(httpObject.readyState == 4){
 		//alert(httpObject.responseText);
     }
 }
- 
+/*
+odaSec:
+sohbet odasýnýn deðiþtirilmesi
+*/
 function odaSec(){    
     httpObject = getHTTPObject();
     if (httpObject != null) {
@@ -199,7 +227,10 @@ function odaSec(){
         httpObject.onreadystatechange = setOutputOda;		
     }
 }
-
+/*
+saveUserWork:
+ders bittiðinde kullanýcýya ders bilgisinin kaydedilmesi
+*/
 function saveUserWork(){ 
     httpObject = getHTTPObject();
     if (httpObject != null) {
@@ -208,7 +239,10 @@ function saveUserWork(){
   		httpObject.send(null);		
     }
 }
-
+/*
+setOutputAll:
+yazýcý önizlemesi yapýmý
+*/
 function setOutputAll(){	
     if(httpObject.readyState == 4){
 		if(httpObject.responseText!="") {			
@@ -221,7 +255,10 @@ function setOutputAll(){
 			}
 	}
 }
-
+/*
+printIt:
+sayfalarýn yazdýrýlmasý için bilgilerinin istenmesi
+*/
 function printIt()		{
     httpObject = getHTTPObject();
     if (httpObject != null) {
@@ -230,13 +267,19 @@ function printIt()		{
   		httpObject.send(null);	
     }
 }
-
+/*
+setYardim:
+yardým için diziden gerekli sekmenin bilgilerinin çaðrýlmasý
+*/
 function setYardim(){
     if(httpObject.readyState == 4){
 		document.getElementById('icerisi').innerHTML = (httpObject.responseText);
     }
 }
- 
+/*
+yardimGoster:
+yardým için diziden gerekli sekmenin bilgilerinin çaðrýlmasý
+*/ 
 function yardimGoster(gelen){
     httpObject = getHTTPObject();
     if (httpObject != null) {
@@ -245,7 +288,10 @@ function yardimGoster(gelen){
   		httpObject.send(null);	
     }
 }
-
+/*
+yorumGonder:
+derse kullanýcýnýn yorum eklemesi
+*/
 function yorumGonder(konuID, comment){    
     httpObject = getHTTPObject();
     if (httpObject != null) {
@@ -255,8 +301,10 @@ function yorumGonder(konuID, comment){
         httpObject.onreadystatechange = setOutputOda;		
     }
 }
-
-
+/*
+setCevapSonuc:
+soruya cevap verilmesi
+*/
 function setCevapSonuc(){
     if(httpObject.readyState == 4){
 		document.getElementById('cevapSonucu').innerHTML = (httpObject.responseText);
@@ -273,7 +321,10 @@ function setCevapSonuc(){
 		 
     }
 } 
-
+/*
+cevapDegerlendir:
+gelen cevap deðerinin veritabanýndan karþýlaþtýrýlmasý
+*/
 function cevapDegerlendir(cevap, id){    
     httpObject = getHTTPObject();
     if (httpObject != null) {
@@ -283,21 +334,25 @@ function cevapDegerlendir(cevap, id){
         httpObject.onreadystatechange = setCevapSonuc;		
     }
 }
-
+/*
+durumGuncelle:
+sayfa durumunun güncellenmesi
+*/
 function durumGuncelle(){
-	if(httpObject.readyState == 4){
-			if(httpObject.responseText=="0") {
-							sureDolduTemizle();							  
-							
-			  }
+	if(httpObject.readyState == 4){		
+		if(httpObject.responseText=="0") {
+			sureDolduTemizle();							  							
+		  }
 	}
 }
-
-
+/*
+loginDurumu:
+kayýtlý kullanýcýlar için oturum açýk olduðunun kontrol edilmesi
+*/
 function loginDurumu(){	
     httpObject = getHTTPObject();
     if (httpObject != null) {
-		konu = document.getElementById('aktifKonuNo').innerHTML;
+		konu = document.getElementById('konu_id').value;
         httpObject.open("GET", "getDurum.php?konu="+encodeURIComponent(konu), true);
   		httpObject.send(null);	
         httpObject.onreadystatechange = durumGuncelle;		

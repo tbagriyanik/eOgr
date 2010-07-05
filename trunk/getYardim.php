@@ -13,7 +13,10 @@ require("conf.php");
    dilCevir($taraDili);
    
 if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	   
-   
+/*
+anaMetniOku:
+yardým bilgisinin ana metnini getirir
+*/
 function anaMetniOku($konu)
 {	
 	global $metin;	

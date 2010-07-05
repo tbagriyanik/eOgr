@@ -421,7 +421,7 @@ label.error {
 }
 .external {
 	background: url(../img/external.png) center right no-repeat;
-	padding-right: 12px;
+	padding-right: 12px;	
 }
 /*sliding lesson tree*/
 .msg_list {

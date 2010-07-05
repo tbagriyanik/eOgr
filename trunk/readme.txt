@@ -1,4 +1,4 @@
-eOgr - v117c
+eOgr - v117d
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -20,7 +20,7 @@ Source Track:	http://eogr.googlecode.com
 Support:	http://www.ohloh.net/p/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	04-07-2010
+Last Update: 	05-07-2010
 Process Time : 	410 hours (17.000 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual
 
@@ -42,7 +42,7 @@ INSTALLATION:
 	- MySQL 5 database server 
 	- .htaccess enabled for security (can be erased if having problems)
 
-Used Classes:
+Used Classes and Referred Sites:
 - autosuggest: http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html v2.1.3
 - flood-protection: http://archive.free-php.org.uk/ v1.0
 - jQuery: http://jquery.com/ v1.4.2
@@ -50,12 +50,12 @@ Used Classes:
 - nicEdit: http://www.nicedit.com/ v0.9 r23
 - phplivex: http://www.phplivex.com/ v2.6
 - wtag: http://spacegirlpippa.co.uk/ v1.0Beta
-- facebox: http://famspam.com/facebox v1.2
+- Facebox: http://famspam.com/facebox v1.2
 - HTML Graphs: http://www.gerd-tentler.de/tools/phpgraphs v4.8
 - SQL_Export: http://www.phpclasses.org/browse/file/7633.html
 - SQL_Import: http://www.phpclasses.org/browse/package/4898.html
 - hijax: http://bulletproofajax.com 
-- field hint: http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html
+- Input field hints: http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html
 - Flash Fix: http://www.onlineaspect.com/2009/08/13/javascript_to_fix_wmode_parameters
 
 CSS, RSS and HTML Validations:  

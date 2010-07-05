@@ -17,17 +17,21 @@ function getKonuKayitliKullanici($gelenID){
 
 	if($result1) {
 		mysql_fetch_row($result1);
-		return @mysql_result($result1,1,"sadeceKayitlilarGorebilir");
+		return mysql_result($result1,0,"sadeceKayitlilarGorebilir");
 	}
 	else
-		return "";
+		return "1";
 }
 	 
     $adi	=temizle(substr($_SESSION["usern"],0,15));
-    $par	=temizle($_SESSION["userp"]);	
-	$tur	=checkRealUser($adi,$par);	 
+    $par	=temizle($_SESSION["userp"]);
+	
+	if ($adi=="" or $par=="")	
+		$tur = -2;
+	  else
+		$tur =checkRealUser($adi,$par);	 
 	 
-	if( !in_array($tur, array("1","2","0")) and getKonuKayitliKullanici(temizle($_GET['konu']))=="1") 
+	if($tur=="-2" and getKonuKayitliKullanici(temizle($_GET['konu']))=="1") 
 			echo "0";
 		else
 			echo "1";
