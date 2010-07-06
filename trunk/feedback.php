@@ -1,3 +1,8 @@
+<?php
+ $adi	=temizle(substr($_SESSION["usern"],0,15));
+ $par	=temizle($_SESSION["userp"]);
+ if(!($adi=="" or $par=="")) {
+?>
 <div id="containerFB">
 <div class="panelFB">
   <h3>Hata Bildirimi</h3>
@@ -19,3 +24,6 @@
 	});
   });
 </script>
+<?php
+ }
+?>

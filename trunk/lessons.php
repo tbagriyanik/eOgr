@@ -45,7 +45,7 @@ ob_start (); // Buffer output
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script><script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -216,7 +216,7 @@ if(isKonu($_GET["konu"])){
                     ?>
                     <br />
                     <br />
-                    <label onclick="CreateBookmarkLink();" title="<?php echo $metin[300]?>" > <img src="img/favcenter.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[244]?>"/> <?php echo $metin[244]?></label>
+                    <label id="addBookmarkContainer" title="<?php echo $metin[300]?>" > <img src="img/favcenter.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[244]?>"/> </label>
                     <?php
 if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
    if(isset($_GET["konu"]) && !empty($_GET["konu"]))
@@ -317,40 +317,11 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
           <?php
 }
 ?>
-          <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
 		  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
-/*
-CreateBookmarkLink:
-sayfayý sýk kullanýlanlara ekleme
-*/
-function CreateBookmarkLink() {
-	var strTitle	= document.title;
-	var strURL		= location.href;
-    if (window.sidebar) 
-    { 
-        // Mozilla Firefox Bookmark
-        window.sidebar.addPanel(strTitle, strURL,"");
-    }
-    else if( window.external )
-    {
-        // IE Favorite
-        window.external.AddFavorite(strURL, strTitle);
-    }
-    else if(window.opera && window.print)
-    { 
-        // Opera Hotlist
-        var elem = document.createElement('a');
-        elem.setAttribute('href',url);
-        elem.setAttribute('title',title);
-        elem.setAttribute('rel','sidebar');
-        elem.click();
-    }
-	
-	return false;
 
-}
 /*
 konuDuzenle:
 konu düzenleme baðýnýn çalýþmasý

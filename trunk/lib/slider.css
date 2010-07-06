@@ -1,0 +1,111 @@
+/*
+    anythingSlider v1.2
+    
+    By Chris Coyier: http://css-tricks.com
+    with major improvements by Doug Neiner: http://pixelgraphics.us/
+    based on work by Remy Sharp: http://jqueryfordesigners.com/
+*/
+
+
+.anythingSlider {
+	width: 480px;
+	height: 360px;
+	position: relative;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-bottom: 15px;
+	margin-left: auto;
+}
+.anythingSlider .wrapper {
+	width: 400px;
+	overflow: auto;
+	height: 341px;
+	margin: 0 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/* Width below is max for Opera */
+.anythingSlider .wrapper ul {
+	width: 32700px;
+	/*list-style: none;*/
+	position: absolute;
+	top: 20px;
+	left: 0;
+	background: #ccf;
+	padding:20px !important;
+}
+.anythingSlider ul li {
+	display: block;
+	float: left;
+	padding: 0;
+	height: 317px;
+	width: 390px;
+	margin: 0px;
+}
+.anythingSlider .arrow {
+	display: block;
+	height: 200px;
+	width: 67px;
+	background: url(arrows.png) no-repeat 0 0;
+	text-indent: -9999px;
+	position: absolute;
+	top: 65px;
+	cursor: pointer;
+}
+.anythingSlider .forward {
+	background-position: 0 0;
+	right: -20px;
+}
+.anythingSlider .back {
+	background-position: -67px 0;
+	left: -20px;
+}
+.anythingSlider .forward:hover {
+	background-position: 0 -200px;
+}
+.anythingSlider .back:hover {
+	background-position: -67px -200px;
+}
+#thumbNav {
+	position: relative;
+	top: 340px;
+	text-align: center;
+}
+#thumbNav a {
+	color: black;
+	font: 11px/18px Georgia, Serif;
+	display: inline-block;
+	padding: 2px 8px;
+	height: 18px;
+	margin: 0 5px 0 0;
+	background: #c58b04 url(cellshade.png) repeat-x;
+	text-align: center;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+#thumbNav a:hover {
+	background-image: none;
+}
+#thumbNav a.cur {
+	background: #e0a213;
+}
+/*
+  Prevents
+*/
+.anythingSlider .wrapper ul ul {
+	position: static;
+	margin: 0;
+	background: none;
+	overflow: visible;
+	width: auto;
+	border: 0;
+}
+.anythingSlider .wrapper ul ul li {
+	float: none;
+	height: auto;
+	width: auto;
+	background: none;
+}

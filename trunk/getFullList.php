@@ -12,6 +12,62 @@ header("Content-Type: text/html; charset=iso-8859-9");
         require("lib/en.php");         
 
 require 'database.php'; 
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="-1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+<title>eOgr</title>
+<link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="theme/silverModern/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
+<script src="lib/jquery.anythingslider.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    
+        $(function () {
+        
+            $('.anythingSlider').anythingSlider({
+                easing: "easeInOutBack",        // Anything other than "linear" or "swing" requires the easing plugin
+                autoPlay: true,                 // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+                delay: 1000,                    // How long between slide transitions in AutoPlay mode
+                startStopped: true,            // If autoPlay is on, this can force it to start stopped
+                animationTime: 600,             // How long the slide transition takes
+                hashTags: false,                 // Should links change the hashtag in the URL?
+                buildNavigation: true,          // If true, builds and list of anchor links to link to each slide
+        		pauseOnHover: true,             // If true, and autoPlay is enabled, the show will pause on hover
+        		startText: "",             // Start text
+		        stopText: "",               // Stop text
+		        navigationFormatter: null       // Details at the top of the file on this use (advanced use)
+            });
+            
+        });
+    </script>
+</head>
+<body> 
+<h1 align="center"><?php
+  switch($_GET["case"]){
+	  case "2":echo $metin[200];break;
+	  case "11":echo $metin[213];break;
+	  case "12":echo $metin[239];break;
+	  case "13":echo $metin[84];break;
+	  case "14":echo $metin[276];break;
+	  case "15":echo $metin[277];break;
+	  case "16":echo $metin[302];break;
+	  default: echo "Hata";
+  }
+?></h1>   
+<div class="anythingSlider">
+  <div class="wrapper">
+    <?php
 /*
 baglan2:
 veritabanı bağlantısı
@@ -99,12 +155,22 @@ function listeGetir($userID, $durum){
 							$result1 = mysql_query($sql1, $yol1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)>0)  $ekle = "<ul>"; else return "";
+							   if(mysql_num_rows($result1)==0)  return "";
 							   
-							   while($row_gelen = mysql_fetch_assoc($result1))
-								$ekle .= "<li style=\"list-style-type:disc;\"><a href='lessons.php?konu=".$row_gelen['id']."'>".$row_gelen['konuAdi']."</a> <font size='-3'>".$row_gelen['toplam']."</font></li>";
-								
-							   $ekle .= "</ul>";
+							   $ekle = "<ul><li>";
+							   $donguSon = mysql_num_rows($result1);
+							   for($i=0; $i<$donguSon ;$i++){
+									$data = mysql_fetch_assoc($result1);
+									if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
+										}
+									
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\" >".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";										
+							  
 							   echo $ekle;	
 							   return ($ekle);
 							}else {
@@ -124,13 +190,22 @@ function listeGetir($userID, $durum){
 							$result1 = mysql_query($sql1, $yol1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)>0) $ekle = "<ul>"; else return "";	 
-							   
-							   while($row_gelen = mysql_fetch_assoc($result1)){
-								$ekle .= "<li style='list-style-type:disc;'><a href='lessons.php?konu=".$row_gelen['id']."'>".$row_gelen['konuAdi']."</a> <font size='-3'>".$row_gelen['toplam']."</font></li>";
-							   }
-								
-								$ekle .= "</ul>";
+							   if(mysql_num_rows($result1)==0) return "";							   
+							   								
+							   $ekle = "<ul><li>";
+							   $donguSon = mysql_num_rows($result1);
+							   for($i=0; $i<$donguSon ;$i++){
+									$data = mysql_fetch_assoc($result1);
+									if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
+										}
+									
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\" >".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
+										
 								echo $ekle;
 							   return true;
 							}else {
@@ -157,11 +232,21 @@ function listeGetir($userID, $durum){
 							$result1 = mysql_query($sql1, $yol1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)>0) $ekle = "<ul>"; else return "";	 
-							   while($row_gelen = mysql_fetch_assoc($result1))
-								$ekle .= "<li style='list-style-type:disc;'>".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - ".$row_gelen['dersAdi']." <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font></li>";
-								
-							   if(mysql_num_rows($result1)>0) $ekle .= "</ul>";
+							   if(mysql_num_rows($result1)==0) return "";	 
+							   								
+							   $ekle = "<ul><li>";
+							   $donguSon = mysql_num_rows($result1);
+							   for($i=0; $i<$donguSon ;$i++){
+									$row_gelen = mysql_fetch_assoc($result1);
+									if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
+										}
+									
+									$ekle .=  ($i+1)." ".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - ".$row_gelen['dersAdi']." <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
 								echo $ekle;
 							   return ($ekle);
 							}else {
@@ -185,18 +270,20 @@ function listeGetir($userID, $durum){
 							 {
 								 if (@mysql_numrows($result) > 0) {
 									
-									$ekle =  "<ul>";
-									for($i=0;$i<@mysql_numrows($result);$i++){
+									  $ekle = "<ul><li>";
+									$donguSon = mysql_num_rows($result);
+							   		for($i=0; $i<$donguSon ;$i++){
 										$data = mysql_fetch_assoc($result);
-										$ekle .=  "<li style='list-style-type:disc;'>";
-										if ($data["tarih"]=="0000-00-00 00:00:00")
-											$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>";
-											else
-											$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".tarihOku($data["tarih"])."</font>";
-											
-										$ekle .=  "</li>";
+										if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
 										}
-										$ekle .=  "</ul>";
+										if ($data["tarih"]=="0000-00-00 00:00:00")
+											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a><br/>";
+											else
+											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".tarihOku($data["tarih"])."</font><br/>";	
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
 								 }		
 								echo $ekle; 
 								return $ekle; 
@@ -218,17 +305,22 @@ function listeGetir($userID, $durum){
 							if($result)
 							 {
 								 if (@mysql_numrows($result) > 0) {
-									
-									$ekle =  "<ul>";
-									for($i=0;$i<@mysql_numrows($result);$i++){
-										$data = mysql_fetch_assoc($result);
-										$ekle .=  "<li style='list-style-type:disc;'>";
-										$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a>".
-													  " <font size='1' title='$metin[273] : ".$data["toplam"].", $metin[274] : ".round($data["ortalama"],1)
-													  ."'>".(round($data["ortalama"]))."</font>";								
-										$ekle .=  "</li>";
+								$donguSon = @mysql_numrows($result);
+								
+									  	$ekle .= "<ul>";
+										$ekle .=  "<li>";
+										
+								for($i=0; $i<$donguSon ;$i++){
+									$data = mysql_fetch_assoc($result);
+									if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
 										}
-										$ekle .=  "</ul>";
+									
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a>"." <font size='1' title='$metin[273] : ".$data["toplam"].", $metin[274] : ".round($data["ortalama"],1)."'>".(round($data["ortalama"]))."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
 								 }		
 								 echo $ekle;
 								return $ekle; 
@@ -251,16 +343,22 @@ function listeGetir($userID, $durum){
 							if($result)
 							 {
 								 if (@mysql_numrows($result) > 0) {
-									
-									$ekle =  "<ul>";
-									for($i=0;$i<@mysql_numrows($result);$i++){
-										$data = mysql_fetch_assoc($result);
-										$ekle .=  "<li style='list-style-type:disc;'>";
-										$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a> <font size='-3'>".($data["toplam"])."</font>";
-											
-										$ekle .=  "</li>";
+								$donguSon = @mysql_numrows($result);
+								
+									  	$ekle .= "<ul>";
+										$ekle .=  "<li>";
+										
+								for($i=0; $i<$donguSon ;$i++){
+									$data = mysql_fetch_assoc($result);
+									if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
 										}
-										$ekle .=  "</ul>";
+									
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\" >".$data["kadi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
 								 }		
 								 echo $ekle;
 								return $ekle; 
@@ -285,15 +383,21 @@ function listeGetir($userID, $durum){
 								
 								$donguSon = @mysql_numrows($result);
 								
-								$ekle =  "<ul>";
+									  	$ekle .= "<ul>";
+										$ekle .=  "<li>";
+										
 								for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result);
-									$ekle .=  "<li style='list-style-type:disc;'>";
-									$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a> <font size='-3'>".($data["toplam"])."</font>";
-										
-									$ekle .=  "</li>";
+									if($i % 10 == 0 and $i>0){
+											$ekle .=  "</li><li>";
+										}
+									
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\" >".$data["kadi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									
 									}
-									$ekle .=  "</ul>";
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
+									
 							 }		
 							 @mysql_free_result($result);
 							 echo $ekle;
@@ -361,3 +465,9 @@ else
    
 
 ?>
+  </div>
+</div>
+<center><a href="index.php" ><?php echo $metin[54]?></a></center>
+<center><a href="login.php" ><?php echo $metin[60]?></a></center>
+</body>
+</html>

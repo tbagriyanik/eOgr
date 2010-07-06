@@ -81,7 +81,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <title>eOgr</title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="lib/script.js"></script>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="lib/script.js"></script>
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
@@ -291,8 +292,8 @@ if (isset($_COOKIE["remUser"]))
 						 }
 						 ?>
                   <br />
-                  <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> 
-<a href="help.php" class="external" onclick="window.open('help.php');return false;" target="_blank"><img src="img/passwRenew.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a><br /> &nbsp;</div>
+                  <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> <a href="help.php" class="external" onclick="window.open('help.php');return false;" target="_blank"><img src="img/passwRenew.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a><br />
+                  &nbsp;</div>
                 <div class="cleared"></div>
               </div>
             </div>
@@ -300,7 +301,7 @@ if (isset($_COOKIE["remUser"]))
           <?php 
   if (getStats(16)!=""){
 ?>
-          <script type="text/javascript" src="lib/facebox/facebox.js"></script>
+          <script type="text/javascript" src="lib/facebox/facebox.js"></script> 
           <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -342,7 +343,7 @@ if (isset($_COOKIE["remUser"]))
             <div class="BlockContent">
               <div class="BlockContent-body">
                 <div>
-                  <ul>                  
+                  <ul>
                     <?php									
 						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
 										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");
@@ -446,6 +447,3 @@ if (document.getElementById("userP")!=null) document.getElementById("userP").set
 ?>
 </body>
 </html>
-
-
-
