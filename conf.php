@@ -690,7 +690,7 @@ function getStats($num)
 					
 				   if(mysql_num_rows($result1)>0) $ekle .= "</ul>";
 				  if (mysql_num_rows($result1) > ayarGetir("ayar2int"))	
-				    $ekle .="<div><a href='getFullList.php?case=2' rel='facebox' class='more'>$metin[162]</a></div>";
+				    $ekle .="<div><a href='getFullList.php?case=2' class='more'>$metin[162]</a></div>";
 			   	   @mysql_free_result($result1);	
 				   return ($ekle);
 				}else {
@@ -855,7 +855,7 @@ function getStats($num)
 				   	$ekle .= "</ul>";
 					
 					if (mysql_num_rows($result1) > ayarGetir("ayar2int"))	
-					   $ekle .="<div><a href='getFullList.php?case=11' rel='facebox' class='more'>$metin[162]</a></div>"; 
+					   $ekle .="<div><a href='getFullList.php?case=11' class='more'>$metin[162]</a></div>"; 
 					@mysql_free_result($result1);   
 				   return ($ekle);
 				}else {
@@ -894,7 +894,7 @@ function getStats($num)
 				   $ekle .= "</ul>";
 				   
 				   if (mysql_num_rows($result1) > ayarGetir("ayar2int"))	
-					   $ekle .="<div><a href='getFullList.php?case=12' rel='facebox' class='more'>$metin[162]</a></div>"; 
+					   $ekle .="<div><a href='getFullList.php?case=12' class='more'>$metin[162]</a></div>"; 
 					@mysql_free_result($result1);
 				   return ($ekle);
 				}else {
@@ -934,7 +934,7 @@ function getStats($num)
 							$ekle .=  "</ul>";
 				   
 					   if (mysql_num_rows($result) > ayarGetir("ayar2int"))	
-						   $ekle .="<div><a href='getFullList.php?case=13' rel='facebox' class='more'>$metin[162]</a></div>"; 
+						   $ekle .="<div><a href='getFullList.php?case=13' class='more'>$metin[162]</a></div>"; 
 					   
 					 }		
 					 @mysql_free_result($result);
@@ -971,7 +971,7 @@ function getStats($num)
 							}
 							$ekle .=  "</ul>";
 					 if (mysql_num_rows($result) > ayarGetir("ayar2int"))	
-						   $ekle .="<div><a href='getFullList.php?case=14' rel='facebox' class='more'>$metin[162]</a></div>"; 
+						   $ekle .="<div><a href='getFullList.php?case=14' class='more'>$metin[162]</a></div>"; 
 					   
 					 }	
 					 @mysql_free_result($result);
@@ -1008,7 +1008,7 @@ function getStats($num)
 							}
 							$ekle .=  "</ul>";
 							if (mysql_num_rows($result) > ayarGetir("ayar2int"))	
-						   		$ekle .="<div><a href='getFullList.php?case=15' rel='facebox' class='more'>$metin[162]</a></div>";
+						   		$ekle .="<div><a href='getFullList.php?case=15' class='more'>$metin[162]</a></div>";
 					 }		
 					 @mysql_free_result($result);
 					return $ekle; 
@@ -1044,7 +1044,7 @@ function getStats($num)
 							}
 							$ekle .=  "</ul>";
 							if (mysql_num_rows($result) > ayarGetir("ayar2int"))	
-						   		$ekle .="<div><a href='getFullList.php?case=16' rel='facebox' class='more'>$metin[162]</a></div>";
+						   		$ekle .="<div><a href='getFullList.php?case=16' class='more'>$metin[162]</a></div>";
 					 }		
 					 @mysql_free_result($result);
 					return $ekle; 

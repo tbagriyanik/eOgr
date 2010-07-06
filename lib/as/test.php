@@ -64,10 +64,6 @@ $aInfo	=array();
 	header ("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 	header ("Pragma: no-cache"); // HTTP/1.0
 	
-	
-	
-	if (isset($_REQUEST['json']))
-	{
 		header("Content-Type: application/json");
 	
 		echo "{\"results\": [";
@@ -78,16 +74,4 @@ $aInfo	=array();
 		}
 		echo implode(", ", $arr);
 		echo "]}";
-	}
-	else
-	{
-		header("Content-Type: text/xml");
-
-		echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?><results>";
-		for ($i=0;$i<count($aResults);$i++)
-		{
-			echo "<rs id=\"".$aResults[$i]['id']."\" info=\"".$aResults[$i]['info']."\">".$aResults[$i]['value']."</rs>";
-		}
-		echo "</results>";
-	}
 ?>
