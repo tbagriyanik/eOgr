@@ -216,10 +216,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
           </div>
           <div class="cleared"></div>
           <div class="Footer">
-            <div class="Footer-inner">
-              <?php  						
-						 require "footer.php";
-                        ?>
+            <div class="Footer-inner">             
             </div>
             <div class="Footer-background"></div>
           </div>

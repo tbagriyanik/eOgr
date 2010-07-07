@@ -11,7 +11,45 @@ header("Content-Type: text/html; charset=iso-8859-9");
       else 
         require("lib/en.php");         
 
-require 'database.php'; 
+require 'database.php';
+/*
+temizle: metin giriþi, 
+XSS temizliði
+*/
+function temizle($metin)
+{
+    $metin = str_replace("&", "", $metin);
+    $metin = str_replace("#", "", $metin);
+    $metin = str_replace("%", "", $metin);
+    $metin = str_replace("\n", "", $metin);
+    $metin = str_replace("\r", "", $metin);
+    $metin = str_replace("\'", "`", $metin);
+    $metin = str_replace('\"', '¨', $metin);
+    $metin = str_replace("\\", "|", $metin);
+    $metin = str_replace("<", "‹", $metin);
+    $metin = str_replace(">", "›", $metin);
+    $metin = trim(htmlspecialchars($metin));
+    return $metin;
+}  
+/*
+temaBilgisi:
+temanýn deðiþtirilmesi
+*/
+function temaBilgisi(){
+	$result = "silverModern";
+	$cerezden = temizle($_COOKIE["theme"]);
+
+	 if($cerezden!="" and is_dir('theme/'.$cerezden)){
+
+		  $result=$cerezden;
+	  }
+	  
+	  if(empty($cerezden)) 
+	    setcookie("theme",$result,time()+60*60*24*30);
+
+	  return $result;
+}	
+	$seciliTema= temaBilgisi(); 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +64,8 @@ require 'database.php';
 <title>eOgr</title>
 <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="theme/silverModern/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
@@ -299,7 +338,7 @@ function listeGetir($userID, $durum){
 								   "from eo_rating, eo_4konu ".
 								   "where eo_rating.konuID=eo_4konu.id ".
 								   "GROUP BY kadi ".
-								   "order by ortalama desc,kadi";	
+								   "order by ortalama desc,toplam DESC";	
 
 							$result = mysql_query($sql, $yol1);
 							if($result)
@@ -316,7 +355,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a>"." <font size='1' title='$metin[273] : ".$data["toplam"].", $metin[274] : ".round($data["ortalama"],1)."'>".(round($data["ortalama"]))."</font><br/>";										
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a>"." <font size='1' title='$metin[273] : ".$data["toplam"].", $metin[274] : ".round($data["ortalama"],1)."'>".$data["toplam"]."/".(round($data["ortalama"],1))."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";

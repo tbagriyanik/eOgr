@@ -570,4 +570,13 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[442]="Test aþamasýnda yardýmcý olan kiþilere teþekkürler. Özellikle kütüphane kodlarýný serbest daðýtan programcýlara teþekkürler.";
 	
 		$metin[443]	= "Tüm Dersler";
+		
+		$metin[444] = "<h3>Hata Bildirimi</h3>
+    <p>Ekranda gördüðünüz bir uyarý veya hata mesajýný <strong>\"yöneticiye\"</strong> bildirebilirsiniz.</p>
+    <p>Lütfen, mesajýnýza hatanýn oluþtuðu sayfa adýný ve kendi isminizi (eposta adresinizi) eklemeyi unutmayýnýz.</p>
+    <p>Yeni fikir ve önerilerinizi göndermek isterseniz <br/>
+      <br/>
+      <a href=\"mail.php?to=-1\" title=\"feedback\" target=\"_blank\" class=\"external\" style=\"text-decoration:none;\">týklatýnýz&nbsp;&nbsp;&nbsp;&nbsp;</a></p>";
+	  
+ 	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s tarihinde üye oldu.";
 ?>
