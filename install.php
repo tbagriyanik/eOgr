@@ -42,28 +42,44 @@ function dilCevir($dil){
 		setcookie("lng",$taraDili,time()+60*60*24*30);
 		
 		dilCevir($taraDili);
-  
-	
-	$seciliTema="silverModern";
-	if($_GET["theme"]!="")
-	  {
-		  setcookie("theme",temizle($_GET["theme"]),time()+60*60*24*30);
-		  
-		  switch ($_GET["theme"]){
-			  case "0":	$seciliTema="silverModern";break;
-			  case "1":	$seciliTema="darkOrange";break;
-			  case "2":	$seciliTema="lightGreen";break;
-			  default:	$seciliTema="silverModern"; 			  
-		  }
+/*
+temizle: metin giriþi, 
+XSS temizliði
+*/
+function temizle($metin)
+{
+    $metin = str_replace("&", "", $metin);
+    $metin = str_replace("#", "", $metin);
+    $metin = str_replace("%", "", $metin);
+    $metin = str_replace("\n", "", $metin);
+    $metin = str_replace("\r", "", $metin);
+    $metin = str_replace("\'", "`", $metin);
+    $metin = str_replace('\"', '¨', $metin);
+    $metin = str_replace("\\", "|", $metin);
+    $metin = str_replace("<", "‹", $metin);
+    $metin = str_replace(">", "›", $metin);
+    $metin = trim(htmlspecialchars($metin));
+    return $metin;
+}  
+/*
+temaBilgisi:
+temanýn deðiþtirilmesi
+*/
+function temaBilgisi(){
+	$result = "silverModern";
+	$cerezden = temizle($_COOKIE["theme"]);
+
+	 if($cerezden!="" and is_dir('theme/'.$cerezden)){
+
+		  $result=$cerezden;
 	  }
-	  else{
-		  switch ($_COOKIE["theme"]){
-			  case "0":	$seciliTema="silverModern";break;
-			  case "1":	$seciliTema="darkOrange";break;
-			  case "2":	$seciliTema="lightGreen";break;
-			  default:	$seciliTema="silverModern"; 			  
-		  }
-	  }	
+	  
+	  if(empty($cerezden)) 
+	    setcookie("theme",$result,time()+60*60*24*30);
+
+	  return $result;
+}	
+	$seciliTema= temaBilgisi();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

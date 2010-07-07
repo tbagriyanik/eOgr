@@ -300,7 +300,7 @@ include('lib/graphs.inc.php');
 <?php
 if(getGrafikRecordCount()>5) {
 	echo "<div class='ikiKolon'>";
-	echo $metin[342];
+	echo "<p style=\"color:#000;font-weight: bold;\">".$metin[342]."</p>";
 	$sampleData = getGrafikValues(15);
 	$labels = getGrafikLabels(15);
 
@@ -317,7 +317,7 @@ if(getGrafikRecordCount()>5) {
 }
 if(getGrafikRecordCount2()>5) {
 	echo "<div class='ikiKolon'>";
-	echo $metin[343];
+	echo "<p style=\"color:#000;font-weight: bold;\">".$metin[343]."</p>";
 	$sampleData2 = getGrafikValues2(15);
 	$labels2 = getGrafikLabels2(15);
 

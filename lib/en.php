@@ -555,5 +555,14 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[441]="Be sure to edit exactly database.php file. Report error messages to your administrator.";
 		$metin[442]="Thanks to people for testing this project. Many thanks to library coders that distributing their code freely.";
 	
-		$metin[443]	= "All Lessons";			
+		$metin[443]	= "All Lessons";	
+		
+		$metin[444]	= "<h3>Feedback</h3>
+    <p>You can inform <strong>\"administrator\"</strong> an error or warning message as a mail.</p>
+    <p>Please, add your name and mail address with the page name.</p>
+    <p>Any new ideas or advice can be mailed here<br/>
+      <br/>
+      <a href=\"mail.php?to=-1\" title=\"feedback\" target=\"_blank\" class=\"external\" style=\"text-decoration:none;\">click&nbsp;&nbsp;&nbsp;&nbsp;</a></p>";
+	  
+   	  	$metin[445]	= "Last member is <strong>%s</strong> in %s.";
 ?>

@@ -278,14 +278,17 @@ if (isset($_COOKIE["remUser"]))
                 <div class="PostContent"> <?php echo $metin[76]?> <?php echo $metin[164]?>
                   <?php
 						 if (totalGet(0)>0){
-                         echo "<strong>".$metin[8]." </strong><br/>";
-						 echo totalGet(0)." (".$metin[9]." ".totalGet(1).")";
-						 echo "<br /> ";
+							 echo "<strong>".$metin[8]." </strong><br/>";
+							 echo totalGet(0)." (".$metin[9]." ".totalGet(1).")";
+							 echo "<br /> ";
+						 }
+						 if (sonUyeAdiGetir("ad")!=""){
+							 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));			 							 echo "<br /> <br />";							 
 						 }
 						 if (totalGet(2)>0){
-  						 echo "<strong>".$metin[10]." </strong><br/>";
-  						 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
-						 echo "<br /> ";
+							 echo "<strong>".$metin[10]." </strong><br/>";
+							 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
+							 echo "<br /> ";
 						 }
 						 if (getTrackCount(false)>0){
 						 echo "<strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (".$metin[195]." ".getTrackCount(true).")";
@@ -305,8 +308,7 @@ if (isset($_COOKIE["remUser"]))
           <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
-        loading_image : 'loading.gif',
-        close_image   : 'closelabel.gif'
+       
       }) 
     })
 </script>
@@ -346,7 +348,7 @@ if (isset($_COOKIE["remUser"]))
                   <ul>
                     <?php									
 						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
-										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");
+										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");										
 										$result1= 	@mysql_query($sql1,$yol1);										
 										$i=0;
 										if(@mysql_numrows($result1)>0){
