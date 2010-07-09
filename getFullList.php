@@ -338,7 +338,7 @@ function listeGetir($userID, $durum){
 								   "from eo_rating, eo_4konu ".
 								   "where eo_rating.konuID=eo_4konu.id ".
 								   "GROUP BY kadi ".
-								   "order by ortalama desc,toplam DESC";	
+								   "order by ortalama desc,toplam DESC,konuAdi";	
 
 							$result = mysql_query($sql, $yol1);
 							if($result)

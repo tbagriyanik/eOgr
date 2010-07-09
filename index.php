@@ -176,7 +176,7 @@ if (isset($_COOKIE["remUser"]))
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
-                  <?php 
+                  <?php 				  
   if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){$_SESSION["usern"]="";$_SESSION["userp"]="";
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
@@ -283,7 +283,16 @@ if (isset($_COOKIE["remUser"]))
 							 echo "<br /> ";
 						 }
 						 if (sonUyeAdiGetir("ad")!=""){
-							 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));			 							 echo "<br /> <br />";							 
+							 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));
+							 $uyeListesi=getUsersOnline();
+							 if(!empty($uyeListesi)){
+								 echo "<br/>$metin[446]<strong>";
+								 foreach($uyeListesi as $eleman){
+									 echo $eleman." ";
+									 }
+								 echo "</strong>";	 
+							 }
+							 echo "<br /> <br />";							 
 						 }
 						 if (totalGet(2)>0){
 							 echo "<strong>".$metin[10]." </strong><br/>";
@@ -445,7 +454,7 @@ if (document.getElementById("userP")!=null) document.getElementById("userP").set
 //-->
 </script>
 <?php  						
- require "feedback.php";
+ require "feedback.php"; 
 ?>
 </body>
 </html>

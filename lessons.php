@@ -32,7 +32,8 @@ ob_start (); // Buffer output
 <title>eOgr -<?php echo $metin[55]?>
 <!--TITLE-->
 </title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="lib/script.js"></script>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="lib/script.js"></script>
 <script type="text/javascript" src="lib/flashMode.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/hijax.js"></script>
@@ -51,8 +52,7 @@ ob_start (); // Buffer output
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
-        loading_image : 'loading.gif',
-        close_image   : 'closelabel.gif'
+        
       }) 
     })
 	
@@ -316,8 +316,53 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
           </div>
           <?php
 }
+	$sampleData2 = getGrafikValues3(20, $_GET["konu"]);
+	$labels2 = getGrafikLabels3(20, $_GET["konu"]);
+
+if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>3){
 ?>
-<script language="javascript" type="text/javascript">
+          <div class="Post">
+            <div class="Block">
+              <div class="Block-tl"></div>
+              <div class="Block-tr"></div>
+              <div class="Block-bl"></div>
+              <div class="Block-br"></div>
+              <div class="Block-tc"></div>
+              <div class="Block-bc"></div>
+              <div class="Block-cl"></div>
+              <div class="Block-cr"></div>
+              <div class="Block-cc"></div>
+              <div class="Block-body">
+                <div class="BlockContent">
+                  <div class="BlockContent-body">
+                    <div>
+                      <div class="msg_list">
+                        <p class="msg_head"><img src="img/history.png" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[197]?></p>
+                        <div class="msg_body"> 
+						<?php 							
+							include('lib/graphs.inc.php');						
+							$chart2 = new BAR_GRAPH("vBar");
+							$chart2->values = grafikGunNormallestirData($sampleData2,$labels2);
+							$chart2->labels = grafikGunNormallestirLabel($sampleData2,$labels2);
+							$chart2->showValues = 2;	
+							$chart2->labelSize =9;
+							$chart2->titleSize =9;
+							$chart2->absValuesSize  =9;
+							$chart2->absValuesBorder = "0px";
+							echo $chart2->create(); 
+						?> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<?php
+}
+?>          
+          <script language="javascript" type="text/javascript">
 		  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;

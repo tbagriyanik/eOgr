@@ -951,7 +951,7 @@ function getStats($num)
 					   "from eo_rating, eo_4konu ".
 					   "where eo_rating.konuID=eo_4konu.id ".
 					   "GROUP BY kadi ".
-					   "order by ortalama desc,toplam DESC";	
+					   "order by ortalama desc,toplam DESC,konuAdi";	
 				$yol = baglan();
 				$result = mysql_query($sql, $yol);
 				if($result)
@@ -1799,6 +1799,37 @@ function getGrafikLabels2($lmt){
 		return $data['labels'];
 }
 /*
+getGrafikValues3:
+belli bir konudaki grafik deðerlerini getirir
+*/
+function getGrafikValues3($lmt,$konu){
+	global $yol1;
+	
+		$sql = "SELECT COUNT(*) AS count FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24  <= $lmt and konuID='$konu' GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y') order by calismaTarihi";
+		
+		$result = mysql_query($sql, $yol1);
+		$data = array();
+		while($row = mysql_fetch_assoc($result)) {
+		      $data['values'][] = $row['count'];
+		}
+		return $data['values'];
+}
+/*
+getGrafikLabels3:
+belli bir konudaki grafik etiketlerini getirir
+*/
+function getGrafikLabels3($lmt,$konu){
+	global $yol1;
+	
+		$sql = "SELECT DATE_FORMAT(calismaTarihi, '%d') AS date FROM eo_userworks WHERE (unix_timestamp(now()) - unix_timestamp(calismaTarihi) )/3600/24  <= $lmt and konuID='$konu' GROUP BY DATE_FORMAT(calismaTarihi, '%d-%m-%y') order by calismaTarihi";
+		$result = mysql_query($sql, $yol1);
+		$data = array();
+		while($row = mysql_fetch_assoc($result)) {
+		  $data['labels'][] = $row['date'];
+		}
+		return $data['labels'];
+}
+/*
 getGrafikRecordCount2:
 grafik deðerlerinin sayýsýný getirir
 */
@@ -2405,6 +2436,20 @@ function RemoveXSS($val) {
    }
    return $val;
 } 
-
-
+/*
+getUsersOnline:
+çevrimiçi kullanýcý sayýsý, usertrack tablosunda son 300 dakikadaki giriþler
+*/
+function getUsersOnline() {
+	global $yol1;
+	
+		$sql = "SELECT userName,(unix_timestamp(now()) - unix_timestamp(dateTime) )/60 as sure FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/60 <= 300 and otherInfo='success,Login' GROUP BY userName order by sure DESC,userName";
+		
+		$result = mysql_query($sql, $yol1);
+		$data = array();
+		while($row = mysql_fetch_assoc($result)) {
+		      $data['values'][] = $row['userName'];
+		}
+		return $data['values'];
+}
 ?>
