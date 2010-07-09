@@ -578,5 +578,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
       <br/>
       <a href=\"mail.php?to=-1\" title=\"feedback\" target=\"_blank\" class=\"external\" style=\"text-decoration:none;\">týklatýnýz&nbsp;&nbsp;&nbsp;&nbsp;</a></p>";
 	  
- 	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s tarihinde üye oldu.";
+ 	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s tarihinde üye oldu.";		
+		$metin[446]	= "Son 5 saatte giriþ yapan üyeler : ";
 ?>

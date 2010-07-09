@@ -32,41 +32,41 @@
     var $type = 'hBar';                        // graph type: "hBar", "vBar", "pBar", or "fader"
     var $values;                               // graph data: array or string with comma-separated values
 
-    var $graphBGColor = '';                    // graph background color: string
+    var $graphBGColor = '#FFC';                    // graph background color: string
     var $graphBorder = '';                     // graph border: string (CSS specification; doesn't work with NN4)
     var $graphPadding = 0;                     // graph padding: integer (pixels)
 
     var $titles;                               // titles: array or string with comma-separated values
     var $titleColor = 'black';                 // title font color: string
-    var $titleBGColor = '#C0E0FF';             // title background color: string
-    var $titleBorder = '2px groove white';     // title border: string (CSS specification)
+    var $titleBGColor = '#FFC';             // title background color: string
+    var $titleBorder = '1px groove white';     // title border: string (CSS specification)
     var $titleFont = 'Arial, Helvetica';       // title font family: string (CSS specification)
-    var $titleSize = 12;                       // title font size: integer (pixels)
+    var $titleSize = 10;                       // title font size: integer (pixels)
     var $titleAlign = 'center';                // title text align: "left", "center", or "right"
     var $titlePadding = 2;                     // title padding: integer (pixels)
 
     var $labels;                               // label names: array or string with comma-separated values
     var $labelColor = 'black';                 // label font color: string
-    var $labelBGColor = '#C0E0FF';             // label background color: string
-    var $labelBorder = '2px groove white';     // label border: string (CSS specification; doesn't work with NN4)
+    var $labelBGColor = '#FFC';             // label background color: string
+    var $labelBorder = '1px groove white';     // label border: string (CSS specification; doesn't work with NN4)
     var $labelFont = 'Arial, Helvetica';       // label font family: string (CSS specification)
     var $labelSize = 11;                       // label font size: integer (pixels)
     var $labelAlign = 'center';                // label text align: "left", "center", or "right"
     var $labelSpace = 0;                       // additional space between labels: integer (pixels)
 
-    var $barWidth = 15;                        // bar width: integer (pixels)
-    var $barLength = 1.0;                      // bar length ratio: float (from 0.1 to 2.9)
+    var $barWidth = 10;                        // bar width: integer (pixels)
+    var $barLength = 1.5;                      // bar length ratio: float (from 0.1 to 2.9)
     var $barColors;                            // bar colors OR bar images: array or string with comma-separated values
-    var $barBGColor;                           // bar background color: string
-    var $barBorder = '2px outset white';       // bar border: string (CSS specification; doesn't work with NN4)
+    var $barBGColor = '#FFC';                           // bar background color: string
+    var $barBorder = '1px outset white';       // bar border: string (CSS specification; doesn't work with NN4)
     var $barLevelColors;                       // bar level colors: ascending array (bLevel, bColor[,...]); draw bars >= bLevel with bColor
 
     var $showValues = 0;                       // show values: 0 = % only, 1 = abs. and %, 2 = abs. only, 3 = none
     var $baseValue = 0;                        // base value: integer or float (only hBar and vBar)
 
     var $absValuesColor = 'black';             // abs. values font color: string
-    var $absValuesBGColor = '';         // abs. values background color: string
-    var $absValuesBorder = '2px groove white'; // abs. values border: string (CSS specification; doesn't work with NN4)
+    var $absValuesBGColor = '#FFC';         // abs. values background color: string
+    var $absValuesBorder = '1px groove white'; // abs. values border: string (CSS specification; doesn't work with NN4)
     var $absValuesFont = 'Arial, Helvetica';   // abs. values font family: string (CSS specification)
     var $absValuesSize = 11;                   // abs. values font size: integer (pixels)
     var $absValuesPrefix = '';                 // abs. values prefix: string (e.g. "$")
@@ -74,7 +74,7 @@
 
     var $percValuesColor = 'black';            // perc. values font color: string
     var $percValuesFont = 'Arial, Helvetica';  // perc. values font family: string (CSS specification)
-    var $percValuesSize = 12;                  // perc. values font size: integer (pixels)
+    var $percValuesSize = 10;                  // perc. values font size: integer (pixels)
     var $percValuesDecimals = 0;               // perc. values number of decimals: integer
 
     var $charts = 1;                           // number of charts: integer
@@ -82,10 +82,10 @@
     // hBar/vBar only:
     var $legend;                               // legend items: array or string with comma-separated values
     var $legendColor = 'black';                // legend font color: string
-    var $legendBGColor = '#F0F0F0';            // legend background color: string
-    var $legendBorder = '2px groove white';    // legend border: string (CSS specification; doesn't work with NN4)
+    var $legendBGColor = '#FFC';            // legend background color: string
+    var $legendBorder = '1px groove white';    // legend border: string (CSS specification; doesn't work with NN4)
     var $legendFont = 'Arial, Helvetica';      // legend font family: string (CSS specification)
-    var $legendSize = 12;                      // legend font size: integer (pixels)
+    var $legendSize = 10;                      // legend font size: integer (pixels)
     var $legendAlign = 'top';                  // legend vertical align: "top", "center", "bottom"
 
     // debug mode: false = off, true = on; just shows some extra information
@@ -99,8 +99,8 @@
 
     // CSS names (don't change)
     var $cssGRAPH = '';
-    var $cssBAR = '';
-    var $cssBARBG = '';
+    var $cssBAR = 'background-color:#fff;';
+    var $cssBARBG = 'background-color:#000;';
     var $cssTITLE = '';
     var $cssLABEL = '';
     var $cssLABELBG = '';
@@ -168,8 +168,8 @@
     function build_bar($value, $width, $height, $color) {
       $title = $this->absValuesPrefix . $value . $this->absValuesSuffix;
       $bg = eregi('\.(jpg|jpeg|jpe|gif|png)$', $color) ? 'background' : 'bgcolor';
-      $bar = '<table border=0 cellspacing=0 cellpadding=0><tr>';
-      $bar .= '<td style="' . $this->cssBAR . '" ' . $bg . '="' . $color . '"';
+      $bar = '<table border=1 cellspacing=0 cellpadding=0><tr>';
+      $bar .= '<td style="' . $this->cssBAR . ';" ' . $bg . '="' . $color . '"';
       $bar .= ($value != '') ? ' title="' . $title . '">' : '>';
       $bar .= '<div style="width:' . $width . 'px; height:' . $height . 'px;';
       $bar .= ' line-height:1px; font-size:1px;"></div>';
@@ -201,7 +201,7 @@
     function build_legend($barColors) {
       $legend = '<table border=0 cellspacing=0 cellpadding=0><tr>';
       $legend .= '<td style="' . $this->cssLEGENDBG . '">';
-      $legend .= '<table border=0 cellspacing=4 cellpadding=0>';
+      $legend .= '<table border=0 cellspacing=0 cellpadding=0>';
       $l = (is_array($this->legend)) ? $this->legend : explode(',', $this->legend);
 
       for($i = 0; $i < count($barColors); $i++) {
@@ -267,7 +267,7 @@
         $bar .= '</td>';
       }
       else {
-        $bar .= '<td style="' . $this->cssPERCVALUES . '" valign=bottom height=' . round(($mPerc - $percent) * $mul + $valSpace) . ' nowrap>';
+        $bar .= '<td style="' . $this->cssPERCVALUES . ';background-color:#ffc" valign=bottom height=' . round(($mPerc - $percent) * $mul + $valSpace) . ' nowrap>';
         if($this->showValues < 2) $bar .= $this->number_format($percent, $this->percValuesDecimals) . '%';
         $bar .= '</td>';
         if($percent) {
@@ -320,7 +320,7 @@
 
       if($this->charts > 1) {
         $divide = ceil($bars / $this->charts);
-        $graph .= '<table border=0 cellspacing=0 cellpadding=6><tr valign=top><td>';
+        $graph .= '<table border=0 cellspacing=0 cellpadding=0><tr valign=top><td>';
       }
       else $divide = 0;
 

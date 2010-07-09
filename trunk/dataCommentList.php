@@ -39,8 +39,7 @@ header("Pragma: no-cache");
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
-        loading_image : 'loading.gif',
-        close_image   : 'closelabel.gif'
+        
       }) 
     })
 </script>
