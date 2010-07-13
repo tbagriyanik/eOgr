@@ -35,9 +35,11 @@ if($seceneklerimiz[1]=="1" and $kullaniciSecen[1]=="1") {
 	foreach($themeArray as $thme){
 ?>
       <option value="<?php $temaGel = explode("/",$thme);
-	  echo $temaGel[1];?>" <?php if (!(strcmp($temaGel[1], temizle($_COOKIE['theme'])))) {echo "selected=\"selected\"";} ?>> <?php 	  
+	  echo $temaGel[1];?>" <?php if (!(strcmp($temaGel[1], temizle($_COOKIE['theme'])))) {echo "selected=\"selected\"";} ?>>
+      <?php 	  
 	  echo $temaGel[1];
-	  ?> </option>
+	  ?>
+      </option>
       <?php
 	  $i++;
 	}

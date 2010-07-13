@@ -133,18 +133,11 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                   <?php
 
 	currentFileCheck("help.php");
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
 		
 ?>
                   <div id="menu">
                     <h4><?php echo $metin[271]?> </h4>
                     <ul>
-                    
                       <li><a href="#1" onclick="yardimGoster(1);return false;"><?php echo $metin[261]?></a></li>
                       <li><a href="#2" onclick="yardimGoster(2);return false;"><?php echo $metin[262]?></a></li>
                       <li><a href="#3" onclick="yardimGoster(3);return false;"><?php echo $metin[263]?></a></li>
@@ -161,7 +154,6 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                       <li><a href="#14" onclick="yardimGoster(14);return false;"><?php echo $metin[429]?></a></li>
                       <li><a href="#15" onclick="yardimGoster(15);return false;"><?php echo $metin[430]?></a></li>
                       <li><a href="#16" onclick="yardimGoster(16);return false;"><?php echo $metin[431]?></a></li>
-
                     </ul>
                   </div>
                   <div id="icerisi"> <?php echo $metin[272]?> <?php echo $metin[75]?> </div>

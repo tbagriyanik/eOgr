@@ -4,14 +4,10 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-   $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
+	require("conf.php");	
+	$time = getmicrotime();  
+	checkLoginLang(true,true,"dataActions.php");	
 	$seciliTema=temaBilgisi();	
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,13 +18,13 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[66]?></title>
+<title>eOgr -<?php echo $metin[66]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />			
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
@@ -100,9 +96,7 @@ function selAll()
         <div class="Header-jpeg"></div>
         <div class="logo">
           <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text">
-            <?php echo $metin[286]?> 
-          </div>
+          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
         </div>
       </div>
       <div class="nav">
@@ -142,46 +136,12 @@ function selAll()
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> -
-                  <?php echo $metin[66]?>
-                  </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[66]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("dataActions.php");
-	
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) { 
-	sessionDestroy();
-		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2")	{
-	 //
-
-
+	 //yöneticiler iþlem yapabilir
+	 
 $currentPage = $_SERVER["PHP_SELF"];
 
 $editFormAction = $_SERVER['PHP_SELF'];
@@ -340,33 +300,23 @@ if ($totalRows_eoUsers>0)
                         <th width="82"><?php if ($sirAlan=="id") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                          <?php echo $metin[26]?>
-                          </a></th>
+                          <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
                         <th width="138"><?php if ($sirAlan=="userName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                          <?php echo $metin[17]?>
-                          </a></th>
+                          <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
                         <th width="161"><?php if ($sirAlan=="processName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="processName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=processName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                          <?php echo $metin[31]?>
-                          </a></th>
+                          <a href="?order=processName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[31]?> </a></th>
                         <th width="136"><?php if ($sirAlan=="otherInfo") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="otherInfo")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=otherInfo&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                          <?php echo $metin[32]?>
-                          </a></th>
+                          <a href="?order=otherInfo&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[32]?> </a></th>
                         <th width="133"><?php if ($sirAlan=="dateTime") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="dateTime")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=dateTime&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                          <?php echo $metin[33]?>
-                          </a></th>
+                          <a href="?order=dateTime&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
                         <th width="100"><?php if ($sirAlan=="IP") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="IP")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
@@ -384,27 +334,23 @@ if ($totalRows_eoUsers>0)
   ?>
                       <tr >
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>  ><?php echo $row_eoUsers['id']; ?></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>>
-<a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['userName']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>
-                        </td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['userName']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href='<?php echo araKalin($row_eoUsers['processName']); ?>'><?php echo araKalin($row_eoUsers['processName']); ?></a></td>
                         <td <?php echo (strpos($row_eoUsers['otherInfo'],"fail")!==false)?"style='background-color:#F44'":"style=\"background-color: $row_color;\"";?>><?php echo araKalin($row_eoUsers['otherInfo']); ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['dateTime']); ?></td>
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php   echo $row_eoUsers['IP'];  ?></td>
-                        <td width="55" align="center" valign="middle" nowrap="nowrap"><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
+                        <td align="center" valign="middle" nowrap="nowrap"><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>
                       </tr>
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
                       <tr>
                         <td colspan="7" align="center" valign="middle" class="tabloAlt" ><label>
                             <input name="tumunuSec" type="checkbox" id="tumunuSec" onclick="selAll();" value="" />
-                            <?php echo $metin[35]?>
-                          </label>
+                            <?php echo $metin[35]?> </label>
                           |
                           <label>
                             <input name="silIzin" type="checkbox" id="silIzin" value="evet" />
-                            <?php echo $metin[36]?>
-                          </label>
+                            <?php echo $metin[36]?> </label>
                           <label>
                             <input type="submit" name="Sil" id="Sil" value="<?php echo $metin[37]?>" />
                           </label></td>
@@ -425,44 +371,29 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                         <td colspan="4"><div align="center"><?php echo min($startRow_eoUsers + $maxRows_eoUsers, $totalRows_eoUsers) ?> / <?php echo $totalRows_eoUsers ?> </div></td>
                       </tr>
                     </table>
-                  <?php
+                    <?php
    }
  ?>
                   </form>
                   <form name="formFilt" id="formFilt" method="get" action="dataActions.php">
                     <p>
                       <select name="ord" id="ord">
-                        <option value="" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                        <?php echo $metin[107]?>
-                        </option>
-                        <option value="0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                        <?php echo $metin[143]?>
-                        </option>
-                        <option value="1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                        <?php echo $metin[144]?>
-                        </option>
-                        <option value="2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                        <?php echo $metin[145]?>
-                        </option>
-                        <option value="3" <?php if (!(strcmp("3", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                        <?php echo $metin[146]?>
-                        </option>
-                        <option value="4" <?php if (!(strcmp("4", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                        <?php echo $metin[147]?>
-                        </option>
+                        <option value="" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
+                        <option value="0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[143]?> </option>
+                        <option value="1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[144]?> </option>
+                        <option value="2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[145]?> </option>
+                        <option value="3" <?php if (!(strcmp("3", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[146]?> </option>
+                        <option value="4" <?php if (!(strcmp("4", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[147]?> </option>
                       </select>
                       <input type="submit" name="go_button" id= "go_button" value="<?php echo $metin[109]?>"/>
                       <label>
                         <input name="adminGizle" type="checkbox" id="adminGizle" value="evet" <?php echo ($adminGizle=="evet")?"checked='checked'":"" ?>/>
-                        <?php echo $metin[142]?>
-                      </label>
+                        <?php echo $metin[142]?> </label>
                     </p>
                   </form>
                   <form method="get" id="sayfaSec" name="sayfaSec" action="dataActions.php">
                     <p>
-                      <label>
-                        <?php echo $metin[110]?>
-                        :
+                      <label> <?php echo $metin[110]?> :
                         <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
                       </label>
                       <label>
@@ -471,9 +402,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                     </p>
                   </form>
                   <form id="aramak" name="aramak" method="get" action="dataActions.php">
-                    <label>
-                      <?php echo $metin[29]?>
-                      :
+                    <label> <?php echo $metin[29]?> :
                       <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>"  title="<?php echo $metin[141]?>"/>
                     </label>
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
@@ -484,7 +413,7 @@ if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulu
 
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrenci veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die($metin[447]);
 	
 ?>
                 </div>
@@ -494,13 +423,11 @@ if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulu
           </div>
           <div class="cleared"></div>
           <div class="Footer">
-                    <div class="Footer-inner">
-                    
-                        <?php  						
+            <div class="Footer-inner">
+              <?php  						
 						 require "footer.php";
                         ?>
-                      
-                    </div>
+            </div>
             <div class="Footer-background"></div>
           </div>
         </div>

@@ -4,15 +4,11 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-  
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
+       
+	require("conf.php"); 
+	$time = getmicrotime();  	
+	checkLoginLang(true,true,"dataChatActions.php");	
 	$seciliTema=temaBilgisi();
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -132,37 +128,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[67]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("dataChatActions.php");
-  
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) { 
-	sessionDestroy();
-		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2")	{
 	 //
 
@@ -395,7 +360,7 @@ if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulu
 
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrenci veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die($metin[447]);
 	
 ?>
                 </div>

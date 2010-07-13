@@ -7,14 +7,10 @@ header("Pragma: no-cache");
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-  
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
-	$seciliTema=temaBilgisi();
+  require("conf.php");	
+  $time = getmicrotime();
+  checkLoginLang(true,true,"dataCommentList2.php");		
+  $seciliTema=temaBilgisi();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -26,8 +22,9 @@ header("Pragma: no-cache");
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[288]?></title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<title>eOgr -<?php echo $metin[288]?></title>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -121,37 +118,6 @@ header("Pragma: no-cache");
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[288]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("dataCommentList2.php");
-  
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {  
-	sessionDestroy();
-		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2" || $tur=="1")	{
 	 //
 $currentPage = $_SERVER["PHP_SELF"];
@@ -270,34 +236,34 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
 if ($totalRows_eoUsers>0)
    {
 ?>
-                    <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
-                      <tr align="center">
-                        <th><?php if ($sirAlan=="id") {?>
-                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
-                          <?php } ?>
-                          <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
-                        <th width="138" nowrap="nowrap"><?php if ($sirAlan=="userName") {?>
-                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
-                          <?php } ?>
-                          <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
-                        <th width="200"><?php if ($sirAlan=="konuAdi") {?>
-                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="konuAdi")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
-                          <?php } ?>
-                          <a href="?order=konuAdi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[175]?> </a></th>
-                        <th width="20"  nowrap="nowrap"><?php if ($sirAlan=="active") {?>
-                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="active")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
-                          <?php } ?>
-                          <a href="?order=active&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[291]?> </a></th>
-                        <th  width="200" nowrap="nowrap"><?php if ($sirAlan=="comment") {?>
-                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="comment")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
-                          <?php } ?>
-                          <a href="?order=comment&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[290]?> </a></th>
-                        <th><?php if ($sirAlan=="commentDate") {?>
-                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="commentDate")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
-                          <?php } ?>
-                          <a href="?order=commentDate&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
-                      </tr>
-                      <?php 
+                  <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
+                    <tr align="center">
+                      <th><?php if ($sirAlan=="id") {?>
+                        <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                        <?php } ?>
+                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
+                      <th width="138" nowrap="nowrap"><?php if ($sirAlan=="userName") {?>
+                        <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                        <?php } ?>
+                        <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
+                      <th width="200"><?php if ($sirAlan=="konuAdi") {?>
+                        <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="konuAdi")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                        <?php } ?>
+                        <a href="?order=konuAdi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[175]?> </a></th>
+                      <th width="20"  nowrap="nowrap"><?php if ($sirAlan=="active") {?>
+                        <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="active")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                        <?php } ?>
+                        <a href="?order=active&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[291]?> </a></th>
+                      <th  width="200" nowrap="nowrap"><?php if ($sirAlan=="comment") {?>
+                        <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="comment")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                        <?php } ?>
+                        <a href="?order=comment&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[290]?> </a></th>
+                      <th><?php if ($sirAlan=="commentDate") {?>
+                        <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="commentDate")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                        <?php } ?>
+                        <a href="?order=commentDate&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
+                    </tr>
+                    <?php 
   $satirRenk=0;
   do { 
     	$satirRenk++;
@@ -307,32 +273,29 @@ if ($totalRows_eoUsers>0)
             $row_color = "#ddd"; 
         }
   ?>
-                      <tr >
-                        <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>><?php if ($row_eoUsers['userName']!='') {?>
-                          <a href="profil.php?kim=<?php echo $row_eoUsers['userID']; ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>
-                          <?php
+                    <tr >
+                      <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php if ($row_eoUsers['userName']!='') {?>
+                        <a href="profil.php?kim=<?php echo $row_eoUsers['userID']; ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>
+                        <?php
                        }
                          else
                          	echo araKalin("demo");
                        ?></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>>
-                        <a href="dersBilgisi.php?ders=<?php echo $row_eoUsers['konuID']; ?>" rel="facebox">
-                          <?php
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><a href="dersBilgisi.php?ders=<?php echo $row_eoUsers['konuID']; ?>" rel="facebox">
+                        <?php
                         echo ($row_eoUsers['konuAdi'])?araKalin($row_eoUsers['konuAdi']):"<span class=bosVeri>###</span>";; 
 						?>
-                          </a></td>
-                        <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
-                        <td align="left" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd($row_eoUsers['comment']);   ?></td>
-                        <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
-                      </tr>
-                      <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
-                      <tr>
-                        <td colspan="6" align="left" valign="middle" class="tabloAlt" >
-                        <?php echo $metin[292]?>
-                        </td>
-                      </tr>
-                    </table>
+                        </a></td>
+                      <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
+                      <td align="left" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd($row_eoUsers['comment']);   ?></td>
+                      <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
+                    </tr>
+                    <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
+                    <tr>
+                      <td colspan="6" align="left" valign="middle" class="tabloAlt" ><?php echo $metin[292]?></td>
+                    </tr>
+                  </table>
                   <?php
 if ($totalRows_eoUsers> $maxRows_eoUsers)
    {
@@ -364,7 +327,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   <?php
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin iþlem yapma izni yoktur!</font>");
+	  die($metin[448]);
 	
 ?>
                 </div>

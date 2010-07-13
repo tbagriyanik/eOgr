@@ -1,26 +1,18 @@
 <?php 
-  require("conf.php");
-  $time = getmicrotime();
-  require("lib/SQL_Export.php");
- 	 
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"siteSettings.php");	   
+  $seciliTema=temaBilgisi();	
+  
+  require("lib/SQL_Export.php");
+ 	 
  if(isset($_GET[dump]) && $_GET[dump]=="1")
   {
-		   $adi	=temizle(substr($_SESSION["usern"],0,15));
-		   $par	=temizle($_SESSION["userp"]);
-		  
-			if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
-		 
-		   $tur=checkRealUser($adi,$par);
-			
-			if ($tur!=2) { 
-			   sessionDestroy();
-			   die ("<font id='hata'> Bu iþlemi yapmak i&ccedil;in yetkiniz yoktur. </font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>");
-			  }
 			$mysql_host = $_host;
 			$mysql_database= $_db;	
 			$mysql_username= $_username;	
@@ -40,15 +32,6 @@
 		  echo $content;
 		  die('');		
   }
-  
-   $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-
-	
-	$seciliTema=temaBilgisi();
-	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,13 +42,12 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[58]?>
-</title>
+<title>eOgr -<?php echo $metin[58]?></title>
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />			
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
@@ -130,9 +112,7 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
         <div class="Header-png"></div>
         <div class="Header-jpeg"></div>
         <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php">
-            <?php echo ayarGetir("okulGenelAdi")?>
-            </a></h1>
+          <h1 id="name-text" class="logo-name"><a href="index.php"> <?php echo ayarGetir("okulGenelAdi")?> </a></h1>
           <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
         </div>
       </div>
@@ -173,42 +153,9 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> -
-                  <?php echo $metin[58]?>
-                  </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[58]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-     
-	currentFileCheck("siteSettings.php");
-	
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2")	{
 	 //
 
@@ -574,33 +521,23 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
                       <th width="50"><?php if ($sirAlan=="id") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[26]?>
-                        </a></th>
+                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
                       <th width="150"><?php if ($sirAlan=="userName") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=userName&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[17]?>
-                        </a></th>
+                        <a href="?order=userName&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
                       <th width="200"><?php if ($sirAlan=="realName") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="realName")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=realName&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[19]?>
-                        </a></th>
+                        <a href="?order=realName&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[19]?> </a></th>
                       <th width="120"><?php if ($sirAlan=="userType") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userType")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=userType&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[22]?>
-                        </a></th>
+                        <a href="?order=userType&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[22]?> </a></th>
                       <th width="200"><?php if ($sirAlan=="requestDate") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="requestDate")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"  border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=requestDate&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[23]?>
-                        </a></th>
+                        <a href="?order=requestDate&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[23]?> </a></th>
                     </tr>
                     <?php
   $satirRenk=0;
@@ -653,88 +590,55 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
                     <table width="500" border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">
-                        <th colspan="2" align="right" nowrap="nowrap"><div align="center">
-                            <?php echo $metin[105]?>
-                          </div></th>
+                        <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <?php echo $metin[105]?> </div></th>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><?php echo $metin[26]?>
-                          :</td>
+                        <td align="right" nowrap="nowrap"><?php echo $metin[26]?> :</td>
                         <td><?php echo $row_eoUsers['id']; ?></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="userName">
-                            <?php echo $metin[17]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="userName"> <?php echo $metin[17]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userName" id="userName" value="<?php echo GetSQLValueStringNo($row_eoUsers['userName'],"text"); ?>" size="32" /></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="userPassword">
-                            <?php echo $metin[18]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="userPassword"> <?php echo $metin[18]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userPassword" id="userPassword" value="" size="32" />
-                          <font color="red">
-                          <?php echo $metin[90]?>
-                          </font></td>
+                          <font color="red"> <?php echo $metin[90]?> </font></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="realName">
-                            <?php echo $metin[19]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="realName"> <?php echo $metin[19]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="realName" id="realName" value="<?php echo GetSQLValueStringNo($row_eoUsers['realName'],"text"); ?>" size="32" /></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="userEmail">
-                            <?php echo $metin[20]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="userEmail"> <?php echo $metin[20]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userEmail" id="userEmail" value="<?php echo GetSQLValueStringNo($row_eoUsers['userEmail'],"text"); ?>" size="32" /></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="userBirthDate">
-                            <?php echo $metin[21]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="userBirthDate"> <?php echo $metin[21]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userBirthDate" id="userBirthDate" value="<?php echo tarihOku($row_eoUsers['userBirthDate']); ?>" size="32" /></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="userType">
-                            <?php echo $metin[22]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="userType"> <?php echo $metin[22]?> :</label></td>
                         <td bgcolor="#CCFFFF"><select name="userType" id="userType">
-                            <option value="" <?php if (!(strcmp("", GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>>
-                            <?php echo $metin[106]?>
-                            </option>
-                            <option value="-1" <?php if (!(strcmp(-1, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>>
-                            <?php echo $metin[93]?>
-                            </option>
-                            <option value="0" <?php if (!(strcmp(0, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>>
-                            <?php echo $metin[94]?>
-                            </option>
-                            <option value="1" <?php if (!(strcmp(1, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>>
-                            <?php echo $metin[95]?>
-                            </option>
-                            <option value="2" <?php if (!(strcmp(2, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>>
-                            <?php echo $metin[96]?>
-                            </option>
+                            <option value="" <?php if (!(strcmp("", GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[106]?> </option>
+                            <option value="-1" <?php if (!(strcmp(-1, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[93]?> </option>
+                            <option value="0" <?php if (!(strcmp(0, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[94]?> </option>
+                            <option value="1" <?php if (!(strcmp(1, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[95]?> </option>
+                            <option value="2" <?php if (!(strcmp(2, GetSQLValueStringNo($row_eoUsers['userType'],"text")))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[96]?> </option>
                           </select></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="requestDate">
-                            <?php echo $metin[23]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="requestDate"> <?php echo $metin[23]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="requestDate" id="requestDate" value="<?php echo tarihOku2($row_eoUsers['requestDate']); ?>" size="32" /></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap" bgcolor="#CCFFFF"><label>
-						<?php echo $metin[113]?> :
-                          </label></td>
-                          <td><input type="text" name="ayarlar" id="ayarlar" value="<?php echo $row_eoUsers['ayarlar']; ?>" size="35" />
-                          </td>
+                        <td align="right" nowrap="nowrap" bgcolor="#CCFFFF"><label> <?php echo $metin[113]?> : </label></td>
+                        <td><input type="text" name="ayarlar" id="ayarlar" value="<?php echo $row_eoUsers['ayarlar']; ?>" size="35" /></td>
                       </tr>
                       <tr valign="baseline">
                         <td colspan="2" align="center" nowrap="nowrap"><label>
                             <input name="prldeg" type="checkbox" id="prldeg" checked="checked"  value="secili"/>
-                            <?php echo $metin[24]?>
-                          </label></td>
+                            <?php echo $metin[24]?> </label></td>
                       </tr>
                       <tr valign="baseline">
                         <td colspan="2" align="center" bgcolor="#CCFFFF" class="tabloAlt"><input type="submit" value="<?php echo $metin[25]?>" />
@@ -755,65 +659,41 @@ if ($_GET["upd"]!="1"){
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                     <table border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">
-                        <th colspan="2" align="right" nowrap="nowrap"><div align="center">
-                            <img src="img/user_add.gif" alt="<?php echo $metin[108]?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[108]?>
-                          </div></th>
+                        <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <img src="img/user_add.gif" alt="<?php echo $metin[108]?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[108]?> </div></th>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="userName2">
-                            <?php echo $metin[17]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="userName2"> <?php echo $metin[17]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userName2" id="userName2" value="<?php echo $_POST["userName2"]?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="userPassword2">
-                            <?php echo $metin[18]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="userPassword2"> <?php echo $metin[18]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userPassword2" id="userPassword2" value="<?php echo $_POST["userPassword2"]?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="realName2">
-                            <?php echo $metin[19]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="realName2"> <?php echo $metin[19]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="realName2" id="realName2" value="<?php echo $_POST["realName2"]?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="userEmail2">
-                            <?php echo $metin[20]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="userEmail2"> <?php echo $metin[20]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userEmail2" id="userEmail2" value="<?php echo $_POST["userEmail2"]?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="userBirthDate2">
-                            <?php echo $metin[21]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="userBirthDate2"> <?php echo $metin[21]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="userBirthDate2" id="userBirthDate2" value="<?php echo $_POST["userBirthDate2"]?>" size="32" />
-                         <font size="-1">* <?php echo $metin[310]?></font></td>
+                          <font size="-1">* <?php echo $metin[310]?></font></td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="userType2">
-                            <?php echo $metin[22]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="userType2"> <?php echo $metin[22]?> :</label></td>
                         <td bgcolor="#CCFFFF"><select name="userType2" id="userType2">
-                            <option selected="selected" value="" >
-                            <?php echo $metin[106]?>
-                            </option>
-                            <option value="-1">
-                            <?php echo $metin[93]?>
-                            </option>
-                            <option value="0">
-                            <?php echo $metin[94]?>
-                            </option>
-                            <option value="1">
-                            <?php echo $metin[95]?>
-                            </option>
-                            <option value="2">
-                            <?php echo $metin[96]?>
-                            </option>
+                            <option selected="selected" value="" > <?php echo $metin[106]?> </option>
+                            <option value="-1"> <?php echo $metin[93]?> </option>
+                            <option value="0"> <?php echo $metin[94]?> </option>
+                            <option value="1"> <?php echo $metin[95]?> </option>
+                            <option value="2"> <?php echo $metin[96]?> </option>
                           </select>
                           *</td>
                       </tr>
@@ -825,29 +705,17 @@ if ($_GET["upd"]!="1"){
                   </form>
                   <form name="formFilt" id="formFilt" method="post" action="siteSettings.php">
                     <select name="jumpMenu" id="jumpMenu">
-                      <option value="siteSettings.php?ord=" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                      <?php echo $metin[107]?>
-                      </option>
-                      <option value="siteSettings.php?ord=-1" <?php if (!(strcmp("-1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                      <?php echo $metin[93]?>
-                      </option>
-                      <option value="siteSettings.php?ord=0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                      <?php echo $metin[94]?>
-                      </option>
-                      <option value="siteSettings.php?ord=1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                      <?php echo $metin[95]?>
-                      </option>
-                      <option value="siteSettings.php?ord=2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>>
-                      <?php echo $metin[96]?>
-                      </option>
+                      <option value="siteSettings.php?ord=" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
+                      <option value="siteSettings.php?ord=-1" <?php if (!(strcmp("-1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[93]?> </option>
+                      <option value="siteSettings.php?ord=0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[94]?> </option>
+                      <option value="siteSettings.php?ord=1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[95]?> </option>
+                      <option value="siteSettings.php?ord=2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[96]?> </option>
                     </select>
                     <input type="button" name="go_button" id= "go_button" value="<?php echo $metin[109]?>" onclick="MM_jumpMenuGo('jumpMenu','parent',0)" />
                   </form>
                   <br />
                   <form method="get" id="sayfaSec" name="sayfaSec" action="siteSettings.php">
-                    <label>
-                      <?php echo $metin[110]?>
-                      :
+                    <label> <?php echo $metin[110]?> :
                       <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
                     </label>
                     <label>
@@ -856,9 +724,7 @@ if ($_GET["upd"]!="1"){
                   </form>
                   <br />
                   <form id="aramak" name="aramak" method="get" action="siteSettings.php">
-                    <label title="<?php echo $metin[122]?>">
-                      <?php echo $metin[29]?>
-                      :
+                    <label title="<?php echo $metin[122]?>"> <?php echo $metin[29]?> :
                       <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>" />
                     </label>
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
@@ -867,7 +733,7 @@ if ($_GET["upd"]!="1"){
 		}
 	}
 	else
-	  die("<font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrenci veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die($metin[447]);
 	
 ?>
                 </div>
@@ -904,22 +770,12 @@ if ($_GET["upd"]!="1"){
                 <div class="Post-cc"></div>
                 <div class="Post-body">
                   <div class="Post-inner">
-                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader">
-                      <img src="img/database.gif" border="0" style="vertical-align: middle;" alt="database"/>
-					  <?php echo $metin[156]?>
-                      </span> </h2>
-                    <div class="PostContent">
-					<span title="<?php echo $metin[111]?>">
-                      <?php echo $metin[48]?>
-                      </span><br />
-                      <span>
-                      <?php echo $metin[215]?>
-                      </span><br />
+                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <img src="img/database.gif" border="0" style="vertical-align: middle;" alt="database"/> <?php echo $metin[156]?> </span> </h2>
+                    <div class="PostContent"> <span title="<?php echo $metin[111]?>"> <?php echo $metin[48]?> </span><br />
+                      <span> <?php echo $metin[215]?> </span><br />
                       <br />
                       <form id="sqlimp" name="sqlimp" method="post" action="siteSettings.php">
-                        <label title="<?php echo "SQL Import"?>">
-                          <?php echo $metin[157]?>
-                          :
+                        <label title="<?php echo "SQL Import"?>"> <?php echo $metin[157]?> :
                           <textarea name="sqlAl" cols="85" rows="10"><?php echo $sqlFile?>
 </textarea>
                         </label>
@@ -927,24 +783,22 @@ if ($_GET["upd"]!="1"){
                         <input name="al" type="submit" id="al" value="<?php echo $metin[158]?>"/>
                       </form>
                       <h4><?php echo $metin[211]?> :</h4>
-                      
-eo_1okul (<?php echo getTableSize("eo_1okul"); ?>) - (<?php echo $metin[212]?>)<br />
-<strong>eo_2sinif (<?php echo getTableSize("eo_2sinif"); ?>) :</strong> <?php echo yetimKayitNolar("eo_2sinif")?><br />
-<strong>eo_3ders (<?php echo getTableSize("eo_3ders"); ?>) :</strong> <?php echo yetimKayitNolar("eo_3ders")?><br />
-<strong>eo_4konu (<?php echo getTableSize("eo_4konu"); ?>) :</strong> <?php echo yetimKayitNolar("eo_4konu")?><br />
-<strong>eo_5sayfa (<?php echo getTableSize("eo_5sayfa"); ?>) :</strong> <?php echo yetimKayitNolar("eo_5sayfa")?><br />
-<strong>eo_userworks (<?php echo getTableSize("eo_userworks"); ?>) :</strong> <?php echo yetimKayitNolar("eo_userworks")?><br />
-<strong>eo_sinifogre (<?php echo getTableSize("eo_sinifogre"); ?>) :</strong> <?php echo yetimKayitNolar("eo_sinifogre")?><br />
-<strong>eo_rating (<?php echo getTableSize("eo_rating"); ?>) :</strong> <?php echo yetimKayitNolar("eo_rating")?><br />
-<strong>eo_comments (<?php echo getTableSize("eo_comments"); ?>) :</strong> <?php echo yetimKayitNolar("eo_comments")?><br />
-eo_users (<?php echo getTableSize("eo_users"); ?>) - (<?php echo $metin[212]?>)<br />
-eo_shoutbox (<?php echo getTableSize("eo_shoutbox"); ?>) - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
-eo_usertrack (<?php echo getTableSize("eo_usertrack"); ?>) - (<?php echo $metin[212].", ".$metin[238];?>)<br />
-eo_floodprotection (<?php echo getTableSize("eo_floodprotection"); ?>) - (<?php echo $metin[212]?>)<br />
-eo_sitesettings (<?php echo getTableSize("eo_sitesettings"); ?>) - (<?php echo $metin[212]?>)<br />
-eo_webref_rss_details (<?php echo getTableSize("eo_webref_rss_details"); ?>) - (<?php echo $metin[212]?>)<br />
-eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?php echo $metin[212]?>)<br />
-                      
+                      eo_1okul (<?php echo getTableSize("eo_1okul"); ?>) - (<?php echo $metin[212]?>)<br />
+                      <strong>eo_2sinif (<?php echo getTableSize("eo_2sinif"); ?>) :</strong> <?php echo yetimKayitNolar("eo_2sinif")?><br />
+                      <strong>eo_3ders (<?php echo getTableSize("eo_3ders"); ?>) :</strong> <?php echo yetimKayitNolar("eo_3ders")?><br />
+                      <strong>eo_4konu (<?php echo getTableSize("eo_4konu"); ?>) :</strong> <?php echo yetimKayitNolar("eo_4konu")?><br />
+                      <strong>eo_5sayfa (<?php echo getTableSize("eo_5sayfa"); ?>) :</strong> <?php echo yetimKayitNolar("eo_5sayfa")?><br />
+                      <strong>eo_userworks (<?php echo getTableSize("eo_userworks"); ?>) :</strong> <?php echo yetimKayitNolar("eo_userworks")?><br />
+                      <strong>eo_sinifogre (<?php echo getTableSize("eo_sinifogre"); ?>) :</strong> <?php echo yetimKayitNolar("eo_sinifogre")?><br />
+                      <strong>eo_rating (<?php echo getTableSize("eo_rating"); ?>) :</strong> <?php echo yetimKayitNolar("eo_rating")?><br />
+                      <strong>eo_comments (<?php echo getTableSize("eo_comments"); ?>) :</strong> <?php echo yetimKayitNolar("eo_comments")?><br />
+                      eo_users (<?php echo getTableSize("eo_users"); ?>) - (<?php echo $metin[212]?>)<br />
+                      eo_shoutbox (<?php echo getTableSize("eo_shoutbox"); ?>) - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
+                      eo_usertrack (<?php echo getTableSize("eo_usertrack"); ?>) - (<?php echo $metin[212].", ".$metin[238];?>)<br />
+                      eo_floodprotection (<?php echo getTableSize("eo_floodprotection"); ?>) - (<?php echo $metin[212]?>)<br />
+                      eo_sitesettings (<?php echo getTableSize("eo_sitesettings"); ?>) - (<?php echo $metin[212]?>)<br />
+                      eo_webref_rss_details (<?php echo getTableSize("eo_webref_rss_details"); ?>) - (<?php echo $metin[212]?>)<br />
+                      eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?php echo $metin[212]?>)<br />
                     </div>
                     <div class="cleared"></div>
                   </div>
@@ -979,9 +833,7 @@ eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?ph
                     <div class="Post-cc"></div>
                     <div class="Post-body">
                       <div class="Post-inner">
-                        <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader">
-                          <?php echo $metin[112]?>
-                          </span> </h2>
+                        <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <?php echo $metin[112]?> </span> </h2>
                         <div class="PostContent">
                           <form name="form5"  action="siteSettings.php" method="post">
                             <table width="90%" border="0" cellspacing="0" cellpadding="3">
@@ -989,141 +841,157 @@ eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?ph
                                 <th colspan="2"><?php echo $metin[113]?></th>
                               </tr>
                               <tr>
-                                <td width="400" align="right"><label for="okulGenelAdi">
-                                    <?php echo $metin[114]?>
-                                    :</label></td>
+                                <td width="400" align="right"><label for="okulGenelAdi"> <?php echo $metin[114]?> :</label></td>
                                 <td><input type="text" maxlength="15" size="15" name="okulGenelAdi" id="okulGenelAdi" value="<?php echo ayarGetir("okulGenelAdi")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="versiyon">
-                                    <?php echo $metin[115]?>
-                                    :</label></td>
+                                <td align="right"><label for="versiyon"> <?php echo $metin[115]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="versiyon" id="versiyon" value="<?php echo ayarGetir("versiyon")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="sayfaBlokSayisi">
-                                    <?php echo $metin[116]?>
-                                    :</label></td>
+                                <td align="right"><label for="sayfaBlokSayisi"> <?php echo $metin[116]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="sayfaBlokSayisi" id="sayfaBlokSayisi" value="<?php echo ayarGetir("sayfaBlokSayisi")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="sayfaKullaniciSayisi">
-                                    <?php echo $metin[117]?>
-                                    :</label></td>
+                                <td align="right"><label for="sayfaKullaniciSayisi"> <?php echo $metin[117]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="sayfaKullaniciSayisi" id="sayfaKullaniciSayisi" value="<?php echo ayarGetir("sayfaKullaniciSayisi")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="veriHareketleriSayisi">
-                                    <?php echo $metin[118]?>
-                                    :</label></td>
+                                <td align="right"><label for="veriHareketleriSayisi"> <?php echo $metin[118]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="veriHareketleriSayisi" id="veriHareketleriSayisi" value="<?php echo ayarGetir("veriHareketleriSayisi")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="ayar1int">
-                                    <?php echo $metin[150]?>
-                                    :</label></td>
+                                <td align="right"><label for="ayar1int"> <?php echo $metin[150]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="ayar1int" id="ayar1int" value="<?php echo ayarGetir("ayar1int")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="ayar2int">
-                                    <?php echo $metin[151]?>
-                                    :</label></td>
+                                <td align="right"><label for="ayar2int"> <?php echo $metin[151]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="ayar2int" id="ayar2int" value="<?php echo ayarGetir("ayar2int")?>"/>
                                   *</td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="ayar3int">
-                                    <?php echo $metin[245]?>
-                                    :</label></td>
-                                <td><input type="text" maxlength="10" size="10" name="ayar3int" id="ayar3int" value="<?php echo ayarGetir("ayar3int")?>"/> *
-                                 </td>
+                                <td align="right"><label for="ayar3int"> <?php echo $metin[245]?> :</label></td>
+                                <td><input type="text" maxlength="10" size="10" name="ayar3int" id="ayar3int" value="<?php echo ayarGetir("ayar3int")?>"/>
+                                  * </td>
                               </tr>
                               <tr>
-                                <td align="right"><label for="ayar4char">
-                                    <?php echo $metin[119]?>
-                                    :</label></td>
+                                <td align="right"><label for="ayar4char"> <?php echo $metin[119]?> :</label></td>
                                 <td><input type="text" maxlength="50" size="30" name="ayar4char" id="ayar4char" value="<?php echo ayarGetir("ayar4char")?>"/>
                                   <font size="-1"><?php echo $metin[120]?></font></td>
                               </tr>
                               <tr>
-                                <td align="right">
-                                    <?php echo $metin[216]?>
-                                    :</td>
+                                <td align="right"><?php echo $metin[216]?> :</td>
                                 <?php
 								  $secenekler = explode("-",ayarGetir("ayar5char"));
-								?>                                    
-                                <td>
-            <label><input type="checkbox" name="ayar5char1" 
+								?>
+                                <td><label>
+                                    <input type="checkbox" name="ayar5char1" 
             id="ayar5char1" value="1" <?php if($secenekler[0]=="1") 
-			echo " checked='checked'"; else echo ""; ?> /> RSS</label> <br />
-
-            <label><input type="checkbox" name="ayar5char2" 
+			echo " checked='checked'"; else echo ""; ?> />
+                                    RSS</label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char2" 
             id="ayar5char2" value="1" <?php if($secenekler[1]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[154];?></label> <br />
-            <label><input type="checkbox" name="ayar5char3" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[154];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char3" 
             id="ayar5char3" value="1" <?php if($secenekler[2]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[139];?></label> <br/>
-            <label><input type="checkbox" name="ayar5char4" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[139];?></label>
+                                  <br/>
+                                  <label>
+                                    <input type="checkbox" name="ayar5char4" 
             id="ayar5char4" value="1" <?php if($secenekler[3]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[155];?></label>  <br />
-            <label><input type="checkbox" name="ayar5char5" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[155];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char5" 
             id="ayar5char5" value="1" <?php if($secenekler[4]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[217];?></label> <br />
-                                </td>
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[217];?></label>
+                                  <br /></td>
                               </tr>
                               <tr>
-                                <td align="right">
-                                    <?php echo $metin[255]?> :</td>
-                                <td>
-            <label><input type="checkbox" name="ayar5char7" 
+                                <td align="right"><?php echo $metin[255]?> :</td>
+                                <td><label>
+                                    <input type="checkbox" name="ayar5char7" 
             id="ayar5char7" value="1" <?php if($secenekler[6]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[257];?></label> <br />
-            <label><input type="checkbox" name="ayar5char8" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[257];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char8" 
             id="ayar5char8" value="1" <?php if($secenekler[7]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[258];?></label> <br/>
-            <label><input type="checkbox" name="ayar5char9" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[258];?></label>
+                                  <br/>
+                                  <label>
+                                    <input type="checkbox" name="ayar5char9" 
             id="ayar5char9" value="1" <?php if($secenekler[8]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[259];?></label>  <br />
-            <label><input type="checkbox" name="ayar5char10" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[259];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char10" 
             id="ayar5char10" value="1" <?php if($secenekler[9]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[260];?></label> <br />
-            <label><input type="checkbox" name="ayar5char14" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[260];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char14" 
             id="ayar5char14" value="1" <?php if($secenekler[13]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[307];?></label>  <br />
-                                </td>
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[307];?></label>
+                                  <br /></td>
                               </tr>
                               <tr>
-                                <td align="right">
-                                    <?php echo $metin[303]?> :</td>
-                                <td>
-            <label><input type="checkbox" name="ayar5char6" 
+                                <td align="right"><?php echo $metin[303]?> :</td>
+                                <td><label>
+                                    <input type="checkbox" name="ayar5char6" 
             id="ayar5char6" value="1" <?php if($secenekler[5]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[256];?></label> <br />
-            <label><input type="checkbox" name="ayar5char11" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[256];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char11" 
             id="ayar5char11" value="1" <?php if($secenekler[10]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[304];?></label> <br />
-            <label><input type="checkbox" name="ayar5char12" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[304];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char12" 
             id="ayar5char12" value="1" <?php if($secenekler[11]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[305];?></label> <br />
-            <label><input type="checkbox" name="ayar5char13" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[305];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char13" 
             id="ayar5char13" value="1" <?php if($secenekler[12]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[306];?></label> <br/>
-            <label><input type="checkbox" name="ayar5char15" 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[306];?></label>
+                                  <br/>
+                                  <label>
+                                    <input type="checkbox" name="ayar5char15" 
             id="ayar5char15" value="1" <?php if($secenekler[14]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/> <?php echo $metin[308];?></label> <br />
-                                </td>
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[308];?></label>
+                                  <br /></td>
                               </tr>
                               <tr>
                                 <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />
-                                  <input type="submit" value="<?php echo $metin[121]?>" />&nbsp;
-                                  <input type="button" value="<?php echo $metin[246]?>" onclick="getDefaults();" />
-                                 </td>
+                                  <input type="submit" value="<?php echo $metin[121]?>" />
+                                  &nbsp;
+                                  <input type="button" value="<?php echo $metin[246]?>" onclick="getDefaults();" /></td>
                               </tr>
                             </table>
                           </form>
@@ -1135,11 +1003,9 @@ eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?ph
                   <div class="cleared"></div>
                   <div class="Footer">
                     <div class="Footer-inner">
-                    
-                        <?php  						
+                      <?php  						
 						 require "footer.php";
                         ?>
-                      
                     </div>
                     <div class="Footer-background"></div>
                   </div>
@@ -1153,7 +1019,6 @@ eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?ph
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
 /*
 getDefaults:
@@ -1186,7 +1051,6 @@ function getDefaults(){
 	document.getElementById('ayar5char15').checked = true;
 }
 </script>
-
 </body>
 </html>
 <?php 

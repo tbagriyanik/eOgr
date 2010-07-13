@@ -134,6 +134,44 @@ function dilCevir($dil){
         require("lib/en.php");         
 }
 /*
+checkLoginThemeLang:
+giriþ ve dil kontrolü
+*/
+function checkLoginLang($lgn,$lng,$src){
+	global $metin;
+	
+	if($lng){
+  		   $taraDili=$_COOKIE["lng"];    
+		   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
+		   dilCevir($taraDili);		
+		}
+		
+	if($lgn){
+		   $adi	=temizle(substr($_SESSION["usern"],0,15));
+		   $par	=temizle($_SESSION["userp"]);
+		  
+			if($adi==""|| $par=="") //EMPTY?
+			   die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); 
+		 
+		   $tur=checkRealUser($adi,$par);
+			
+			if ($tur<=-1 || $tur>2) { 
+			   sessionDestroy();
+			   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
+			  }
+			  else 
+			  {
+				$_SESSION["tur"] 	= $tur;
+				$_SESSION["usern"] 	= $adi;
+				$_SESSION["userp"] 	= $par;
+			  }	
+		}
+
+	if(!empty($src)){
+		currentFileCheck($src); 
+	}
+}
+/*
 araKalin:
 arama kelimesinin renklendirilmesi, TR sorunu var.
 */
@@ -203,8 +241,10 @@ currentFileCheck:
 dosya isminin güvenlik nedeni ile kontrol edilmesi
 */
 function currentFileCheck($fileName){
-	global $currentFile; 
-	if($currentFile!=$fileName ) die ("<font id='hata'>Dosya uyumlu deðil!</font>");
+	global $currentFile;
+	global $metin; 
+	if($currentFile!=$fileName ) 
+	 die ("<font id='hata'>$metin[449]</font>");
 }	
 /*
 GetSQLValueString:
@@ -2452,4 +2492,20 @@ function getUsersOnline() {
 		}
 		return $data['values'];
 }
+
+/*
+Genel olarak session kontrol edilmesi
+*/
+if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
+   sessionDestroy();
+	die("<font id='hata'>$metin[400]</font>"); //session?
+	exit;
+} 
+/*
+Genel olarak üye pasif durumda ise hata verir
+*/
+if ($tur=="-1")	{
+	   sessionDestroy();
+	   die ("<font id='hata'>$metin[450]</font>");
+} 
 ?>

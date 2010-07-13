@@ -11,4 +11,5 @@ $(document).ready(function (){
 	});
 });
 </script>
+
 <img id="pingTest" src="img/loadingRect2.gif" alt="ping" title="ping" />

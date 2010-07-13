@@ -1,4 +1,4 @@
-eOgr - v118b
+eOgr - v118d
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -20,8 +20,8 @@ Source Track:	http://eogr.googlecode.com
 Support:	http://www.ohloh.net/p/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	07-07-2010
-Process Time : 	425 hours (18.750 lines PHP, 13.000 lines Javascript and CSS)
+Last Update: 	13-07-2010
+Process Time : 	430 hours (18.750 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual
 
 INSTALLATION:

@@ -1,17 +1,10 @@
 <?php
-session_start();
-header("Content-Type: text/html; charset=iso-8859-9"); 
+	session_start();
+	header("Content-Type: text/html; charset=iso-8859-9");          
 
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
-      if ($taraDili=="TR")
-        require("lib/tr.php"); 
-      elseif ($taraDili=="EN")  
-        require("lib/en.php"); 
-      else 
-        require("lib/en.php");         
-
-require 'database.php'; 
+	require "conf.php";	
+	
+	checkLoginLang(true,true,"addComment2.php");
 /*
 baglan2: parametresiz, 
 veritabaný baðlantýsý
@@ -36,25 +29,7 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
-/*
-temizle2: metin giriþi, 
-XSS temizliði
-*/
-function temizle2($metin)
-{
-    $metin = str_replace("&", "", $metin);
-    $metin = str_replace("#", "", $metin);
-    $metin = str_replace("%", "", $metin);
-    $metin = str_replace("\n", "", $metin);
-    $metin = str_replace("\r", "", $metin);
-    $metin = str_replace("'", "`", $metin);
-    //$metin = str_replace('"', '¨', $metin);
-    $metin = str_replace("\\", "|", $metin);
-    $metin = str_replace("<", "‹", $metin);
-    $metin = str_replace(">", "›", $metin);
-    $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlspecialchars($metin)));
-    return $metin;
-}
+
 /*
 getUserIDcomment: kullanýcý adý ve parola
 kullanýcý adý ve parolasý ile kimlik bilgisi elde edilir
@@ -63,8 +38,8 @@ function getUserIDcomment($usernam, $passwor)
 {
 	global $yol1;
 	
-	$usernam = substr(temizle2($usernam),0,15);
-    $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle2($usernam)."' AND userPassword='".temizle2($passwor)."' limit 0,1"; 	
+	$usernam = substr(temizle($usernam),0,15);
+    $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle($usernam)."' AND userPassword='".temizle($passwor)."' limit 0,1"; 	
 
     $result1 = mysql_query($sql1, $yol1); 
 
@@ -99,7 +74,7 @@ function yorumGonder($userID, $konuID, $yorum){
 if (isset($_POST['yorum']) 
 				       	&& !empty($_POST['yorum']) 
 						&& getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="") {
-	if (yorumGonder(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_POST['konu']),temizle2($_POST['yorum'])) )
+	if (yorumGonder(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle($_POST['konu']),temizle($_POST['yorum'])) )
 		echo iconv( "ISO-8859-9","UTF-8",$metin[293]);
 		else
 		echo "PROBLEM!";

@@ -1,9 +1,35 @@
-<?php
-  require "conf.php";
-  
-// session_cache_limiter('private');
-// session_cache_expire(1); //30 min
+<?php  
   session_start(); 
+
+  	$_SESSION['aThing'] = md5($_SERVER['HTTP_USER_AGENT']);
+	$_SESSION["newUser"]="";
+	$_SESSION["passRem"]="";
+
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(false,true,"index.php");	   
+  $seciliTema=temaBilgisi();
+    
+  if (empty($_GET["lng"]) && empty($_COOKIE["lng"])){
+        $taraDili= browserdili(); 
+        if($taraDili!="TR") $taraDili="EN";
+		setcookie("lng",$taraDili,time()+60*60*24*30);
+    }
+   else
+    {
+		if(isset($_COOKIE["lng"])) $taraDili=RemoveXSS($_COOKIE["lng"]);	
+		
+		if(isset($_GET["lng"])) $taraDili=RemoveXSS($_GET["lng"]);		 
+		
+		if(!empty($_GET["lng"])) {
+		if($taraDili=="TR") 
+		   $taraDili="EN"; else
+		if($taraDili=="EN") 
+		   $taraDili="TR"; else 
+		   $taraDili="EN";
+		}
+		setcookie("lng",$taraDili,time()+60*60*24*30);
+	}
   
   if(isset($_GET["logout"])) 
   if($_GET["logout"]=="1") 
@@ -39,36 +65,6 @@
 	 }
 	}
 	
-  	$_SESSION['aThing'] = md5($_SERVER['HTTP_USER_AGENT']);
-	$_SESSION["newUser"]="";
-	$_SESSION["passRem"]="";
-	
-	$seciliTema=temaBilgisi();
-	
-	$time = getmicrotime();
-
-  if (empty($_GET["lng"]) && empty($_COOKIE["lng"])){
-        $taraDili= browserdili(); 
-        if($taraDili!="TR") $taraDili="EN";
-		setcookie("lng",$taraDili,time()+60*60*24*30);
-    }
-   else
-    {
-		if(isset($_COOKIE["lng"])) $taraDili=RemoveXSS($_COOKIE["lng"]);	
-		
-		if(isset($_GET["lng"])) $taraDili=RemoveXSS($_GET["lng"]);		 
-		
-		if(!empty($_GET["lng"])) {
-		if($taraDili=="TR") 
-		   $taraDili="EN"; else
-		if($taraDili=="EN") 
-		   $taraDili="TR"; else 
-		   $taraDili="EN";
-		}
-		setcookie("lng",$taraDili,time()+60*60*24*30);
-	}
-		
-   dilCevir($taraDili);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -93,9 +89,6 @@
 </head>
 <body>
 <?php
-  
-  currentFileCheck("index.php");
-
 $remUser = false;
 if (isset($_COOKIE["remUser"]))
   if (strlen($_COOKIE["remUser"])>0){

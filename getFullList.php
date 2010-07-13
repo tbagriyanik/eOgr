@@ -1,76 +1,32 @@
 <?php
-session_start();
-header("Content-Type: text/html; charset=iso-8859-9"); 
+	session_start();
 
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
-      if ($taraDili=="TR")
-        require("lib/tr.php"); 
-      elseif ($taraDili=="EN")  
-        require("lib/en.php"); 
-      else 
-        require("lib/en.php");         
+	require "conf.php";	
+	
+	checkLoginLang(false,true,"getFullList.php");
 
-require 'database.php';
-/*
-temizle: metin giriþi, 
-XSS temizliði
-*/
-function temizle($metin)
-{
-    $metin = str_replace("&", "", $metin);
-    $metin = str_replace("#", "", $metin);
-    $metin = str_replace("%", "", $metin);
-    $metin = str_replace("\n", "", $metin);
-    $metin = str_replace("\r", "", $metin);
-    $metin = str_replace("\'", "`", $metin);
-    $metin = str_replace('\"', '¨', $metin);
-    $metin = str_replace("\\", "|", $metin);
-    $metin = str_replace("<", "‹", $metin);
-    $metin = str_replace(">", "›", $metin);
-    $metin = trim(htmlspecialchars($metin));
-    return $metin;
-}  
-/*
-temaBilgisi:
-temanýn deðiþtirilmesi
-*/
-function temaBilgisi(){
-	$result = "silverModern";
-	$cerezden = temizle($_COOKIE["theme"]);
-
-	 if($cerezden!="" and is_dir('theme/'.$cerezden)){
-
-		  $result=$cerezden;
-	  }
-	  
-	  if(empty($cerezden)) 
-	    setcookie("theme",$result,time()+60*60*24*30);
-
-	  return $result;
-}	
 	$seciliTema= temaBilgisi(); 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="-1"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<title>eOgr</title>
-<link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
-<script src="lib/jquery.anythingslider.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="-1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+    <title>eOgr</title>
+    <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+    <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
+    <script src="lib/jquery.anythingslider.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
     
         $(function () {
         
@@ -90,9 +46,11 @@ function temaBilgisi(){
             
         });
     </script>
-</head>
-<body> 
-<h1 align="center"><?php
+    </head>
+    <body>
+<h1 align="center">
+      <?php
+
   switch($_GET["case"]){
 	  case "2":echo $metin[200];break;
 	  case "11":echo $metin[213];break;
@@ -101,11 +59,12 @@ function temaBilgisi(){
 	  case "14":echo $metin[276];break;
 	  case "15":echo $metin[277];break;
 	  case "16":echo $metin[302];break;
-	  default: echo "Hata";
-  }
-?></h1>   
+	  default: die($metin[406]);
+  }  
+?>
+    </h1>
 <div class="anythingSlider">
-  <div class="wrapper">
+      <div class="wrapper">
     <?php
 /*
 baglan2:
@@ -454,43 +413,7 @@ function listeGetir($userID, $durum){
 		
 	return false;
 }
-/*
-tarihOku:
-TR tarih formatý
-*/
-function tarihOku($gelenTarih){
-	//Y-m-d > d-m-Y 	
-	return date("d-m-Y", strtotime($gelenTarih));
-}
-/*
-Sec2Time2:
-saniyenin üst birime çevrilmesi
-*/
-function Sec2Time2($time){
-  if(is_numeric($time)){
-    $value = "";
-    if($time >= 31556926){
-      $value = floor($time/31556926)."y ";
-      $time = ($time%31556926);
-    }
-    if($time >= 86400){
-      $value .= floor($time/86400)."d ";
-      $time = ($time%86400);
-    }
-    if($time >= 3600){
-      $value .= strlen(floor($time/3600))==1?"0".floor($time/3600).":":floor($time/3600).":";
-      $time = ($time%3600);
-    }
-    if($time >= 60){
-      $value .= strlen(floor($time/60))==1?"0".floor($time/60).":":floor($time/60).":";
-      $time = ($time%60);
-    }
-    $value .= strlen(floor($time))==1?"0".floor($time)."s":floor($time)."s";
-    return $value;
-  }else{
-    return (bool) FALSE;
-  }
-}
+
 
 if (isset($_GET['case']) && !empty($_GET['case']) && getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 	if ( !listeGetir(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_GET['case'])) )		
@@ -505,8 +428,12 @@ else
 
 ?>
   </div>
-</div>
-<center><a href="index.php" ><?php echo $metin[54]?></a></center>
-<center><a href="login.php" ><?php echo $metin[60]?></a></center>
+    </div>
+<center>
+      <a href="index.php" ><?php echo $metin[54]?></a>
+    </center>
+<center>
+      <a href="login.php" ><?php echo $metin[60]?></a>
+    </center>
 </body>
 </html>

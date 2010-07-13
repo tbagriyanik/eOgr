@@ -7,13 +7,9 @@ header("Pragma: no-cache");
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-  
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
+    require("conf.php");	
+    $time = getmicrotime();
+	checkLoginLang(true,true,"dataWorkList2.php");		
 	$seciliTema=temaBilgisi();
 
 ?>
@@ -26,7 +22,7 @@ header("Pragma: no-cache");
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[186]?></title>
+<title>eOgr -<?php echo $metin[186]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -135,37 +131,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[186]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("dataWorkList2.php");
-  
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2")	{
 	 //
 $currentPage = $_SERVER["PHP_SELF"];
@@ -360,16 +325,17 @@ if ($totalRows_eoUsers>0)
                       <tr >
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php if ($row_eoUsers['userName']!='') {?>
-<a href="profil.php?kim=<?php echo $row_eoUsers['userID']; ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>                          <?php
+                          <a href="profil.php?kim=<?php echo $row_eoUsers['userID']; ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>
+                          <?php
                        }
                          else
                          	echo araKalin("demo");
                        ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="dersBilgisi.php?ders=<?php echo $row_eoUsers['konuID']; ?>" rel="facebox">
-						<?php
+                          <?php
                         echo ($row_eoUsers['konuAdi'])?araKalin($row_eoUsers['konuAdi']):"<span id=bosVeri>###</span>";; 
 						?>
-                        </a></td>
+                          </a></td>
                         <td align="right" nowrap="nowrap" <?php echo ($row_eoUsers['toplamZaman']>60)?"style=\"background-color: wheat;\"":"style=\"background-color: $row_color;\""?>><?php 
 					    echo Sec2Time2($row_eoUsers['toplamZaman']);   
 					  ?></td>
@@ -460,7 +426,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   <?php
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin ve &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die($metin[447]);
 	
 ?>
                 </div>

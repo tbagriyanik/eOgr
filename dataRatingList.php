@@ -7,13 +7,9 @@ header("Pragma: no-cache");
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-  
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
+  	require("conf.php");	
+	$time = getmicrotime();
+	checkLoginLang(true,true,"dataRatingList.php");		
 	$seciliTema=temaBilgisi();
 
 ?>
@@ -26,7 +22,7 @@ header("Pragma: no-cache");
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[287]?></title>
+<title>eOgr -<?php echo $metin[287]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -135,37 +131,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[287]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("dataRatingList.php");
-  
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) { 
-	sessionDestroy();
-		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2")	{
 	 //
 $currentPage = $_SERVER["PHP_SELF"];
@@ -303,7 +268,7 @@ if ($totalRows_eoUsers>0)
                         <th nowrap="nowrap"><?php if ($sirAlan=="value") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="value")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=value&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[289]?> </a></th>                        
+                          <a href="?order=value&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[289]?> </a></th>
                         <th><?php if ($sirAlan=="rateDate") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="rateDate")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
@@ -335,7 +300,7 @@ if ($totalRows_eoUsers>0)
                           </a></td>
                         <td align="right" nowrap="nowrap"  <?php echo "style=\"background-color: $row_color;\""?>><?php 
 					    echo $row_eoUsers['value'];   
-					  ?></td>                        
+					  ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['rateDate']); ?></td>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>
@@ -393,7 +358,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   <?php
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin ve &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die($metin[447]);
 	
 ?>
                 </div>

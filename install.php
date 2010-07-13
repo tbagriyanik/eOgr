@@ -271,13 +271,12 @@ function temaBilgisi(){
                   <p><strong> <?php echo $metin[73]?> </strong></p>
                   <p><strong> <?php echo $metin[398]?> </strong></p>
                   <a href="installation_Database.sql"><?php echo $metin[399]?> - <?php echo filesize("installation_Database.sql")?> B</a><br />
-<br />
-
+                  <br />
                   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <input name="submit" type="submit" value="<?php echo $metin[46]?>" />
                   </form>
                   <?php }else{?>
-                   Veritabaný dosyanýz bulunamadý. Kurulum yapýlamýyor!
+                  Veritabaný dosyanýz bulunamadý. Kurulum yapýlamýyor!
                   <?php }?>
                 </div>
                 <div class="cleared"></div>

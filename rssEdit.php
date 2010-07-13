@@ -1,18 +1,14 @@
 <?php 
-  require("conf.php");
-	$time = getmicrotime();
 	if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-     $taraDili=$_COOKIE["lng"];    
 	 
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
-	$seciliTema=temaBilgisi();
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"rssEdit.php");	   
+  $seciliTema=temaBilgisi();	
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,13 +20,13 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[70]?></title>
+<title>eOgr -<?php echo $metin[70]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />			
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="JavaScript" type="text/JavaScript">
 <!--
@@ -85,9 +81,7 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
         <div class="Header-jpeg"></div>
         <div class="logo">
           <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text">
-             <?php echo $metin[286]?> 
-          </div>
+          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
         </div>
       </div>
       <div class="nav">
@@ -127,41 +121,9 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> -
-                  <?php echo $metin[70]?>
-                  </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[70]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-	currentFileCheck("rssEdit.php");
-	
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="2")	{
 	 //
 
@@ -377,33 +339,23 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
                       <th width="75"><?php if ($sirAlan=="id") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[26]?>
-                        </a></th>
+                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
                       <th width="150"><?php if ($sirAlan=="title") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="title")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=title&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[126]?>
-                        </a></th>
+                        <a href="?order=title&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[126]?> </a></th>
                       <th width="350"><?php if ($sirAlan=="description") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="description")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=description&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[127]?>
-                        </a></th>
+                        <a href="?order=description&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[127]?> </a></th>
                       <th width="100"><?php if ($sirAlan=="link") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="link")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"  border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=link&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[128]?>
-                        </a></th>
+                        <a href="?order=link&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[128]?> </a></th>
                       <th width="100"><?php if ($sirAlan=="pubDate") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="pubDate")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=pubDate&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[129]?>
-                        </a></th>
+                        <a href="?order=pubDate&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[129]?> </a></th>
                     </tr>
                     <?php
   $satirRenk=0;
@@ -451,40 +403,29 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
                     <table width="500" border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">
-                        <th colspan="2" align="right" nowrap="nowrap"><div align="center">
-                            <?php echo $metin[131]?>
-                          </div></th>
+                        <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <?php echo $metin[131]?> </div></th>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><?php echo $metin[26]?>
-                          :</td>
+                        <td align="right" nowrap="nowrap"><?php echo $metin[26]?> :</td>
                         <td><?php echo $row_eoUsers['id']; ?></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="title">
-                            <?php echo $metin[126]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="title"> <?php echo $metin[126]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="title" id="title" value="<?php echo GetSQLValueStringNo($row_eoUsers['title'],"text"); ?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="description3">
-                            <?php echo $metin[127]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="description3"> <?php echo $metin[127]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="description3" id="description3" value="<?php echo GetSQLValueStringNo($row_eoUsers['description'],"text"); ?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="link3">
-                            <?php echo $metin[128]?>
-                            :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="link3"> <?php echo $metin[128]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="link3" id="link3" value="<?php if (GetSQLValueStringNo($row_eoUsers['link'],"text")!='NULL') echo GetSQLValueStringNo($row_eoUsers['link'],"text"); ?>" size="32" />
                           <font size="-1"><?php echo $metin[120]?></font></td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="pubDate">
-                            <?php echo $metin[129]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="pubDate"> <?php echo $metin[129]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="pubDate" id="pubDate" value="<?php if (GetSQLValueStringNo($row_eoUsers['pubDate'],"text")!='NULL') echo tarihOku2(GetSQLValueStringNo($row_eoUsers['pubDate'],"text")); ?>" size="32" />
                           *</td>
                       </tr>
@@ -504,35 +445,25 @@ if ($_GET["upd"]!="1"){
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                     <table border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">
-                        <th colspan="2" align="right" nowrap="nowrap"><div align="center">
-                            <?php echo $metin[130]?>
-                          </div></th>
+                        <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <?php echo $metin[130]?> </div></th>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="title2">
-                            <?php echo $metin[126]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="title2"> <?php echo $metin[126]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="title2" id="title2" value="" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="description2">
-                            <?php echo $metin[127]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="description2"> <?php echo $metin[127]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="description2" id="description2" value="" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="link2">
-                            <?php echo $metin[128]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="link2"> <?php echo $metin[128]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="link2" id="link2" value="" size="32" />
                           <font size="-1"><?php echo $metin[120]?></font></td>
                       </tr>
                       <tr valign="baseline">
-                        <td nowrap="nowrap" align="right"><label for="pubDate2">
-                            <?php echo $metin[129]?>
-                            :</label></td>
+                        <td nowrap="nowrap" align="right"><label for="pubDate2"> <?php echo $metin[129]?> :</label></td>
                         <td bgcolor="#CCFFFF"><input type="text" name="pubDate2" id="pubDate2" value="<?php echo date("d-m-Y H:i:s")?>" size="32" />
                           *</td>
                       </tr>
@@ -544,9 +475,7 @@ if ($_GET["upd"]!="1"){
                   </form>
                   <br />
                   <form method="get" id="sayfaSec" name="sayfaSec" action="rssEdit.php">
-                    <label>
-                      <?php echo $metin[110]?>
-                      :
+                    <label> <?php echo $metin[110]?> :
                       <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
                     </label>
                     <label>
@@ -555,9 +484,7 @@ if ($_GET["upd"]!="1"){
                   </form>
                   <br />
                   <form id="aramak" name="aramak" method="get" action="rssEdit.php">
-                    <label title="<?php echo $metin[133]?>">
-                      <?php echo $metin[29]?>
-                      :
+                    <label title="<?php echo $metin[133]?>"> <?php echo $metin[29]?> :
                       <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>" />
                     </label>
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
@@ -566,7 +493,7 @@ if ($_GET["upd"]!="1"){
 }
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrenci veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>");
+	  die($metin[447]);
 	
 ?>
                 </div>
@@ -602,9 +529,7 @@ if ($_GET["upd"]!="1"){
                 <div class="Post-cc"></div>
                 <div class="Post-body">
                   <div class="Post-inner">
-                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader">
-                      <?php echo $metin[134]?>
-                      </span> </h2>
+                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <?php echo $metin[134]?> </span> </h2>
                     <div class="PostContent">
                       <form name="form5" action="" method="post">
                         <table width="90%" border="0" cellspacing="0" cellpadding="3">
@@ -612,38 +537,30 @@ if ($_GET["upd"]!="1"){
                             <th colspan="2"><?php echo $metin[135]?></th>
                           </tr>
                           <tr>
-                            <td width="300" align="right"><label for="title3">
-                                <?php echo $metin[136]?>
-                                :</label></td>
+                            <td width="300" align="right"><label for="title3"> <?php echo $metin[136]?> :</label></td>
                             <td><input type="text" maxlength="50" size="50" name="title3" id="title3" value="<?php echo ayarGetir2("title")?>"/>
                               *</td>
                           </tr>
                           <tr>
-                            <td align="right"><label for="description">
-                                <?php echo $metin[137]?>
-                                :</label></td>
+                            <td align="right"><label for="description"> <?php echo $metin[137]?> :</label></td>
                             <td><input type="text" maxlength="50" size="50" name="description" id="description" value="<?php echo ayarGetir2("description")?>"/>
                               *</td>
                           </tr>
                           <tr>
-                            <td align="right"><label for="link">
-                                <?php echo $metin[138]?>
-                                :</label></td>
+                            <td align="right"><label for="link"> <?php echo $metin[138]?> :</label></td>
                             <td><input type="text" maxlength="50" size="50" name="link" id="link" value="<?php echo ayarGetir2("link")?>"/>
                               *</td>
                           </tr>
                           <tr>
-                            <td align="right"><label for="language">
-                                <?php echo $metin[139]?>
-                                :</label></td>
+                            <td align="right"><label for="language"> <?php echo $metin[139]?> :</label></td>
                             <td><input type="text" maxlength="50" size="50" name="language" id="language" value="<?php echo ayarGetir2("language")?>"/>
                               *</td>
                           </tr>
                           <tr>
                             <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />
-                              <input type="submit" value="<?php echo $metin[121]?>"/>&nbsp;
-                              <input type="button" value="<?php echo $metin[246]?>" onclick="getDefaults();" />
-                            </td>
+                              <input type="submit" value="<?php echo $metin[121]?>"/>
+                              &nbsp;
+                              <input type="button" value="<?php echo $metin[246]?>" onclick="getDefaults();" /></td>
                           </tr>
                         </table>
                       </form>
@@ -654,13 +571,11 @@ if ($_GET["upd"]!="1"){
               </div>
               <div class="cleared"></div>
               <div class="Footer">
-                    <div class="Footer-inner">
-                    
-                        <?php  						
+                <div class="Footer-inner">
+                  <?php  						
 						 require "footer.php";
                         ?>
-                      
-                    </div>
+                </div>
                 <div class="Footer-background"></div>
               </div>
             </div>
@@ -671,7 +586,6 @@ if ($_GET["upd"]!="1"){
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
 /*
 getDefaults:
@@ -684,7 +598,6 @@ function getDefaults(){
 	document.getElementById('language').value = "TR" ;
 }
 </script>
-
 </body>
 </html>
 <?php 

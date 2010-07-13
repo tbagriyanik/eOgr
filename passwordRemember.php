@@ -4,16 +4,10 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");
-  	$time = getmicrotime();
-	
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
-	$seciliTema=temaBilgisi();
-
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(false,true,"passwordRemember.php");	   
+  $seciliTema=temaBilgisi();	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,7 +18,7 @@
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[65]?></title>
+<title>eOgr -<?php echo $metin[65]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
@@ -114,8 +108,6 @@
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;" alt="warning"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
-
-	currentFileCheck("passwordRemember.php");
 
  if(isset($_POST['form']) && $_SESSION["passRem"]!="yes"){          
 	

@@ -4,14 +4,10 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-	require("conf.php");	$time = getmicrotime();
-
-	   $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
-	$seciliTema=temaBilgisi();
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(false,true,"newUser.php");	   
+  $seciliTema=temaBilgisi();	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -210,9 +206,6 @@ addLoadEvent(prepareInputsForHints);
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[64]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("newUser.php");	
-	
     if(isset($_POST['form']) && $_POST["onay"]=="OK" && $_SESSION["newUser"]!="yes"){          
 	
 			switch ($_POST['form'])
@@ -372,8 +365,8 @@ $ajax->Run();
                             <div>
                               <input name="userName" type="text" id="userName" size="35" maxlength="15" class="required"  style="width:150px" onkeyup="test();"/>
                               <span class="hint"><?php echo $metin[281];?><br />
-<span id="msg"></span><span id="pr" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
-                             </dd>
+                              <span id="msg"></span><span id="pr" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
+                          </dd>
                           <dt>
                             <label for="userPassword1"> <?php echo $metin[40]?> :</label>
                           </dt>
@@ -397,8 +390,8 @@ $ajax->Run();
                             <div>
                               <input name="email" type="text" id="email" size="35" maxlength="50"  style="width:150px" class="required email"  onkeyup="test2();"/>
                               <span class="hint"><?php echo $metin[284];?><br />
-<span id="msg2"></span><span id="pr2" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" style="vertical-align: middle;"  alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
-                             </dd>
+                              <span id="msg2"></span><span id="pr2" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" style="vertical-align: middle;"  alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
+                          </dd>
                           <dt>
                             <label for="birth"> <?php echo $metin[42]?> :</label>
                           </dt>

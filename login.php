@@ -31,12 +31,6 @@
 		   }
 		   
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-			  
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400] (2)</font>"); //session?
-		exit;
-	}
 
 include('lib/graphs.inc.php');
 ?>
@@ -296,7 +290,7 @@ include('lib/graphs.inc.php');
 					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10))."<br/>";
 		echo "</div>";			 
 					 ?>
-<?php
+                  <?php
 if(getGrafikRecordCount()>5) {
 	echo "<div class='ikiKolon'>";
 	echo "<p style=\"color:#000;font-weight: bold;\">".$metin[342]."</p>";
