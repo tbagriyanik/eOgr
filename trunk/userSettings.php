@@ -4,14 +4,10 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }	 
-  require("conf.php");	$time = getmicrotime();
-   $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
-	$seciliTema=temaBilgisi();
-	
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"userSettings.php");	   
+  $seciliTema=temaBilgisi();	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -122,39 +118,6 @@
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
-		
-	currentFileCheck("userSettings.php");
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
-
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-    $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-?>
-                  <?php 
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	  die ("<p>&nbsp;</p><font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }
 
 $editFormAction = $_SERVER['PHP_SELF'];
 
@@ -461,15 +424,9 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                         </table>
                       </form>
                       <ul>
-                      <li>
-                      Seçenek aktif olduðu halde istediðiniz gözükmüyor ise, yönetici bu seçeneði kapatmýþ olabilir.
-                      </li>
-                      <li>
-                      Bazý deðiþikliklerin etkin olabilmesi için sayfayý yenilemeniz gerekebilir.
-                      </li>
-                      <li>
-                      Bazý deðiþiklikler ile sitenin çalýþma hýzý artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz.
-                      </li>
+                        <li> Seçenek aktif olduðu halde istediðiniz gözükmüyor ise, yönetici bu seçeneði kapatmýþ olabilir. </li>
+                        <li> Bazý deðiþikliklerin etkin olabilmesi için sayfayý yenilemeniz gerekebilir. </li>
+                        <li> Bazý deðiþiklikler ile sitenin çalýþma hýzý artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz. </li>
                       </ul>
                     </div>
                     <div class="cleared"></div>

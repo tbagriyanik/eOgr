@@ -7,18 +7,14 @@
 	  $token = md5(uniqid(rand(), true));
 	  $_SESSION['token'] = $token;
 	  
-	    require("conf.php");  	
-
-   $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili); 
+	require("conf.php");  	
+	checkLoginLang(true,true,"chat.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<title>eOgr - <?php echo $metin[52]?></title>
+<title>eOgr -<?php echo $metin[52]?></title>
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/main.css" />
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/main-style.css" />
@@ -49,20 +45,6 @@ body, td, th {
 </style>
 </head>
 <body>
-<?php
- 
-  
-	currentFileCheck("chat.php");
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	sessionDestroy();
-		die("<font id='hata'> ".$metin[400]."</font><br/>".$metin[402]); //session?
-		exit;
-	}
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-  
-	if($adi=="") die("<font id='hata'> Kullanıcı adı veya parola boş olamaz.</font>"); //EMPTY?
-?>
 <div id="box">
   <div id="chat">
     <div id="scrollArea">
@@ -78,9 +60,7 @@ body, td, th {
           <input name='name' type='text' disabled="disabled" id='name' value='<?php echo $adi; ?>' readonly="readonly" />
           <br />
           <select id="oda" name="oda" onchange="odaSec();" style="background-color:#FFF;border:none;border-color:#FFF;height:20px;font-size:10px;margin-top:3px;">
-            <option value="0" <?php if ($_SESSION["oda"]=="0") echo "selected='selected'"?>>
-            <?php echo $metin[97]?>
-            </option>
+            <option value="0" <?php if ($_SESSION["oda"]=="0") echo "selected='selected'"?>> <?php echo $metin[97]?> </option>
             <option value="1" <?php if ($_SESSION["oda"]=="1") echo "selected='selected'"?>><?php printf($metin[98],1) ?></option>
             <option value="2" <?php if ($_SESSION["oda"]=="2") echo "selected='selected'"?>><?php printf($metin[98],2) ?></option>
             <option value="3" <?php if ($_SESSION["oda"]=="3") echo "selected='selected'"?>><?php printf($metin[98],3) ?></option>
@@ -99,9 +79,7 @@ body, td, th {
     </div>
     <div id="chat_menu">
       <div id='refresh'>
-        <p>
-          <?php echo $metin[99]?>
-        </p>
+        <p> <?php echo $metin[99]?> </p>
       </div>
       <div id='emo'>
         <ul id="show_sm">
@@ -126,15 +104,11 @@ body, td, th {
         </ul>
       </div>
       <div id='submit'>
-        <p>
-          <?php echo $metin[100]?>
-        </p>
+        <p> <?php echo $metin[100]?> </p>
       </div>
     </div>
   </div>
 </div>
-<p>
-  <?php echo $metin[101]?>
-</p>
+<p> <?php echo $metin[101]?> </p>
 </body>
 </html>

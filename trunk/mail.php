@@ -1,23 +1,21 @@
 <?php
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
-  require("conf.php");	$time = getmicrotime();
-		
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-
-	$seciliTema=temaBilgisi();	
-	
     header("Expires: Sun, 1 Jan 2000 12:00:00 GMT");
     header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
     header("Cache-Control: no-store, no-cache, must-revalidate");
     header("Cache-Control: post-check=0, pre-check=0", false);
-    header("Pragma: no-cache");
+    header("Pragma: no-cache");    
+	
+	if ( !isset( $_SESSION ['ready'] ) ) 
+     { 
+      session_start (); 
+      $_SESSION ['ready'] = TRUE; 
+     }
+	 
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"mail.php");	   
+  $seciliTema=temaBilgisi();	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -113,19 +111,6 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 		$hata = true;
 		}
 
-	currentFileCheck("mail.php");
-	
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
-
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> Kullanýcý adý veya parola boþ olamaz.</font>"); //EMPTY?
-		
    $address1	=	temizle($_REQUEST["to"]);
    $address1 	= 	getMailAddress($address1);
 	if(!email_valid($address1) && !empty($address1)){
@@ -216,8 +201,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
           </div>
           <div class="cleared"></div>
           <div class="Footer">
-            <div class="Footer-inner">             
-            </div>
+            <div class="Footer-inner"> </div>
             <div class="Footer-background"></div>
           </div>
         </div>

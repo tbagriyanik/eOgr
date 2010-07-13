@@ -2,17 +2,10 @@
 session_start();
 @header("Content-Type: text/html; charset=iso-8859-9"); 
 
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
-      if ($taraDili=="TR")
-        require("lib/tr.php"); 
-      elseif ($taraDili=="EN")  
-        require("lib/en.php"); 
-      else 
-        require("lib/en.php");         
-
-require 'database.php'; 
-require("conf.php");	
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"profil.php");	   
+  $seciliTema=temaBilgisi();	
 		   
 if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 /*

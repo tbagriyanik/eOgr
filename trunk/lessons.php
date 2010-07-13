@@ -12,12 +12,9 @@ if ( !isset( $_SESSION ['ready'] ) )
      }
   require("conf.php");  		
   $time = getmicrotime();
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);	
-
-$seciliTema=temaBilgisi();	
+  checkLoginLang(false,true,"lessons.php");	   
+  $seciliTema=temaBilgisi();	
+  
 ob_start (); // Buffer output
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -107,7 +104,6 @@ ob_start (); // Buffer output
       </div>
       <div class="nav">
         <?php
-	currentFileCheck("lessons.php");
 	
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
@@ -319,7 +315,7 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
 	$sampleData2 = getGrafikValues3(20, $_GET["konu"]);
 	$labels2 = getGrafikLabels3(20, $_GET["konu"]);
 
-if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>3){
+if(isKonu($_GET["konu"]) and !empty($sampleData2) ){ //and count($sampleData2)>3
 ?>
           <div class="Post">
             <div class="Block">
@@ -338,8 +334,8 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>3){
                     <div>
                       <div class="msg_list">
                         <p class="msg_head"><img src="img/history.png" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[197]?></p>
-                        <div class="msg_body"> 
-						<?php 							
+                        <div class="msg_body">
+                          <?php 							
 							include('lib/graphs.inc.php');						
 							$chart2 = new BAR_GRAPH("vBar");
 							$chart2->values = grafikGunNormallestirData($sampleData2,$labels2);
@@ -350,7 +346,7 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>3){
 							$chart2->absValuesSize  =9;
 							$chart2->absValuesBorder = "0px";
 							echo $chart2->create(); 
-						?> 
+						?>
                         </div>
                       </div>
                     </div>
@@ -359,9 +355,9 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>3){
               </div>
             </div>
           </div>
-<?php
+          <?php
 }
-?>          
+?>
           <script language="javascript" type="text/javascript">
 		  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;

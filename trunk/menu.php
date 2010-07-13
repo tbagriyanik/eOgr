@@ -19,7 +19,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 
 <div class="aramaDiv">
   <input name="searchterm" type="text" id="searchterm" size="15" maxlength="50" title="<?php echo $metin[177]?>"/>
- <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[168]?>" title="<?php echo $metin[168]?>"/> </div>
+  <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[168]?>" title="<?php echo $metin[168]?>"/> </div>
 <script type="text/javascript">
                         var options = {
                             script:"lib/as/test.php?",

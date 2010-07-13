@@ -580,4 +580,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 	  
  	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s tarihinde üye oldu.";		
 		$metin[446]	= "Son 5 saatte giriþ yapan üyeler : ";
+		
+		$metin[447]	= "<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>";
+		$metin[448]	= "<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin iþlem yapma izni yoktur!</font>";
+		
+		$metin[449]	= "Dosya uyumlu deðil!";
+		$metin[450]	= "Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!";
 ?>

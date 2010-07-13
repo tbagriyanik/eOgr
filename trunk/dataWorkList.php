@@ -7,13 +7,10 @@ header("Pragma: no-cache");
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-  
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
+    
+	require("conf.php");	
+    $time = getmicrotime();
+	checkLoginLang(true,true,"dataWorkList.php");		
 	$seciliTema=temaBilgisi();
 
 ?>
@@ -26,13 +23,14 @@ header("Pragma: no-cache");
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[186]?></title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" /><link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<title>eOgr -<?php echo $metin[186]?></title>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />			
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
@@ -78,9 +76,7 @@ header("Pragma: no-cache");
         <div class="Header-jpeg"></div>
         <div class="logo">
           <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text">
-            <?php echo $metin[286]?> 
-          </div>
+          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
         </div>
       </div>
       <div class="nav">
@@ -120,42 +116,9 @@ header("Pragma: no-cache");
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> -
-                  <?php echo $metin[186]?>
-                  </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[186]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-
-	currentFileCheck("dataWorkList.php");
-  
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-   $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	    sessionDestroy();
-		die("<font id='hata'>$metin[400]</font>"); //session?
-		exit;
-	}
-  
-	if ($tur=="-1")	{
-	   sessionDestroy();
-	   die ("<font id='hata'>Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!</font>");
-	 }else
 	if ($tur=="1" || $tur=="2")	{
 	 //
 $currentPage = $_SERVER["PHP_SELF"];
@@ -293,39 +256,27 @@ if ($totalRows_eoUsers>0)
                       <th><?php if ($sirAlan=="id") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                         <?php } ?>
-                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[26]?>
-                        </a></th>
+                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
                       <th width="138" nowrap="nowrap"><?php if ($sirAlan=="userName") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                         <?php } ?>
-                        <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[17]?>
-                        </a></th>
+                        <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
                       <th width="500"><?php if ($sirAlan=="konuAdi") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="konuAdi")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                         <?php } ?>
-                        <a href="?order=konuAdi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[175]?>
-                        </a></th>
+                        <a href="?order=konuAdi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[175]?> </a></th>
                       <th><?php if ($sirAlan=="toplamZaman") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="toplamZaman")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                         <?php } ?>
-                        <a href="?order=toplamZaman&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[240]?>
-                        </a></th>
+                        <a href="?order=toplamZaman&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[240]?> </a></th>
                       <th><?php if ($sirAlan=="lastPage") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="lastPage")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                         <?php } ?>
-                        <a href="?order=lastPage&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[187]?>
-                        </a></th>
+                        <a href="?order=lastPage&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[187]?> </a></th>
                       <th><?php if ($sirAlan=="calismaTarihi") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="calismaTarihi")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                         <?php } ?>
-                        <a href="?order=calismaTarihi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>">
-                        <?php echo $metin[33]?>
-                        </a></th>
+                        <a href="?order=calismaTarihi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
                     </tr>
                     <?php 
   $satirRenk=0;
@@ -339,39 +290,29 @@ if ($totalRows_eoUsers>0)
   ?>
                     <tr >
                       <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>>
-                      <?php if ($row_eoUsers['userName']!='') {?>
-                      <a href="profil.php?kim=<?php echo $row_eoUsers['userID']; ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>
-                       <?php
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php if ($row_eoUsers['userName']!='') {?>
+                        <a href="profil.php?kim=<?php echo $row_eoUsers['userID']; ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a>
+                        <?php
                        }
                          else
                          	echo araKalin("demo");
-                       ?> 
-                      </td>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>>
-                        <a href="dersBilgisi.php?ders=<?php echo $row_eoUsers['konuID']; ?>" rel="facebox">
-						<?php
+                       ?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><a href="dersBilgisi.php?ders=<?php echo $row_eoUsers['konuID']; ?>" rel="facebox">
+                        <?php
                         echo ($row_eoUsers['konuAdi'])?araKalin($row_eoUsers['konuAdi']):"<span id=bosVeri>###</span>";; 
 						?>
-                        </a>
-                      </td>
-                      <td align="right" nowrap="nowrap" <?php echo ($row_eoUsers['toplamZaman']>60)?"style=\"background-color: wheat;\"":"style=\"background-color: $row_color;\""?>>
-					  <?php 
+                        </a></td>
+                      <td align="right" nowrap="nowrap" <?php echo ($row_eoUsers['toplamZaman']>60)?"style=\"background-color: wheat;\"":"style=\"background-color: $row_color;\""?>><?php 
 					    echo Sec2Time2($row_eoUsers['toplamZaman']);   
-					  ?>
-                      </td>
+					  ?></td>
                       <td align="right" <?php echo ($row_eoUsers['lastPage']<100)?"style=\"background-color: $row_color;\"":"style=\"background-color:wheat;\""?>><?php echo ($row_eoUsers['lastPage']);   ?></td>
                       <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['calismaTarihi']); ?></td>
-                        
                     </tr>
                     <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
-                     <tr>
-                     <td colspan="6" class="tabloAlt">
-                     <?php echo $metin[189]?>
-                     </td>
-                     </tr> 
+                    <tr>
+                      <td colspan="6" class="tabloAlt"><?php echo $metin[189]?></td>
+                    </tr>
                   </table>
-
                   <?php
 if ($totalRows_eoUsers> $maxRows_eoUsers)
    {
@@ -387,15 +328,12 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                       <td colspan="4"><div align="center"><?php echo min($startRow_eoUsers + $maxRows_eoUsers, $totalRows_eoUsers) ?> / <?php echo $totalRows_eoUsers ?> </div></td>
                     </tr>
                   </table>
-                  
                   <?php
    }
  ?>
-<br />
+                  <br />
                   <form id="aramak" name="aramak" method="get" action="dataWorkList.php">
-                    <label>
-                      <?php echo $metin[29]?>
-                      :
+                    <label> <?php echo $metin[29]?> :
                       <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[188]?>" value="<?php echo $arayici?>" />
                     </label>
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
@@ -405,27 +343,34 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
 ?>
                   <form method="get" id="sayfaSec" name="sayfaSec" action="dataWorkList.php">
                     <p>
-                      <label>
-                        <?php echo $metin[110]?>
-                        :
+                      <label> <?php echo $metin[110]?> :
                         <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
                       </label>
-					  <br />
-                      <label><input type="radio" name="OgrenciTumu" id="sadeceOgrenci" value="1" 
-					  <?php echo ($OgrenciTumu=="1")?"checked='checked'":"" ?> /><?php echo $metin[190]?></label><br />
-                      <label><input type="radio" name="OgrenciTumu" id="demoGoster" value="2" 
-					  <?php echo ($OgrenciTumu=="2" || $OgrenciTumu=="")?"checked='checked'":"" ?> /><?php echo $metin[191]?></label><br />
-                      <label><input type="radio" name="OgrenciTumu" id="tumunuGoster" value="3" 
-					  <?php echo ($OgrenciTumu=="3" || $OgrenciTumu=="")?"checked='checked'":"" ?> /><?php echo $metin[192]?></label><br />
-		              <label>
+                      <br />
+                      <label>
+                        <input type="radio" name="OgrenciTumu" id="sadeceOgrenci" value="1" 
+					  <?php echo ($OgrenciTumu=="1")?"checked='checked'":"" ?> />
+                        <?php echo $metin[190]?></label>
+                      <br />
+                      <label>
+                        <input type="radio" name="OgrenciTumu" id="demoGoster" value="2" 
+					  <?php echo ($OgrenciTumu=="2" || $OgrenciTumu=="")?"checked='checked'":"" ?> />
+                        <?php echo $metin[191]?></label>
+                      <br />
+                      <label>
+                        <input type="radio" name="OgrenciTumu" id="tumunuGoster" value="3" 
+					  <?php echo ($OgrenciTumu=="3" || $OgrenciTumu=="")?"checked='checked'":"" ?> />
+                        <?php echo $metin[192]?></label>
+                      <br />
+                      <label>
                         <input type="submit" name="gonder" id="gonder" value="<?php echo $metin[30]?>" />
                       </label>
                     </p>
                   </form>
-<?php
+                  <?php
 	}
 	else
-	  die("<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin iþlem yapma izni yoktur!</font>");
+	  die($metin[448]);
 	
 ?>
                 </div>
@@ -435,13 +380,11 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
           </div>
           <div class="cleared"></div>
           <div class="Footer">
-                    <div class="Footer-inner">
-                    
-                        <?php  						
+            <div class="Footer-inner">
+              <?php  						
 						 require "footer.php";
                         ?>
-                      
-                    </div>
+            </div>
             <div class="Footer-background"></div>
           </div>
         </div>

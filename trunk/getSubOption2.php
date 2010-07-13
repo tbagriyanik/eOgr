@@ -1,11 +1,12 @@
-<?php header("Content-Type: text/html; charset=iso-8859-9"); ?>
 <?php 
-require("conf.php");  	
+header("Content-Type: text/html; charset=iso-8859-9"); 
+
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
+require("conf.php");  	
 
      $taraDili=$_COOKIE["lng"];    
    if(!($taraDili=="TR" || $taraDili=="EN")) 

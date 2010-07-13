@@ -566,4 +566,10 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 	  
    	  	$metin[445]	= "Last member is <strong>%s</strong> in %s.";
 		$metin[446]	= "Members that login in the last 5 hours : ";		
+
+		$metin[447]	= "<p>&nbsp;</p><font id='hata'>Students or teachers can not use this page!</font>";
+		$metin[448]	= "<p>&nbsp;</p><font id='hata'>Students can not use this page!</font>";	
+		
+		$metin[449]	= "File name is not compatible!";
+		$metin[450]	= "Your account is passive. You are not allowed to continue!";
 ?>

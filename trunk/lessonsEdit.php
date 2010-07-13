@@ -4,15 +4,11 @@
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
-  require("conf.php");	$time = getmicrotime();
-  
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-    dilCevir($taraDili);	
-	
-	$seciliTema=temaBilgisi();
-	
+	 
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"lessonsEdit.php");	   
+  $seciliTema=temaBilgisi();	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -133,44 +129,15 @@ function delWithCon(deletepage_url,field_value,messagetext) {
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[62]?> </span> </h2>
                 <div class="PostContent">
-                  <?php
-  
-	currentFileCheck("lessonsEdit.php");
+                  <?php  
+	$currentPage = $_SERVER["PHP_SELF"];	
 
-	$currentPage = $_SERVER["PHP_SELF"];
-
-	if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
-	   sessionDestroy();
-		die("<font id='hata'> Oturum a&ccedil;ma hatas&#305; meydana geldi.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>t&#305;klat&#305;n&#305;z</a>"); //session?
-		exit;
-	}
-
-   $adi	=temizle(substr($_SESSION["usern"],0,15));
-   $par	=temizle($_SESSION["userp"]);
-  
-	if($adi==""|| $par=="") die("<font id='hata'> Kullan&#305;c&#305; ad&#305; veya parola bo&#351; olamaz.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>t&#305;klat&#305;n&#305;z</a>"); //EMPTY?
- 
-    $tur=checkRealUser($adi,$par);
-	
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> Kullan&#305;c&#305; ad&#305; veya parolan&#305;z hatal&#305;d&#305;r. Hesab&#305;n&#305;z pasif halde olabilir.</font>Geri d&ouml;nmek i&ccedil;in <a href='index.php'>t&#305;klat&#305;n&#305;z</a>");
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= $adi;
-    	$_SESSION["userp"] 	= $par;
-	  }	
-
-?>
-                  <?php     
 	if ($tur<=-1 || $tur>2) { 
 	  sessionDestroy();
-	  die ("<font id='hata'>Hesab&#305;n&#305;z pasif haldedir. Ý&#351;lem yapma izniniz yoktur!</font>");
+	  die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
 	 }else
 	 if ($tur=="0") {
-	  die("<p id=\"bosSatir\">&nbsp;</p><font id='hata'>Bu sayfada &ouml;&#287;rencilerin i&#351;lem yapma izni yoktur!</font>");
+	  die($metin[448]);
 	 } 
 ?>
                   <?php
@@ -1618,12 +1585,12 @@ if($seciliSekme=="0") {
                         <tr>
                           <td> Cevap Süresi: </td>
                           <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="30"/>
-                            <?php echo $metin[172]?> </td>
+                            <?php echo $metin[172]?></td>
                         </tr>
                         <tr>
                           <td> Sunum Geçiþ Süresi: </td>
                           <td  style="background-color:#FFF;"><input type="text" name="slideGecisSuresi" id="slideGecisSuresi" size="15" maxlength="30" value="60"/>
-                            <?php echo $metin[172]?> </td>
+                            <?php echo $metin[172]?></td>
                         </tr>
                         <tr>
                           <td colspan="2" ><p><?php echo $metin[394]?> </p></td>
@@ -1717,12 +1684,12 @@ bkLib.onDomLoaded(function() {
                         <tr>
                           <td> Cevap Süresi: </td>
                           <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="<?php echo mysql_result($result2, 0, "cevapSuresi");?>"/>
-                            <?php echo $metin[172]?> </td>
+                            <?php echo $metin[172]?></td>
                         </tr>
                         <tr>
                           <td> Sunum Geçiþ Süresi: </td>
                           <td  style="background-color:#FFF;"><input type="text" name="slideGecisSuresi" id="slideGecisSuresi" size="15" maxlength="30" value="<?php echo mysql_result($result2, 0, "slideGecisSuresi");?>"/>
-                            <?php echo $metin[172]?> </td>
+                            <?php echo $metin[172]?></td>
                         </tr>
                         <tr>
                           <td colspan="2" ><p><?php echo $metin[394]?></p></td>
