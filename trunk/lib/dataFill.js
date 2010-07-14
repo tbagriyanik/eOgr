@@ -49,6 +49,7 @@ function sureDolduTemizle(){
 		document.getElementById('konuAdi').innerHTML =   "-";
 		document.getElementById('konu_id').value =   "";
 		document.getElementById('cevapVer').style.visibility = 'hidden' ;
+		document.getElementById('sunuDurdur').style.visibility = "hidden";
 		if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 }
 /*
@@ -74,6 +75,7 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		document.getElementById('cevapVer').style.visibility = 'hidden' ;
 		document.getElementById('ileriGeri').style.visibility = 'visible' ;
 		document.getElementById('cevapSuresi').style.visibility = 'hidden' ;
+		document.getElementById('sunuDurdur').style.visibility = "hidden";
 		
         document.getElementById('anaMetin').innerHTML =   items[0];                 
 		document.getElementById('aktifKonuNo').innerHTML =   items[12];          
@@ -106,7 +108,7 @@ function setOutputKonu(sayfaNo, konu, noCount){
 
 			if(items[10]>0) {sayacTetik2(items[10]);}
 			
-			if(items[11]>0 && items[11]!="-") {	
+			if(items[11]>0 && items[11]!="-") {//Soru varsa	
 				document.getElementById('sayfa_id').value = items[11];
 				document.getElementById('cevapLink').href = "soruCevapla.php?sayfa="+items[11];
 				document.getElementById('cevapVer').style.visibility = 'visible' ;
@@ -115,6 +117,15 @@ function setOutputKonu(sayfaNo, konu, noCount){
 				if (document.getElementById("cevapVer")!=null) fadeUp(document.getElementById("cevapVer"),255,255,0,0,0,150);
 				document.getElementById('cevapSuresi').innerHTML = '' ;
 				$("#cevapSuresi").stopTime();//önceki timer kapanýr			
+				}				
+			else if(items[14]>0 && items[14]!="-") {//Slayt varsa	
+				document.getElementById('sayfa_id').value = items[11];
+				document.getElementById('cevapSuresi').style.visibility = 'visible' ;
+				document.getElementById('cevapSuresi').innerHTML = items[14];
+				if (document.getElementById("cevapSuresi")!=null) fadeUp(document.getElementById("cevapSuresi"),0,255,0,0,0,150);
+				$("#cevapSuresi").stopTime();//önceki timer kapanýr	
+				sayacTetik3(items[14]);	
+				document.getElementById('sunuDurdur').style.visibility = "visible";	
 				}
 		
 		document.getElementById('sayfaNo').innerHTML =  sayfaNo;
@@ -181,6 +192,25 @@ function sayacTetik2(sure)  {
 						$("#calismaSuresi").stopTime();
 						saveUserWork();//even if less then ignored limited time !!
 						sureDolduTemizle();
+					});
+};
+/*
+sayacTetik3:
+slayt geçiþ süresinin çalýþmasý
+*/ 
+function sayacTetik3(sure)  {	
+					$("#cevapSuresi").everyTime(1000,function(i) {
+						$(this).html(sure-i);
+						if(i==sure) {//slayt süresi bitti ise sonraki sayfaya geç
+						  $("#cevapSuresi").stopTime();
+						  sayfa = document.getElementById('sayfaNo').innerHTML;
+						  sonsayfa = document.getElementById('sayfaSayisi').innerHTML;
+						  if(sayfa==sonsayfa)  
+						    sayfa=1;
+							else
+ 						    sayfa++;
+						  konuSec2(sayfa,1);//1 normal zamaný etkilememesi içindir						 						
+						}
 					});
 };
 /*
@@ -318,8 +348,7 @@ function setCevapSonuc(){
 		 $("#cevapSuresi").stopTime();//önceki timer kapanýr			
 		}else{
 		 if (document.getElementById("cevapSonucu")!=null) fadeUp(document.getElementById("cevapSonucu"),255,0,0,150,0,0);
-		}
-		 
+		}		 
     }
 } 
 /*

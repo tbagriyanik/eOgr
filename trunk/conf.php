@@ -139,6 +139,7 @@ giriþ ve dil kontrolü
 */
 function checkLoginLang($lgn,$lng,$src){
 	global $metin;
+	global $adi;
 	
 	if($lng){
   		   $taraDili=$_COOKIE["lng"];    

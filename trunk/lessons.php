@@ -172,7 +172,17 @@ ob_start (); // Buffer output
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
                     <span id="soruGeriSayim"></span><br/>
-                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>&nbsp; <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span> </div>
+                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span><form name="sunum" style="text-align:right">
+                      <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="Seçili ise sunum durur, seçili deðil ise sunum devam eder."
+                    value="1" onclick="
+                    if(document.sunum.sunuDurdur.checked)
+	                    $('#cevapSuresi').stopTime();
+                        else
+                        sayacTetik3(document.getElementById('cevapSuresi').innerHTML);
+                    "/>
+                      <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
+                    </form>
+                  </div>
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />
