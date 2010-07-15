@@ -24,6 +24,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+
 }
 /* Width below is max for Opera */
 .anythingSlider .wrapper ul {
@@ -82,10 +83,10 @@
 	margin: 0 5px 0 0;
 	background: #c58b04 url(cellshade.png) repeat-x;
 	text-align: center;
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 15px;
+	-moz-border-radius-bottomright: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;	
 }
 #thumbNav a:hover {
 	background-image: none;

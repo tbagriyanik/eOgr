@@ -172,7 +172,9 @@ ob_start (); // Buffer output
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
                     <span id="soruGeriSayim"></span><br/>
-                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span><form name="sunum" style="text-align:right">
+                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>
+                    <form name="sunum" style="text-align:right">
+                      <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
                       <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="Seçili ise sunum durur, seçili deðil ise sunum devam eder."
                     value="1" onclick="
                     if(document.sunum.sunuDurdur.checked)
@@ -180,7 +182,6 @@ ob_start (); // Buffer output
                         else
                         sayacTetik3(document.getElementById('cevapSuresi').innerHTML);
                     "/>
-                      <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
                     </form>
                   </div>
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
@@ -268,18 +269,54 @@ if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"])
               <div class="Block-body">
                 <div class="BlockContent">
                   <div class="BlockContent-body">
-                    <p class="msg_head2"><img src="img/comment.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[259]?> <?php echo konuYorumSayisiGetir($_GET["konu"]);?></p>
+                    <p class="msg_head2"><img src="img/comment.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[259]?>
+                      <?php 
+					 $yorumSayisi = konuYorumSayisiGetir($_GET["konu"]);
+					 echo $yorumSayisi;
+					 ?>
+                    </p>
                     <div class="msg_body2">
-                      <?php
+                      <?php 					
+						$yorumlar = yorumlariGetir($_GET["konu"]); 
+						if ($yorumlar!=""){
+?>
+ 					<link href="lib/pager.css" rel="stylesheet" type="text/css" /> 
+                    <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
+                    <script type="text/javascript">
+/* <![CDATA[ */
+
+$(document).ready(function() {
+	$(".pageme tbody").quickPager( {
+		pageSize: 5,
+		currentPage: 1,
+		pagerLocation: "after"
+	});
+});
+
+/* ]]> */
+</script>
+                      <table border="0" width="800" cellpadding="3" cellspacing="3" class="pageme">
+                        <tbody>
+                          <?php
+	  echo $yorumlar;
+?>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <?php
 					if($tur!="-2"){ 
                   	?>
-                      <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a><br />
-                      <br />
-                      <?php 
-					}
-					
-						if (yorumlariGetir($_GET["konu"])!="")
-						  echo yorumlariGetir($_GET["konu"]);
+                            <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a><br />
+                            <br />
+                            <?php 
+					}?>
+                          </tr>
+                        </tfoot>
+                      </table>
+                      <div class="pager"></div>
+                      <?php
+						  
+						}
 						else  
 						  echo "$metin[279]";
 					?>
@@ -368,10 +405,10 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) ){ //and count($sampleData2)>3
           <?php
 }
 ?>
-          <script language="javascript" type="text/javascript">
-		  
+          <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
+document.getElementById('sunuDurdur').style.visibility = 'hidden';
 
 /*
 konuDuzenle:

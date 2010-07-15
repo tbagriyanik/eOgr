@@ -1161,7 +1161,7 @@ function yorumlariGetir($konu){
 					 	$yorumSil = " - <a href='yorumSil.php?id=".$row_gelen['comID']."' rel='facebox'><img src=\"img/erase.png\" alt=\"delete\" width=\"16\" height=\"16\" border=\"0\" style=\"vertical-align: middle;\"  title=\"$metin[102]\"/> Yorumu Sil</a>";  
 						else
 						$yorumSil = "";
-				    $ekle .= "<div class='yorumItem'><p>".smileAdd($row_gelen['comment'])." </p><a href='profil.php?kim=".$row_gelen['id']."' rel='facebox'>".$row_gelen['userName']."</a> - ".tarihOku2($row_gelen['commentDate'])." $yorumSil</div>";					
+				    $ekle .= "<tr><td><div class='yorumItem'><p>".smileAdd($row_gelen['comment'])." </p><a href='profil.php?kim=".$row_gelen['id']."' rel='facebox'>".$row_gelen['userName']."</a> - ".tarihOku2($row_gelen['commentDate'])." $yorumSil</div></td></tr>";					
 				   }
 				   @mysql_free_result($result1);  
 				   return ($ekle);
@@ -2499,14 +2499,14 @@ Genel olarak session kontrol edilmesi
 */
 if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
    sessionDestroy();
-	die("<font id='hata'>$metin[400]</font>"); //session?
-	exit;
+	echo("$metin[400]"); //session?
+	//exit;
 } 
 /*
 Genel olarak üye pasif durumda ise hata verir
 */
 if ($tur=="-1")	{
 	   sessionDestroy();
-	   die ("<font id='hata'>$metin[450]</font>");
+	   echo ("$metin[450]");
 } 
 ?>
