@@ -47,6 +47,7 @@ Used Classes and Referred Sites:
 - flood-protection: http://archive.free-php.org.uk v1.0
 - jQuery: http://jquery.com v1.4.2
 - jQuery UI: http://jqueryui.com v1.8.2
+- simplepager: http://plugins.jquery.com/project/SimplePager v1.1
 - nicEdit: http://www.nicedit.com v0.9 r23
 - phplivex: http://www.phplivex.com v2.6
 - wtag: http://spacegirlpippa.co.uk v1.0Beta

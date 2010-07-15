@@ -1,0 +1,49 @@
+table.pageme P {
+	margin-bottom:1px;
+	margin-top:0px;
+}
+ol.simplePagerNav,.simplePagerNav ol{
+/*Remove all spacings from the list items*/
+	margin: 0 !important;
+	padding: 0 !important;
+	cursor: default;
+	list-style-type: none !important;
+	list-style-image: none !important;
+	display: table !important;
+}
+
+ol.simplePagerNav li {
+	padding: 3px;
+	font-size: 16px;
+	color: #fff;
+	line-height: 1;
+	margin-bottom: 1px;
+	float: left;	
+	display: table-cell;
+	position: relative;
+	padding: 2px 6px;
+	list-style-image: none !important;
+}
+ol.pageNav li {
+	display:inline !important;
+	padding: 3px;
+	font-family: georgia;
+	float: left;
+}
+ol.pageNav li a {
+	color: #333;
+	text-decoration: none;
+}
+li.currentPage {
+	background-color: #83bd63;
+}
+ol.pageNav li.currentPage a {
+	color: #fff;
+}
+table.pageme {
+	border-collapse: collapse;
+}
+table.pageme td {
+	border-collapse: collapse;
+	background-color:transparent !important;
+}

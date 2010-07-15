@@ -11,7 +11,9 @@ header("Content-Type: text/html; charset=iso-8859-9");
       else 
         require("lib/en.php");         
 
-require 'database.php'; 
+require 'database.php';
+require "conf.php"; 
+if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 /*
 baglan2:
 veritabaný baðlantýsý

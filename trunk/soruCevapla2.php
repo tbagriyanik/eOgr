@@ -13,7 +13,7 @@ session_start();
 require 'database.php'; 
 require("conf.php");	
 		   
-//if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
+if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 /*
 baglan2:
 veritabaný baðlantýsý

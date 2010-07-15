@@ -564,7 +564,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[436]="Öðretmen ve yöneticiler öðrenci çalýþmalarýný takip edebilirler. Çalýþma bilgilerinde çalýþma süresi, yüzdesi ve tarih vardýr.";
 		$metin[437]="Ders çalýþma bu projenin ana sayfasýdýr. Yönetici izin vermiþ ise derse yorum eklenebilir, puan verilebilir ve istatistik bilgilerine ulaþýlabilir.";
 		$metin[438]="Profil bilgileri deðiþtirilebilir, kendi istastik bilgilerine ulaþabilir veya parola deðiþtirilebilir.";
-		$metin[439]="<ul style='list-style-type:none;'><li>Halka açýk yerlerde çalýþtýktan sonra oturumu kaptmayý unutmayýnýz.<li>Parola bilginizi bir yerlere yazmayýnýz.</ul>";
+		$metin[439]="<ul style='list-style-type:none;'><li>Halka açýk yerlerde çalýþtýktan sonra oturumu kapatmayý unutmayýnýz.<li>Parola bilginizi bir yerlere yazmayýnýz.</ul>";
 		$metin[440]="eOgr projesi kodlarý elden geçirilerek, bir haber, spor, paylaþým sitesi olarak da kullanýlabilir. Sayfalama halinde peþpeþe gösterilen maddeler ile istenen konu kullanýcýlara iletilebilir.";
 		$metin[441]="database.php dosyasýndaki ayarlarýn tam yapýldýðýndan emin olunuz. Hata mesajlarýný yöneticinize bildiriniz.";
 		$metin[442]="Test aþamasýnda yardýmcý olan kiþilere teþekkürler. Özellikle kütüphane kodlarýný serbest daðýtan programcýlara teþekkürler.";

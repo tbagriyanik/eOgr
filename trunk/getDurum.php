@@ -1,11 +1,7 @@
 <?php
     header("Content-Type: text/html; charset=iso-8859-9");
+    session_start (); 
 	require("conf.php"); 
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
 /*
 getKonuKayitliKullanici:
 konunun sadece kayýtlý kullanýcýlar bilgisi
@@ -15,7 +11,7 @@ function getKonuKayitliKullanici($gelenID){
 	$sql1	= 	"select sadeceKayitlilarGorebilir from eo_4konu where id ='".temizle($gelenID)."'";
 	$result1= 	mysql_query($sql1,$yol1);
 
-	if($result1) {
+	if($result1 and mysql_num_rows($result1)==1) {
 		mysql_fetch_row($result1);
 		return mysql_result($result1,0,"sadeceKayitlilarGorebilir");
 	}

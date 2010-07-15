@@ -1,13 +1,13 @@
 <?php
-require("conf.php");  
-	if (!check_source()) die ("<font id='hata'>Error! </font>");	
-
- 
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
+	require("conf.php");  
+	
+	if (!check_source()) die ("<font id='hata'>Error! </font>");	
+ 
 parse_str($_POST['data']);
 $konusu = temizle($_SESSION['konuID']);
 
