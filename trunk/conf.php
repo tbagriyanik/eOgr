@@ -2484,7 +2484,7 @@ getUsersOnline:
 function getUsersOnline() {
 	global $yol1;
 	
-		$sql = "SELECT userName,(unix_timestamp(now()) - unix_timestamp(dateTime) )/60 as sure FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/60 <= 300 and otherInfo='success,Login' GROUP BY userName order by sure DESC,userName";
+		$sql = "SELECT userName,(unix_timestamp(now()) - unix_timestamp(dateTime) )/60 as sure FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/60 <= 300 and otherInfo='success,Login' GROUP BY userName order by sure DESC,userName limit 0,10";
 		
 		$result = mysql_query($sql, $yol1);
 		$data = array();
