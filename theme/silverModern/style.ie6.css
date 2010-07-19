@@ -129,7 +129,7 @@ div.Header-png
 {
   font-size: 1px;
   background: none;
-  behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Header.png',sizingMethod='crop')");
+  behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Header_1.gif',sizingMethod='crop')");
 }
 /* end Header */
 

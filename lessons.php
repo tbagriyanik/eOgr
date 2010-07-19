@@ -318,7 +318,7 @@ $(document).ready(function() {
 						  
 						}
 						else  
-						  echo "$metin[279]";
+						  echo $metin[279].' <a name="yorumlar"></a> <a href="addComment.php?konu3='.RemoveXSS($_GET["konu"]).'" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="$metin[242]" /> '.$metin[242].'</a>';
 					?>
                     </div>
                   </div>
