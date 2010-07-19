@@ -137,7 +137,7 @@ function anaMetniOku($gelen, $sayfaNo)
 			if($gunFarki <= 0) 
 				return "<font id='hata'>'$konuAdi' ".$metin[180]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";				
 				
-			$cevaplanmisMi = array_key_exists(mysql_result($result1,$sayfaNo,"id"),$_SESSION["cevaplar"]);
+			$cevaplanmisMi = @array_key_exists(mysql_result($result1,$sayfaNo,"id"),$_SESSION["cevaplar"]);
 			
 			if(($cevap!="" || is_numeric($cevap)) && !$cevaplanmisMi) 
 			   $cevap = mysql_result($result1,$sayfaNo,"id");

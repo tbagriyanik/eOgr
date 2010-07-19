@@ -55,7 +55,7 @@
         $metin[46]="Otomatik Kurulum";   
         $metin[47]="eOgr projesini kullanmaya ba&#351;lamak i&ccedil;in <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> t&#305;klat&#305;n&#305;z</a>!";   
         
-        $metin[48]="Tablolar&#305;n yede&#287;inin al&#305;nmas&#305; i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings.php?dump=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
+        $metin[48]="Tablolar&#305;n yede&#287;inin al&#305;nmas&#305; i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
         $metin[49]="konu say&#305;s&#305;";         
 		
         $metin[50]="Mesaj";         
@@ -262,7 +262,7 @@
 		
 		$metin[214]="Sýnýf kýsýtlamasý vardýr.";
 		
-        $metin[215]="Tablolara bakým ve tamir iþlemleri i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings.php?optim=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
+        $metin[215]="Tablolara bakým ve tamir iþlemleri i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
 		
 		$metin[216]="Dipnotta Þunlarý G&ouml;ster";
 		$metin[217]="Son g&uuml;ncellenme tarihi";

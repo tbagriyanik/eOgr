@@ -121,13 +121,16 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
                             ?>
   <li><a href="siteSettings.php"
 						<?php
-						 if ($currentFile=="siteSettings.php" || $currentFile=="rssEdit.php" || $currentFile=="dataChatActions.php" || $currentFile=="dataActions.php" || $currentFile=="dataWorkList2.php" || $currentFile=="dataRatingList.php" || $currentFile=="dataCommentList.php")
+						 if ($currentFile=="siteSettings.php" || $currentFile=="siteSettings2.php" ||  $currentFile=="siteSettings3.php" || $currentFile=="rssEdit.php" || $currentFile=="dataChatActions.php" || $currentFile=="dataActions.php" || $currentFile=="dataWorkList2.php" || $currentFile=="dataRatingList.php" || $currentFile=="dataCommentList.php")
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[58]?> </span></span></a>
     <ul>
       <li><a href="siteSettings.php"><span><span> <?php echo $metin[58]?> </span></span></a></li>
+      <li><a href="siteSettings2.php"><span><span> <?php echo $metin[156]?> </span></span></a></li>
+      <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
       <li><a href="rssEdit.php"><span><span> <?php echo $metin[70]?> </span></span></a></li>
+      <li><a href="install.php"><span><span> <?php echo $metin[71]?> </span></span></a></li>
       <li><a href="dataActions.php"><span><span>
         <?php
 				    echo $metin[185];
@@ -143,7 +146,6 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
           <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288]?> </span></span></a></li>
         </ul>
       </li>
-      <li><a href="install.php"><span><span> <?php echo $metin[71]?> </span></span></a></li>
     </ul>
   </li>
   <?php

@@ -55,7 +55,7 @@
         $metin[46]="Automatic Install";   
         $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
   	
-		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings.php?dump=1&quot;;' value=\"Click\"/> for the tables' backup";   
+		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"Click\"/> for the tables' backup";   
         $metin[49]="subject count is";   
 		
         $metin[50]="Message";         
@@ -129,7 +129,7 @@
 		$metin[109]="Filter";    
 		$metin[110]="Record count per page";    
 		$metin[111]="You can backup your *.sql file or import in the Phpmyadmin program.";    
-		$metin[112]="Other General Site Settings";    
+		$metin[112]="Other General Settings";    
 		$metin[113]="Site Options";
 		$metin[114]="School Name (header)";    
 		$metin[115]="Application Version (index page)";    
@@ -255,7 +255,7 @@
 		$metin[213]="Your last works";
 		
 		$metin[214]="There is a class restriction.";
-        $metin[215]="<input type='button' onclick='location.href = &quot;siteSettings.php?optim=1&quot;;' value=\"Click\"/> for the tables' optimization and repair";   
+        $metin[215]="<input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"Click\"/> for the tables' optimization and repair";   
 		$metin[216]="Show These in Footer";
 		
 		$metin[217]="Page's last update";
