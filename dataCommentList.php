@@ -203,6 +203,34 @@ if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet") {
 	 else
 	 echo "<font id='hata'>Se&ccedil;ilen kayýt(lar) silinemedi!</font>";
  }   
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
+  if ( 
+     GetSQLValueString($_POST['id'], "text")=='NULL' || 
+     GetSQLValueString($_POST['comment'], "text")=='NULL'  	 
+      )
+	   echo "<font id='hata'>Bilgilerinde eksik alanlar vardýr.</font>";
+	else{   
+
+			$updateSQL = sprintf("UPDATE eo_comments SET comment=%s WHERE id=%s",
+							   temizle(GetSQLValueString($_POST['comment'], "text")),
+							   temizle(GetSQLValueString($_POST['id'], "int"))
+							   );
+			
+		
+		  mysql_select_db($database_baglanti, $yol);
+		  $Result1 = mysql_query($updateSQL, $yol);
+		  if($Result1) {
+			   	trackUser($currentFile,"success,EditCmnt",$adi);
+				echo ("<font id='tamam'> Bilgi g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+		    }
+			else {
+			    trackUser($currentFile,"fail,EditCmnt",$adi);
+				echo ("<font id='hata'> Bilgide hata olduðundan g&uuml;ncelleme iþleminiz tamamlanamadý!</font>");
+			}
+		
+	}			
+}
  
 if(!empty($_GET["id"]) && ($_GET["value"]=="0" || $_GET["value"]=="1")) {
 	$gelenID = temizle($_GET["id"]);
@@ -246,7 +274,7 @@ if (empty($_SESSION["siraYonu2"])) {
 	   }
 
  if ($_GET["upd"]=="1")
-	$query_limit_eoUsers = sprintf("%s", $query_eoUsers);
+	$query_limit_eoUsers = "SELECT eo_comments.id as id, eo_comments.comment FROM eo_comments where id='".RemoveXSS($_GET["id"])."'";
  else
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
 
@@ -280,7 +308,33 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if ($totalRows_eoUsers>0)
+if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
+	//güncelleme
+?>
+<form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
+                    <table width="500" border="0" align="center" cellpadding="3" cellspacing="0">
+                      <tr valign="baseline">
+                        <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <?php echo $metin[452]?> </div></th>
+                      </tr>
+                      <tr valign="baseline">
+                        <td align="right" nowrap="nowrap"><?php echo $metin[26]?> :</td>
+                        <td><?php echo $row_eoUsers['id']; ?></td>
+                      </tr>
+                      <tr valign="baseline">
+                        <td align="right" nowrap="nowrap"><label for="comment"> <?php echo $metin[290]?> :</label></td>
+                        <td bgcolor="#CCFFFF"><textarea name="comment" id="comment" cols="60" rows="8"><?php echo GetSQLValueStringNo($row_eoUsers['comment'],"text"); ?></textarea></td>
+                      </tr>
+                      <tr valign="baseline">
+                        <td colspan="2" align="center" bgcolor="#CCFFFF" class="tabloAlt"><input type="submit" value="<?php echo $metin[25]?>" />
+                          <input name="geri" type="button" id="geri" onclick="location.href = &quot;dataCommentList.php&quot;;" value="<?php echo $metin[28]?>" /></td>
+                      </tr>
+                    </table>
+                    <input type="hidden" name="MM_update" value="form3" />
+                    <input type="hidden" name="id" value="<?php echo $row_eoUsers['id']; ?>" />
+                  </form>
+<?php	
+}
+else if ($totalRows_eoUsers>0)
    {
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="dataCommentList.php">
@@ -338,7 +392,7 @@ if ($totalRows_eoUsers>0)
                         <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
                         <td align="left" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd($row_eoUsers['comment']);   ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
-                        <td align="center" nowrap="nowrap" valign="middle" ><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
+                        <td align="center" nowrap="nowrap" valign="middle" ><a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>
                       </tr>
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>

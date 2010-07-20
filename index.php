@@ -89,6 +89,9 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="elearning, cms, lms, learning management, education, eöðrenme" /> 
+<meta name="description" content="eOgr - Open source online education, elearning project" /> 
+
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <title>eOgr</title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
@@ -283,7 +286,6 @@ if (isset($_COOKIE["remUser"]))
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[77]?> </span> </span> </h2>
                 <div class="PostContent"> <?php echo $metin[76]?> <?php echo $metin[164]?><br />
-
                   <?php
 						 if (totalGet(0)>0){
 							 echo "<strong>".$metin[8]." </strong><br/>";

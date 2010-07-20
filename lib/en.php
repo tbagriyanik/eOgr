@@ -391,7 +391,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[291]="Active";
 		$metin[292]="You can click comments 'active' value to make visible or hidden.";
 		
-		$metin[293]="Thank you for submitting comment. After confirmation, your comment will be visible.";
+		$metin[293]="Thank you for submitting comment. After confirmation, your comment will be visible. Teachers and administrators do not need confirmation.";
 		$metin[294]="Comments count waiting for your confirmation";
 		
 		$metin[295]="Invalid source. <a href='index.php'>Go Back</a>";
@@ -587,4 +587,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[449]	= "File name is not compatible!";
 		$metin[450]	= "Your account is passive. You are not allowed to continue!";
+		
+		$metin[451] = "Chat Update Form";
+		$metin[452] = "Comment Update Form";
 ?>
