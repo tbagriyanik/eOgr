@@ -1,3 +1,4 @@
+//menu script Artisteer
 /* begin Page */
 var artEventHelper = {
   'bind' : function (obj, evt, fn) {
@@ -217,5 +218,3 @@ function Menu_IE6Setup() {
 }
 artLoadEvent.add(Menu_IE6Setup);
 /* end Menu */
-
-
