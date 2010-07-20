@@ -403,7 +403,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[291]="Aktif";
 		$metin[292]="Yorum satýrýndaki 'aktif' deðerini týklatarak, görünür hale getirebilir veya gizleyebilirsiniz.";
 		
-		$metin[293]="Yorum eklediðiniz için teþekkür ederiz. Onaylandýktan sonra yorumunuz görüntülenecektir.";
+		$metin[293]="Yorum eklediðiniz için teþekkür ederiz. Onaylandýktan sonra yorumunuz görüntülenecektir. Öðretmen ve yöneticiler için onay gerekmez.";
 		$metin[294]="Onayýnýzý bekleyen yorum sayýsý";
 		
 		$metin[295]="Kaynak hatal&#305;d&#305;r. <a href='index.php'>Geri Dön</a>";
@@ -601,4 +601,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[449]	= "Dosya uyumlu deðil!";
 		$metin[450]	= "Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!";
+		
+		$metin[451] = "Sohbet Güncelleme Formu";
+		$metin[452] = "Yorum Güncelleme Formu";
 ?>

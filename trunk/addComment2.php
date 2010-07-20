@@ -75,8 +75,13 @@ function yorumGonder($userID, $konuID, $yorum){
 		$datem	=	date("Y-n-j H:i:s");		
 		
 		if(!empty($yorum) && !empty($konuID) && !empty($userID)) {
-			$yorum = iconv( "UTF-8","ISO-8859-9",$yorum);			  
-			$sql2 = "insert into eo_comments VALUES (NULL , '$userID', '$konuID' , '$yorum', '$datem' , 0)"; 
+			$yorum = iconv( "UTF-8","ISO-8859-9",$yorum);
+			$uyeTur = getUserType($_SESSION["usern"]);
+			//üye öðretmen veya yönetici ise onay ver
+			if($uyeTur>=1)
+				$sql2 = "insert into eo_comments VALUES (NULL , '$userID', '$konuID' , '$yorum', '$datem' , 1)"; 
+			 else			  
+				$sql2 = "insert into eo_comments VALUES (NULL , '$userID', '$konuID' , '$yorum', '$datem' , 0)"; 
 
 			$result2 = mysql_query($sql2, $yol1); 
 			return $result2;

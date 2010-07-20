@@ -154,9 +154,9 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
         &#8250; </span></span></a>
         <ul>
           <li><a href="dataActions.php"><span><span> <?php echo $metin[66]?> </span></span></a></li>
-          <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67]?> </span></span></a></li>
           <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186]?> </span></span></a></li>
           <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287]?> </span></span></a></li>
+          <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67]?> </span></span></a></li>
           <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288]?> </span></span></a></li>
         </ul>
       </li>
