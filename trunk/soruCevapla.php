@@ -79,7 +79,7 @@ function &rasgeleCevapHazirla($toplamCevapAdet)
 	{
 		$aranolar="";				
 				
-		$numbers = range (1,$toplamCevapAdet);//1-5 arasý cevap arasýnda
+		$numbers = range (1,$toplamCevapAdet);//1-6 arasý cevap arasýnda
 		srand ((float)microtime()*1000000);
 		shuffle ($numbers);
 		while (list (, $number) = each ($numbers)) {
@@ -99,7 +99,7 @@ function secenekleriGetir($id)
 	
 	if(array_key_exists($id,$_SESSION["cevaplar"])) return "Zaten Cevap Verdiniz.";
 	
-    $sql1 = "SELECT id, secenek1, secenek2, secenek3, secenek4, secenek5, cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
+    $sql1 = "SELECT id, secenek1, secenek2, secenek3, secenek4, secenek5, secenek6, cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
 
     $result1 = mysql_query($sql1, $yol1); 
 
@@ -111,19 +111,21 @@ function secenekleriGetir($id)
 	   $secenek3 = temizle2(mysql_result($result1, 0, "secenek3"));
 	   $secenek4 = temizle2(mysql_result($result1, 0, "secenek4"));
 	   $secenek5 = temizle2(mysql_result($result1, 0, "secenek5"));
+	   $secenek6 = temizle2(mysql_result($result1, 0, "secenek6"));
 	   
 	   $sonuc = "";
 	   
-	   if($cevap!="" && $secenek1=="" && $secenek2=="" && $secenek3=="" && $secenek4=="" && $secenek5==""){
+	   if($cevap!="" && $secenek1=="" && $secenek2=="" && $secenek3=="" && $secenek4=="" && $secenek5=="" && $secenek6==""){
+		   //KLASÝK soru türü
 	     $sonuc = "<input type='text' size='20' maxlength='20' id='tekCevap' name='tekCevap' value='' onkeypress='    
 		 var evt  = (evt) ? evt : ((event) ? event : null);  
 		 var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
 		 	if (evt.keyCode == 13)  cevapDegerlendir(document.getElementById(\"tekCevap\").value,$id); '/><br/><br/>";
 	     $sonuc .= "<input type='button' value='$metin[351]' onclick='cevapDegerlendir(document.getElementById(\"tekCevap\").value,$id);' />";
 	   }
-		else	{ 
-		
-  	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5));
+		else if (strlen($cevap)==1)	{ 
+		 //TEK SEÇENEK doðru - TEST
+  	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5))+(!empty($secenek6));
 				
 	   $araCevDizi=split('[/]', rasgeleCevapHazirla($toplamCevapAdedi));
 
@@ -134,6 +136,7 @@ function secenekleriGetir($id)
 					case 3:$sor_a="c";$sor_a_met=$secenek3;break;
 					case 4:$sor_a="d";$sor_a_met=$secenek4;break;
 					case 5:$sor_a="e";$sor_a_met=$secenek5;break;
+					case 6:$sor_a="f";$sor_a_met=$secenek6;break;
 					default:$sor_a="a";$sor_a_met=$secenek1;
 				}
 				switch ($araCevDizi[1])
@@ -143,6 +146,7 @@ function secenekleriGetir($id)
 					case 3:$sor_b="c";$sor_b_met=$secenek3;break;
 					case 4:$sor_b="d";$sor_b_met=$secenek4;break;
 					case 5:$sor_b="e";$sor_b_met=$secenek5;break;
+					case 6:$sor_b="f";$sor_b_met=$secenek6;break;
 					default:$sor_b="b";$sor_b_met=$secenek2;
 				}
 				switch ($araCevDizi[2])
@@ -152,6 +156,7 @@ function secenekleriGetir($id)
 					case 3:$sor_c="c";$sor_c_met=$secenek3;break;
 					case 4:$sor_c="d";$sor_c_met=$secenek4;break;
 					case 5:$sor_c="e";$sor_c_met=$secenek5;break;
+					case 6:$sor_c="f";$sor_c_met=$secenek6;break;
 					default:$sor_c="c";$sor_c_met=$secenek3;
 				}
 				switch ($araCevDizi[3])
@@ -161,6 +166,7 @@ function secenekleriGetir($id)
 					case 3:$sor_d="c";$sor_d_met=$secenek3;break;
 					case 4:$sor_d="d";$sor_d_met=$secenek4;break;
 					case 5:$sor_d="e";$sor_d_met=$secenek5;break;
+					case 6:$sor_d="f";$sor_d_met=$secenek6;break;
 					default:$sor_d="d";$sor_d_met=$secenek4;
 				}
 				switch ($araCevDizi[4])
@@ -170,20 +176,119 @@ function secenekleriGetir($id)
 					case 3:$sor_e="c";$sor_e_met=$secenek3;break;
 					case 4:$sor_e="d";$sor_e_met=$secenek4;break;
 					case 5:$sor_e="e";$sor_e_met=$secenek5;break;
+					case 6:$sor_e="f";$sor_e_met=$secenek6;break;
 					default:$sor_e="e";$sor_e_met=$secenek5;
+				}
+				switch ($araCevDizi[5])
+				{
+					case 1:$sor_f="a";$sor_f_met=$secenek1;break;
+					case 2:$sor_f="b";$sor_f_met=$secenek2;break;
+					case 3:$sor_f="c";$sor_f_met=$secenek3;break;
+					case 4:$sor_f="d";$sor_f_met=$secenek4;break;
+					case 5:$sor_f="e";$sor_f_met=$secenek5;break;
+					case 6:$sor_f="f";$sor_f_met=$secenek6;break;
+					default:$sor_f="e";$sor_f_met=$secenek6;
 				}
 				
 	     if($secenek1!="")
-			 $sonuc .= "<input type='button' value='A' style='width:50px;' onclick='cevapDegerlendir(\"$sor_a\",$id);' /> $sor_a_met<br/><br/>";
+			 $sonuc .= "<input type='radio' value='A' name='cevap' class='cevap' style='width:35px;' onclick='cevapDegerlendir(\"$sor_a\",$id);' /> $sor_a_met<br/><br/>";
 	     if($secenek2!="")
-		     $sonuc .= "<input type='button' value='B' style='width:50px;'  onclick='cevapDegerlendir(\"$sor_b\",$id);' /> $sor_b_met<br/><br/>";
+		     $sonuc .= "<input type='radio' value='B' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_b\",$id);' /> $sor_b_met<br/><br/>";
 	     if($secenek3!="")
-	    	 $sonuc .= "<input type='button' value='C' style='width:50px;'  onclick='cevapDegerlendir(\"$sor_c\",$id);' /> $sor_c_met<br/><br/>";
+	    	 $sonuc .= "<input type='radio' value='C' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_c\",$id);' /> $sor_c_met<br/><br/>";
 	     if($secenek4!="")
-		     $sonuc .= "<input type='button' value='D' style='width:50px;'  onclick='cevapDegerlendir(\"$sor_d\",$id);' /> $sor_d_met<br/><br/>";
+		     $sonuc .= "<input type='radio' value='D' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_d\",$id);' /> $sor_d_met<br/><br/>";
 	     if($secenek5!="")
-		     $sonuc .= "<input type='button' value='E' style='width:50px;'  onclick='cevapDegerlendir(\"$sor_e\",$id);' /> $sor_e_met";
-		}
+		     $sonuc .= "<input type='radio' value='E' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_e\",$id);' /> $sor_e_met<br/><br/>";
+	     if($secenek6!="")
+		     $sonuc .= "<input type='radio' value='F' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_f\",$id);' /> $sor_f_met";
+		} else {
+			//ÇOK SEÇÝMLÝ soru 
+  	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5))+(!empty($secenek6));
+				
+	   $araCevDizi=split('[/]', rasgeleCevapHazirla($toplamCevapAdedi));
+
+				switch ($araCevDizi[0])
+				{
+					case 1:$sor_a="a";$sor_a_met=$secenek1;break;
+					case 2:$sor_a="b";$sor_a_met=$secenek2;break;
+					case 3:$sor_a="c";$sor_a_met=$secenek3;break;
+					case 4:$sor_a="d";$sor_a_met=$secenek4;break;
+					case 5:$sor_a="e";$sor_a_met=$secenek5;break;
+					case 6:$sor_a="f";$sor_a_met=$secenek6;break;
+					default:$sor_a="a";$sor_a_met=$secenek1;
+				}
+				switch ($araCevDizi[1])
+				{
+					case 1:$sor_b="a";$sor_b_met=$secenek1;break;
+					case 2:$sor_b="b";$sor_b_met=$secenek2;break;
+					case 3:$sor_b="c";$sor_b_met=$secenek3;break;
+					case 4:$sor_b="d";$sor_b_met=$secenek4;break;
+					case 5:$sor_b="e";$sor_b_met=$secenek5;break;
+					case 6:$sor_b="f";$sor_b_met=$secenek6;break;
+					default:$sor_b="b";$sor_b_met=$secenek2;
+				}
+				switch ($araCevDizi[2])
+				{
+					case 1:$sor_c="a";$sor_c_met=$secenek1;break;
+					case 2:$sor_c="b";$sor_c_met=$secenek2;break;
+					case 3:$sor_c="c";$sor_c_met=$secenek3;break;
+					case 4:$sor_c="d";$sor_c_met=$secenek4;break;
+					case 5:$sor_c="e";$sor_c_met=$secenek5;break;
+					case 6:$sor_c="f";$sor_c_met=$secenek6;break;
+					default:$sor_c="c";$sor_c_met=$secenek3;
+				}
+				switch ($araCevDizi[3])
+				{
+					case 1:$sor_d="a";$sor_d_met=$secenek1;break;
+					case 2:$sor_d="b";$sor_d_met=$secenek2;break;
+					case 3:$sor_d="c";$sor_d_met=$secenek3;break;
+					case 4:$sor_d="d";$sor_d_met=$secenek4;break;
+					case 5:$sor_d="e";$sor_d_met=$secenek5;break;
+					case 6:$sor_d="f";$sor_d_met=$secenek6;break;
+					default:$sor_d="d";$sor_d_met=$secenek4;
+				}
+				switch ($araCevDizi[4])
+				{
+					case 1:$sor_e="a";$sor_e_met=$secenek1;break;
+					case 2:$sor_e="b";$sor_e_met=$secenek2;break;
+					case 3:$sor_e="c";$sor_e_met=$secenek3;break;
+					case 4:$sor_e="d";$sor_e_met=$secenek4;break;
+					case 5:$sor_e="e";$sor_e_met=$secenek5;break;
+					case 6:$sor_e="f";$sor_e_met=$secenek6;break;
+					default:$sor_e="e";$sor_e_met=$secenek5;
+				}
+				switch ($araCevDizi[5])
+				{
+					case 1:$sor_f="a";$sor_f_met=$secenek1;break;
+					case 2:$sor_f="b";$sor_f_met=$secenek2;break;
+					case 3:$sor_f="c";$sor_f_met=$secenek3;break;
+					case 4:$sor_f="d";$sor_f_met=$secenek4;break;
+					case 5:$sor_f="e";$sor_f_met=$secenek5;break;
+					case 6:$sor_f="f";$sor_f_met=$secenek6;break;
+					default:$sor_f="e";$sor_f_met=$secenek6;
+				}
+			$sonuc = "<form name='cevapkar'>";	
+	     if($secenek1!="")
+			 $sonuc .= "<input type='checkbox' value='A' name='cevap' id='cevap1' class='cevap' style='width:35px;' onclick='document.cevapkar.cevap1.disabled = false;
+			 cevapDegerlendir2(\"$sor_a\",$id);' /> $sor_a_met<br/><br/>";
+	     if($secenek2!="")
+		     $sonuc .= "<input type='checkbox' value='B' name='cevap' id='cevap2' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap2.disabled = false;
+			 cevapDegerlendir2(\"$sor_b\",$id);' /> $sor_b_met<br/><br/>";
+	     if($secenek3!="")
+	    	 $sonuc .= "<input type='checkbox' value='C' name='cevap' id='cevap3' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap3.disabled = false;
+			 cevapDegerlendir2(\"$sor_c\",$id);' /> $sor_c_met<br/><br/>";
+	     if($secenek4!="")
+		     $sonuc .= "<input type='checkbox' value='D' name='cevap' id='cevap4' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap4.disabled = false;
+			 cevapDegerlendir2(\"$sor_d\",$id);' /> $sor_d_met<br/><br/>";
+	     if($secenek5!="")
+		     $sonuc .= "<input type='checkbox' value='E' name='cevap' id='cevap5' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap5.disabled = false;
+			 cevapDegerlendir2(\"$sor_e\",$id);' /> $sor_e_met<br/><br/>";
+	     if($secenek6!="")
+		     $sonuc .= "<input type='checkbox' value='F' name='cevap' id='cevap6' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap6.disabled = false;
+			 cevapDegerlendir2(\"$sor_f\",$id);' /> $sor_f_met";
+			$sonuc .= "</form>" ;
+		}		//soru seçenekleri bitti
 		
 	   if($sonuc == "")
 	     $sonuc = "$metin[350]";
@@ -216,4 +321,11 @@ if (document.getElementById("tekCevap")!=null)  document.getElementById("tekCeva
 
 window.setTimeout("tekCevapFocus()",500);
 if (document.getElementById("cevapSuresi")!=null) fadeUp(document.getElementById("cevapSuresi"),255,0,0,150,0,0);
+
+//jquery ile UP DOWN LEFT RIGHT tuþlarýný yakalama
+$('.cevap').keypress(function(event) {
+	if (event.keyCode >= '37' && event.keyCode <= '40') {
+     return false;
+   }
+});
 </script>

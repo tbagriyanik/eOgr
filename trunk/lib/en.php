@@ -514,8 +514,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[392]="Option";
 		$metin[393]='<ul>
                       <li style="list-style-type:none">For a classic question, just fill the right "answer". Like 1923 year data. 
-                      <li style="list-style-type:none">For an options question, you need to write at last 2 option text. And the answer must be A, B, C, D or E.
-                      <li style="list-style-type:none">Questions options are mixed automatically on examinati                      </ul>';
+                      <li style="list-style-type:none">For "one option" question, you need to write at last 2 option texts. And the answer must be A, B, C, D, E or F.
+					  <li style="list-style-type:none">For "multiple choice" question, you need to put comma (,) between right options. Like A,C,D.
+                      <li style="list-style-type:none">Questions options are mixed automatically on examination. </ul>';
 		$metin[394]="Video and content size advice :<br/>430 pixel width and 350 pixel height";
 		$metin[395]="Page Order";
 		$metin[396]="Drag upwards or downwards a page for reordering :";
@@ -590,4 +591,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[451] = "Chat Update Form";
 		$metin[452] = "Comment Update Form";
+		$metin[453] = " right answer count.";
+		
 ?>

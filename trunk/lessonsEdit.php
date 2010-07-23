@@ -248,6 +248,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $secenek3	=temizle($_POST["secenek3"]);
 				        $secenek4	=temizle($_POST["secenek4"]);
 				        $secenek5	=temizle($_POST["secenek5"]);
+				        $secenek6	=temizle($_POST["secenek6"]);
 				        $slideGecisSuresi	=temizle($_POST["slideGecisSuresi"]);
 				        $cevapSuresi		=temizle($_POST["cevapSuresi"]);
 				        $konuID		=temizle($_POST["konuID"]);
@@ -256,7 +257,8 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 									anaMetin='$anaMetin', cevap = '$cevap',
 									secenek1='$secenek1', secenek2 = '$secenek2',
 									secenek3='$secenek3', secenek4 = '$secenek4',
-									secenek5='$secenek5', konuID = '$konuID', 
+									secenek5='$secenek5', secenek6 = '$secenek6',
+									konuID = '$konuID', 
 									eklenmeTarihi='$datem', ekleyenID='$userID',
  								    slideGecisSuresi='$slideGecisSuresi', cevapSuresi='$cevapSuresi'
 									where id=$seciliKayit";
@@ -312,6 +314,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $secenek3	=temizle($_POST["secenek3"]);
 				        $secenek4	=temizle($_POST["secenek4"]);
 				        $secenek5	=temizle($_POST["secenek5"]);
+				        $secenek6	=temizle($_POST["secenek6"]);
 				        $slideGecisSuresi	=temizle($_POST["slideGecisSuresi"]);
 				        $cevapSuresi		=temizle($_POST["cevapSuresi"]);
 						$konuID		=temizle($_SESSION["seciliKonu"]);
@@ -319,10 +322,11 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $anaMetin= trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
 						if (!empty($anaMetin) && !empty($konuID))
 						   $sql="Insert into $tabloAdi 
-						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,slideGecisSuresi,cevapSuresi)
-						   	values ('$anaMetin', '".$konuID."', '$datem', '$userID', '$toplamSayfaSay',
-									'$cevap','$secenek1','$secenek2','$secenek3','$secenek4','$secenek5',
-									'$slideGecisSuresi','$cevapSuresi'								  
+						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,secenek6,slideGecisSuresi,cevapSuresi)
+						   	values ('$anaMetin', '".$konuID."', '$datem', '$userID', '$toplamSayfaSay','$cevap'
+									,'$secenek1','$secenek2','$secenek3'
+									,'$secenek4','$secenek5','$secenek6'
+									,'$slideGecisSuresi','$cevapSuresi'							  
 									)";
 					 } 	 
 	            $result = mysql_query($sql, $yol);
@@ -1598,6 +1602,10 @@ if($seciliSekme=="0") {
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"></textarea></td>
                         </tr>
                         <tr>
+                          <td width="100" align="right"><label for="secenek6"><?php echo $metin[392]?> F : </label></td>
+                          <td  style="background-color:#FFF;"><textarea name="secenek6" cols="60" rows="3" id="secenek6"></textarea></td>
+                        </tr>
+                        <tr>
                           <td> Cevap Süresi: </td>
                           <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="30"/>
                             <?php echo $metin[172]?></td>
@@ -1695,6 +1703,10 @@ bkLib.onDomLoaded(function() {
                         <tr>
                           <td width="87" align="right"><label for="secenek5"><?php echo $metin[392]?> E : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="secenek5" cols="60" rows="3" id="secenek5"><?php echo mysql_result($result2, 0, "secenek5");?></textarea></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="secenek6"><?php echo $metin[392]?> F : </label></td>
+                          <td  style="background-color:#FFF;"><textarea name="secenek6" cols="60" rows="3" id="secenek6"><?php echo mysql_result($result2, 0, "secenek6");?></textarea></td>
                         </tr>
                         <tr>
                           <td> Cevap Süresi: </td>
