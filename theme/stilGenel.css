@@ -271,6 +271,9 @@ input[type=text], input[type=password], select, textarea {
 input[type=checkbox] {
 	cursor:pointer;
 }
+input[type=radio] {
+	cursor:pointer;
+}
 label {
 	cursor: pointer;
 }

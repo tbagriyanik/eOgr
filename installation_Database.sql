@@ -116,6 +116,7 @@ CREATE TABLE IF NOT EXISTS `eo_5sayfa` (
   `secenek3` varchar(1000) NOT NULL,
   `secenek4` varchar(1000) NOT NULL,
   `secenek5` varchar(1000) NOT NULL,
+  `secenek6` varchar(1000) NOT NULL,
   `cevap` varchar(50) NOT NULL,
   `ekleyenID` int(11) NOT NULL,
   `eklenmeTarihi` datetime NOT NULL,
@@ -130,8 +131,8 @@ CREATE TABLE IF NOT EXISTS `eo_5sayfa` (
 --
 
 -- --------------------------------------------------------
-INSERT INTO `eo_5sayfa` (`id`, `anaMetin`, `konuID`, `secenek1`, `secenek2`, `secenek3`, `secenek4`, `secenek5`, `cevap`, `ekleyenID`, `eklenmeTarihi`, `sayfaSirasi`, `slideGecisSuresi`, `cevapSuresi`) VALUES
-(1, 'anakart ne ise yarar', 2, '', '', '', '', '', '', 1, '2010-07-04 20:07:56', 0, 60, 30);
+INSERT INTO `eo_5sayfa` (`id`, `anaMetin`, `konuID`, `secenek1`, `secenek2`, `secenek3`, `secenek4`, `secenek5`,`secenek6`, `cevap`, `ekleyenID`, `eklenmeTarihi`, `sayfaSirasi`, `slideGecisSuresi`, `cevapSuresi`) VALUES
+(1, 'anakart ne ise yarar', 2, '', '', '', '', '', '', '', 1, '2010-07-04 20:07:56', 0, 60, 30);
 
 --
 -- Tablo yapısı: `eo_comments`
