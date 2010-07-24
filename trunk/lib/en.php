@@ -63,7 +63,7 @@ Lesser General Public License for more details.
         $metin[40]="Your Password";   
         $metin[41]="Email Address";   
         $metin[42]="Birth Date";   
-        $metin[43]="My information is right";   
+        $metin[43]="My information is correct";   
         $metin[44]="Continue";   
         
         $metin[45]="The database name to be installed :";   
@@ -456,7 +456,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 	
 		$metin[346]="Time is up!";
 		$metin[347]="Your Answer";
-		$metin[348]="Your Answer is right!";
+		$metin[348]="Your Answer is correct!";
 		$metin[349]="Your Answer is wrong! You can try another answer.";
 		$metin[350]="There are no answer options!";
 		$metin[351]="Submit my answer";
@@ -591,6 +591,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[451] = "Chat Update Form";
 		$metin[452] = "Comment Update Form";
-		$metin[453] = " right answer count.";
+		$metin[453] = " correct answer count.";
+		$metin[454] = "<p><strong>You have a wrong answer.</strong> Before your time is up, you can close answer window, and retry.</p>";
+		$metin[455] = "'Correct' answers count : ";
 		
 ?>

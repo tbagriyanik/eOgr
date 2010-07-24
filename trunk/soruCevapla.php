@@ -96,9 +96,11 @@ function secenekleriGetir($id)
 {
 	global $yol1;
 	global $metin;
-	
-	if(array_key_exists($id,$_SESSION["cevaplar"])) return "Zaten Cevap Verdiniz.";
-	
+
+	if(array_key_exists($id,$_SESSION["cevaplar"]))
+	 if($_SESSION["cevaplar"][$id]=="D")
+	  return "Zaten Cevap Verdiniz.";
+
     $sql1 = "SELECT id, secenek1, secenek2, secenek3, secenek4, secenek5, secenek6, cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
 
     $result1 = mysql_query($sql1, $yol1); 
@@ -204,6 +206,8 @@ function secenekleriGetir($id)
 		     $sonuc .= "<input type='radio' value='F' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_f\",$id);' /> $sor_f_met";
 		} else {
 			//ÇOK SEÇÝMLÝ soru 
+			$_SESSION["cevaplar"][$id]= "";
+			$_SESSION["hataSay"][$id]= "";
   	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5))+(!empty($secenek6));
 				
 	   $araCevDizi=split('[/]', rasgeleCevapHazirla($toplamCevapAdedi));
@@ -268,26 +272,27 @@ function secenekleriGetir($id)
 					case 6:$sor_f="f";$sor_f_met=$secenek6;break;
 					default:$sor_f="e";$sor_f_met=$secenek6;
 				}
-			$sonuc = "<form name='cevapkar'>";	
+				
+			$sonuc.="<p>$metin[455]".getCevapSay($id)."</p>";
 	     if($secenek1!="")
-			 $sonuc .= "<input type='checkbox' value='A' name='cevap' id='cevap1' class='cevap' style='width:35px;' onclick='document.cevapkar.cevap1.disabled = false;
+			 $sonuc .= "<input type='checkbox' value='A' name='cevap' id='cevap1' class='cevap' style='width:35px;' onclick='document.getElementById(\"cevap1\").style.visibility = \"hidden\";
 			 cevapDegerlendir2(\"$sor_a\",$id);' /> $sor_a_met<br/><br/>";
 	     if($secenek2!="")
-		     $sonuc .= "<input type='checkbox' value='B' name='cevap' id='cevap2' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap2.disabled = false;
+		     $sonuc .= "<input type='checkbox' value='B' name='cevap' id='cevap2' class='cevap' style='width:35px;'  onclick='document.getElementById(\"cevap2\").style.visibility = \"hidden\";
 			 cevapDegerlendir2(\"$sor_b\",$id);' /> $sor_b_met<br/><br/>";
 	     if($secenek3!="")
-	    	 $sonuc .= "<input type='checkbox' value='C' name='cevap' id='cevap3' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap3.disabled = false;
+	    	 $sonuc .= "<input type='checkbox' value='C' name='cevap' id='cevap3' class='cevap' style='width:35px;'  onclick='document.getElementById(\"cevap3\").style.visibility = \"hidden\";
 			 cevapDegerlendir2(\"$sor_c\",$id);' /> $sor_c_met<br/><br/>";
 	     if($secenek4!="")
-		     $sonuc .= "<input type='checkbox' value='D' name='cevap' id='cevap4' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap4.disabled = false;
+		     $sonuc .= "<input type='checkbox' value='D' name='cevap' id='cevap4' class='cevap' style='width:35px;'  onclick='document.getElementById(\"cevap4\").style.visibility = \"hidden\";
 			 cevapDegerlendir2(\"$sor_d\",$id);' /> $sor_d_met<br/><br/>";
 	     if($secenek5!="")
-		     $sonuc .= "<input type='checkbox' value='E' name='cevap' id='cevap5' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap5.disabled = false;
+		     $sonuc .= "<input type='checkbox' value='E' name='cevap' id='cevap5' class='cevap' style='width:35px;'  onclick='document.getElementById(\"cevap5\").style.visibility = \"hidden\";
 			 cevapDegerlendir2(\"$sor_e\",$id);' /> $sor_e_met<br/><br/>";
 	     if($secenek6!="")
-		     $sonuc .= "<input type='checkbox' value='F' name='cevap' id='cevap6' class='cevap' style='width:35px;'  onclick='document.cevapkar.cevap6.disabled = false;
+		     $sonuc .= "<input type='checkbox' value='F' name='cevap' id='cevap6' class='cevap' style='width:35px;'  onclick='document.getElementById(\"cevap6\").style.visibility = \"hidden\";
 			 cevapDegerlendir2(\"$sor_f\",$id);' /> $sor_f_met";
-			$sonuc .= "</form>" ;
+
 		}		//soru seçenekleri bitti
 		
 	   if($sonuc == "")
@@ -305,7 +310,7 @@ function secenekleriGetir($id)
   <?php
 /*main*/
  if (isset($_GET['sayfa']) && is_numeric($_GET['sayfa']) && $_GET['sayfa']>0  ) {
-		echo iconv( "ISO-8859-9","ISO-8859-9", secenekleriGetir(temizle2($_GET['sayfa'])));
+		echo secenekleriGetir(temizle2($_GET['sayfa']));
  		}
 ?>
 </div>

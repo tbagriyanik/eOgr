@@ -2346,6 +2346,24 @@ function dersAgaci($gelen=null){
 	}
 }
 /*
+getCevapSay:
+bir sayfadaki çoklu seçim sorularýnda doðru cevabýnýn sayýsý
+*/
+function getCevapSay($id){
+	global $yol1;	
+	
+    $sql1 = "SELECT cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+	
+    if ($result1 && mysql_numrows($result1) == 1){
+		$gelen = mysql_fetch_array($result1);
+		$say = explode(",",$gelen[0]);
+		return count($say);
+	}
+	
+	return 0;
+}
+/*
 getDayCount:
 iki tarih arasýndaki gün sayýsýný bulur
 */

@@ -606,5 +606,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[451] = "Sohbet Güncelleme Formu";
 		$metin[452] = "Yorum Güncelleme Formu";
 		
-		$metin[453] = " adet do&#287;ru say&#305;n&#305;z var.";
+		$metin[453] = " adet do&#287;ru say&#305;n&#305;z var.";		
+		$metin[454] = "<p><strong>Hatal&#305; bir cevab&#305;n&#305;z var.</strong> Cevap penceresini kapat&#305;p, 
+				 			s&uuml;reniz dolmadan tekrar cevap verebilirsiniz.</p>";
+		$metin[455] = "Yapýlmasý gereken 'Doðru' sayýsý : ";
+		
+		
 ?>
