@@ -165,7 +165,11 @@ ob_start (); // Buffer output
 
 	$_SESSION["cevaplar"] = ""; 
 	//eskiler silinir
+	$_SESSION["hataSay"] = ""; 
+	//eskiler silinir
 	$_SESSION["cevaplar"][0] = ""; 
+	//dizi oluþturuldu
+	$_SESSION["hataSay"][0] = ""; 
 	//dizi oluþturuldu
 	$_SESSION['cevapSuresi'] = ""; 
 	//eski deðeri yok edelim 

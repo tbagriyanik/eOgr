@@ -71,24 +71,7 @@ function temizle2($metin)
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }
-/*
-getCevapSay:
-doðru cevabýnýn sayýsý
-*/
-function getCevapSay($id){
-	global $yol1;	
-	
-    $sql1 = "SELECT cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
-	
-    if ($result1 && mysql_numrows($result1) == 1){
-		$gelen = mysql_fetch_array($result1);
-		$say = explode(",",$gelen[0]);
-		return count($say);
-	}
-	
-	return 0;
-}
+
 /*
 cevapKontrol:
 sayfanýn cevabýnýn kontrol edilmesi
@@ -105,19 +88,26 @@ function cevapKontrol($cevap, $id){
 
     $result1 = mysql_query($sql1, $yol1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
-    {
+    if ($result1 && mysql_numrows($result1) == 1) {
 	   $uyeDogruCevapSayisi = $_SESSION["cevaplar"][$id] + 1;
-	   $_SESSION["cevaplar"][$id] = $uyeDogruCevapSayisi;
-	   if($olmasiGerekenDogruCevapSayisi==$uyeDogruCevapSayisi) {
+	   $_SESSION["cevaplar"][$id] = $uyeDogruCevapSayisi; 	//doðru sayýsýný 1 artýrdýk
+	   $hataSayisi = $_SESSION["hataSay"][$id]; 			//kaç hata yapýldý
+	   if($olmasiGerekenDogruCevapSayisi==$uyeDogruCevapSayisi && $hataSayisi==0) {
+		   //eðer hatasýz olarak tüm cevaplar seçilmiþ ise, DOÐRU
 	   		$sonuc = "<span><img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[348]</span>"; 
 		   	$_SESSION["cevaplar"][$id] = "D";
 			   }
-		else
+		else {
 			$sonuc = $uyeDogruCevapSayisi." $metin[453]";  
+			if($hataSayisi>0) {
+				 $sonuc .= $metin[454];
+				}
+		}
    
        return $sonuc;
     }else {
+		//hatalý bir cevap verildi ise
+	   $_SESSION["hataSay"][$id] += 1;
 	   return "<span><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[349]</span>";
 	}
 }
