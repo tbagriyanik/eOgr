@@ -211,9 +211,12 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
       )
 	   echo "<font id='hata'>Bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
-
-			$updateSQL = sprintf("UPDATE eo_comments SET comment=%s WHERE id=%s",
-							   temizle(GetSQLValueString($_POST['comment'], "text")),
+			
+			$gelenyorum = str_replace("\r\n", "<br/>", $_POST['comment']);
+			$gelenyorum = RemoveXSS($gelenyorum);
+			
+			$updateSQL = sprintf("UPDATE eo_comments SET comment='%s' WHERE id=%s",
+							   $gelenyorum,
 							   temizle(GetSQLValueString($_POST['id'], "int"))
 							   );
 			

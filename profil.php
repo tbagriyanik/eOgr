@@ -46,6 +46,7 @@ $yol1 = baglan2();
 		  You need to go to <a href=install.php>installing page</a>!<br/>
 			 </font>");
 	}
+include('lib/graphs.inc.php');	
 /*
 temizle2:
 xss temizleme
@@ -229,10 +230,30 @@ function girisSayisi($id)
 	}
 }
 /*
+rankGrafik:
+derecelendirme grafiði
+*/
+function rankGrafik($val,$max){
+	if(empty($max) or $max==0) return;
+	//if(empty($val) or $val==0) return;
+	echo "<p>";
+	$graph = new BAR_GRAPH("pBar");
+//	$graph->labels = "Sýra";
+//	$graph->barBGColor = "#ccc";
+	$graph->barColors = "img/h_blue.gif";
+	$graph->values = "$val;$max";
+	$graph->percValuesDecimals = 1;
+	$graph->barWidth = 10;
+	$graph->barLength = 1;
+	$graph->barBorder = "0px groove gray";
+	echo $graph->create();
+	echo "</p>";
+}
+/*
 girisSayisiRank:
 kullanýcýnýn giriþ sayýsý seviyesi
 */
-function girisSayisiRank($id)
+function girisSayisiRank($id,$grafikli)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
@@ -248,9 +269,10 @@ function girisSayisiRank($id)
 		 for($i=0; $i<@mysql_numrows($result1);$i++){
 			 $rank = $i + 1;
 			 if(mysql_result($result1, $i, "userName")==kullAdi($id)) break;
-		 }
-		  
-       return ($rank."/".@mysql_numrows($result1));
+		 }	
+	   if($grafikli) 
+	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+       return ("$rank /".@mysql_numrows($result1));
     }else {
 	   return (0);
 	}
@@ -427,7 +449,7 @@ function getOgrenciSiniflari2($id){
 dersCalismaOrtRank:
 kullanýcýnýn ders çalýþma düzeyi
 */
-function dersCalismaRank($id){
+function dersCalismaRank($id,$grafikli){
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT userID ,count(id) as say 
@@ -443,6 +465,9 @@ function dersCalismaRank($id){
 			 $rank = $i + 1;
 			 if(mysql_result($result1, $i, "userID")==$id ) break;
 		 }
+		 
+	   if($grafikli) 
+	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 		  
        return ($rank."/".@mysql_numrows($result1));
     }else {
@@ -454,7 +479,7 @@ function dersCalismaRank($id){
 dersCalismaOrtRank:
 kullanýcýnýn ders çalýþma ortalama düzeyi
 */
-function dersCalismaOrtRank($id){
+function dersCalismaOrtRank($id,$grafikli){
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT userID , avg(lastPage) as say 
@@ -470,6 +495,9 @@ function dersCalismaOrtRank($id){
 			 $rank = $i + 1;
 			 if(mysql_result($result1, $i, "userID")==$id ) break;
 		 }
+		 
+	   if($grafikli) 
+	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 		  
        return ($rank."/".@mysql_numrows($result1));
     }else {
@@ -489,18 +517,21 @@ function dersCalismaOrtRank($id){
 	if(getOgrenciSiniflari2($_GET["kim"])!="")	
 		echo "<strong>$metin[314] :</strong> ".getOgrenciSiniflari2($_GET["kim"])."<br/>";
 
-	$rank1 = ((girisSayisiRank($_GET["kim"])>0)?"$metin[324] ".girisSayisiRank($_GET["kim"]):"");	
+	$rank1 = ((girisSayisi($_GET["kim"])>0 and girisSayisiRank($_GET["kim"],false)>0)?
+			"$metin[324] ".girisSayisiRank($_GET["kim"],true):"");	
 	if(girisSayisi($_GET["kim"])>0)
 		echo "<strong>$metin[315] :</strong> ".girisSayisi($_GET["kim"])." <u>$rank1</u><br/>";
 		
-	$rank2 = ((dersCalismaRank($_GET["kim"])>0)?"$metin[324] ".dersCalismaRank($_GET["kim"]):"");	
+	$rank2 = ((dersCalismaSay($_GET["kim"])>0 and dersCalismaRank($_GET["kim"],false)>0)?		
+			"$metin[324] ".dersCalismaRank($_GET["kim"],true):"");	
 	if(dersCalismaSay($_GET["kim"])>0)
 		echo "<strong>$metin[316] :</strong> ".dersCalismaSay($_GET["kim"])." <u>$rank2</u><br/>";
 		
 	if(dersCalismaSure($_GET["kim"])!="")
 		echo "<strong>$metin[317] :</strong> ".Sec2Time22(dersCalismaSure($_GET["kim"]))."<br/>";
 		
-	$rank3 = ((dersCalismaOrtRank($_GET["kim"])>0)?"$metin[324] ".dersCalismaOrtRank($_GET["kim"]):"");	
+	$rank3 = ((dersCalismaOrt($_GET["kim"])>0 and dersCalismaOrtRank($_GET["kim"],false)>0)?
+			"$metin[324] ".dersCalismaOrtRank($_GET["kim"],true):"");	
 	if(dersCalismaOrt($_GET["kim"])>0)
 		echo "<strong>$metin[318] :</strong> ".round(dersCalismaOrt($_GET["kim"]),1)."% <u>$rank3</u><br/>";
 	if(sayfaEklemeSay($_GET["kim"])>0)

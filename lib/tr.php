@@ -148,10 +148,10 @@ Lesser General Public License for more details.
 		$metin[112]="Di&#287;er Genel Ayarlar";    
 		$metin[113]="Site Ayarlar&#305;";
 		$metin[114]="Okul Ad&#305; (ba&#351;l&#305;k)";    
-		$metin[115]="Uygulama S&uuml;r&uuml;m&uuml; (ana sayfa)";    
-		$metin[116]="Ders D&uuml;zenlemedeki Sayfalama De&#287;eri (ders d&uuml;zenleme)";    
-		$metin[117]="&Uuml;ye D&uuml;zenlemedeki Sayfalama De&#287;eri (site y&ouml;netim sayfalarý)";    	
-		$metin[118]="Veri Hareketleri Sayfalama De&#287;eri (site y&ouml;netim sayfalarý)";    
+		$metin[115]="Uygulama S&uuml;r&uuml;m&uuml; (<a href='index.php'>ana sayfa</a>)";    
+		$metin[116]="Ders D&uuml;zenlemedeki Sayfalama De&#287;eri (<a href='lessonsEdit.php'>ders d&uuml;zenleme</a>)";    
+		$metin[117]="&Uuml;ye D&uuml;zenlemedeki Sayfalama De&#287;eri (<a href='siteSettings.php'>site y&ouml;netim</a> sayfalarý)";    	
+		$metin[118]="Veri Hareketleri Sayfalama De&#287;eri (<a href='siteSettings.php'>site y&ouml;netim</a> sayfalarý)";    
 		$metin[119]="Yeni &Uuml;yelikte Buraya EPosta At";    
 		$metin[120]="Zorunlu De&#287;ildir";    
 		$metin[121]="Kaydet";    	
@@ -189,8 +189,8 @@ Lesser General Public License for more details.
 		$metin[148]="Kodu De&#287;i&#351;tir";
 		$metin[149]="Yeni Kullan&#305;c&#305;";
 
-		$metin[150]="G&ouml;r&uuml;nt&uuml;lecek Haber Say&#305;s&#305; (ana sayfada)";
-		$metin[151]="G&ouml;r&uuml;nt&uuml;lecek Konu Say&#305;s&#305; (giri&#351; sayfasýnda)";
+		$metin[150]="G&ouml;r&uuml;nt&uuml;lecek Haber Say&#305;s&#305; (<a href='index.php'>ana sayfada</a>)";
+		$metin[151]="G&ouml;r&uuml;nt&uuml;lecek Konu Say&#305;s&#305; (<a href='stats.php'>istatistikler</a> sayfasýnda)";
 
 		$metin[152]="Parola Tekrar&#305;";
 		
@@ -258,7 +258,7 @@ Lesser General Public License for more details.
 		$metin[198]="En fazla &ccedil;alýþan &ouml;ðrenci(ler)";    	
 		$metin[199]="En az &ccedil;alýþan &ouml;ðrenci(ler)";    	
 		$metin[200]="En fazla &ccedil;alýþýlan konular";    	
-		$metin[201]="En az &ccedil;alýþýlan konu(lar)";    	
+		$metin[201]="Hiç &ccedil;alýþýlmamýþ konu(lar)";    	
 		$metin[202]="Kayýtlý olmayan kullanýcýlarýn en fazla &ccedil;alýþtýðý konu(lar)";    	
 		$metin[203]="En fazla sayfa d&uuml;zenleyen &ouml;ðretmen(ler)";    	
 		$metin[204]="T&uuml;m kullanýcýlarýn toplam ders &ccedil;alýþma s&uuml;resi";    	
@@ -610,6 +610,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[454] = "<p><strong>Hatal&#305; bir cevab&#305;n&#305;z var.</strong> Cevap penceresini kapat&#305;p, 
 				 			s&uuml;reniz dolmadan tekrar cevap verebilirsiniz.</p>";
 		$metin[455] = "Yapýlmasý gereken 'Doðru' sayýsý : ";
-		
+		$metin[456] = "Hiç çalýþmamýþ olan öðrenci(ler)";		
+		$metin[457] = "En baþarýlý öðrenci(ler)";		
 		
 ?>

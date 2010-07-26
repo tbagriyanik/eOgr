@@ -1,4 +1,4 @@
-eOgr - v119d
+eOgr - v120a
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -20,9 +20,9 @@ Source Track:	http://eogr.googlecode.com
 Support:	http://www.ohloh.net/p/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	24-07-2010
+Last Update: 	26-07-2010
 Process Time : 	440 hours (18.350 lines PHP, 13.000 lines Javascript and CSS)
-Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual
+Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 INSTALLATION:
 -------------
@@ -33,14 +33,14 @@ INSTALLATION:
 (3) Login as administrator user: name "admin" and password "11111"
  
 	:For Clients (web users):
-	- Javascript (Ajax) enabled browser (especially for lessons page)
-	- Cookies enabled (theme, language and user name)
-	- Flash player installed 
+- Javascript (Ajax) enabled browser (especially for lessons page)
+- Cookies enabled (theme, language and user name)
+- Flash player installed 
 
 	:Installation (administrators):
-	- This project needs PHP 5 
-	- MySQL 5 database server 
-	- .htaccess enabled for security (can be erased if having problems)
+- This project needs PHP 5 
+- MySQL 5 database server 
+- .htaccess enabled for security (can be erased if having problems)
 
 Used Classes and Referred Sites:
 - autosuggest: http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html v2.1.3
@@ -68,7 +68,7 @@ CSS, RSS and HTML Validations:
 - Mozilla Firefox "HTML Validator" extension is also very helpful
 
 Note: 
-Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.
-Recommended: Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0
+- Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.
+- Recommended: Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0
 
 License: LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html

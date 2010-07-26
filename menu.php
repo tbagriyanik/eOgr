@@ -95,7 +95,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 ?>
   <li><a href="lessons.php"
 						<?php
-						 if ($currentFile=="login.php" || $currentFile=="lessons.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php" || $currentFile=="dataCommentList2.php" )
+						 if ($currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessons.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php" || $currentFile=="dataCommentList2.php" )
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55]?> </span></span></a>
@@ -108,6 +108,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 				  ?>
         &#8250; </span></span></a> <?php echo dersAgaci()?> </li>
       <li><a href="login.php"><span><span> <?php echo $metin[60]?> </span></span></a></li>
+      <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
       <?php
 							 if ($tur=='2' || $tur=='1'){
                             ?>
