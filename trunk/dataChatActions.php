@@ -206,9 +206,12 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
       )
 	   echo "<font id='hata'>Bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
+	
+			$gelenyorum = str_replace("\r\n", "<br/>", $_POST['message']);
+			$gelenyorum = RemoveXSS($gelenyorum);
 
-			$updateSQL = sprintf("UPDATE eo_shoutbox SET message=%s WHERE messageid=%s",
-							   temizle(GetSQLValueString($_POST['message'], "text")),
+			$updateSQL = sprintf("UPDATE eo_shoutbox SET message='%s' WHERE messageid=%s",
+							   $gelenyorum,
 							   temizle(GetSQLValueString($_POST['messageid'], "int"))
 							   );
 			

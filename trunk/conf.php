@@ -677,7 +677,7 @@ function getStats($num)
 							FROM eo_users,eo_userworks 
 							WHERE userType=0 and eo_users.id = eo_userworks.userID
 							GROUP BY userName
-							ORDER BY toplam DESC
+							ORDER BY toplam DESC,userName ASC
 							LIMIT 0,".ayarGetir("ayar2int");
 				
 				$yol1 = baglan();
@@ -699,7 +699,7 @@ function getStats($num)
 				break;
 		case 1:
 		//&ouml;ðrencilerden en az &ccedil;alýþanlar
-				$sql1 =    "SELECT eo_users.userName as userName, eo_users.userType as userType, count(*) as toplam 
+				$sql1 =    "SELECT eo_users.userName as userName,eo_users.id, count(*) as toplam 
 							FROM eo_users,eo_userworks 
 							WHERE userType=0 and eo_users.id = eo_userworks.userID
 							GROUP BY userName
@@ -713,7 +713,8 @@ function getStats($num)
 				   $ekle = "";
 				   if(@mysql_numrows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= $row_gelen['userName'].", ";
+				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
 					@mysql_free_result($result1);
@@ -754,13 +755,13 @@ function getStats($num)
 				
 				break;
 		case 3:
-		//en az &ccedil;alýþýlan konular
-				$sql1 =    "SELECT eo_4konu.konuAdi as konuAdi, count(*) as toplam 
+		//hiç &ccedil;alýþýlmamýþ konular
+				$sql1 =    "SELECT eo_4konu.id as id, eo_4konu.konuAdi as konuAdi 
 							FROM eo_4konu 
 							LEFT OUTER JOIN eo_userworks
 							ON eo_4konu.id = eo_userworks.konuID
+							WHERE  eo_userworks.konuID IS NULL
 							GROUP BY konuAdi
-							ORDER BY toplam ASC
 							LIMIT 0,".ayarGetir("ayar2int");
 				
 				$yol1 = baglan();
@@ -769,7 +770,7 @@ function getStats($num)
 				{
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= $row_gelen['konuAdi'].", ";
+				    $ekle .= "<a href='dersBilgisi.php?ders=".$row_gelen['id']."' rel='facebox'>".$row_gelen['konuAdi']."</a>, ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
 					@mysql_free_result($result1);
@@ -1071,7 +1072,7 @@ function getStats($num)
 				   return ("");
 				}
 				
-				break;		
+				break;
 		case 16:
 		//son demo çalýþmalarý
 				$sql = "SELECT eo_4konu.id as idsi, eo_4konu.konuAdi as kadi,".
@@ -1108,6 +1109,64 @@ function getStats($num)
 				}
 				
 				break;		
+		case 17:
+		//&ouml;ðrencilerden 0 çalýþanlar
+				$sql1 =    "SELECT eo_users.userName as userName,eo_users.id 
+							FROM eo_users 
+							LEFT OUTER JOIN eo_userworks
+							ON eo_users.id = eo_userworks.userID
+							WHERE userType=0  
+							GROUP BY userName
+							LIMIT 0,".ayarGetir("ayar2int");
+				
+				$yol1 = baglan();
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $ekle = "";
+				   if(@mysql_numrows($result1)<ayarGetir("ayar2int")) return "";
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+					         .$row_gelen['userName']."</a>, ";
+				     
+				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
+					@mysql_free_result($result1);
+				   return ($ekle);
+				}else {
+				   return ("");
+				}
+				
+				break;						
+		case 18:
+		//en baþarýlý öðrenciler
+				$sql1 =    "SELECT eo_users.userName as userName,eo_users.id, 
+							avg(eo_userworks.lastPage) as basari 
+							FROM eo_users, eo_userworks
+							WHERE userType=0  
+							      and 
+								  eo_users.id = eo_userworks.userID
+							GROUP BY userName
+							ORDER BY basari DESC
+							LIMIT 0,".ayarGetir("ayar2int");
+				
+				$yol1 = baglan();
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $ekle = "";
+				   if(@mysql_numrows($result1)<ayarGetir("ayar2int")) return "";
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+					         .$row_gelen['userName']."</a>, ";
+				     
+				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
+					@mysql_free_result($result1);
+				   return ($ekle);
+				}else {
+				   return ("");
+				}
+				
+				break;						
 	} //switch	
 
 return "";

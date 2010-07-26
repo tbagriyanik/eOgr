@@ -147,10 +147,10 @@ Lesser General Public License for more details.
 		$metin[112]="Other General Settings";    
 		$metin[113]="Site Options";
 		$metin[114]="School Name (header)";    
-		$metin[115]="Application Version (index page)";    
-		$metin[116]="Lesson Editing Paging Value (lesson edit page)";    
-		$metin[117]="User Editing Paging Value (site settings page)";    	
-		$metin[118]="Data Actions Paging Value (site settings page)";    
+		$metin[115]="Application Version (<a href='index.php'>index page</a>)";    
+		$metin[116]="Lesson Editing Paging Value (<a href='lessonsEdit.php'>lesson edit</a> page)";    
+		$metin[117]="User Editing Paging Value (<a href='siteSettings.php'>site settings</a> page)";    	
+		$metin[118]="Data Actions Paging Value (<a href='siteSettings.php'>site settings</a> page)";    
 		$metin[119]="Email when a new user is registered";    
 		$metin[120]="Can be empty";    
 		$metin[121]="Save";    	
@@ -188,8 +188,8 @@ Lesser General Public License for more details.
 		$metin[148]="Change the code";
 		$metin[149]="New User";
 
-		$metin[150]="News Count to Show (index page)";
-		$metin[151]="Subject Count to Show (login page)";
+		$metin[150]="News Count to Show (<a href='index.php'>index page</a>)";
+		$metin[151]="Subject Count to Show (<a href='stats.php'>statistics</a> page)";
 
 		$metin[152]="Repeat Password";
 				
@@ -252,7 +252,7 @@ Lesser General Public License for more details.
 		$metin[198]="Most working student(s)";    	
 		$metin[199]="Rarely working student(s)";    	
 		$metin[200]="Most worked subjects";    	
-		$metin[201]="Rarely worked subject(s)";    	
+		$metin[201]="Never worked subject(s)";    	
 		$metin[202]="Unregistered users most worked subject(s)";    	
 		$metin[203]="Most page edited teacher(s)";    	
 		$metin[204]="All users total work time";    	
@@ -593,6 +593,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[452] = "Comment Update Form";
 		$metin[453] = " correct answer count.";
 		$metin[454] = "<p><strong>You have a wrong answer.</strong> Before your time is up, you can close answer window, and retry.</p>";
+		
 		$metin[455] = "'Correct' answers count : ";
+		$metin[456] = "Never worked student(s)";		
+		$metin[457] = "Most successful student(s)";		
 		
 ?>

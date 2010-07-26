@@ -1607,12 +1607,12 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td> Cevap Süresi: </td>
-                          <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="30"/>
+                          <td  style="background-color:#FFF;"><input type="text" name="cevapSuresi" id="cevapSuresi" size="15" maxlength="30" value="60"/>
                             <?php echo $metin[172]?></td>
                         </tr>
                         <tr>
                           <td> Sunum Geçiþ Süresi: </td>
-                          <td  style="background-color:#FFF;"><input type="text" name="slideGecisSuresi" id="slideGecisSuresi" size="15" maxlength="30" value="60"/>
+                          <td  style="background-color:#FFF;"><input type="text" name="slideGecisSuresi" id="slideGecisSuresi" size="15" maxlength="30" value="0"/>
                             <?php echo $metin[172]?></td>
                         </tr>
                         <tr>

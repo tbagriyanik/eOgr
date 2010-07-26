@@ -34,17 +34,9 @@ Lesser General Public License for more details.
 	
 	$seciliTema=temaBilgisi();	
 
-			if (isset($_POST["remUser"])){
-			  if ($_POST["remUser"]=="1"){
-			   setcookie("remUser",$_POST["userN"],time() + 60*60*24*30);
-			  } 
-			}
-		   else {
-			  $_POST["remUser"]="0";
-			  setcookie("remUser","",time()-9999);
-		   }
-		   
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
+
+include('lib/graphs.inc.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,7 +47,7 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[60]?></title>
+<title>eOgr -<?php echo $metin[197]?></title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -147,32 +139,14 @@ Lesser General Public License for more details.
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[60]?> </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[197]?> </span> </h2>
                 <div class="PostContent">
                   <?php
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
-    currentFileCheck("login.php");
-	
-		switch ($_POST['form'])
-		{
-			case 'login':
-				$allowed = array();
-				$allowed[] = 'form';
-				$allowed[] = 'userN';
-				$allowed[] = 'userP';
-				$allowed[] = 'sumb';
-				$allowed[] = 'remUser';
-				$sent = array_keys($_POST);
-				if ($allowed != $sent)
-				{
-					die("<font id='hata'> ".$metin[400]." (1)</font><br/>".$metin[402]); //form data?
-					exit;
-				}
-				break;
-		}     
+    currentFileCheck("stats.php");   
 
   $adi	=substr(temizle($_POST["userN"]),0,15);
   $par	=sha1(substr(temizle($_POST["userP"]),0,15));
@@ -246,27 +220,101 @@ Lesser General Public License for more details.
             </div>
           </div>
           <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <div>
-                      <div class="msg_list">
-                        <h3><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></h3>
-                        <div class="msg_body"> <?php echo dersAgaci(1)?> </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="Post-tl"></div>
+            <div class="Post-tr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-br">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-tc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cc"></div>
+            <div class="Post-body">
+              <div class="Post-inner">                
+                <div class="PostContent">
+                  <?php
+	 
+	 	
+		 if (trim(getStats(13))!=""){//son g&uuml;ncellenen
+			 echo "<div class='ikiKolon'>";
+			 echo "<strong>".$metin[84]."</strong>".getStats(13)."</div>";
+		 }
+		 if (trim(getStats(2))!=""){//en fazla &ccedil;alýþýlan
+			 echo "<div class='ikiKolon'><strong>".$metin[200]."</strong><br/>".getStats(2)."</div><div class=clear></div>";
+		 }		 
+		 if (trim(getStats(14))!=""){//oylar
+			 echo "<div class='ikiKolon'><strong>".$metin[276]."</strong><br/>".getStats(14)."</div>";
+		 }		 
+		 if (trim(getStats(15))!=""){//yorumlar
+			 echo "<div class='ikiKolon'><strong>".$metin[277]."</strong><br/>".getStats(15)."</div>";
+		 }		 
+	 		 
+		 echo "<div class='tekKolon'>";
+
+					 if (trim(getStats(18))!="") echo "<strong><img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[457]." :</strong> ".getStats(18)."<br/>";
+					 if (trim(getStats(0))!="") echo "<strong><img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[198]." :</strong> ".getStats(0)."<br/>";
+					 if (trim(getStats(1))!="") echo "<strong><img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[199]." :</strong> ".getStats(1)."<br/>";
+					 if (trim(getStats(17))!="") echo "<strong><img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[456]." :</strong> ".getStats(17)."<br/>";
+					 if (trim(getStats(3))!="") echo "<strong><img src=\"img/info.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> ".$metin[201]." :</strong> ".getStats(3)."<br/>";
+			//		 if (trim(getStats(4))!="") echo "<strong>".$metin[202]." :</strong> ".getStats(4)."<br/>";
+					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
+					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
+					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
+					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10))."<br/>";
+		echo "</div>";			 
+					 ?>
+                  <?php
+if(getGrafikRecordCount()>5) {
+	echo "<div class='ikiKolon'>";
+	echo "<p style=\"color:#000;font-weight: bold;\">".$metin[342]."</p>";
+	$sampleData = getGrafikValues(15);
+	$labels = getGrafikLabels(15);
+
+    $chart = new BAR_GRAPH("vBar");
+	$chart->values = grafikGunNormallestirData($sampleData,$labels);
+	$chart->labels = grafikGunNormallestirLabel($sampleData,$labels);
+	$chart->showValues = 2;	
+	$chart->labelSize =9;
+	$chart->titleSize =9;
+	$chart->absValuesSize  =9;
+	$chart->absValuesBorder = "0px";
+	echo $chart->create();   
+	echo "</div>";
+}
+if(getGrafikRecordCount2()>5) {
+	echo "<div class='ikiKolon'>";
+	echo "<p style=\"color:#000;font-weight: bold;\">".$metin[343]."</p>";
+	$sampleData2 = getGrafikValues2(15);
+	$labels2 = getGrafikLabels2(15);
+
+    $chart2 = new BAR_GRAPH("vBar");
+	$chart2->values = grafikGunNormallestirData($sampleData2,$labels2);
+	$chart2->labels = grafikGunNormallestirLabel($sampleData2,$labels2);
+	$chart2->showValues = 2;	
+	$chart2->labelSize =9;
+	$chart2->titleSize =9;
+	$chart2->absValuesSize  =9;
+	$chart2->absValuesBorder = "0px";
+	echo $chart2->create();   
+	echo "</div>";
+}
+?>
                 </div>
+                <div class="cleared"></div>
               </div>
             </div>
           </div>
