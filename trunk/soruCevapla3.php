@@ -13,7 +13,9 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-session_start();
+	
+	session_start();
+	header("Content-Type: text/html; charset=iso-8859-9");          
 
 	$taraDili=$_COOKIE["lng"];    
    if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
