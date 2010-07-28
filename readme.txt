@@ -17,7 +17,8 @@ Developer Name: Tarik Bagriyanik
 Developer Site: http://yunus.sourceforge.net
 Demo Site:	http://www.tuzlaatl.k12.tr/eogr
 Source Track:	http://eogr.googlecode.com 
-Support:	http://www.ohloh.net/p/eogr
+Support:	http://www.ohloh.net/p/eogr http://github.com/tbagriyanik/eOgr
+All Versions:	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
 Last Update: 	27-07-2010
