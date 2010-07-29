@@ -178,20 +178,6 @@ include('lib/graphs.inc.php');
 ?>
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
                   <?php
-				 if($_SESSION["tur"]=='0') {
-					  $siniflar = getOgrenciSiniflari();
-					  if($siniflar!=""){
-						  echo $metin[210]." : ".$siniflar;
-			   		  	  echo "<br/>";
-					  }
-				  }			  
-				 if($_SESSION["tur"]=='1' || $_SESSION["tur"]=='2') {
-					  $pasifYorumlar = getpasifYorumlar();
-					  if($pasifYorumlar>0){
-						  echo $metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
-			   		  	  echo "<br/>";
-					  }
-				  }			  
 
 	 if (trim(getStats(11))!=""){
 		 echo "<br/><div class='ikiKolon'>";

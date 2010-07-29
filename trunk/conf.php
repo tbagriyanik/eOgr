@@ -665,7 +665,7 @@ function yetimKayitNolar($tablo){
 getStats:
 belli bir istatistik bilgisini elde etme
 */
-function getStats($num)
+function getStats($num,$uID="")
 {
 	global $metin;
 	$num = (int) substr($num,0,15);
@@ -922,7 +922,10 @@ function getStats($num)
 				
 		case 12:
 		//þu anki kullanýcýnýn bitirdiði dersler
-				$uID = getUserID($_SESSION["usern"],$_SESSION["userp"]);	
+				if($uID=="")
+				//kendi kimliði lazým
+					$uID = getUserID($_SESSION["usern"],$_SESSION["userp"]);	
+					
 				$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
 									eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi,
 									eo_3ders.id as dersID,  
@@ -2524,18 +2527,16 @@ function getKursTablo($dersID,$uID){
 		$sonuc .= "</table>";
 		
 		if($toplamKonu==$bitenler) {
-			$sonuc .=  "<h5>Bu dersteki tüm konularý tamamladýnýz, tebrikler!</h5>";
-			if($tamamOlamayan>0)
-			  $sonuc .= "<sub>Fakat $tamamOlamayan konunun süresi, ".
-			  			Sec2Time2(round(getStats(9)))." olan genel ortalamanýn altýndadýr!</sub>";
+			$sonuc .=  "<h5>Bu dersteki tüm konular tamamlanmýþtýr!</h5>";
 			}
 		 else {
-		 	$sonuc .=  "<p><strong>Konularý bitirme durumunuz :</strong> %".
+		 	$sonuc .=  "<p><strong>Konularý bitirme durumu :</strong> %".
 						round($bitenler*100/$toplamKonu)."</p>";
-			if($tamamOlamayan>0)
-			  $sonuc .= "<sub>Bitirilen konulardan $tamamOlamayan konunun süresi, ".
-			  			Sec2Time2(round(getStats(9)))." olan genel ortalamanýn altýndadýr!</sub>";			
 		 }
+
+		if($tamamOlamayan>0)
+		  	$sonuc .= "<sub><strong>Not :</strong> $tamamOlamayan konunun süresi, ".
+			  			Sec2Time2(round(getStats(9)))." olan genel ortalamanýn altýndadýr!</sub>";
 		 
 		return $sonuc;
 	}
@@ -2543,7 +2544,7 @@ function getKursTablo($dersID,$uID){
 	return "-";
 }/*
 getUserName:
-id ile kullanýcý isimlerini alma
+kimlik ile kullanýcý isimlerini alma
 */
 function getUserName($id){
 	global $yol1;	

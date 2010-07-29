@@ -550,6 +550,9 @@ function dersCalismaOrtRank($id,$grafikli){
 	if($_GET['set']!="1"){
 		echo"<br/><br/>";
 		echo "<a href=\"mail.php?to=".$_GET["kim"]."\" class=\"external\" onclick='window.open(\"mail.php?to=".$_GET["kim"]."\");return false;'>$metin[69]</a>";
+		if($_SESSION["tur"]==1 or $_SESSION["tur"]==2)
+		  if(dersCalismaSay($_GET["kim"])>0)	
+			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\" class=\"external\">$metin[461]</a>";
 	 }
  } else
   echo "EMPTY";  
