@@ -60,6 +60,20 @@ ob_start (); // Buffer output
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script><script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
+<link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
+<script src="lib/jquery.cookie.js" type="text/javascript"></script>
+<script src="lib/jquery-treeview/jquery.treeview.pack.js" type="text/javascript"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$("#lessonTree").treeview({
+				animated: "fast",
+				collapsed: true,
+				persist: "cookie",
+				control:"#sidetreecontrol"
+			});
+		})
+		
+</script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -299,9 +313,9 @@ if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"])
 						$yorumlar = yorumlariGetir($_GET["konu"]); 
 						if ($yorumlar!=""){
 ?>
- 					<link href="lib/pager.css" rel="stylesheet" type="text/css" /> 
-                    <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
-                    <script type="text/javascript">
+                      <link href="lib/pager.css" rel="stylesheet" type="text/css" />
+                      <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
+                      <script type="text/javascript">
 /* <![CDATA[ */
 
 $(document).ready(function() {
@@ -368,7 +382,9 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
                     <div>
                       <div class="msg_list">
                         <p class="msg_head"><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></p>
-                        <div class="msg_body"> <?php echo dersAgaci(1)?> </div>
+                        <div class="msg_body">
+                          <div id="sidetreecontrol"><a href="?#"><?php echo $metin[458]?></a> | <a href="?#"><?php echo $metin[459]?></a> | <a  href="#"><?php echo $metin[460]?></a></div>
+                          <?php echo dersAgaci(1)?> </div>
                       </div>
                     </div>
                   </div>

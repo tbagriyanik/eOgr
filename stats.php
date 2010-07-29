@@ -25,16 +25,9 @@ Lesser General Public License for more details.
       $_SESSION ['ready'] = TRUE; 
      }
 	require("conf.php");	
-	
-	$time = getmicrotime();
-	   $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-	
+	$time = getmicrotime();  
+	checkLoginLang(true,true,"stats.php");	
 	$seciliTema=temaBilgisi();	
-
-	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 
 include('lib/graphs.inc.php');
 ?>
@@ -142,11 +135,6 @@ include('lib/graphs.inc.php');
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[197]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
-		}
-
-    currentFileCheck("stats.php");   
 
   $adi	=substr(temizle($_POST["userN"]),0,15);
   $par	=sha1(substr(temizle($_POST["userP"]),0,15));
