@@ -922,8 +922,10 @@ function getStats($num)
 				
 		case 12:
 		//þu anki kullanýcýnýn bitirdiði dersler
+				$uID = getUserID($_SESSION["usern"],$_SESSION["userp"]);	
 				$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
-									eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi, 
+									eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi,
+									eo_3ders.id as dersID,  
 									sum(eo_userworks.toplamZaman) as toplam 
 							FROM eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_userworks, eo_users 
 							WHERE eo_4konu.id = eo_userworks.konuID and 
@@ -931,7 +933,7 @@ function getStats($num)
 								  eo_3ders.id = eo_4konu.dersID and
 								  eo_2sinif.id = eo_3ders.sinifID and
 								  eo_1okul.id = eo_2sinif.okulID and
-							      eo_users.id = ".getUserID($_SESSION["usern"],$_SESSION["userp"])."
+							      eo_users.id = ".$uID."
 							GROUP BY dersAdi
 							ORDER BY toplam DESC";
 				
@@ -942,7 +944,7 @@ function getStats($num)
 				   if(mysql_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
 				   $sayGelen = 1;
 				   while($row_gelen = mysql_fetch_assoc($result1)){
-				    $ekle .= "<li style='list-style-type:none;'>".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - ".$row_gelen['dersAdi']." <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font></li>";
+				    $ekle .= "<li style='list-style-type:none;'>".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay.php?kurs=".$row_gelen['dersID']."&amp;user=$uID'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font></li>";
 					$sayGelen++;
 					if ($sayGelen > ayarGetir("ayar2int")) break 1;
 				}
@@ -2422,6 +2424,173 @@ function getCevapSay($id){
 	}
 	
 	return 0;
+}
+/*
+getKonuUserStat:
+kullanýcýnýn bir konudaki istatistik bilgisi
+*/
+function getKonuUserStat($konuID, $uID, $type){
+	global $yol1;	
+	
+	switch($type){
+	case 1:
+	    $sql1 = "SELECT MAX(lastPage) FROM eo_userworks where userID='$uID' and konuID='$konuID'"; 	
+    	$result1 = mysql_query($sql1, $yol1); 
+		$gelen = mysql_fetch_array($result1);
+		return $gelen[0];	
+	 break;
+	case 2:
+	    $sql1 = "SELECT SUM(toplamZaman) FROM eo_userworks where userID='$uID' and konuID='$konuID'"; 	
+    	$result1 = mysql_query($sql1, $yol1); 
+		$gelen = mysql_fetch_array($result1);
+		return $gelen[0];	
+	 break;
+	case 3:
+	    $sql1 = "SELECT COUNT(*) FROM eo_userworks where userID='$uID' and konuID='$konuID'"; 	
+    	$result1 = mysql_query($sql1, $yol1); 
+		$gelen = mysql_fetch_array($result1);
+		return $gelen[0];	
+	 break;
+	default:
+	 return "-"; 
+	}
+}
+/*
+getKursTablo:
+çalýþýlan ders ile ilgili tablo yapýmý
+*/
+function getKursTablo($dersID,$uID){
+	global $yol1;	
+	
+    $sql1 = "SELECT id,konuAdi FROM eo_4konu where dersID='$dersID' order by konuAdi"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+	
+    if ($result1 && mysql_numrows($result1) > 0){
+		$sonuc = '<table width="%99" border="0" align="center" cellpadding="3" cellspacing="1">';
+		$sonuc .= "<tr>
+		         	<th width='%30'>Konu Adý</th>
+					<th width='%15'>En Ýyi Yüzde (%)</th>
+					<th width='%15'>Toplam Süre</th>
+					<th width='%15'>Çalýþma Sayýsý</th>
+					<th width='%15'>Durum</th></tr>";
+
+		$satirRenk = 0;
+		$bitenler = 0;
+		$tamamOlamayan = 0;
+		$toplamKonu = getDerstekiKonuSay($dersID);
+
+		while($gelen = mysql_fetch_array($result1)){
+			$satirRenk++;
+				if ($satirRenk & 1) { 
+					$row_color = "#CCC"; 
+					} else { 
+					$row_color = "#ddd"; 
+					}
+			
+			if(getKonuUserStat($gelen[0], $uID, 1))	{
+				$yuzde = getKonuUserStat($gelen[0], $uID, 1);	
+				$sure = getKonuUserStat($gelen[0], $uID, 2);	
+				$calSay = getKonuUserStat($gelen[0], $uID, 3);	
+				}
+			  else {
+				$yuzde = "0";
+				$sure = "0";
+				$calSay = "0";
+			  }
+				
+			if($yuzde=="100"){ 
+			  $bitenler++;
+			  if($sure>=getStats(9))
+			  //yüzde 100 bitirmiþ ve süresi iyi
+				$durum = "<img src='img/i_low.png' alt='good'/>";	
+			  else {
+			  //yüzde 100 ama süresi düþük
+			    $durum = "<img src='img/i_medium.png' alt='doubt' />";
+				$tamamOlamayan++;
+			  }
+			}else
+			  //yüzdesi 100 deðilse
+			   $durum  = "<img src='img/i_high.png' alt='bad' />";				   			   
+			
+			$sonuc .= '<tr>
+			           <td align="left" style="background-color:'.$row_color.';">
+					   <a href="lessons.php?konu='.$gelen[0].'">'.$gelen[1].'</a></td>
+					   <td align="right" style="background-color:'.$row_color.';">'.$yuzde.'</td>
+					   <td align="right" style="background-color:'.$row_color.';">'.Sec2Time2(round($sure)).'</td>
+					   <td align="right" style="background-color:'.$row_color.';">'.$calSay.'</td>
+					   <td align="center" style="background-color:'.$row_color.';">'.$durum.'</td>
+					   </tr>';
+		}
+		$sonuc .= "</table>";
+		
+		if($toplamKonu==$bitenler) {
+			$sonuc .=  "<h5>Bu dersteki tüm konularý tamamladýnýz, tebrikler!</h5>";
+			if($tamamOlamayan>0)
+			  $sonuc .= "<sub>Fakat $tamamOlamayan konunun süresi, ".
+			  			Sec2Time2(round(getStats(9)))." olan genel ortalamanýn altýndadýr!</sub>";
+			}
+		 else {
+		 	$sonuc .=  "<p><strong>Konularý bitirme durumunuz :</strong> %".
+						round($bitenler*100/$toplamKonu)."</p>";
+			if($tamamOlamayan>0)
+			  $sonuc .= "<sub>Bitirilen konulardan $tamamOlamayan konunun süresi, ".
+			  			Sec2Time2(round(getStats(9)))." olan genel ortalamanýn altýndadýr!</sub>";			
+		 }
+		 
+		return $sonuc;
+	}
+	
+	return "-";
+}/*
+getUserName:
+id ile kullanýcý isimlerini alma
+*/
+function getUserName($id){
+	global $yol1;	
+	
+    $sql1 = "SELECT userName, realName FROM eo_users where id='$id' limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+	
+    if ($result1 && mysql_numrows($result1) == 1){
+		$gelen = mysql_fetch_array($result1);		
+		return "".$gelen[0].", ".$gelen[1];
+	}
+	
+	return "-";
+}
+/*
+getDerstekiKonuSay:
+id ile dersteki konu sayýsýný alma
+*/
+function getDerstekiKonuSay($id){
+	global $yol1;	
+	
+    $sql1 = "SELECT count(*) as say FROM eo_4konu where dersID='$id'"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+	
+    if ($result1 && mysql_numrows($result1) == 1){
+		$gelen = mysql_fetch_array($result1);		
+		return $gelen["say"];
+	}
+	
+	return "0";
+}
+/*
+getDersAdi:
+id ile ders ismi alma
+*/
+function getDersAdi($id){
+	global $yol1;	
+	
+    $sql1 = "SELECT dersAdi FROM eo_3ders where id='$id' limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+	
+    if ($result1 && mysql_numrows($result1) == 1){
+		$gelen = mysql_fetch_array($result1);		
+		return $gelen["dersAdi"];
+	}
+	
+	return "";
 }
 /*
 getDayCount:

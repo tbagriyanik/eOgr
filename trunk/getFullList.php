@@ -229,7 +229,8 @@ function listeGetir($userID, $durum){
 					case 12:
 					//þu anki kullanýcýnýn bitirdiði dersler
 							$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
-												eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi, 
+												eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi,
+												eo_3ders.id as dersID, 
 												sum(eo_userworks.toplamZaman) as toplam 
 										FROM eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_userworks, eo_users 
 										WHERE eo_4konu.id = eo_userworks.konuID and 
@@ -254,7 +255,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." ".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - ".$row_gelen['dersAdi']." <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font><br/>";										
+									$ekle .=  ($i+1)." ".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay.php?kurs=".$row_gelen['dersID']."&amp;user=$userID'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";

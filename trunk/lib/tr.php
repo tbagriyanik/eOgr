@@ -617,4 +617,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[459] = "Tümünü Aç";
 		$metin[460] = "Tümünü Deðiþtir";
 		
+		$metin[461] = "Kurs Detaylarý";
+		$metin[462] = "Yazdýr";		
+		
 ?>
