@@ -228,6 +228,10 @@ function listeGetir($userID, $durum){
 							
 					case 12:
 					//þu anki kullanýcýnýn bitirdiði dersler
+					if($_SESSION["kursUser"]!="")
+					//eðer baþka kullanýcý inceleniyor ise
+					  $userID = temizle($_SESSION["kursUser"]);
+					  
 							$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
 												eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi,
 												eo_3ders.id as dersID, 

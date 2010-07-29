@@ -192,21 +192,13 @@ include('lib/graphs.inc.php');
 ?>
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
                   <?php
-				 if($_SESSION["tur"]=='0') {
-					  $siniflar = getOgrenciSiniflari();
-					  if($siniflar!=""){
-						  echo $metin[210]." : ".$siniflar;
-			   		  	  echo "<br/>";
-					  }
-				  }			  
-				 if($_SESSION["tur"]=='1' || $_SESSION["tur"]=='2') {
-					  $pasifYorumlar = getpasifYorumlar();
-					  if($pasifYorumlar>0){
-						  echo $metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
-			   		  	  echo "<br/>";
-					  }
-				  }			  
+				  
+	$uID = temizle($_GET["user"]);
+	if($uID!="") $_SESSION["kursUser"]=$uID;
 
+	if($uID != getUserID($_SESSION["usern"],$_SESSION["userp"]) and $_SESSION["tur"]==0) 
+	  	die($metin[448]);	 		  
+		
 	 if (trim(getStats(11))!=""){
 		 echo "<br/><div class='ikiKolon'>";
 		 echo "<strong>".$metin[213]."</strong><br/>".getStats(11)."</div>";
@@ -221,6 +213,51 @@ include('lib/graphs.inc.php');
               </div>
             </div>
           </div>
+          <?php
+		  if(($_SESSION["tur"]==1 or $_SESSION["tur"]==2)and($uID!="" and $uID != getUserID($_SESSION["usern"],$_SESSION["userp"]))){
+          ?>
+          <div class="Post">
+            <div class="Post-tl"></div>
+            <div class="Post-tr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-br">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-tc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cc"></div>
+            <div class="Post-body">
+              <div class="Post-inner">
+                <div class="PostContent">
+                <div class="tekKolon">
+                 Seçili Kullanýcý :
+                  <?php				    
+				    echo "<strong>".getUserName($uID)."</strong><br/>";
+					echo getStats(12,$uID);
+                  ?>
+                  </div>
+                </div>
+                <div class="cleared"></div>
+              </div>
+            </div>
+          </div>
+          <?php
+		  }
+		  ?>
           <?php
 					$dersID = temizle($_GET["kurs"]);
 					$uID = temizle($_GET["user"]);

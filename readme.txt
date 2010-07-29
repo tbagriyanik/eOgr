@@ -1,4 +1,4 @@
-eOgr - v120b
+eOgr - v120c
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -28,7 +28,7 @@ Download All Versions:
 	
 Start Date: 	15-11-2008
 Last Update: 	29-07-2010
-Process Time : 	440 hours (18.350 lines PHP, 13.000 lines Javascript and CSS)
+Process Time : 	450 hours (18.350 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 INSTALLATION:
@@ -56,12 +56,13 @@ Used Classes and Referred Sites:
 - jQuery UI: http://jqueryui.com v1.8.2
 - jQuery TreeView: http://bassistance.de/jquery-plugins/jquery-plugin-treeview v1.4
 - jQuery simplepager: http://plugins.jquery.com/project/SimplePager v1.1
+- jQuery print: http://www.bennadel.com/index.cfm?event=blog.view&id=1591
+- jQuery Sliding Page: http://css-tricks.com/anythingslider-jquery-plugin/ v1.2
 - nicEdit: http://www.nicedit.com v0.9 r23
 - phplivex: http://www.phplivex.com v2.6
 - wtag: http://spacegirlpippa.co.uk v1.0Beta
 - Facebox: http://famspam.com/facebox v1.2
 - HTML Graphs: http://www.gerd-tentler.de/tools/phpgraphs v4.8
-- Sliding Page: http://css-tricks.com/anythingslider-jquery-plugin/ v1.2
 - SQL_Export: http://www.phpclasses.org/browse/file/7633.html
 - SQL_Import: http://www.phpclasses.org/browse/package/4898.html
 - hijax: http://bulletproofajax.com 
