@@ -2327,16 +2327,16 @@ function dersAgaci($gelen=null){
 					}	
 					if(@mysql_numrows($okulAdlari)>0) echo "</ul>";
 	}else
-	{
+	{//not in the menu Lesson List
 					
 					$sqlOkul 	= "select * from eo_1okul order by okulAdi";
 					$okulAdlari = mysql_query($sqlOkul, $yol1);
-					$i=0;if(@mysql_numrows($okulAdlari)>0) echo "<ul>";
+					$i=0;if(@mysql_numrows($okulAdlari)>0) echo "<ul id='lessonTree' class='treeview-famfamfam'>";
 					while($i<@mysql_numrows($okulAdlari)){
 				?>
 				
-				<li style="color:#C9F;list-style-type:none;" title='<?php echo $metin[296]?>'>
-				  <?php echo (@mysql_result($okulAdlari,$i,"okulAdi"))?>
+				<li style="color:#C9F;" title='<?php echo $metin[296]?>' class="open">
+				  <span><?php echo (@mysql_result($okulAdlari,$i,"okulAdi"))?> </span>
 				  
 					<?php
 								$sqlSinif 	= "select * from eo_2sinif where okulID = '".@mysql_result($okulAdlari,$i,"id")."' order by sinifAdi";
@@ -2345,8 +2345,9 @@ function dersAgaci($gelen=null){
 								if(@mysql_numrows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_numrows($sinifAdlari)){		   
 						   ?>
-					<li style="list-style-type:none;color:#C3F" title='<?php echo $metin[297]?>'>
-					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> 
+					<li style="color:#C3F" title='<?php echo $metin[297]?>'>
+                    <span>
+					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> </span>
 						<?php
 										$sqlDers 	= "select * from eo_3ders where sinifID = '".@mysql_result($sinifAdlari,$j,"id")."' order by dersAdi";
 										$dersAdlari = mysql_query($sqlDers, $yol1);
@@ -2354,21 +2355,21 @@ function dersAgaci($gelen=null){
 										if(@mysql_numrows($dersAdlari)>0) echo "<ul>";										
 										while($k<@mysql_numrows($dersAdlari)){		   
 									?>
-						<li style="list-style-type:none;color:#C0F" title='<?php echo $metin[298]?>'>
-						  <?php echo (@mysql_result($dersAdlari,$k,"dersAdi"))?>
+						<li style="color:#C0F" title='<?php echo $metin[298]?>'>
+						  <span><?php echo (@mysql_result($dersAdlari,$k,"dersAdi"))?> </span>
 						  
 						  <?php
 										$sqlKonu 	= "select * from eo_4konu where dersID = '".@mysql_result($dersAdlari,$k,"id")."' order by konuAdi";
 										$konuAdlari = mysql_query($sqlKonu, $yol1);
 										$l=0;
-										if(@mysql_numrows($konuAdlari)>0) echo "<ul>";
+							if(@mysql_numrows($konuAdlari)>0) echo "<ul>";
 										while($l<@mysql_numrows($konuAdlari)){		   
 												$sqlSayfa 	= "select count(*) as toplam from eo_5sayfa where konuID = '".
 														@mysql_result($konuAdlari,$l,"id")."'";
 												$sayfaSayisi = mysql_query($sqlSayfa, $yol1);
 												$s_sayisi = mysql_result($sayfaSayisi,0,"toplam");												   
 						  ?>
-										<li  style="list-style-type:none" title='<?php echo $metin[299]?>'><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="text-decoration:none">
+										<li title='<?php echo $metin[299]?>' class="noktasiz"><span><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="text-decoration:none;color:#00F;">
 										  <?php echo (@mysql_result($konuAdlari,$l,"konuAdi"))?></a>&nbsp;
                           <?php  if(mysql_result($konuAdlari,$l,"konuyuKilitle")) echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?>
                           <?php echo (mysql_result($konuAdlari,$l,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />":"")?>
@@ -2377,7 +2378,7 @@ function dersAgaci($gelen=null){
 						  if($s_sayisi==0) 
 						     echo "<img src='img/empty.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[209]."\" title=\"".$metin[209]."\" />";
 						  ?>
-                          <?php echo "<a href='dersBilgisi.php?ders=".@mysql_result($konuAdlari,$l,"id")."' rel='facebox'><img src='img/info.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"info\" title=\"info\" /></a>";?>
+                          <?php echo "<a href='dersBilgisi.php?ders=".@mysql_result($konuAdlari,$l,"id")."' rel='facebox'><img src='img/info.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"info\" title=\"info\" /></a>";?></span>
 										  
 										  </li>
 						  <?php

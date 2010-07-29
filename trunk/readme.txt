@@ -15,13 +15,19 @@ Available language support is English and Turkish.
 Developer Name: Tarik Bagriyanik
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:	http://www.tuzlaatl.k12.tr/eogr
+Demo Sites:	http://www.tuzlaatl.k12.tr/eogr
+		http://tbagriyanik.xtreemhost.com/eogr
+
 Source Track:	http://eogr.googlecode.com 
-Support:	http://www.ohloh.net/p/eogr http://github.com/tbagriyanik/eOgr
-All Versions:	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
+		http://www.ohloh.net/p/eogr 
+		http://github.com/tbagriyanik/eOgr
+		http://yunus.svn.sourceforge.net/viewvc/yunus
+
+Download All Versions:	
+		http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	27-07-2010
+Last Update: 	29-07-2010
 Process Time : 	440 hours (18.350 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
@@ -48,7 +54,8 @@ Used Classes and Referred Sites:
 - flood-protection: http://archive.free-php.org.uk v1.0
 - jQuery: http://jquery.com v1.4.2
 - jQuery UI: http://jqueryui.com v1.8.2
-- simplepager: http://plugins.jquery.com/project/SimplePager v1.1
+- jQuery TreeView: http://bassistance.de/jquery-plugins/jquery-plugin-treeview v1.4
+- jQuery simplepager: http://plugins.jquery.com/project/SimplePager v1.1
 - nicEdit: http://www.nicedit.com v0.9 r23
 - phplivex: http://www.phplivex.com v2.6
 - wtag: http://spacegirlpippa.co.uk v1.0Beta

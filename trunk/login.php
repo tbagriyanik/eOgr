@@ -65,6 +65,20 @@ Lesser General Public License for more details.
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
+<script src="lib/jquery.cookie.js" type="text/javascript"></script>
+<script src="lib/jquery-treeview/jquery.treeview.pack.js" type="text/javascript"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$("#lessonTree").treeview({
+				animated: "fast",
+				collapsed: true,
+				persist: "cookie",
+				control:"#sidetreecontrol"
+			});
+		})
+		
+</script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -73,6 +87,8 @@ Lesser General Public License for more details.
       }) 
     })
 </script>
+
+<!-- HEAD -->
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -262,6 +278,7 @@ Lesser General Public License for more details.
                     <div>
                       <div class="msg_list">
                         <h3><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></h3>
+                        <div id="sidetreecontrol"><a href="?#"><?php echo $metin[458]?></a> | <a href="?#"><?php echo $metin[459]?></a> | <a  href="#"><?php echo $metin[460]?></a></div>
                         <div class="msg_body"> <?php echo dersAgaci(1)?> </div>
                       </div>
                     </div>

@@ -613,4 +613,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[456] = "Hiç çalýþmamýþ olan öðrenci(ler)";		
 		$metin[457] = "En baþarýlý öðrenci(ler)";		
 		
+		$metin[458] = "Tümünü Kapa";
+		$metin[459] = "Tümünü Aç";
+		$metin[460] = "Tümünü Deðiþtir";
+		
 ?>
