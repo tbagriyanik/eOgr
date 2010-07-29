@@ -602,4 +602,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[459] = "Expande All";
 		$metin[460] = "Toggle All";
 		
+		$metin[461] = "Course Details";
+		$metin[462] = "Print";		
+		
 ?>

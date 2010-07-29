@@ -73,7 +73,9 @@ CSS, RSS and HTML Validations:
 - http://jigsaw.w3.org/css-validator/validator
 - http://validator.w3.org/feed
 - http://validator.w3.org/check
-- Mozilla Firefox "HTML Validator" extension is also very helpful
+
+Advice:
+Mozilla Firefox "HTML Validator", FireBug and "Web Developer" extensions
 
 Note: 
 - Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.
