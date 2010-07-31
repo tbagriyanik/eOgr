@@ -51,6 +51,7 @@ Options +FollowSymlinks
 RewriteEngine On
 RewriteRule ^ogre /eogr/lessons.php
 #url shorten sample .../ogre?konu=1 > .../lessons.php?konu=1
+RewriteRule ^download /eogr/fileDownload.php
 
 <Files ~ "^\.ht">
  Order allow,deny

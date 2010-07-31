@@ -662,6 +662,32 @@ function yetimKayitNolar($tablo){
 	return $sonuc;
 }
 /*
+getDownloadCount:
+kimlik ile indirme sayýsý getirir
+*/
+function getDownloadCount($id){
+	$sql1 = "select downloadCount from eo_files where id='$id'";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && mysql_numrows($result1) == 1){
+		$sonuc = @mysql_fetch_array($result1);
+	  }
+   	@mysql_free_result($result1);	 
+	return $sonuc[0]+1;
+}
+/*
+downloadSayac:
+kimlik ile sayacý artýralým
+*/
+function downloadSayac ($id){
+	$sql1 = "UPDATE eo_files set downloadCount='".getDownloadCount($id)."' 
+			where id='$id'";	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+   	@mysql_free_result($result1);
+}
+/*
 getStats:
 belli bir istatistik bilgisini elde etme
 */

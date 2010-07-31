@@ -610,5 +610,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[465] = "File Name";		
 		$metin[466] = "Download Count";		
 		$metin[467] = "File Update Form";		
+		$metin[468] = "File not found!";		
 				
 ?>

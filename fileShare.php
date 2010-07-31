@@ -210,8 +210,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	   echo "<font id='hata'>Bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
 	
-			$gelenyorum = str_replace("\r\n", "<br/>", $_POST['fileName']);
-			$gelenyorum = RemoveXSS($gelenyorum);
+			$gelenyorum = RemoveXSS($_POST['fileName']);
 
 			$updateSQL = sprintf("UPDATE eo_files SET fileName='%s' WHERE id=%s",
 							   $gelenyorum,
@@ -295,7 +294,12 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
-
+?>
+<blockquote style="width:400px;">
+<a href="lib/ajaxUpload" onclick="window.open('lib/ajaxUpload','upload','height=250,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
+return false;" class="external">Dosya Paylaþ</a>
+</blockquote>
+<?php
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 	//güncelleme
 ?>
@@ -310,11 +314,12 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                       </tr>
                       <tr valign="baseline">
                         <td align="right" nowrap="nowrap"><label for="fileName"> <?php echo $metin[465]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="fileName" id="fileName" value="<?php echo GetSQLValueStringNo($row_eoUsers['fileName'],"text"); ?>"></td>
+                        <td bgcolor="#CCFFFF"><input type="text" name="fileName" id="fileName" value="<?php echo GetSQLValueStringNo($row_eoUsers['fileName'],"text");
+						?>"></td>
                       </tr>
                       <tr valign="baseline">
                         <td colspan="2" align="center" bgcolor="#CCFFFF" class="tabloAlt"><input type="submit" value="<?php echo $metin[25]?>" />
-                          <input name="geri" type="button" id="geri" onclick="location.href = &quot;fileShare.php&quot;;" value="<?php echo $metin[28]?>" /></td>
+                          <a href="fileShare.php"><?php echo $metin[28]?></a></td>
                       </tr>
                     </table>
                     <input type="hidden" name="MM_update" value="form3" />
@@ -340,6 +345,10 @@ else if ($totalRows_eoUsers>0)
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="fileName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
                           <a href="?order=fileName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[465]?> </a></th>
+                          <th ><?php if ($sirAlan=="downloadCount") {?>
+                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="downloadCount")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
+                          <?php } ?>
+                          <a href="?order=downloadCount&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[466]?> </a></th>
                       </tr>
                       <?php 
   $satirRenk=0;
@@ -354,30 +363,35 @@ else if ($totalRows_eoUsers>0)
                       <tr >
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['userName']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin(smileAdd(temizle($row_eoUsers['fileName']))); ?></td>
-                        <td align="center" nowrap="nowrap" valign="middle" ><!--<a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
-                          <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" />--></td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?>><?php 
+						if(!file_exists('uploads/'.$row_eoUsers['fileName'])) { 
+							echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> ";
+							echo araKalin(temizle($row_eoUsers['fileName']));  
+						} else {
+							echo "<a href='download?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName'].
+							      "' class='external'>".$row_eoUsers['fileName']."</a>";
+						}
+?></td>
+                        <td align='right' <?php echo "style=\"background-color: $row_color;\""?>><?php echo temizle($row_eoUsers['downloadCount']); ?></td>
+                        <?php
+						 if($row_eoUsers['userName']==$_SESSION["usern"] or $tur=="2") {
+                        ?>
+                        <td align="center" nowrap="nowrap" valign="middle" >
+                        <a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>
+                        <?php
+						if(file_exists('uploads/'.$row_eoUsers['fileName'])){
+                        ?>&nbsp;|&nbsp;
+                        <a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>">
+                        <img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>
+                        <?php }
+						?>
+                        </td>
+                        <?php
+						 }
+                          ?>
                       </tr>
-                      <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
-                      <tr>
-                        <td colspan="7" align="center" valign="middle" class="tabloAlt" ><label>
-                            <input name="tumunuSec" type="checkbox" id="tumunuSec" onclick="javascript: 
-    for (var i=0;i&lt;document.formSilme.elements.length;i++)
-    {
-      var e=document.formSilme.elements[i];
-      if (e.type == 'checkbox' &amp;&amp; e.name !='tumunuSec' &amp;&amp; e.name !='silIzin')
-        e.checked=!e.checked;
-    }
- " value="" />
-                            <?php echo $metin[35]?> </label>
-                          |
-                          <label>
-                            <input name="silIzin" type="checkbox" id="silIzin" value="evet" />
-                            <?php echo $metin[36]?> </label>
-                          <label>
-                            <input type="submit" name="Sil" id="Sil" value="<?php echo $metin[37]?>" />
-                          </label></td>
-                      </tr>
+                      <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); 						
+                      ?>
                     </table>
                     <?php
 if ($totalRows_eoUsers> $maxRows_eoUsers)
@@ -394,7 +408,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                         <td colspan="4"><div align="center"><?php echo min($startRow_eoUsers + $maxRows_eoUsers, $totalRows_eoUsers) ?> / <?php echo $totalRows_eoUsers ?> </div></td>
                       </tr>
                     </table>
-                  <?php
+                    <?php
    }
  ?>
                   </form>
