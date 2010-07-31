@@ -611,5 +611,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[466] = "Download Count";		
 		$metin[467] = "File Update Form";		
 		$metin[468] = "File not found!";		
+		$metin[469] = "You can search in 'user name' and 'file name' fields partially.";    	
 				
 ?>
