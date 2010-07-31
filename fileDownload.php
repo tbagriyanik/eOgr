@@ -22,7 +22,7 @@ include "conf.php";
 	$dosya = str_replace("..", "", $dosya);
 	$dosya = str_replace("/", "", $dosya);
 
- $physicalFileName = 'uploads/'.$dosya;
+ $physicalFileName = $_uploadFolder.'/'.$dosya;
 	// security check
 	if (file_exists($physicalFileName)) {
 			header('Content-Type: application/octet-stream');

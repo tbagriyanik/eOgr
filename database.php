@@ -21,4 +21,5 @@ $_db 			= 'eogr';
 $_source1		= "http://localhost/eogr";		//eogr site address for check_source
 $_source2		= "http://127.0.0.1/eogr";
 
+$_uploadFolder	= "uploads"		//766 or 777 permission needs this folder
 ?>
