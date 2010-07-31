@@ -620,4 +620,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[461] = "Kurs Detaylarý";
 		$metin[462] = "Yazdýr";		
 		
+		$metin[463] = "Dosyalar";		
+		$metin[464] = "Ödevler ve Dosyalar";		
+		$metin[465] = "Dosya Adý";		
+		$metin[466] = "Ýndirme Sayýsý";		
+		$metin[467] = "Dosya Güncelleme Formu";		
+		
 ?>

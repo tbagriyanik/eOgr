@@ -151,7 +151,12 @@ CREATE TABLE IF NOT EXISTS `eo_comments` (
 --
 -- Tablo döküm verisi `eo_comments`
 --
-
+CREATE TABLE IF NOT EXISTS `eo_files` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+	`userID` INT NOT NULL ,
+	`fileName` VARCHAR( 15 ) NOT NULL ,
+	`downloadCount` INT NOT NULL
+) ENGINE = MYISAM COMMENT = 'uploads';
 -- --------------------------------------------------------
 
 --
@@ -254,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `eo_sitesettings` (
 --
 
 INSERT INTO `eo_sitesettings` (`id`, `okulGenelAdi`, `versiyon`, `sayfaBlokSayisi`, `sayfaKullaniciSayisi`, `veriHareketleriSayisi`, `ayar1int`, `ayar2int`, `ayar3int`, `ayar4char`, `ayar5char`) VALUES
-(1, 'Net Okul', '117a', 15, 10, 15, 10, 10, 60, 'admin@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
+(1, 'Net Logo', 'version', 15, 10, 15, 10, 10, 60, 'admin@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
 
 -- --------------------------------------------------------
 

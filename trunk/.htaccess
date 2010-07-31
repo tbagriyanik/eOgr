@@ -1,4 +1,5 @@
 RewriteEngine On
+
 RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
@@ -16,18 +17,44 @@ RewriteRule ^(.*)$ hata.html [NC]
 
 RewriteRule (,|;|<|>|'|`) hata.html [NC]
 
+ErrorDocument 400 /eogr/hata.html
+ErrorDocument 401 /eogr/hata.html
 ErrorDocument 403 /eogr/hata.html
 ErrorDocument 404 /eogr/hata.html
-#not found error redirection
-
+ErrorDocument 500 /eogr/hata.html
+#not found error redirection: 
+#401 - Authorization Required, 400 - Bad request, 
+#403 - Forbidden, 500 - Internal Server Error, 404 - Wrong page
 
 AddDefaultCharset ISO_8859-9 		
 #avoid the 500 error display
 
 DirectoryIndex index.php
 IndexIgnore *
+HeaderName /eogr/hata.html
 #no site directory browsing
 
 <ifModule mod_php4.c>
-php_value zlib.output_compression 16386
-</ifModule>
+	php_value zlib.output_compression 16386	
+	php_value default_charset ISO_8859-9
+ </ifModule>
+
+#some tricks from : http://corz.org/serv/tricks/htaccess.php http://cooletips.de/htaccess/
+# no session id's in the URL!
+php_value register_globals Off
+php_value session.use_trans_sid 0
+# should be the same as.
+php_flag session.use_trans_sid off
+php_value upload_max_filesize 12M
+php_value post_max_size 12M
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^ogre /eogr/lessons.php
+#url shorten sample .../ogre?konu=1 > .../lessons.php?konu=1
+
+<Files ~ "^\.ht">
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
+#ignode .ht* files 
