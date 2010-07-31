@@ -1,0 +1,23 @@
+# No additional options are allowed
+Options None
+
+# Deny all access by default
+Order Allow,Deny
+
+# Set lister.php as index page
+DirectoryIndex lister.php
+
+# If something is accessed directly, it should be trated as text (not code)
+# This is a fallback directive
+ForceType text/plain
+
+# Allow access for the directory (the index page, that is)
+<Files .>
+Allow from all
+</Files>
+
+# Allow access for lister.php
+<Files lister.php>
+ForceType application/x-httpd-php
+Allow from all
+</Files>

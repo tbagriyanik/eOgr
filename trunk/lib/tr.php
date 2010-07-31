@@ -625,5 +625,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[465] = "Dosya Adý";		
 		$metin[466] = "Ýndirme Sayýsý";		
 		$metin[467] = "Dosya Güncelleme Formu";		
+		$metin[468] = "Dosya bulunamadý!";		
 		
 ?>
