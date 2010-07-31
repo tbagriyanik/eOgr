@@ -19,7 +19,7 @@ Lesser General Public License for more details.
     checkLoginLang(true,true,"upload.php");
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>"); 
 
-$destination_path = getcwd().DIRECTORY_SEPARATOR."../../uploads/";
+$destination_path = getcwd().DIRECTORY_SEPARATOR."../../".$_uploadFolder."/";
 
 $result = 0;
 

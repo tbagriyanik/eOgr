@@ -666,14 +666,15 @@ dosyaSil:
 dosyanýn fiziksel olarak silinmesi
 */
 function dosyaSil($id){
+	global $_uploadFolder;
 	$sql1 = "select fileName from eo_files where id='$id'";
 	
 	$yol1 = baglan();
 	$result1 = @mysql_query($sql1, $yol1);
  	  if ($result1 && mysql_numrows($result1) == 1){
 		$sonuc = @mysql_fetch_array($result1);
-		if(file_exists("uploads/".$sonuc[0]))
-			unlink("uploads/".$sonuc[0]);
+		if(file_exists($_uploadFolder."/".$sonuc[0]))
+			unlink($_uploadFolder."/".$sonuc[0]);
 			//varsa artýk silelim
 	  }
    	@mysql_free_result($result1);	 

@@ -47,7 +47,7 @@ INSTALLATION:
 	:Installation (administrators):
 - This project needs PHP 5 
 - MySQL 5 database server 
-- "uploads" folder needs write permission (755 can be)
+- "uploads" folder needs write permission (766 or 777 can be)
 - .htaccess enabled for security (can be erased if having problems)
 
 Used Classes and Referred Sites:

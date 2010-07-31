@@ -249,7 +249,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 ?>
-                  <blockquote style="width:400px;"> <a href="lib/ajaxUpload" onclick="window.open('lib/ajaxUpload','upload','height=300,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
+                  <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=300,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
 return false;" class="external">Dosya Paylaþ</a> | <a href="fileShare.php">Tazele</a> </blockquote>
                   <?php	
 if ($totalRows_eoUsers>0)
@@ -289,14 +289,14 @@ if ($totalRows_eoUsers>0)
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['userName']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php 
-						if(!file_exists('uploads/'.$row_eoUsers['fileName'])) { 
+						if(!file_exists($_uploadFolder.'/'.$row_eoUsers['fileName'])) { 
 							echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> ";
 							echo araKalin(temizle($row_eoUsers['fileName']));
 						} else {
 							echo "<a href='download?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName'].
 							      "' class='external'>".araKalin($row_eoUsers['fileName'])."</a>";
-							echo " (".getSizeAsString(filesize('uploads/'.$row_eoUsers['fileName'])).") ";
-							echo date ("d M Y H:i",filemtime('uploads/'.$row_eoUsers['fileName']));  
+							echo " (".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName'])).") ";
+							echo date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']));  
 						}
 ?></td>
                         <td align='right' <?php echo "style=\"background-color: $row_color;\""?>><?php echo temizle($row_eoUsers['downloadCount']); ?></td>
