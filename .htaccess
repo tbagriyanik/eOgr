@@ -45,8 +45,8 @@ php_value register_globals Off
 php_value session.use_trans_sid 0
 # should be the same as.
 php_flag session.use_trans_sid off
-php_value upload_max_filesize 12M
-php_value post_max_size 12M
+php_value upload_max_filesize 5M
+php_value post_max_size 5M
 Options +FollowSymlinks
 RewriteEngine On
 RewriteRule ^ogre /eogr/lessons.php

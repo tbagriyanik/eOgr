@@ -662,6 +662,41 @@ function yetimKayitNolar($tablo){
 	return $sonuc;
 }
 /*
+dosyaSil:
+dosyanýn fiziksel olarak silinmesi
+*/
+function dosyaSil($id){
+	$sql1 = "select fileName from eo_files where id='$id'";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && mysql_numrows($result1) == 1){
+		$sonuc = @mysql_fetch_array($result1);
+		if(file_exists("uploads/".$sonuc[0]))
+			unlink("uploads/".$sonuc[0]);
+			//varsa artýk silelim
+	  }
+   	@mysql_free_result($result1);	 
+}
+/*
+getSizeAsString:
+Returns the size of a file (given in byte) as a String with kB/MB unit
+ */
+function getSizeAsString($size) {
+	if ($size < 2) {
+		return $size." Byte";
+	}
+	else if ($size < 1024) {
+		return $size." Bytes";
+	}
+	else if ($size < 1048576) {
+		return round(($size/1024), 0)." KB";
+	}
+	else {
+		return round(($size/1048576), 1)." MB";
+	}
+}
+/*
 getDownloadCount:
 kimlik ile indirme sayýsý getirir
 */
@@ -683,6 +718,18 @@ kimlik ile sayacý artýralým
 function downloadSayac ($id){
 	$sql1 = "UPDATE eo_files set downloadCount='".getDownloadCount($id)."' 
 			where id='$id'";	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+   	@mysql_free_result($result1);
+}
+/*
+dosyaKaydet:
+dosya ismini ve kullanýcý kimliði kaydedilir
+*/
+function dosyaKaydet($dosya,$uID){
+	$uID = RemoveXSS($uID);
+	$dosya = temizle($dosya);
+	$sql1 = "INSERT into eo_files values(NULL, '$uID','$dosya','0')";	
 	$yol1 = baglan();
 	$result1 = @mysql_query($sql1, $yol1);
    	@mysql_free_result($result1);

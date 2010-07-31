@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `eo_comments` (
 CREATE TABLE IF NOT EXISTS `eo_files` (
 	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 	`userID` INT NOT NULL ,
-	`fileName` VARCHAR( 15 ) NOT NULL ,
+	`fileName` VARCHAR( 50 ) NOT NULL ,
 	`downloadCount` INT NOT NULL
 ) ENGINE = MYISAM COMMENT = 'uploads';
 -- --------------------------------------------------------
