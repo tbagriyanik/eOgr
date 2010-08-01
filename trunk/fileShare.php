@@ -293,7 +293,7 @@ if ($totalRows_eoUsers>0)
 							echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> ";
 							echo araKalin(temizle($row_eoUsers['fileName']));
 						} else {
-							echo "<a href='download?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName'].
+							echo "<a href='fileDownload.php?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName'].
 							      "' class='external'>".araKalin($row_eoUsers['fileName'])."</a>";
 							echo " (".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName'])).") ";
 							echo date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']));  
