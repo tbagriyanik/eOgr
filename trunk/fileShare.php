@@ -23,6 +23,19 @@ Lesser General Public License for more details.
 	$time = getmicrotime();  	
 	checkLoginLang(true,true,"fileShare.php");	
 	$seciliTema=temaBilgisi();
+	
+	if(isset($_GET['show']))
+	 if(in_array($_GET['show'],array(1,2))) {
+		  if($_GET['show']==1)
+			  $content = dosyaGoster('index.php'); /* get the buffer */
+		  else if($_GET['show']==2)
+			  $content = dosyaGoster('.htaccess'); /* get the buffer */			  
+		  else
+		      $content = "boþ";	  
+		  header("Content-Type: text/html");
+		  echo $content;
+		  die('');		 
+	  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -146,14 +159,22 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	 //
 
 $currentPage = $_SERVER["PHP_SELF"];
-if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
+//if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
+	if(isset($_GET['clean']))
+	 if($_GET['clean']==1) {
+		 $silSonuc = dosyaTemizle();
+		 if(!empty($silSonuc))
+	  	     echo "<font id='uyari'><strong>Temizleme iþlemi sonucu :</strong> <br/>$silSonuc</font>";
+	 }
+
+if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
+			(getUserID2($_SESSION['usern'])==dosyaKimID($_GET['id']) or $tur=='2')) {
    
   dosyaSil(RemoveXSS($_GET['id'])); 
   	
@@ -248,6 +269,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
+
 ?>
                   <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
 return false;" class="external">Dosya Paylaþ</a> | <a href="fileShare.php">Tazele</a> </blockquote>
@@ -262,14 +284,16 @@ if ($totalRows_eoUsers>0)
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
                           <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
-                        <th width="138"><?php if ($sirAlan=="userName") {?>
+                        <th ><?php if ($sirAlan=="userName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
                           <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
-                        <th width="500"><?php if ($sirAlan=="fileName") {?>
+                        <th ><?php if ($sirAlan=="fileName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="fileName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
                           <a href="?order=fileName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[465]?> </a></th>
+                          <th></th>
+                          <th><?php echo $metin[129];?></th>
                         <th ><?php if ($sirAlan=="downloadCount") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="downloadCount")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
@@ -292,11 +316,14 @@ if ($totalRows_eoUsers>0)
 						if(!file_exists($_uploadFolder.'/'.$row_eoUsers['fileName'])) { 
 							echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> ";
 							echo araKalin(temizle($row_eoUsers['fileName']));
+							echo "<td style=\"background-color: $row_color;\">&nbsp;</td>";
+							echo "<td style=\"background-color: $row_color;\">&nbsp;</td>";
 						} else {
 							echo "<a href='fileDownload.php?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName'].
 							      "' class='external'>".araKalin($row_eoUsers['fileName'])."</a>";
-							echo " (".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName'])).") ";
-							echo date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']));  
+							echo "<td style=\"background-color: $row_color;\" align='right'>".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
+							echo "<td style=\"background-color: $row_color;\" align='right'>".date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
+							//echo mime_content_type ($_source1.'/'.$_uploadFolder.'/'.$row_eoUsers['fileName']);  
 						}
 ?></td>
                         <td align='right' <?php echo "style=\"background-color: $row_color;\""?>><?php echo temizle($row_eoUsers['downloadCount']); ?></td>
@@ -311,23 +338,22 @@ if ($totalRows_eoUsers>0)
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); 						
                       ?>
                     </table>
-                    <?php
+                  </form>
+                  <?php
 if ($totalRows_eoUsers> $maxRows_eoUsers)
    {
 ?>
-                    <table border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCCCC" >
-                      <tr>
-                        <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, 0, $queryString_eoUsers); ?>"><img src="img/page-first.gif" border="0" alt="first" /></a> </div></td>
-                        <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, max(0, $pageNum_eoUsers - 1), $queryString_eoUsers); ?>"><img src="img/page-prev.gif" border="0" alt="prev" /></a> </div></td>
-                        <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, min($totalPages_eoUsers, $pageNum_eoUsers + 1), $queryString_eoUsers); ?>"><img src="img/page-next.gif" border="0"  alt="next"/></a> </div></td>
-                        <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, $totalPages_eoUsers, $queryString_eoUsers); ?>"><img src="img/page-last.gif" border="0" alt="last" /></a> </div></td>
-                      </tr>
-                      <tr>
-                        <td colspan="4"><div align="center"><?php echo min($startRow_eoUsers + $maxRows_eoUsers, $totalRows_eoUsers) ?> / <?php echo $totalRows_eoUsers ?> </div></td>
-                      </tr>
-                    </table>
-
-                  </form>
+                  <table border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCCCC" >
+                    <tr>
+                      <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, 0, $queryString_eoUsers); ?>"><img src="img/page-first.gif" border="0" alt="first" /></a> </div></td>
+                      <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, max(0, $pageNum_eoUsers - 1), $queryString_eoUsers); ?>"><img src="img/page-prev.gif" border="0" alt="prev" /></a> </div></td>
+                      <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, min($totalPages_eoUsers, $pageNum_eoUsers + 1), $queryString_eoUsers); ?>"><img src="img/page-next.gif" border="0"  alt="next"/></a> </div></td>
+                      <td><div align="center"> <a href="<?php printf("%s?pageNum_eoUsers=%d%s&amp;yonU=dur", $currentPage, $totalPages_eoUsers, $queryString_eoUsers); ?>"><img src="img/page-last.gif" border="0" alt="last" /></a> </div></td>
+                    </tr>
+                    <tr>
+                      <td colspan="4"><div align="center"><?php echo min($startRow_eoUsers + $maxRows_eoUsers, $totalRows_eoUsers) ?> / <?php echo $totalRows_eoUsers ?> </div></td>
+                    </tr>
+                  </table>
                   <form method="get" id="sayfaSec" name="sayfaSec" action="fileShare.php">
                     <p>
                       <label> <?php echo $metin[110]?> :
@@ -338,14 +364,16 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                       </label>
                     </p>
                   </form>
-                    <?php
+                  <?php
    }
- ?>                  
+ ?>
                   <form id="aramak" name="aramak" method="get" action="fileShare.php">
-                   <p> <label> <?php echo $metin[29]?> :
-                      <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[469]?>" value="<?php echo $arayici?>" />
-                    </label>
-                    <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/></p>
+                    <p>
+                      <label> <?php echo $metin[29]?> :
+                        <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[469]?>" value="<?php echo $arayici?>" />
+                      </label>
+                      <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
+                    </p>
                   </form>
                   <?php  
    }
@@ -354,10 +382,22 @@ if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulu
 if ($tur=="2") {
 	$dosyUpload = dosya_uploads_uyumu();
 	if(empty($dosyUpload))
-	  echo "<font id='uyari'> Veritabaný ile gönderme klasörü uyumludur!</font>";
-	  else
-	  echo "<font id='hata'> Veritabaný ile gönderme klasörü uyumlu deðildir!<br/>$dosyUpload</font>";
-}
+		  echo "<font id='uyari'> Veritabaný ile paylaþým klasörü uyumludur!</font>";
+	  else {
+		  echo "<font id='hata'> Veritabaný ile paylaþým klasörü uyumlu deðildir!<br/>$dosyUpload<br/>";
+		  echo "<a href='fileShare.php?clean=1'>Tümünü Sil!</a></font>";	
+	  }
+	  echo "<p>Bu dosyalarýn içeriði önemlidir, kontrol ediniz : ";
+	  if (file_exists($_uploadFolder.'/.htaccess'))
+		  	echo "<a href='fileShare.php?show=2' target=\"_blank\" class='external'>.htaccess</a> ";
+		  else
+		  	echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> .htaccess ";			
+	  if (file_exists($_uploadFolder.'/index.php'))
+		  	echo "<a href='fileShare.php?show=1' target=\"_blank\" class='external'>index.php</a> ";
+		  else
+		  	echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> index.php ";
+	  echo "</p>";			
+}//if tur=2
 
 	}
 	else
