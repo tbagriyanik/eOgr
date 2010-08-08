@@ -627,5 +627,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[467] = "Dosya Güncelleme Formu";		
 		$metin[468] = "Dosya bulunamadý!";		
 		$metin[469] = "Kullan&#305;c&#305; ad&#305; ve dosya ad&#305; i&ccedil;inde par&ccedil;al&#305; arama yap&#305;labilir.";
+		$metin[470] = "Paylaþýlan Dosya(lar)";		
 		
 ?>

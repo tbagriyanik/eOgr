@@ -421,6 +421,23 @@ function oyOrt($id)
 	}
 }
 /*
+dosyaSay:
+kullanýcýnýn paylaþtýðý dosya sayýsý 
+*/
+function dosyaSay($id)
+{
+	global $yol1;	
+	$id = substr(temizle2($id),0,15);
+    $sql1 = "SELECT count(fileName) as say FROM eo_files where userID='".$id."' limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1){
+       return (mysql_result($result1, 0, "say"));
+    }else {
+	   return ("");
+	}
+}
+/*
 getOgrenciSiniflari2:
 kullanýcýnýn sýnýf bilgileri
 */
@@ -546,7 +563,11 @@ function dersCalismaOrtRank($id,$grafikli){
 	if(oySay($_GET["kim"])>0)
 		echo "<strong>$metin[322] :</strong> ".oySay($_GET["kim"]);
 	if(oyOrt($_GET["kim"])>0)
-		echo " ($metin[323] ".round(oyOrt($_GET["kim"]),1).")";
+		echo " ($metin[323] ".round(oyOrt($_GET["kim"]),1).")"."<br/>";
+		
+	if(dosyaSay($_GET["kim"])>0)
+		echo "<strong>$metin[470] :</strong> ".dosyaSay($_GET["kim"]);
+		
 	if($_GET['set']!="1"){
 		echo"<br/><br/>";
 		echo "<a href=\"mail.php?to=".$_GET["kim"]."\" class=\"external\" onclick='window.open(\"mail.php?to=".$_GET["kim"]."\");return false;'>$metin[69]</a>";

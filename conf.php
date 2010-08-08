@@ -351,7 +351,7 @@ function getTableSize($tableN){
 	    $araDeger = "<font color='red'><strong>".number_format(mysql_result($res, 0, "Data_free") ,0,",","."). " B</strong></font>";	
 	  
 	$sonuc = "&nbsp;&nbsp;". number_format(mysql_result($res, 0, "Data_length") + 
-							mysql_result($res, 0, "Index_length"),0,",",".")." B [" .$araDeger.mysql_result($res, 0, "Rows")."]" ;
+							mysql_result($res, 0, "Index_length"),0,",",".")." B $araDeger [".mysql_result($res, 0, "Rows")."]" ;
  	 @mysql_free_result($res); 			
 	  return  $sonuc ;
 	}
@@ -696,9 +696,19 @@ function dosyaSil($id){
  	  if ($result1 && mysql_numrows($result1) == 1){
 		$sonuc = @mysql_fetch_array($result1);
 		if(file_exists($_uploadFolder."/".$sonuc[0]))
-			unlink($_uploadFolder."/".$sonuc[0]);
+			@unlink($_uploadFolder."/".$sonuc[0]);
 			//varsa artýk silelim
 	  }
+   	@mysql_free_result($result1);	 
+}
+/*
+dosyaSil2:
+dosyanýn veritabanýndan silinmesi
+*/
+function dosyaSil2($id){
+	$yol1 = baglan();
+	$sql1 = "delete from eo_files where id='$id' limit 1";
+	$result1 = mysql_query($sql1, $yol1);
    	@mysql_free_result($result1);	 
 }
 /*
@@ -748,6 +758,56 @@ function dosya_uploads_uyumu(){
 	 
 	 return $sonuc;
    	@mysql_free_result($result1);	 
+}
+/*
+dosyaTemizle:
+gereksiz dosyalarý upload klasöründen ve veritabanýndan siler
+*/
+function dosyaTemizle(){
+	$sonuc = "";
+	$dosyalarVTdeki = array();
+	
+	global $_uploadFolder;
+	$sql1 = "select fileName,id from eo_files";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && mysql_numrows($result1) > 0){
+		while ($gelen = @mysql_fetch_array($result1)){
+			$dosyalarVTdeki[]=$gelen[0];
+			if(!file_exists($_uploadFolder."/".$gelen[0])){
+			 $sonuc .= "* ".$gelen[0]." veritabanýndan silindi!<br/>"; 
+			 dosyaSil2($gelen[1]);
+			}
+			 //vtdeki dosya klasörde yok ise 			
+		}
+	  }
+	 
+	 foreach(dosyaListele($_uploadFolder) as $eleman){		   
+		 	if(!in_array($eleman,array(".svn",".htaccess","index.php")) and !in_array($eleman,$dosyalarVTdeki)) {
+				$sonuc .= "~ ".$eleman." fiziksel olarak silindi!<br/>"; 
+				@unlink($_uploadFolder."/".$eleman);
+				//klasördeki dosya vt içinde yok ise
+				}		 
+		 }
+	 
+	 return $sonuc;
+   	@mysql_free_result($result1);
+}
+/*
+dosyaGoster:
+gelen dosya içeriðini gösterir
+*/
+function dosyaGoster($filename){
+	global $_uploadFolder;
+	if (!file_exists($_uploadFolder."/$filename")) 
+	   return "dosya yok";
+	$handle = fopen($_uploadFolder."/$filename", "r");
+        $sData = '';
+        while(!feof($handle))
+            $sData .= fread($handle, filesize($_uploadFolder."/$filename"));
+        fclose($handle);	
+	return $sData;
 }
 /*
 getSizeAsString:
@@ -1563,6 +1623,25 @@ function getUserType($usernam)
 	   return (-2);
 	}
 }
+/*
+dosyaKimID:
+dosya paylaþýmýndaki kullanýcý kimliði
+*/
+function dosyaKimID($gelen){
+	$gelen = RemoveXSS($gelen);
+    $sql1 = "SELECT userID FROM eo_files where id='$gelen' limit 0,1";
+	
+    $yol1 = baglan();
+	$result1 = mysql_query($sql1, $yol1);
+		if ($result1 && @mysql_numrows($result1)==1)
+				{  $sonuc = @mysql_result($result1, 0, "userID")	;
+				   @mysql_free_result($result1);		     
+				   return ($sonuc);
+				}else {
+				   return 0;
+				}	
+}
+
 /*
 getUserID:
 kullanýcýnýn kimlik numarasýný bulur
