@@ -249,7 +249,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 ?>
-                  <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=300,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
+                  <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
 return false;" class="external">Dosya Paylaþ</a> | <a href="fileShare.php">Tazele</a> </blockquote>
                   <?php	
 if ($totalRows_eoUsers>0)
@@ -350,6 +350,14 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   <?php  
    }
 if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulunamadý veya hi&ccedil; kayýt yok!</font>";
+
+if ($tur=="2") {
+	$dosyUpload = dosya_uploads_uyumu();
+	if(empty($dosyUpload))
+	  echo "<font id='uyari'> Veritabaný ile gönderme klasörü uyumludur!</font>";
+	  else
+	  echo "<font id='hata'> Veritabaný ile gönderme klasörü uyumlu deðildir!<br/>$dosyUpload</font>";
+}
 
 	}
 	else
