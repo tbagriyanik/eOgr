@@ -17,7 +17,7 @@ Lesser General Public License for more details.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
 <title>Dosya Yükleme</title>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">
@@ -43,6 +43,14 @@ function stopUpload(success){
 }
 //-->
 </script>
+<style type="text/css">
+body {
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+}
+</style>
 </head>
 
 <body>
@@ -50,12 +58,11 @@ function stopUpload(success){
   <div id="header">
     <div id="header_left"></div>
     <div id="header_main">eOgr - Dosya Yükleme</div>
-    <div id="header_right"></div>
+    <div id="header_right"><input type="image" name="closeBtn" src="../../img/close.gif" value="Kapat"  onclick="window.close();" style="left:-10px;"/></div>
   </div>
   <?php
 	include "../../conf.php";
     checkLoginLang(true,true,"index.php");
-	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");   
   ?>
   <div id="content">
     <form action="upload.php" method="post" enctype="multipart/form-data" target="upload_target" onsubmit="startUpload();" >
@@ -66,14 +73,15 @@ function stopUpload(success){
         <label>Dosya:
           <input name="myfile" type="file" size="30" />
         </label>
-        <label>
-          <input type="submit" name="submitBtn" class="sbtn" value="Yükle" />
-        </label>
+        <input type="submit" name="submitBtn" class="sbtn" value="Yükle" />
+        <INPUT TYPE="hidden" NAME="MAX_FILE_SIZE" VALUE="5242880">
       </p>
       <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
     </form>
+        
     <ul>
       <li>Dosya adý 50 karakteri geçmemelidir. </li>
+      <li>Dosya adýnda Türkçe karakter ve boþluk olmamalýdýr.</li>
       <li>Dosya boyutu en fazla 5 MB olabilir.</li>
       <li>Var olan bir dosya tekrar gönderilemez.</li>
     </ul>

@@ -203,7 +203,8 @@ Lesser General Public License for more details.
 						$host =  $_host;
 						$dbUser =  $_username;
 						$dbPassword =  $_password;
-						$sqlFile = "REPAIR  TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating; OPTIMIZE TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating;";
+						$sqlFile = "REPAIR  TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files; 
+									OPTIMIZE TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files;";
 						
 						$baglan2=mysql_connect($host, $dbUser, $dbPassword);
 						
@@ -245,22 +246,23 @@ Lesser General Public License for more details.
                         <input name="al" type="submit" id="al" value="<?php echo $metin[158]?>"/>
                       </form>
                       <h4><?php echo $metin[211]?> :</h4>
-                      eo_1okul (<?php echo getTableSize("eo_1okul"); ?>) - (<?php echo $metin[212]?>)<br />
-                      <strong>eo_2sinif (<?php echo getTableSize("eo_2sinif"); ?>) :</strong> <?php echo yetimKayitNolar("eo_2sinif")?><br />
-                      <strong>eo_3ders (<?php echo getTableSize("eo_3ders"); ?>) :</strong> <?php echo yetimKayitNolar("eo_3ders")?><br />
-                      <strong>eo_4konu (<?php echo getTableSize("eo_4konu"); ?>) :</strong> <?php echo yetimKayitNolar("eo_4konu")?><br />
-                      <strong>eo_5sayfa (<?php echo getTableSize("eo_5sayfa"); ?>) :</strong> <?php echo yetimKayitNolar("eo_5sayfa")?><br />
-                      <strong>eo_userworks (<?php echo getTableSize("eo_userworks"); ?>) :</strong> <?php echo yetimKayitNolar("eo_userworks")?><br />
-                      <strong>eo_sinifogre (<?php echo getTableSize("eo_sinifogre"); ?>) :</strong> <?php echo yetimKayitNolar("eo_sinifogre")?><br />
-                      <strong>eo_rating (<?php echo getTableSize("eo_rating"); ?>) :</strong> <?php echo yetimKayitNolar("eo_rating")?><br />
-                      <strong>eo_comments (<?php echo getTableSize("eo_comments"); ?>) :</strong> <?php echo yetimKayitNolar("eo_comments")?><br />
-                      eo_users (<?php echo getTableSize("eo_users"); ?>) - (<?php echo $metin[212]?>)<br />
-                      eo_shoutbox (<?php echo getTableSize("eo_shoutbox"); ?>) - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
-                      eo_usertrack (<?php echo getTableSize("eo_usertrack"); ?>) - (<?php echo $metin[212].", ".$metin[238];?>)<br />
-                      eo_floodprotection (<?php echo getTableSize("eo_floodprotection"); ?>) - (<?php echo $metin[212]?>)<br />
-                      eo_sitesettings (<?php echo getTableSize("eo_sitesettings"); ?>) - (<?php echo $metin[212]?>)<br />
-                      eo_webref_rss_details (<?php echo getTableSize("eo_webref_rss_details"); ?>) - (<?php echo $metin[212]?>)<br />
-                      eo_webref_rss_items (<?php echo getTableSize("eo_webref_rss_items"); ?>) - (<?php echo $metin[212]?>)<br />
+                      eo_1okul <?php echo getTableSize("eo_1okul"); ?> - (<?php echo $metin[212]?>)<br />
+                      <strong>eo_2sinif <?php echo getTableSize("eo_2sinif"); ?> :</strong> <?php echo yetimKayitNolar("eo_2sinif")?><br />
+                      <strong>eo_3ders <?php echo getTableSize("eo_3ders"); ?> :</strong> <?php echo yetimKayitNolar("eo_3ders")?><br />
+                      <strong>eo_4konu <?php echo getTableSize("eo_4konu"); ?> :</strong> <?php echo yetimKayitNolar("eo_4konu")?><br />
+                      <strong>eo_5sayfa <?php echo getTableSize("eo_5sayfa"); ?> :</strong> <?php echo yetimKayitNolar("eo_5sayfa")?><br />
+                      <strong>eo_userworks <?php echo getTableSize("eo_userworks"); ?> :</strong> <?php echo yetimKayitNolar("eo_userworks")?><br />
+                      <strong>eo_sinifogre <?php echo getTableSize("eo_sinifogre"); ?> :</strong> <?php echo yetimKayitNolar("eo_sinifogre")?><br />
+                      <strong>eo_rating <?php echo getTableSize("eo_rating"); ?> :</strong> <?php echo yetimKayitNolar("eo_rating")?><br />
+                      <strong>eo_comments <?php echo getTableSize("eo_comments"); ?> :</strong> <?php echo yetimKayitNolar("eo_comments")?><br />
+                      <strong>eo_files <?php echo getTableSize("eo_files"); ?> :</strong> <?php echo yetimKayitNolar("eo_files")?><br />
+                      eo_users <?php echo getTableSize("eo_users"); ?> - (<?php echo $metin[212]?>)<br />
+                      eo_shoutbox <?php echo getTableSize("eo_shoutbox"); ?> - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
+                      eo_usertrack <?php echo getTableSize("eo_usertrack"); ?> - (<?php echo $metin[212].", ".$metin[238];?>)<br />
+                      eo_floodprotection <?php echo getTableSize("eo_floodprotection"); ?> - (<?php echo $metin[212]?>)<br />
+                      eo_sitesettings <?php echo getTableSize("eo_sitesettings"); ?> - (<?php echo $metin[212]?>)<br />
+                      eo_webref_rss_details <?php echo getTableSize("eo_webref_rss_details"); ?> - (<?php echo $metin[212]?>)<br />
+                      eo_webref_rss_items <?php echo getTableSize("eo_webref_rss_items"); ?> - (<?php echo $metin[212]?>)<br />
                     </div>
                     <div class="cleared"></div>
                   </div>

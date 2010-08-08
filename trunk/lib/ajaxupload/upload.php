@@ -26,21 +26,25 @@ $result = 0;
  if(in_array(strtolower($_FILES['myfile']['name']),array(".htaccess")) or 
     file_exists($destination_path . basename( $_FILES['myfile']['name'])) or 
 	$_FILES['myfile']['size']<2000 or
+	!eregi("^[a-z0-9_-]+.[a-z]{2,6}$", $_FILES['myfile']['name']) or 
 	strlen($_FILES['myfile']['name']>50) ) 
   { 
-   $result = 0 ; 
+   $result = 0; 
+	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
    // unwanted file(s) or already exists or size 5M = 2000
-   //file name can not be 50 chars
+   //file name can not have 50 chars, TR or space
  }else{
 	 try{
 	$target_path = $destination_path . basename( $_FILES['myfile']['name']);
 	dosyaKaydet($_FILES['myfile']['name'], getUserID2($_SESSION["usern"]));
+	trackUser($currentFile,"success,FileUp",$_SESSION["usern"]);
 	if(@move_uploaded_file($_FILES['myfile']['tmp_name'], $target_path)) {
 	  $result = 1;
 	}
 	 }
 	 catch (Exception $e) {
 		echo "<script>alert('Hata : $e');</script>"; 
+		trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 		$result = 0 ;
 	}
  }

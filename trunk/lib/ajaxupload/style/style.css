@@ -23,10 +23,11 @@
 	width: 45px;
 }
 #container #header #header_right {
-	background-image: url(images/header_right.gif);
+	
 	background-repeat: no-repeat;
 	height: 42px;
-	width: 6px;
+	margin-top:15px;
+	margin-right:10px;
 	float: right;
 }
 body {
@@ -87,11 +88,7 @@ body {
 	color: #FFFFFF;
 	font-weight: bold;
 	background-position: center;
-	padding: 0px;
-	margin-top: 20px;
-	margin-right: 20px;
-	margin-bottom: 0px;
-	margin-left: 20px;
+	margin:10px;
 }
 button {
 	font-family: Geneva, Arial, Helvetica, sans-serif;

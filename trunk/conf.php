@@ -347,10 +347,11 @@ function getTableSize($tableN){
 	$yol1 = baglan();
 	$res = mysql_query("SHOW TABLE STATUS LIKE '$tableN'", $yol1);
 	if ($res) {
-	  if(mysql_result($res, 0, "Data_free")>0) $araDeger = "<font color='red'><strong>".number_format(mysql_result($res, 0, "Data_free") ,0,",","."). " B</strong></font>";	
+	  if(mysql_result($res, 0, "Data_free")>0) 
+	    $araDeger = "<font color='red'><strong>".number_format(mysql_result($res, 0, "Data_free") ,0,",","."). " B</strong></font>";	
 	  
-	$sonuc = number_format(mysql_result($res, 0, "Data_length") + 
-							mysql_result($res, 0, "Index_length"),0,",",".")." B " .$araDeger ;
+	$sonuc = "&nbsp;&nbsp;". number_format(mysql_result($res, 0, "Data_length") + 
+							mysql_result($res, 0, "Index_length"),0,",",".")." B [" .$araDeger.mysql_result($res, 0, "Rows")."]" ;
  	 @mysql_free_result($res); 			
 	  return  $sonuc ;
 	}
@@ -657,6 +658,27 @@ function yetimKayitNolar($tablo){
 				}					
 		   
 		 break;
+		 case "eo_files":
+		 
+				$sql1 =    "SELECT eo_files.id 
+							FROM eo_files
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_files.userID
+							WHERE eo_users.userName is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc .= "<a href='fileShare.php'>[".$row_gelen['id']."]</a> ";
+				     
+				   if (empty($sonuc)) 
+				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
+					else
+					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				}					
+		   
+		 break;
 	 }
 	@mysql_free_result($result1); 
 	return $sonuc;
@@ -677,6 +699,54 @@ function dosyaSil($id){
 			unlink($_uploadFolder."/".$sonuc[0]);
 			//varsa artýk silelim
 	  }
+   	@mysql_free_result($result1);	 
+}
+/*
+dosyaListele:
+bir klasördeki dosya listesi dizi olarak alýnýr
+*/
+function dosyaListele($klasor){
+	$dosyaListesi = array();
+	$dizin=opendir($klasor);
+	while ($file = readdir($dizin)) {
+		if ( $file!="." AND $file!=".." AND $file!="" )	{
+			$dosyaListesi []=$file;
+		}
+	}
+	closedir($dizin);
+//	sort($dosyaListesi);
+	return $dosyaListesi;
+}
+/*
+dosya_uploads_uyumu:
+veritabaný listesinden uploads dosyalarýn isim kontrolü
+*/
+function dosya_uploads_uyumu(){
+	$sonuc = "";
+	$dosyalarVTdeki = array();
+	
+	global $_uploadFolder;
+	$sql1 = "select fileName from eo_files";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && mysql_numrows($result1) > 0){
+		while ($gelen = @mysql_fetch_array($result1)){
+			$dosyalarVTdeki[]=$gelen[0];
+			if(!file_exists($_uploadFolder."/".$gelen[0]))
+			 $sonuc .= "* ".$gelen[0]."<br/>"; 
+			 //vtdeki dosya klasörde yok ise 			
+		}
+	  }
+	 
+	 foreach(dosyaListele($_uploadFolder) as $eleman){		   
+		 	if(!in_array($eleman,array(".svn",".htaccess","index.php")) and !in_array($eleman,$dosyalarVTdeki)) {
+				$sonuc .= "~ ".$eleman."<br/>"; 
+				//klasördeki dosya vt içinde yok ise
+				}		 
+		 }
+	 
+	 return $sonuc;
    	@mysql_free_result($result1);	 
 }
 /*
