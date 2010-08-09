@@ -5,45 +5,40 @@
     with major improvements by Doug Neiner: http://pixelgraphics.us/
     based on work by Remy Sharp: http://jqueryfordesigners.com/
 */
-
-
 .anythingSlider {
-	width: 480px;
+	width: 760px;
 	height: 360px;
 	position: relative;
-	margin-top: 15px;
-	margin-right: auto;
-	margin-bottom: 15px;
-	margin-left: auto;
+	margin: 0 auto 15px;
 }
 .anythingSlider .wrapper {
-	width: 400px;
+	width: 680px;
 	overflow: auto;
-	height: 341px;
+	height: 324px;
 	margin: 0 40px;
 	position: absolute;
 	top: 0;
 	left: 0;
-
 }
 /* Width below is max for Opera */
 .anythingSlider .wrapper ul {
 	width: 32700px;
-	/*list-style: none;*/
+	list-style: none;
 	position: absolute;
-	top: 20px;
+	top: 0;
 	left: 0;
-	background: #ccf;
-	padding:20px !important;
+	background: #eee;
+	border-top: 3px solid #e0a213;
+	border-bottom: 3px solid #e0a213;
+	margin: 0;
 }
-.anythingSlider ul li {
+.anythingSlider .wrapper ul li {
 	display: block;
 	float: left;
 	padding: 0;
 	height: 317px;
-	width: 390px;
-	margin: 0px;
-	color: black;
+	width: 680px;
+	margin: 0;
 }
 .anythingSlider .arrow {
 	display: block;
@@ -52,7 +47,7 @@
 	background: url(arrows.png) no-repeat 0 0;
 	text-indent: -9999px;
 	position: absolute;
-	top: 65px;
+	top: -250px;
 	cursor: pointer;
 }
 .anythingSlider .forward {
@@ -69,12 +64,15 @@
 .anythingSlider .back:hover {
 	background-position: -67px -200px;
 }
-#thumbNav {
+.thumbNav {
 	position: relative;
-	top: 340px;
+	top: 323px;
 	text-align: center;
 }
-#thumbNav a {
+.thumbNav li {
+	display: inline;
+}
+.thumbNav a {
 	color: black;
 	font: 11px/18px Georgia, Serif;
 	display: inline-block;
@@ -83,16 +81,39 @@
 	margin: 0 5px 0 0;
 	background: #c58b04 url(cellshade.png) repeat-x;
 	text-align: center;
-	-moz-border-radius-bottomleft: 15px;
-	-moz-border-radius-bottomright: 15px;
-	-webkit-border-bottom-right-radius: 15px;
-	-webkit-border-bottom-left-radius: 15px;	
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
 }
-#thumbNav a:hover {
+.thumbNav a:hover {
 	background-image: none;
 }
-#thumbNav a.cur {
+.thumbNav a.cur {
 	background: #e0a213;
+}
+.start-stop {
+	z-index: 10;
+	background: green;
+	background-image: url(cellshade.png);
+	background-repeat: repeat-x;
+	color: white;
+	padding: 2px 5px;
+	width: 40px;
+	text-align: center;
+	position: absolute;
+	right: 45px;
+	top: 323px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+.start-stop.playing {
+	background-color: red;
+}
+.start-stop:hover {
+	background-image: none;
 }
 /*
   Prevents
