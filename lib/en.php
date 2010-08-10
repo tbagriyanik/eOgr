@@ -116,7 +116,7 @@ Lesser General Public License for more details.
 		$metin[85]="(passive) You can not do anything.";    
 		$metin[86]="(student) You can join the <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
 		$metin[87]="(teacher) You can edit the <a href=\"lessonsEdit.php\">lessons</a> or join the <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
-		$metin[88]="(administrator) You can administer the <a href=\"siteSettings.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> site</a>.";    
+		$metin[88]="(administrator) You can administer the <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> site</a>.";    
 		$metin[89]="(unknown type)";    
 		$metin[90]="Attention!";    
 		$metin[91]="If you will change your password, <br />Uncheck &quot;Don't update password for now!&quot; option and <br /> Write your new &quot;Password&quot;.";    
@@ -613,5 +613,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[468] = "File not found!";		
 		$metin[469] = "You can search in 'user name' and 'file name' fields partially.";    	
 		$metin[470] = "Shared File(s)";		
+		$metin[471] = "Notices";		
+		$metin[472] = "Members";		
 				
 ?>
