@@ -127,7 +127,7 @@ Lesser General Public License for more details.
 		$metin[96]="Administrator";    
 		
 		$metin[97]="Garden";    
-		$metin[98]="Classroom%d";    
+		$metin[98]="Classroom ";    
 		$metin[99]="Refresh";    
 		$metin[100]="Send";    
 		$metin[101]="Users are responsible for their conversation.";    
@@ -236,7 +236,7 @@ Lesser General Public License for more details.
 		$metin[187]="Working Percentage";
 		$metin[188]="You can search in 'user name' and 'subject name' fields partially.";    	
 
-		$metin[189]="* If user's working period is over 60 seconds and work percentage is 100 are marked.<br/>* Abbreviation for time: y - year, d - day, s - second";
+		$metin[189]="* If user's working period is over ".Sec2Time2(round(getStats(9)))." seconds and work percentage is 100 are <span style=\"background-color: wheat;\">marked</span>.<br/>* Abbreviation for time: y - year, d - day, s - second";
 		
 		$metin[190]="Students";
 		$metin[191]="Unregistered Users (demo)";
@@ -615,5 +615,12 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[470] = "Shared File(s)";		
 		$metin[471] = "Notices";		
 		$metin[472] = "Members";		
-				
+		
+		$metin[473] = "<strong>Last membership information : </strong> ";		
+		$metin[474] = "<strong>Last chat information (message, room) : </strong> ";		
+		$metin[475] = "<strong>Last comment information (comment) : </strong> ";		
+		$metin[476] = "<strong>Last rating information (rate) : </strong> ";		
+		$metin[477] = "<strong>Last lesson working information (completion state) : </strong> ";		
+		$metin[478] = "<strong>Last file information (download count) : </strong> ";		
+						
 ?>

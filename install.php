@@ -39,6 +39,41 @@ function browserdili() {
          return $lang[0];
 }
 /*
+getStats:
+fake func
+*/
+function getStats(){
+}
+/*
+Sec2Time2:
+saniyeyi üst zaman birimlerine çevirir
+*/
+function Sec2Time2($time){
+  if(is_numeric($time)){
+    $value = "";
+    if($time >= 31556926){
+      $value = floor($time/31556926)."y ";
+      $time = ($time%31556926);
+    }
+    if($time >= 86400){
+      $value .= floor($time/86400)."d ";
+      $time = ($time%86400);
+    }
+    if($time >= 3600){
+      $value .= strlen(floor($time/3600))==1?"0".floor($time/3600).":":floor($time/3600).":";
+      $time = ($time%3600);
+    }
+    if($time >= 60){
+      $value .= strlen(floor($time/60))==1?"0".floor($time/60).":":floor($time/60).":";
+      $time = ($time%60);
+    }
+    $value .= strlen(floor($time))==1?"0".floor($time)."s":floor($time)."s";
+    return $value;
+  }else{
+    return (bool) FALSE;
+  }
+}
+/*
 dilCevir:
 dil deðiþtirme yeri
 */

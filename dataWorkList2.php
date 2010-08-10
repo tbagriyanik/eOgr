@@ -350,7 +350,7 @@ if ($totalRows_eoUsers>0)
                         echo ($row_eoUsers['konuAdi'])?araKalin($row_eoUsers['konuAdi']):"<span id=bosVeri>###</span>";; 
 						?>
                           </a></td>
-                        <td align="right" nowrap="nowrap" <?php echo ($row_eoUsers['toplamZaman']>60)?"style=\"background-color: wheat;\"":"style=\"background-color: $row_color;\""?>><?php 
+                        <td align="right" nowrap="nowrap" <?php echo ($row_eoUsers['toplamZaman']>round(getStats(9)))?"style=\"background-color: wheat;\"":"style=\"background-color: $row_color;\""?>><?php 
 					    echo Sec2Time2($row_eoUsers['toplamZaman']);   
 					  ?></td>
                         <td align="right" <?php echo ($row_eoUsers['lastPage']<100)?"style=\"background-color: $row_color;\"":"style=\"background-color:wheat;\""?>><?php echo ($row_eoUsers['lastPage']);   ?></td>

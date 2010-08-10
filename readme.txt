@@ -27,7 +27,7 @@ Download All Versions:
 		http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	09-08-2010
+Last Update: 	10-08-2010
 Process Time : 	465 hours (18.350 lines PHP, 13.000 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
@@ -70,6 +70,7 @@ Used Classes and Referred Sites:
 - Input field hints: http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html
 - Bookmark with jquery: http://www.dynamicsitesolutions.com/javascript/add-bookmark-script
 - Flash Fix: http://www.onlineaspect.com/2009/08/13/javascript_to_fix_wmode_parameters
+- Human Relative Date : http://www.inventpartners.com/content/free-php-class-friendly-relative-time
 
 CSS, RSS and HTML Validations:  
 - http://jigsaw.w3.org/css-validator/validator
