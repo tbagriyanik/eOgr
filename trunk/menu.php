@@ -135,14 +135,15 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
   <?php
 							 if ($tur=='2'){
                             ?>
-  <li><a href="siteSettings.php"
+  <li><a href="siteNotices.php"
 						<?php
-						 if ($currentFile=="siteSettings.php" || $currentFile=="siteSettings2.php" ||  $currentFile=="siteSettings3.php" || $currentFile=="rssEdit.php" || $currentFile=="dataChatActions.php" || $currentFile=="dataActions.php" || $currentFile=="dataWorkList2.php" || $currentFile=="dataRatingList.php" || $currentFile=="dataCommentList.php")
+						 if ($currentFile=="siteNotices.php" || $currentFile=="siteSettings.php" || $currentFile=="siteSettings2.php" ||  $currentFile=="siteSettings3.php" || $currentFile=="rssEdit.php" || $currentFile=="dataChatActions.php" || $currentFile=="dataActions.php" || $currentFile=="dataWorkList2.php" || $currentFile=="dataRatingList.php" || $currentFile=="dataCommentList.php")
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[58]?> </span></span></a>
     <ul>
-      <li><a href="siteSettings.php"><span><span> <?php echo $metin[58]?> </span></span></a></li>
+      <li><a href="siteNotices.php"><span><span> <?php echo $metin[471]?> </span></span></a></li>
+      <li><a href="siteSettings.php"><span><span> <?php echo $metin[472]?> </span></span></a></li>
       <li><a href="siteSettings2.php"><span><span> <?php echo $metin[156]?> </span></span></a></li>
       <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
       <li><a href="rssEdit.php"><span><span> <?php echo $metin[70]?> </span></span></a></li>

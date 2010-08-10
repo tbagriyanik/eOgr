@@ -117,7 +117,7 @@ Lesser General Public License for more details.
 		$metin[85]="(<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> pasifsiniz) Herhangi bir i&#351;lem yapamazs&#305;n&#305;z.";    
 		$metin[86]="(<img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> &ouml;&#287;rencisiniz) <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Derslere</a> kat&#305;labilirsiniz.";    
 		$metin[87]="(<img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> &ouml;&#287;retmensiniz) <a href=\"lessonsEdit.php\">Ders</a> d&uuml;zenleyebilirsiniz veya <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> derslere</a> kat&#305;labilirsiniz.";    
-		$metin[88]="(<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> y&ouml;neticisiniz) <a href=\"siteSettings.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
+		$metin[88]="(<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> y&ouml;neticisiniz) <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
 		$metin[89]="(t&uuml;r&uuml;n&uuml;z belli de&#287;ildir)";    
 		$metin[90]="Dikkat!";    
 		$metin[91]="E&#287;er parola de&#287;i&#351;ikli&#287;i yapacaksan&#305;z, <br />&quot;Þimdilik Parola G&uuml;ncelleme&quot; se&ccedil;ene&#287;ini iptal edin ve <br />&quot;Parola&quot; k&#305;sm&#305;na yeni bir de&#287;er yaz&#305;n.";    
@@ -628,5 +628,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[468] = "Dosya bulunamadý!";		
 		$metin[469] = "Kullan&#305;c&#305; ad&#305; ve dosya ad&#305; i&ccedil;inde par&ccedil;al&#305; arama yap&#305;labilir.";
 		$metin[470] = "Paylaþýlan Dosya(lar)";		
+		$metin[471] = "Bildirimler";		
+		$metin[472] = "Üyeler";		
 		
 ?>

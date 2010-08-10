@@ -1,0 +1,220 @@
+<?php 
+/*
+eOgr - elearning project
+
+Developer Site: http://yunus.sourceforge.net
+Demo Site:		http://www.tuzlaatl.k12.tr/eogr
+Source Track:	http://eogr.googlecode.com 
+Support:		http://www.ohloh.net/p/eogr
+
+This project is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3 of the License, or any later version. See the GNU
+Lesser General Public License for more details.
+*/
+    if ( !isset( $_SESSION ['ready'] ) ) 
+     { 
+      session_start (); 
+      $_SESSION ['ready'] = TRUE; 
+     }
+  require("conf.php");  		
+  $time = getmicrotime();
+  checkLoginLang(true,true,"siteNotices.php");	   
+  $seciliTema=temaBilgisi();	  
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="-1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>eOgr - <?php echo $metin[471]?></title>
+<script type="text/javascript" src="lib/script.js"></script>
+<link rel="shortcut icon" href="img/favicon.ico"/>
+<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+<script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+        
+      }) 
+    })
+</script>
+<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+/*
+delWithCon:
+onaylý olarak silme
+*/
+function delWithCon(deletepage_url,field_value,messagetext) { 
+  if (confirm(messagetext)==1){
+    location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');
+  }
+}
+function MM_jumpMenuGo(objId,targ,restore){ //v9.0
+  var selObj = null;  with (document) { 
+  if (getElementById) selObj = getElementById(objId);
+  if (selObj) eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0; }
+}
+//-->
+</script>
+</head>
+<body>
+<div class="PageBackgroundGradient"></div>
+<div class="Main">
+  <div class="Sheet">
+    <div class="Sheet-tl"></div>
+    <div class="Sheet-tr">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-bl">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-br">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-tc">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-bc">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-cl">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-cr">
+      <div>&nbsp;</div>
+    </div>
+    <div class="Sheet-cc"></div>
+    <div class="Sheet-body">
+      <div class="Header">
+        <div class="Header-png"></div>
+        <div class="Header-jpeg"></div>
+        <div class="logo">
+          <h1 id="name-text" class="logo-name"><a href="index.php"> <?php echo ayarGetir("okulGenelAdi")?> </a></h1>
+          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
+        </div>
+      </div>
+      <div class="nav">
+        <?php
+				 require("menu.php");
+                ?>
+        <div class="l"> </div>
+        <div class="r">
+          <div>&nbsp;</div>
+        </div>
+      </div>
+      <div class="contentLayout">
+        <div class="content">
+          <div class="Post">
+            <div class="Post-tl"></div>
+            <div class="Post-tr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-br">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-tc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cc"></div>
+            <div class="Post-body">
+              <div class="Post-inner">
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[471]?> </span> </h2>
+                <div class="PostContent">
+                  <?php
+if ($tur=="2")	{//yönetici ise
+	
+	//fileShare.php'den	 
+	$dosyUpload = dosya_uploads_uyumu();
+	if(empty($dosyUpload))
+		  echo "<font id='uyari'> Veritabaný ile paylaþým klasörü ($_uploadFolder) uyumludur!</font>";
+	  else {
+		  echo "<font id='hata'> Veritabaný ile paylaþým klasörü ($_uploadFolder) uyumlu deðildir!<br/>$dosyUpload<br/>";
+		  echo "<a href='fileShare.php?clean=1'>Tümünü Sil!</a></font>";	
+	  }
+
+	 //index.php'den 
+	 if (sonUyeAdiGetir("ad")!=""){
+	 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));
+	 $uyeListesi=getUsersOnline();
+		 if(!empty($uyeListesi)){
+			 echo "<br/>$metin[446]<strong>";
+			 foreach($uyeListesi as $eleman){
+				 echo $eleman." ";
+				 }
+			 echo "</strong>";	 
+		 }
+	 }
+	
+ 	//son yapýlan iþlemler ve tarihi
+	$bilgi1 = sonSatirGetir("sohbet");
+	if(!empty($bilgi1))	echo $bilgi1;
+	$bilgi2 = sonSatirGetir("yorum");
+	if(!empty($bilgi2))	echo $bilgi2;
+	$bilgi3 = sonSatirGetir("oy");
+	if(!empty($bilgi3))	echo $bilgi3;
+	$bilgi4 = sonSatirGetir("ders");
+	if(!empty($bilgi4))	echo $bilgi4;
+}
+	else
+	  die($metin[447]);	
+?>
+                </div>
+                <div class="cleared"></div>
+              </div>
+              &nbsp;</div>
+          </div>
+          <div class="cleared"></div>
+          <div class="contentLayout">
+            <div class="content">
+              <div class="cleared"></div>
+              <div class="contentLayout">
+                <div class="content">
+                  <div class="cleared"></div>
+                  <div class="Footer">
+                    <div class="Footer-inner">
+                      <?php  						
+						 require "footer.php";
+                        ?>
+                    </div>
+                    <div class="Footer-background"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cleared"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<?php 
+@mysql_free_result($eoUsers);
+?>

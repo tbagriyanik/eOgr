@@ -230,26 +230,6 @@ function girisSayisi($id)
 	}
 }
 /*
-rankGrafik:
-derecelendirme grafiði
-*/
-function rankGrafik($val,$max){
-	if(empty($max) or $max==0) return;
-	//if(empty($val) or $val==0) return;
-	echo "<p>";
-	$graph = new BAR_GRAPH("pBar");
-//	$graph->labels = "Sýra";
-//	$graph->barBGColor = "#ccc";
-	$graph->barColors = "img/h_blue.gif";
-	$graph->values = "$val;$max";
-	$graph->percValuesDecimals = 1;
-	$graph->barWidth = 10;
-	$graph->barLength = 1;
-	$graph->barBorder = "0px groove gray";
-	echo $graph->create();
-	echo "</p>";
-}
-/*
 girisSayisiRank:
 kullanýcýnýn giriþ sayýsý seviyesi
 */
