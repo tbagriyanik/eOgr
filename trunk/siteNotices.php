@@ -158,8 +158,6 @@ if ($tur=="2")	{//yönetici ise
 	  }
 
 	 //index.php'den 
-	 if (sonUyeAdiGetir("ad")!=""){
-	 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));
 	 $uyeListesi=getUsersOnline();
 		 if(!empty($uyeListesi)){
 			 echo "<br/>$metin[446]<strong>";
@@ -168,17 +166,21 @@ if ($tur=="2")	{//yönetici ise
 				 }
 			 echo "</strong>";	 
 		 }
-	 }
-	
+	 echo '<hr noshade="noshade" color="#333333">';
  	//son yapýlan iþlemler ve tarihi
+	require_once('lib/humanRelativeDate.class.php');
 	$bilgi1 = sonSatirGetir("sohbet");
-	if(!empty($bilgi1))	echo $bilgi1;
+	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
 	$bilgi2 = sonSatirGetir("yorum");
-	if(!empty($bilgi2))	echo $bilgi2;
+	if(!empty($bilgi2))	echo $metin[475]."<p class='ozetBilgi'>".$bilgi2."</p>";
 	$bilgi3 = sonSatirGetir("oy");
-	if(!empty($bilgi3))	echo $bilgi3;
+	if(!empty($bilgi3))	echo $metin[476]."<p class='ozetBilgi'>".$bilgi3."</p>";
 	$bilgi4 = sonSatirGetir("ders");
-	if(!empty($bilgi4))	echo $bilgi4;
+	if(!empty($bilgi4))	echo $metin[477]."<p class='ozetBilgi'>".$bilgi4."</p>";
+	$bilgi5 = sonSatirGetir("uye");
+	if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
+	$bilgi6 = sonSatirGetir("dosya");
+	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
 }
 	else
 	  die($metin[447]);	

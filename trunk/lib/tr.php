@@ -128,7 +128,7 @@ Lesser General Public License for more details.
 		$metin[96]="Y&ouml;netici";    
 		
 		$metin[97]="Bah&ccedil;e";    
-		$metin[98]="S&#305;n&#305;f%d";    
+		$metin[98]="S&#305;n&#305;f ";    
 		$metin[99]="Tazele";    
 		$metin[100]="G&ouml;nder";    
 		$metin[101]="Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar sorumludurlar.";  
@@ -242,7 +242,7 @@ Lesser General Public License for more details.
 		$metin[187]="Bitirme Y&uuml;zdesi";
 		$metin[188]="Kullan&#305;c&#305; ad&#305; ve konu ad&#305; i&ccedil;inde par&ccedil;al&#305; arama yap&#305;labilir.";    	
 
-		$metin[189]="* &Ccedil;alýþma s&uuml;resi 60 saniye &uuml;zerinde olan ve bitirme y&uuml;zdesi 100 olanlar renkli olarak iþaretlenmiþtir.<br/>* S&uuml;re i&ccedil;inde ge&ccedil;en kýsaltmalar: y - yýl, d - g&uuml;n, s - saniye";
+		$metin[189]="* &Ccedil;alýþma s&uuml;resi ".Sec2Time2(round(getStats(9)))." saniye &uuml;zerinde olan ve bitirme y&uuml;zdesi 100 olanlar <span style=\"background-color: wheat;\">renkli</span> olarak iþaretlenmiþtir.<br/>* S&uuml;re i&ccedil;inde ge&ccedil;en kýsaltmalar: y - yýl, d - g&uuml;n, s - saniye";
 		
 		$metin[190]="&Ouml;ðrenciler";
 		$metin[191]="Kayýtlý Olmayan Kullanýcýlar (demo)";
@@ -630,5 +630,12 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[470] = "Paylaþýlan Dosya(lar)";		
 		$metin[471] = "Bildirimler";		
 		$metin[472] = "Üyeler";		
+		
+		$metin[473] = "<strong>Son üye bilgisi : </strong> ";		
+		$metin[474] = "<strong>Son sohbet bilgisi (mesaj, oda) : </strong> ";		
+		$metin[475] = "<strong>Son yorum bilgisi (yorum) : </strong> ";		
+		$metin[476] = "<strong>Son oy bilgisi (oy derecesi) : </strong> ";		
+		$metin[477] = "<strong>Son ders bilgisi (bitirme yüzdesi) : </strong> ";		
+		$metin[478] = "<strong>Son dosya bilgisi (indirme sayýsý) : </strong> ";		
 		
 ?>

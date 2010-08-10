@@ -154,6 +154,7 @@ giriþ ve dil kontrolü
 function checkLoginLang($lgn,$lng,$src){
 	global $metin;
 	global $adi;
+	global $taraDili;
 	
 	if($lng){
   		   $taraDili=$_COOKIE["lng"];    
@@ -1324,8 +1325,7 @@ function getStats($num,$uID="")
 							FROM eo_users 
 							LEFT OUTER JOIN eo_userworks
 							ON eo_users.id = eo_userworks.userID
-							WHERE userType=0  
-							GROUP BY userName
+							WHERE userType=0 and eo_userworks.userID is NULL  							
 							LIMIT 0,".ayarGetir("ayar2int");
 				
 				$yol1 = baglan();
@@ -2785,7 +2785,153 @@ function getKursTablo($dersID,$uID){
 	}
 	
 	return "-";
-}/*
+}
+/*
+odaCevir:
+gelen numaraya göre oda ismini getirir
+*/
+function odaGetir($gelen){
+	global $metin;
+	   if ($gelen==0) return $metin[97]; else
+	   if ($gelen==1) return "$metin[98]1"; else
+	   if ($gelen==2) return "$metin[98]2"; else
+	   if ($gelen==3) return "$metin[98]3"; else
+	   if ($gelen==4) return "$metin[98]4"; else
+	   if ($gelen==5) return "$metin[98]5"; else
+	   if ($gelen==6) return "$metin[98]6"; else
+	   if ($gelen==7) return "$metin[98]7"; else
+	   if ($gelen==9) return "$metin[98]9"; else
+	   if ($gelen==8) return "$metin[98]8";
+}
+/*
+sonSatirGetir:
+bir tablodan tarihe göre en son iþlem satýrý getirir
+*/
+function sonSatirGetir($tablo){
+	global $yol1,$metin;	
+	$sonuc = "";
+	$humanRelativeDate = new HumanRelativeDate();
+		
+	switch($tablo){
+		case "oy":
+			$sql1 = "SELECT * 
+					 FROM eo_rating
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_rating.userID					 
+					 INNER JOIN eo_4konu 
+					 ON eo_4konu.id  = eo_rating.konuID					 
+					 ORDER BY eo_rating.rateDate DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);			
+					
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[5]' rel='facebox'>".$gelen[6]."</a>, ".
+					"<a href='dersBilgisi.php?ders=$gelen[14]' rel='facebox'>".$gelen[15]."</a>, "
+					.$gelen[3].", "
+					.$insansi;
+				$sonuc .= " <a href='dataRatingList.php'>$metin[162]</a>";
+			}		
+		break;
+		case "yorum":
+			$sql1 = "SELECT * 
+					 FROM eo_comments
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_comments.userID					 
+					 INNER JOIN eo_4konu 
+					 ON eo_4konu.id  = eo_comments.konuID					 
+					 ORDER BY eo_comments.commentDate DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
+					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.smartShort($gelen[3]).", "
+					.$insansi;
+				$sonuc .= " <a href='dataCommentList.php'>$metin[162]</a>";
+			}		
+		break;
+		case "sohbet":
+			$sql1 = "SELECT * 
+					 FROM eo_shoutbox
+					 INNER JOIN eo_users 
+					 ON eo_users.userName  = eo_shoutbox.name					 
+					 ORDER BY eo_shoutbox.date DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[1]."</a>, "
+					.smartShort($gelen[3]).", "
+					.odaGetir($gelen[4]).", "
+					.$insansi;
+				$sonuc .= " <a href='dataChatActions.php'>$metin[162]</a>";
+			}		
+		break;
+		case "uye":
+			$sql1 = "SELECT * 
+					 FROM eo_users
+					 ORDER BY requestDate DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[7]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, "
+					.$gelen[3].", "
+					.$insansi;
+				$sonuc .= " <a href='siteSettings.php'>$metin[162]</a>";
+			}		
+		break;
+		case "ders":
+			$sql1 = "SELECT * 
+					 FROM eo_userworks
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_userworks.userID					 
+					 INNER JOIN eo_4konu 
+					 ON eo_4konu.id  = eo_userworks.konuID					 
+					 ORDER BY eo_userworks.calismaTarihi DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
+					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.$gelen[4].", "
+					.$insansi;
+				$sonuc .= " <a href='dataWorkList2.php'>$metin[162]</a>";
+			}		
+		break;
+		case "dosya":
+			$sql1 = "SELECT * 
+					 FROM eo_files
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_files.userID					 
+					 ORDER BY eo_files.id DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[5]."</a>, "
+					."<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
+					.$gelen[3];
+				$sonuc .= " <a href='fileShare.php'>$metin[162]</a>";
+			}		
+		break;
+	}
+	return $sonuc;
+}
+/*
 getUserName:
 kimlik ile kullanýcý isimlerini alma
 */

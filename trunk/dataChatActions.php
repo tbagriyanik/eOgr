@@ -9,7 +9,7 @@ Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
+License as published by the Free Software Fo4undation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
@@ -353,16 +353,7 @@ else if ($totalRows_eoUsers>0)
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['name']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['name']); ?></a></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin(smileAdd(temizle($row_eoUsers['message']))); ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php
-	   if ($row_eoUsers['ip']==0) echo "Bah&ccedil;e"; else
-	   if ($row_eoUsers['ip']==1) echo "Sýnýf1"; else
-	   if ($row_eoUsers['ip']==2) echo "Sýnýf2"; else
-	   if ($row_eoUsers['ip']==3) echo "Sýnýf3"; else
-	   if ($row_eoUsers['ip']==4) echo "Sýnýf4"; else
-	   if ($row_eoUsers['ip']==5) echo "Sýnýf5"; else
-	   if ($row_eoUsers['ip']==6) echo "Sýnýf6"; else
-	   if ($row_eoUsers['ip']==7) echo "Sýnýf7"; else
-	   if ($row_eoUsers['ip']==9) echo "Sýnýf9"; else
-	   if ($row_eoUsers['ip']==8) echo "Sýnýf8"; 
+		echo odaGetir($row_eoUsers['ip']);				
 	  ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['date']); ?></td>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="<?php echo $currentPage;?>?messageid=<?php echo $row_eoUsers['messageid'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['messageid']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
