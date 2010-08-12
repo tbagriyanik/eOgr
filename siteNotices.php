@@ -166,6 +166,11 @@ if ($tur=="2")	{//yönetici ise
 				 }
 			 echo "</strong>";	 
 		 }
+		 //iz sayýsý
+	if (getTrackCount(false)>0){
+						 echo "<br/><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (".$metin[195]." ".getTrackCount(true).")";
+						 }
+						 		 
 	 echo '<hr noshade="noshade" color="#333333">';
  	//son yapýlan iþlemler ve tarihi
 	require_once('lib/humanRelativeDate.class.php');
