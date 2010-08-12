@@ -292,6 +292,11 @@ if (isset($_COOKIE["remUser"]))
 							 echo totalGet(0)." (".$metin[9]." ".totalGet(1).")";
 							 echo "<br /> ";
 						 }
+						 if (totalGet(2)>0){
+							 echo "<strong>".$metin[10]." </strong><br/>";
+							 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
+							 echo "<br /><br /> ";
+						 }
 						 if (sonUyeAdiGetir("ad")!=""){
 							 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));
 							 $uyeListesi=getUsersOnline();
@@ -302,16 +307,9 @@ if (isset($_COOKIE["remUser"]))
 									 }
 								 echo "</strong>";	 
 							 }
-							 echo "<br /> <br />";							 
+							 echo " <br />";							 
 						 }
-						 if (totalGet(2)>0){
-							 echo "<strong>".$metin[10]." </strong><br/>";
-							 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
-							 echo "<br /> ";
-						 }
-						 if (getTrackCount(false)>0){
-						 echo "<strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (".$metin[195]." ".getTrackCount(true).")";
-						 }
+						 
 						 ?>
                   <br />
                   <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> <a href="help.php" class="external" onclick="window.open('help.php');return false;" target="_blank"><img src="img/passwRenew.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a><br />
