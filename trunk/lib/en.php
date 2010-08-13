@@ -206,7 +206,7 @@ Lesser General Public License for more details.
 
 		$metin[163]="Passwords are not matched!";
 	
-		$metin[164]="eOgr is an application for all fields, you can participate any subject freely.<br/>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.<br/><p><em>Free, easy and simple...</em><p>";
+		$metin[164]="eOgr is an application for all fields, you can participate any subject freely.<br/>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.<br/><p><h4><em>Free, easy and simple...</em></h4><p>";
 
 		$metin[165]=" <p>As default, you can join as &quot;student&quot; type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be passive or active by an administrator later.</li>                  <li>If there are more than one registration, administrators can erase any registration.</li>                    <li>Don't use same username and password.</li>                    <li>Don't use 12345678 or repeating values for the password.</li><li>This is a one time usable form. On error, please go to the main page.</li>                  </ul>";
 
@@ -236,7 +236,7 @@ Lesser General Public License for more details.
 		$metin[187]="Working Percentage";
 		$metin[188]="You can search in 'user name' and 'subject name' fields partially.";    	
 
-		$metin[189]="* If user's working period is over ".Sec2Time2(round(getStats(9)))." seconds and work percentage is 100 are <span style=\"background-color: wheat;\">marked</span>.<br/>* Abbreviation for time: y - year, d - day, s - second";
+		$metin[189]="* If user's working period is over %s seconds and work percentage is 100 are <span style=\"background-color: wheat;\">marked</span>.<br/>* Abbreviation for time: y - year, d - day, s - second";
 		
 		$metin[190]="Students";
 		$metin[191]="Unregistered Users (demo)";
@@ -297,7 +297,7 @@ Lesser General Public License for more details.
 		$metin[237]="Class problems";
 		$metin[238]="userName info is saved";		
 		
-		$metin[239]="You have joined these lessons";		
+		$metin[239]="My Courses";		
 		
 		$metin[240]="Time";		
 		

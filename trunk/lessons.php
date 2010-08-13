@@ -397,7 +397,7 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
 	$sampleData2 = getGrafikValues3(20, $_GET["konu"]);
 	$labels2 = getGrafikLabels3(20, $_GET["konu"]);
 
-if(isKonu($_GET["konu"]) and !empty($sampleData2) ){ //and count($sampleData2)>3
+if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){ 
 ?>
           <div class="Post">
             <div class="Block">
@@ -427,7 +427,7 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) ){ //and count($sampleData2)>3
 							$chart2->titleSize =9;
 							$chart2->absValuesSize  =9;
 							$chart2->absValuesBorder = "0px";
-							echo $chart2->create(); 
+						    echo $chart2->create(); 
 						?>
                         </div>
                       </div>

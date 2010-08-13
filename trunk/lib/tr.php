@@ -211,7 +211,7 @@ Lesser General Public License for more details.
                   <p>Ayrýca diðer &ouml;ðrenciler ve &ouml;ðretmenler ile anlýk olarak iletiþime
                     ge&ccedil;ebilirsiniz. Animasyon ve video desteði ile
                     konular daha akýcý hale getirilmiþtir.</p>
-                  <p><em>&Uuml;cretsiz, kolay ve basit...</em></p>
+                  <p><h4><em>&Uuml;cretsiz, kolay ve basit...</em></h4></p>
 ";
 				  
 		$metin[165]=" <p>Varsayýlan olarak &quot;&ouml;ðrenci&quot; t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak istenmeyen kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li>Birden fazla &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola ayný olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya tekrarlanan deðerler olamaz.</li><li>Bu form sadece bir kere doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
@@ -242,7 +242,7 @@ Lesser General Public License for more details.
 		$metin[187]="Bitirme Y&uuml;zdesi";
 		$metin[188]="Kullan&#305;c&#305; ad&#305; ve konu ad&#305; i&ccedil;inde par&ccedil;al&#305; arama yap&#305;labilir.";    	
 
-		$metin[189]="* &Ccedil;alýþma s&uuml;resi ".Sec2Time2(round(getStats(9)))." saniye &uuml;zerinde olan ve bitirme y&uuml;zdesi 100 olanlar <span style=\"background-color: wheat;\">renkli</span> olarak iþaretlenmiþtir.<br/>* S&uuml;re i&ccedil;inde ge&ccedil;en kýsaltmalar: y - yýl, d - g&uuml;n, s - saniye";
+		$metin[189]="* &Ccedil;alýþma s&uuml;resi %s saniye &uuml;zerinde olan ve bitirme y&uuml;zdesi 100 olanlar <span style=\"background-color: wheat;\">renkli</span> olarak iþaretlenmiþtir.<br/>* S&uuml;re i&ccedil;inde ge&ccedil;en kýsaltmalar: y - yýl, d - g&uuml;n, s - saniye";
 		
 		$metin[190]="&Ouml;ðrenciler";
 		$metin[191]="Kayýtlý Olmayan Kullanýcýlar (demo)";
@@ -304,7 +304,7 @@ Lesser General Public License for more details.
 		$metin[237]="Sýnýflardaki problemler";
 		$metin[238]="userName bilgisi saklanýyor";		
 		
-		$metin[239]="Katýldýðýnýz dersler";		
+		$metin[239]="Kurslarým";		
 		
 		$metin[240]="S&uuml;re";		
 		
