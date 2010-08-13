@@ -360,7 +360,7 @@ if ($totalRows_eoUsers>0)
                       </tr>
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
                       <tr>
-                        <td colspan="7" class="tabloAlt"><?php echo $metin[189]?></td>
+                        <td colspan="7" class="tabloAlt"><?php printf($metin[189],Sec2Time2(round(getStats(9))))?></td>
                       </tr>
                       <tr>
                         <td colspan="7" align="center" valign="middle" class="tabloAlt" ><label>

@@ -324,7 +324,7 @@ if ($totalRows_eoUsers>0)
                     </tr>
                     <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
                     <tr>
-                      <td colspan="6" class="tabloAlt"><?php echo $metin[189]?></td>
+                      <td colspan="6" class="tabloAlt"><?php printf($metin[189],Sec2Time2(round(getStats(9))))?></td>
                     </tr>
                   </table>
                   <?php
