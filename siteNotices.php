@@ -13,11 +13,8 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
+  session_start (); 
+  $_SESSION ['ready'] = TRUE; 
   require("conf.php");  		
   $time = getmicrotime();
   checkLoginLang(true,true,"siteNotices.php");	   
@@ -144,7 +141,7 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
             <div class="Post-body">
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[471]?> </span> </h2>
-                <div class="PostContent">
+                <div class="PostContent" style="background:#FFF;color:#000;">
                   <?php
 if ($tur=="2")	{//yönetici ise
 	

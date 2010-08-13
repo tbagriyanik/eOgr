@@ -495,10 +495,10 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	background-position: 0 -22px;
 }
 .nav .artmenu ul li a:hover span, .nav .artmenu ul li a:hover span span {
-	color: #CEE1E8;
+	color: #000;
 }
 .nav .artmenu ul li:hover>a span, .nav .artmenu ul li:hover>a span span {
-	color: #CEE1E8;
+	color: #000;
 }
 /* end MenuSubItem */
 
@@ -1038,7 +1038,6 @@ blockquote {
 	background-position:left top;
 	background-repeat:no-repeat;
 }
-
 /* Finish blockuote */
 /* end PostQuote */
 
@@ -1230,36 +1229,31 @@ input, select {
 }
 /* end PageFooter */
 
-.contentLayout .content
-{
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  float: left;
-  overflow: hidden;
-  width: 965px;
+.contentLayout .content {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+	overflow: hidden;
+	width: 965px;
 }
-
-.contentLayout .contentLeft
-{
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  float: left;
-  overflow: hidden;
-  width: 600px;
+.contentLayout .contentLeft {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+	overflow: hidden;
+	width: 600px;
 }
-
-.contentLayout .sidebar1
-{
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  top:5px;
-  float: left;
-  overflow: hidden;
-  width: 275px;
+.contentLayout .sidebar1 {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	top:5px;
+	float: left;
+	overflow: hidden;
+	width: 275px;
 }

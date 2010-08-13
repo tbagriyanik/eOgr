@@ -187,8 +187,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 		if ($_POST['prldeg']!="secili" 
 				  && (GetSQLValueString($_POST['userPassword'], "text")=='NULL' 
 				   || GetSQLValueString($_POST['userPassword2'], "text")=='NULL' 
-				   || $_POST["userPassword"]!=$_POST["userPassword2"] ) )
-          	 echo "<p>&nbsp;</p><font id='hata'>Yeni parolanýzý yazmadýnýz veya tekrarý boþ ge&ccedil;tiniz!</font>";
+				   || $_POST["userPassword"]!=$_POST["userPassword2"] 
+				   || strlen($_POST["userPassword"])<5 
+	 			   || $adi==$_POST["userPassword"] 
+				   || substr_count($_POST["userPassword"], substr($_POST["userPassword"],0,1))==strlen($_POST["userPassword"]) 
+				   || $_POST["userPassword"]=="12345678"				   
+				      ) )
+          	 echo "<p>&nbsp;</p><font id='hata'>Yeni parolanýzý yazmadýnýz, tekrarý boþ ge&ccedil;tiniz, parola ile kullanýcý adý ayný, tekrarlý deðer girdiniz, 12345678 girdiniz veya çok kýsa bir parola girdiniz!</font>";
 			 
 		else {  
 
