@@ -27,8 +27,8 @@ Download All Versions:
 		http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	11-08-2010
-Process Time : 	475 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
+Last Update: 	14-08-2010
+Process Time : 	480 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 INSTALLATION:
@@ -38,17 +38,17 @@ INSTALLATION:
     Your MySQL user must have "CREATE TABLE" permission!
     After a successful installation, you can remove "installation_Database.sql" file.
 (3) Login as administrator user: name "admin" and password "11111"
- 
-	:Installation (administrators):
+
+Further information for administrators: 
 - This project needs PHP 5 
 - MySQL 5 database server 
 - "uploads" folder needs write permission (766 or 777 can be)
 - .htaccess enabled for security (can be erased if having problems)
 
-	:For Clients (web users):
+For Clients (web users):
 - Javascript (Ajax) enabled browser (especially for lessons page)
 - Cookies enabled (theme, language and user name)
-- Flash player installed 
+- Flash player installed (for lessons' content)
 
 Used Classes and Referred Sites:
 - autosuggest: http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html v2.1.3

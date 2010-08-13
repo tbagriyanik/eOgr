@@ -254,7 +254,7 @@ addLoadEvent(prepareInputsForHints);
 			else
 			{
 			
-				if($_POST["userPassword2"]!=$_POST["userPassword1"] ||$_POST["userName"]==$_POST["userPassword1"] || substr_count($_POST["userPassword1"], substr($_POST["userPassword1"],0,1))==8 || $_POST["userPassword1"]=="12345678" ) {
+				if($_POST["userPassword2"]!=$_POST["userPassword1"] || $_POST["userName"]==$_POST["userPassword1"] || substr_count($_POST["userPassword1"], substr($_POST["userPassword1"],0,1))==strlen($_POST["userPassword1"]) || $_POST["userPassword1"]=="12345678" ) {
 				$_SESSION["ccode2"]="";
 				  die($metin[407]);
 				}
