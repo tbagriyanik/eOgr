@@ -23,7 +23,7 @@ Lesser General Public License for more details.
 	 	
 	require("conf.php");
 
-		if (!check_source()) die ("<font id='hata'>Error!</font>");	
+		if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 
 if (md5($_SERVER['HTTP_USER_AGENT']) == $_SESSION['aThing']) {
    	$adi	=temizle(substr($_SESSION["usern"],0,15));

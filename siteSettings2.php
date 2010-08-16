@@ -13,6 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
+	ob_start();
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
@@ -232,8 +233,10 @@ Lesser General Public License for more details.
 						$sqlFile = "";
 			  }				
 			
-}	else
+}	else {
+	  @header("Location:error.php?error=9");	
 	  die($metin[447]);
+	}
 	  
                       ?>
                       <br />

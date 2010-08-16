@@ -16,9 +16,9 @@ Lesser General Public License for more details.
 	session_start();
 	header("Content-Type: text/html; charset=iso-8859-9"); 
 	
-	require "conf.php";	
-	
+	require "conf.php";		
 	checkLoginLang(true,true,"addComment.php");
+	check_source();
 ?>
 
 <h2><?php echo $metin[290];?></h2>

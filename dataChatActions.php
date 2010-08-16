@@ -13,6 +13,7 @@ License as published by the Free Software Fo4undation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
+	ob_start();
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
@@ -420,9 +421,10 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
 if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulunamadý veya hi&ccedil; kayýt yok!</font><br/>Geri d&ouml;nmek i&ccedil;in <a href=dataChatActions.php>týklatýnýz</a>";
 
 	}
-	else
+	else {
+	  @header("Location:error.php?error=9");	
 	  die($metin[447]);
-	
+	}
 ?>
                 </div>
                 <div class="cleared"></div>

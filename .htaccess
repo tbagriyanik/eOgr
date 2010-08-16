@@ -4,24 +4,24 @@ RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
-RewriteRule ^(.*)$ hata.html [F,L]
+RewriteRule ^(.*)$ error.php [F,L]
 
 RewriteCond %{QUERY_STRING} (\"|%22).*(\>|%3E|<|%3C).* [NC] 
-RewriteRule ^(.*)$ hata.html [NC] 
+RewriteRule ^(.*)$ error.php [NC] 
 
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC] 
-RewriteRule ^(.*)$ hata.html [NC] 
+RewriteRule ^(.*)$ error.php [NC] 
 
 RewriteCond %{QUERY_STRING} (\;|\'|\"|\%22).*(union|insert|where|select|update|drop|md5|or|and|if).* [NC] 
-RewriteRule ^(.*)$ hata.html [NC] 
+RewriteRule ^(.*)$ error.php [NC] 
 
-RewriteRule (,|;|<|>|'|`) hata.html [NC]
+RewriteRule (,|;|<|>|'|`) error.php [NC]
 
-ErrorDocument 400 /eogr/hata.html
-ErrorDocument 401 /eogr/hata.html
-ErrorDocument 403 /eogr/hata.html
-ErrorDocument 404 /eogr/hata.html
-ErrorDocument 500 /eogr/hata.html
+ErrorDocument 400 /eogr/error.php
+ErrorDocument 401 /eogr/error.php
+ErrorDocument 403 /eogr/error.php
+ErrorDocument 404 /eogr/error.php
+ErrorDocument 500 /eogr/error.php
 #not found error redirection: 
 #401 - Authorization Required, 400 - Bad request, 
 #403 - Forbidden, 500 - Internal Server Error, 404 - Wrong page
@@ -31,7 +31,7 @@ AddDefaultCharset ISO_8859-9
 
 DirectoryIndex index.php
 IndexIgnore *
-HeaderName /eogr/hata.html
+HeaderName /eogr/error.php
 #no site directory browsing
 
 <ifModule mod_php4.c>

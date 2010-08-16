@@ -14,6 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 
+	ob_start();
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
@@ -152,6 +153,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	  die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
 	 }else
 	 if ($tur=="0") {
+	  @header("Location:error.php?error=10");	
 	  die($metin[448]);
 	 } 
 ?>

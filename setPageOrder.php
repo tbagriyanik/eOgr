@@ -20,7 +20,7 @@ Lesser General Public License for more details.
      }
 	require("conf.php");  
 	
-	if (!check_source()) die ("<font id='hata'>Error! </font>");	
+	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
  
 parse_str($_POST['data']);
 $konusu = temizle($_SESSION['konuID']);

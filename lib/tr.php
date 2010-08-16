@@ -211,7 +211,7 @@ Lesser General Public License for more details.
                   <p>Ayrýca diðer &ouml;ðrenciler ve &ouml;ðretmenler ile anlýk olarak iletiþime
                     ge&ccedil;ebilirsiniz. Animasyon ve video desteði ile
                     konular daha akýcý hale getirilmiþtir.</p>
-                  <p><h4><em>&Uuml;cretsiz, kolay ve basit...</em></h4></p>
+                  <p><h4><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></h4></p>
 ";
 				  
 		$metin[165]=" <p>Varsayýlan olarak &quot;&ouml;ðrenci&quot; t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak istenmeyen kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li>Birden fazla &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola ayný olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya tekrarlanan deðerler olamaz.</li><li>Bu form sadece bir kere doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
@@ -597,8 +597,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
  	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s tarihinde üye oldu.";		
 		$metin[446]	= "Son 5 saatte giriþ yapan üyeler : ";
 		
-		$metin[447]	= "<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin veya &ouml;ðretmenlerin iþlem yapma izni yoktur!</font>";
-		$metin[448]	= "<p>&nbsp;</p><font id='hata'>Bu sayfa i&ccedil;in &ouml;ðrencilerin iþlem yapma izni yoktur!</font>";
+		$metin[447]	= "Bu sayfa i&ccedil;in &ouml;ðrencilerin veya &ouml;ðretmenlerin iþlem yapma izni yoktur!";
+		$metin[448]	= "Bu sayfa i&ccedil;in &ouml;ðrencilerin iþlem yapma izni yoktur!";
 		
 		$metin[449]	= "Dosya uyumlu deðil!";
 		$metin[450]	= "Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!";

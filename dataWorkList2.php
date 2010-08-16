@@ -13,9 +13,10 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header("Pragma: no-cache");
+	ob_start();
+	header("Cache-Control: no-cache, must-revalidate");
+	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+	header("Pragma: no-cache");
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
@@ -439,8 +440,10 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   </form>
                   <?php
 	}
-	else
+	else {
+	  @header("Location:error.php?error=9");	
 	  die($metin[447]);
+	}
 	
 ?>
                 </div>
