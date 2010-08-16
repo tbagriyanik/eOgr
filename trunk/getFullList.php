@@ -62,24 +62,10 @@ Lesser General Public License for more details.
     </script>
     </head>
     <body>
-<h1 align="center">
-      <?php
-
-  switch($_GET["case"]){
-	  case "2":echo $metin[200];break;
-	  case "11":echo $metin[213];break;
-	  case "12":echo $metin[239];break;
-	  case "13":echo $metin[84];break;
-	  case "14":echo $metin[276];break;
-	  case "15":echo $metin[277];break;
-	  case "16":echo $metin[302];break;
-	  default: die($metin[406]);
-  }  
-?>
-    </h1>
-<div class="anythingSlider">
+    <br />
+    <div class="anythingSlider">
       <div class="wrapper">
-    <?php
+        <?php
 /*
 baglan2:
 veritabaný baðlantýsý
@@ -93,15 +79,15 @@ function baglan2()
 }
 
 if(!baglan2())   
- die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
+ die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href='install.php'  target='_parent'>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
  
 $yol1 = baglan2();
 
 	if (!@mysql_select_db($_db, $yol1))
 	{
 		die("<font id='hata'> 
-		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
-		  You need to go to <a href=install.php>installing page</a>!<br/>
+		  Veritaban&#305; <a href='install.php'  target='_parent'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
+		  You need to go to <a href='install.php'  target='_parent'>installing page</a>!<br/>
 			 </font>");
 	}
 /*
@@ -177,7 +163,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\" >".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\" target='_parent'>".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";
@@ -212,7 +198,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\" >".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\"  target='_parent'>".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";
@@ -259,7 +245,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." ".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay.php?kurs=".$row_gelen['dersID']."&amp;user=$userID'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font><br/>";										
+									$ekle .=  ($i+1)." ".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay.php?kurs=".$row_gelen['dersID']."&amp;user=$userID' target='_parent'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";
@@ -295,9 +281,9 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 										if ($data["tarih"]=="0000-00-00 00:00:00")
-											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a><br/>";
+											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a><br/>";
 											else
-											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".tarihOku($data["tarih"])."</font><br/>";	
+											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".tarihOku($data["tarih"])."</font><br/>";	
 									}
 										$ekle .=  "</li>";
 									  	$ekle .= "</ul>";
@@ -333,7 +319,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]."</a>"." <font size='1' title='$metin[273] : ".$data["toplam"].", $metin[274] : ".round($data["ortalama"],1)."'>".$data["toplam"]."/".(round($data["ortalama"],1))."</font><br/>";										
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]."</a>"." <font size='1' title='$metin[273] : ".$data["toplam"].", $metin[274] : ".round($data["ortalama"],1)."'>".$data["toplam"]."/".(round($data["ortalama"],1))."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";
@@ -371,7 +357,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\" >".$data["kadi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\"  target='_parent'>".$data["kadi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";
@@ -409,7 +395,7 @@ function listeGetir($userID, $durum){
 											$ekle .=  "</li><li>";
 										}
 									
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\" >".$data["kadi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\"  target='_parent'>".$data["kadi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";
@@ -446,13 +432,7 @@ else
    
 
 ?>
-  </div>
+      </div>
     </div>
-<center>
-      <a href="index.php" ><?php echo $metin[54]?></a>
-    </center>
-<center>
-      <a href="login.php" ><?php echo $metin[60]?></a>
-    </center>
 </body>
 </html>

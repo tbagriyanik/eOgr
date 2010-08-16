@@ -1,4 +1,4 @@
-eOgr - v121c
+eOgr - v121d
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -27,7 +27,7 @@ Download All Versions:
 		http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	16-08-2010
+Last Update: 	17-08-2010
 Process Time : 	490 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
@@ -64,6 +64,7 @@ Used Classes and Referred Sites:
 - phplivex: http://www.phplivex.com v2.6
 - wtag: http://spacegirlpippa.co.uk v1.0Beta
 - Facebox: http://famspam.com/facebox v1.2
+- shadowbox: http://www.shadowbox-js.com v3.0.3
 - HTML Graphs: http://www.gerd-tentler.de/tools/phpgraphs v4.8
 - SQL_Export: http://www.phpclasses.org/browse/file/7633.html
 - SQL_Import: http://www.phpclasses.org/browse/package/4898.html
