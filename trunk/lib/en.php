@@ -206,7 +206,7 @@ Lesser General Public License for more details.
 
 		$metin[163]="Passwords are not matched!";
 	
-		$metin[164]="eOgr is an application for all fields, you can participate any subject freely.<br/>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.<br/><p><h4><em>Free, easy and simple...</em></h4><p>";
+		$metin[164]="eOgr is an application for all fields, you can participate any subject freely.<br/>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.<br/><p><h4><em>Free, easy and simple learning...</em></h4><p>";
 
 		$metin[165]=" <p>As default, you can join as &quot;student&quot; type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be passive or active by an administrator later.</li>                  <li>If there are more than one registration, administrators can erase any registration.</li>                    <li>Don't use same username and password.</li>                    <li>Don't use 12345678 or repeating values for the password.</li><li>This is a one time usable form. On error, please go to the main page.</li>                  </ul>";
 
@@ -583,8 +583,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
    	  	$metin[445]	= "Last member is <strong>%s</strong> in %s.";
 		$metin[446]	= "Members that login in the last 5 hours : ";		
 
-		$metin[447]	= "<p>&nbsp;</p><font id='hata'>Students or teachers can not use this page!</font>";
-		$metin[448]	= "<p>&nbsp;</p><font id='hata'>Students can not use this page!</font>";	
+		$metin[447]	= "Students or teachers can not use this page!";
+		$metin[448]	= "Students can not use this page!";	
 		
 		$metin[449]	= "File name is not compatible!";
 		$metin[450]	= "Your account is passive. You are not allowed to continue!";

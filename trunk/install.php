@@ -15,7 +15,6 @@ Lesser General Public License for more details.
 */
 
 require "database.php";
-require 'lib/flood-protection.php'; // include the class
 
 $db_name 		= $_db;
 $db_username 	= $_username;			
@@ -128,6 +127,19 @@ function temaBilgisi(){
 
 	  return $result;
 }	
+
+require 'lib/flood-protection.php'; // include the class
+    $protect = new flood_protection();
+    $protect -> host         = $_host;
+    $protect -> password     = $_password; 
+    $protect -> username     = $_username; 
+    $protect -> db             = $_db; 
+    
+    if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
+  	  @header("Location:error.php?error=4");
+      die('<br/><img src="img/warning.png" align="absmiddle" border="0" style="vertical-align: middle;" alt=\"warning\"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
+}
+
 	$seciliTema= temaBilgisi();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -224,15 +236,6 @@ function temaBilgisi(){
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[71]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-    $protect = new flood_protection();
-    $protect -> host         = $_host;
-    $protect -> password     = $_password; 
-    $protect -> username     = $_username; 
-    $protect -> db             = $_db; 
-    
-    if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-      die('<br/><img src="img/warning.png" align="absmiddle" border="0" style="vertical-align: middle;" alt=\"warning\"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
-}
 
 	$currentFile = $_SERVER["PHP_SELF"];
     $parts = Explode('/', $currentFile);
@@ -281,7 +284,7 @@ function temaBilgisi(){
 									
 						
 					}
-	  mysql_close($yol22);	
+	  @mysql_close($yol22);	
 	}
 ?>
                 </div>

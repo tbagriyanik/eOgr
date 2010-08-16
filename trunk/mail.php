@@ -27,8 +27,16 @@ Lesser General Public License for more details.
 	 
   require("conf.php");  		
   $time = getmicrotime();
-  checkLoginLang(true,true,"mail.php");	   
+  checkLoginLang(true,true,"mail.php");	  
+  check_source(); 
   $seciliTema=temaBilgisi();	
+
+	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
+		@header("Location:error.php?error=4");
+	  echo('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> &#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
+		  '<br/>L&#252;ften bir s&#252;re sonra <a href='.$_SERVER['PHP_SELF'].'>tekrar</a> deneyiniz!'); // die there flooding
+		$hata = true;
+		}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -116,15 +124,7 @@ Lesser General Public License for more details.
                 <div class="PostContent">
                   <?php   
 echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a></div><br/>");
-?>
-                  <?php
 				  
-	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-	  echo('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> &#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
-		  '<br/>L&#252;ften bir s&#252;re sonra <a href='.$_SERVER['PHP_SELF'].'>tekrar</a> deneyiniz!'); // die there flooding
-		$hata = true;
-		}
-
    $address1	=	temizle($_REQUEST["to"]);
    $address1 	= 	getMailAddress($address1);
 	if(!email_valid($address1) && !empty($address1)){

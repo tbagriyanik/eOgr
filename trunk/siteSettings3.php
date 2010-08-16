@@ -13,6 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
+	ob_start();
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
       session_start (); 
@@ -195,8 +196,10 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 <?php
 		
 	}
-	else
+	else {
+	  @header("Location:error.php?error=9");	
 	  die($metin[447]);
+	}
 	
 ?>                        
                           <form name="form5"  action="siteSettings3.php" method="post">

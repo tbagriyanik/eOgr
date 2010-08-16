@@ -41,6 +41,13 @@ Lesser General Public License for more details.
 		   }
 		   
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
+
+	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
+	  @header("Location:error.php?error=4");
+	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
+		}
+
+    currentFileCheck("login.php");	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -162,11 +169,7 @@ Lesser General Public License for more details.
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[60]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
-		}
-
-    currentFileCheck("login.php");
+	
 	
 		switch ($_POST['form'])
 		{

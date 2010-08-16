@@ -27,6 +27,7 @@ Lesser General Public License for more details.
 	require("conf.php");	
 	$time = getmicrotime();  
 	checkLoginLang(true,true,"kursDetay.php");	
+	check_source();
 	$seciliTema=temaBilgisi();	
 
 include('lib/graphs.inc.php');
@@ -148,7 +149,6 @@ include('lib/graphs.inc.php');
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[461]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-   if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 	
   $adi	=substr(temizle($_POST["userN"]),0,15);
   $par	=sha1(substr(temizle($_POST["userP"]),0,15));
@@ -196,8 +196,8 @@ include('lib/graphs.inc.php');
 	$uID = temizle($_GET["user"]);
 	if($uID!="") $_SESSION["kursUser"]=$uID;
 
-	if($uID != getUserID($_SESSION["usern"],$_SESSION["userp"]) and $_SESSION["tur"]==0) 
-	  	die($metin[448]);	 		  
+//	if($uID != getUserID($_SESSION["usern"],$_SESSION["userp"]) and $_SESSION["tur"]==0) 
+	  	//die($metin[448]);	 		  
 		
 	 if (trim(getStats(11))!=""){
 		 echo "<br/><div class='ikiKolon'>";

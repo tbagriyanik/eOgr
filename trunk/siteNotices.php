@@ -13,6 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
+	ob_start();
   session_start (); 
   $_SESSION ['ready'] = TRUE; 
   require("conf.php");  		
@@ -184,8 +185,10 @@ if ($tur=="2")	{//yönetici ise
 	$bilgi6 = sonSatirGetir("dosya");
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
 }
-	else
-	  die($metin[447]);	
+	else {
+	  @header("Location:error.php?error=9");	
+	  die($metin[447]);
+	}
 ?>
                 </div>
                 <div class="cleared"></div>

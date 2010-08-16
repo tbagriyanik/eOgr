@@ -38,13 +38,17 @@ function baglan()
     return 	@mysql_connect($_host, $_username, $_password);
 }
 
-if(!baglan())   die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
+if(!baglan()) {  
+ @header("Location:error.php?error=5");
+ die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
+}
 
 $yol 	= 	baglan();
 $yol1	=	baglan();		
 
 	if (!@mysql_select_db($_db, $yol))
 	{
+		@header("Location:error.php?error=5");
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
 		  You need to go to <a href=install.php>installing page</a>!<br/>
@@ -53,8 +57,10 @@ $yol1	=	baglan();
 		$sql = "SELECT * FROM eo_users";	
 		$yol = baglan();
 		$result = @mysql_query($sql, $yol);
-		if(!$result)
+		if(!$result){
+		   @header("Location:error.php?error=6");
 			die("<font id='hata'> Tablo <a href=install.php>kurulumunu (installation)</a> yapmad&#305;n&#305;z!</font>");
+		}
 		@mysql_free_result($result); 	
 	}
 /*
@@ -94,14 +100,18 @@ function check_source()
 {  
 	global  $_source1;
 	global  $_source2;
+//	$adresteki = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$adresteki = $_SERVER['HTTP_REFERER'];
 	
-  if ( eregi("^$_source1",$_SERVER[HTTP_REFERER]) || eregi("^$_source2",$_SERVER[HTTP_REFERER]) 
+// if(isset($_SERVER['HTTP_REFERER'])) 	
+  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki)) 
   	  ) { 
-	//header("Location:hata.html");
-    return true;
+	@header("Location:error.php?error=3");
+	return false;
+  }else{
+	//  echo eregi("^$_source1",$adresteki);
+	return true;
   }
-  else  
-    return false;  
 }  
 /*
 sessionDestroy:
@@ -166,13 +176,16 @@ function checkLoginLang($lgn,$lng,$src){
 		   $adi	=temizle(substr($_SESSION["usern"],0,15));
 		   $par	=temizle($_SESSION["userp"]);
 		  
-			if($adi==""|| $par=="") //EMPTY?
+			if($adi==""|| $par==""){ //EMPTY?
+			   @header("Location:error.php?error=2");
 			   die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); 
+			}
 		 
 		   $tur=checkRealUser($adi,$par);
 			
 			if ($tur<=-1 || $tur>2) { 
 			   sessionDestroy();
+			   @header("Location:error.php?error=7");
 			   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
 			  }
 			  else 
@@ -259,8 +272,10 @@ dosya isminin güvenlik nedeni ile kontrol edilmesi
 function currentFileCheck($fileName){
 	global $currentFile;
 	global $metin; 
-	if($currentFile!=$fileName ) 
+	if($currentFile!=$fileName ){ 
+	 @header("Location:error.php?error=8");
 	 die ("<font id='hata'>$metin[449]</font>");
+	}
 }	
 /*
 GetSQLValueString:

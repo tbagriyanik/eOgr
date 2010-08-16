@@ -1009,8 +1009,10 @@ li {
 }
 .Post ul li {
 	padding:0px 0 0px 16px;
-	background-image: url('images/PostBullets.png');
+	background-image: url(images/bullet.png);
 	background-repeat:no-repeat;
+	background-attachment:scroll;
+	background-position:0px -7px;
 	margin:0.5em 0 0.5em 0;
 	line-height:1.2em;
 }
