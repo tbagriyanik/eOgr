@@ -29,7 +29,7 @@ Lesser General Public License for more details.
 	checkLoginLang(true,true,"kursDetay.php");	
 	check_source();
 	$seciliTema=temaBilgisi();	
-
+ob_start (); // Buffer output
 include('lib/graphs.inc.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,7 +41,9 @@ include('lib/graphs.inc.php');
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[461]?></title>
+<title>eOgr - <?php echo $metin[461]?>
+<!--TITLE-->
+</title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -243,9 +245,8 @@ include('lib/graphs.inc.php');
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
-                <div class="tekKolon">
-                 Seçili Kullanýcý :
-                  <?php				    
+                  <div class="tekKolon"> Seçili Kullanýcý :
+                    <?php				    
 				    echo "<strong>".getUserName($uID)."</strong><br/>";
 					echo getStats(12,$uID);
                   ?>
@@ -307,6 +308,16 @@ include('lib/graphs.inc.php');
           </div>
           <?php
 			}
+			
+		if(isset($_GET["kurs"])){			
+			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
+			ob_end_clean (); // Wipe the buffer
+			echo str_replace ('<!--TITLE-->', " - ".dersAdiGetir($_GET["kurs"]), $pageContents);	   			
+		}	   else{
+			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
+			ob_end_clean (); // Wipe the buffer
+			echo str_replace ('<!--TITLE-->', "", $pageContents);	   
+	   }			
           ?>
         </div>
         <div class="cleared"></div>

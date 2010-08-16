@@ -199,17 +199,19 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 
 		  if ($_POST['prldeg']=="secili") 
 			$updateSQL = sprintf("UPDATE eo_users SET realName=%s, userEmail=%s, userBirthDate='%s' WHERE id=%s",
-							   GetSQLValueString($_POST['realName'], "text"),
-							   GetSQLValueString($_POST['userEmail'], "text"),
+							   temizle(RemoveXSS(GetSQLValueString($_POST['realName'], "text"))),
+							   temizle(RemoveXSS(GetSQLValueString($_POST['userEmail'], "text"))),
 							   tarihYap($_POST['userBirthDate']),
-							   GetSQLValueString($_POST['id'], "int"));
+							   temizle(RemoveXSS(GetSQLValueString($_POST['id'], "int")))
+							   );
 			else  
 			$updateSQL = sprintf("UPDATE eo_users SET userPassword=sha1(%s), realName=%s, userEmail=%s, userBirthDate='%s' WHERE id=%s",
-							   GetSQLValueString($_POST['userPassword'], "text"),
-							   GetSQLValueString($_POST['realName'], "text"),
-							   GetSQLValueString($_POST['userEmail'], "text"),
+							   temizle(RemoveXSS(GetSQLValueString($_POST['userPassword'], "text"))),
+							   temizle(RemoveXSS(GetSQLValueString($_POST['realName'], "text"))),
+							   temizle(RemoveXSS(GetSQLValueString($_POST['userEmail'], "text"))),
 							   tarihYap($_POST['userBirthDate']),
-							   GetSQLValueString($_POST['id'], "int"));
+							   temizle(RemoveXSS(GetSQLValueString($_POST['id'], "int")))
+							   );
 
 		  mysql_select_db($database_baglanti, $yol);
 		  
