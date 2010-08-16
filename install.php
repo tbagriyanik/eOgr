@@ -22,11 +22,7 @@ $db_password 	= $_password;
 $db_host 		= $_host ;
 
 /////////////////////////////////////////////////////////////////
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
+$sessVar =   session_start (); 
 /*
 browserdili:
 tarayýcýnýn dil bilgisini alýr
@@ -372,58 +368,96 @@ require 'lib/flood-protection.php'; // include the class
               <div class="Post-inner">
                 <div class="PostContent">
                   <?php 
-				  echo "<h2>eOgr Projesinin Temel Gereksinimleri : </h2><ul>";
+				  echo "<h2>eOgr Projesinin Temel Gereksinimleri ve Sunucu Testi : </h2><ul>";
 				//--------------------------------------	
 				  echo '<li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
 				  $baglan3= @mysql_connect($host, $dbUser, $dbPassword);
 				  if($baglan3)
 					  echo "<li>MySQL <strong>sunucu</strong> sürümü : ".mysql_get_server_info()."</li>"; 	
 					  else
-					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <u>hata!</u></li>";//mysql_error();
+					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <u>hata!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();
 				  echo "<li>MySQL <strong>istemci</strong> sürümü : ".mysql_get_client_info()."</li>"; 	
-				  if(file_exists("installation_Database.sql"))
-					  echo "<li><strong>Kurulum</strong> için gereken dosya : var</li>"; 	
+				  if(!empty($dbPassword))
+					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : var</li>"; 	
 					  else
-					  echo "<li><strong>Kurulum</strong> için gereken dosya : <u>yok!</u></li>";//mysql_error();
+					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <u>boþ!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";								  				  if(file_exists("installation_Database.sql"))
+					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : var</li>"; 	
+					  else
+					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <u>yok!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();
 				  if(eregi("777",decoct(fileperms($_uploadFolder))) 
 				  or eregi("766",decoct(fileperms($_uploadFolder)))) {
 					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : iþlevsel</li>";
 				  }else{
-					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <u>iþlevsiz!</u></li>";
+					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 					  }
 				  if(function_exists("gzencode"))
-				    echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu : iþlevsel</li>";
+				    echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : iþlevsel</li>";
 				   else
-				   	echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu : <u>iþlevsiz!</u></li>";
+				   	echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  if(extension_loaded('gd') && function_exists('gd_info'))
-				    echo "<li>Grafik <strong>kütüphanesi</strong> desteði : iþlevsel</li>";
+				    echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : iþlevsel</li>";
 				   else
-				   	echo "<li>Grafik <strong>kütüphanesi</strong> desteði : <u>iþlevsiz!</u></li>";
+				   	echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  if(extension_loaded('iconv') && function_exists('iconv'))
-				    echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði : iþlevsel</li>";
+				    echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : iþlevsel</li>";
 				   else
-				   	echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði : <u>iþlevsiz!</u></li>";
+				   	echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  if(extension_loaded('json') && function_exists('json_decode'))
+				    echo "<li><strong>JSON</strong> desteði : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>JSON</strong> desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  if(extension_loaded('curl') && function_exists('curl_init'))
+				    echo "<li><strong>cURL</strong> desteði : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>cURL</strong> desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  if(extension_loaded('mysqli'))
+				    echo "<li><strong>mySQLi</strong> desteði : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>mySQLi</strong> desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  if(is_ajax())
 				    echo "<li><strong>AJAX</strong> komutlarý desteði : iþlevsel</li>";
 				   else
-				   	echo "<li><strong>AJAX</strong> komutlarý desteði : <u>iþlevsiz!</u></li>";	
-				  if(ini_get('upload_max_filesize'))
-				    echo "<li><strong>Dosya</strong> maksimum boyut desteði : ".ini_get('upload_max_filesize')."</li>";
+				   	echo "<li><strong>AJAX</strong> komutlarý desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  if(ini_get('memory_limit'))
+				    echo "<li><strong>Bellek</strong> maksimum desteði : ".ini_get('memory_limit')."</li>";
 				   else
-				   	echo "<li><strong>Dosya</strong> maksimum boyut desteði : <u>iþlevsiz!</u></li>";
+				   	echo "<li><strong>Bellek</strong> maksimum desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  if(ini_get('upload_max_filesize'))
+				    echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : ".ini_get('upload_max_filesize')."</li>";
+				   else
+				   	echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  if(ini_get('file_uploads')==1)
 				    echo "<li><strong>Dosya</strong> gönderme izni : iþlevsel</li>";
 				   else
-				   	echo "<li><strong>Dosya</strong> gönderme izni : <u>iþlevsiz!</u></li>";		
+				   	echo "<li><strong>Dosya</strong> gönderme izni : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				  if(ini_get('register_globals')==1)
+				    echo "<li><strong>Global</strong> deðiþkenler (register_globals) : <u>açýk!</u> - tavsiye edilmez <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>Global</strong> deðiþkenler (register_globals) : kapalý</li>";		
+				  if(ini_get('magic_quotes_gpc')==1)
+				    echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : açýk</li>";
+				   else
+				   	echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : <u>kapalý!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
 				  $modHT = apache_get_modules()	;
 				  if(in_array("mod_rewrite",$modHT))
-				    echo "<li><strong>htaccess</strong> çalýþma durumu : iþlevsel</li>";
+				    echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : iþlevsel</li>";
 				   else
-				   	echo "<li><strong>htaccess</strong> çalýþma durumu : <u>iþlevsiz!</u></li>";	
-
-
+				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  if($sessVar)
+				    echo "<li><strong>Oturum</strong> desteði : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>Oturum</strong> desteði : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  if( ini_get('safe_mode') )
+				    echo "<li><strong>Güvenli</strong> mod (safe_mode) : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>Güvenli</strong> mod (safe_mode) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  if( ini_get('SMTP') )
+				    echo "<li><strong>Eposta</strong> SMTP deðeri : ". ini_get('SMTP')."</li>";
+				   else
+				   	echo "<li><strong>Eposta</strong> SMTP deðeri : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
 				//--------------------------------------	
 				  echo "</ul>";
+				  echo "<p>Altý çizili ve kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.</p>";
 				  ?>
                 </div>
                 <div class="cleared"></div>
