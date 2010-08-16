@@ -4,6 +4,8 @@
 }
 body {
 	font: 12px Georgia, Serif;
+	margin: 5px;
+	padding: 5px;
 }
 a, a img {
 	border: 0;

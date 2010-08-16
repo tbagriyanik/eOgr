@@ -89,9 +89,8 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<meta name="keywords" content="elearning, cms, lms, learning management, education, eöðrenme" /> 
-<meta name="description" content="eOgr - Open source online education, elearning project" /> 
-
+<meta name="keywords" content="elearning, cms, lms, learning management, education, eöðrenme" />
+<meta name="description" content="eOgr - Open source online education, elearning project" />
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <title>eOgr</title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
@@ -99,6 +98,14 @@ Lesser General Public License for more details.
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
+<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
+</script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -318,20 +325,6 @@ if (isset($_COOKIE["remUser"]))
               </div>
             </div>
           </div>
-          <?php 
-  if (getStats(16)!=""){
-?>
-          <script type="text/javascript" src="lib/facebox/facebox.js"></script> 
-          <script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-       
-      }) 
-    })
-</script>
-          <?php
-  }
-?>
         </div>
       </div>
       <div class="sidebar1">
