@@ -27,8 +27,8 @@ Download All Versions:
 		http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	14-08-2010
-Process Time : 	480 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
+Last Update: 	16-08-2010
+Process Time : 	490 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 INSTALLATION:
@@ -36,7 +36,8 @@ INSTALLATION:
 (1) Edit your settings in "database.php" with an editor
 (2) " http://localhost/eogr/install.php " is for installation. 
     Your MySQL user must have "CREATE TABLE" permission!
-    After a successful installation, you can remove "installation_Database.sql" file.
+    After a successful installation, you can remove/rename "installation_Database.sql"
+  	  and install.php files.
 (3) Login as administrator user: name "admin" and password "11111"
 
 Further information for administrators: 

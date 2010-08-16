@@ -1491,6 +1491,27 @@ function isKonu($id){
 	return false;
 }
 /*
+dersAdiGetir:
+kimlik numarasýna ait konunun adýný getirir
+*/
+function dersAdiGetir($id){
+	$id = substr($id,0,15);
+    $sql1 = "SELECT dersAdi FROM eo_3ders where id='".temizle($id)."' limit 0,1";
+	
+    $yol1 = baglan();
+    $result1 = @mysql_query($sql1, $yol1);
+    if ($result1 && @mysql_numrows($result1) == 1)
+    {  $sonuc = @mysql_result($result1, 0, "dersAdi");
+	@mysql_free_result($result1); 	   
+       return $sonuc;
+    }else {
+	   return "";
+	}
+	
+	return "";
+}
+
+/*
 konuAdiGetir:
 kimlik numarasýna ait konunun adýný getirir
 */
@@ -3159,7 +3180,15 @@ function getUsersOnline() {
 		}
 		return $data['values'];
 }
-
+/*
+is_ajax:
+ajax desteði var mý
+*/
+function is_ajax()
+{
+	return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
+	strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
+}
 /*
 Genel olarak session kontrol edilmesi
 */

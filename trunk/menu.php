@@ -147,7 +147,13 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
       <li><a href="siteSettings2.php"><span><span> <?php echo $metin[156]?> </span></span></a></li>
       <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
       <li><a href="rssEdit.php"><span><span> <?php echo $metin[70]?> </span></span></a></li>
+      <?php
+	   if (file_exists("install.php")){
+	  ?>
       <li><a href="install.php"><span><span> <?php echo $metin[71]?> </span></span></a></li>
+      <?php
+	   }
+	  ?>
       <li><a href="dataActions.php"><span><span>
         <?php
 				    echo $metin[185];

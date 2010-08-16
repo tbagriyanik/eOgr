@@ -606,7 +606,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[462] = "Print";		
 		
 		$metin[463] = "Files";		
-		$metin[464] = "Homeworks and Files";		
+		$metin[464] = "Homeworks and Shared Files";		
 		$metin[465] = "File Name";		
 		$metin[466] = "Download Count";		
 		$metin[467] = "File Update Form";		

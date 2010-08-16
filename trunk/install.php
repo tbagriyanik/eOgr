@@ -38,6 +38,15 @@ function browserdili() {
          return $lang[0];
 }
 /*
+is_ajax:
+ajax desteði var mý
+*/
+function is_ajax()
+{
+	return (isset($_SERVER['X_REQUESTED_WITH']) AND
+	strtolower($_SERVER['X_REQUESTED_WITH']) === 'xmlhttprequest');
+}
+/*
 getStats:
 fake func
 */
@@ -139,6 +148,9 @@ require 'lib/flood-protection.php'; // include the class
   	  @header("Location:error.php?error=4");
       die('<br/><img src="img/warning.png" align="absmiddle" border="0" style="vertical-align: middle;" alt=\"warning\"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 }
+	$host =  $_host;
+	$dbUser =  $_username;
+	$dbPassword =  $_password;
 
 	$seciliTema= temaBilgisi();
 ?>
@@ -248,9 +260,6 @@ require 'lib/flood-protection.php'; // include the class
 
 		  require("lib/SQL_Import2.php");
 		  
-					$host =  $_host;
-					$dbUser =  $_username;
-					$dbPassword =  $_password;
 					$sqlFile = "installation_Database.sql";
 					
 					$baglan2= @mysql_connect($host, $dbUser, $dbPassword);
@@ -330,6 +339,92 @@ require 'lib/flood-protection.php'; // include the class
                   <?php }else{?>
                   Veritabaný dosyanýz bulunamadý. Kurulum yapýlamýyor!
                   <?php }?>
+                </div>
+                <div class="cleared"></div>
+              </div>
+            </div>
+          </div>
+          <div class="Post">
+            <div class="Post-tl"></div>
+            <div class="Post-tr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-br">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-tc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-bc">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cl">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cr">
+              <div>&nbsp;</div>
+            </div>
+            <div class="Post-cc"></div>
+            <div class="Post-body">
+              <div class="Post-inner">
+                <div class="PostContent">
+                  <?php 
+				  echo "<h2>eOgr Projesinin Temel Gereksinimleri : </h2><ul>";
+				//--------------------------------------	
+				  echo '<li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
+				  $baglan3= @mysql_connect($host, $dbUser, $dbPassword);
+				  if($baglan3)
+					  echo "<li>MySQL <strong>sunucu</strong> sürümü : ".mysql_get_server_info()."</li>"; 	
+					  else
+					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <u>hata!</u></li>";//mysql_error();
+				  echo "<li>MySQL <strong>istemci</strong> sürümü : ".mysql_get_client_info()."</li>"; 	
+				  if(file_exists("installation_Database.sql"))
+					  echo "<li><strong>Kurulum</strong> için gereken dosya : var</li>"; 	
+					  else
+					  echo "<li><strong>Kurulum</strong> için gereken dosya : <u>yok!</u></li>";//mysql_error();
+				  if(eregi("777",decoct(fileperms($_uploadFolder))) 
+				  or eregi("766",decoct(fileperms($_uploadFolder)))) {
+					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : iþlevsel</li>";
+				  }else{
+					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <u>iþlevsiz!</u></li>";
+					  }
+				  if(function_exists("gzencode"))
+				    echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu : iþlevsel</li>";
+				   else
+				   	echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu : <u>iþlevsiz!</u></li>";
+				  if(extension_loaded('gd') && function_exists('gd_info'))
+				    echo "<li>Grafik <strong>kütüphanesi</strong> desteði : iþlevsel</li>";
+				   else
+				   	echo "<li>Grafik <strong>kütüphanesi</strong> desteði : <u>iþlevsiz!</u></li>";
+				  if(extension_loaded('iconv') && function_exists('iconv'))
+				    echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði : iþlevsel</li>";
+				   else
+				   	echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði : <u>iþlevsiz!</u></li>";
+				  if(is_ajax())
+				    echo "<li><strong>AJAX</strong> komutlarý desteði : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>AJAX</strong> komutlarý desteði : <u>iþlevsiz!</u></li>";	
+				  if(ini_get('upload_max_filesize'))
+				    echo "<li><strong>Dosya</strong> maksimum boyut desteði : ".ini_get('upload_max_filesize')."</li>";
+				   else
+				   	echo "<li><strong>Dosya</strong> maksimum boyut desteði : <u>iþlevsiz!</u></li>";
+				  if(ini_get('file_uploads')==1)
+				    echo "<li><strong>Dosya</strong> gönderme izni : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>Dosya</strong> gönderme izni : <u>iþlevsiz!</u></li>";		
+				  $modHT = apache_get_modules()	;
+				  if(in_array("mod_rewrite",$modHT))
+				    echo "<li><strong>htaccess</strong> çalýþma durumu : iþlevsel</li>";
+				   else
+				   	echo "<li><strong>htaccess</strong> çalýþma durumu : <u>iþlevsiz!</u></li>";	
+
+
+				//--------------------------------------	
+				  echo "</ul>";
+				  ?>
                 </div>
                 <div class="cleared"></div>
               </div>
