@@ -3,7 +3,7 @@
 	padding: 0;
 }
 body {
-	font: 12px Georgia, Serif;
+	font: 11px Verdana,Arial, Tahoma, Helvetica, sans-serif;
 	margin: 5px;
 	padding: 5px;
 }
@@ -55,7 +55,7 @@ ul {
 	margin: 0 0 25px 25px;
 }
 ul li {
-	font: 15px Georgia, Serif;
+	font: 14px Georgia, Serif;
 	margin: 0 0 8px 0;
 }
 #dl {

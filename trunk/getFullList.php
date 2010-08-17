@@ -159,7 +159,7 @@ function listeGetir($userID, $durum){
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result1);
-									if($i % 10 == 0 and $i>0){
+									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
@@ -194,7 +194,7 @@ function listeGetir($userID, $durum){
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result1);
-									if($i % 10 == 0 and $i>0){
+									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
@@ -241,7 +241,7 @@ function listeGetir($userID, $durum){
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$row_gelen = mysql_fetch_assoc($result1);
-									if($i % 10 == 0 and $i>0){
+									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
@@ -277,7 +277,7 @@ function listeGetir($userID, $durum){
 									$donguSon = mysql_num_rows($result);
 							   		for($i=0; $i<$donguSon ;$i++){
 										$data = mysql_fetch_assoc($result);
-										if($i % 10 == 0 and $i>0){
+										if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 										if ($data["tarih"]=="0000-00-00 00:00:00")
@@ -315,7 +315,7 @@ function listeGetir($userID, $durum){
 										
 								for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result);
-									if($i % 10 == 0 and $i>0){
+									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
@@ -353,7 +353,7 @@ function listeGetir($userID, $durum){
 										
 								for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result);
-									if($i % 10 == 0 and $i>0){
+									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
@@ -391,7 +391,7 @@ function listeGetir($userID, $durum){
 										
 								for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result);
-									if($i % 10 == 0 and $i>0){
+									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
