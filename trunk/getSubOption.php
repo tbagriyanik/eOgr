@@ -68,7 +68,8 @@ function anaMetniOku($gelen, $sayfaNo)
 	global $yol1;
 	global $metin;
 	
-	if (empty($gelen)) return "<font id='uyari'><?php echo $metin[176]?></font>|-|-|-|-|-|-|-|-|-|-|-";
+	if (empty($gelen)) return "<font id='uyari'>$metin[176]</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
+	if (empty($sayfaNo)) return "<font id='uyari'>$metin[176]</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 	
 	$sql1	= 	"select 
 	            eo_5sayfa.id,eo_5sayfa.anaMetin as ana,eo_5sayfa.cevap as cevap,

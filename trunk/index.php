@@ -89,7 +89,7 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<meta name="keywords" content="elearning, cms, lms, learning management, education, eöðrenme" />
+<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
 <meta name="description" content="eOgr - Open source online education, elearning project" />
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <title>eOgr</title>
