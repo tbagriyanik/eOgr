@@ -580,7 +580,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
       <br/>
       <a href=\"mail.php?to=-1\" title=\"feedback\" target=\"_blank\" class=\"external\" style=\"text-decoration:none;\">click&nbsp;&nbsp;&nbsp;&nbsp;</a></p>";
 	  
-   	  	$metin[445]	= "Last member is <strong>%s</strong> in %s.";
+   	  	$metin[445]	= "Last member is <strong>%s</strong> %s.";
 		$metin[446]	= "Members that login in the last 5 hours : ";		
 
 		$metin[447]	= "Students or teachers can not use this page!";
@@ -622,5 +622,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[476] = "<strong>Last rating information (rate) : </strong> ";		
 		$metin[477] = "<strong>Last lesson working information (completion state) : </strong> ";		
 		$metin[478] = "<strong>Last file information (download count) : </strong> ";		
+		
+		$metin[479] = "Recent Staff";		
 						
 ?>

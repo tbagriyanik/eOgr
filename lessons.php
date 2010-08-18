@@ -439,6 +439,41 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){
           </div>
           <?php
 }
+	if(($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"])){
+?>
+          <div class="Post">
+            <div class="Block">
+              <div class="Block-tl"></div>
+              <div class="Block-tr"></div>
+              <div class="Block-bl"></div>
+              <div class="Block-br"></div>
+              <div class="Block-tc"></div>
+              <div class="Block-bc"></div>
+              <div class="Block-cl"></div>
+              <div class="Block-cr"></div>
+              <div class="Block-cc"></div>
+              <div class="Block-body">
+                <div class="BlockContent">
+                  <div class="BlockContent-body">
+                    <div>
+                      <div class="msg_list">
+                        <p class="msg_head"><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="users"/>&nbsp;<?php echo $metin[479]?></p>
+                        <div class="msg_body">
+                          <?php 	
+						$gelen = RemoveXSS($_GET["konu"]);
+						require_once("lib/humanRelativeDate.class.php");  				   
+	                    echo sonCalisanKullanicilar($gelen);					  
+                    ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+	}
 ?>
           <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;

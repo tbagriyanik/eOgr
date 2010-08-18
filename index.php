@@ -19,7 +19,8 @@ Lesser General Public License for more details.
 	$_SESSION["newUser"]="";
 	$_SESSION["passRem"]="";
 
-  require("conf.php");  		
+  require("conf.php");  
+  		
   $time = getmicrotime();
   checkLoginLang(false,true,"index.php");	   
   $seciliTema=temaBilgisi();
@@ -305,7 +306,9 @@ if (isset($_COOKIE["remUser"]))
 							 echo "<br /><br /> ";
 						 }
 						 if (sonUyeAdiGetir("ad")!=""){
-							 printf($metin[445],sonUyeAdiGetir("ad"),sonUyeAdiGetir("tarih"));
+						     $humanRelativeDate = new HumanRelativeDate();
+							 $insansi = $humanRelativeDate->getTextForSQLDate(sonUyeAdiGetir("tarih"));
+							 printf($metin[445],sonUyeAdiGetir("ad"),$insansi);
 							 $uyeListesi=getUsersOnline();
 							 if(!empty($uyeListesi)){
 								 echo "<br/>$metin[446]<strong>";
@@ -366,8 +369,12 @@ if (isset($_COOKIE["remUser"]))
                                         ?>
                     <li>
                       <?php
-															  echo "<strong>",haberGetir($i,"title"),"</strong>&nbsp;";
-															  echo tarihOku(haberGetir($i,"pubDate"));                       ?>
+												echo "<strong>",haberGetir($i,"title"),"</strong>&nbsp;";
+															  						     
+												$humanRelativeDate = new HumanRelativeDate();
+												$insansi = $humanRelativeDate->getTextForSQLDate(haberGetir($i,"pubDate"));
+
+												echo $insansi;                       ?>
                       <br />
                       <p> <?php echo smileAdd(haberGetir($i,"description"))?>
                         <?php

@@ -99,7 +99,7 @@ function secenekleriGetir($id)
 	global $yol1;
 	global $metin;
 
-	if(array_key_exists($id,$_SESSION["cevaplar"]))
+	if(@array_key_exists($id,$_SESSION["cevaplar"]))
 	 if($_SESSION["cevaplar"][$id]=="D")
 	  return "Zaten Cevap Verdiniz.";
 

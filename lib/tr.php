@@ -594,7 +594,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
       <br/>
       <a href=\"mail.php?to=-1\" title=\"feedback\" target=\"_blank\" class=\"external\" style=\"text-decoration:none;\">týklatýnýz&nbsp;&nbsp;&nbsp;&nbsp;</a></p>";
 	  
- 	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s tarihinde üye oldu.";		
+ 	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s üye oldu.";		
 		$metin[446]	= "Son 5 saatte giriþ yapan üyeler : ";
 		
 		$metin[447]	= "Bu sayfa i&ccedil;in &ouml;ðrencilerin veya &ouml;ðretmenlerin iþlem yapma izni yoktur!";
@@ -637,5 +637,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[476] = "<strong>Son oy bilgisi (oy derecesi) : </strong> ";		
 		$metin[477] = "<strong>Son ders bilgisi (bitirme yüzdesi) : </strong> ";		
 		$metin[478] = "<strong>Son dosya bilgisi (indirme sayýsý) : </strong> ";		
+		
+		$metin[479] = "Son Çalýþanlar";		
 		
 ?>
