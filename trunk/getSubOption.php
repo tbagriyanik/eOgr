@@ -103,7 +103,9 @@ function anaMetniOku($gelen, $sayfaNo)
 			$sayfaNo = $sayfaNo - 1 ; 		//0 index kayit baslangicidir
 		
 	
-		$tarih			= tarihOku(@mysql_result($result1,$sayfaNo,"tarih"));
+	 $humanRelativeDate = new HumanRelativeDate();
+	 $insansi = $humanRelativeDate->getTextForSQLDate(@mysql_result($result1,$sayfaNo,"tarih"));
+		$tarih			= $insansi;
 		$user			= @mysql_result($result1,$sayfaNo,"user");
 		$cevap			= @mysql_result($result1,$sayfaNo,"cevap");
 		$konuAdi		= @mysql_result($result1,$sayfaNo,"konuAdi");

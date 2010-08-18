@@ -15,6 +15,7 @@ Lesser General Public License for more details.
 */
 require 'lib/flood-protection.php'; // include the class
 require 'database.php'; 
+require_once("lib/humanRelativeDate.class.php");
 
 	$protect = new flood_protection();
 	$protect -> host 		= $_host;
@@ -882,6 +883,47 @@ function dosyaKaydet($dosya,$uID){
    	@mysql_free_result($result1);
 }
 /*
+sonCalisanKullanicilar:
+ders çalýþma sayfasýnda son çalýþan kullanýcý isimleri
+*/
+function sonCalisanKullanicilar($konuID){
+	$sql1 = "SELECT eo_users.id,eo_users.userName,
+				eo_users.userType, max(eo_userworks.calismaTarihi) as calismaTarihi,
+				eo_userworks.toplamZaman, eo_userworks.lastPage
+			FROM eo_userworks
+			LEFT OUTER JOIN eo_users 
+			ON eo_userworks.userID = eo_users.id
+			WHERE eo_userworks.konuID='$konuID' 
+			
+			GROUP BY eo_users.userName				
+			ORDER BY calismaTarihi DESC,eo_users.userName
+			LIMIT 0,10";	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	$liste = "<ul>";
+	while($gelen=@mysql_fetch_array($result1)){
+		$simge = "";
+		if ($gelen['userType']=="-1" or $gelen['userType']=="" ) $simge =  "<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[93]\"/> "; 
+		else if ($gelen['userType']=="0") $simge =   "<img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[94]\"/> " ;
+		else if ($gelen['userType']=="1") $simge =   "<img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[95]\"/> ";
+		else if ($gelen['userType']=="2") $simge =   "<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[96]\"/> ";
+
+		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate($gelen['calismaTarihi']);
+		
+		if(!empty($gelen[1]))		
+			$liste .= "<li><a href='profil.php?kim=$gelen[0]' rel='facebox'>$simge $gelen[1]</a> ".$insansi." - ".Sec2Time2($gelen['toplamZaman'])." %".$gelen['lastPage']."</li>";
+		 else
+		    $liste .= "<li>$simge demo ".$insansi." - ".Sec2Time2($gelen['toplamZaman'])." %".$gelen['lastPage']."</li>";	
+	}
+	$liste .="</ul>";
+   	@mysql_free_result($result1);
+	if($liste=="<ul></ul>")
+	 return "Çalýþan yok!";
+	else
+	 return $liste; 
+}
+/*
 getStats:
 belli bir istatistik bilgisini elde etme
 */
@@ -1738,7 +1780,7 @@ function sonUyeAdiGetir($alan){
 	  if($alan=="ad")
 	   $sonuc = @mysql_result($result1, 0, "userName");	
 	  elseif($alan=="tarih")
-	   $sonuc = tarihOku(@mysql_result($result1, 0, "requestDate"));	
+	   $sonuc = @mysql_result($result1, 0, "requestDate");	
 	  else 
 	   $sonuc = "";
 	   @mysql_free_result($result1);
