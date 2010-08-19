@@ -325,7 +325,7 @@ Lesser General Public License for more details.
 		$metin[253]="sevdim";				
 		$metin[254]="&ccedil;ok g&uuml;zel";						
 		
-		$metin[255]="Ders Sayfasýnda G&ouml;ster";				
+		$metin[255]="<a href='lessons.php'>Ders Sayfasýnda</a> G&ouml;ster";				
 		$metin[256]="Konu Arama";				
 		$metin[257]="Ders Aðacý";				
 		$metin[258]="Sayfa &Ouml;nizleme";				
@@ -423,7 +423,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[305]="Haberler (ana sayfa)";
 		$metin[306]="Son kullanýcý çalýþmalarý (ana sayfa)";
 		$metin[307]="Ping Resmi";
-		$metin[308]="Diðer";
+		$metin[308]="Ýstatistikler ve Son Çalýþanlar";
 		
 		$metin[309]="Yorumunuz Silindi!";
 		
@@ -640,5 +640,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[479] = "Son Çalýþanlar";		
 		$metin[480] = "Tüm Haberler";	
+		$metin[481] = "En son çalýþma";
+		$metin[482] = "Kere";
 					
 ?>

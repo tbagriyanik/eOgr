@@ -17,7 +17,7 @@ td {
 }
 #anaMetin {
 	height: 290px;
-	width: 100%;	
+	width: 100%;
 }
 #navigation {
 	position:absolute;
@@ -84,7 +84,7 @@ td {
 	padding: 5px;
 	margin-top: 3px;
 	text-align:left;
-	height: 20px;
+	height: 2em;
 	z-index: auto;
 	width:250px;
 }
@@ -100,7 +100,7 @@ td {
 	padding: 5px;
 	margin-top: 3px;
 	text-align:right;
-	height: 20px;
+	height: 2em;
 	z-index: auto;
 	width:250px;
 }

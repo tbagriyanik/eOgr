@@ -469,14 +469,14 @@ label.error {
 	margin-bottom:5px;
 }
 h1, h2, h3 {
-	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
+	text-shadow: gray 0.1em 0.1em 0.1em;
 }
 #cevapVer {
 	padding:3px;
 	margin: 3px;
 	font-weight: bolder;
 }
-.ozetBilgi{
+.ozetBilgi {
 	margin-top:3px;
 	margin-left:15px;
 	font-size:14px;

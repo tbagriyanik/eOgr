@@ -44,7 +44,7 @@
 	background-position: -80px -3px;
 }
 .treeview li.last {
-	/*background-position: 0 -1766px*/
+/*background-position: 0 -1766px*/
 }
 .treeview li.lastCollapsable, .treeview li.lastExpandable {
 	background-image: url(images/treeview-default.gif);
@@ -64,7 +64,7 @@
 .treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable {
 	background-image: url(images/treeview-famfamfam.gif);
 }
-.noktasiz{
+.noktasiz {
 	list-style:none;
 	background-position: 0 -1766px;
 }

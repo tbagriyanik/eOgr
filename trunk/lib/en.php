@@ -299,7 +299,7 @@ Lesser General Public License for more details.
 		
 		$metin[239]="My Courses";		
 		
-		$metin[240]="Time";		
+		$metin[240]="Duration";		
 		
 		$metin[241]="Edit Subject";		
 		$metin[242]="Add a Comment";		
@@ -318,7 +318,7 @@ Lesser General Public License for more details.
 		$metin[253]="like it";				
 		$metin[254]="love it";				
 		
-		$metin[255]="Show These in Lesson Page";				
+		$metin[255]="Show These in <a href='lessons.php'>Lessons Page</a>";				
 		$metin[256]="Subject Search";				
 		$metin[257]="Lesson Tree";				
 		$metin[258]="Page Preview";				
@@ -410,7 +410,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[305]="Enable News (index page)";
 		$metin[306]="Last demo user works (index page)";
 		$metin[307]="Ping Image";
-		$metin[308]="Other";
+		$metin[308]="Statistics and Recent Staff";
 		
 		$metin[309]="Your comment is deleted!";
 				
@@ -625,5 +625,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[479] = "Recent Staff";		
 		$metin[480] = "All News";	
+		$metin[481] = "Last work";
+		$metin[482] = "Times";
 						
 ?>

@@ -361,43 +361,11 @@ $(document).ready(function() {
           </div>
           <?php
 }
-?>
-          <?php
-if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
-?>
-          <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <div>
-                      <div class="msg_list">
-                        <p class="msg_head"><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></p>
-                        <div class="msg_body">
-                          <div id="sidetreecontrol"><a href="?#"><?php echo $metin[458]?></a> | <a href="?#"><?php echo $metin[459]?></a> | <a  href="#"><?php echo $metin[460]?></a></div>
-                          <?php echo dersAgaci(1)?> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <?php
-}
+          
 	$sampleData2 = getGrafikValues3(20, $_GET["konu"]);
 	$labels2 = getGrafikLabels3(20, $_GET["konu"]);
 
-if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){ 
+if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){ 
 ?>
           <div class="Post">
             <div class="Block">
@@ -439,7 +407,7 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){
           </div>
           <?php
 }
-	if(($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"])){
+	if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and ($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"])){
 ?>
           <div class="Post">
             <div class="Block">
@@ -473,6 +441,39 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){
           </div>
           <?php
 	}
+?>
+          <?php
+if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
+?>
+          <div class="Post">
+            <div class="Block">
+              <div class="Block-tl"></div>
+              <div class="Block-tr"></div>
+              <div class="Block-bl"></div>
+              <div class="Block-br"></div>
+              <div class="Block-tc"></div>
+              <div class="Block-bc"></div>
+              <div class="Block-cl"></div>
+              <div class="Block-cr"></div>
+              <div class="Block-cc"></div>
+              <div class="Block-body">
+                <div class="BlockContent">
+                  <div class="BlockContent-body">
+                    <div>
+                      <div class="msg_list">
+                        <p class="msg_head"><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></p>
+                        <div class="msg_body">
+                          <div id="sidetreecontrol"><a href="?#"><?php echo $metin[458]?></a> | <a href="?#"><?php echo $metin[459]?></a> | <a  href="#"><?php echo $metin[460]?></a></div>
+                          <?php echo dersAgaci(1)?> </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+}
 ?>
           <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;

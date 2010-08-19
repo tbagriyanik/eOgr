@@ -894,9 +894,11 @@ sonCalisanKullanicilar:
 ders çalýþma sayfasýnda son çalýþan kullanýcý isimleri
 */
 function sonCalisanKullanicilar($konuID){
+	global $metin;
 	$sql1 = "SELECT eo_users.id,eo_users.userName,
 				eo_users.userType, max(eo_userworks.calismaTarihi) as calismaTarihi,
-				eo_userworks.toplamZaman, eo_userworks.lastPage
+				eo_userworks.toplamZaman, eo_userworks.lastPage,
+				count(eo_userworks.calismaTarihi) as say
 			FROM eo_userworks
 			LEFT OUTER JOIN eo_users 
 			ON eo_userworks.userID = eo_users.id
@@ -904,11 +906,14 @@ function sonCalisanKullanicilar($konuID){
 			
 			GROUP BY eo_users.userName				
 			ORDER BY calismaTarihi DESC,eo_users.userName
-			LIMIT 0,10";	
+			LIMIT 0,".ayarGetir("ayar2int");	
 	$yol1 = baglan();
 	$result1 = @mysql_query($sql1, $yol1);
-	$liste = "<ul>";
-	while($gelen=@mysql_fetch_array($result1)){
+	$liste = "<table>";
+	if(@mysql_num_rows($result1)>0){
+  	 $liste .= "<tr><th>$metin[17]</th><th>$metin[481]</th><th>$metin[240]</th><th>$metin[187]</th>
+	 			<th>$metin[482]</th></tr>";
+ 	 while($gelen=@mysql_fetch_array($result1)){
 		$simge = "";
 		if ($gelen['userType']=="-1" or $gelen['userType']=="" ) $simge =  "<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[93]\"/> "; 
 		else if ($gelen['userType']=="0") $simge =   "<img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[94]\"/> " ;
@@ -917,15 +922,24 @@ function sonCalisanKullanicilar($konuID){
 
 		$humanRelativeDate = new HumanRelativeDate();
 		$insansi = $humanRelativeDate->getTextForSQLDate($gelen['calismaTarihi']);
-		
+		$liste .= "<tr>";
 		if(!empty($gelen[1]))		
-			$liste .= "<li><a href='profil.php?kim=$gelen[0]' rel='facebox'>$simge $gelen[1]</a> ".$insansi." - ".Sec2Time2($gelen['toplamZaman'])." %".$gelen['lastPage']."</li>";
+			$liste .= "<th align='left'><a href='profil.php?kim=$gelen[0]' rel='facebox'>$simge $gelen[1]</a></th>".
+					"<td>".$insansi."</td><td align='right'>".
+					Sec2Time2($gelen['toplamZaman']).
+					"</td><td align='right'>".$gelen['lastPage'].
+					"</td><td align='right'>".$gelen['say']."</td>";
 		 else
-		    $liste .= "<li>$simge demo ".$insansi." - ".Sec2Time2($gelen['toplamZaman'])." %".$gelen['lastPage']."</li>";	
-	}
-	$liste .="</ul>";
+		    $liste .= "<th align='left'>$simge demo</th><td>".$insansi."</td><td align='right'>".
+					Sec2Time2($gelen['toplamZaman']).
+					"</td><td align='right'>".$gelen['lastPage'].
+					"</td><td align='right'>".$gelen['say']."</td>";	
+		$liste .= "</tr>";
+	 }//while
+	}//if
+	$liste .="</table>";
    	@mysql_free_result($result1);
-	if($liste=="<ul></ul>")
+	if($liste=="<table></table>")
 	 return "Çalýþan yok!";
 	else
 	 return $liste; 
@@ -3220,7 +3234,7 @@ getUsersOnline:
 function getUsersOnline() {
 	global $yol1;
 	
-		$sql = "SELECT userName,(unix_timestamp(now()) - unix_timestamp(dateTime) )/60 as sure FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/60 <= 300 and otherInfo='success,Login' GROUP BY userName order by sure DESC,userName limit 0,10";
+		$sql = "SELECT userName,(unix_timestamp(now()) - unix_timestamp(dateTime) )/60 as sure FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/60 <= 300 and otherInfo='success,Login' GROUP BY userName order by sure DESC,userName limit 0,".ayarGetir("ayar2int");
 		
 		$result = mysql_query($sql, $yol1);
 		$data = array();

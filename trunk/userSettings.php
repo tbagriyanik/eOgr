@@ -403,7 +403,12 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
             id="ayarlar14" value="1" <?php if($secenekler[13]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                 <?php echo $metin[307];?></label>
-                              <br /></td>
+                              <br/>
+                              <label>
+                                <input type="checkbox" name="ayarlar15" 
+            id="ayarlar15" value="1" <?php if($secenekler[14]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                <?php echo $metin[308];?></label></td>
                           </tr>
                           <tr>
                             <td align="right"><?php echo $metin[303]?> :</td>
@@ -429,14 +434,7 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                                 <input type="checkbox" name="ayarlar13" 
             id="ayarlar13" value="1" <?php if($secenekler[12]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
-                                <?php echo $metin[306];?></label>
-                              <br/>
-                              <label>
-                                <input type="checkbox" name="ayarlar15" 
-            id="ayarlar15" value="1" <?php if($secenekler[14]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/>
-                                <?php echo $metin[308];?></label>
-                              <br /></td>
+                                <?php echo $metin[306];?></label></td>
                           </tr>
                           <tr>
                             <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />
