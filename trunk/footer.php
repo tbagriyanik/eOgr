@@ -72,8 +72,12 @@ if($seceneklerimiz[2]=="1" and $kullaniciSecen[2]=="1") {
 						
 if($seceneklerimiz[3]=="1" and $kullaniciSecen[3]=="1") 
 echo ("&nbsp;<font size='-3'>".$metin[155]." ".round(getmicrotime() - $time,3)."s</font>");
+
+		$humanRelativeDate2 = new HumanRelativeDate();
+		$insansi = $humanRelativeDate2->getTextForSQLDate(date("Y-m-d H:i:s", filemtime($currentFile)));
+
 if($seceneklerimiz[4]=="1" and $kullaniciSecen[4]=="1") 
-echo ("&nbsp;<font size='-3'>".$metin[217]." ".date("d-m-Y", filemtime($currentFile))."</font>");
+echo ("&nbsp;<font size='-3'>".$metin[217]." ".$insansi."</font>");
 
 ?>
   </form>

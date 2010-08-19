@@ -624,5 +624,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[478] = "<strong>Last file information (download count) : </strong> ";		
 		
 		$metin[479] = "Recent Staff";		
+		$metin[480] = "All News";	
 						
 ?>

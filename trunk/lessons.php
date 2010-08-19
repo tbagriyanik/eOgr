@@ -460,8 +460,7 @@ if(isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){
                         <p class="msg_head"><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="users"/>&nbsp;<?php echo $metin[479]?></p>
                         <div class="msg_body">
                           <?php 	
-						$gelen = RemoveXSS($_GET["konu"]);
-						require_once("lib/humanRelativeDate.class.php");  				   
+						$gelen = RemoveXSS($_GET["konu"]);						
 	                    echo sonCalisanKullanicilar($gelen);					  
                     ?>
                         </div>
