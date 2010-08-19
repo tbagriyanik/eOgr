@@ -15,7 +15,14 @@ Lesser General Public License for more details.
 */
 require 'lib/flood-protection.php'; // include the class
 require 'database.php'; 
-require_once("lib/humanRelativeDate.class.php");
+
+$taraDili=$_COOKIE["lng"];    
+if(!($taraDili=="TR" || $taraDili=="EN")) 
+  require_once("lib/humanRelativeDate.class.php");
+else if($taraDili=="TR") 
+  require_once("lib/humanRelativeDate.classTR.php");
+else  
+  require_once("lib/humanRelativeDate.class.php");
 
 	$protect = new flood_protection();
 	$protect -> host 		= $_host;

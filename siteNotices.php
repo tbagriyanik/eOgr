@@ -170,8 +170,7 @@ if ($tur=="2")	{//yönetici ise
 						 }
 						 		 
 	 echo '<hr noshade="noshade" color="#333333">';
- 	//son yapýlan iþlemler ve tarihi
-	require_once('lib/humanRelativeDate.class.php');
+ 	//son yapýlan iþlemler ve tarihi	
 	$bilgi1 = sonSatirGetir("sohbet");
 	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
 	$bilgi2 = sonSatirGetir("yorum");

@@ -58,7 +58,7 @@ class HumanRelativeDate{
 			//Get the string
 			$this->getString();
 		} else {
-			$this->string = 'invalid date';
+			$this->string = 'geçersiz tarih';
 		}
 		
 		return $this->string;
@@ -73,7 +73,7 @@ class HumanRelativeDate{
 				$this->calcTimeDiffString();
 				return true;
 			} else {
-				$this->string = 'today';
+				$this->string = 'bugün';
 				return true;
 			}
 		} else {
@@ -90,37 +90,63 @@ class HumanRelativeDate{
 		// Future events
 		if($diff > 0){
 			if($diff < $this->magic_5_mins){
-				$this->string = 'now';
+				$this->string = 'þimdi';
 			} else if ($diff < $this->magic_15_mins){
-				$this->string = 'in the next few minutes';
+				$this->string = 'birkaç dakika içinde';
 			} else if ($diff < $this->magic_30_mins){
-				$this->string = 'in the next half hour';
+				$this->string = 'yarým saat içinde';
 			} else if ($diff < $this->magic_1_hour){
-				$this->string = 'in the next hour';
+				$this->string = 'sonraki saat içinde';
 			} else {
-				$this->string = 'today at ' . date('H:i' , $this->event_timestamp);
+				$this->string = 'bugün saat ' . date('H:i' , $this->event_timestamp);
 			}
 		}
 		// Past Events
 		else {
 			$diff = abs($diff);
 			if($diff < $this->magic_5_mins){
-				$this->string = 'just now';
+				$this->string = 'henüz þimdi';
 			} else if ($diff < $this->magic_15_mins){
-				$this->string = 'a few minutes ago';
+				$this->string = 'birkaç dakika önce';
 			} else if ($diff < $this->magic_30_mins){
-				$this->string = 'in the last half hour';
+				$this->string = 'yarým saat içinde';
 			} else if ($diff < $this->magic_1_hour){
-				$this->string = 'in the last hour';
+				$this->string = 'bir saat içinde';
 			} else  if ($diff < ($this->magic_1_hour * 2)){
-				$this->string = '1 hour ago';
+				$this->string = 'bir saat önce';
 			} else {
-				$this->string = floor($diff / $this->magic_1_hour) . ' hours ago';
+				$this->string = floor($diff / $this->magic_1_hour) . ' saat önce';
 				//$this->string = 'today at ' . date('H:i' , $this->event_timestamp);
 			}
 		
 		}
 	
+	}
+	
+	protected function trGun($gelen){
+				switch ($gelen){
+				 case 'Monday':
+					return 'pazartesi' ;
+					break;
+				 case 'Tuesday':
+					return 'salý' ;
+					break;
+				 case 'Wednesday':
+					return 'çarþamba' ;
+					break;
+				 case 'Thursday':
+					return 'perþembe' ;
+					break;
+				 case 'Friday':
+					return 'cuma' ;
+					break;
+				 case 'Saturday':
+					return 'cumartesi' ;
+					break;
+				 case 'Sunday':
+					return 'pazar' ;
+					break;					
+				}		
 	}
 	
 	protected function calcDateDiffString(){
@@ -131,7 +157,7 @@ class HumanRelativeDate{
 		if($diff > 0){
 			//Tomorrow
 			if($diff >= $this->magic_1_day && $diff < ($this->magic_1_day * 2)){
-				$this->string = 'tomorrow'; 
+				$this->string = 'yarýn'; 
 				return true;
 			} else if($diff <= $this->magic_1_week){
 				// Find out if this date is this week or next!
@@ -144,20 +170,20 @@ class HumanRelativeDate{
 					$event_day = 7;
 				}
 				if($event_day > $current_day){
-					$this->string = 'this ' . strtolower(date('l' , $this->event_timestamp_day));
+					$this->string = 'bu ' . $this->trGun(date('l' , $this->event_timestamp_day));
 				} else {
-					$this->string = 'next ' . strtolower(date('l' , $this->event_timestamp_day));
+					$this->string = 'gelecek ' . $this->trGun(date('l' , $this->event_timestamp_day));
 				}
 			} else if($diff <= ($this->magic_1_week * 2) ) {
-				$this->string = 'a week on ' . strtolower(date('l' , $this->event_timestamp_day));
+				$this->string = 'gelecek hafta içinde ' . $this->trGun(date('l' , $this->event_timestamp_day));
 			} else {
 				$month_diff = $this->calcMonthDiff();
 				if($month_diff == 0){
-					$this->string = 'later this month';
+					$this->string = 'bu ay sonunda';
 				} else if($month_diff == 1){
-					$this->string = 'next month';
+					$this->string = 'gelecek ay';
 				} else {
-					$this->string = 'in ' . $month_diff . ' months';
+					$this->string = ' ' . $month_diff . ' ay içinde';
 				}
 			}
 		} 
@@ -166,23 +192,23 @@ class HumanRelativeDate{
 			$diff = abs($diff);
 			//Tomorrow
 			if($diff >= $this->magic_1_day && $diff < ($this->magic_1_day * 2)){
-				$this->string = 'yesterday'; 
+				$this->string = 'dün'; 
 				return true;
 			} else if($diff <= $this->magic_1_week){
-				$this->string = 'last ' . strtolower(date('l' , $this->event_timestamp_day));
+				$this->string = 'geçen '.$this->trGun(date('l' , $this->event_timestamp_day)) ;
 			} else if($diff <= ($this->magic_1_week * 2) ) {
-				$this->string = 'over a week ago ';
+				$this->string = 'bir haftadan fazla ';
 			} else {
 				$month_diff = $this->calcMonthDiff();
 				if($month_diff == 0){
-					$this->string = 'earlier this month';
+					$this->string = 'bu ay içinde';
 				} else if($month_diff == 1){
-					$this->string = 'last month';
+					$this->string = 'geçen ay';
 				} else {
 					if($month_diff > 12){
-						$this->string = 'over a year ago';
+						$this->string = 'bir yýldan fazla';
 					} else {
-						$this->string = $month_diff . ' months ago';
+						$this->string = $month_diff . ' ay önce';
 					}
 				}
 			}

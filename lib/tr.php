@@ -280,7 +280,7 @@ Lesser General Public License for more details.
         $metin[215]="Tablolara bakým ve tamir iþlemleri i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
 		
 		$metin[216]="Dipnotta Þunlarý G&ouml;ster";
-		$metin[217]="Son g&uuml;ncellenme tarihi";
+		$metin[217]="Son g&uuml;ncellenme";
 
 		$metin[218]="Sýnýflarda problem yoktur";
 		$metin[219]="Okulu silinmiþ sýnýflar";
@@ -639,5 +639,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[478] = "<strong>Son dosya bilgisi (indirme sayýsý) : </strong> ";		
 		
 		$metin[479] = "Son Çalýþanlar";		
-		
+		$metin[480] = "Tüm Haberler";	
+					
 ?>

@@ -348,7 +348,7 @@ if (isset($_COOKIE["remUser"]))
           <div class="Block-body">
             <div class="BlockHeader">
               <div class="header-tag-icon">
-                <div class="BlockHeader-text"> <?php echo $metin[153]?> </div>
+                <div class="BlockHeader-text"> <?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?> </div>
               </div>
               <div class="l"></div>
               <div class="r">
@@ -390,6 +390,7 @@ if (isset($_COOKIE["remUser"]))
                     <?php
 												$i++;
 												}
+												
 										 }
 										 else
 										  echo "<li>$metin[405]</li>";
