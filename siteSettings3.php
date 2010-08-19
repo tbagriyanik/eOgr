@@ -319,7 +319,12 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
             id="ayar5char14" value="1" <?php if($secenekler[13]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                     <?php echo $metin[307];?></label>
-                                  <br /></td>
+                                  <br/>
+                                  <label>
+                                    <input type="checkbox" name="ayar5char15" 
+            id="ayar5char15" value="1" <?php if($secenekler[14]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <?php echo $metin[308];?></label></td>
                               </tr>
                               <tr>
                                 <td align="right"><?php echo $metin[303]?> :</td>
@@ -346,12 +351,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
             id="ayar5char13" value="1" <?php if($secenekler[12]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                     <?php echo $metin[306];?></label>
-                                  <br/>
-                                  <label>
-                                    <input type="checkbox" name="ayar5char15" 
-            id="ayar5char15" value="1" <?php if($secenekler[14]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/>
-                                    <?php echo $metin[308];?></label>
+                                  
                                   <br /></td>
                               </tr>
                               <tr>
