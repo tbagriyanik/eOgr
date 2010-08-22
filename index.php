@@ -59,7 +59,35 @@ Lesser General Public License for more details.
 
    if(isset($_GET["oldPath"]))
     {
-		header("Location:".$_GET["oldPath"]);		
+		if(in_array($_GET["oldPath"],
+				array("index.php",
+					"lessons.php",
+					"dataActions.php",
+					"dataChatActions.php",
+					"dataCommentList.php",
+					"dataCommentList2.php",
+					"dataRatingList.php",
+					"dataWorkList.php",
+					"dataWorkList2.php",
+					"fileShare.php",
+					"help.php",
+					"kursDetay.php",
+					"lessonsEdit.php",
+					"login.php",
+					"newUser.php",
+					"passwordRemember.php",
+					"rssEdit.php",
+					"siteSettings.php",
+					"siteSettings2.php",
+					"siteSettings3.php",
+					"stats.php",
+					"userSettings.php",
+					"siteNotices.php",
+					"install.php"
+					)))
+			header("Location:".$_GET["oldPath"]);
+		else
+			header("Location:index.php"); 				
 	}
 
    if(isset($_GET["forgetMe"]))

@@ -26,6 +26,32 @@ session_start();
         require("lib/en.php");         
 
 require 'database.php'; 
+
+/*
+check_source:  
+sayfa güvenliði için kontrol
+*/
+if(!function_exists("check_source")){
+	function check_source()  
+	{  
+		global  $_source1;
+		global  $_source2;
+	//	$adresteki = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$adresteki = $_SERVER['HTTP_REFERER'];
+		
+	// if(isset($_SERVER['HTTP_REFERER'])) 	
+	  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki)) 
+		  ) { 
+		@header("Location:error.php?error=3");
+		return false;
+	  }else{
+		//  echo eregi("^$_source1",$adresteki);
+		return true;
+	  }
+	}
+}
+check_source();
+
 /*
 baglan2:
 veritabaný baðlantýsý
@@ -174,7 +200,7 @@ function oyOrtalama($konuID){
 }
 
 
-if(getUserIDrate($_SESSION["usern"],$_SESSION["userp"])=="") die ("EMPTY!");
+if(getUserIDrate($_SESSION["usern"],$_SESSION["userp"])=="") die ("");
 
 if (!isset($id) && isset($_GET['konu2']) && !empty($_GET['konu2'])) {
  $id = temizle2($_GET['konu2']);

@@ -109,9 +109,9 @@ if (isset($_GET['id']) 	&& !empty($_GET['id'])
 	if (yorumSil(temizle2($_GET['id'])))
 		echo iconv( "ISO-8859-9","UTF-8",$metin[309]);
 		else
-		echo "PROBLEM!";
+		echo "Error!";
 } else {
-   echo "EMPTY!";
+   echo "";
    }
 
 ?>

@@ -14,8 +14,8 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 
-	$adi	=substr(temizle($_POST["userN"]),0,15);
-	$par	=sha1(substr(temizle($_POST["userP"]),0,15));
+	$adi	=substr(@temizle($_POST["userN"]),0,15);
+	$par	=sha1(substr(@temizle($_POST["userP"]),0,15));
 	
    if ($adi=="") {
 	   $adi	=temizle(substr($_SESSION["usern"],0,15));

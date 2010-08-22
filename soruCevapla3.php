@@ -121,5 +121,5 @@ function cevapKontrol($cevap, $id){
 	         cevapKontrol(temizle2($_POST['cevap']), temizle2($_POST['id'])));
 	   die();
  		} else
-		echo "EMPTY!";
+		echo "";
 ?>

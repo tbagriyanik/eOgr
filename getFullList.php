@@ -410,6 +410,8 @@ function listeGetir($userID, $durum){
 						}
 						
 						break;		
+					default:
+						die("");	
 				} //switch	
 			
 			return "";
@@ -422,13 +424,13 @@ function listeGetir($userID, $durum){
 
 if (isset($_GET['case']) && !empty($_GET['case']) && getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 	if ( !listeGetir(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_GET['case'])) )		
-		echo "PROBLEM!";
+		echo "Error!";
 } elseif ($_GET['case']=="16") {
 	if ( !listeGetir("-1", temizle2($_GET['case'])) )		
-		echo "PROBLEM!";
+		echo "Error!";
 }
 else
-   echo "EMPTY!";
+   echo "";
    
 
 ?>

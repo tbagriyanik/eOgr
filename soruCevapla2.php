@@ -106,5 +106,5 @@ function cevapKontrol($cevap, $id)
 	   echo iconv( "ISO-8859-9","UTF-8", cevapKontrol(temizle2($_POST['cevap']), temizle2($_POST['id'])));
 	   die();
  		} else
-		echo "EMPTY!";
+		echo "";
 ?>

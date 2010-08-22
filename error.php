@@ -58,13 +58,13 @@ checkLoginLang(false,true,"error.php");
 ?>
 <h6>
   <?php
- echo "Kullanici adresi : ".$_SERVER['REMOTE_ADDR']."<br/>";  
+ echo "Kullanici adresi : ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
 // echo "Sunucu adresi : ".$_SERVER['SERVER_ADDR']."<br/>"; 
  if(!empty($_SERVER['HTTP_REFERER']))
-	 echo "Kaynak adres : ".$_SERVER['HTTP_REFERER']."<br/>";  
- echo "Gelinen adres : ".$_SERVER['REQUEST_URI' ]."<br/>";  
- echo "Istek turu : ".$_SERVER['REQUEST_METHOD']."<br/>"; 
- echo "Calisan dosya adi : ".basename($_SERVER['SCRIPT_FILENAME'])."<br/>"; 
+	 echo "Kaynak adres : ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>";  
+ echo "Gelinen adres : ".RemoveXSS($_SERVER['REQUEST_URI' ])."<br/>";  
+ echo "Istek turu : ".RemoveXSS($_SERVER['REQUEST_METHOD'])."<br/>"; 
+ echo "Calisan dosya adi : ".basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))."<br/>"; 
  echo "Tarih : ".date("d-m-Y H:i:s")."<br/>"; 
 ?>
 </h6>
