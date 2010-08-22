@@ -52,6 +52,7 @@ include('lib/graphs.inc.php');
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-print.js"></script>
+<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
 <script type="text/javascript">
@@ -215,7 +216,8 @@ Shadowbox.init({
 		 if (trim(getStats(12))!=""){
 			 echo "<div class='ikiKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
 		 }		 
-	 }			
+	 }else
+	  echo "$metin[485]";			
 		 
 ?>
                 </div>

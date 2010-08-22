@@ -645,5 +645,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[483] = "Tüm Konular";
 		$metin[484] = "Sadece Düzenlediðim Konular";
+		
+		$metin[485] = "<font id='uyari'>Þimdilik ders çalýþmadýnýz.</font>";
 					
 ?>

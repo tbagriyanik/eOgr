@@ -47,7 +47,7 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[464]?></title>
+<title>eOgr -<?php echo $metin[464]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -57,6 +57,7 @@ Lesser General Public License for more details.
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -430,6 +431,9 @@ if ($tur=="2") {
     </div>
   </div>
 </div>
+<?php  						
+ require "feedback.php"; 
+?>
 </body>
 </html>
 <?php 
