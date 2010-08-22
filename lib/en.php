@@ -71,7 +71,7 @@ Lesser General Public License for more details.
         $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
   	
 		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"Click\"/> for the tables' backup";   
-        $metin[49]="subject count is";   
+        $metin[49]="Topic count is";   
 		
         $metin[50]="Message";         
         $metin[51]="Room";         
@@ -111,7 +111,7 @@ Lesser General Public License for more details.
 		$metin[81]="Minimum %d characters";    
 		$metin[82]="Maximum %d characters";    
 		$metin[83]="<ul><li>Fill your user name and email address to renew your password.</li><li>Then check your email, including spam folder.</li></ul>";    
-		$metin[84]="Last updated subjects";    
+		$metin[84]="Last updated topics";    
 		
 		$metin[85]="(passive) You can not do anything.";    
 		$metin[86]="(student) You can join the <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
@@ -189,7 +189,7 @@ Lesser General Public License for more details.
 		$metin[149]="New User";
 
 		$metin[150]="News Count to Show (<a href='index.php'>index page</a>)";
-		$metin[151]="Subject Count to Show (<a href='stats.php'>statistics</a> page)";
+		$metin[151]="Topic Count to Show (<a href='stats.php'>statistics</a> page)";
 
 		$metin[152]="Repeat Password";
 				
@@ -206,35 +206,35 @@ Lesser General Public License for more details.
 
 		$metin[163]="Passwords are not matched!";
 	
-		$metin[164]="<p>eOgr is an application for all fields, you can participate any subject freely.</p><p>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.</p><p><em>Free, easy and simple learning...</em></p>";
+		$metin[164]="<p>eOgr is an application for all fields, you can participate any topic freely.</p><p>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.</p><p><em>Free, easy and simple learning...</em></p>";
 
 		$metin[165]=" <p>As default, you can join as &quot;student&quot; type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be passive or active by an administrator later.</li>                  <li>If there are more than one registration, administrators can erase any registration.</li>                    <li>Don't use same username and password.</li>                    <li>Don't use 12345678 or repeating values for the password.</li><li>This is a one time usable form. On error, please go to the main page.</li>                  </ul>";
 
-		$metin[166]="Previous Subject";
-		$metin[167]="Next Subject";
-		$metin[168]="Subject Search";
+		$metin[166]="Previous topic";
+		$metin[167]="Next topic";
+		$metin[168]="Topic Search";
 		$metin[169]="Limited Work Time";
 		$metin[170]="Remaining Time";
 		$metin[171]="minute(s)";
 		$metin[172]="second(s)";
 		$metin[173]="Edit Date";
 		$metin[174]="Editor";
-		$metin[175]="Subject Name";
-		$metin[176]="Choose a subject...";
-		$metin[177]="You can search by subject name";
+		$metin[175]="Topic Name";
+		$metin[176]="Choose a topic...";
+		$metin[177]="You can search by topic name";
 		$metin[178]="progress";
 		$metin[179]="Locked";
 		$metin[180]="Out of time";
 		$metin[181]="Visible for registered users";
-		$metin[182]="This subject is <u>under construction</u>...";
-		$metin[183]="This subject does not exist...";
+		$metin[182]="This topic is <u>under construction</u>...";
+		$metin[183]="This topic does not exist...";
 		$metin[184]="Unknown <u>error</u>...";
 
 		$metin[185]="Data Actions";
 
 		$metin[186]="Lesson Work List";
 		$metin[187]="Working Percentage";
-		$metin[188]="You can search in 'user name' and 'subject name' fields partially.";    	
+		$metin[188]="You can search in 'user name' and 'topic name' fields partially.";    	
 
 		$metin[189]="* If user's working period is over %s seconds and work percentage is 100 are <span style=\"background-color: wheat;\">marked</span>.<br/>* Abbreviation for time: y - year, d - day, s - second";
 		
@@ -251,9 +251,9 @@ Lesser General Public License for more details.
 		$metin[197]="Statistics";    	
 		$metin[198]="Most working student(s)";    	
 		$metin[199]="Rarely working student(s)";    	
-		$metin[200]="Most worked subjects";    	
-		$metin[201]="Never worked subject(s)";    	
-		$metin[202]="Unregistered users most worked subject(s)";    	
+		$metin[200]="Most worked topics";    	
+		$metin[201]="Never worked topic(s)";    	
+		$metin[202]="Unregistered users most worked topic(s)";    	
 		$metin[203]="Most page edited teacher(s)";    	
 		$metin[204]="All users total work time";    	
 		$metin[205]="Average work time";    	
@@ -279,18 +279,18 @@ Lesser General Public License for more details.
 		$metin[219]="School info erased classes";
 		$metin[220]="Lessons are OK";
 		$metin[221]="Class info erased lessons";
-		$metin[222]="Subjects are OK";
-		$metin[223]="Lesson info erased subjects";
-		$metin[224]="Previous subjects are OK";
-		$metin[225]="Previous subjects problems";
+		$metin[222]="Topics are OK";
+		$metin[223]="Lesson info erased topics";
+		$metin[224]="Previous topics are OK";
+		$metin[225]="Previous topics problems";
 		$metin[226]="Pages are OK";
-		$metin[227]="Subject info erased pages";
+		$metin[227]="Topic info erased pages";
 		$metin[228]="Editor users are OK";
 		$metin[229]="Editor users problems";
 		$metin[230]="Users are OK";
 		$metin[231]="Nonexisting users (assumed as demo)";
-		$metin[232]="Subjects are OK";
-		$metin[233]="Subject problems";
+		$metin[232]="Topics are OK";
+		$metin[233]="Topic problems";
 		$metin[234]="Users are OK";
 		$metin[235]="Nonexisting users";
 		$metin[236]="Classes are OK";
@@ -301,7 +301,7 @@ Lesser General Public License for more details.
 		
 		$metin[240]="Duration";		
 		
-		$metin[241]="Edit Subject";		
+		$metin[241]="Edit topic";		
 		$metin[242]="Add a Comment";		
 		$metin[243]="Help";		
 		$metin[244]="Add to my Favourites";				
@@ -310,7 +310,7 @@ Lesser General Public License for more details.
 		$metin[246]="Default";				
 		$metin[247]="<img src=\"img/tip.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"imp\" title=\"User works less than %d seconds are ignored.\"/>";					
 		
-		$metin[248]="Rate this subject";				
+		$metin[248]="Rate this topic";				
 		$metin[249]="Your rating";				
 		$metin[250]="hate it";				
 		$metin[251]="don't like it";				
@@ -319,7 +319,7 @@ Lesser General Public License for more details.
 		$metin[254]="love it";				
 		
 		$metin[255]="Show These in <a href='lessons.php'>Lessons Page</a>";				
-		$metin[256]="Subject Search";				
+		$metin[256]="Topic Search";				
 		$metin[257]="Lesson Tree";				
 		$metin[258]="Page Preview";				
 		$metin[259]="Comments";				
@@ -362,7 +362,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[270]="<ol><li>Edit your settings in <b>database.php</b> with an editor<li>http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<li>Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong></ol>";				
 		
 		$metin[271]="Contents";				
-		$metin[272]="<h4>eOgr Project Help Page</h4>Please, click any subject on the left.";				
+		$metin[272]="<h4>eOgr Project Help Page</h4>Please, click any topic on the left.";				
 		
 		$metin[273]="Ratings";
 		$metin[274]="Average";
@@ -399,10 +399,10 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[296]="School";
 		$metin[297]="Class";
 		$metin[298]="Lesson";
-		$metin[299]="Subject";
+		$metin[299]="Topic";
 		$metin[300]="If this doesn't work, use Ctrl+D shortcut";
 		
-		$metin[301]="Subject Information";
+		$metin[301]="Topic Information";
 		$metin[302]="Last demo user works";
 		
 		$metin[303]="Other General Options";		
@@ -432,7 +432,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[325]="Limited Work Count";
 		$metin[326]="Only in class members";
-		$metin[327]="Subject Information";
+		$metin[327]="Topic Information";
 		$metin[328]="Lesson Name (School - Class)";	
 		$metin[329]="Page Count";	
 		$metin[330]="Ending Date for Work";	
@@ -443,7 +443,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[335]="Vote Rate";	
 		$metin[336]="Comment Count";
 		$metin[337]="Unconfirmed Comments";
-		$metin[338]="Subject Limitations";	
+		$metin[338]="Topic Limitations";	
 		$metin[339]="Work This!";	
 		$metin[340]="Only visible for registered users<br/><a href=newUser.php>New Membership!</a>";	
 		
@@ -464,29 +464,29 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[352]="School types in your school";
 		$metin[353]="Classes that belong to a spesific school, you can give their names with year values";
 		$metin[354]="Lessons that belong to a spesific class";
-		$metin[355]="Subjects that belong to a spesific lesson, they contain pages";
+		$metin[355]="Topics that belong to a spesific lesson, they contain pages";
 		
 		$metin[356]="record number";
 		$metin[357]="Maximum characters can be 50.";
-		$metin[358]="Search with _ character to see all the records.";
+		$metin[358]="Search with empty value to see all the records.";
 		
 		$metin[359]="School Name";
 		$metin[360]="Add";
 		$metin[361]="Update";
 		$metin[362]="Class Name";
 		$metin[363]="Lesson Name";
-		$metin[364]="Subject Name";
+		$metin[364]="Topic Name";
 		
 		$metin[365]="Add School";
 		$metin[366]="Add Class";
 		$metin[367]="Add Lesson";
-		$metin[368]="Add Subject";
+		$metin[368]="Add Topic";
 		$metin[369]="Add Page or Question";
 		
 		$metin[370]="Update School";
 		$metin[371]="Update Class";
 		$metin[372]="Update Lesson";
-		$metin[373]="Update Subject";
+		$metin[373]="Update Topic";
 		$metin[374]="Update Page or Question";		
 		
 		$metin[375]="Include Students into this Class";
@@ -500,14 +500,14 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[379]="The following options are non-mandatory options. Limitations can be made.";		  
 		$metin[380]="Previous Dependent Lesson";
 		$metin[381]="Last Workable Date";
-		$metin[382]="Lock This Subject";
+		$metin[382]="Lock This Topic";
 		$metin[383]="Make visible for only registered users";
 		$metin[384]="You can also use this option for lower options!";
 		$metin[385]="Working Time Limit (minute)";
 		$metin[386]="Number of Working Rights";
 		$metin[387]="Only Class included students can see";
 		$metin[388]="To preview this lesson <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> click</a>. To edit pages in this lesson <a href='lessonsEdit.php?tab=4&amp;seciliKonu=%s'> click</a>.<br/><br/>";
-		$metin[389]="To preview this lesson <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> click</a>. To edit subject settings <a href='lessonsEdit.php?tab=3&amp;id=%s&amp;upd=1'>click</a>. To reorder pages, use \"<a href=#sayfaSiralamasi>Page Order</a>\" panel.<br/><br/>";
+		$metin[389]="To preview this lesson <a href='lessons.php?konu=%s'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align: middle;\"  alt=\"preview\"/> click</a>. To edit topic settings <a href='lessonsEdit.php?tab=3&amp;id=%s&amp;upd=1'>click</a>. To reorder pages, use \"<a href=#sayfaSiralamasi>Page Order</a>\" panel.<br/><br/>";
 		
 		$metin[390]="Main Text";
 		$metin[391]="Answer";
@@ -521,7 +521,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[395]="Page Order";
 		$metin[396]="Drag upwards or downwards a page for reordering :";
 		
-		$metin[397]="Click to edit pages in this subject";
+		$metin[397]="Click to edit pages in this topic";
 		$metin[398]="Or just download the minimal installation database file for phpMyAdmin : ";
 		$metin[399]="Download";
 		
@@ -628,4 +628,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[481] = "Last work";
 		$metin[482] = "Times";
 						
+		$metin[483] = "All topics";
+		$metin[484] = "Only My Edited Topics";
+					
 ?>

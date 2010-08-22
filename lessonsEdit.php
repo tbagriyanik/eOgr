@@ -1088,15 +1088,28 @@ if($seciliSekme=="0") {
 	   $siraYap=temizle($_GET["siraYap"]);
 	   
 	   $filtreleme=temizle($_POST["filtreleme"]);
+
+	   if($_POST["konuKimGel"]=="1" and !empty($_POST["konuTumu"])) 
+		  	$_SESSION["konuKimGel"]=0;
+		if($_POST["konuKimGel"]=="1" and !empty($_POST["konuBenim"])) 
+		  	$_SESSION["konuKimGel"]=1;
+
+	   if($_SESSION["konuKimGel"]=="")
+	      $_SESSION["konuKimGel"]=0;
+	   
 	   if($filtreleme!="") 
 	     $_SESSION["filtreleme"]=$filtreleme;
-		 else
-		 $filtreleme=temizle($_SESSION["filtreleme"]);
+		 else{
+		 	if(!isset($_POST["filtreleme"]))
+		 		$filtreleme=temizle($_SESSION["filtreleme"]);
+			else if(empty($_POST["filtreleme"]))	
+			    $_SESSION["filtreleme"]="";
+		 }
 		 
 		if($filtreleme!="") 
-		  $araFilter = " where konuAdi like '%$filtreleme%' ";
+		  $araFilter = " konuAdi like '%$filtreleme%' ";
 		  else
-		  $araFilter = "";
+		  $araFilter = " 1=1 ";
 	   
 		$siraYonu="asc";
 		if (empty($_SESSION["siraYonu5"])) {  
@@ -1140,17 +1153,34 @@ if($seciliSekme=="0") {
                           <a href="lessonsEdit.php?sirAlan=dersAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[363] ?> (<?php echo $metin[296] ?> - <?php echo $metin[297] ?>)</a></th>
                       </tr>
                       <?php
+					  
+		  	if($_SESSION["konuKimGel"]==1) 
+			  $kimKonu = "inner join eo_users on eo_5sayfa.ekleyenID=eo_users.id
+			where eo_users.id='".getUserID2($adi)."' and $filtr ";
+			 else
+			  $kimKonu = " where $filtr "; 
 		
 			$limitleme = sprintf("LIMIT %d, %d", $startRow1, $blokBuyuklugu);				 
-     		$sql = "SELECT eo_4konu.id, eo_4konu.konuAdi, eo_4konu.konuyuKilitle, eo_4konu.sadeceKayitlilarGorebilir, eo_4konu.calismaSuresiDakika, count(eo_5sayfa.id) as sayfasi, eo_3ders.dersAdi as dersAdi, eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi FROM eo_4konu ".
-	 		"left outer join eo_5sayfa on eo_4konu.id=eo_5sayfa.konuID ".
-	 		"left outer join eo_3ders on eo_4konu.dersID=eo_3ders.id ".
-			"left outer join eo_2sinif on eo_2sinif.id=eo_3ders.sinifID ".
-			"left outer join eo_1okul on eo_1okul.id=eo_2sinif.okulID $filtr $limitleme";
-			
+     		$sql = "SELECT eo_4konu.id, eo_4konu.konuAdi, eo_4konu.konuyuKilitle,
+					 eo_4konu.sadeceKayitlilarGorebilir, eo_4konu.calismaSuresiDakika, 
+					 count(eo_5sayfa.id) as sayfasi, eo_3ders.dersAdi as dersAdi, 
+					 eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi FROM eo_4konu 
+	 		left outer join eo_5sayfa on eo_4konu.id=eo_5sayfa.konuID 
+	 		left outer join eo_3ders on eo_4konu.dersID=eo_3ders.id 
+			left outer join eo_2sinif on eo_2sinif.id=eo_3ders.sinifID 
+			left outer join eo_1okul on eo_1okul.id=eo_2sinif.okulID 
+			$kimKonu $limitleme";
+//echo $sql;
 			$result = mysql_query($sql, $yol);
 			if($result){
-			$kayitSayisi = mysql_num_rows(mysql_query("select * from eo_4konu $araFilter ", $yol));			
+		  	if($_SESSION["konuKimGel"]==1) 
+				$kayitSayisi = mysql_num_rows(mysql_query(
+						"select DISTINCT eo_4konu.konuAdi from eo_4konu 
+	 					left outer join eo_5sayfa on eo_4konu.id=eo_5sayfa.konuID 
+						inner join eo_users on eo_5sayfa.ekleyenID=eo_users.id						
+						where $araFilter and eo_users.id='".getUserID2($adi)."'", $yol));			
+			 else
+   				$kayitSayisi = mysql_num_rows(mysql_query("select * from eo_4konu where $araFilter ", $yol));			
 			$sayfaSayisi = ceil($kayitSayisi/$blokBuyuklugu)-1;
 			}
 			
@@ -1224,6 +1254,16 @@ if($seciliSekme=="0") {
    }
 ?>
                     <br />
+                    <form action="lessonsEdit.php" method="post" name="konuKim" id="konuKim">
+                      <input type="hidden" name="konuKimGel" value="1" />
+                      <input type="submit" value="<?php echo $metin[483];?>" name="konuTumu" id="konuTumu" 
+                      <?php if($_SESSION["konuKimGel"]==0){ ?>style="border:inset 2px #ccc;"<?php } ?> />
+                      &nbsp;
+                      <input type="submit" value="<?php echo $metin[484];?>" name="konuBenim" id="konuBenim"
+                      <?php if($_SESSION["konuKimGel"]==1){ ?>style="border:inset 2px #ccc;"<?php } ?>  />
+                      <br/>Bir konuda düzenleme yapmak için bir sayfa düzenlemeniz yeterlidir. Bu sayede o konu sizin düzenlediðiniz konularda çýkacaktýr. 
+                    </form>
+                    <br/>
                     <form action="lessonsEdit.php?tab=3" method="post" name="araFiltrele" id="araFiltrele">
                       <?php echo $metin[29] ?> :
                       <input type="text" maxlength="50" size="32" name="filtreleme" value="<?php echo $filtreleme?>" title="<?php echo $metin[358] ?>" />

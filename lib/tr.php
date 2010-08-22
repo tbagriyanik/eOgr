@@ -481,7 +481,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 	
 		$metin[356]="numaral&#305; kay&#305;t";
 		$metin[357]="50 karakterden uzun olamaz.";
-		$metin[358]="_ karakteri ile arama yap&#305;ld&#305;&#287;&#305;nda t&uuml;m kay&#305;tlar getirilir.";
+		$metin[358]="Boþ arama yap&#305;ld&#305;&#287;&#305;nda t&uuml;m kay&#305;tlar getirilir.";
 
 		$metin[359]="Okul Ad&#305;";
 		$metin[360]="Ekle";
@@ -642,5 +642,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[480] = "Tüm Haberler";	
 		$metin[481] = "En son çalýþma";
 		$metin[482] = "Kere";
+		
+		$metin[483] = "Tüm Konular";
+		$metin[484] = "Sadece Düzenlediðim Konular";
 					
 ?>

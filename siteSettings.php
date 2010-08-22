@@ -33,7 +33,7 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[472]?></title>
+<title>eOgr -<?php echo $metin[472]?></title>
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -507,6 +507,33 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 		  }
 if ($_GET["upd"]!="1"){
 ?>
+                  <br />
+                  <form name="formFilt" id="formFilt" method="post" action="siteSettings.php">
+                    <select name="jumpMenu" id="jumpMenu">
+                      <option value="siteSettings.php?ord=" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
+                      <option value="siteSettings.php?ord=-1" <?php if (!(strcmp("-1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[93]?> </option>
+                      <option value="siteSettings.php?ord=0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[94]?> </option>
+                      <option value="siteSettings.php?ord=1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[95]?> </option>
+                      <option value="siteSettings.php?ord=2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[96]?> </option>
+                    </select>
+                    <input type="button" name="go_button" id= "go_button" value="<?php echo $metin[109]?>" onclick="MM_jumpMenuGo('jumpMenu','parent',0)" />
+                  </form>
+                  <br />
+                  <form method="get" id="sayfaSec" name="sayfaSec" action="siteSettings.php">
+                    <label> <?php echo $metin[110]?> :
+                      <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
+                    </label>
+                    <label>
+                      <input type="submit" name="gonder" id="gonder" value="<?php echo $metin[30]?>" />
+                    </label>
+                  </form>
+                  <br />
+                  <form id="aramak" name="aramak" method="get" action="siteSettings.php">
+                    <label title="<?php echo $metin[122]?>"> <?php echo $metin[29]?> :
+                      <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>" />
+                    </label>
+                    <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
+                  </form>
                   <br/>
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                     <table border="0" align="center" cellpadding="3" cellspacing="0">
@@ -554,32 +581,6 @@ if ($_GET["upd"]!="1"){
                       </tr>
                     </table>
                     <input type="hidden" name="MM_insert" value="form1" />
-                  </form>
-                  <form name="formFilt" id="formFilt" method="post" action="siteSettings.php">
-                    <select name="jumpMenu" id="jumpMenu">
-                      <option value="siteSettings.php?ord=" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
-                      <option value="siteSettings.php?ord=-1" <?php if (!(strcmp("-1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[93]?> </option>
-                      <option value="siteSettings.php?ord=0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[94]?> </option>
-                      <option value="siteSettings.php?ord=1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[95]?> </option>
-                      <option value="siteSettings.php?ord=2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[96]?> </option>
-                    </select>
-                    <input type="button" name="go_button" id= "go_button" value="<?php echo $metin[109]?>" onclick="MM_jumpMenuGo('jumpMenu','parent',0)" />
-                  </form>
-                  <br />
-                  <form method="get" id="sayfaSec" name="sayfaSec" action="siteSettings.php">
-                    <label> <?php echo $metin[110]?> :
-                      <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
-                    </label>
-                    <label>
-                      <input type="submit" name="gonder" id="gonder" value="<?php echo $metin[30]?>" />
-                    </label>
-                  </form>
-                  <br />
-                  <form id="aramak" name="aramak" method="get" action="siteSettings.php">
-                    <label title="<?php echo $metin[122]?>"> <?php echo $metin[29]?> :
-                      <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>" />
-                    </label>
-                    <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
                   </form>
                   <?php
 		}
