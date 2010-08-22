@@ -630,5 +630,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 						
 		$metin[483] = "All topics";
 		$metin[484] = "Only My Edited Topics";
+		
+		$metin[485] = "<font id='uyari'>You have not worked for now.</font>";
 					
 ?>

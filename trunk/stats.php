@@ -50,6 +50,7 @@ include('lib/graphs.inc.php');
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
+<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script type="text/javascript">
 Shadowbox.init({
     handleOversize: "drag",
@@ -193,7 +194,8 @@ Shadowbox.init({
 		 if (trim(getStats(12))!=""){
 			 echo "<div class='ikiKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
 		 }		 
-	 }			
+	 }else
+	  echo "$metin[485]";			
 		 
 ?>
                 </div>

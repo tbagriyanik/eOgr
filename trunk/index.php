@@ -22,13 +22,12 @@ Lesser General Public License for more details.
   require("conf.php");  
   		
   $time = getmicrotime();
-  checkLoginLang(false,true,"index.php");	   
-  $seciliTema=temaBilgisi();
-    
+
   if (empty($_GET["lng"]) && empty($_COOKIE["lng"])){
         $taraDili= browserdili(); 
         if($taraDili!="TR") $taraDili="EN";
 		setcookie("lng",$taraDili,time()+60*60*24*30);
+		header("Location:index.php");
     }
    else
     {
@@ -44,8 +43,13 @@ Lesser General Public License for more details.
 		   $taraDili="EN";
 		}
 		setcookie("lng",$taraDili,time()+60*60*24*30);
+		//header("Location:index.php");
 	}
+
   
+  checkLoginLang(false,true,"index.php");	   
+  $seciliTema=temaBilgisi();
+    
   if(isset($_GET["logout"])) 
   if($_GET["logout"]=="1") 
   {

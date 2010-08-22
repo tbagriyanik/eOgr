@@ -22,6 +22,7 @@
 }
 .panelFB {
 	position: absolute;
+	color:#FFF;
 	top: 20px;
 	right: 0;
 	display: none;
@@ -36,10 +37,15 @@
 	padding: 30px 130px 30px 30px;
 	opacity: .95;
 }
-.panelFB p {
-	margin: 0 0 15px 0;
-	padding: 0;
+.panelFB li {
 	color: #cccccc;
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 45px;
+	list-style-image: url(../img/page-next.gif);
+	padding: 3px;
+	list-style-position: inside;
 }
 .panelFB a, .panelFB a:visited {
 	margin: 0;

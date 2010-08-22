@@ -13,15 +13,97 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
- $adi	=temizle(substr($_SESSION["usern"],0,15));
- $par	=temizle($_SESSION["userp"]);
+ $adi	=(substr($_SESSION["usern"],0,15));
+ $par	=($_SESSION["userp"]);
  if(!($adi=="" or $par=="")) {
 ?>
 
 <div id="containerFB">
   <div class="panelFB">
     <?php
-	 echo $metin[444];
+	$sayfa = basename($_SERVER["PHP_SELF"]);
+	switch ($sayfa){
+		case "index.php":
+		 	echo "<h3>Ana sayfadasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "kursDetay.php":
+		 	echo "<h3>Kurs bilgilerinizin bulunduðu sayfadasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
+		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "lessons.php":
+		 	echo "<h3>Ders çalýþma sayfadasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
+		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "login.php":
+		 	echo "<h3>Giriþ sayfadasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "userSettings.php":
+		 	echo "<h3>Kullanýcý bilgilerinizin sayfadasýndasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
+		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "stats.php":
+		 	echo "<h3>Site istatistikleri sayfadasýndasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "fileShare.php":
+		 	echo "<h3>Ödev ve dosya paylaþým sayfadasýndasýnýz.</h3>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		default:
+			echo $metin[444];
+	}
+	 
     ?>
     <div style="clear:both;"></div>
   </div>
