@@ -1,4 +1,4 @@
-eOgr - v122a
+eOgr - v122b
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
