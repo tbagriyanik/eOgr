@@ -411,6 +411,27 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
    }
    }
 if ($totalRows_eoUsers==0) echo( "<p>&nbsp;</p><font id='hata'> Aranan haber veya d&uuml;zenlenecek haber bulunamadý!</font>");
+ else{
+?>
+                  <br />
+                  <form method="get" id="sayfaSec" name="sayfaSec" action="rssEdit.php">
+                    <label> <?php echo $metin[110]?> :
+                      <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
+                    </label>
+                    <label>
+                      <input type="submit" name="gonder" id="gonder" value="<?php echo $metin[30]?>" />
+                    </label>
+                  </form>
+                  <br />
+                  <form id="aramak" name="aramak" method="get" action="rssEdit.php">
+                    <label title="<?php echo $metin[133]?>"> <?php echo $metin[29]?> :
+                      <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>" />
+                    </label>
+                    <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
+                  </form>
+<?php
+ }
+ 
 
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 ?>
@@ -487,22 +508,6 @@ if ($_GET["upd"]!="1"){
                       </tr>
                     </table>
                     <input type="hidden" name="MM_insert" value="form1" />
-                  </form>
-                  <br />
-                  <form method="get" id="sayfaSec" name="sayfaSec" action="rssEdit.php">
-                    <label> <?php echo $metin[110]?> :
-                      <input name="pageCnt" type="text" id="pageCnt" value="<?php echo $maxRows_eoUsers?>" size="5" maxlength="5" />
-                    </label>
-                    <label>
-                      <input type="submit" name="gonder" id="gonder" value="<?php echo $metin[30]?>" />
-                    </label>
-                  </form>
-                  <br />
-                  <form id="aramak" name="aramak" method="get" action="rssEdit.php">
-                    <label title="<?php echo $metin[133]?>"> <?php echo $metin[29]?> :
-                      <input name="arama" type="text" size="20" maxlength="20" value="<?php echo $arayici?>" />
-                    </label>
-                    <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
                   </form>
                   <?php
 }

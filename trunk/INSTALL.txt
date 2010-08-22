@@ -1,0 +1,37 @@
+INSTALLATION:
+-------------
+(1) Edit your settings in "database.php" with an editor. 
+    All values must be properly edited.
+    For example, if you don't write your site URL into $_source1 value, the project may give errors.
+
+(2) " http://localhost/eogr/install.php " is for installation. 
+
+    If you didn't create your database previously, you have to click install.php for 2 times.
+    First time to create your database, second time for table creation.
+
+    Your MySQL user must have "CREATE TABLE" permission! 
+    After a successful installation, you can remove/rename "installation_Database.sql" and install.php files.
+	
+    If you don't want to use install.php, you can import "installation_Database.sql" from phpmyadmin page.
+
+(3) Login as administrator user: name "admin" and password "11111"
+    I hope you start and like this fresh experience!	
+
+Further information for administrators: 
+- This project needs at least PHP 5 version
+- MySQL 5 database server 
+- "uploads" folder needs write permission (766 or 777 can be)
+  If you don't want to enable file sharing, you are not forced to change the permission.
+
+- .htaccess enabled for security 
+  You can erase this file if having 500 security problems, or you can edit it properly for your server.
+
+For Clients (web users and testers need to check theese browser options):
+- Javascript (Ajax) enabled browser,
+- Cookies enabled (theme, language and user name),
+- Sending referrer address enabled (page navigation),
+  "Invalid Source error" may be because of this.
+- Flash player installed (for lessons' page content)
+  Adobe Flash is not obligatory for the general project usage.
+
+Without Javascript you can not work lessons. Sorry for mobile users or other untested browser users!

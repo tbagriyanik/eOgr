@@ -372,10 +372,17 @@ require 'lib/flood-protection.php'; // include the class
 				//--------------------------------------	
 				  echo '<li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
 				  $baglan3= @mysql_connect($host, $dbUser, $dbPassword);
-				  if($baglan3)
+				  
+				  try{
+					if($baglan3)
 					  echo "<li>MySQL <strong>sunucu</strong> sürümü : ".mysql_get_server_info()."</li>"; 	
 					  else
-					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <u>hata!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();
+					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <u>hata!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();  
+				  }
+				  catch(Exception $e){
+					  echo "<li>* MySQL <strong>sunucu</strong> sürümü : <u>hata!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  }				  
+				  
 				  echo "<li>MySQL <strong>istemci</strong> sürümü : ".mysql_get_client_info()."</li>"; 	
 				  if(!empty($dbPassword))
 					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : var</li>"; 	
@@ -384,12 +391,18 @@ require 'lib/flood-protection.php'; // include the class
 					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : var</li>"; 	
 					  else
 					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <u>yok!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();
-				  if(eregi("777",decoct(fileperms($_uploadFolder))) 
+				  try{
+					if(eregi("777",decoct(fileperms($_uploadFolder))) 
 				  or eregi("766",decoct(fileperms($_uploadFolder)))) {
 					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : iþlevsel</li>";
 				  }else{
+					  echo "<li>* Dosya <strong>paylaþýmý</strong> için gereken klasör : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  }  
+				  }
+				  catch(Exception $e){
 					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
-					  }
+				  }	  
+				  
 				  if(function_exists("gzencode"))
 				    echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : iþlevsel</li>";
 				   else
@@ -437,12 +450,17 @@ require 'lib/flood-protection.php'; // include the class
 				  if(ini_get('magic_quotes_gpc')==1)
 				    echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : açýk</li>";
 				   else
-				   	echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : <u>kapalý!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : <u>kapalý!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  try{
 				  $modHT = apache_get_modules()	;
 				  if(in_array("mod_rewrite",$modHT))
 				    echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : iþlevsel</li>";
 				   else
-				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";						  
+				  }
+				  catch(Exception $e){
+					  echo "<li>* <strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  }						
 				  if($sessVar)
 				    echo "<li><strong>Oturum</strong> desteði : iþlevsel</li>";
 				   else
@@ -451,13 +469,17 @@ require 'lib/flood-protection.php'; // include the class
 				    echo "<li><strong>Güvenli</strong> mod (safe_mode) : iþlevsel</li>";
 				   else
 				   	echo "<li><strong>Güvenli</strong> mod (safe_mode) : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  if( ini_get('display_errors') )
+				    echo "<li><strong>Hata</strong> bildirimi (display_errors) : <u>iþlevsel!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>Hata</strong> bildirimi (display_errors) : iþlevsiz!</li>";	
 				  if( ini_get('SMTP') )
 				    echo "<li><strong>Eposta</strong> SMTP deðeri : ". ini_get('SMTP')."</li>";
 				   else
 				   	echo "<li><strong>Eposta</strong> SMTP deðeri : <u>iþlevsiz!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
 				//--------------------------------------	
 				  echo "</ul>";
-				  echo "<p>Altý çizili ve kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.</p>";
+				  echo "<hr noshade=\"noshade\"><p>Eðer varsa, <u>altý çizili</u> ve <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.<br/>Bu deðerler tavsiye edilmez veya tehlikeye neden olabilir!</p>";
 				  ?>
                 </div>
                 <div class="cleared"></div>
