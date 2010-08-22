@@ -24,7 +24,7 @@ if (md5($_SERVER['HTTP_USER_AGENT']) == $_SESSION['aThing']) {
 	if(isset($_POST['oda']))
 		echo iconv( "ISO-8859-9","UTF-8", "Oda degistirildi...");
 		else
-		echo "Form Error!";
+		echo "";
 }else 	  
  sessionDestroy();
 

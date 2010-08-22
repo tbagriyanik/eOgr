@@ -14,7 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 
-	$adi	=temizle(substr($_SESSION["usern"],0,15));
+	$adi	=@temizle(substr($_SESSION["usern"],0,15));
 	
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 $kullaniciSecen = explode("-",ayarGetir3($adi));
