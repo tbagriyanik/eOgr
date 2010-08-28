@@ -94,6 +94,32 @@ ob_start (); // Buffer output
 	});
 
 </script>
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+<style type="text/css">
+/*register texboxes*/
+#hint {
+	display: none;
+	position: absolute;
+	right: 20px;
+	width: 100px;
+	margin-top: -4px;
+	border: 1px solid #c93;
+	padding: 10px 12px;
+	background: #ffc url(img/pointer.gif) no-repeat -10px 5px;
+	color:#C09;
+	text-align:justify;
+	font-size:12px;
+	font-weight:bold;
+}
+#hint .hint-pointer {
+	position: absolute;
+	left: -10px;
+	top: 6px;
+	width: 10px;
+	height: 19px;
+	background: url(img/pointer.gif) left top no-repeat;
+}
+</style>
 </head>
 <body id="intro">
 <div class="PageBackgroundGradient"></div>
@@ -200,7 +226,7 @@ ob_start (); // Buffer output
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
                     (<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
-                    <span id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span></span> &nbsp;&nbsp; <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
+                    <span id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span></span> <span id="hint"><?php echo $metin[486];?><span class="hint-pointer">&nbsp;</span></span> &nbsp;&nbsp; <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
                     <span id="bitirmeYuzdesi"></span><br />
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
@@ -534,7 +560,6 @@ fix_flash();
 		  	document.getElementById('konu_id').value=".
 			RemoveXSS($_GET["konu"]).
 			";document.getElementById('sonSayfaHidden').value=0;konuSec2(1);</script>";
-			
 			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
 			ob_end_clean (); // Wipe the buffer
 			echo str_replace ('<!--TITLE-->', " - ".konuAdiGetir($_GET["konu"]), $pageContents);	   			

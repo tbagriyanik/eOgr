@@ -68,7 +68,7 @@ checkLoginLang(false,true,"error.php");
  echo "<strong>Tarih :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
 ?>
 </p>
-<h5>Yoneticiye hatayi <a href="/eogr/mail.php?to=-1" target="_blank" class="external">eposta</a> ile bildir. (Uyelik gerektirir.)</h5>
+<h5>Hatayi <a href="/eogr/mail.php?to=-1" target="_blank" class="external">bildir</a>. (Uyelik gerektirir.)</h5>
 <script type="text/javascript" language="javascript">
 if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 </script>
