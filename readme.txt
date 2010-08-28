@@ -1,4 +1,4 @@
-eOgr - v122b
+eOgr - v122c
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -15,9 +15,8 @@ Available language support is English and Turkish.
 Developer Name: Tarik Bagriyanik
 Developer Site: http://yunus.sourceforge.net
 
-Demo Sites:	http://www.tuzlaatl.k12.tr/eogr (latest version)
-		http://tbagriyanik.xtreemhost.com/eogr (latest version)
-		http://eogr.agilityhoster.com 
+Demo Sites:	http://www.tuzlaatl.k12.tr/eogr
+		http://tbagriyanik.xtreemhost.com/eogr		
 
 Source Track:	http://eogr.googlecode.com 
 		http://www.ohloh.net/p/eogr 
@@ -28,8 +27,8 @@ Download All Versions:
 		http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	15-11-2008
-Last Update: 	22-08-2010
-Process Time : 	500 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
+Last Update: 	28-08-2010
+Process Time : 	510 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 INSTALLATION:

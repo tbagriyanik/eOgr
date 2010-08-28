@@ -70,12 +70,23 @@ td {
 	padding-top: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
-	border: medium ridge #900;
 	font-size: 14px;
 	font-weight: bold;
 	left: 10px;
 	top: 10px;
 	margin: 3px;
+	border-top-width: thin;
+	border-right-width: medium;
+	border-bottom-width: thin;
+	border-left-width: medium;
+	border-top-style: solid;
+	border-right-style: double;
+	border-bottom-style: solid;
+	border-left-style: double;
+	border-top-color: #900;
+	border-right-color: #900;
+	border-bottom-color: #900;
+	border-left-color: #900;
 }
 #tamam {
 	color: #333;

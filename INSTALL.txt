@@ -15,13 +15,15 @@ INSTALLATION:
     If you don't want to use install.php, you can import "installation_Database.sql" from phpmyadmin page.
 
 (3) Login as administrator user: name "admin" and password "11111"
-    I hope you start and like this fresh experience!	
+    Change your password from your profile page immediately.
+	
+    I hope you start and like this experience!	
 
 Further information for administrators: 
 - This project needs at least PHP 5 version
 - MySQL 5 database server 
 - "uploads" folder needs write permission (766 or 777 can be)
-  If you don't want to enable file sharing, you are not forced to change the permission.
+  If you don't want to enable file sharing, you are not forced to change any permission.
 
 - .htaccess enabled for security 
   You can erase this file if having 500 security problems, or you can edit it properly for your server.

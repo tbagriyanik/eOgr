@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<title>eOgr - Error Page</title>
+<title>eOgr - Error</title>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/stilGenel.css" type="text/css" media="all" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
@@ -14,7 +14,7 @@
 </head>
 
 <body bgcolor="#FFCCCC">
-<h1 align="center">eOgr - Hata Sayfasi (Error Page)</h1>
+<h1 align="center">eOgr - Error</h1>
 <p style="margin-top:50px;"> <font color="#FF0000" size="+1">Ana sayfa icin <a href="/eogr/index.php"><img src="img/mainPage.gif" alt="main" width="16" height="16" style="vertical-align: text-top;" border='0'/> tiklatiniz</a>.</font> </p>
 <?php 
 require("conf.php");
@@ -56,18 +56,18 @@ checkLoginLang(false,true,"error.php");
 		  echo "<font id='hata'>$metin[468]</font>";		  	  
 	}
 ?>
-<h6>
+<p>
   <?php
- echo "Kullanici adresi : ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
+ echo "<strong>Kullanici adresi :</strong> ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
 // echo "Sunucu adresi : ".$_SERVER['SERVER_ADDR']."<br/>"; 
  if(!empty($_SERVER['HTTP_REFERER']))
-	 echo "Kaynak adres : ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>";  
- echo "Gelinen adres : ".RemoveXSS($_SERVER['REQUEST_URI' ])."<br/>";  
- echo "Istek turu : ".RemoveXSS($_SERVER['REQUEST_METHOD'])."<br/>"; 
- echo "Calisan dosya adi : ".basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))."<br/>"; 
- echo "Tarih : ".date("d-m-Y H:i:s")."<br/>"; 
+	 echo "<strong>Kaynak adres :</strong> ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>";  
+ echo "<strong>Gelinen adres :</strong> ".RemoveXSS($_SERVER['REQUEST_URI' ])."<br/>";  
+// echo "Istek turu : ".RemoveXSS($_SERVER['REQUEST_METHOD'])."<br/>"; 
+// echo "Calisan dosya adi : ".basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))."<br/>"; 
+ echo "<strong>Tarih :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
 ?>
-</h6>
+</p>
 <h5>Yoneticiye hatayi <a href="/eogr/mail.php?to=-1" target="_blank" class="external">eposta</a> ile bildir. (Uyelik gerektirir.)</h5>
 <script type="text/javascript" language="javascript">
 if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
