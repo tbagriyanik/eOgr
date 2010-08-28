@@ -14,6 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
     session_start (); 
+	ob_start();
 	  
 	include "../../conf.php";
     checkLoginLang(true,true,"upload.php");

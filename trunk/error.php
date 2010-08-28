@@ -1,6 +1,8 @@
 <?php 
-require("conf.php");
-checkLoginLang(false,true,"error.php");
+if (!file_exists("siteLock.php")){
+	require("conf.php");
+	checkLoginLang(false,true,"error.php");
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,6 +20,9 @@ checkLoginLang(false,true,"error.php");
 </head>
 
 <body bgcolor="#FFCCCC">
+<?php 
+ if (!file_exists("siteLock.php")){
+?>
 <h1 align="center">eOgr - <?php echo $metin[489]?></h1>
 <p style="margin-top:50px;"> <font color="#FF0000" size="+1"> <?php echo $metin[402]?> </font> </p>
 <?php
@@ -52,6 +57,9 @@ checkLoginLang(false,true,"error.php");
  		 case "10":			//not allowed for students
 		  echo "<font id='hata'>$metin[448]</font>";
 		  break;	
+ 		 case "11":			//site is closed 
+		  echo "<font id='hata'>$metin[527]</font>";
+		  break;	
 		 default:			//file not found
 		  echo "<font id='hata'>$metin[468]</font>";		  	  
 	}
@@ -71,6 +79,14 @@ if(!empty($_SERVER['HTTP_REFERER']))
 <h5>
 <?php echo $metin[490]?>
 </h5>
+<?php
+ }else{
+?>
+<h1 align="center">eOgr - Site Maintenance</h1>
+<p style="margin-top:50px;"> <font color="#FF0000" size="+1">Please, visit later. Site is closed for now.</font> </p>
+<?php
+ }
+?>
 <script type="text/javascript" language="javascript">
 if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 </script>

@@ -16,9 +16,15 @@
 	margin: 30px 0 50px;
 	padding: 15px 0;
 }
+.contentFB h3 {
+	color:#FFF !important;
+}
 .contentFB p {
-	margin: 10px 0;
-	padding: 15px 20px;
+	margin: 10px;
+	padding-top: 15px;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	padding-left: 20px;
 }
 .panelFB {
 	position: absolute;
@@ -50,7 +56,7 @@
 .panelFB a, .panelFB a:visited {
 	margin: 0;
 	padding: 0;
-	color: #fff !important;
+	color: #0FF !important;
 	text-decoration: none !important;
 }
 .panelFB a:hover, .panelFB a:visited:hover {

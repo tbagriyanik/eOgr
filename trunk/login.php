@@ -20,6 +20,7 @@ Lesser General Public License for more details.
     header("Pragma: no-cache");
 	
     session_start (); 
+	ob_start (); // Buffer output
 	require("conf.php");	
 	
 	$time = getmicrotime();

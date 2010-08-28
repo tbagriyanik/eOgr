@@ -15,6 +15,7 @@ Lesser General Public License for more details.
 */
     header("Content-Type: text/html; charset=iso-8859-9");
     session_start (); 
+	ob_start();
 	require("conf.php"); 
 /*
 getKonuKayitliKullanici:

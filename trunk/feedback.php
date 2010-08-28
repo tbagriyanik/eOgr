@@ -24,7 +24,7 @@ Lesser General Public License for more details.
 	$sayfa = basename($_SERVER["PHP_SELF"]);
 	switch ($sayfa){
 		case "index.php":
-		 	echo "<h3>Ana sayfadasýnýz.</h3>";
+		 	echo "<p>Ana sayfadasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
@@ -35,7 +35,7 @@ Lesser General Public License for more details.
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;
 		case "kursDetay.php":
-		 	echo "<h3>Kurs bilgilerinizin bulunduðu sayfadasýnýz.</h3>";
+		 	echo "<p>Kurs bilgilerinizin bulunduðu sayfadasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
@@ -46,7 +46,7 @@ Lesser General Public License for more details.
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;
 		case "lessons.php":
-		 	echo "<h3>Ders çalýþma sayfadasýnýz.</h3>";
+		 	echo "<p>Ders çalýþma sayfadasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
@@ -57,7 +57,7 @@ Lesser General Public License for more details.
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;
 		case "login.php":
-		 	echo "<h3>Giriþ sayfadasýnýz.</h3>";
+		 	echo "<p>Giriþ sayfadasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
@@ -68,7 +68,7 @@ Lesser General Public License for more details.
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;
 		case "userSettings.php":
-		 	echo "<h3>Kullanýcý bilgilerinizin sayfadasýndasýnýz.</h3>";
+		 	echo "<p>Kullanýcý bilgilerinizin bulunduðu sayfadasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
@@ -79,7 +79,7 @@ Lesser General Public License for more details.
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;
 		case "stats.php":
-		 	echo "<h3>Site istatistikleri sayfadasýndasýnýz.</h3>";
+		 	echo "<p>Site istatistikleri sayfadasýndasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
@@ -90,7 +90,7 @@ Lesser General Public License for more details.
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;
 		case "fileShare.php":
-		 	echo "<h3>Ödev ve dosya paylaþým sayfadasýndasýnýz.</h3>";
+		 	echo "<p>Ödev ve dosya paylaþým sayfadasýndasýnýz.</p>";
 		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";

@@ -798,7 +798,7 @@ if ($handle = opendir($dir)) {
 				if (!KlasorSil($dir.$obj))
 					return false;
 				} elseif (is_file($dir.$obj)) {
-					if (!unlink($dir.$obj))
+					if (!@unlink($dir.$obj))
 						return false;
 					}
 			}
@@ -1539,7 +1539,7 @@ function yorumlariGetir($konu){
 				where 
 				eo_comments.konuID = eo_4konu.id and eo_comments.userID = eo_users.id 
 				and eo_comments.active = 1 and eo_4konu.id = ".$konu."
-				order by eo_comments.commentDate";
+				order by eo_comments.commentDate DESC";
 	
     $yol1 = baglan();
 	$result1 = mysql_query($sql1, $yol1);
@@ -1548,10 +1548,12 @@ function yorumlariGetir($konu){
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1)){
 					  if($row_gelen['id'] == getUserID($_SESSION["usern"],$_SESSION["userp"]) || getUserType($_SESSION["usern"]) == 2 ) 
-					 	$yorumSil = " - <a href='yorumSil.php?id=".$row_gelen['comID']."' rel='facebox'><img src=\"img/erase.png\" alt=\"delete\" width=\"16\" height=\"16\" border=\"0\" style=\"vertical-align: middle;\"  title=\"$metin[102]\"/> Yorumu Sil</a>";  
+					 	$yorumSil = " <a href='yorumSil.php?id=".$row_gelen['comID']."' rel='facebox'><img src=\"img/erase.png\" alt=\"delete\" width=\"16\" height=\"16\" border=\"0\" style=\"vertical-align: middle;\"  title=\"$metin[102]\"/> Yorumu Sil</a>";  
 						else
 						$yorumSil = "";
-				    $ekle .= "<tr><td><div class='yorumItem'><p>".smileAdd($row_gelen['comment'])." </p><a href='profil.php?kim=".$row_gelen['id']."' rel='facebox'>".$row_gelen['userName']."</a> - ".tarihOku2($row_gelen['commentDate'])." $yorumSil</div></td></tr>";					
+				     	$humanRelativeDate = new HumanRelativeDate();
+						$insansi = $humanRelativeDate->getTextForSQLDate($row_gelen['commentDate']);
+				    $ekle .= "<tr><td><div class='yorumItem'><p style='font-size:16px;padding-bottom:6px;'>".smileAdd($row_gelen['comment'])." </p><a href='profil.php?kim=".$row_gelen['id']."' rel='facebox'>".$row_gelen['userName']."</a> $insansi $yorumSil</div></td></tr>";					
 				   }
 				   @mysql_free_result($result1);  
 				   return ($ekle);
@@ -3298,4 +3300,11 @@ if ($tur=="-1")	{
 	   sessionDestroy();
 	   echo ("$metin[450]");
 } 
+/*
+Site bakýmda mý diye kontrol edildiði yer
+*/
+if (file_exists("siteLock.php")){
+		header("Location:error.php?error=11");	
+}
+
 ?>

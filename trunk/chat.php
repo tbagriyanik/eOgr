@@ -13,11 +13,10 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
       session_start (); 
+	  ob_start();
       $_SESSION ['ready'] = TRUE; 
-     }
+
 	  $token = md5(uniqid(rand(), true));
 	  $_SESSION['token'] = $token;
 	  

@@ -403,11 +403,17 @@ label.error {
 	cursor: pointer;
 }
 .yorumItem {
-	margin: 5px;
-	width: 99%;
+	margin: 0px;
+	width: 750px;
 	border-left-width: 5px;
 	border-left-style: solid;
 	border-left-color: #C9F;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #C9F;
+	border-bottom-width:1px;
+	border-bottom-style: solid;
+	border-bottom-color: #666;
 	line-height: 20px;
 	padding-top: 3px;
 	padding-right: 15px;
@@ -415,6 +421,10 @@ label.error {
 	padding-left: 3px;
 	background-color:#fee;
 	color:#000;
+	font-size:11px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #666;
 }
 .yorumItem a:link {
 	color:#00F !important;

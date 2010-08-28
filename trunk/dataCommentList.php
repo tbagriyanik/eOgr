@@ -17,11 +17,8 @@ Lesser General Public License for more details.
 	header("Cache-Control: no-cache, must-revalidate");
 	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
-     }
   	require("conf.php");
 	$time = getmicrotime();	 
 	checkLoginLang(true,true,"dataCommentList.php");	

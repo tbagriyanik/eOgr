@@ -15,11 +15,9 @@ Lesser General Public License for more details.
 */
    header("Content-Type: text/html; charset=iso-8859-9"); 
    
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
+	  ob_start();
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
-     }
 require("conf.php");  	
 
      $taraDili=$_COOKIE["lng"];    
