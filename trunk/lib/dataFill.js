@@ -203,19 +203,23 @@ function setOutputKonu(sayfaNo, konu, noCount){
 				birSayi = sayfaNo + 1;
 				document.getElementById('ileriDugmesi').innerHTML ='<a href="#" onclick="konuSec2('+birSayi+',1);return false;"><img src="img/2rightarrow.png" border="0" style="vertical-align:middle" alt="right"/></a>';
 				//konu seçili ise hint gösterilebilir!
-				if(document.getElementById('ileriGeri').style.visibility == 'visible'){
+				if(document.getElementById('ileriGeri').style.visibility == 'visible' 
+				    && sayfaNo==1 && eskiYeri<1){
 					var timeoutHint = null;
-					var valTimeout = 3000; // 3sec 
+					var valTimeout = 10; 
+					var timeoutHint2 = null;
+					var valTimeout2 = 9000; 
+					
 					window.clearTimeout(timeoutHint);
-					timeoutHint = window.setTimeout(function() {	 
+					window.clearTimeout(timeoutHint2);
+					
+					timeoutHint = window.setTimeout(function() {
+						$('#hint').fadeIn(500,null);	 
 						document.getElementById("hint").style.display = "inline";	
 						 }, valTimeout);
-					var timeoutHint2 = null;
-					var valTimeout2 = 13000; // 13sec 
-					
-					window.clearTimeout(timeoutHint2);
 					timeoutHint2 = window.setTimeout(function() { 
-						document.getElementById("hint").style.display = "none";	
+						//document.getElementById("hint").style.display = "none";	
+						$('#hint').fadeOut(750,null);	 
 						 }, valTimeout2);
 				}
 
@@ -345,13 +349,22 @@ function saveUserWork(){
     }
 }
 /*
+trim:
+sað ve soldaki boþluklarý siler
+*/
+function trim(stringToTrim)
+{
+	return stringToTrim.replace(/^\s+|\s+$/g,"");
+}
+/*
 setOutputAll:
 yazýcý önizlemesi yapýmý
 */
 function setOutputAll(){	
     if(httpObject.readyState == 4)
 	 if(httpObject.status == 200 || httpObject.status == 304){
-		if(httpObject.responseText!="") {			
+		if(trim(httpObject.responseText)!="")
+		  if(trim(httpObject.responseText)!="1") {			
 			w=window.open('about:blank','onizleme','height=600,width=700,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=yes,scrollbars=yes');
 			w.document.open();
 			w.document.writeln("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-9\" />");

@@ -784,6 +784,33 @@ function dosya_uploads_uyumu(){
    	@mysql_free_result($result1);	 
 }
 /*
+klasorSil:
+klasör içindekiler ile silinir
+*/
+function klasorSil($dir) {
+if (substr($dir, strlen($dir)-1, 1)!= '/')
+$dir .= '/';
+//echo $dir; //silinen klasörün adý
+if ($handle = opendir($dir)) {
+	while ($obj = readdir($handle)) {
+		if ($obj!= '.' && $obj!= '..') {
+			if (is_dir($dir.$obj)) {
+				if (!KlasorSil($dir.$obj))
+					return false;
+				} elseif (is_file($dir.$obj)) {
+					if (!unlink($dir.$obj))
+						return false;
+					}
+			}
+	}
+		closedir($handle);
+		if (!@rmdir($dir))
+		return false;
+		return true;
+	}
+return false;
+}
+/*
 dosyaTemizle:
 gereksiz dosyalarý upload klasöründen ve veritabanýndan siler
 */
@@ -791,7 +818,7 @@ function dosyaTemizle(){
 	$sonuc = "";
 	$dosyalarVTdeki = array();
 	
-	global $_uploadFolder;
+	global $_uploadFolder, $metin;
 	$sql1 = "select fileName,id from eo_files";
 	
 	$yol1 = baglan();
@@ -800,7 +827,7 @@ function dosyaTemizle(){
 		while ($gelen = @mysql_fetch_array($result1)){
 			$dosyalarVTdeki[]=$gelen[0];
 			if(!file_exists($_uploadFolder."/".$gelen[0])){
-			 $sonuc .= "* ".$gelen[0]." veritabanýndan silindi!<br/>"; 
+			 $sonuc .= "* ".$gelen[0]." $metin[503]<br/>"; 
 			 dosyaSil2($gelen[1]);
 			}
 			 //vtdeki dosya klasörde yok ise 			
@@ -809,8 +836,11 @@ function dosyaTemizle(){
 	 
 	 foreach(dosyaListele($_uploadFolder) as $eleman){		   
 		 	if(!in_array($eleman,array(".svn",".htaccess","index.php")) and !in_array($eleman,$dosyalarVTdeki)) {
-				$sonuc .= "~ ".$eleman." fiziksel olarak silindi!<br/>"; 
-				@unlink($_uploadFolder."/".$eleman);
+				$sonuc .= "~ ".$eleman." $metin[502]<br/>";
+				if(is_dir($_uploadFolder."/".$eleman))
+					klasorSil($_uploadFolder."/".$eleman);
+				 else 
+					@unlink($_uploadFolder."/".$eleman);
 				//klasördeki dosya vt içinde yok ise
 				}		 
 		 }
@@ -2805,7 +2835,7 @@ getKursTablo:
 çalýþýlan ders ile ilgili tablo yapýmý
 */
 function getKursTablo($dersID,$uID){
-	global $yol1;	
+	global $yol1,$metin;	
 	
     $sql1 = "SELECT id,konuAdi FROM eo_4konu where dersID='$dersID' order by konuAdi"; 	
     $result1 = mysql_query($sql1, $yol1); 
@@ -2813,11 +2843,11 @@ function getKursTablo($dersID,$uID){
     if ($result1 && mysql_numrows($result1) > 0){
 		$sonuc = '<table width="%99" border="0" align="center" cellpadding="3" cellspacing="1">';
 		$sonuc .= "<tr>
-		         	<th width='%30'>Konu Adý</th>
-					<th width='%15'>En Ýyi Yüzde (%)</th>
-					<th width='%15'>Toplam Süre</th>
-					<th width='%15'>Çalýþma Sayýsý</th>
-					<th width='%15'>Durum</th></tr>";
+		         	<th width='%50'>$metin[364]</th>
+					<th width='%15'>$metin[504]</th>
+					<th width='%15'>$metin[505]</th>
+					<th width='%15'>$metin[506]</th>
+					<th width='%5'>$metin[507]</th></tr>";
 
 		$satirRenk = 0;
 		$bitenler = 0;
@@ -2847,15 +2877,15 @@ function getKursTablo($dersID,$uID){
 			  $bitenler++;
 			  if($sure>=getStats(9))
 			  //yüzde 100 bitirmiþ ve süresi iyi
-				$durum = "<img src='img/i_low.png' alt='good'/>";	
+				$durum = "<img src='img/i_low.png' alt='good' title='$metin[511]'/>";	
 			  else {
 			  //yüzde 100 ama süresi düþük
-			    $durum = "<img src='img/i_medium.png' alt='doubt' />";
+			    $durum = "<img src='img/i_medium.png' alt='doubt' title='$metin[513]'/>";
 				$tamamOlamayan++;
 			  }
 			}else
 			  //yüzdesi 100 deðilse
-			   $durum  = "<img src='img/i_high.png' alt='bad' />";				   			   
+			   $durum  = "<img src='img/i_high.png' alt='bad' title='$metin[512]' />";				   			   
 			
 			$sonuc .= '<tr>
 			           <td align="left" style="background-color:'.$row_color.';">
@@ -2869,16 +2899,17 @@ function getKursTablo($dersID,$uID){
 		$sonuc .= "</table>";
 		
 		if($toplamKonu==$bitenler) {
-			$sonuc .=  "<h5>Bu dersteki tüm konular tamamlanmýþtýr!</h5>";
+			$sonuc .=  "<h5>$metin[509]</h5>";
 			}
-		 else {
-		 	$sonuc .=  "<p><strong>Konularý bitirme durumu :</strong> %".
+		 else if($bitenler!=0) {
+		 	$sonuc .=  "<p><strong>$metin[508] :</strong> %".
 						round($bitenler*100/$toplamKonu)."</p>";
 		 }
 
 		if($tamamOlamayan>0)
-		  	$sonuc .= "<sub><strong>Not :</strong> $tamamOlamayan konunun süresi, ".
-			  			Sec2Time2(round(getStats(9)))." olan genel ortalamanýn altýndadýr!</sub>";
+		  	$sonuc .= sprintf("<sub>$metin[510]</sub>",$tamamOlamayan,
+			  			Sec2Time2(round(getStats(9)))
+						);
 		 
 		return $sonuc;
 	}

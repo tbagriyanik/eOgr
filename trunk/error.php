@@ -1,8 +1,12 @@
+<?php 
+require("conf.php");
+checkLoginLang(false,true,"error.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<title>eOgr - Error</title>
+<title>eOgr -<?php echo $metin[489]?></title>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/stilGenel.css" type="text/css" media="all" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
@@ -14,12 +18,9 @@
 </head>
 
 <body bgcolor="#FFCCCC">
-<h1 align="center">eOgr - Error</h1>
-<p style="margin-top:50px;"> <font color="#FF0000" size="+1">Ana sayfa icin <a href="/eogr/index.php"><img src="img/mainPage.gif" alt="main" width="16" height="16" style="vertical-align: text-top;" border='0'/> tiklatiniz</a>.</font> </p>
-<?php 
-require("conf.php");
-checkLoginLang(false,true,"error.php");
-
+<h1 align="center">eOgr - <?php echo $metin[489]?></h1>
+<p style="margin-top:50px;"> <font color="#FF0000" size="+1"> <?php echo $metin[402]?> </font> </p>
+<?php
 	 switch ($_GET["error"]){
 		 case "1":
 		  echo "<font id='hata'> $metin[400]</font>"; //not login
@@ -34,11 +35,10 @@ checkLoginLang(false,true,"error.php");
 		  echo "<font id='hata'> $metin[401]</font>"; //flood
 		  break;		 
 		 case "5":			 //installation
-		  echo "<font id='hata'> Veritaban&#305; <a href='/eogr/install.php'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
-		  You need to go to <a href='/eogr/install.php'>installing page</a>!</font>";
+		  echo "<font id='hata'> $metin[487]</font>";
 		  break;		  		  
 		 case "6":			//tables not found	
-		  echo "<font id='hata'> Tablo <a href='/eogr/install.php'>kurulumunu (installation)</a> yapmad&#305;n&#305;z!</font>";
+		  echo "<font id='hata'> $metin[488]</font>";
 		  break;		  
 		 case "7":			//bad login
 		  echo "<font id='hata'> ".$metin[404]."</font><br/>".$metin[402];
@@ -58,17 +58,19 @@ checkLoginLang(false,true,"error.php");
 ?>
 <p>
   <?php
- echo "<strong>Kullanici adresi :</strong> ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
+ echo "<strong>$metin[491] :</strong> ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
 // echo "Sunucu adresi : ".$_SERVER['SERVER_ADDR']."<br/>"; 
- if(!empty($_SERVER['HTTP_REFERER']))
-	 echo "<strong>Kaynak adres :</strong> ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>";  
- echo "<strong>Gelinen adres :</strong> ".RemoveXSS($_SERVER['REQUEST_URI' ])."<br/>";  
+if(!empty($_SERVER['HTTP_REFERER']))
+	 echo "<strong>$metin[493] :</strong> ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>";  
+ echo "<strong>$metin[492] :</strong> ".RemoveXSS($_SERVER['REQUEST_URI' ])."<br/>";  
 // echo "Istek turu : ".RemoveXSS($_SERVER['REQUEST_METHOD'])."<br/>"; 
 // echo "Calisan dosya adi : ".basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))."<br/>"; 
- echo "<strong>Tarih :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
+ echo "<strong>$metin[129] :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
 ?>
 </p>
-<h5>Hatayi <a href="/eogr/mail.php?to=-1" target="_blank" class="external">bildir</a>. (Uyelik gerektirir.)</h5>
+<h5>
+<?php echo $metin[490]?>
+</h5>
 <script type="text/javascript" language="javascript">
 if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 </script>
