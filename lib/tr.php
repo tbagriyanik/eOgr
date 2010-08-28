@@ -647,5 +647,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[484] = "Sadece Düzenlediðim Konular";
 		
 		$metin[485] = "<font id='uyari'>Þimdilik ders çalýþmadýnýz.</font>";
-					
+		$metin[486] = "Sonraki sayfa için týklatýnýz";
+							
 ?>
