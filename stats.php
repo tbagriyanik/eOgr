@@ -19,12 +19,10 @@ Lesser General Public License for more details.
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
 	
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
+	ob_start (); // Buffer output
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
-     }
-	require("conf.php");	
+    require("conf.php");	
 	$time = getmicrotime();  
 	checkLoginLang(true,true,"stats.php");	
 	$seciliTema=temaBilgisi();	

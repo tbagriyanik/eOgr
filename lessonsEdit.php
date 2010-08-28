@@ -15,12 +15,8 @@ Lesser General Public License for more details.
 */
 
 	ob_start();
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
-	 
+    session_start (); 
+    $_SESSION ['ready'] = TRUE; 
   require("conf.php");  		
   $time = getmicrotime();
   checkLoginLang(true,true,"lessonsEdit.php");	   

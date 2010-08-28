@@ -20,11 +20,8 @@ Lesser General Public License for more details.
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
 
-if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
-     }
   require("conf.php");  		
   $time = getmicrotime();
   checkLoginLang(false,true,"lessons.php");	   

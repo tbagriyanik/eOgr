@@ -695,5 +695,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[524] = "Ýstenmeyen Dosya Türünde Gönderim";
 		$metin[525] = "Dosya Ýsmi Çok Uzun Olan Dosya Gönderimi";
 		$metin[526] = "Bilinmeyen Hata";
+		
+		$metin[527] = "Site kapalýdýr!";
 										
 ?>

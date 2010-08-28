@@ -13,12 +13,11 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
+	  ob_start();
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
-     }
-  require("conf.php");	$time = getmicrotime();
+  	require("conf.php");	
+	$time = getmicrotime();
 	
      $taraDili=$_COOKIE["lng"];    
    if(!($taraDili=="TR" || $taraDili=="EN")) 

@@ -14,6 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
   session_start(); 
+  ob_start();
 
   	$_SESSION['aThing'] = md5($_SERVER['HTTP_USER_AGENT']);
 	$_SESSION["newUser"]="";
@@ -112,6 +113,11 @@ Lesser General Public License for more details.
 	 }
 	}
 	
+	$dosyUpload = dosya_uploads_uyumu();
+	//bir sorun var ise otomatik salt okunur uploads dizini
+	if(!empty($dosyUpload)){
+		@chmod($_uploadFolder,0755);		
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

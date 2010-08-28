@@ -680,5 +680,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[524] = "Forbidden File Extention";
 		$metin[525] = "Very Long File Name";
 		$metin[526] = "Unknown Error";
+		
+		$metin[527] = "Site is closed!";
 										
 ?>

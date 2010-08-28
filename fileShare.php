@@ -14,11 +14,8 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	ob_start();
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
+    session_start (); 
+    $_SESSION ['ready'] = TRUE; 
        
 	require("conf.php"); 
 	$time = getmicrotime();  	
@@ -386,6 +383,10 @@ if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font>";
 
 if ($tur=="2") {
 	$dosyUpload = dosya_uploads_uyumu();
+	//bir sorun var ise otomatik salt okunur uploads dizini
+	if(!empty($dosyUpload)){
+		@chmod($_uploadFolder,0755);		
+	}
 	if(empty($dosyUpload))
 		  echo "<font id='uyari'> $metin[496]</font>";
 	  else {

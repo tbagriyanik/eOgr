@@ -13,11 +13,9 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-    if ( !isset( $_SESSION ['ready'] ) ) 
-     { 
-      session_start (); 
-      $_SESSION ['ready'] = TRUE; 
-     }
+	ob_start (); // Buffer output
+    session_start (); 
+    $_SESSION ['ready'] = TRUE; 
 	require("conf.php");  
 	
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
