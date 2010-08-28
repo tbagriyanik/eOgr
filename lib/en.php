@@ -633,5 +633,52 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[485] = "<font id='uyari'>You have not worked for now.</font>";
 		$metin[486] = "Click here for the next page";
-					
+		
+		$metin[487] = "You need to go to <a href='/eogr/install.php'>installing page</a>!";
+		$metin[488] = "Table <a href='/eogr/install.php'>installation</a> is not finished!";
+		$metin[489] = "Error";
+		$metin[490] = '<a href="/eogr/mail.php?to=-1" target="_blank" class="external">Report</a> this error.';
+		$metin[491] = "Your Address";
+		$metin[492] = "Request Address";
+		$metin[493] = "Referred Address";
+		
+		$metin[494] = "File Share";
+		$metin[495] = "Check these files, their content is important";
+		$metin[496] = "Database and shared folder is compatible!";
+		$metin[497] = "Search result is empty or there is no data!";
+		$metin[498] = "Database and shared folder is not compatible!";
+		$metin[499] = "Remove All";
+		$metin[500] = "Removal Result";
+		$metin[501] = "The record is deleted!";
+		$metin[502] = "is removed physically!";
+		$metin[503] = "is removed from database!";
+
+		$metin[504] = "Best Percentage";
+		$metin[505] = "Total Time";
+		$metin[506] = "Work Count";
+		$metin[507] = "State";
+		$metin[508] = "Final course status";
+		$metin[509] = "All topics are completed for this course!";
+		$metin[510] = "<strong>Note :</strong> %s topic(s) is/are less than the average %s!";
+		$metin[511] = "good";
+		$metin[512] = "bad";
+		$metin[513] = "suspicious";
+		
+		$metin[514] = "<li>File name can be less than 50 characters.</li>
+      <li>File name must contain English letters.</li>
+      <li>The maximum file size 5 MB.</li>
+      <li>A file can not be sent again.</li>";
+		$metin[515] = "File Upload";
+		$metin[516] = "File";
+		$metin[517] = "Upload";
+		$metin[518] = "Your file is uploaded...";
+		$metin[519] = "There is an error while uploading your file!";
+		$metin[520] = "Forbidden File";
+		$metin[521] = "Existing File";
+		$metin[522] = "Over File Size Limit";
+		$metin[523] = "Forbidden Characters in the File Name";
+		$metin[524] = "Forbidden File Extention";
+		$metin[525] = "Very Long File Name";
+		$metin[526] = "Unknown Error";
+										
 ?>

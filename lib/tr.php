@@ -648,5 +648,52 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[485] = "<font id='uyari'>Þimdilik ders çalýþmadýnýz.</font>";
 		$metin[486] = "Sonraki sayfa için týklatýnýz";
-							
+		
+		$metin[487] = "Veritaban&#305; <a href='/eogr/install.php'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!";
+		$metin[488] = "Tablo <a href='/eogr/install.php'>kurulumunu (installation)</a> yapmad&#305;n&#305;z!";
+		$metin[489] = "Hata";
+		$metin[490] = 'Hatayý <a href="/eogr/mail.php?to=-1" target="_blank" class="external">bildir</a>.';
+		$metin[491] = "Sizin Adresiniz";
+		$metin[492] = "Ýstek Adres";
+		$metin[493] = "Kaynak Adres";
+		
+		$metin[494] = "Dosya Paylaþ";
+		$metin[495] = "Bu dosyalarýn içeriði önemlidir, kontrol ediniz";
+		$metin[496] = "Veritabaný ile paylaþým klasörü uyumludur!";
+		$metin[497] = "Arama sonucuna uyan bilgi bulunamadý veya hi&ccedil; kayýt yok!";
+		$metin[498] = "Veritabaný ile paylaþým klasörü uyumlu deðildir!";
+		$metin[499] = "Tümünü Sil";
+		$metin[500] = "Temizleme iþlemi sonucu";
+		$metin[501] = "Se&ccedil;ili kayýt silinmiþtir!";
+		$metin[502] = "fiziksel olarak silindi!";
+		$metin[503] = "veritabanýndan silindi!";
+
+		$metin[504] = "En Ýyi Yüzde";
+		$metin[505] = "Toplam Süre";
+		$metin[506] = "Çalýþma Sayýsý";
+		$metin[507] = "Durum";
+		$metin[508] = "Kurs bitirme durumu";
+		$metin[509] = "Bu kurstaki tüm konular tamamlanmýþtýr!";
+		$metin[510] = "<strong>Not :</strong> %s konunun süresi, %s olan genel ortalamanýn altýndadýr!";
+		$metin[511] = "iyi";
+		$metin[512] = "kötü";
+		$metin[513] = "þüpheli";
+		
+		$metin[514] = "<li>Dosya adý 50 karakteri geçmemelidir. </li>
+      <li>Dosya adýnda Türkçe karakter ve boþluk olmamalýdýr.</li>
+      <li>Dosya boyutu en fazla 5 MB olabilir.</li>
+      <li>Var olan bir dosya tekrar gönderilemez.</li>";
+		$metin[515] = "Dosya Yükleme";
+		$metin[516] = "Dosya";
+		$metin[517] = "Yükle";
+		$metin[518] = "Dosyanýz Yüklendi...";
+		$metin[519] = "Dosyanýz Yüklenirken Hata Oluþtu!";
+		$metin[520] = "Ýstenmeyen Dosya Gönderimi";
+		$metin[521] = "Varolan Bir Dosya Gönderimi";
+		$metin[522] = "Boyutu Fazla Olan Dosya Gönderimi";
+		$metin[523] = "Dosya Adýnda Ýstenmeyen Karakter Olan Dosya Gönderimi";
+		$metin[524] = "Ýstenmeyen Dosya Türünde Gönderim";
+		$metin[525] = "Dosya Ýsmi Çok Uzun Olan Dosya Gönderimi";
+		$metin[526] = "Bilinmeyen Hata";
+										
 ?>

@@ -303,9 +303,9 @@ Shadowbox.init({
                 <div class="PostContent">
                   <div class='printMe' style="margin:3px;">
                     <?php
-	 				echo "<h4 align='center'>Ders Adý : ".
+	 				echo "<h4 align='center'>$metin[363] : ".
 							getDersAdi($dersID)." (".getDerstekiKonuSay($dersID).")</h4>";
-	 				echo "<h5>Çalýþanýn Adý : ".getUserName($uID)."</h5>";
+	 				echo "<h5>$metin[0] : ".getUserName($uID)."</h5>";
 					echo getKursTablo($dersID,$uID);
 					?>
                   </div>

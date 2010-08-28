@@ -41,7 +41,7 @@ function anaMetniOku($konuID)
 	
 	$sonuc = "";
 	
-	if (empty($konuID)) return "<font id='uyari'><?php echo $metin[176]?></font>";
+	if (empty($konuID)) return "<font id='uyari'>$metin[176]</font>";
 	
 	$sql1	= 	"select eo_5sayfa.id,eo_5sayfa.anaMetin as ana ,eo_5sayfa.cevap as cevap, eo_5sayfa.eklenmeTarihi as tarih,eo_users.userName as user, 
 					eo_4konu.konuAdi as konuAdi,eo_4konu.konuyuKilitle as konuyuKilitle, 

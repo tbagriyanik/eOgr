@@ -172,7 +172,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 	 if($_GET['clean']==1) {
 		 $silSonuc = dosyaTemizle();
 		 if(!empty($silSonuc))
-	  	     echo "<font id='uyari'><strong>Temizleme iþlemi sonucu :</strong> <br/>$silSonuc</font>";
+	  	     echo "<font id='uyari'><strong>$metin[500] :</strong> <br/>$silSonuc</font>";
 	 }
 
 if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
@@ -185,7 +185,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") &&
 
   mysql_select_db($database_baglanti, $yol);
   $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
-  if ($Result1) echo "<font id='uyari'>Se&ccedil;ili kayýt silinmiþtir!</font>";  
+  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
 }
   
   $pageCnt=temizle($_GET['pageCnt']);
@@ -276,7 +276,7 @@ if(eregi("777",decoct(fileperms($_uploadFolder)))
  or eregi("766",decoct(fileperms($_uploadFolder)))) {
 ?>
                   <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
-return false;" class="external">Dosya Paylaþ</a> | <a href="fileShare.php">Tazele</a> </blockquote>
+return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><?php echo $metin[99]?></a> </blockquote>
                   <?php	
 }
 if ($totalRows_eoUsers>0)
@@ -382,17 +382,17 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   </form>
                   <?php  
    }
-if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulunamadý veya hi&ccedil; kayýt yok!</font>";
+if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font>";
 
 if ($tur=="2") {
 	$dosyUpload = dosya_uploads_uyumu();
 	if(empty($dosyUpload))
-		  echo "<font id='uyari'> Veritabaný ile paylaþým klasörü uyumludur!</font>";
+		  echo "<font id='uyari'> $metin[496]</font>";
 	  else {
-		  echo "<font id='hata'> Veritabaný ile paylaþým klasörü uyumlu deðildir!<br/>$dosyUpload<br/>";
-		  echo "<a href='fileShare.php?clean=1'>Tümünü Sil!</a></font>";	
+		  echo "<font id='hata'> $metin[498]<br/>$dosyUpload<br/>";
+		  echo "<a href='fileShare.php?clean=1'>$metin[499]!</a></font>";	
 	  }
-	  echo "<p>Bu dosyalarýn içeriði önemlidir, kontrol ediniz : ";
+	  echo "<p>$metin[495] : ";
 	  if (file_exists($_uploadFolder.'/.htaccess'))
 		  	echo "<a href='fileShare.php?show=2' target=\"_blank\" class='external'>.htaccess</a> ";
 		  else

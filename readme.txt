@@ -28,7 +28,7 @@ Download All Versions:
 	
 Start Date: 	15-11-2008
 Last Update: 	28-08-2010
-Process Time : 	510 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
+Process Time: 	510 hours (15.130 lines PHP, 22.100 lines Javascript and CSS)
 Programs: 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 INSTALLATION:
@@ -64,7 +64,7 @@ Used Classes and Referred Sites:
 - phplivex: http://www.phplivex.com v2.6
 - wtag: http://spacegirlpippa.co.uk v1.0Beta
 - Facebox: http://famspam.com/facebox v1.2
-- shadowbox: http://www.shadowbox-js.com v3.0.3
+- shadowbox: http://www.shadowbox-js.com/ v3.0.3
 - HTML Graphs: http://www.gerd-tentler.de/tools/phpgraphs v4.8
 - SQL_Export: http://www.phpclasses.org/browse/file/7633.html
 - SQL_Import: http://www.phpclasses.org/browse/package/4898.html
@@ -83,7 +83,7 @@ Advice:
 Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
 
 Note: 
-- Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.
+- Older browsers (like Internet Explorer 6, Firefox 2) have problems.
 - Recommended: Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0
 
 License: LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html

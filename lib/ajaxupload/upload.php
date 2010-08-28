@@ -60,7 +60,7 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
    $result = -3; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 	 }   
- else if (!eregi("^[A-Za-z0-9_-]+.[A-Za-z]{2,6}$", $_FILES['myfile']['name']) ){
+ else if (!eregi("^[A-Za-z0-9_-]+.[A-Za-z0-9]{2,6}$", $_FILES['myfile']['name']) ){
    $result = -4; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 	 }   
