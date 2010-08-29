@@ -89,6 +89,10 @@ body {
     </div>
   </div>
   <div id="content">
+<?php
+	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
+	if($seceneklerimiz[16]=="1"){
+?>  
     <form action="upload.php" method="post" enctype="multipart/form-data" target="upload_target" onsubmit="startUpload();" >
       <INPUT TYPE="hidden" NAME="MAX_FILE_SIZE" VALUE="5242880">
       <p id="f1_upload_process"><img src="loader.gif" /> </p>
@@ -105,6 +109,10 @@ body {
 	echo $metin[514]; 
 ?>
     </ul>
+<?php
+	}else
+	echo $metin[530];
+?>    
   </div>
 </div>
 </body>

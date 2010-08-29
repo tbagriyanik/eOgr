@@ -2463,11 +2463,35 @@ function sayfaGetir($konuID, $sayfaNo)
 	return $msg;
 }
 /*
+siteAc:
+sitenin ayarlarýndaki aktivasyon
+*/
+function siteAc(){
+	global $yol1;
+	
+	$sql1	= 	"select ayar5char from eo_sitesettings where id=1"; 
+	$result1= 	@mysql_query($sql1,$yol1);
+
+   if(@mysql_numrows($result1)>0){
+	if(@mysql_result($result1,0,"ayar5char")!="")
+		$sonuc = explode("-",@mysql_result($result1,0,"ayar5char"));
+		$sonuc[15]="0"; //site açýk ise 0
+		$sonuc = implode("-",$sonuc);
+		
+		$updateSQL = sprintf("UPDATE eo_sitesettings SET ayar5char='%s' WHERE id=1",$sonuc);
+		$result2= 	@mysql_query($updateSQL,$yol1);
+		if($result2)
+		  echo "<br/>VT güncellendi";		
+	}			 
+
+   @mysql_free_result($result1);
+	return;	
+}
+/*
 ayarGetir:
 global site ayarlarýnýn getirilmesi
 */
-function ayarGetir($ayarAdi)
-{
+function ayarGetir($ayarAdi){
 	global $yol1;
 	
 	$sql1	= 	"select ".temizle($ayarAdi)." from eo_sitesettings where id=1"; 
@@ -2484,7 +2508,7 @@ function ayarGetir($ayarAdi)
 }
 /*
 ayarGetir2:
-istenen site ayarlarýnýn getirilmesi
+rss için istenen site ayarlarýnýn getirilmesi
 */
 function ayarGetir2($ayarAdi)
 {
@@ -3303,7 +3327,9 @@ if ($tur=="-1")	{
 /*
 Site bakýmda mý diye kontrol edildiði yer
 */
-if (file_exists("siteLock.php")){
+$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
+if (file_exists("siteLock.php") or $seceneklerimiz[15]=="1"){
+	if(basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))!="error.php") //sonsuz döngü
 		header("Location:error.php?error=11");	
 }
 

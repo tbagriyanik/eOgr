@@ -144,7 +144,7 @@ Lesser General Public License for more details.
 		$metin[109]="Filter";    
 		$metin[110]="Record count per page";    
 		$metin[111]="You can backup your *.sql file or import in the Phpmyadmin program.";    
-		$metin[112]="Other General Settings";    
+		$metin[112]="General Settings";    
 		$metin[113]="Site Options";
 		$metin[114]="School Name (header)";    
 		$metin[115]="Application Version (<a href='index.php'>index page</a>)";    
@@ -681,6 +681,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[525] = "Very Long File Name";
 		$metin[526] = "Unknown Error";
 		
-		$metin[527] = "Site is closed!";
+		$metin[527] = "Please, visit later. Site is closed for now.";
+		$metin[528] = "Site maintenance is on";
+		$metin[529] = "Shared folder is writable";
+		$metin[530] = "File upload is disabled...";	
 										
 ?>

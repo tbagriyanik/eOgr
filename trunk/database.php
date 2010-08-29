@@ -21,5 +21,9 @@ $_db 			= 'eogr';
 $_source1		= "http://localhost/eogr";		//eogr site address for check_source
 $_source2		= "http://127.0.0.1/eogr";		//must set to the exact values
 
-$_uploadFolder	= "uploads"						//766 or 777 permission needs this folder
+$_uploadFolder	= "uploads";						
+//766 or 777 permission needs this folder
+
+$_siteUnlockPwd	= "11111";							
+//when the site maintenance is engaged, this password is needed to reopen the site
 ?>
