@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `eo_sitesettings` (
 --
 
 INSERT INTO `eo_sitesettings` (`id`, `okulGenelAdi`, `versiyon`, `sayfaBlokSayisi`, `sayfaKullaniciSayisi`, `veriHareketleriSayisi`, `ayar1int`, `ayar2int`, `ayar3int`, `ayar4char`, `ayar5char`) VALUES
-(1, 'Net Logo', 'version', 15, 10, 15, 10, 10, 60, 'admin@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
+(1, 'Net Course', 'version', 15, 10, 15, 10, 10, 60, 'admin@email.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-0-1');
 
 -- --------------------------------------------------------
 

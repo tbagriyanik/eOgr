@@ -1,8 +1,7 @@
 <?php 
-if (!file_exists("siteLock.php")){
 	require("conf.php");
 	checkLoginLang(false,true,"error.php");
-}
+	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,7 +20,15 @@ if (!file_exists("siteLock.php")){
 
 <body bgcolor="#FFCCCC">
 <?php 
- if (!file_exists("siteLock.php")){
+	if($_POST["reopenPwd"]==$_siteUnlockPwd){
+		if(file_exists("siteLock.php"))
+		   if(@rename("siteLock.php","_siteLock.php"))
+		      echo "Dosya adý deðiþti";
+		siteAc();   
+		die("<br/>Site artýk açýk!<p>$metin[402]</p>");
+	}
+
+ if (!file_exists("siteLock.php") or $seceneklerimiz[15]=="0"){
 ?>
 <h1 align="center">eOgr - <?php echo $metin[489]?></h1>
 <p style="margin-top:50px;"> <font color="#FF0000" size="+1"> <?php echo $metin[402]?> </font> </p>
@@ -74,16 +81,29 @@ if(!empty($_SERVER['HTTP_REFERER']))
 // echo "Istek turu : ".RemoveXSS($_SERVER['REQUEST_METHOD'])."<br/>"; 
 // echo "Calisan dosya adi : ".basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))."<br/>"; 
  echo "<strong>$metin[129] :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
+ 
+ if($_GET["error"]!=11){
 ?>
 </p>
-<h5>
-<?php echo $metin[490]?>
-</h5>
+<h5> <?php echo $metin[490]?> </h5>
 <?php
+ }
  }else{
 ?>
 <h1 align="center">eOgr - Site Maintenance</h1>
 <p style="margin-top:50px;"> <font color="#FF0000" size="+1">Please, visit later. Site is closed for now.</font> </p>
+<a href='index.php'>Click to Try</a>
+<?php
+ }
+ if(file_exists("siteLock.php") or $seceneklerimiz[15]=="1" or $_GET["error"]==11){
+?>
+<p>
+<form action="error.php?error=11" method="post" name="reopen">
+  <label>Enter Password : 
+    <input name="reopenPwd" type="password" size="30" maxlength="30" />
+  </label>
+</form>
+</p>
 <?php
  }
 ?>

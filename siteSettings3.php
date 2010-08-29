@@ -124,7 +124,7 @@ Lesser General Public License for more details.
 <?php
 	if ($tur=="2")	{
 	 //yönetici ise
-
+	 
 if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 
   if ( 
@@ -155,12 +155,28 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 			if(empty($_POST['ayar5char13'])) $_POST['ayar5char13']="0"; else $_POST['ayar5char13']="1";
 			if(empty($_POST['ayar5char14'])) $_POST['ayar5char14']="0"; else $_POST['ayar5char14']="1";
 			if(empty($_POST['ayar5char15'])) $_POST['ayar5char15']="0"; else $_POST['ayar5char15']="1";
+			if(empty($_POST['ayar5char16'])) $_POST['ayar5char16']="0"; else $_POST['ayar5char16']="1";
+			if(empty($_POST['ayar5char17'])) $_POST['ayar5char17']="0"; else $_POST['ayar5char17']="1";
+
+  if($_POST['ayar5char16']=="1" and file_exists("_siteLock.php")) {
+	 @rename("_siteLock.php","siteLock.php");	  
+	 echo "<font id='tamam'> Site bakýma alýndý.</font>";
+  }
+	
+  if($_POST['ayar5char17']=="1") {
+	 @chmod($_uploadFolder,0777);		  
+	 echo "<font id='tamam'> Paylaþým klasörü yazýlabilir.</font>";
+  }else{
+	 @chmod($_uploadFolder,0755);		  
+	 echo "<font id='tamam'> Paylaþým klasörü salt okunur.</font>";
+  }	
 			
 			$ayar5char = temizle($_POST['ayar5char1']."-".$_POST['ayar5char2']."-".$_POST['ayar5char3']."-".
 						         $_POST['ayar5char4']."-".$_POST['ayar5char5']."-".$_POST['ayar5char6']."-".
 								 $_POST['ayar5char7']."-".$_POST['ayar5char8']."-".$_POST['ayar5char9']."-".
 								 $_POST['ayar5char10']."-".$_POST['ayar5char11']."-".$_POST['ayar5char12']."-".
-								 $_POST['ayar5char13']."-".$_POST['ayar5char14']."-".$_POST['ayar5char15']);
+								 $_POST['ayar5char13']."-".$_POST['ayar5char14']."-".$_POST['ayar5char15']."-".
+								 $_POST['ayar5char16']."-".$_POST['ayar5char17']);
 
 			$updateSQL = sprintf("UPDATE eo_sitesettings SET okulGenelAdi=%s, versiyon=%s, sayfaBlokSayisi=%s, sayfaKullaniciSayisi=%s, veriHareketleriSayisi=%s, ayar4char=%s, ayar1int=%s, ayar2int=%s, ayar3int=%s, ayar5char='%s' WHERE id=1",
 							   temizle(GetSQLValueString($_POST['okulGenelAdi'], "text")),
@@ -348,8 +364,19 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
             id="ayar5char13" value="1" <?php if($secenekler[12]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                     <?php echo $metin[306];?></label>
-                                  
-                                  <br /></td>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char16" 
+            id="ayar5char16" value="1" <?php if($secenekler[15]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <img src="img/lock.png" alt="imp" border="0" style="vertical-align: middle;" /> <?php echo $metin[528];?></label>
+                                  <br />
+                                  <label>
+                                    <input type="checkbox" name="ayar5char17" 
+            id="ayar5char17" value="1" <?php if($secenekler[16]=="1") 
+			echo " checked='checked'"; else echo ""; ?>/><img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> 
+                                    <?php echo $metin[529];?></label>
+                                </td>
                               </tr>
                               <tr>
                                 <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />
@@ -359,6 +386,23 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
                               </tr>
                             </table>
                           </form>
+<?php
+	if(file_exists("_siteLock.php")){
+?>
+                  <p><strong>Dikkat :</strong> <br /><br />
+
+                  * Siteyi bakýma almanýn 2. yöntemi, "siteLock.php" dosyasýnýn adýný elle deðiþtirmektir. <br />
+                  Siteyi <strong>bakýma</strong> almak için "_siteLock.php" dosyasýnýn adýný "siteLock.php" olarak deðiþtiriniz.<br />
+                    Siteyi <strong>aktif</strong> yapmak için "siteLock.php" dosyasýnýn adýný "_siteLock.php" olarak deðiþtiriniz.</p>
+                  <?php
+	}
+	
+	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
+		echo "<p>* <strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>okunabilirdir</strong>.</p>";
+	}else{
+		echo "<p>* <strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>yazýlabilirdir</strong>.</p>";
+	}
+?>                          
                         </div>
                         <div class="cleared"></div>
                       </div>
@@ -389,15 +433,15 @@ getDefaults:
 site ayarlarýnýn varsayýlanlarýnýn atanmasý
 */
 function getDefaults(){
-	document.getElementById('okulGenelAdi').value = "Net Okul" ;
-	document.getElementById('versiyon').value = "versiyon" ;
+	document.getElementById('okulGenelAdi').value = "Net Course" ;
+	document.getElementById('versiyon').value = "version" ;
 	document.getElementById('sayfaBlokSayisi').value = "5" ;
 	document.getElementById('sayfaKullaniciSayisi').value = "10" ;
 	document.getElementById('veriHareketleriSayisi').value = "10" ;
 	document.getElementById('ayar1int').value = "5" ;
 	document.getElementById('ayar2int').value = "10" ;
 	document.getElementById('ayar3int').value = "10" ;
-	document.getElementById('ayar4char').value = "admin@eogr.com" ;
+	document.getElementById('ayar4char').value = "admin@email.com" ;
 	document.getElementById('ayar5char1').checked = true;
 	document.getElementById('ayar5char2').checked = true;
 	document.getElementById('ayar5char3').checked = true;
@@ -413,6 +457,8 @@ function getDefaults(){
 	document.getElementById('ayar5char13').checked = true;
 	document.getElementById('ayar5char14').checked = true;
 	document.getElementById('ayar5char15').checked = true;
+	document.getElementById('ayar5char16').checked = false;
+	document.getElementById('ayar5char17').checked = true;
 }
 </script>
 </body>

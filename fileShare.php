@@ -269,8 +269,11 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if(eregi("777",decoct(fileperms($_uploadFolder))) 
- or eregi("766",decoct(fileperms($_uploadFolder)))) {
+$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
+if($seceneklerimiz[16]=="1")
+	if(eregi("777",decoct(fileperms($_uploadFolder))) 
+	 or eregi("766",decoct(fileperms($_uploadFolder)))
+	 ) {
 ?>
                   <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
 return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><?php echo $metin[99]?></a> </blockquote>

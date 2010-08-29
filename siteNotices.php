@@ -146,26 +146,11 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
                   <?php
 if ($tur=="2")	{//yönetici ise
   
-  if($_GET["lock"]=="1" and file_exists("_siteLock.php")) {
-	 @rename("_siteLock.php","siteLock.php");	  
-	 echo "<font id='tamam'> Site bakýma alýndý.</font>";
-  }
-	
-  if($_GET["writable"]=="1") {
-	 @chmod($_uploadFolder,0777);		  
-	 echo "<font id='tamam'> Artýk yazýlabilir.</font>";
-  }
-	
-  if($_GET["readonly"]=="1") {
-	 @chmod($_uploadFolder,0755);		  
-	 echo "<font id='tamam'> Artýk salt okunur.</font>";
-  }
-	
 	//fileShare.php'den	 
 	$dosyUpload = dosya_uploads_uyumu();
 	//bir sorun var ise otomatik salt okunur uploads dizini
 	if(!empty($dosyUpload)){
-		@chmod($_uploadFolder,0755);		
+		@chmod($_uploadFolder,0755);//linux yetki sorunu var, olmuyor		
 	}
 	if(empty($dosyUpload))
 		  echo "<font id='uyari'> Veritabaný ile paylaþým klasörü ($_uploadFolder) uyumludur!</font>";
@@ -202,21 +187,6 @@ if ($tur=="2")	{//yönetici ise
 	if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
 	$bilgi6 = sonSatirGetir("dosya");
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
-	if(file_exists("_siteLock.php")){
-?>
-<hr noshade="noshade" />
-                  <p><strong>Dikkat :</strong> <br />
-                  * Siteyi bakýma almak için <a href="siteNotices.php?lock=1">týklatýnýz</a>. <br />
-                    Sitenin tekrar aktif olabilmesi için 
-                    "siteLock.php" dosyasýnýn adýný "_siteLock.php" olarak deðiþtiriniz.</p>
-                  <?php
-	}
-	
-	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
-		echo "<p>** <strong>$_uploadFolder</strong> dizini sadece okunabilirdir. Yazýlabilir yapmak için <a href=\"siteNotices.php?writable=1\">týklatýnýz</a>.</p>";
-	}else{
-		echo "<p>** <strong>$_uploadFolder</strong> dizini yazýlabilirdir. Salt okunur yapmak için <a href=\"siteNotices.php?readonly=1\">týklatýnýz</a>.</p>";
-	}
 	
 }
 	else {

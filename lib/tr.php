@@ -145,7 +145,7 @@ Lesser General Public License for more details.
 		$metin[109]="Filtrele";    
 		$metin[110]="Bir sayfadaki kay&#305;t say&#305;s&#305;";    
 		$metin[111]="Oluþan *.sql dosyasýný geri y&uuml;klemek i&ccedil;in, Phpmyadmin program&#305;ný kullanabilirsiniz veya dosyanýzý yedekleme ama&ccedil;lý saklayabilirsiniz.";    
-		$metin[112]="Di&#287;er Genel Ayarlar";    
+		$metin[112]="Genel Ayarlar";    
 		$metin[113]="Site Ayarlar&#305;";
 		$metin[114]="Okul Ad&#305; (ba&#351;l&#305;k)";    
 		$metin[115]="Uygulama S&uuml;r&uuml;m&uuml; (<a href='index.php'>ana sayfa</a>)";    
@@ -696,6 +696,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[525] = "Dosya Ýsmi Çok Uzun Olan Dosya Gönderimi";
 		$metin[526] = "Bilinmeyen Hata";
 		
-		$metin[527] = "Site kapalýdýr!";
+		$metin[527] = "Site kapalýdýr, lütfen daha sonra tekrar deneyiniz!";
+		$metin[528] = "Site bakýmda";
+		$metin[529] = "Paylaþým klasörü yazýlabilir";
+		$metin[530] = "Dosya paylaþýmý kapalýdýr...";	
 										
 ?>
