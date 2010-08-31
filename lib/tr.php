@@ -700,5 +700,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[528] = "Site bakýmda";
 		$metin[529] = "Paylaþým klasörü yazýlabilir";
 		$metin[530] = "Dosya paylaþýmý kapalýdýr...";	
-										
+		$metin[531] = "Site artýk açýk!";								
+		
 ?>

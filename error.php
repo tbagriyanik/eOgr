@@ -20,15 +20,15 @@
 
 <body bgcolor="#FFCCCC">
 <?php 
+	$adi = RemoveXSS($_SESSION["usern"]);
 	if($_POST["reopenPwd"]==$_siteUnlockPwd){
-		if(file_exists("siteLock.php"))
-		   if(@rename("siteLock.php","_siteLock.php"))
-		      echo "Dosya adý deðiþti";
-		siteAc();   
-		die("<br/>Site artýk açýk!<p>$metin[402]</p>");
+		if(siteAc()) {  
+			trackUser($currentFile,"success,SiteUnlock",$adi);
+			die("<br/>$metin[531]<p>$metin[402]</p>");
+		}
 	}
 
- if (!file_exists("siteLock.php") or $seceneklerimiz[15]=="0"){
+ if ($seceneklerimiz[15]=="0"){
 ?>
 <h1 align="center">eOgr - <?php echo $metin[489]?></h1>
 <p style="margin-top:50px;"> <font color="#FF0000" size="+1"> <?php echo $metin[402]?> </font> </p>
@@ -95,11 +95,11 @@ if(!empty($_SERVER['HTTP_REFERER']))
 <a href='index.php'>Click to Try</a>
 <?php
  }
- if(file_exists("siteLock.php") or $seceneklerimiz[15]=="1" or $_GET["error"]==11){
+ if($seceneklerimiz[15]=="1" or $_GET["error"]==11){
 ?>
 <p>
 <form action="error.php?error=11" method="post" name="reopen">
-  <label>Enter Password : 
+  <label>Enter Password :
     <input name="reopenPwd" type="password" size="30" maxlength="30" />
   </label>
 </form>

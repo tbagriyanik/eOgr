@@ -90,10 +90,14 @@ function yorumGonder($userID, $konuID, $yorum){
 	return false;
 }
 
+$yorumGel = str_replace("'", "`", $_POST['yorum']);
+
 if (isset($_POST['yorum']) 
 				       	&& !empty($_POST['yorum']) 
 						&& getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="") {
-	if (yorumGonder(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle($_POST['konu']),temizle($_POST['yorum'])) )
+	if (yorumGonder(getUserIDcomment($_SESSION["usern"],
+			$_SESSION["userp"]), 
+			temizle($_POST['konu']),RemoveXSS($yorumGel)) )
 		echo iconv( "ISO-8859-9","UTF-8",$metin[293]);
 		else
 		echo "Error!";
