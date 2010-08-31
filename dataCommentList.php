@@ -157,7 +157,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
 
   mysql_select_db($database_baglanti, $yol);
   $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
-  if ($Result1) echo "<font id='uyari'>Se&ccedil;ili kayýt silinmiþtir!</font>";
+  if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
 }
 
   $pageCnt=temizle($_GET['pageCnt']);
@@ -197,7 +197,7 @@ if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet") {
 	$silSorgu= "DELETE FROM eo_comments WHERE id in ($silinenler)";
 	$sonuc = mysql_query($silSorgu, $yol);
 	if ($sonuc) 
-	 echo "<font id='uyari'>Se&ccedil;ilen kayýt(lar) silinmiþtir</font>";
+	 echo "<font id='uyari'>$metin[501]</font>";
 	 else
 	 echo "<font id='hata'>Se&ccedil;ilen kayýt(lar) silinemedi!</font>";
  }   
