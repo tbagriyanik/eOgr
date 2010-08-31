@@ -3040,8 +3040,8 @@ function sonSatirGetir($tablo){
 				$gelen = mysql_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[7]);
 				
-				$sonuc = "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, "
-					.$gelen[3].", "
+				$sonuc = "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, <span style='text-transform: capitalize;'>"
+					.strtolower($gelen[3])."</span>, "
 					.$insansi;
 				$sonuc .= " <a href='siteSettings.php'>$metin[162]</a>";
 			}		

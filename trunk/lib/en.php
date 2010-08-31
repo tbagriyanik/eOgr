@@ -649,7 +649,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[498] = "Database and shared folder is not compatible!";
 		$metin[499] = "Remove All";
 		$metin[500] = "Removal Result";
-		$metin[501] = "The record is deleted!";
+		$metin[501] = "The record(s) is/are deleted!";
 		$metin[502] = "is removed physically!";
 		$metin[503] = "is removed from database!";
 

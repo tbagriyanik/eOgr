@@ -664,7 +664,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[498] = "Veritabaný ile paylaþým klasörü uyumlu deðildir!";
 		$metin[499] = "Tümünü Sil";
 		$metin[500] = "Temizleme iþlemi sonucu";
-		$metin[501] = "Se&ccedil;ili kayýt silinmiþtir!";
+		$metin[501] = "Se&ccedil;ili kayýt(lar) silinmiþtir!";
 		$metin[502] = "fiziksel olarak silindi!";
 		$metin[503] = "veritabanýndan silindi!";
 

@@ -153,10 +153,10 @@ if ($tur=="2")	{//yönetici ise
 		@chmod($_uploadFolder,0755);//linux yetki sorunu var, olmuyor		
 	}
 	if(empty($dosyUpload))
-		  echo "<font id='uyari'> Veritabaný ile paylaþým klasörü ($_uploadFolder) uyumludur!</font>";
+		  echo "<font id='uyari'> $metin[496] ($_uploadFolder)</font>";
 	  else {
-		  echo "<font id='hata'> Veritabaný ile paylaþým klasörü ($_uploadFolder) uyumlu deðildir!<br/>$dosyUpload<br/>";
-		  echo "<a href='fileShare.php?clean=1'>Tümünü Sil!</a></font>";	
+		  echo "<font id='hata'> $metin[498] ($_uploadFolder)<br/>$dosyUpload<br/>";
+		  echo "<a href='fileShare.php?clean=1'>$metin[499]!</a></font>";	
 	  }
 
 	 //index.php'den 
@@ -170,7 +170,7 @@ if ($tur=="2")	{//yönetici ise
 		 }
 		 //iz sayýsý
 	if (getTrackCount(false)>0){
-						 echo "<br/><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (".$metin[195]." ".getTrackCount(true).")";
+						 echo "<br/><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (<a href='dataActions.php'>".$metin[195]." ".getTrackCount(true)."</a> %".round(getTrackCount(true)*100/getTrackCount(false),1).")";
 						 }
 						 		 
 	 echo '<hr noshade="noshade" color="#333333">';
