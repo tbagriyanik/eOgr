@@ -685,5 +685,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[528] = "Site maintenance is on";
 		$metin[529] = "Shared folder is writable";
 		$metin[530] = "File upload is disabled...";	
-										
+		$metin[531] = "Site is unlocked now!";								
+												
 ?>

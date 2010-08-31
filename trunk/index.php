@@ -116,7 +116,7 @@ Lesser General Public License for more details.
 	$dosyUpload = dosya_uploads_uyumu();
 	//bir sorun var ise otomatik salt okunur uploads dizini
 	if(!empty($dosyUpload)){
-		@chmod($_uploadFolder,0755);		
+		@chmod($_uploadFolder,0755);//yetki sorunu var olabilir		
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

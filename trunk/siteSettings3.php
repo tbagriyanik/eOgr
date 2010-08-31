@@ -158,17 +158,21 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 			if(empty($_POST['ayar5char16'])) $_POST['ayar5char16']="0"; else $_POST['ayar5char16']="1";
 			if(empty($_POST['ayar5char17'])) $_POST['ayar5char17']="0"; else $_POST['ayar5char17']="1";
 
-  if($_POST['ayar5char16']=="1" and file_exists("_siteLock.php")) {
-	 @rename("_siteLock.php","siteLock.php");	  
+  if($_POST['ayar5char16']=="1") {
 	 echo "<font id='tamam'> Site bakýma alýndý.</font>";
+	 trackUser($currentFile,"success,SiteLock",$adi);
   }
 	
   if($_POST['ayar5char17']=="1") {
-	 @chmod($_uploadFolder,0777);		  
-	 echo "<font id='tamam'> Paylaþým klasörü yazýlabilir.</font>";
+	 if(@chmod($_uploadFolder,0777)){		  
+		 echo "<font id='tamam'> Paylaþým klasörü yazýlabilir.</font>";
+		 trackUser($currentFile,"success,SharedWrite",$adi);
+	 }
   }else{
-	 @chmod($_uploadFolder,0755);		  
-	 echo "<font id='tamam'> Paylaþým klasörü salt okunur.</font>";
+	 if(@chmod($_uploadFolder,0755)){		  
+		 echo "<font id='tamam'> Paylaþým klasörü salt okunur.</font>";
+		 trackUser($currentFile,"success,SharedReadOnly",$adi);
+	 }
   }	
 			
 			$ayar5char = temizle($_POST['ayar5char1']."-".$_POST['ayar5char2']."-".$_POST['ayar5char3']."-".
@@ -375,7 +379,13 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
                                     <input type="checkbox" name="ayar5char17" 
             id="ayar5char17" value="1" <?php if($secenekler[16]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/><img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> 
-                                    <?php echo $metin[529];?></label>
+                                    <?php echo $metin[529];
+	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
+		echo "<p><strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>okunabilirdir</strong>.</p>";
+	}else{
+		echo "<p><strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>yazýlabilirdir</strong>.</p>";
+	}
+	?></label>
                                 </td>
                               </tr>
                               <tr>
@@ -386,23 +396,6 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
                               </tr>
                             </table>
                           </form>
-<?php
-	if(file_exists("_siteLock.php")){
-?>
-                  <p><strong>Dikkat :</strong> <br /><br />
-
-                  * Siteyi bakýma almanýn 2. yöntemi, "siteLock.php" dosyasýnýn adýný elle deðiþtirmektir. <br />
-                  Siteyi <strong>bakýma</strong> almak için "_siteLock.php" dosyasýnýn adýný "siteLock.php" olarak deðiþtiriniz.<br />
-                    Siteyi <strong>aktif</strong> yapmak için "siteLock.php" dosyasýnýn adýný "_siteLock.php" olarak deðiþtiriniz.</p>
-                  <?php
-	}
-	
-	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
-		echo "<p>* <strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>okunabilirdir</strong>.</p>";
-	}else{
-		echo "<p>* <strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>yazýlabilirdir</strong>.</p>";
-	}
-?>                          
                         </div>
                         <div class="cleared"></div>
                       </div>

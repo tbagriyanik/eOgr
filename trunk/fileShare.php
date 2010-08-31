@@ -388,7 +388,7 @@ if ($tur=="2") {
 	$dosyUpload = dosya_uploads_uyumu();
 	//bir sorun var ise otomatik salt okunur uploads dizini
 	if(!empty($dosyUpload)){
-		@chmod($_uploadFolder,0755);		
+		@chmod($_uploadFolder,0755);	//yetki sorunu var olabilir		
 	}
 	if(empty($dosyUpload))
 		  echo "<font id='uyari'> $metin[496]</font>";

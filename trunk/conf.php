@@ -2480,12 +2480,11 @@ function siteAc(){
 		
 		$updateSQL = sprintf("UPDATE eo_sitesettings SET ayar5char='%s' WHERE id=1",$sonuc);
 		$result2= 	@mysql_query($updateSQL,$yol1);
-		if($result2)
-		  echo "<br/>VT güncellendi";		
+		return $result2;		
 	}			 
 
    @mysql_free_result($result1);
-	return;	
+   return false;	
 }
 /*
 ayarGetir:
@@ -3328,7 +3327,7 @@ if ($tur=="-1")	{
 Site bakýmda mý diye kontrol edildiði yer
 */
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-if (file_exists("siteLock.php") or $seceneklerimiz[15]=="1"){
+if ($seceneklerimiz[15]=="1"){
 	if(basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))!="error.php") //sonsuz döngü
 		header("Location:error.php?error=11");	
 }
