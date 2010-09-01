@@ -191,7 +191,9 @@ function uyeTarihi($id)
     $result1 = mysql_query($sql1, $yol1); 
 
     if ($result1 && mysql_numrows($result1) == 1){
-       return date("d-m-Y", strtotime((mysql_result($result1, 0, "requestDate"))));
+		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate(mysql_result($result1, 0, "requestDate"));		
+       return $insansi;
     }else {
 	   return ("");
 	}
@@ -208,7 +210,9 @@ function sonGiris($id)
     $result1 = mysql_query($sql1, $yol1); 
 
     if ($result1 && mysql_numrows($result1) == 1){
-       return date("d-m-Y", strtotime((mysql_result($result1, 0, "dateTime"))));
+		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate(mysql_result($result1, 0, "dateTime"));		
+       return $insansi;
     }else {
 	   return ("");
 	}

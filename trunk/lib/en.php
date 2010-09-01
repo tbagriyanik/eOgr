@@ -96,7 +96,7 @@ Lesser General Public License for more details.
         $metin[68]="Version";         
 		$metin[69]="Send an EMail";
 
-		$metin[70]="Edit RSS";    
+		$metin[70]=" Edit News";    
 		$metin[71]="Database Installation";    
 		$metin[72]="Database Patch Installation";    
 		$metin[73]="Be sure that you have edited the settings in 'database.php' for MySQL!";    
@@ -144,7 +144,7 @@ Lesser General Public License for more details.
 		$metin[109]="Filter";    
 		$metin[110]="Record count per page";    
 		$metin[111]="You can backup your *.sql file or import in the Phpmyadmin program.";    
-		$metin[112]="General Settings";    
+		$metin[112]=" General Settings";    
 		$metin[113]="Site Options";
 		$metin[114]="School Name (header)";    
 		$metin[115]="Application Version (<a href='index.php'>index page</a>)";    
@@ -196,7 +196,7 @@ Lesser General Public License for more details.
 		$metin[153]="News";
 		$metin[154]="Theme";
 		$metin[155]="Page loading time"; 
-		$metin[156]="Data Backup";
+		$metin[156]=" Data Backup";
 		$metin[157]="SQL Import";
 		$metin[158]="Execute";
 		$metin[159]="Silver Modern";
@@ -232,7 +232,7 @@ Lesser General Public License for more details.
 
 		$metin[185]="Data Actions";
 
-		$metin[186]="Lesson Work List";
+		$metin[186]=" Lesson Work List";
 		$metin[187]="Working Percentage";
 		$metin[188]="You can search in 'user name' and 'topic name' fields partially.";    	
 
@@ -385,7 +385,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[286]="eOgr - simply elearning";
 		
 		$metin[287]="Rating Data";
-		$metin[288]="Comment Data";
+		$metin[288]=" Comment Data";
 		$metin[289]="Rating";
 		$metin[290]="Comment";
 		$metin[291]="Active";
@@ -407,8 +407,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[303]="Other General Options";		
 		$metin[304]="Enable Chat";
-		$metin[305]="Enable News (index page)";
-		$metin[306]="Last demo user works (index page)";
+		$metin[305]="Enable News (<a href='index.php'>index page</a>)";
+		$metin[306]="Last demo user works (<a href='index.php'>index page</a>)";
 		$metin[307]="Ping Image";
 		$metin[308]="Statistics and Recent Staff";
 		
@@ -606,15 +606,15 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[462] = "Print";		
 		
 		$metin[463] = "Files";		
-		$metin[464] = "Homeworks and Shared Files";		
+		$metin[464] = " Homeworks and Shared Files";		
 		$metin[465] = "File Name";		
 		$metin[466] = "Download Count";		
 		$metin[467] = "File Update Form";		
 		$metin[468] = "File not found!";		
 		$metin[469] = "You can search in 'user name' and 'file name' fields partially.";    	
 		$metin[470] = "Shared File(s)";		
-		$metin[471] = "Notices";		
-		$metin[472] = "Members";		
+		$metin[471] = " Notices";		
+		$metin[472] = " Members";		
 		
 		$metin[473] = "<strong>Last membership information : </strong> ";		
 		$metin[474] = "<strong>Last chat information (message, room) : </strong> ";		
@@ -636,7 +636,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[487] = "You need to go to <a href='/eogr/install.php'>installing page</a>!";
 		$metin[488] = "Table <a href='/eogr/install.php'>installation</a> is not finished!";
-		$metin[489] = "Error";
+		$metin[489] = " Error";
 		$metin[490] = '<a href="/eogr/mail.php?to=-1" target="_blank" class="external">Report</a> this error.';
 		$metin[491] = "Your Address";
 		$metin[492] = "Request Address";
@@ -686,5 +686,13 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[529] = "Shared folder is writable";
 		$metin[530] = "File upload is disabled...";	
 		$metin[531] = "Site is unlocked now!";								
+		$metin[532] = "folder is physically <strong>read-only</strong>.";
+		$metin[533] = "folder is physically <strong>writable</strong>.";
+		$metin[534] = "To re-open the site, you can use <strong>%s</strong> password defined in 'database.php'.";
+		$metin[535] = "RSS Icon";
+		$metin[536] = "Update process is successful.";												
+		$metin[537] = "Insert process is successful.";												
+		$metin[538] = "Database update is successful.";
+		$metin[539] = "Table optimization and repair process are done!";
 												
 ?>

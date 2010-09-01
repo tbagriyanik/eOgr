@@ -182,7 +182,7 @@ Lesser General Public License for more details.
 								$importumuz = $newImport -> importa ();
 								
 								if ($importumuz == 0) {
-									echo "<font id='tamam'>Veritabanýnda deðiþiklik(ler) yapýldý!</font><br/>";
+									echo "<font id='tamam'>$metin[538]</font><br/>";
 									trackUser($currentFile,"success,SQLImp",$adi);
 									}
 								 else{
@@ -218,7 +218,7 @@ Lesser General Public License for more details.
 								
 								if ($importumuz == 0){
 									trackUser($currentFile,"success,DBOptim",$adi);
-									die ("<font id='tamam'>Tablolarýn optimizasyon ve tamir iþlemleri bitti!<br/>Geri dönmek için <a href=siteSettings2.php>týklatýnýz</a></font><br/>");
+									echo ("<font id='tamam'>$metin[539]</font><br/>");
 								}
 								 else {
 									echo "<font id='hata'>".$importumuz."</font><br/>";

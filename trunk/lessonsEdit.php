@@ -196,7 +196,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 		  		$sql="Delete From $tabloAdi where id=$seciliKayit";
 	            $result = mysql_query($sql, $yol);
 				if($result) 
-				   echo "<font id='tamam'><?php echo $metin[102] ?> i&#351;lemi tamamland&#305;.</font>";
+				   echo "<font id='tamam'>$metin[501]</font>";
 				   else
 				   echo "<font id='hata'><?php echo $metin[102] ?> i&#351;lemi tamamlanamad&#305;! ".mysql_error()."</font>";
 		  		break;
@@ -264,7 +264,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 					 
 	            $result = mysql_query($sql, $yol);
 				if($result) 
-				   echo "<font id='tamam'>G&uuml;ncelleme i&#351;lemi tamamland&#305;.</font>";
+				   echo "<font id='tamam'>$metin[536]</font>";
 				   else
 				   echo "<font id='hata'>G&uuml;ncelleme i&#351;lemi tamamlanamad&#305;! ".mysql_error()."</font>";
 		  		break;
@@ -329,7 +329,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 					 } 	 
 	            $result = mysql_query($sql, $yol);
 				if($result) 
-				   echo "<font id='tamam'>Ekleme i&#351;lemi tamamland&#305;.</font>";
+				   echo "<font id='tamam'>$metin[537]</font>";
 				   else
 				   echo "<font id='hata'>Ekleme i&#351;lemi tamamlanamad&#305;! ".mysql_error()."</font>";
 		  		break;

@@ -200,7 +200,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,MemberInfo",$adi);
-				echo ("<font id='tamam'> &Uuml;ye bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<font id='tamam'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,MemberInfo",$adi);
@@ -236,7 +236,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $Result1 = mysql_query($insertSQL, $yol);
   if ($Result1) {
 			  trackUser($currentFile,"success,NewMember",$adi);
-			  echo "<font id='tamam'> Yeni &uuml;ye ekleme iþleminiz tamamlandý!</font>";
+			  echo "<font id='tamam'> $metin[537]</font>";
   }
   else{
 			  trackUser($currentFile,"fail,NewMember",$adi);
@@ -257,7 +257,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $Result1 = mysql_query($deleteSQL, $yol);
  if ($Result1) {
 			  trackUser($currentFile,"success,DelMember",$adi);
-			  echo "<font id='uyari'> &Uuml;ye silme iþleminiz tamamlandý!</font>";
+			  echo "<font id='uyari'> $metin[501]</font>";
   }
   else{
 			  trackUser($currentFile,"fail,DelMember",$adi);

@@ -164,7 +164,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,RSSUpdate",$adi);
-				echo ("<p>&nbsp;</p><font id='tamam'> Haber bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<p>&nbsp;</p><font id='tamam'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,RSSUpdate",$adi);
@@ -191,7 +191,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,RSSInfo",$adi);
-				echo ("<p>&nbsp;</p><font id='tamam'> Haber ayar bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<p>&nbsp;</p><font id='tamam'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,RSSInfo",$adi);
@@ -221,7 +221,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $Result1 = mysql_query($insertSQL, $yol);
   if ($Result1) {
 			  trackUser($currentFile,"success,NewRSS",$adi);
-			  echo "<p>&nbsp;</p><font id='tamam'> Yeni haber ekleme iþleminiz tamamlandý!</font>";
+			  echo "<p>&nbsp;</p><font id='tamam'> $metin[537]</font>";
   }
   else{
 			  trackUser($currentFile,"fail,NewRSS",$adi);
@@ -242,7 +242,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $Result1 = mysql_query($deleteSQL, $yol);
  if ($Result1) {
 			  trackUser($currentFile,"success,DelRSS",$adi);
-			  echo "<p>&nbsp;</p><font id='uyari'> Haber silme iþleminiz tamamlandý!</font>";
+			  echo "<p>&nbsp;</p><font id='uyari'> $metin[501]</font>";
   }
   else{
 			  trackUser($currentFile,"fail,DelRSS",$adi);

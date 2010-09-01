@@ -203,12 +203,13 @@ function setOutputKonu(sayfaNo, konu, noCount){
 				birSayi = sayfaNo + 1;
 				document.getElementById('ileriDugmesi').innerHTML ='<a href="#" onclick="konuSec2('+birSayi+',1);return false;"><img src="img/2rightarrow.png" border="0" style="vertical-align:middle" alt="right"/></a>';
 				//konu seçili ise hint gösterilebilir!
-				if(document.getElementById('ileriGeri').style.visibility == 'visible' 
-				    && sayfaNo==1 && eskiYeri<1){
 					var timeoutHint = null;
 					var valTimeout = 10; 
 					var timeoutHint2 = null;
 					var valTimeout2 = 9000; 
+					
+				if(document.getElementById('ileriGeri').style.visibility == 'visible' 
+				    && sayfaNo==1 && eskiYeri<1){
 					
 					window.clearTimeout(timeoutHint);
 					window.clearTimeout(timeoutHint2);
@@ -221,6 +222,10 @@ function setOutputKonu(sayfaNo, konu, noCount){
 						//document.getElementById("hint").style.display = "none";	
 						$('#hint').fadeOut(750,null);	 
 						 }, valTimeout2);
+				}else{
+					window.clearTimeout(timeoutHint);
+					window.clearTimeout(timeoutHint2);
+					$('#hint').fadeOut(750,null);
 				}
 
 			}

@@ -223,7 +223,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,EditCmnt",$adi);
-				echo ("<font id='tamam'> Bilgi g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<font id='tamam'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,EditCmnt",$adi);

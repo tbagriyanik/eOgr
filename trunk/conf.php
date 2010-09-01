@@ -1298,10 +1298,14 @@ function getStats($num,$uID="")
 						for($i=0; $i<$donguSon ;$i++){
 							$data = mysql_fetch_assoc($result);
 							$ekle .=  "<li style='list-style-type:none;'>";
+							
+				     	$humanRelativeDate = new HumanRelativeDate();
+						$insansi = $humanRelativeDate->getTextForSQLDate($data["tarih"]);
+							
 							if ($data["tarih"]=="0000-00-00 00:00:00")
 								$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>";
 								else
-								$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".tarihOku($data["tarih"])."</font>";
+								$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\">".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".$insansi."</font>";
 								
 							$ekle .=  "</li>";
 							}
@@ -2565,8 +2569,8 @@ function haberGetir($kayno, $alanAdi)
 smartShort:
 ... noktalarýnýn eklenmesi
 */
-function smartShort($gelen){
-	return (strlen($gelen)>20)?substr($gelen,0,17)."...":$gelen;
+function smartShort($gelen,$boyut=20){
+	return (strlen($gelen)>$boyut)?substr($gelen,0,$boyut-3)."...":$gelen;
 }
 /*
 getDersIDileSinif:
