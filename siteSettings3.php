@@ -121,7 +121,7 @@ Lesser General Public License for more details.
                       <div class="Post-inner">
                         <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[112]?> </span> </h2>
                         <div class="PostContent">
-<?php
+                          <?php
 	if ($tur=="2")	{
 	 //yönetici ise
 	 
@@ -198,7 +198,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,SiteInfo",$adi);
-				echo ("<font id='tamam'> Site bilgilerini g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<font id='tamam'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,SiteInfo",$adi);
@@ -208,9 +208,9 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 }
 
 ?>
-<br />
-<br />
-<?php
+                          <br />
+                          <br />
+                          <?php
 		
 	}
 	else {
@@ -218,7 +218,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 	  die($metin[447]);
 	}
 	
-?>                        
+?>
                           <form name="form5"  action="siteSettings3.php" method="post">
                             <table width="90%" border="0" cellspacing="0" cellpadding="3">
                               <tr>
@@ -278,7 +278,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
                                     <input type="checkbox" name="ayar5char1" 
             id="ayar5char1" value="1" <?php if($secenekler[0]=="1") 
 			echo " checked='checked'"; else echo ""; ?> />
-                                    RSS</label>
+                                    <?php echo $metin[535]?></label>
                                   <br />
                                   <label>
                                     <input type="checkbox" name="ayar5char2" 
@@ -378,15 +378,15 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
                                   <label>
                                     <input type="checkbox" name="ayar5char17" 
             id="ayar5char17" value="1" <?php if($secenekler[16]=="1") 
-			echo " checked='checked'"; else echo ""; ?>/><img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> 
-                                    <?php echo $metin[529];
+			echo " checked='checked'"; else echo ""; ?>/>
+                                    <img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> <?php echo $metin[529];
 	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
-		echo "<p><strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>okunabilirdir</strong>.</p>";
+		echo "<p><strong>$_uploadFolder</strong> $metin[532]</p>";
 	}else{
-		echo "<p><strong>$_uploadFolder</strong> dizini fiziksel olarak <strong>yazýlabilirdir</strong>.</p>";
+		echo "<p><strong>$_uploadFolder</strong> $metin[533]</p>";
 	}
-	?></label>
-                                </td>
+	printf($metin[534],smartShort($_siteUnlockPwd,0));
+	?></label></td>
                               </tr>
                               <tr>
                                 <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />

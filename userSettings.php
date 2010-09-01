@@ -165,7 +165,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,userSiteSet",$adi);
-				echo ("<font id='tamam'> Site ayarlarýný g&uuml;ncelleme iþleminiz tamamlandý!</font>");
+				echo ("<font id='tamam'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,userSiteSet",$adi);
@@ -216,7 +216,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  
 		  if($Result1){
-			 echo "<font id='tamam'> &Uuml;ye bilgilerinizi g&uuml;ncelleme iþleminiz tamamlandý!</font>";
+			 echo "<font id='tamam'> $metin[536]</font>";
   		     trackUser($currentFile,"success,UserInf",$adi);
 			 if ($_POST['prldeg']!="secili") {
 			   trackUser($currentFile,"success,PasswdC",$adi);
@@ -343,7 +343,7 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                                 <input type="checkbox" name="ayarlar1" 
             id="ayarlar1" value="1" <?php if($secenekler[0]=="1") 
 			echo " checked='checked'"; else echo ""; ?> />
-                                RSS</label>
+                                <?php echo $metin[535]?></label>
                               <br />
                               <label>
                                 <input type="checkbox" name="ayarlar2" 

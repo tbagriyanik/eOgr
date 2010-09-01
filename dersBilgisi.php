@@ -169,7 +169,10 @@ function sonGuncellenmeTarihi($id)
     $result1 = mysql_query($sql1, $yol1); 
 
     if ($result1 && mysql_numrows($result1) == 1){
-       return tarihOku(mysql_result($result1, 0, "tarih"));
+     	$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate(mysql_result($result1, 0, "tarih"));							
+										
+       return $insansi;
     }else {
 	   return ("");
 	}

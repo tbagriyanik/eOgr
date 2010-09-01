@@ -97,7 +97,7 @@ Lesser General Public License for more details.
 		
 		$metin[69]="Eposta G&ouml;nder";
 		
-		$metin[70]="RSS D&uuml;zenle";    
+		$metin[70]=" Haber D&uuml;zenle";    
 		$metin[71]="Veritaban&#305; Kurulum";    
 		$metin[72]="Veritaban&#305; Yama Kurulumu";    
 		$metin[73]="'database.php' dosyas&#305;ndaki MySQL ayarlar&#305;n&#305;z&#305; yapt&#305;&#287;&#305;n&#305;zdan emin olunuz!";    
@@ -145,7 +145,7 @@ Lesser General Public License for more details.
 		$metin[109]="Filtrele";    
 		$metin[110]="Bir sayfadaki kay&#305;t say&#305;s&#305;";    
 		$metin[111]="Oluþan *.sql dosyasýný geri y&uuml;klemek i&ccedil;in, Phpmyadmin program&#305;ný kullanabilirsiniz veya dosyanýzý yedekleme ama&ccedil;lý saklayabilirsiniz.";    
-		$metin[112]="Genel Ayarlar";    
+		$metin[112]=" Genel Ayarlar";    
 		$metin[113]="Site Ayarlar&#305;";
 		$metin[114]="Okul Ad&#305; (ba&#351;l&#305;k)";    
 		$metin[115]="Uygulama S&uuml;r&uuml;m&uuml; (<a href='index.php'>ana sayfa</a>)";    
@@ -197,7 +197,7 @@ Lesser General Public License for more details.
 		$metin[153]="Son Haberler";
 		$metin[154]="Tema";
 		$metin[155]="Sayfa tamamlanma s&uuml;resi";
-		$metin[156]="Veri Yedekleme";
+		$metin[156]=" Veri Yedekleme";
 		$metin[157]="SQL Al";
 		$metin[158]="Al";
 		$metin[159]="G&uuml;m&uuml;&#351; Modern";
@@ -238,7 +238,7 @@ Lesser General Public License for more details.
 
 		$metin[185]="Hareketler";
 		
-		$metin[186]="Ders Takibi";
+		$metin[186]=" Ders Takibi";
 		$metin[187]="Bitirme Y&uuml;zdesi";
 		$metin[188]="Kullan&#305;c&#305; ad&#305; ve konu ad&#305; i&ccedil;inde par&ccedil;al&#305; arama yap&#305;labilir.";    	
 
@@ -397,7 +397,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[286]="eOgr - kolay eÖðrenme";
 		
 		$metin[287]="Oy Verileri";
-		$metin[288]="Yorum Verileri";
+		$metin[288]=" Yorum Verileri";
 		$metin[289]="Oy";
 		$metin[290]="Yorum";
 		$metin[291]="Aktif";
@@ -420,8 +420,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[303]="Diðer Genel Seçenekler";		
 		$metin[304]="Sohbet";
-		$metin[305]="Haberler (ana sayfa)";
-		$metin[306]="Son kullanýcý çalýþmalarý (ana sayfa)";
+		$metin[305]="Haberler (<a href='index.php'>ana sayfa</a>)";
+		$metin[306]="Son kullanýcý çalýþmalarý (<a href='index.php'>ana sayfa</a>)";
 		$metin[307]="Ping Resmi";
 		$metin[308]="Ýstatistikler ve Son Çalýþanlar";
 		
@@ -621,15 +621,15 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[462] = "Yazdýr";		
 		
 		$metin[463] = "Dosyalar";		
-		$metin[464] = "Ödevler ve Paylaþýlan Dosyalar";		
+		$metin[464] = " Ödevler ve Paylaþýlan Dosyalar";		
 		$metin[465] = "Dosya Adý";		
 		$metin[466] = "Ýndirme Sayýsý";		
 		$metin[467] = "Dosya Güncelleme Formu";		
 		$metin[468] = "Dosya bulunamadý!";		
 		$metin[469] = "Kullan&#305;c&#305; ad&#305; ve dosya ad&#305; i&ccedil;inde par&ccedil;al&#305; arama yap&#305;labilir.";
 		$metin[470] = "Paylaþýlan Dosya(lar)";		
-		$metin[471] = "Bildirimler";		
-		$metin[472] = "Üyeler";		
+		$metin[471] = " Bildirimler";		
+		$metin[472] = " Üyeler";		
 		
 		$metin[473] = "<strong>Son üye bilgisi : </strong> ";		
 		$metin[474] = "<strong>Son sohbet bilgisi (mesaj, oda) : </strong> ";		
@@ -651,7 +651,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[487] = "Veritaban&#305; <a href='/eogr/install.php'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!";
 		$metin[488] = "Tablo <a href='/eogr/install.php'>kurulumunu (installation)</a> yapmad&#305;n&#305;z!";
-		$metin[489] = "Hata";
+		$metin[489] = " Hata";
 		$metin[490] = 'Hatayý <a href="/eogr/mail.php?to=-1" target="_blank" class="external">bildir</a>.';
 		$metin[491] = "Sizin Adresiniz";
 		$metin[492] = "Ýstek Adres";
@@ -701,5 +701,13 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[529] = "Paylaþým klasörü yazýlabilir";
 		$metin[530] = "Dosya paylaþýmý kapalýdýr...";	
 		$metin[531] = "Site artýk açýk!";								
+		$metin[532] = "dizini fiziksel olarak <strong>okunabilirdir</strong>.";
+		$metin[533] = "dizini fiziksel olarak <strong>yazýlabilirdir</strong>.";
+		$metin[534] = "Sitenin tekrar kullanýma açýlmasý için, 'database.php' içinde belirlenen <strong>%s</strong> parolasý kullanýlabilir.";
+		$metin[535] = "RSS Simgesi";
+		$metin[536] = "Bilgi güncelleme iþleminiz tamamlandý.";												
+		$metin[537] = "Ekleme iþleminiz tamamlandý.";
+		$metin[538] = "Veritabanýnda deðiþiklik(ler) yapýldý!";
+		$metin[539] = "Tablolarýn optimizasyon ve tamir iþlemleri bitti!";
 		
 ?>

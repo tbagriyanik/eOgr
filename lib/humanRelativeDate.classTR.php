@@ -197,7 +197,7 @@ class HumanRelativeDate{
 			} else if($diff <= $this->magic_1_week){
 				$this->string = 'geçen '.$this->trGun(date('l' , $this->event_timestamp_day)) ;
 			} else if($diff <= ($this->magic_1_week * 2) ) {
-				$this->string = 'bir haftadan fazla ';
+				$this->string = 'bir hafta önce ';
 			} else {
 				$month_diff = $this->calcMonthDiff();
 				if($month_diff == 0){
@@ -206,7 +206,7 @@ class HumanRelativeDate{
 					$this->string = 'geçen ay';
 				} else {
 					if($month_diff > 12){
-						$this->string = 'bir yýldan fazla';
+						$this->string = 'bir yýldan önce';
 					} else {
 						$this->string = $month_diff . ' ay önce';
 					}

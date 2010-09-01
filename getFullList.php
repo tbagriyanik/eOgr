@@ -280,10 +280,14 @@ function listeGetir($userID, $durum){
 										if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
+										
+				     	$humanRelativeDate = new HumanRelativeDate();
+						$insansi = $humanRelativeDate->getTextForSQLDate($data["tarih"]);							
+										
 										if ($data["tarih"]=="0000-00-00 00:00:00")
 											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a><br/>";
 											else
-											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".tarihOku($data["tarih"])."</font><br/>";	
+											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".$insansi."</font><br/>";	
 									}
 										$ekle .=  "</li>";
 									  	$ekle .= "</ul>";
