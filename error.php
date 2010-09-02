@@ -21,14 +21,15 @@
 <body bgcolor="#FFCCCC">
 <?php 
 	$adi = RemoveXSS($_SESSION["usern"]);
-	if($_POST["reopenPwd"]==$_siteUnlockPwd){
-		if(siteAc()) {  
-			trackUser($currentFile,"success,SiteUnlock",$adi);
-			die("<br/>$metin[531]<p>$metin[402]</p>");
+	if(isset($_POST["reopenPwd"]))
+		if($_POST["reopenPwd"]==$_siteUnlockPwd and 
+			!empty($_siteUnlockPwd) and 
+			!empty($_POST["reopenPwd"])){
+			if(siteAc()) {  
+				trackUser($currentFile,"success,SiteUnlock",$adi);
+				die("<br/>$metin[531]<p>$metin[402]</p>");
+			}
 		}
-	}
-
- if ($seceneklerimiz[15]=="0"){
 ?>
 <h1 align="center">eOgr - <?php echo $metin[489]?></h1>
 <p style="margin-top:50px;"> <font color="#FF0000" size="+1"> <?php echo $metin[402]?> </font> </p>
@@ -87,15 +88,9 @@ if(!empty($_SERVER['HTTP_REFERER']))
 </p>
 <h5> <?php echo $metin[490]?> </h5>
 <?php
- }
- }else{
-?>
-<h1 align="center">eOgr - Site Maintenance</h1>
-<p style="margin-top:50px;"> <font color="#FF0000" size="+1">Please, visit later. Site is closed for now.</font> </p>
-<a href='index.php'>Click to Try</a>
-<?php
- }
- if($seceneklerimiz[15]=="1" or $_GET["error"]==11){
+	 }
+
+ if($seceneklerimiz[15]=="1" and $_GET["error"]==11){
 ?>
 <p>
 <form action="error.php?error=11" method="post" name="reopen">
