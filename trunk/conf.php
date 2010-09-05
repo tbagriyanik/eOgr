@@ -2393,7 +2393,7 @@ function getUserID2($name){
 	if(@mysql_numrows($result1)>0)
 	 	return @mysql_result($result1,0,"id");
 	 else
-  		return "(unknown)";	
+  		return "";	
 }
 /*
 getKonuAdi:

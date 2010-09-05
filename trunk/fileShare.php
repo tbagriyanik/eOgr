@@ -276,7 +276,7 @@ if($seceneklerimiz[16]=="1")
 	 ) {
 ?>
                   <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
-return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><?php echo $metin[99]?></a> </blockquote>
+return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a> </blockquote>
                   <?php	
 }
 if ($totalRows_eoUsers>0)

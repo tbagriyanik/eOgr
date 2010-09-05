@@ -212,6 +212,7 @@ Shadowbox.init({
 		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
 	   else {
 	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
+			header("Location:index.php");
 	     }
 	  }
   

@@ -289,6 +289,8 @@ konuSec2:
 alt seçeneklerin veritabanýndan istenmesi
 */
 function konuSec2(sayfaNo, noCount){    
+
+	$('#hint').fadeOut(750,null);
 	
 	if(noCount === undefined) noCount=0;	
 	if(sayfaNo == "" || parseInt(sayfaNo)==0) {

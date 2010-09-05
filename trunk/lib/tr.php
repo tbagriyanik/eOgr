@@ -403,7 +403,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[291]="Aktif";
 		$metin[292]="Yorum satýrýndaki 'aktif' deðerini týklatarak, görünür hale getirebilir veya gizleyebilirsiniz.";
 		
-		$metin[293]="Yorum eklediðiniz için teþekkür ederiz. Onaylandýktan sonra yorumunuz görüntülenecektir. Öðretmen ve yöneticiler için onay gerekmez.";
+		$metin[293]="Yorum eklediðiniz için teþekkür ederiz. Onaylandýktan sonra yorumunuz görüntülenecektir. <p style='font-size:11px;'>Öðretmen ve yöneticiler için onay gerekmez.</p>";
 		$metin[294]="Onayýnýzý bekleyen yorum sayýsý";
 		
 		$metin[295]="Kaynak hatal&#305;d&#305;r. <a href='index.php'>Geri Dön</a>";
@@ -709,5 +709,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[537] = "Ekleme iþleminiz tamamlandý.";
 		$metin[538] = "Veritabanýnda deðiþiklik(ler) yapýldý!";
 		$metin[539] = "Tablolarýn optimizasyon ve tamir iþlemleri bitti!";
+		$metin[540] = "Böyle bir kullanýcý bulunmuyor.";
 		
 ?>

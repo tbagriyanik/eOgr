@@ -105,7 +105,7 @@ ob_start (); // Buffer output
 	background: #ffc url(img/pointer.gif) no-repeat -10px 5px;
 	color:#C09;
 	text-align:justify;
-	font-size:12px;
+	font-size:11px;
 	font-weight:bold;
 }
 #hint .hint-pointer {
@@ -362,7 +362,7 @@ $(document).ready(function() {
                             <?php
 					if($tur!="-2"){ 
                   	?>
-                            <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a><br />
+                            <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a> | <a href="#" id="refresh"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a><br />
                             <br />
                             <?php 
 					}?>
@@ -374,9 +374,22 @@ $(document).ready(function() {
 						  
 						}
 						else  
-						  echo $metin[279].' <a name="yorumlar"></a> <a href="addComment.php?konu3='.RemoveXSS($_GET["konu"]).'" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="$metin[242]" /> '.$metin[242].'</a>';
+						  echo $metin[279].' <a name="yorumlar"></a> <a href="addComment.php?konu3='.RemoveXSS($_GET["konu"]).'" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="$metin[242]" /> '.$metin[242].'</a> | <a href="#" id="refresh"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="'.$metin[99].'" /> '.$metin[99].'</a>';
 					?>
                     </div>
+                    
+  <script>
+$(document).ready(function() {
+
+  $("#refresh").click(function() {
+     //$(".msg_body2").load("yorumListesi.php");
+  	location.reload();
+	return false;
+	});
+});
+
+  </script>
+                    
                   </div>
                 </div>
               </div>
