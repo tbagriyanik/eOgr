@@ -561,7 +561,7 @@ function dersCalismaOrtRank($id,$grafikli){
 			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\" class=\"external\">$metin[461]</a>";
 	 }
  } else
-  echo "EMPTY";  
+  echo "$metin[540]";  
 
 
 ?>

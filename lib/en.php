@@ -391,7 +391,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[291]="Active";
 		$metin[292]="You can click comments 'active' value to make visible or hidden.";
 		
-		$metin[293]="Thank you for submitting comment. After confirmation, your comment will be visible. Teachers and administrators do not need confirmation.";
+		$metin[293]="Thank you for submitting comment. After confirmation, your comment will be visible. <p style='font-size:11px;'>Teachers and administrators do not need confirmation.</p>";
 		$metin[294]="Comments count waiting for your confirmation";
 		
 		$metin[295]="Invalid source. <a href='index.php'>Go Back</a>";
@@ -694,5 +694,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[537] = "Insert process is successful.";												
 		$metin[538] = "Database update is successful.";
 		$metin[539] = "Table optimization and repair process are done!";
+		$metin[540] = "Non existing user";
 												
 ?>
