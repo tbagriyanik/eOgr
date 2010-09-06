@@ -1,4 +1,4 @@
-eOgr - v123a
+eOgr - v123b
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -76,6 +76,9 @@ Used Classes and Referred Sites:
 	http://css-tricks.com/anythingslider-jquery-plugin/
 - jQuery bad browser: v1.4 
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4
+- iCal-like Calendar with jQuery: 
+	http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery
+	http://www.frecosse.com/?p=252
 - nicEdit: v0.9 r23 
 	http://www.nicedit.com
 - phplivex: v2.6 

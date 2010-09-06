@@ -696,5 +696,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[539] = "Table optimization and repair process are done!";
 		$metin[540] = "Non existing user";
 		$metin[541] = "<strong>Warning:</strong> Current browser is old, try one of these browsers:";
+		$metin[542] = "Site Events";
+		$metin[543] = "Selected day";
+		$metin[544] = "Track count";
+		$metin[545] = "Lesson work count";
 												
 ?>

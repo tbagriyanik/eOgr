@@ -288,9 +288,8 @@ Shadowbox.init({
                   <div class="BlockContent-body">
                     <div>
                       <div class="msg_list">
-                        <h3><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></h3>
-                        <div id="sidetreecontrol"><a href="?#"><?php echo $metin[458]?></a> | <a href="?#"><?php echo $metin[459]?></a> | <a  href="#"><?php echo $metin[460]?></a></div>
-                        <div class="msg_body"> <?php echo dersAgaci(1)?> </div>
+                        <h2><?php echo $metin[542]?></h2>
+                        <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="750" height="575" align="middle" marginheight="45" allowtransparency="false" style="background-color: white"></iframe>
                       </div>
                     </div>
                   </div>
