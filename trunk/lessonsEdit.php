@@ -1151,8 +1151,8 @@ if($seciliSekme=="0") {
                       <?php
 					  
 		  	if($_SESSION["konuKimGel"]==1) 
-			  $kimKonu = "inner join eo_users on eo_5sayfa.ekleyenID=eo_users.id
-			where eo_users.id='".getUserID2($adi)."' and $filtr ";
+			  $kimKonu = "left outer join eo_users on eo_5sayfa.ekleyenID=eo_users.id
+			where (eo_users.id='".getUserID2($adi)."' or eo_5sayfa.konuID is NULL) and $filtr ";
 			 else
 			  $kimKonu = " where $filtr "; 
 		
@@ -1160,7 +1160,8 @@ if($seciliSekme=="0") {
      		$sql = "SELECT eo_4konu.id, eo_4konu.konuAdi, eo_4konu.konuyuKilitle,
 					 eo_4konu.sadeceKayitlilarGorebilir, eo_4konu.calismaSuresiDakika, 
 					 count(eo_5sayfa.id) as sayfasi, eo_3ders.dersAdi as dersAdi, 
-					 eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi FROM eo_4konu 
+					 eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi 
+			FROM eo_4konu 
 	 		left outer join eo_5sayfa on eo_4konu.id=eo_5sayfa.konuID 
 	 		left outer join eo_3ders on eo_4konu.dersID=eo_3ders.id 
 			left outer join eo_2sinif on eo_2sinif.id=eo_3ders.sinifID 
@@ -1173,8 +1174,8 @@ if($seciliSekme=="0") {
 				$kayitSayisi = mysql_num_rows(mysql_query(
 						"select DISTINCT eo_4konu.konuAdi from eo_4konu 
 	 					left outer join eo_5sayfa on eo_4konu.id=eo_5sayfa.konuID 
-						inner join eo_users on eo_5sayfa.ekleyenID=eo_users.id						
-						where $araFilter and eo_users.id='".getUserID2($adi)."'", $yol));			
+						left outer join eo_users on eo_5sayfa.ekleyenID=eo_users.id						
+						where $araFilter and (eo_users.id='".getUserID2($adi)."' or eo_users.id is NULL)", $yol));			
 			 else
    				$kayitSayisi = mysql_num_rows(mysql_query("select * from eo_4konu where $araFilter ", $yol));			
 			$sayfaSayisi = ceil($kayitSayisi/$blokBuyuklugu)-1;

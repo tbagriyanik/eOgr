@@ -381,9 +381,9 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 			echo " checked='checked'"; else echo ""; ?>/>
                                     <img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> <?php echo $metin[529];
 	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
-		echo "<p><strong>$_uploadFolder</strong> $metin[532]</p>";
+		echo "</td></tr><tr><td colspan='2'><p><strong>$_uploadFolder</strong> $metin[532]</p>";
 	}else{
-		echo "<p><strong>$_uploadFolder</strong> $metin[533]</p>";
+		echo "</td></tr><tr><td colspan='2'><p><strong>$_uploadFolder</strong> $metin[533]</p>";
 	}
 	printf($metin[534],smartShort($_siteUnlockPwd,0));
 	?></label></td>

@@ -111,4 +111,7 @@ CSS, RSS and HTML Validations:
 Advice:
 Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
 
+Also test your favorite browser's security: 
+http://bcheck.scanit.be/bcheck/
+
 License: LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html

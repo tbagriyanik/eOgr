@@ -53,7 +53,7 @@ Lesser General Public License for more details.
         $metin[31]="&#304;&#351;lem";   
         $metin[32]="Di&#287;er Bilgi";   
         $metin[33]="&#304;&#351;lem Tarihi";   
-        $metin[34]="Pencereyi Kapat";   
+        $metin[34]="Kapat";   
         $metin[35]="T&uuml;m&uuml;n&uuml; Se&ccedil;";   
         $metin[36]="Silme i&#351;lemine onay veriyorum";   
         $metin[37]="Se&ccedil;ili Olanlar&#305; Sil!";   
@@ -710,5 +710,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[538] = "Veritabanýnda deðiþiklik(ler) yapýldý!";
 		$metin[539] = "Tablolarýn optimizasyon ve tamir iþlemleri bitti!";
 		$metin[540] = "Böyle bir kullanýcý bulunmuyor.";
+		$metin[541] = "<strong>Dikkat:</strong> Þu anki tarayýcýnýz eskidir, aþaðýdaki tarayýcýlardan birini tercih ediniz:";
 		
 ?>

@@ -53,7 +53,7 @@ Lesser General Public License for more details.
         $metin[31]="Process";   
         $metin[32]="Other Info";   
         $metin[33]="Date";   
-        $metin[34]="Close Window";   
+        $metin[34]="Close";   
         $metin[35]="Select All";   
         $metin[36]="Confirm for delete operation";   
         $metin[37]="Delete Selected!";   
@@ -695,5 +695,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[538] = "Database update is successful.";
 		$metin[539] = "Table optimization and repair process are done!";
 		$metin[540] = "Non existing user";
+		$metin[541] = "<strong>Warning:</strong> Current browser is old, try one of these browsers:";
 												
 ?>
