@@ -68,8 +68,7 @@ ob_start (); // Buffer output
 				persist: "cookie",
 				control:"#sidetreecontrol"
 			});
-		})
-		
+		})		
 </script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -377,8 +376,7 @@ $(document).ready(function() {
 						  echo $metin[279].' <a name="yorumlar"></a> <a href="addComment.php?konu3='.RemoveXSS($_GET["konu"]).'" rel="facebox"><img src="img/add.png" border="0" style="vertical-align:middle" alt="$metin[242]" /> '.$metin[242].'</a> | <a href="#" id="refresh"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="'.$metin[99].'" /> '.$metin[99].'</a>';
 					?>
                     </div>
-                    
-  <script>
+                    <script>
 $(document).ready(function() {
 
   $("#refresh").click(function() {
@@ -388,8 +386,7 @@ $(document).ready(function() {
 	});
 });
 
-  </script>
-                    
+  </script> 
                   </div>
                 </div>
               </div>
