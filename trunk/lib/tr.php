@@ -711,5 +711,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[539] = "Tablolarýn optimizasyon ve tamir iþlemleri bitti!";
 		$metin[540] = "Böyle bir kullanýcý bulunmuyor.";
 		$metin[541] = "<strong>Dikkat:</strong> Þu anki tarayýcýnýz eskidir, aþaðýdaki tarayýcýlardan birini tercih ediniz:";
+		$metin[542] = "Site Olaylarý";
+		$metin[543] = "Seçili gün";
+		$metin[544] = "Ýz sayýsý";
+		$metin[545] = "Ders çalýþma sayýsý";
 		
 ?>

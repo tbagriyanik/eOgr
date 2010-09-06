@@ -2339,6 +2339,98 @@ function ayTr($sayi){
 	}
 }
 /*
+gunTr:
+Türkçe ay isimlerini getirir
+*/
+function gunTr($gelen){
+	switch($gelen){
+		case "Mon": return "Pts";
+		case "Tue": return "Sal";
+		case "Wed": return "Çar";
+		case "Thu": return "Per";
+		case "Fri": return "Cum";
+		case "Sat": return "Cts";
+		case "Sun": return "Paz";
+	}
+}
+/*
+buTarihtekiOlayListesi:
+gelen tarihteki olay özeti
+*/
+function buTarihtekiOlayListesi($gun,$ay,$yil){
+	global $metin;
+	$tarih = date("d-m-Y",mktime(0, 0, 0, $ay, $gun, $yil)); 
+	$tarih2 = date("Y-m-d",mktime(0, 0, 0, $ay, $gun, $yil)); 
+	
+	$sonuc = "";
+	$say = olayIslemSayisi($tarih2);
+	if($say>0)
+		$sonuc .= "<span class=\"desc\"><a href='../../dataActions.php' target='_parent'>$metin[544]</a> : $say</span>";
+									
+	$say2 = dersIslemSayisi($tarih2);
+	if($say2>0)
+		$sonuc .= "<span class=\"desc\"><a href='../../dataWorkList.php' target='_parent'>$metin[545]</a> : $say2</span>";
+		
+	$say3 = sonDersCalisma($tarih2);
+	if($say3!=""){
+		$say3 = explode("|",$say3);
+		$liste = "<span class=\"desc\">$metin[381] : ";
+		$dersler = "";
+		for($i=0;$i<count($say3)-1;$i++)
+		  if($i%2==0)
+			$dersler .= "<a href='../../lessons.php?konu=".$say3[$i+1]."' target='_parent'>$say3[$i]</a> ";		
+		$sonuc .= "$liste $dersler</span>";		
+	}
+		
+	if ($sonuc=="") 
+	  return "";
+	 else
+	  return "<li><span class=\"title\">$metin[543] : ".$tarih."</span>".$sonuc."</li>";
+}
+/*
+olayIslemSayisi:
+bir tarihteki iþlem sayýsý
+*/
+function olayIslemSayisi($tarih){
+	global $yol1;
+	
+	$sql1	= 	"select count(id) as say from eo_usertrack where DATE_FORMAT(dateTime, '%Y-%m-%d') = '$tarih'";
+	$result1= 	@mysql_query($sql1,$yol1);
+	if($result1)
+		return @mysql_result($result1,0,"say");
+	return 0;
+}
+/*
+dersIslemSayisi:
+bir tarihteki ders iþlem sayýsý
+*/
+function dersIslemSayisi($tarih){
+	global $yol1;
+	
+	$sql1	= 	"select count(id) as say from eo_userworks where DATE_FORMAT(calismaTarihi, '%Y-%m-%d') = '$tarih'";
+	$result1= 	@mysql_query($sql1,$yol1);
+	if($result1)
+		return @mysql_result($result1,0,"say");
+	return 0;
+}
+/*
+sonDersCalisma:
+son çalýþma tarihi gelen konu adý
+*/
+function sonDersCalisma($tarih){
+	global $yol1;
+	
+	$sql1	= 	"select id, konuAdi from eo_4konu where DATE_FORMAT(bitisTarihi, '%Y-%m-%d') = '$tarih'";
+	$result1= 	@mysql_query($sql1,$yol1);
+	if($result1){
+		while($gelen = mysql_fetch_array($result1)) {
+			$ekle .= $gelen["konuAdi"]."|".$gelen["id"]."|";
+			}
+		return $ekle;
+	}
+	return 0;
+}
+/*
 getSchoolNames:
 okul isimlerini getirir
 */
