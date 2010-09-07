@@ -1,5 +1,10 @@
 @charset "UTF-8";
 /* CSS Document */
+tt {
+	font-family: Consolas, "Lucida Console", Monaco, monospace;
+	color:#900;
+	background-color:#CCCC99;
+}
 th {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	color: #036;

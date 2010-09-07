@@ -502,7 +502,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[381]="Last Workable Date";
 		$metin[382]="Lock This Topic";
 		$metin[383]="Make visible for only registered users";
-		$metin[384]="You can also use this option for lower options!";
+		$metin[384]="You can use this option for these options :";
 		$metin[385]="Working Time Limit (minute)";
 		$metin[386]="Number of Working Rights";
 		$metin[387]="Only Class included students can see";
@@ -700,5 +700,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[543] = "Selected day";
 		$metin[544] = "Track count";
 		$metin[545] = "Lesson work count";
+		
+		$metin[546] = "Day-Month-Year (like 31-12-2000)";
 												
 ?>

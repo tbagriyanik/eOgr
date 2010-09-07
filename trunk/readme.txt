@@ -1,4 +1,5 @@
-eOgr - v123b
+
+	eOgr - v123b, 07-09-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -30,10 +31,9 @@ Source Track:
 Download All Versions:	
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
-Start Date: 	15-11-2008
-Last Update: 	06-09-2010
-Process Time: 	520 hours 
-	(15.130 lines PHP, 22.100 lines Javascript and CSS)
+Start Date: 	
+	15-11-2008 (525 hours programming, 15.130 lines PHP, 22.100 lines Javascript and CSS)
+
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 

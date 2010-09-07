@@ -216,7 +216,10 @@ Shadowbox.init({
 	     }
 	  }
   
-	if($adi=="" || $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
+	if($adi=="" || $par=="") {
+		header("Location:error.php?error=2");
+		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
+	}
  
     $tur=checkRealUser($adi,$par);
 

@@ -4,7 +4,7 @@
 	padding: 0px;
 }
 body {
-	font-family: Helvetica;
+	font-family: Verdana, Geneva, sans-serif;
 	background: white;
 	text-align: center;
 	background: url(body.png) repeat-x;
@@ -84,7 +84,7 @@ td.today:hover {
 .events li span {
 	display: block;
 	font-size: 12px;
-	text-align: justify;
+	text-align: left;
 	color: #555;
 }
 .events li span.title {

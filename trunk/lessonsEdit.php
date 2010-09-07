@@ -504,7 +504,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="okulAdi2">
                             <input name="okulAdi" type="text" id="okulAdi" size="32" maxlength="50" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td colspan="2" align="center" class="tabloAlt"><label>
@@ -532,7 +532,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="okulAdii">
                             <input name="okulAdi" type="text" id="okulAdi" size="32" maxlength="50" value="<?php echo mysql_result($result2, 0, "okulAdi")?>" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td colspan="2" align="center" class="tabloAlt"><label>
@@ -675,7 +675,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="sinifAdii">
                             <input name="sinifAdi" type="text" id="sinifAdi" size="32" maxlength="50" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td align="right"><label for="okulAdlari"><?php echo $metin[359]?> : </label></td>
@@ -722,7 +722,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="sinifAdi2">
                             <input name="sinifAdi" type="text" id="sinifAdi" size="32" maxlength="50" value="<?php echo mysql_result($result2, 0, "sinifAdi")?>" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td align="right"><label for="okulAdlari"><?php echo $metin[359]?> : </label></td>
@@ -983,7 +983,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="dersAdii">
                             <input name="dersAdi" type="text" id="dersAdi" size="32" maxlength="50" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td align="right"><label for="sinifAdlari"><?php echo $metin[362] ?> : </label></td>
@@ -1031,7 +1031,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="dersAdi2">
                             <input name="dersAdi" type="text" id="dersAdi" size="32" maxlength="50" value="<?php echo mysql_result($result2, 0, "dersAdi")?>" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td align="right"><label for="sinifAdlari"><?php echo $metin[362] ?> : </label></td>
@@ -1277,7 +1277,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="konuAdii">
                             <input name="konuAdi" type="text" id="konuAdi" size="32" maxlength="50" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td align="right"><label for="dersAdlari"><?php echo $metin[363] ?> : </label></td>
@@ -1325,7 +1325,8 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="bitisTarihi"><?php echo $metin[381] ?> : </label></td>
-                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" /></td>
+                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" /><br />
+<tt><?php echo $metin[546]?></tt></td>
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> <?php echo $metin[382] ?> : </label></td>
@@ -1335,8 +1336,8 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> <?php echo $metin[383] ?> : </label></td>
-                          <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" onclick="chekDisable();" />
-                            <font size="-1"><?php echo $metin[384] ?></font>
+                          <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" onclick="chekDisable();" /><br/>
+                            <tt><?php echo $metin[384] ?></tt>
                             <table>
                               <tr>
                                 <td align="right" nowrap="nowrap"><label for="calismaSuresiDakika"><?php echo "<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[169]."' title='".$metin[169]."' />";?> <?php echo $metin[385] ?> : </label></td>
@@ -1383,7 +1384,7 @@ if($seciliSekme=="0") {
                           <td width="293"><span id="konuAdi2">
                             <input name="konuAdi" type="text" id="konuAdi" size="32" maxlength="50" value="<?php echo mysql_result($result2, 0, "konuAdi")?>" />
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
-                            <font size="-1"><?php echo $metin[357]?></font></span></span></td>
+                            <tt><?php echo $metin[357]?></tt></span></span></td>
                         </tr>
                         <tr>
                           <td align="right"><label for="dersAdlari"><?php echo $metin[363] ?> : </label></td>
@@ -1433,7 +1434,8 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="bitisTarihi"><?php echo $metin[381] ?> : </label></td>
-                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" value="<?php echo (mysql_result($result2, 0, "bitisTarihi")=="0000-00-00")?"":tarihOku(mysql_result($result2, 0, "bitisTarihi"))?>" /></td>
+                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" value="<?php echo (mysql_result($result2, 0, "bitisTarihi")=="0000-00-00")?"":tarihOku(mysql_result($result2, 0, "bitisTarihi"))?>" /><br />
+<tt><?php echo $metin[546]?></tt></td>
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> <?php echo $metin[382] ?> : </label></td>
@@ -1445,8 +1447,8 @@ if($seciliSekme=="0") {
                         <tr>
                           <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> <?php echo $metin[383] ?> : </label></td>
                           <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" 
-              <?php echo (mysql_result($result2, 0, "sadeceKayitlilarGorebilir")!="0") ? "checked=\"checked\"" : ""?> onclick="chekDisable();"/>
-                            <font size="-1"><?php echo $metin[384] ?></font>
+              <?php echo (mysql_result($result2, 0, "sadeceKayitlilarGorebilir")!="0") ? "checked=\"checked\"" : ""?> onclick="chekDisable();"/><br />
+                            <tt><?php echo $metin[384] ?></tt>
                             <table>
                               <tr>
                                 <td align="right" nowrap="nowrap"><label for="calismaSuresiDakika"><?php echo "<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[169]."' title='".$metin[169]."' />";?> <?php echo $metin[385] ?> : </label></td>
