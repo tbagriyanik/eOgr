@@ -286,7 +286,7 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                           <input type="submit" value="<?php echo $metin[25]?>" />
                         </label>
                         <br />
-                        <?php echo $metin[91]?>
+                        <tt><?php echo $metin[91]?></tt>
                         <input type="hidden" name="MM_update" value="form3" />
                         <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
                       </fieldset>

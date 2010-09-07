@@ -76,7 +76,7 @@
   <?php
  echo "<strong>$metin[491] :</strong> ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
 // echo "Sunucu adresi : ".$_SERVER['SERVER_ADDR']."<br/>"; 
-if(!empty($_SERVER['HTTP_REFERER']))
+//if(!empty($_SERVER['HTTP_REFERER']))
 //	 echo "<strong>$metin[493] :</strong> ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>";  
 // echo "<strong>$metin[492] :</strong> ".RemoveXSS($_SERVER['REQUEST_URI' ])."<br/>";  
 // echo "Istek turu : ".RemoveXSS($_SERVER['REQUEST_METHOD'])."<br/>"; 

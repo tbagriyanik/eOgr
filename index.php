@@ -149,12 +149,14 @@ Lesser General Public License for more details.
 					$('#browserWarning').slideUp('slow');
 					return false;
 				});
-				if(badBrowser() && getBadBrowser('browserWarning') != 'seen') {
+				if(badBrowser()) {
+				 if(getBadBrowser('browserWarning') != 'seen') {
 					$('#browserWarning').slideUp(5);
  					$('#browserWarning').slideDown(500);
-				}else{
+					}else{
 					$("#browserWarning").hide();
 					}
+				}
 								
 		})		
 </script>

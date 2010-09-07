@@ -515,7 +515,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[381]="Son Çalýþýlabilme Tarihi";
 		$metin[382]="Bu Konuyu Kilitle";
 		$metin[383]="Sadece Kayýtlý Kullanýcýlar Görebilir";
-		$metin[384]="Seçili ise bu seçenekleri de kullanabilirsiniz!";
+		$metin[384]="Seçili ise aþaðýdaki seçenekleri kullanabilirsiniz :";
 		$metin[385]="Çalýþma Zamaný (dakika)";
 		$metin[386]="Çalýþma Hak Sayýsý";
 		$metin[387]="Sýnýfa Dahil Öðrenciler Görebilir";
@@ -715,5 +715,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[543] = "Seçili gün";
 		$metin[544] = "Ýz sayýsý";
 		$metin[545] = "Ders çalýþma sayýsý";
+		
+		$metin[546] = "Gün-Ay-Yýl (31-12-2000 gibi)";
 		
 ?>
