@@ -132,8 +132,8 @@ Lesser General Public License for more details.
 		$metin[100]="Send";    
 		$metin[101]="Users are responsible for their conversation.";    
 		
-		$metin[102]="Click to Delete";    
-		$metin[103]="Click to Edit";    
+		$metin[102]="Delete";    
+		$metin[103]="Edit";    
 		$metin[104]="Confirmation for deleting";    
 		
 		$metin[105]="User Profile Update Form";    
@@ -195,7 +195,7 @@ Lesser General Public License for more details.
 				
 		$metin[153]="News";
 		$metin[154]="Theme";
-		$metin[155]="Page loading time"; 
+		$metin[155]="Loading time"; 
 		$metin[156]=" Data Backup";
 		$metin[157]="SQL Import";
 		$metin[158]="Execute";
@@ -273,7 +273,7 @@ Lesser General Public License for more details.
         $metin[215]="<input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"Click\"/> for the tables' optimization and repair";   
 		$metin[216]="Show These in Footer";
 		
-		$metin[217]="Page's last update";
+		$metin[217]="Last update";
 		
 		$metin[218]="Classes are OK";
 		$metin[219]="School info erased classes";
@@ -706,5 +706,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[547] = " Site Map";
 		$metin[548] = "Chat feature is disabled for now.";
 		$metin[549] = " My Friends";		
+		$metin[550] = " pages are active today.";
 												
 ?>

@@ -137,20 +137,15 @@ Lesser General Public License for more details.
 	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
 	$bilgi9 = sonTarihGetir("calis");
 	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
-
 ?>                  
-                    <table width="100%" border="0" cellspacing="0">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
                         <td valign="top" style="background-color:#FFF !important"><ul>
                             <li><a href="index.php"><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?></a> </li>
                             <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a>
-                            <li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/passwRenew.gif" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
-                            <li><a href="newUser.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64].$bilgi5?> </span></span></a></li>
+                            </li><li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
+                            <li><a href="newUser.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
                             <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
-                            <li><a href="index.php?logout=1"><span><span><img src="img/logout.png" border="0" style="vertical-align: middle;" alt="logout"/>
-                              <?php if (!empty($adi)) echo temizle($adi)." "; ?>
-                              <?php echo $metin[59]?> </span></span></a></li>
-                            <li> <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a> </li>
                           </ul>
                           <br /></td>
                         <td valign="top" style="background-color:#FFF !important"><ul style="list-style:none">
@@ -199,7 +194,8 @@ Lesser General Public License for more details.
                       </tr>
                       <tr>
                       <td colspan="4">
-                      <img src="img/imp.gif" border="0" style="vertical-align: middle;" alt="new" /> simgesi olan sayfalarda bugün olan bir yenilik vardýr.
+                      &nbsp;&nbsp;<img src="img/imp.gif" border="0" style="vertical-align: middle;" alt="new" />
+                      <?php echo $metin[550]?>
                       </td>
                       </tr>
                     </table>

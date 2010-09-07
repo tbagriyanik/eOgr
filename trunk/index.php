@@ -302,7 +302,8 @@ if (isset($_COOKIE["remUser"]))
                       <br />
                       <br />
                       <a href="newUser.php"><?php echo $metin[3]?></a>&nbsp; <a href="passwordRemember.php"><?php echo $metin[4]?></a>
-                    </form><br />
+                    </form>
+                    <br />
                   </div>
                   <script type="text/javascript">
   $(document).ready(function(){
@@ -383,7 +384,7 @@ if (isset($_COOKIE["remUser"]))
 							 printf($metin[445],sonUyeAdiGetir("ad"),$insansi);
 							 $uyeListesi=getUsersOnline();
 							 if(!empty($uyeListesi)){
-								 echo "<br/>$metin[446]<strong>";
+								 echo "<br/>$metin[446]<br/><strong>";
 								 foreach($uyeListesi as $eleman){
 									 echo $eleman." ";
 									 }
@@ -393,8 +394,7 @@ if (isset($_COOKIE["remUser"]))
 						 }
 						 
 						 ?>
-                  <br />
-                  <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> </div>
+                </div>
                 <div class="cleared"></div>
               </div>
             </div>

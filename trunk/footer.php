@@ -77,9 +77,10 @@ echo ("&nbsp;<font size='-3'>".$metin[155]." ".round(getmicrotime() - $time,3)."
 		$insansi = $humanRelativeDate2->getTextForSQLDate(date("Y-m-d H:i:s", filemtime($currentFile)));
 
 if($seceneklerimiz[4]=="1" and $kullaniciSecen[4]=="1") 
-echo ("&nbsp;<font size='-3'>".$metin[217]." ".$insansi."</font>");
+echo ("&nbsp;|&nbsp;<font size='-3'>".$metin[217]." ".$insansi."</font>");
 
 ?>
+<strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> 
   </form>
 </div>
 <?php
