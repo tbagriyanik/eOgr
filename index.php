@@ -85,6 +85,7 @@ Lesser General Public License for more details.
 					"userSettings.php",
 					"siteNotices.php",
 					"siteMap.php",
+					"friends.php",
 					"install.php"
 					)))
 			header("Location:".$_GET["oldPath"]);

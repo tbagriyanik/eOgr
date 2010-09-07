@@ -720,5 +720,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[547] = " Site Haritasý";
 		$metin[548] = "Þimdilik sohbet kullaným dýþýdýr.";
+		$metin[549] = " Arkadaþlarým";
 		
 ?>

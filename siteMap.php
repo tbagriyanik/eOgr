@@ -118,13 +118,34 @@ Lesser General Public License for more details.
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[547]?> </span> </h2>
                 <div class="PostContent">
                   <div id="contact-wrapper">
+<?php
+	$bilgi1 = sonTarihGetir("sohbet");
+	$bilgi1 = ($bilgi1)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi2 = sonTarihGetir("yorum");
+	$bilgi2 = ($bilgi2)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi3 = sonTarihGetir("oy");
+	$bilgi3 = ($bilgi3)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi4 = sonTarihGetir("ders");
+	$bilgi4 = ($bilgi4)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi5 = sonTarihGetir("uye");
+	$bilgi5 = ($bilgi5)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi6 = sonTarihGetir("dosya");
+	$bilgi6 = ($bilgi6)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi7 = sonTarihGetir("haber");
+	$bilgi7 = ($bilgi7)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi8 = sonTarihGetir("islem");
+	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi9 = sonTarihGetir("calis");
+	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+
+?>                  
                     <table width="100%" border="0" cellspacing="0">
                       <tr>
                         <td valign="top" style="background-color:#FFF !important"><ul>
                             <li><a href="index.php"><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?></a> </li>
-                            <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55]?> </span></span></a>
+                            <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a>
                             <li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/passwRenew.gif" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
-                            <li><a href="newUser.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
+                            <li><a href="newUser.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64].$bilgi5?> </span></span></a></li>
                             <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
                             <li><a href="index.php?logout=1"><span><span><img src="img/logout.png" border="0" style="vertical-align: middle;" alt="logout"/>
                               <?php if (!empty($adi)) echo temizle($adi)." "; ?>
@@ -138,12 +159,13 @@ Lesser General Public License for more details.
                                 <li><a href="login.php"><span><span> <?php echo $metin[60]?></span></span></a></li>
                                 <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?></span></span></a></li>
                                 <li><a href="stats.php"><span><span> <?php echo $metin[197]?></span></span></a></li>
-                                <li><a href="fileShare.php"><span><span> <?php echo $metin[463]?></span></span></a></li>
-                                <li><a href="rss.php"><span><span> <?php echo $metin[153]?></span></span></a></li>
+                                <li><a href="friends.php"><span><span> <?php echo $metin[549]?></span></span></a></li>
+                                <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?></span></span></a></li>
+                                <li><a href="rss.php"><span><span> <?php echo $metin[153].$bilgi7?></span></span></a></li>
                                 <li><a href="mail.php" target="_blank" onclick="window.open('mail.php');return false;" ><span><span> <?php echo $metin[69]?></span></span></a></li>
                                 <?php
   if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
-	echo ("<li><a href=\"chat.php\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=310,height=330,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56]."</span></span></a></li>");
+	echo ("<li><a href=\"chat.php\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=310,height=330,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");
   }
 ?>
                               </ul>
@@ -152,9 +174,9 @@ Lesser General Public License for more details.
                         <td valign="top" style="background-color:#FFF !important"><ul style="list-style:none">
                             <li><img src="img/ogrt_user.png" border="0" style="vertical-align: middle;" alt="<?php echo $metin[95]?>"/> <?php echo $metin[95]?>
                               <ul style="list-style:none">
-                                <li><a href="lessonsEdit.php"><span><span> <?php echo $metin[62]?></span></span></a></li>
-                                <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186]?></span></span></a></li>
-                                <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259]?></span></span></a></li>
+                                <li><a href="lessonsEdit.php"><span><span> <?php echo $metin[62].$bilgi4?></span></span></a></li>
+                                <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?></span></span></a></li>
+                                <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?></span></span></a></li>
                               </ul>
                             </li>
                           </ul></td>
@@ -162,18 +184,23 @@ Lesser General Public License for more details.
                             <li><img src="img/admin_user.png" border="0" style="vertical-align: middle;" alt="<?php echo $metin[96]?>"/> <?php echo $metin[96]?>
                               <ul style="list-style:none">
                                 <li><a href="siteNotices.php"><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[471]?> </span></span></a></li>
-                                <li><a href="siteSettings.php"><span><span> <?php echo $metin[472]?> </span></span></a></li>
+                                <li><a href="siteSettings.php"><span><span> <?php echo $metin[472].$bilgi5?> </span></span></a></li>
                                 <li><a href="siteSettings2.php"><span><span> <?php echo $metin[156]?> </span></span></a></li>
                                 <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
-                                <li><a href="rssEdit.php"><span><span> <?php echo $metin[70]?> </span></span></a></li>
-                                <li><a href="dataActions.php"><span><span> <?php echo $metin[66]?> </span></span></a></li>
-                                <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186]?> </span></span></a></li>
-                                <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287]?> </span></span></a></li>
-                                <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67]?> </span></span></a></li>
-                                <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288]?> </span></span></a></li>
+                                <li><a href="rssEdit.php"><span><span> <?php echo $metin[70].$bilgi7?> </span></span></a></li>
+                                <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
+                                <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
+                                <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
+                                <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
+                                <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288].$bilgi2?> </span></span></a></li>
                               </ul>
                             </li>
                           </ul></td>
+                      </tr>
+                      <tr>
+                      <td colspan="4">
+                      <img src="img/imp.gif" border="0" style="vertical-align: middle;" alt="new" /> simgesi olan sayfalarda bugün olan bir yenilik vardýr.
+                      </td>
                       </tr>
                     </table>
                   </div>
