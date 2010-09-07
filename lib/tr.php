@@ -133,8 +133,8 @@ Lesser General Public License for more details.
 		$metin[100]="G&ouml;nder";    
 		$metin[101]="Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar sorumludurlar.";  
 		
-		$metin[102]="Silmek i&ccedil;in t&#305;klat&#305;n&#305;z";    
-		$metin[103]="D&uuml;zenlemek i&ccedil;in t&#305;klat&#305;n&#305;z";    
+		$metin[102]="Sil";    
+		$metin[103]="D&uuml;zenle";    
 		$metin[104]="Kay&#305;t silinmesini onayl&#305;yor musunuz?";  
 		
 		$metin[105]="&Uuml;ye G&uuml;ncelleme Formu";    
@@ -196,7 +196,7 @@ Lesser General Public License for more details.
 		
 		$metin[153]="Son Haberler";
 		$metin[154]="Tema";
-		$metin[155]="Sayfa tamamlanma s&uuml;resi";
+		$metin[155]="Sayfa s&uuml;resi";
 		$metin[156]=" Veri Yedekleme";
 		$metin[157]="SQL Al";
 		$metin[158]="Al";
@@ -280,7 +280,7 @@ Lesser General Public License for more details.
         $metin[215]="Tablolara bakým ve tamir iþlemleri i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
 		
 		$metin[216]="Dipnotta Þunlarý G&ouml;ster";
-		$metin[217]="Son g&uuml;ncellenme";
+		$metin[217]="G&uuml;ncellenme";
 
 		$metin[218]="Sýnýflarda problem yoktur";
 		$metin[219]="Okulu silinmiþ sýnýflar";
@@ -721,5 +721,5 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[547] = " Site Haritasý";
 		$metin[548] = "Þimdilik sohbet kullaným dýþýdýr.";
 		$metin[549] = " Arkadaþlarým";
-		
+		$metin[550] = " olan sayfalarda bugün aktivite vardýr.";
 ?>

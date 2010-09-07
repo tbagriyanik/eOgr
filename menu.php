@@ -27,12 +27,32 @@ $kullaniciSecen = explode("-",ayarGetir3($adi));
 
 if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 ?>
+<?php
+	$bilgi1 = sonTarihGetir("sohbet");
+	$bilgi1 = ($bilgi1)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi2 = sonTarihGetir("yorum");
+	$bilgi2 = ($bilgi2)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi3 = sonTarihGetir("oy");
+	$bilgi3 = ($bilgi3)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi4 = sonTarihGetir("ders");
+	$bilgi4 = ($bilgi4)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi5 = sonTarihGetir("uye");
+	$bilgi5 = ($bilgi5)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi6 = sonTarihGetir("dosya");
+	$bilgi6 = ($bilgi6)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi7 = sonTarihGetir("haber");
+	$bilgi7 = ($bilgi7)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi8 = sonTarihGetir("islem");
+	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi9 = sonTarihGetir("calis");
+	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+?>                  
 <script  type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script  type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
 <div class="aramaDiv">
   <input name="searchterm" type="text" id="searchterm" size="15" maxlength="50" title="<?php echo $metin[177]?>"/>
-  <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[168]?>" title="<?php echo $metin[168]?>"/> <strong>|</strong> <a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/passwRenew.gif" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a> <a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a> </div>
+  <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[168]?>" title="<?php echo $metin[168]?>"/> <strong>|</strong>&nbsp;&nbsp;<a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a>&nbsp;&nbsp;<a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a>&nbsp;&nbsp;<a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a> </div>
 <script type="text/javascript">
                         var options = {
                             script:"lib/as/test.php?",
@@ -63,13 +83,13 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 						 if ($currentFile=="lessons.php")
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55]?> </span></span></a> <?php echo dersAgaci()?> </li>
+                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php echo dersAgaci()?> </li>
   <li><a href="newUser.php"
 						<?php
 						 if ($currentFile=="newUser.php" || $currentFile=="passwordRemember.php" )
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[149] ?> </span></span></a>
+                        ><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[149]?> </span></span></a>
     <ul>
       <li><a href="newUser.php"><span><span> <?php echo $metin[64]?> </span></span></a></li>
       <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
@@ -94,13 +114,13 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	  <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?> </span></span></a></li>
       <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
       <li><a href="friends.php"><span><span> <?php echo $metin[549]?> </span></span></a></li>
-      <li><a href="fileShare.php"><span><span> <?php echo $metin[463]?> </span></span></a></li>
+      <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?> </span></span></a></li>
       <?php
 							 if ($tur=='2' || $tur=='1'){
                             ?>
-      <li><a href="lessonsEdit.php"><span><span> <?php echo $metin[62]?> </span></span></a></li>
-      <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186]?> </span></span></a></li>
-      <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259]?> </span></span></a></li>
+      <li><a href="lessonsEdit.php"><span><span> <?php echo $metin[62].$bilgi4?> </span></span></a></li>
+      <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
+      <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?> </span></span></a></li>
       <?php
 							 }
                             ?>
@@ -114,10 +134,10 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 						 if ($currentFile=="lessons.php")
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55]?> </span></span></a> <?php echo dersAgaci()?> </li>
+                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php echo dersAgaci()?> </li>
   <?php
   if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
-	echo ("<li><a href=\"chat.php\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=310,height=330,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56]."</span></span></a></li>");
+	echo ("<li><a href=\"chat.php\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=310,height=330,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");
   }
 ?>
   <li><a href="userSettings.php"
@@ -137,10 +157,10 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
                         ><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[58]?> </span></span></a>
     <ul>
       <li><a href="siteNotices.php"><span><span> <?php echo $metin[471]?> </span></span></a></li>
-      <li><a href="siteSettings.php"><span><span> <?php echo $metin[472]?> </span></span></a></li>
+      <li><a href="siteSettings.php"><span><span> <?php echo $metin[472].$bilgi5?> </span></span></a></li>
       <li><a href="siteSettings2.php"><span><span> <?php echo $metin[156]?> </span></span></a></li>
       <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
-      <li><a href="rssEdit.php"><span><span> <?php echo $metin[70]?> </span></span></a></li>
+      <li><a href="rssEdit.php"><span><span> <?php echo $metin[70].$bilgi7?> </span></span></a></li>
       <?php
 	   if (file_exists("install.php")){
 	  ?>
@@ -156,11 +176,11 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 				  ?>
         &#8250; </span></span></a>
         <ul>
-          <li><a href="dataActions.php"><span><span> <?php echo $metin[66]?> </span></span></a></li>
-          <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186]?> </span></span></a></li>
-          <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287]?> </span></span></a></li>
-          <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67]?> </span></span></a></li>
-          <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288]?> </span></span></a></li>
+          <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
+          <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
+          <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
+          <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
+          <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288].$bilgi2?> </span></span></a></li>
         </ul>
       </li>
     </ul>

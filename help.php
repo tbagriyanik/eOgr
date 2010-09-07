@@ -173,8 +173,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                     <script type="text/javascript" src="http://www.ohloh.net/p/465111/widgets/project_languages.js"></script><br />
                     <script type="text/javascript" src="http://www.ohloh.net/p/465111/widgets/project_partner_badge.js"></script> 
                     <br/>
-                    <br/>
-                    <h4>Validations</h4>
+                    <br/>                    
                     <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.tuzlaatl.k12.tr%2Feogr%2Findex.php;No200=1"><img
         src="http://www.w3.org/Icons/valid-xhtml10"
         alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a> &nbsp; <a href="http://feed2.w3.org/check.cgi?url=http%3A//www.tuzlaatl.k12.tr/eogr/rss.php"><img src="http://validator.w3.org/feed/images/valid-rss-rogers.png" alt="[Valid RSS]" title="Validate my RSS feed" /></a> &nbsp; <a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.tuzlaatl.k12.tr%2Feogr%2Fhelp.php&amp;profile=css3&amp;usermedium=all&amp;warning=no&amp;lang=en"> <img style="border:0;width:88px;height:31px"

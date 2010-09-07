@@ -25,7 +25,7 @@ Lesser General Public License for more details.
 	switch ($sayfa){
 		case "index.php":
 		 	echo "<p>Ana sayfadasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
@@ -37,7 +37,7 @@ Lesser General Public License for more details.
 		break;
 		case "kursDetay.php":
 		 	echo "<p>Kurs bilgilerinizin bulunduðu sayfadasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
@@ -49,7 +49,7 @@ Lesser General Public License for more details.
 		break;
 		case "lessons.php":
 		 	echo "<p>Ders çalýþma sayfadasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
@@ -61,7 +61,7 @@ Lesser General Public License for more details.
 		break;
 		case "login.php":
 		 	echo "<p>Giriþ sayfadasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
@@ -73,7 +73,7 @@ Lesser General Public License for more details.
 		break;
 		case "userSettings.php":
 		 	echo "<p>Kullanýcý bilgilerinizin bulunduðu sayfadasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
@@ -85,7 +85,7 @@ Lesser General Public License for more details.
 		break;
 		case "stats.php":
 		 	echo "<p>Site istatistikleri sayfadasýndasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
@@ -97,7 +97,7 @@ Lesser General Public License for more details.
 		break;
 		case "fileShare.php":
 		 	echo "<p>Ödev ve dosya paylaþým sayfadasýndasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
@@ -109,7 +109,7 @@ Lesser General Public License for more details.
 		break;
 		case "friends.php":
 		 	echo "<p>Ödev ve dosya paylaþým sayfadasýndasýnýz.</p>";
-		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			Ýsterseniz : <ul>";
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";

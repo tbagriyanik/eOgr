@@ -795,7 +795,7 @@ if ($handle = opendir($dir)) {
 	while ($obj = readdir($handle)) {
 		if ($obj!= '.' && $obj!= '..') {
 			if (is_dir($dir.$obj)) {
-				if (!KlasorSil($dir.$obj))
+				if (!klasorSil($dir.$obj))
 					return false;
 				} elseif (is_file($dir.$obj)) {
 					if (!@unlink($dir.$obj))
@@ -1538,6 +1538,7 @@ yorumlariGetir:
 belli bir konuda yorum bilgilerini getirir
 */
 function yorumlariGetir($konu){
+	global $metin;
     $sql1 = "SELECT eo_comments.id as comID ,eo_comments.comment, eo_comments.commentDate, eo_users.userName, eo_users.id as id
 				FROM eo_comments, eo_users, eo_4konu 
 				where 
@@ -1552,7 +1553,7 @@ function yorumlariGetir($konu){
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1)){
 					  if($row_gelen['id'] == getUserID($_SESSION["usern"],$_SESSION["userp"]) || getUserType($_SESSION["usern"]) == 2 ) 
-					 	$yorumSil = " <a href='yorumSil.php?id=".$row_gelen['comID']."' rel='facebox'><img src=\"img/erase.png\" alt=\"delete\" width=\"16\" height=\"16\" border=\"0\" style=\"vertical-align: middle;\"  title=\"$metin[102]\"/> Yorumu Sil</a>";  
+					 	$yorumSil = " | <a href='yorumSil.php?id=".$row_gelen['comID']."' rel='facebox'><img src=\"img/cross.png\" alt=\"delete\" width=\"16\" height=\"16\" border=\"0\" style=\"vertical-align: sub;\"  title=\"$metin[102]\"/> ".$metin[102]."</a>";  
 						else
 						$yorumSil = "";
 				     	$humanRelativeDate = new HumanRelativeDate();
@@ -3059,7 +3060,7 @@ sonTarihGetir:
 bir tablodan bugünün tarihine göre iþlem var ise TRUE döner
 */
 function sonTarihGetir($tablo){
-	global $yol1;	
+	global $yol1,$_uploadFolder;	
 	$sonuc = false;
 	$bugun = date("d-m-Y");
 		
@@ -3153,25 +3154,42 @@ function sonTarihGetir($tablo){
 			}		
 		break;
 		case "dosya":
-			$sql1 = "SELECT count(*) as say 
-					 FROM eo_comments ????
-					 WHERE DATE_FORMAT(rateDate, '%d-%m-%Y') = '$bugun'"; 	
-			$result1 = mysql_query($sql1, $yol1); 
-			
-			if ($result1 && mysql_numrows($result1) == 1){				
-				$gelen = mysql_fetch_array($result1);						
-				$sonuc = $gelen['say']>0;				
-			}		
+			$sonuc = sonDosyaTarihi($_uploadFolder);		
 		break;
 	}
 	return $sonuc;
+}
+/*
+sonDosyaTarihi:
+klasör içindeki dosyalardan birinin tarihi bugün ile eþit ise TRUE
+*/
+function sonDosyaTarihi($dir) {
+if (substr($dir, strlen($dir)-1, 1)!= '/')
+$dir .= '/';
+
+if ($handle = opendir($dir)) {
+	while ($obj = readdir($handle)) {
+		if ($obj!= '.' && $obj!= '..') {
+			if (is_dir($dir.$obj)) {
+				if (!sonDosyaTarihi($dir.$obj))
+					return false;
+				} elseif (is_file($dir.$obj)) {
+					if(date ("d-m-Y", filemtime($dir.$obj))==date("d-m-Y"))
+					  return true;
+					}
+			}
+	}
+		closedir($handle);
+		return true;
+	}
+return false;
 }
 /*
 sonSatirGetir:
 bir tablodan tarihe göre en son iþlem satýrý getirir
 */
 function sonSatirGetir($tablo){
-	global $yol1,$metin;	
+	global $yol1,$metin,$_uploadFolder;	
 	$sonuc = "";
 	$humanRelativeDate = new HumanRelativeDate();
 		
@@ -3285,9 +3303,11 @@ function sonSatirGetir($tablo){
 			
 			if ($result1 && mysql_numrows($result1) == 1){
 				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s", filemtime($_uploadFolder."/".$gelen[2])));
+				
 				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[5]."</a>, "
 					."<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
-					.$gelen[3];
+					.$gelen[3].", ".$insansi;
 				$sonuc .= " <a href='fileShare.php'>$metin[162]</a>";
 			}		
 		break;

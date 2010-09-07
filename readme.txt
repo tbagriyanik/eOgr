@@ -15,6 +15,7 @@ Available language support is English and Turkish.
 
 Developer Name: 
 	Tarik Bagriyanik
+
 Developer Site: 
 	http://yunus.sourceforge.net
 
@@ -37,25 +38,12 @@ Start Date:
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
-INSTALLATION:
+INSTALLATION (read INSTALL.txt):
 -------------
 (1) Edit your settings in "database.php" with an editor
-(2) " http://localhost/eogr/install.php " is for installation. 
-    Your MySQL user must have "CREATE TABLE" permission!
-    After a successful installation, you can remove/rename "installation_Database.sql"
-  	  and install.php files.
+(2) " http://localhost/eogr/install.php " is for installation.     
 (3) Login as administrator user: name "admin" and password "11111"
 
-Further information for administrators: 
-- This project needs PHP 5 
-- MySQL 5 database server 
-- "uploads" folder needs write permission (766 or 777 can be)
-- .htaccess enabled for security (can be erased if having problems)
-
-For Clients (web users):
-- Javascript (Ajax) enabled browser (especially for lessons page)
-- Cookies enabled (theme, language and user name)
-- Flash player installed (for lessons' content)
 
 Used Classes and Referred Sites:
 - autosuggest: v2.1.3
@@ -112,9 +100,10 @@ CSS, RSS and HTML Validations:
 - http://validator.w3.org/check
 
 Advice:
-Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
+	Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
 
 Also test your favorite browser's security: 
-http://bcheck.scanit.be/bcheck/
+	http://bcheck.scanit.be/bcheck/
 
-License: LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+License: 
+	LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html

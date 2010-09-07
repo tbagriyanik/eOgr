@@ -108,5 +108,5 @@ a.triggerFB:hover {
 	display: block;
 }
 a.active.triggerFB {
-	background:#222222 url(../img/minus.png) 55% 55% no-repeat;
+	background:#222222 url(../img/error.png) 55% 55% no-repeat;
 }
