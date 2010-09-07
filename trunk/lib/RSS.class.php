@@ -93,7 +93,7 @@ mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_erro
 						 <link>'. ((!empty($row["link"]))?$siteLink.'/'.$row["link"]:$siteLink) .'</link>
 						 <guid isPermaLink="false">'. $row["title"] .'</guid>
 						 <description><![CDATA['. $this->smileAdd($row["description"]) .']]></description>
-						 <pubDate>'. date("D, d M Y G:i:s O", strtotime($row["pubDate"])) .'</pubDate>
+						 <pubDate>'. date("D, d M Y H:i:s O", strtotime($row["pubDate"])) .'</pubDate>
 					 </item>';
 			$i++;		 
 		}

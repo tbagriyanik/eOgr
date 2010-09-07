@@ -145,18 +145,24 @@ Lesser General Public License for more details.
 			
 				$('#warningClose').click(function(){
 					//setBadBrowser('browserWarning','seen');
-					$.cookie('browserWarning', 'seen');
+					$.cookie('browserWarning', '1');
 					$('#browserWarning').slideUp('slow');
 					return false;
 				});
-				if(badBrowser()) {
-				 if(getBadBrowser('browserWarning') != 'seen') {
-					$('#browserWarning').slideUp(5);
- 					$('#browserWarning').slideDown(500);
-					}else{
+					
+				 if(badBrowser()) {
+					 if(parseInt(getBadBrowser('browserWarning')) == Number.NaN){
+						$('#browserWarning').slideUp(5);
+ 						$('#browserWarning').slideDown(500);
+					 }
+					}else
 					$("#browserWarning").hide();
-					}
-				}
+
+				if(parseInt(getBadBrowser('browserWarning')) > 0) 
+					{
+					$('#browserWarning').slideUp(1);
+					$("#browserWarning").hide();
+					}				
 								
 		})		
 </script>
