@@ -78,20 +78,7 @@ Shadowbox.init({
 </script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
 <script src="lib/jquery.cookie.js" type="text/javascript"></script>
-<script src="lib/jquery-treeview/jquery.treeview.pack.js" type="text/javascript"></script>
-<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$("#lessonTree").treeview({
-				animated: "fast",
-				collapsed: true,
-				persist: "cookie",
-				control:"#sidetreecontrol"
-			});
-		})
-		
-</script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {

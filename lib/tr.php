@@ -82,8 +82,8 @@ Lesser General Public License for more details.
         $metin[55]=" Dersler";         
         $metin[56]=" Sohbet";         
         $metin[57]=" Bilgilerim";         
-        $metin[58]=" Site Y&ouml;netimi";         
-        $metin[59]=" Oturumu Kapat";         
+        $metin[58]=" Y&ouml;netim";         
+        $metin[59]=" Çýkýþ";         
         $metin[60]=" Giri&#351;";         
         $metin[61]=" Derse Kat&#305;l";         
         $metin[62]=" Ders D&uuml;zenle";         
@@ -717,5 +717,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[545] = "Ders çalýþma sayýsý";
 		
 		$metin[546] = "Gün-Ay-Yýl (31-12-2000 gibi)";
+		
+		$metin[547] = " Site Haritasý";
+		$metin[548] = "Þimdilik sohbet kullaným dýþýdýr.";
 		
 ?>

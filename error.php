@@ -68,6 +68,9 @@
  		 case "11":			//site is closed 
 		  echo "<font id='hata'>$metin[527]</font>";
 		  break;	
+ 		 case "12":			//not allowed for all
+		  echo "<font id='hata'>$metin[548]</font>";
+		  break;	
 		 default:			//file not found
 		  echo "<font id='hata'>$metin[468]</font>";		  	  
 	}
