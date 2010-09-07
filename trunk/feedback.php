@@ -30,6 +30,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
 		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
 		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
@@ -41,6 +42,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
 		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
 		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
@@ -52,6 +54,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
 		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
 		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
@@ -63,6 +66,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
 		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
@@ -74,6 +78,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
 		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
@@ -85,6 +90,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
 		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
@@ -97,6 +103,19 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
 		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
 		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
+		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
+		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
+		 	echo "</ul> Baþarýlar Dileriz!";
+		break;
+		case "friends.php":
+		 	echo "<p>Ödev ve dosya paylaþým sayfadasýndasýnýz.</p>";
+		 	echo "<img src=\"img/passwRenew.gif\" border=\"0\" style=\"vertical-align:middle\" alt='info'/> 
+			Ýsterseniz : <ul>";
+		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
+		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
+		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
+		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
+		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
 		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
 		 	echo "</ul> Baþarýlar Dileriz!";
 		break;

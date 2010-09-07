@@ -1,5 +1,5 @@
 
-	eOgr - v123b, 07-09-2010
+	eOgr - v123c, 07-09-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 

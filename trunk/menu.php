@@ -30,11 +30,6 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <script  type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script  type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
-<style type="text/css">
-.aramaDiv strong {
-	color: #FFF;
-}
-</style>
 <div class="aramaDiv">
   <input name="searchterm" type="text" id="searchterm" size="15" maxlength="50" title="<?php echo $metin[177]?>"/>
   <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[168]?>" title="<?php echo $metin[168]?>"/> <strong>|</strong> <a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/passwRenew.gif" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a> <a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a> </div>
@@ -90,7 +85,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <ul class="artmenu">
   <li><a href="index.php" 
 						<?php
-						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php" || $currentFile=="dataCommentList2.php")
+						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php" || $currentFile=="friends.php"|| $currentFile=="dataCommentList2.php")
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
@@ -98,6 +93,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
       <li><a href="login.php"><span><span> <?php echo $metin[60]?> </span></span></a></li>
 	  <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?> </span></span></a></li>
       <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
+      <li><a href="friends.php"><span><span> <?php echo $metin[549]?> </span></span></a></li>
       <li><a href="fileShare.php"><span><span> <?php echo $metin[463]?> </span></span></a></li>
       <?php
 							 if ($tur=='2' || $tur=='1'){

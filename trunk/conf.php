@@ -3055,6 +3055,118 @@ function odaGetir($gelen){
 	   if ($gelen==8) return "$metin[98]8";
 }
 /*
+sonTarihGetir:
+bir tablodan bugünün tarihine göre iþlem var ise TRUE döner
+*/
+function sonTarihGetir($tablo){
+	global $yol1;	
+	$sonuc = false;
+	$bugun = date("d-m-Y");
+		
+	switch($tablo){
+		case "oy":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_rating
+					 WHERE DATE_FORMAT(rateDate, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "yorum":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_comments
+					 WHERE DATE_FORMAT(commentDate, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "sohbet":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_shoutbox
+					 WHERE DATE_FORMAT(date, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "uye":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_users
+					 WHERE DATE_FORMAT(requestDate, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "ders":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_5sayfa
+					 WHERE DATE_FORMAT(eklenmeTarihi, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "haber":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_webref_rss_items
+					 WHERE DATE_FORMAT(pubDate, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "islem":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_usertrack
+					 WHERE DATE_FORMAT(dateTime, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "calis":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_userworks
+					 WHERE DATE_FORMAT(calismaTarihi, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+		case "dosya":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_comments ????
+					 WHERE DATE_FORMAT(rateDate, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
+	}
+	return $sonuc;
+}
+/*
 sonSatirGetir:
 bir tablodan tarihe göre en son iþlem satýrý getirir
 */
