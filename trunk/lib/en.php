@@ -82,7 +82,7 @@ Lesser General Public License for more details.
         $metin[55]=" Lessons";         
         $metin[56]=" Chat";         
         $metin[57]=" My Profile";         
-        $metin[58]=" Site Settings";         
+        $metin[58]=" Management";         
         $metin[59]=" Logout";         
         $metin[60]=" Entrance";         
         $metin[61]=" Join a Lesson";         
@@ -702,5 +702,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[545] = "Lesson work count";
 		
 		$metin[546] = "Day-Month-Year (like 31-12-2000)";
+		
+		$metin[547] = " Site Map";
+		$metin[548] = "Chat feature is disabled for now.";
 												
 ?>

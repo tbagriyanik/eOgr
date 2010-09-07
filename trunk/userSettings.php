@@ -30,7 +30,7 @@ Lesser General Public License for more details.
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[57]?></title>
+<title>eOgr -<?php echo $metin[63]?></title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
@@ -123,7 +123,7 @@ Lesser General Public License for more details.
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[57]?> </span> </h2>
+                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[63]?> </span> </h2>
                 <div class="PostContent">
                   <?php
 
