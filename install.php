@@ -479,7 +479,7 @@ require 'lib/flood-protection.php'; // include the class
 				   	echo "<li><strong>Eposta</strong> SMTP deðeri : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
 				//--------------------------------------	
 				  echo "</ul>";
-				  echo "<hr noshade=\"noshade\"><p>Eðer varsa <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.<br/>Bu deðerler tavsiye edilmez veya tehlikeye neden olabilir!</p>";
+				  echo "<hr noshade=\"noshade\"/><p>Eðer varsa <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.<br/>Bu deðerler tavsiye edilmez veya tehlikeye neden olabilir!</p>";
 				  ?>
                 </div>
                 <div class="cleared"></div>
