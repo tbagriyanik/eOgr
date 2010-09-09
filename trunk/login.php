@@ -48,6 +48,28 @@ Lesser General Public License for more details.
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
+  $adi	=substr(temizle($_POST["userN"]),0,15);
+  $par	=sha1(substr(temizle($_POST["userP"]),0,15));
+  
+   if ($adi=="") {
+	   $adi	=temizle(substr($_SESSION["usern"],0,15));
+	   $par	=temizle($_SESSION["userp"]);
+	  }
+	  else
+	  {
+	   if(checkRealUser($adi,$par)=="-2")	   
+		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
+	   else {
+	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
+			header("Location:index.php");
+	     }
+	  }
+  
+	if($adi=="" || $par=="") {
+		header("Location:error.php?error=2");
+		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
+	}
+	
     currentFileCheck("login.php");	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -186,27 +208,6 @@ Shadowbox.init({
 				break;
 		}     
 
-  $adi	=substr(temizle($_POST["userN"]),0,15);
-  $par	=sha1(substr(temizle($_POST["userP"]),0,15));
-  
-   if ($adi=="") {
-	   $adi	=temizle(substr($_SESSION["usern"],0,15));
-	   $par	=temizle($_SESSION["userp"]);
-	  }
-	  else
-	  {
-	   if(checkRealUser($adi,$par)=="-2")	   
-		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
-	   else {
-	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
-			header("Location:index.php");
-	     }
-	  }
-  
-	if($adi=="" || $par=="") {
-		header("Location:error.php?error=2");
-		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
-	}
  
     $tur=checkRealUser($adi,$par);
 
