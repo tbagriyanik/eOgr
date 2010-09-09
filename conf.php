@@ -3169,18 +3169,16 @@ $dir .= '/';
 
 if ($handle = opendir($dir)) {
 	while ($obj = readdir($handle)) {
-		if ($obj!= '.' && $obj!= '..') {
-			if (is_dir($dir.$obj)) {
-				if (!sonDosyaTarihi($dir.$obj))
-					return false;
-				} elseif (is_file($dir.$obj)) {
-					if(date ("d-m-Y", filemtime($dir.$obj))==date("d-m-Y"))
-					  return true;
-					}
-			}
+		if ($obj!= '.' and $obj!= '..')
+				if (is_file($dir.$obj) and !($obj== 'index.php' or $obj== '.htaccess')) {
+						$dTarih = date ("d-m-Y", filemtime($dir.$obj));
+						$sTarih = date("d-m-Y");
+						if(strcmp($dTarih,$sTarih)!=-1)
+						  return true;
+					}			
 	}
 		closedir($handle);
-		return true;
+		return false;
 	}
 return false;
 }

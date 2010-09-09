@@ -319,7 +319,7 @@ Lesser General Public License for more details.
 		$metin[254]="love it";				
 		
 		$metin[255]="Show These in <a href='lessons.php'>Lessons Page</a>";				
-		$metin[256]="Topic Search";				
+		$metin[256]="Topic Search and Other Icons";				
 		$metin[257]="Lesson Tree";				
 		$metin[258]="Page Preview";				
 		$metin[259]="Comments";				
@@ -707,5 +707,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[548] = "Chat feature is disabled for now.";
 		$metin[549] = " My Friends";		
 		$metin[550] = " pages are active today.";
+		$metin[551] = "General";
 												
 ?>

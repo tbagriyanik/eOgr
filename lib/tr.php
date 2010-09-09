@@ -326,7 +326,7 @@ Lesser General Public License for more details.
 		$metin[254]="&ccedil;ok g&uuml;zel";						
 		
 		$metin[255]="<a href='lessons.php'>Ders Sayfasýnda</a> G&ouml;ster";				
-		$metin[256]="Konu Arama";				
+		$metin[256]="Konu Arama ve Diðer Simgeler";				
 		$metin[257]="Ders Aðacý";				
 		$metin[258]="Sayfa &Ouml;nizleme";				
 		$metin[259]="Yorumlar";				
@@ -722,4 +722,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[548] = "Þimdilik sohbet kullaným dýþýdýr.";
 		$metin[549] = " Arkadaþlarým";
 		$metin[550] = " olan sayfalarda bugün aktivite vardýr.";
+		$metin[551] = "Genel";
+												
 ?>
