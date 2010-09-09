@@ -118,7 +118,7 @@ Lesser General Public License for more details.
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[547]?> </span> </h2>
                 <div class="PostContent">
                   <div id="contact-wrapper">
-<?php
+                    <?php
 	$bilgi1 = sonTarihGetir("sohbet");
 	$bilgi1 = ($bilgi1)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
 	$bilgi2 = sonTarihGetir("yorum");
@@ -137,15 +137,18 @@ Lesser General Public License for more details.
 	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
 	$bilgi9 = sonTarihGetir("calis");
 	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
-?>                  
+?>
                     <table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
                         <td valign="top" style="background-color:#FFF !important"><ul>
-                            <li><a href="index.php"><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?></a> </li>
-                            <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a>
-                            </li><li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
-                            <li><a href="newUser.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
-                            <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
+                            <li><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="<?php echo $metin[551]?>"/> <?php echo $metin[551]?>
+                              <ul style="list-style:none">
+                                <li><a href="index.php"><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?></a> </li>
+                                <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> </li>
+                                <li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
+                                <li><a href="newUser.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
+                                <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
+                              </ul>
                           </ul>
                           <br /></td>
                         <td valign="top" style="background-color:#FFF !important"><ul style="list-style:none">
@@ -193,10 +196,7 @@ Lesser General Public License for more details.
                           </ul></td>
                       </tr>
                       <tr>
-                      <td colspan="4">
-                      &nbsp;&nbsp;<img src="img/imp.gif" border="0" style="vertical-align: middle;" alt="new" />
-                      <?php echo $metin[550]?>
-                      </td>
+                        <td colspan="4">&nbsp;&nbsp;<img src="img/imp.gif" border="0" style="vertical-align: middle;" alt="new" /> <?php echo $metin[550]?></td>
                       </tr>
                     </table>
                   </div>
