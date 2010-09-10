@@ -3304,13 +3304,15 @@ function sonSatirGetir($tablo){
 			$result1 = mysql_query($sql1, $yol1); 
 			
 			if ($result1 && mysql_numrows($result1) == 1){
-				$gelen = mysql_fetch_array($result1);		
-				$insansi = $humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s", filemtime($_uploadFolder."/".$gelen[2])));
-				
-				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[5]."</a>, "
-					."<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
-					.$gelen[3].", ".$insansi;
-				$sonuc .= " <a href='fileShare.php'>$metin[162]</a>";
+				$gelen = mysql_fetch_array($result1);	
+				if(file_exists($_uploadFolder."/".$gelen[2])) {	
+					$insansi = $humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s", filemtime($_uploadFolder."/".$gelen[2])));
+					
+					$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[5]."</a>, "
+						."<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
+						.$gelen[3].", ".$insansi;
+					$sonuc .= " <a href='fileShare.php'>$metin[162]</a>";
+				}
 			}		
 		break;
 	}
