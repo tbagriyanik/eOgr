@@ -301,7 +301,7 @@ if (isset($_COOKIE["remUser"]))
     ?>
                       <br />
                       <br />
-                      <a href="newUser.php"><?php echo $metin[3]?></a>&nbsp; <a href="passwordRemember.php"><?php echo $metin[4]?></a>
+                      <a href="newUser.php"><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[3]?></a>&nbsp;|&nbsp;<a href="passwordRemember.php"><?php echo $metin[4]?></a>
                     </form>
                     <br />
                   </div>

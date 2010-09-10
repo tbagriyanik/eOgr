@@ -77,7 +77,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <ul class="artmenu"  style="list-style-type:none">
   <li><a href="index.php" <?php
 						 if ($currentFile=="index.php") echo "class=\" active\"";
-                        ?>><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a> </li>
+                        ?>><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a> </li>
   <li><a href="lessons.php"
 						<?php
 						 if ($currentFile=="lessons.php")
@@ -89,9 +89,9 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 						 if ($currentFile=="newUser.php" || $currentFile=="passwordRemember.php" )
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[149]?> </span></span></a>
+                        ><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[149]?> </span></span></a>
     <ul>
-      <li><a href="newUser.php"><span><span> <?php echo $metin[64]?> </span></span></a></li>
+      <li><a href="newUser.php"><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/>  <?php echo $metin[64]?> </span></span></a></li>
       <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
     </ul>
   </li>
@@ -108,12 +108,12 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php" || $currentFile=="friends.php"|| $currentFile=="dataCommentList2.php")
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
+                        ><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
     <ul>
-      <li><a href="login.php"><span><span> <?php echo $metin[60]?> </span></span></a></li>
+      <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/>  <?php echo $metin[60]?> </span></span></a></li>
 	  <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?> </span></span></a></li>
       <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
-      <li><a href="friends.php"><span><span> <?php echo $metin[549]?> </span></span></a></li>
+      <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a></li>
       <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?> </span></span></a></li>
       <?php
 							 if ($tur=='2' || $tur=='1'){
@@ -156,9 +156,9 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
                         ?>                       
                         ><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[58]?> </span></span></a>
     <ul>
-      <li><a href="siteNotices.php"><span><span> <?php echo $metin[471]?> </span></span></a></li>
+      <li><a href="siteNotices.php"><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/>  <?php echo $metin[471]?> </span></span></a></li>
       <li><a href="siteSettings.php"><span><span> <?php echo $metin[472].$bilgi5?> </span></span></a></li>
-      <li><a href="siteSettings2.php"><span><span> <?php echo $metin[156]?> </span></span></a></li>
+      <li><a href="siteSettings2.php"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/>  <?php echo $metin[156]?> </span></span></a></li>
       <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
       <li><a href="rssEdit.php"><span><span> <?php echo $metin[70].$bilgi7?> </span></span></a></li>
       <?php
