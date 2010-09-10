@@ -89,7 +89,7 @@ Lesser General Public License for more details.
       <div class="nav">
         <?php
 				 require("menu.php");
-                ?>
+        ?>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>
@@ -326,8 +326,9 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                 <div class="Post-cc"></div>
                 <div class="Post-body">
                   <div class="Post-inner">
-                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <?php echo $metin[112]?> </span> </h2>
+                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><a name="ozel" id="ozel"></a> <?php echo $metin[112]?> </span> </h2>
                     <div class="PostContent">
+                    
                       <form name="form5"  action="userSettings.php" method="post">
                         <table width="90%" border="0" cellspacing="0" cellpadding="3">
                           <tr>

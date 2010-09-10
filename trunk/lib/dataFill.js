@@ -76,6 +76,18 @@ function sureDolduTemizle(){
 var timeoutId = null;
 var connectionTimeout = 60000; // 60sec 
 
+//http://www.netlobo.com/url_query_string_javascript.html
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
 /*
 setOutputKonu:
 konudaki bilgilerin ekrana getirilmesi
@@ -136,11 +148,11 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		if(items[7]=="-" || items[6]=="-" || items[7]=="" || items[6]=="0")
 			document.getElementById('oncekiKonu').innerHTML =   "";		
 			else
-			document.getElementById('oncekiKonu').innerHTML =   "<img src=\"img/page-prev.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"prev\"/> <a href='lessons.php?konu="+ items[6] +"'>" + items[7] + "</a>";		
+			document.getElementById('oncekiKonu').innerHTML =   "<img src=\"img/page-prev.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"prev\"/> <a href='lessons.php?konu="+ items[6] +"&amp;mode="+gup("mode")+"'>" + items[7] + "</a>";		
 		if(items[8]=="-" || items[9]=="-" || items[8]=="" || items[9]=="")
 			document.getElementById('sonrakiKonu').innerHTML =   "";		
 			else
-			document.getElementById('sonrakiKonu').innerHTML =   "<a href='lessons.php?konu="+ items[8] +"'>" + items[9] + "</a>  <img src=\"img/page-next.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"next\"/>";		
+			document.getElementById('sonrakiKonu').innerHTML =   "<a href='lessons.php?konu="+ items[8] +"&amp;mode="+gup("mode")+"'>" + items[9] + "</a>  <img src=\"img/page-next.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"next\"/>";		
 
 		document.getElementById('konu_id').value = konu;		
 		
