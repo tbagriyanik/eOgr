@@ -726,6 +726,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[552] = "Basit";
 		$metin[553] = "Tam Ekran";
 		$metin[554] = "Özelleþtir...";
-		$metin[555] = "";
+		$metin[555] = "Aktivite Durumu";
 												
 ?>
