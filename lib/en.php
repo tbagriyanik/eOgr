@@ -708,5 +708,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[549] = " My Friends";		
 		$metin[550] = " pages are active today.";
 		$metin[551] = "General";
+		$metin[552] = "Simple";
+		$metin[553] = "Full Screen";
+		$metin[554] = "Customize...";
+		$metin[555] = "";
 												
 ?>

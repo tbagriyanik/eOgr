@@ -28,6 +28,20 @@ Lesser General Public License for more details.
   $seciliTema=temaBilgisi();	
   
 ob_start (); // Buffer output
+  if(isset($_GET["mode"])){
+	   if(in_array($_GET["mode"],array("1","2","3"))){
+		  $eMode = $_GET["mode"];
+		  if($eMode!="1")
+			  $_SESSION["mode"]= $eMode;   
+	   }else
+		  $eMode = "3";
+  }else{
+	   if(in_array($_SESSION["mode"],array("2","3")))
+		  	$eMode = $_SESSION["mode"];
+		  else
+		  	$eMode = "3"; //genel varsayýlan
+  }  
+    
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -145,6 +159,9 @@ ob_start (); // Buffer output
     </div>
     <div class="Sheet-cc"></div>
     <div class="Sheet-body">
+      <?php
+		if($eMode!="1"){
+      ?>
       <div class="Header">
         <div class="Header-png"></div>
         <div class="Header-jpeg"></div>
@@ -158,16 +175,40 @@ ob_start (); // Buffer output
 	
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
-	
-	require("menu.php");
-	
-	if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+
+		require("menu.php");	
                 ?>
+               <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;"> 
+                <?php
+	if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+                if(isKonu($_GET["konu"])){
+				?>
+        <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank"><?php 	echo $metin[553];?></a> | 
+        <?php
+				}
+        ?>
+        <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'><?php 		
+		if($eMode=="2") 
+			echo "<strong>$metin[552]</strong>";
+		else
+			echo $metin[552];
+		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'><?php  		
+		if($eMode=="3") 
+			echo "<strong>$metin[551]</strong>";
+		else
+			echo $metin[551];
+		?></a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
+        </div>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>
         </div>
       </div>
+      <?php
+	    }
+		else 
+		echo "<div>&nbsp;</div>";
+      ?>
       <div class="contentLayout">
         <div class="content">
           <div class="Post">
@@ -244,14 +285,16 @@ ob_start (); // Buffer output
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />
                   <span id="gercekCevapSuresi" style="visibility:hidden"></span> <span id="slideGecisSuresi" style="visibility:hidden"></span>
                   <?php
+                  if($eMode=="1")
+					  	echo ("<div id='lgout' style='top:-13px;'><a href='#' onclick='window.close();'>".$metin[34]."</a></div><br/>");
 				    $adi	=temizle(substr($_SESSION["usern"],0,15));
 	   				$par	=temizle($_SESSION["userp"]);
 				    $tur = checkRealUser($adi,$par); 
 					
-  				   	if($tur!="-2"){ 
+  				   	if($tur!="-2" and !in_array($eMode,array("1","2"))){ 
                   ?>
                   <div id="navigation2">
-                    <?php 
+                    <?php 					
 					  if(($tur==1 || $tur==2) && isKonu($_GET["konu"])){ 
                     ?>
                     <label onclick='konuDuzenle();'> <img src="img/edit.png" alt="<?php echo $metin[103];?>"  title="<?php echo $metin[103];?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[241]?></label>
@@ -300,7 +343,7 @@ if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
 ?>
                   </div>
                   <?php
-				}
+					  }	
                  ?>
                 </div>
                 <div class="cleared"></div>
@@ -308,7 +351,7 @@ if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
               &nbsp;</div>
           </div>
           <?php
-if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"]) && $tur>-2){
+if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"]) && $tur>-2 and $eMode!="2"){
 ?>
           <div class="Post">
             <div class="Block">
@@ -398,7 +441,7 @@ $(document).ready(function() {
 	$sampleData2 = getGrafikValues3(20, $_GET["konu"]);
 	$labels2 = getGrafikLabels3(20, $_GET["konu"]);
 
-if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 ){ 
+if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 and $eMode!="2" ){ 
 ?>
           <div class="Post">
             <div class="Block">
@@ -440,7 +483,7 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
           </div>
           <?php
 }
-	if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and ($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"])){
+	if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and ($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"]) and $eMode!="2"){
 ?>
           <div class="Post">
             <div class="Block">
@@ -476,7 +519,7 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
 	}
 ?>
           <?php
-if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1"){
+if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1" and $eMode!="2"){
 ?>
           <div class="Post">
             <div class="Block">
@@ -582,8 +625,9 @@ fix_flash();
           <div class="Footer">
             <div class="Footer-inner">
               <?php  						
+				 if($eMode!="1") 						
 						 require "footer.php";
-                        ?>
+              ?>
             </div>
             <div class="Footer-background"></div>
           </div>
@@ -593,8 +637,9 @@ fix_flash();
     </div>
   </div>
 </div>
-<?php  						
- require "feedback.php";
+<?php
+ if($eMode!="1") 						
+	 require "feedback.php";
 ?>
 </body>
 </html>

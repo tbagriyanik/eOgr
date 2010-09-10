@@ -3011,8 +3011,7 @@ function getKursTablo($dersID,$uID){
 			
 			$sonuc .= '<tr>
 			           <td align="left" style="background-color:'.$row_color.';">
-					   <a href="lessons.php?konu='.$gelen[0].'">'.$gelen[1].'</a> 
- 					   <a href=\'dersBilgisi.php?ders='.$gelen[0].'\' rel=\'facebox\'><img src=\'img/info.png\' border="0" style="vertical-align: middle;" alt="info" title=\"info\" /></a>				   					   </td>
+ 					   <a href=\'dersBilgisi.php?ders='.$gelen[0].'\' rel=\'facebox\'>'.$gelen[1].'</a>				   					   </td>
 					   <td align="right" style="background-color:'.$row_color.';">'.$yuzde.'</td>
 					   <td align="right" style="background-color:'.$row_color.';">'.Sec2Time2(round($sure)).'</td>
 					   <td align="right" style="background-color:'.$row_color.';">'.$calSay.'</td>

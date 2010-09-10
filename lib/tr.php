@@ -723,5 +723,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[549] = " Arkadaþlarým";
 		$metin[550] = " olan sayfalarda bugün aktivite vardýr.";
 		$metin[551] = "Genel";
+		$metin[552] = "Basit";
+		$metin[553] = "Tam Ekran";
+		$metin[554] = "Özelleþtir...";
+		$metin[555] = "";
 												
 ?>
