@@ -132,7 +132,7 @@ function anaMetniOku($gelen, $sayfaNo)
 	if($kayitSayisi>0) {
 			
 			if($sKayitlilarG=="1" && !in_array($tur, array("1","2","0"))) //login olmamýþ
-				return "<font id='hata'>'$konuAdi' ".$metin[181]."<br/><a href='newUser.php'><img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[149]."' title='".$metin[149]."' />$metin[3]!</a>&nbsp;&nbsp;<a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> $metin[2]</a></font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
+				return "<font id='hata'>'$konuAdi' ".$metin[181]."<br/><a href='newUser.php'><img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[149]."' title='".$metin[149]."' />$metin[3]!</a>&nbsp;&nbsp;<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> $metin[2]</a></font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 				
 			if($sKayitlilarG=="1" && in_array($tur, array("1","2","0"))) //login olmuþ, hak sayýsýna bak
 			  {

@@ -68,7 +68,7 @@ Lesser General Public License for more details.
         
         $metin[45]="The database name to be installed :";   
         $metin[46]="Automatic Install";   
-        $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
+        $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
   	
 		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"Click\"/> for the tables' backup";   
         $metin[49]="Topic count is";   
@@ -147,7 +147,7 @@ Lesser General Public License for more details.
 		$metin[112]=" General Settings";    
 		$metin[113]="Site Options";
 		$metin[114]="School Name (header)";    
-		$metin[115]="Application Version (<a href='index.php'>index page</a>)";    
+		$metin[115]="Application Version (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";    
 		$metin[116]="Lesson Editing Paging Value (<a href='lessonsEdit.php'>lesson edit</a> page)";    
 		$metin[117]="User Editing Paging Value (<a href='siteSettings.php'>site settings</a> page)";    	
 		$metin[118]="Data Actions Paging Value (<a href='siteSettings.php'>site settings</a> page)";    
@@ -188,7 +188,7 @@ Lesser General Public License for more details.
 		$metin[148]="Change the code";
 		$metin[149]="New User";
 
-		$metin[150]="News Count to Show (<a href='index.php'>index page</a>)";
+		$metin[150]="News Count to Show (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
 		$metin[151]="Topic Count to Show (<a href='stats.php'>statistics</a> page)";
 
 		$metin[152]="Repeat Password";
@@ -318,7 +318,7 @@ Lesser General Public License for more details.
 		$metin[253]="like it";				
 		$metin[254]="love it";				
 		
-		$metin[255]="Show These in <a href='lessons.php'>Lessons Page</a>";				
+		$metin[255]="Show These in <a href='lessons.php'><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Lessons Page</a>";				
 		$metin[256]="Topic Search and Other Icons";				
 		$metin[257]="Lesson Tree";				
 		$metin[258]="Page Preview";				
@@ -394,7 +394,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[293]="Thank you for submitting comment. After confirmation, your comment will be visible. <p style='font-size:11px;'>Teachers and administrators do not need confirmation.</p>";
 		$metin[294]="Comments count waiting for your confirmation";
 		
-		$metin[295]="Invalid source. <a href='index.php'>Go Back</a>";
+		$metin[295]="Invalid source. <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Go Back</a>";
 		
 		$metin[296]="School";
 		$metin[297]="Class";
@@ -407,8 +407,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[303]="Other General Options";		
 		$metin[304]="Enable Chat";
-		$metin[305]="Enable News (<a href='index.php'>index page</a>)";
-		$metin[306]="Last demo user works (<a href='index.php'>index page</a>)";
+		$metin[305]="Enable News (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
+		$metin[306]="Last demo user works (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
 		$metin[307]="Ping Image";
 		$metin[308]="Statistics and Recent Staff";
 		
@@ -527,15 +527,15 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[400]="Sorry, unable to login.";
 		$metin[401]="Sorry, unable to respond so quickly! <br/> Please, retry soon.";
-		$metin[402]="To go to the main page, <a href='index.php'>click here</a>";
+		$metin[402]="To go to the main page, <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a>";
 		$metin[403]="Your user name or password was empty.";
 		$metin[404]="Your user name or password was wrong. Your account may be passive.";
 		$metin[405]="There are no news or this section is disabled.";
 		$metin[406]="Code error! <a href=# onclick=history.go(-1);>Click here</a> to retry.";
 		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><a href=# onclick=history.go(-1);>Click here</a> to retry.";
-		$metin[408]="<font id='uyari'> You are a new member now!</font> To login, please <a href='index.php'>click here</a> to go to the main page";
-		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'>Click here</a>  to go to the main page.";
-		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'>Click here</a> to go to the main page.";
+		$metin[408]="<font id='uyari'> You are a new member now!</font> To login, please <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a> to go to the main page";
+		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a>  to go to the main page.";
+		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a> to go to the main page.";
 		$metin[411]="This user name has been used previously";
 		$metin[412]="This email has been used previously";
 		$metin[413]="New password process is not finished!";

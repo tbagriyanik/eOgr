@@ -68,7 +68,7 @@ Lesser General Public License for more details.
         
         $metin[45]="Olu&#351;turulacak veritaban&#305; ad&#305; :";   
         $metin[46]="Otomatik Kurulum";   
-        $metin[47]="eOgr projesini kullanmaya ba&#351;lamak i&ccedil;in <a href='index.php'><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> t&#305;klat&#305;n&#305;z</a>!";   
+        $metin[47]="eOgr projesini kullanmaya ba&#351;lamak i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> t&#305;klat&#305;n&#305;z</a>!";   
         
         $metin[48]="Tablolar&#305;n yede&#287;inin al&#305;nmas&#305; i&ccedil;in <input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
         $metin[49]="konu say&#305;s&#305;";         
@@ -148,7 +148,7 @@ Lesser General Public License for more details.
 		$metin[112]=" Genel Ayarlar";    
 		$metin[113]="Site Ayarlar&#305;";
 		$metin[114]="Okul Ad&#305; (ba&#351;l&#305;k)";    
-		$metin[115]="Uygulama S&uuml;r&uuml;m&uuml; (<a href='index.php'>ana sayfa</a>)";    
+		$metin[115]="Uygulama S&uuml;r&uuml;m&uuml; (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";    
 		$metin[116]="Ders D&uuml;zenlemedeki Sayfalama De&#287;eri (<a href='lessonsEdit.php'>ders d&uuml;zenleme</a>)";    
 		$metin[117]="&Uuml;ye D&uuml;zenlemedeki Sayfalama De&#287;eri (<a href='siteSettings.php'>site y&ouml;netim</a> sayfalarý)";    	
 		$metin[118]="Veri Hareketleri Sayfalama De&#287;eri (<a href='siteSettings.php'>site y&ouml;netim</a> sayfalarý)";    
@@ -189,7 +189,7 @@ Lesser General Public License for more details.
 		$metin[148]="Kodu De&#287;i&#351;tir";
 		$metin[149]="Yeni Kullan&#305;c&#305;";
 
-		$metin[150]="G&ouml;r&uuml;nt&uuml;lecek Haber Say&#305;s&#305; (<a href='index.php'>ana sayfada</a>)";
+		$metin[150]="G&ouml;r&uuml;nt&uuml;lecek Haber Say&#305;s&#305; (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfada</a>)";
 		$metin[151]="G&ouml;r&uuml;nt&uuml;lecek Konu Say&#305;s&#305; (<a href='stats.php'>istatistikler</a> sayfasýnda)";
 
 		$metin[152]="Parola Tekrar&#305;";
@@ -325,7 +325,7 @@ Lesser General Public License for more details.
 		$metin[253]="sevdim";				
 		$metin[254]="&ccedil;ok g&uuml;zel";						
 		
-		$metin[255]="<a href='lessons.php'>Ders Sayfasýnda</a> G&ouml;ster";				
+		$metin[255]="<a href='lessons.php'><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Ders Sayfasýnda</a> G&ouml;ster";				
 		$metin[256]="Konu Arama ve Diðer Simgeler";				
 		$metin[257]="Ders Aðacý";				
 		$metin[258]="Sayfa &Ouml;nizleme";				
@@ -406,7 +406,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[293]="Yorum eklediðiniz için teþekkür ederiz. Onaylandýktan sonra yorumunuz görüntülenecektir. <p style='font-size:11px;'>Öðretmen ve yöneticiler için onay gerekmez.</p>";
 		$metin[294]="Onayýnýzý bekleyen yorum sayýsý";
 		
-		$metin[295]="Kaynak hatal&#305;d&#305;r. <a href='index.php'>Geri Dön</a>";
+		$metin[295]="Kaynak hatal&#305;d&#305;r. <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Geri Dön</a>";
 		
 		$metin[296]="Okul";
 		$metin[297]="Sýnýf";
@@ -420,8 +420,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[303]="Diðer Genel Seçenekler";		
 		$metin[304]="Sohbet";
-		$metin[305]="Haberler (<a href='index.php'>ana sayfa</a>)";
-		$metin[306]="Son kullanýcý çalýþmalarý (<a href='index.php'>ana sayfa</a>)";
+		$metin[305]="Haberler (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
+		$metin[306]="Son kullanýcý çalýþmalarý (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
 		$metin[307]="Ping Resmi";
 		$metin[308]="Ýstatistikler ve Son Çalýþanlar";
 		
@@ -541,15 +541,15 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[400]="&Ouml;z&uuml;r dileriz. Oturum a&ccedil;ma hatasý meydana geldi.";
 		$metin[401]="&#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.<br/>L&#252;ften bir s&#252;re sonra tekrar deneyiniz!";
-		$metin[402]="Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
+		$metin[402]="Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[403]="Kullanýcý adý veya parola boþ olamaz.";
 		$metin[404]="Kullanýcý adý veya parolanýz hatalýdýr. Hesabýnýz pasif halde olabilir.";
 		$metin[405]="Þimdilik bir haber bulunmuyor veya haberler kapatýlmýþ.";
 		$metin[406]="Kod boþ veya hatalý girildi! Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>.";
 		$metin[407]="<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>";
-		$metin[408]="<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Giriþ yapmak i&ccedil;in <a href='index.php'>týklatýnýz</a>";
-		$metin[409]="<font id='hata'> &Uuml;yelik iþleminiz tamamlanamadý! Boþ ve izin verilmeyen deðerler var, kullanýcý adý veya eposta adresi kullanýlýyor olabilir.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
-		$metin[410]="<font id='hata'> Tekrar baþvuru yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'>týklatýnýz</a>";
+		$metin[408]="<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Giriþ yapmak i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
+		$metin[409]="<font id='hata'> &Uuml;yelik iþleminiz tamamlanamadý! Boþ ve izin verilmeyen deðerler var, kullanýcý adý veya eposta adresi kullanýlýyor olabilir.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
+		$metin[410]="<font id='hata'> Tekrar baþvuru yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[411]="Kullan&#305;lan bir kullan&#305;c&#305; ad&#305; girdiniz!";
 		$metin[412]="Kullan&#305;lan bir eposta adresi girdiniz!";
 		$metin[413]="Parola yenileme isteðiniz tamamlanamadý!";

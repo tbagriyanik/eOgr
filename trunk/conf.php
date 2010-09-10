@@ -3168,9 +3168,13 @@ if (substr($dir, strlen($dir)-1, 1)!= '/')
 $dir .= '/';
 
 if ($handle = opendir($dir)) {
+	$i = 0;
 	while ($obj = readdir($handle)) {
 		if ($obj!= '.' and $obj!= '..')
 				if (is_file($dir.$obj) and !($obj== 'index.php' or $obj== '.htaccess')) {
+					$i++;
+					if ($i>100) 
+					 return false; //zaman aþýmý gibi, çok dosya var
 						$dTarih = date ("d-m-Y", filemtime($dir.$obj));
 						$sTarih = date("d-m-Y");
 						if(strcmp($dTarih,$sTarih)!=-1)

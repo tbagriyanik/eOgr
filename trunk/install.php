@@ -109,8 +109,8 @@ function temizle($metin)
     $metin = str_replace("\'", "`", $metin);
     $metin = str_replace('\"', '¨', $metin);
     $metin = str_replace("\\", "|", $metin);
-    $metin = str_replace("<", "‹", $metin);
-    $metin = str_replace(">", "›", $metin);
+    $metin = str_replace("<", "<", $metin);
+    $metin = str_replace(">", ">", $metin);
     $metin = trim(htmlspecialchars($metin));
     return $metin;
 }  
@@ -205,7 +205,7 @@ require 'lib/flood-protection.php'; // include the class
       </div>
       <div class="nav">
         <ul class="artmenu">
-          <li><a href="index.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a></li>
+          <li><a href="index.php"><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a></li>
           <li><a href="install.php" class=" active"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/> <?php echo $metin[71]?> </span></span></a></li>
         </ul>
         <div class="l"> </div>
