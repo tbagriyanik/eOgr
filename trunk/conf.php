@@ -3177,7 +3177,7 @@ if ($handle = opendir($dir)) {
 					 return false; //zaman aþýmý gibi, çok dosya var
 						$dTarih = date ("d-m-Y", filemtime($dir.$obj));
 						$sTarih = date("d-m-Y");
-						if(strcmp($dTarih,$sTarih)!=-1)
+						if($dTarih==$sTarih)
 						  return true;
 					}			
 	}

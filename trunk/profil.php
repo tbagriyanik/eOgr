@@ -235,35 +235,6 @@ function girisSayisi($id)
 	}
 }
 /*
-girisSayisiRank:
-kullanýcýnýn giriþ sayýsý seviyesi
-*/
-function girisSayisiRank($id,$grafikli)
-{
-	global $yol1;	
-	$id = substr(temizle2($id),0,15);
-    $sql1 = "SELECT userName ,count(eo_usertrack.id) as say 
-		FROM eo_usertrack
-		where processName='login.php' and otherInfo='success,Login' 
-		group by userName
-		order by say DESC, userName"; 	
-    $result1 = mysql_query($sql1, $yol1); 
-
-    if ($result1){
-		$rank=0;
-		 for($i=0; $i<@mysql_numrows($result1);$i++){
-			 $rank = $i + 1;
-			 if(mysql_result($result1, $i, "userName")==kullAdi($id)) break;
-		 }	
-	   if($grafikli) 
-	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
-       return ("$rank /".@mysql_numrows($result1));
-    }else {
-	   return (0);
-	}
-	return 0;
-}
-/*
 sayfaEklemeSay:
 öðretmenin sayfa ekleme sayýsý
 */
@@ -448,10 +419,43 @@ function getOgrenciSiniflari2($id){
 				}
 }
 /*
+girisSayisiRank:
+kullanýcýnýn giriþ sayýsý seviyesi
+*/
+function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
+{
+	global $yol1;	
+	$id = substr(temizle2($id),0,15);
+    $sql1 = "SELECT userName ,count(eo_usertrack.id) as say 
+		FROM eo_usertrack
+		where processName='login.php' and otherInfo='success,Login' 
+		group by userName
+		order by say DESC, userName"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1){
+		$rank=0;
+		 for($i=0; $i<@mysql_numrows($result1);$i++){
+			 $rank = $i + 1;
+			 if(mysql_result($result1, $i, "userName")==kullAdi($id)) break;
+		 }	
+	   if($grafikli) 
+	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+	   
+	   if($sadeYuzde)		
+	      return 100-round($rank*100/@mysql_numrows($result1));
+		  
+       return ("$rank /".@mysql_numrows($result1));
+    }else {
+	   return (0);
+	}
+	return 0;
+}
+/*
 dersCalismaOrtRank:
 kullanýcýnýn ders çalýþma düzeyi
 */
-function dersCalismaRank($id,$grafikli){
+function dersCalismaRank($id,$grafikli,$sadeYuzde=false){
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT userID ,count(id) as say 
@@ -470,6 +474,9 @@ function dersCalismaRank($id,$grafikli){
 		 
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+	   
+	   if($sadeYuzde)		
+	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ($rank."/".@mysql_numrows($result1));
     }else {
@@ -481,7 +488,7 @@ function dersCalismaRank($id,$grafikli){
 dersCalismaOrtRank:
 kullanýcýnýn ders çalýþma ortalama düzeyi
 */
-function dersCalismaOrtRank($id,$grafikli){
+function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT userID , avg(lastPage) as say 
@@ -500,6 +507,9 @@ function dersCalismaOrtRank($id,$grafikli){
 		 
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+	   
+	   if($sadeYuzde)		
+	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ($rank."/".@mysql_numrows($result1));
     }else {
@@ -551,8 +561,36 @@ function dersCalismaOrtRank($id,$grafikli){
 		echo " ($metin[323] ".round(oyOrt($_GET["kim"]),1).")"."<br/>";
 		
 	if(dosyaSay($_GET["kim"])>0)
-		echo "<strong>$metin[470] :</strong> ".dosyaSay($_GET["kim"]);
-		
+		echo "<strong>$metin[470] :</strong> ".dosyaSay($_GET["kim"])."<br/>";
+	
+	$aktivi1 = girisSayisiRank($_GET["kim"],false,true);
+	$aktivi2 = dersCalismaRank($_GET["kim"],false,true);
+	$aktivi3 = dersCalismaOrtRank($_GET["kim"],false,true);
+	$aktivSonuc = (int)($aktivi1>50)+(int)($aktivi2>50)+(int)($aktivi3>50);	
+	if(girisSayisi($_GET["kim"])>0)
+		switch($aktivSonuc){
+			case 0:
+				echo '<strong>'.$metin[555].' :</strong>&nbsp; 
+				<span style="background: transparent url(img/activity-level.png)
+				-16px -16px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+			break;
+			case 1:
+				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
+				<span style="background: transparent url(img/activity-level.png)
+				0px -16px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+			break;
+			case 2:
+				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
+				<span style="background: transparent url(img/activity-level.png)
+				-16px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+			break;
+			case 3:
+				echo '<strong>'.$metin[555].' :</strong>&nbsp;
+				<span style="background: transparent url(img/activity-level.png)
+				0px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+			break;
+		}
+	
 	if($_GET['set']!="1"){
 		echo"<br/><br/>";
 		echo "<a href=\"mail.php?to=".$_GET["kim"]."\" class=\"external\" onclick='window.open(\"mail.php?to=".$_GET["kim"]."\");return false;'>$metin[69]</a>";
@@ -562,6 +600,5 @@ function dersCalismaOrtRank($id,$grafikli){
 	 }
  } else
   echo "$metin[540]";  
-
 
 ?>

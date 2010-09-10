@@ -711,6 +711,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[552] = "Simple";
 		$metin[553] = "Full Screen";
 		$metin[554] = "Customize...";
-		$metin[555] = "";
+		$metin[555] = "Activity Level";
 												
 ?>
