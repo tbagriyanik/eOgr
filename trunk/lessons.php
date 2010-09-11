@@ -368,7 +368,7 @@ if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"])
               <div class="Block-body">
                 <div class="BlockContent">
                   <div class="BlockContent-body">
-                    <p class="msg_head2"><img src="img/comment.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[259]?>
+                    <p class="msg_head2"><img src="img/comment.gif" border="0" style="vertical-align: middle;" alt="comment"/>&nbsp;<?php echo $metin[259]?>
                       <?php 
 					 $yorumSayisi = konuYorumSayisiGetir($_GET["konu"]);
 					 echo $yorumSayisi;

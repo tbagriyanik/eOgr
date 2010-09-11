@@ -26,7 +26,7 @@ if($seceneklerimiz[0]=="1" and $kullaniciSecen[0]=="1") {
 <?php
 }
 ?>
-<div class="Footer-text">
+<div class="Footer-text" style="font-size:smaller;">
   <form method="get" action="" name="themeSelect">
     <?php
 	$currentFile = $_SERVER["PHP_SELF"];
@@ -67,11 +67,9 @@ if($seceneklerimiz[2]=="1" and $kullaniciSecen[2]=="1") {
     <a href='index.php?lng=<?php echo $taraDili?>&amp;oldPath=<?php echo $currentFile?>' title='Dil se&ccedil;iniz Choose a language'> <?php echo ($taraDili=="TR")?"<img src='img/turkish.png' border='0' alt='Dil' style='vertical-align: middle;' />":"<img src='img/english.png' border='0' alt='Language' style='vertical-align: middle;'/>"?></a>
     <?php
 }
-?>
-    <?php
-						
+					
 if($seceneklerimiz[3]=="1" and $kullaniciSecen[3]=="1") 
-echo ("&nbsp;<font size='-3'>".$metin[155]." ".round(getmicrotime() - $time,3)."s</font>");
+echo ("&nbsp;".$metin[155]." ".round(getmicrotime() - $time,3)."s");
 
 		$humanRelativeDate2 = new HumanRelativeDate();
 		$insansi = $humanRelativeDate2->getTextForSQLDate(date("Y-m-d H:i:s", filemtime($currentFile)));
@@ -80,7 +78,7 @@ if($seceneklerimiz[4]=="1" and $kullaniciSecen[4]=="1")
 echo ("&nbsp;|&nbsp;<font size='-3'>".$metin[217]." ".$insansi."</font>");
 
 ?>
-<strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?> 
+    <strong> <?php echo $metin[68]?> :</strong> <?php echo ayarGetir("versiyon")?>
   </form>
 </div>
 <?php

@@ -572,12 +572,12 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 			case 0:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp; 
 				<span style="background: transparent url(img/activity-level.png)
-				-16px -16px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+				-48px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
 			break;
 			case 1:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
 				<span style="background: transparent url(img/activity-level.png)
-				0px -16px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+				-32px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
 			break;
 			case 2:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
