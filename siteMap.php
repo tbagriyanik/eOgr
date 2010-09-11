@@ -41,6 +41,44 @@ Lesser General Public License for more details.
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.underShadow1 {
+	background:#fff;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	position:absolute;
+	top:20px;
+	left:220px;
+	min-width:73%;
+	min-height:77%;
+	z-index:1000;
+}
+.underShadow2 {
+	background:#fff;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	position:absolute;
+	top:20px;
+	left:420px;
+	min-width:50%;
+	min-height:77%;
+	z-index:1000;
+}
+.underShadow3 {
+	background:#fff;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	position:absolute;
+	top:20px;
+	left:620px;
+	min-width:25%;
+	min-height:77%;
+	z-index:1000;
+}
+.underShadow4 {
+	display:none;
+}
+</style>
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -153,13 +191,33 @@ Lesser General Public License for more details.
                               </ul>
                           </ul>
                           <br /></td>
-                        <td valign="top" style="background-color:#FFF !important"><ul style="list-style:none">
+                        <td valign="top" style="background-color:#FFF !important;" ><p class="underShadow<?php
+						switch($tur){
+							case "-1":
+							echo "1";
+							break;
+							case "0":
+							echo "2";
+							break;
+							case "1":
+							echo "3";
+							break;
+							case "2":
+							echo "4";
+							break;
+							default:
+							echo "1";
+							break;
+						}
+                        ?>">
+                          
+                          <ul style="list-style:none">
                             <li><img src="img/ogr_user.png" border="0" style="vertical-align: middle;" alt="<?php echo $metin[94]?>"/> <?php echo $metin[94]?>
                               <ul style="list-style:none">
-                                <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/>  <?php echo $metin[60]?></span></span></a></li>
+                                <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/> <?php echo $metin[60]?></span></span></a></li>
                                 <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?></span></span></a></li>
                                 <li><a href="stats.php"><span><span> <?php echo $metin[197]?></span></span></a></li>
-                                <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/>  <?php echo $metin[549]?></span></span></a></li>
+                                <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?></span></span></a></li>
                                 <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?></span></span></a></li>
                                 <?php
   if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
@@ -169,7 +227,8 @@ Lesser General Public License for more details.
                                 <li><a href="userSettings.php"><span><span><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[57]?> </span></span></a> </li>
                               </ul>
                             </li>
-                          </ul></td>
+                          </ul>
+                          </p></td>
                         <td valign="top" style="background-color:#FFF !important"><ul style="list-style:none">
                             <li><img src="img/ogrt_user.png" border="0" style="vertical-align: middle;" alt="<?php echo $metin[95]?>"/> <?php echo $metin[95]?>
                               <ul style="list-style:none">
@@ -184,7 +243,7 @@ Lesser General Public License for more details.
                               <ul style="list-style:none">
                                 <li><a href="siteNotices.php"><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[471]?> </span></span></a></li>
                                 <li><a href="siteSettings.php"><span><span> <?php echo $metin[472].$bilgi5?> </span></span></a></li>
-                                <li><a href="siteSettings2.php"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/>  <?php echo $metin[156]?> </span></span></a></li>
+                                <li><a href="siteSettings2.php"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/> <?php echo $metin[156]?> </span></span></a></li>
                                 <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
                                 <li><a href="rssEdit.php"><span><span> <?php echo $metin[70].$bilgi7?> </span></span></a></li>
                                 <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
