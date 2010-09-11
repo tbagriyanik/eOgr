@@ -695,7 +695,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[538] = "Database update is successful.";
 		$metin[539] = "Table optimization and repair process are done!";
 		$metin[540] = "Non existing user";
-		$metin[541] = "<strong>Warning:</strong> Current browser is old, try one of these browsers:";
+		$metin[541] = "Current browser may be incompatible, you can try one of these browsers :";
 		$metin[542] = "Site Events";
 		$metin[543] = "Selected day";
 		$metin[544] = "Track count";
@@ -712,5 +712,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[553] = "Full Screen";
 		$metin[554] = "Customize...";
 		$metin[555] = "Activity Level";
+		
+		$metin[556] = "View as";
+		$metin[557] = "Custom";
 												
 ?>

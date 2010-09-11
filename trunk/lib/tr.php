@@ -710,7 +710,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[538] = "Veritabanýnda deðiþiklik(ler) yapýldý!";
 		$metin[539] = "Tablolarýn optimizasyon ve tamir iþlemleri bitti!";
 		$metin[540] = "Böyle bir kullanýcý bulunmuyor.";
-		$metin[541] = "<strong>Dikkat:</strong> Þu anki tarayýcýnýz eskidir, aþaðýdaki tarayýcýlardan birini tercih ediniz:";
+		$metin[541] = "Tarayýcýnýz uyumlu olmayabilir, aþaðýdaki tarayýcýlardan birini tercih edebilirsiniz :";
 		$metin[542] = "Site Olaylarý";
 		$metin[543] = "Seçili gün";
 		$metin[544] = "Ýz sayýsý";
@@ -727,5 +727,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[553] = "Tam Ekran";
 		$metin[554] = "Özelleþtir...";
 		$metin[555] = "Aktivite Durumu";
+		
+		$metin[556] = "Görüntüle";
+		$metin[557] = "Özel";
 												
 ?>

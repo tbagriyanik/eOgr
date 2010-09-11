@@ -28,7 +28,7 @@ Lesser General Public License for more details.
   $seciliTema=temaBilgisi();	
   
 ob_start (); // Buffer output
-  if(isset($_GET["mode"])){
+  if(isset($_GET["mode"]) and !empty($_GET["mode"])){
 	   if(in_array($_GET["mode"],array("1","2","3"))){
 		  $eMode = $_GET["mode"];
 		  if($eMode!="1")
@@ -180,7 +180,8 @@ ob_start (); // Buffer output
                 ?>
                <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;"> 
                 <?php
-	if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+				if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+				echo " $metin[556] : ";
                 if(isKonu($_GET["konu"])){
 				?>
         <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank"><?php 	echo $metin[553];?></a> | 
@@ -194,9 +195,9 @@ ob_start (); // Buffer output
 			echo $metin[552];
 		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'><?php  		
 		if($eMode=="3") 
-			echo "<strong>$metin[551]</strong>";
+			echo "<strong>$metin[557]</strong>";
 		else
-			echo $metin[551];
+			echo $metin[557];
 		?></a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
         </div>
         <div class="l"> </div>
