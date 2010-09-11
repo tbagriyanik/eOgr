@@ -110,7 +110,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
                         ?>                       
                         ><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
     <ul>
-      <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/>  <?php echo $metin[60]?> </span></span></a></li>
+      <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/> <?php echo $metin[60]?> </span></span></a></li>
 	  <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?> </span></span></a></li>
       <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
       <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a></li>

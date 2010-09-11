@@ -20,7 +20,7 @@ Lesser General Public License for more details.
         $metin[2]="Login";
         $metin[3]="New Membership";
         $metin[4]="Forgot Your Password?";
-        $metin[5]="For user entrance page <a href=\"login.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> click!</a>";
+        $metin[5]="For user entrance page <a href=\"login.php\"><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"login\"/> click!</a>";
         $metin[6]="<a href=\"index.php?logout=1\"><img src=\"img/logout.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"logout\"/> Logout</a>";
         $metin[7]="Hello";    
         $metin[8]="Total Users :";   
