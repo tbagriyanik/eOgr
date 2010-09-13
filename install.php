@@ -388,7 +388,7 @@ require 'lib/flood-protection.php'; // include the class
 				  if(!empty($dbPassword))
 					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
 					  else
-					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";								  				  if(file_exists("installation_Database.sql"))
+					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> boþ!</li>";								  				  if(file_exists("installation_Database.sql"))
 					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
 					  else
 					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();
@@ -424,6 +424,10 @@ require 'lib/flood-protection.php'; // include the class
 				    echo "<li><strong>cURL</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
 				   	echo "<li><strong>cURL</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					if(extension_loaded('pdf') && function_exists('pdf_new'))
+				    echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  if(extension_loaded('mysqli'))
 				    echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
@@ -440,6 +444,10 @@ require 'lib/flood-protection.php'; // include the class
 				    echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : ".ini_get('upload_max_filesize')."</li>";
 				   else
 				   	echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				  if(ini_get('post_max_size'))
+				    echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : ".ini_get('post_max_size')."</li>";
+				   else
+				   	echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  if(ini_get('file_uploads')==1)
 				    echo "<li><strong>Dosya</strong> gönderme izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
@@ -478,6 +486,30 @@ require 'lib/flood-protection.php'; // include the class
 				    echo "<li><strong>Eposta</strong> SMTP deðeri : ". ini_get('SMTP')."</li>";
 				   else
 				   	echo "<li><strong>Eposta</strong> SMTP deðeri : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				  if(ini_get('allow_url_fopen')!=1)
+				    echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				  if(ini_get('allow_url_include')!=1)
+				    echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				  if(ini_get('display_errors')!=1)
+				    echo "<li><strong>display_errors</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>display_errors</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				  if(ini_get('expose_php')!=1)
+				    echo "<li><strong>expose_php</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>expose_php</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				  if(ini_get('open_basedir')==1)
+				    echo "<li><strong>open_basedir</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>open_basedir</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				  if(ini_get('use_trans_sid')!=1)
+				    echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   else
+				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
 				//--------------------------------------	
 				  echo "</ul>";
 				  echo "<hr noshade=\"noshade\"/><p>Eðer varsa <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.<br/>Bu deðerler tavsiye edilmez veya tehlikeye neden olabilir!</p>";
