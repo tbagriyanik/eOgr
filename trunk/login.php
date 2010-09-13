@@ -59,7 +59,7 @@ Lesser General Public License for more details.
 		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
 	   else {
 		    setcookie("theme",kullaniciTema($adi),time()+60*60*24*30);	
-	   		trackUser($currentFile,"success,L-".kullaniciTema(),$adi);	//first time good login
+	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
 			header("Location:index.php");
 	     }
 	  }

@@ -166,8 +166,9 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  mysql_select_db($database_baglanti, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
-				setcookie("theme",numToTheme(temizle($_POST['ayarlar16'])),time()+60*60*24*30);			  
-			   	trackUser($currentFile,"success,userSiteSet",$adi);
+				$temaBilgisi =  numToTheme(temizle($_POST['ayarlar16']));
+				setcookie("theme",$temaBilgisi,time()+60*60*24*30);			  
+			   	trackUser($currentFile,"success,S-$temaBilgisi",$adi);
 				echo ("<font id='tamam'> $metin[536]</font>");
 		    }
 			else {
