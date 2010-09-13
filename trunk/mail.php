@@ -212,10 +212,6 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
               &nbsp;</div>
           </div>
           <div class="cleared"></div>
-          <div class="Footer">
-            <div class="Footer-inner"> </div>
-            <div class="Footer-background"></div>
-          </div>
         </div>
       </div>
       <div class="cleared"></div>

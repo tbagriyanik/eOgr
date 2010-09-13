@@ -24,100 +24,100 @@ Lesser General Public License for more details.
 	$sayfa = basename($_SERVER["PHP_SELF"]);
 	switch ($sayfa){
 		case "index.php":
-		 	echo "<p>Ana sayfadasýnýz.</p>";
+		 	echo "<p>$metin[566]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='login.php'>$metin[569]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[570]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "kursDetay.php":
-		 	echo "<p>Kurs bilgilerinizin bulunduðu sayfadasýnýz.</p>";
+		 	echo "<p>$metin[565]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
-		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='login.php'>$metin[569]</a></li>";
+		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "lessons.php":
-		 	echo "<p>Ders çalýþma sayfadasýnýz.</p>";
+		 	echo "<p>$metin[564]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
-		 	echo "<li><a href='login.php'>Giriþ sayfasýna gidebilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
+		 	echo "<li><a href='login.php'>$metin[569]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "login.php":
-		 	echo "<p>Giriþ sayfadasýnýz.</p>";
+		 	echo "<p>$metin[563]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "userSettings.php":
-		 	echo "<p>Kullanýcý bilgilerinizin bulunduðu sayfadasýnýz.</p>";
+		 	echo "<p>$metin[562]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "stats.php":
-		 	echo "<p>Site istatistikleri sayfadasýndasýnýz.</p>";
+		 	echo "<p>$metin[561]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "fileShare.php":
-		 	echo "<p>Ödev ve dosya paylaþým sayfadasýndasýnýz.</p>";
+		 	echo "<p>$metin[560]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
-		 	echo "<li><a href='friends.php'>Arkadaþlarýnýzý görebilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
+		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
+		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		case "friends.php":
-		 	echo "<p>Ödev ve dosya paylaþým sayfadasýndasýnýz.</p>";
+		 	echo "<p>$metin[559]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
-			Ýsterseniz : <ul>";
-		 	echo "<li><a href='index.php'>Ana sayfaya dönebilirsiniz</a></li>";
-		 	echo "<li><a href='lessons.php'>Ders çalýþabilirsiniz</a></li>";
-		 	echo "<li><a href='kursDetay.php'>Kurs durumunuza bakabilirsiniz</a></li>";
-		 	echo "<li><a href='stats.php'>Site istatistiklerine bakabilirsiniz</a></li>";
-		 	echo "<li><a href='fileShare.php'>Dosya paylaþabilirsiniz</a></li>";
-		 	echo "<li><a href='userSettings.php'>Kullanýcý bilgilerinizi deðiþtirebilirsiniz</a></li>";
-		 	echo "</ul> Baþarýlar Dileriz!";
+			$metin[567] <ul>";
+		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
+		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
+		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
+		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
+		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
+		 	echo "</ul> $metin[558]";
 		break;
 		default:
 			echo $metin[444];

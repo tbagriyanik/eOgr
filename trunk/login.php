@@ -28,9 +28,7 @@ Lesser General Public License for more details.
    if(!($taraDili=="TR" || $taraDili=="EN")) 
     $taraDili="EN";
    dilCevir($taraDili);
-	
-	$seciliTema=temaBilgisi();	
-
+   
 			if (isset($_POST["remUser"])){
 			  if ($_POST["remUser"]=="1"){
 			   setcookie("remUser",$_POST["userN"],time() + 60*60*24*30);
@@ -60,7 +58,8 @@ Lesser General Public License for more details.
 	   if(checkRealUser($adi,$par)=="-2")	   
 		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
 	   else {
-	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
+		    setcookie("theme",kullaniciTema($adi),time()+60*60*24*30);	
+	   		trackUser($currentFile,"success,L-".kullaniciTema(),$adi);	//first time good login
 			header("Location:index.php");
 	     }
 	  }
@@ -71,6 +70,10 @@ Lesser General Public License for more details.
 	}
 	
     currentFileCheck("login.php");	
+	
+	
+	$seciliTema=temaBilgisi();	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

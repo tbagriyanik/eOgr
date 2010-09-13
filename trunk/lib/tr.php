@@ -730,5 +730,26 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[556] = "Görüntüle";
 		$metin[557] = "Özel";
-												
+		
+		$metin[558] = "Baþarýlar Dileriz!";												
+		$metin[559] = "Arkadaþ bildirimlerinizin sayfadasýndasýnýz.";													
+		$metin[560] = "Ödev ve dosya paylaþým sayfadasýndasýnýz.";													
+		$metin[561] = "Site istatistikleri sayfadasýndasýnýz.";													
+		$metin[562] = "Kullanýcý bilgilerinizin bulunduðu sayfadasýnýz.";													
+		$metin[563] = "Giriþ sayfadasýnýz.";													
+		$metin[564] = "Ders çalýþma sayfadasýnýz.";													
+		$metin[565] = "Kurs bilgilerinizin bulunduðu sayfadasýnýz.";													
+		$metin[566] = "Ana sayfadasýnýz.";											
+		$metin[567] = "Ýsterseniz : ";													
+		$metin[568] = "Ders çalýþabilirsiniz";													
+		$metin[569] = "Giriþ sayfasýna gidebilirsiniz";													
+		$metin[570] = "Kurs durumunuza bakabilirsiniz";													
+		$metin[571] = "Arkadaþlarýnýzý görebilirsiniz";													
+		$metin[572] = "Dosya paylaþabilirsiniz";													
+		$metin[573] = "Kullanýcý bilgilerinizi deðiþtirebilirsiniz";											
+		$metin[574] = "Ana sayfaya dönebilirsiniz";
+		$metin[575] = "Kurs durumunuza bakabilirsiniz";
+		$metin[576] = "Site istatistiklerine bakabilirsiniz";
+		$metin[577] = "";
+		
 ?>

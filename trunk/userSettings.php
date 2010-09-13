@@ -150,12 +150,14 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 			if(empty($_POST['ayarlar13'])) $_POST['ayarlar13']="0"; else $_POST['ayarlar13']="1";
 			if(empty($_POST['ayarlar14'])) $_POST['ayarlar14']="0"; else $_POST['ayarlar14']="1";
 			if(empty($_POST['ayarlar15'])) $_POST['ayarlar15']="0"; else $_POST['ayarlar15']="1";
+			if(empty($_POST['ayarlar16'])) $_POST['ayarlar16']="0";
 			
 			$ayarlar = temizle($_POST['ayarlar1']."-".$_POST['ayarlar2']."-".$_POST['ayarlar3']."-".
 						         $_POST['ayarlar4']."-".$_POST['ayarlar5']."-".$_POST['ayarlar6']."-".
 								 $_POST['ayarlar7']."-".$_POST['ayarlar8']."-".$_POST['ayarlar9']."-".
 								 $_POST['ayarlar10']."-".$_POST['ayarlar11']."-".$_POST['ayarlar12']."-".
-								 $_POST['ayarlar13']."-".$_POST['ayarlar14']."-".$_POST['ayarlar15']);
+								 $_POST['ayarlar13']."-".$_POST['ayarlar14']."-".$_POST['ayarlar15']."-".
+								 $_POST['ayarlar16']);
 
 			$updateSQL = sprintf("UPDATE eo_users SET ayarlar='%s' WHERE userName='$adi'",
 							   $ayarlar
@@ -164,6 +166,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  mysql_select_db($database_baglanti, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
+				setcookie("theme",numToTheme(temizle($_POST['ayarlar16'])),time()+60*60*24*30);			  
 			   	trackUser($currentFile,"success,userSiteSet",$adi);
 				echo ("<font id='tamam'> $metin[536]</font>");
 		    }
@@ -328,7 +331,6 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                   <div class="Post-inner">
                     <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><a name="ozel" id="ozel"></a> <?php echo $metin[112]?> </span> </h2>
                     <div class="PostContent">
-                    
                       <form name="form5"  action="userSettings.php" method="post">
                         <table width="90%" border="0" cellspacing="0" cellpadding="3">
                           <tr>
@@ -434,6 +436,30 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
             id="ayarlar13" value="1" <?php if($secenekler[12]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                 <?php echo $metin[306];?></label></td>
+                          </tr>
+                          <tr>
+                            <td align="right"><?php echo $metin[154]?> :</td>
+                            <td><select name="ayarlar16" id="ayarlar16">
+                                <?php	
+                            $themeArray=glob('theme/*', GLOB_ONLYDIR);
+                            $i=0;
+                            foreach($themeArray as $thme){
+								$temaGel = explode("/",$thme);
+                        ?>
+                                <option value="<?php echo $i;?>" 
+							  <?php 
+							  	if ($secenekler[15]==$i) 
+										echo "selected=\"selected\"";
+								?>>
+                                <?php 	  
+                              echo $temaGel[1];
+                              ?>
+                                </option>
+                                <?php
+                              $i++;
+                            }
+                        ?>
+                              </select></td>
                           </tr>
                           <tr>
                             <td colspan="2" align="center"  class="tabloAlt"><input type="hidden" name="MM_settings" value="form5" />
