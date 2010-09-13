@@ -4,7 +4,7 @@ td {
 }
 #kapsayici {
 	position:relative;
-	top:5px;
+	top:10px;
 	z-index:auto;
 	float: left;
 	height: 420px;
@@ -22,7 +22,7 @@ td {
 #navigation {
 	position:absolute;
 	left:655px;
-	top:5px;
+	top:10px;
 	width:210px;
 	z-index:0;
 	float: left;

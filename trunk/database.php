@@ -26,4 +26,7 @@ $_uploadFolder	= "uploads";
 
 $_siteUnlockPwd	= "11111";							
 //when the site maintenance is engaged, this password is needed to reopen the site
+
+$_defaultTheme 	= "Simple";
+//what will be the theme at any first run...
 ?>

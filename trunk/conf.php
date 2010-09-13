@@ -134,7 +134,8 @@ temaBilgisi:
 temanýn deðiþtirilmesi
 */
 function temaBilgisi(){
-	$result = "silverModern";
+	global $_defaultTheme;
+	$result = $_defaultTheme;
 	$adresten = RemoveXSS($_GET["theme"]);
 	$cerezden = RemoveXSS($_COOKIE["theme"]);
 
@@ -150,7 +151,7 @@ function temaBilgisi(){
 	  
 	  if(empty($cerezden)) 
 	    setcookie("theme",$result,time()+60*60*24*30);
-
+//echo $result;
 	  return $result;
 }
 /*

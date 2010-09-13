@@ -119,7 +119,8 @@ temaBilgisi:
 temanýn deðiþtirilmesi
 */
 function temaBilgisi(){
-	$result = "silverModern";
+	global $_defaultTheme;
+	$result = $_defaultTheme;
 	$cerezden = temizle($_COOKIE["theme"]);
 
 	 if($cerezden!="" and is_dir('theme/'.$cerezden)){
