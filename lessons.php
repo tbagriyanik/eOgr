@@ -623,14 +623,19 @@ fix_flash();
 	   
 ?>
           <div class="cleared"></div>
+              <?php  						
+				 if($eMode!="1") 	{									
+              ?>          
           <div class="Footer">
             <div class="Footer-inner">
               <?php  						
-				 if($eMode!="1") 						
 						 require "footer.php";
               ?>
             </div>
             <div class="Footer-background"></div>
+              <?php  						
+				 }
+              ?>            
           </div>
         </div>
       </div>

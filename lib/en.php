@@ -715,5 +715,26 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[556] = "View as";
 		$metin[557] = "Custom";
+		
+		$metin[558] = "Wishing Luck!";												
+		$metin[559] = "You are at the friends notifications page.";													
+		$metin[560] = "You are at the homework and file sharing page.";													
+		$metin[561] = "You are at the site statistics page.";													
+		$metin[562] = "You are at your profile page.";													
+		$metin[563] = "You are at the login page.";													
+		$metin[564] = "You are at the lesson working page.";													
+		$metin[565] = "You are at your course data page.";													
+		$metin[566] = "You are at the main page.";											
+		$metin[567] = "If you want : ";													
+		$metin[568] = "You can work the lessons";													
+		$metin[569] = "You can go to the login page";													
+		$metin[570] = "You can check your course details";													
+		$metin[571] = "You can go to your friends page";													
+		$metin[572] = "You can share or download files";													
+		$metin[573] = "You can edit your profile";											
+		$metin[574] = "You can go to the main page";
+		$metin[575] = "You can check your course data";
+		$metin[576] = "You can check the site statistics";
+		$metin[577] = "";		
 												
 ?>

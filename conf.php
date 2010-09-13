@@ -130,12 +130,45 @@ function sessionDestroy(){
 	  @session_start(); 	  
 }
 /*
+numToTheme:
+sayýsaldan tema klasör adý getirir
+*/
+function numToTheme($gelen){
+	global $_defaultTheme;
+	$result = $_defaultTheme;
+    $themeArray=glob('theme/*', GLOB_ONLYDIR);
+	$i=0;
+    foreach($themeArray as $thme){
+	   $temaGel = explode("/",$thme);	
+	   if($gelen==$i){		   
+	    return $temaGel[1];
+	   }
+	   $i++;
+	}
+	return $result;		 
+}
+/*
+kullaniciTema:
+kullanýcý hangi tema seçmiþ
+*/
+function kullaniciTema($kadi=""){
+	global $_defaultTheme;
+	$result = $_defaultTheme;
+	
+	if(empty($kadi)) return $result; //kullanýcý girmemiþse varsayýlan tema olur
+	
+	$secenekler = explode("-",ayarGetir3($kadi));	
+	if(!empty($secenekler[15]))
+	    return numToTheme($secenekler[15]);//16.deðer kayýtlý tema sayýsý
+	else
+		return $result;
+}
+/*
 temaBilgisi:
 temanýn deðiþtirilmesi
 */
 function temaBilgisi(){
-	global $_defaultTheme;
-	$result = $_defaultTheme;
+	$result = kullaniciTema();
 	$adresten = RemoveXSS($_GET["theme"]);
 	$cerezden = RemoveXSS($_COOKIE["theme"]);
 
@@ -151,7 +184,7 @@ function temaBilgisi(){
 	  
 	  if(empty($cerezden)) 
 	    setcookie("theme",$result,time()+60*60*24*30);
-//echo $result;
+
 	  return $result;
 }
 /*
