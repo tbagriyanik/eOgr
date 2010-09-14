@@ -51,20 +51,6 @@ Lesser General Public License for more details.
     })
 </script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="JavaScript" type="text/javascript">
-<!--
-/*
-delWithCon:
-onay ile silme iþlemi
-*/
-function delWithCon(deletepage_url,field_value,messagetext) { 
-  if (confirm(messagetext)==1){
-    location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');
-  }
-}
-
-//-->
-</script>
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -148,8 +134,26 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 $currentPage = $_SERVER["PHP_SELF"];
 //if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 
-		echo "<font id='tamam'>Yapým aþamasýnda...</font>";
+		echo "<font id='tamam'>Bu özellik yapým aþamasýndadýr...</font>";
+		
+//-----------------------here we go		
+	 //index.php'den 
+	 $uyeListesi=getUsersOnline();
+		 if(!empty($uyeListesi)){
+			 echo "<br/>$metin[446]<strong>";
+			 foreach($uyeListesi as $eleman){
+				 echo $eleman." ";
+				 }
+			 echo "</strong>";	 
+		 }
+		 //iz sayýsý
+	if (getTrackCount(false)>0){
+						 echo "<br/><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (<a href='dataActions.php'>".$metin[195]." ".getTrackCount(true)."</a> %".round(getTrackCount(true)*100/getTrackCount(false),1).")";
+						 }
+						 		 
+	 echo '<hr noshade="noshade" color="#333333">';
 
+//------------------------end of all
 	}
 	else {
 	  @header("Location:error.php?error=9");	

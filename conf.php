@@ -52,7 +52,7 @@ if(!baglan()) {
 }
 
 $yol 	= 	baglan();
-$yol1	=	baglan();		
+$yol1	=	baglan();	
 
 	if (!@mysql_select_db($_db, $yol))
 	{
@@ -168,23 +168,29 @@ temaBilgisi:
 temanýn deðiþtirilmesi
 */
 function temaBilgisi(){
-	$result = kullaniciTema();
-	$adresten = RemoveXSS($_GET["theme"]);
-	$cerezden = RemoveXSS($_COOKIE["theme"]);
+	global $_defaultTheme;
+	$result = $_defaultTheme;
 
-	if($adresten!="" and is_dir('theme/'.$adresten))
-	  {
-		  setcookie("theme",$adresten,time()+60*60*24*30);
-		  $result=$adresten;
-	  }
-	  else	if($cerezden!="" and is_dir('theme/'.$cerezden)){
-
-		  $result=$cerezden;
-	  }
-	  
-	  if(empty($cerezden)) 
-	    setcookie("theme",$result,time()+60*60*24*30);
-
+	$siteSecenekleri = explode("-",ayarGetir("ayar5char"));	
+	
+	if ($siteSecenekleri[1]=="1"){
+		$result = kullaniciTema();
+		$adresten = RemoveXSS($_GET["theme"]);
+		$cerezden = RemoveXSS($_COOKIE["theme"]);
+	
+		if($adresten!="" and is_dir('theme/'.$adresten))
+		  {
+			  setcookie("theme",$adresten,time()+60*60*24*30);
+			  $result=$adresten;
+		  }
+		  else	if($cerezden!="" and is_dir('theme/'.$cerezden)){
+	
+			  $result=$cerezden;
+		  }
+		  
+		  if(empty($cerezden)) 
+			setcookie("theme",$result,time()+60*60*24*30);
+	}
 	  return $result;
 }
 /*
@@ -201,7 +207,7 @@ function dilCevir($dil){
 }
 /*
 checkLoginThemeLang:
-giriþ ve dil kontrolü
+giriþ, dil ve sayfa adý kontrolü
 */
 function checkLoginLang($lgn,$lng,$src){
 	global $metin;
