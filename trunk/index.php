@@ -32,22 +32,22 @@ Lesser General Public License for more details.
     }
    else
     {
-		if(isset($_COOKIE["lng"])) $taraDili=RemoveXSS($_COOKIE["lng"]);	
-		
-		if(isset($_GET["lng"])) $taraDili=RemoveXSS($_GET["lng"]);		 
-		
-		if(!empty($_GET["lng"])) {
-		if($taraDili=="TR") 
-		   $taraDili="EN"; else
-		if($taraDili=="EN") 
-		   $taraDili="TR"; else 
-		   $taraDili="EN";
-		}
-		setcookie("lng",$taraDili,time()+60*60*24*30);
-		//header("Location:index.php");
+			$siteSecenekleri = explode("-",ayarGetir("ayar5char"));
+			if($siteSecenekleri[2]=="1"){
+				if(isset($_COOKIE["lng"])) $taraDili=RemoveXSS($_COOKIE["lng"]);	
+				
+				if(isset($_GET["lng"])) $taraDili=RemoveXSS($_GET["lng"]);		 
+				if(!empty($_GET["lng"])) {
+				if($taraDili=="TR") 
+				   $taraDili="EN"; else
+				if($taraDili=="EN") 
+				   $taraDili="TR"; else 
+				   $taraDili="EN";
+				}
+				setcookie("lng",$taraDili,time()+60*60*24*30);
+			}
 	}
 
-  
   checkLoginLang(false,true,"index.php");	   
   $seciliTema=temaBilgisi();
     
