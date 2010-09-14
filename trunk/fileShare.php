@@ -54,6 +54,7 @@ Lesser General Public License for more details.
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+<link href="theme/file.css" rel="stylesheet" type="text/css" />
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
