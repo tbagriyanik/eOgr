@@ -160,7 +160,7 @@ $currentPage = $_SERVER["PHP_SELF"];
 	 } 
 						 
 ?>	
-                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=$upIDamp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
+                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".getUserID2($adi)."&amp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
                   <?php
 				 if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
