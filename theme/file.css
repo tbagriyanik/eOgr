@@ -11,7 +11,7 @@ a[href$='.pdf'],a[href$='.xps'] {
 background:transparent url("../img/file/pdf.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
  
 /* Excel Documents links */
@@ -19,7 +19,7 @@ a[href$='.xls'], a[href$='.csv'], a[href$='.xlw'], a[href$='.xlt'], a[href$='.xl
 background:transparent url("../img/file/xls.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
  
 /* Word Document Links */
@@ -27,7 +27,7 @@ a[href$='.doc'], a[href$='.rtf'], a[href$='.wps'], a[href$='.txt'], a[href$='.do
 background:transparent url("../img/file/doc.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
   
 /* PPT Links */
@@ -35,33 +35,33 @@ a[href$='.ppt'], a[href$='.pps'],a[href$='.pptx'] {
 background:transparent url("../img/file/ppt.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
  /* Access Links */
 a[href$='.mdb'], a[href$='.accdb'] {
 background:transparent url("../img/file/access.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
   /* Music Links */
 a[href$='.mp3'], a[href$='.wav'], a[href$='.wma'] {
 background:transparent url("../img/file/audio.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
   /* Video Links */
 a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'] {
 background:transparent url("../img/file/video.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }
   /* Image Links */
 a[href$='.jpg'], a[href$='.gif'], a[href$='.png'], a[href$='.jpeg'], a[href$='.bmp'], a[href$='.svg'] {
 background:transparent url("../img/file/image.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
-line-height:15px;
+line-height:18px;
 }

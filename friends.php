@@ -142,16 +142,42 @@ $currentPage = $_SERVER["PHP_SELF"];
 		 if(!empty($uyeListesi)){
 			 echo "<br/>$metin[446]<strong>";
 			 foreach($uyeListesi as $eleman){
-				 echo $eleman." ";
+				 echo "<a href='profil.php?kim=".getUserID2($eleman)."' rel='facebox'>".$eleman."</a> ";
 				 }
 			 echo "</strong>";	 
 		 }
 		 //iz sayýsý
 	if (getTrackCount(false)>0){
-						 echo "<br/><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (<a href='dataActions.php'>".$metin[195]." ".getTrackCount(true)."</a> %".round(getTrackCount(true)*100/getTrackCount(false),1).")";
-						 }
-						 		 
-	 echo '<hr noshade="noshade" color="#333333">';
+						 echo "<br/><strong>".$metin[194]." : </strong> ".getTrackCount(false)." ".$metin[195]." %".round(getTrackCount(true)*100/getTrackCount(false),1);
+	 }
+						 
+	 switch($_SESSION["tur"]){
+	  case '-1':$ktut=$metin[85];break;	  
+	  case '0':$ktut=$metin[86];break;	  
+	  case '1':$ktut=$metin[87];break;	  
+	  case '2':$ktut=$metin[88];break;	  
+	  default:$ktut=$metin[89];
+	 } 
+						 
+?>	
+                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=$upIDamp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
+                  <?php
+				 if($_SESSION["tur"]=='0') {
+					  $siniflar = getOgrenciSiniflari();
+					  if($siniflar!=""){
+						  echo $metin[210]." : ".$siniflar;
+			   		  	  echo "<br/>";
+					  }
+				  }			  
+				 if($_SESSION["tur"]=='1' || $_SESSION["tur"]=='2') {
+					  $pasifYorumlar = getpasifYorumlar();
+					  if($pasifYorumlar>0){
+						  echo $metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
+			   		  	  echo "<br/>";
+					  }
+				  }			  
+					 		 
+	// echo '<hr noshade="noshade" color="#333333">';
 
 //------------------------end of all
 	}
