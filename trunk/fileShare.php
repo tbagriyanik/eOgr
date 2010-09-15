@@ -215,7 +215,7 @@ $arayici =  temizle($_GET['arama']);
    }
 
 if (empty($_SESSION["siraYonu2"])) {  
-		$siraYonu="asc";
+		$siraYonu="desc";
 		$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
@@ -235,8 +235,8 @@ if (empty($_SESSION["siraYonu2"])) {
 	   else {
 	    $query_eoUsers = "SELECT eo_files.id as id, eo_users.userName as userName, eo_files.fileName as fileName,
 						eo_files.downloadCount as downloadCount 
-						FROM eo_files,eo_users $filtr2 ORDER BY eo_users.userName ASC";  
-		$sirAlan="userName";
+						FROM eo_files,eo_users $filtr2 ORDER BY eo_files.id DESC";  
+		$sirAlan="id";
 	   }
 
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
@@ -325,8 +325,10 @@ if ($totalRows_eoUsers>0)
 							echo "<td style=\"background-color: $row_color;\">&nbsp;</td>";
 							echo "<td style=\"background-color: $row_color;\">&nbsp;</td>";
 						} else {
-							echo "<a href='fileDownload.php?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName'].
-							      "' class='external'>".araKalin($row_eoUsers['fileName'])."</a>";
+							echo "<a href='fileDownload.php?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName']."' class='external'>".araKalin($row_eoUsers['fileName'])."</a>";
+						if(in_array(file_ext($row_eoUsers['fileName']),array("jpg","jpeg","bmp","png","gif"))) 
+								echo " <a href='fileDownload.php?id=".$row_eoUsers['id'].
+								 "&amp;file=".$row_eoUsers['fileName']."&amp;islem=goster' target='_blank'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[207]\"/></a>";
 							echo "<td style=\"background-color: $row_color;\" align='right'>".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
 							echo "<td style=\"background-color: $row_color;\" align='right'>".date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
 							//echo mime_content_type ($_source1.'/'.$_uploadFolder.'/'.$row_eoUsers['fileName']);  

@@ -120,7 +120,7 @@ Lesser General Public License for more details.
 		$metin[88]="(<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> y&ouml;neticisiniz) <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
 		$metin[89]="(t&uuml;r&uuml;n&uuml;z belli de&#287;ildir)";    
 		$metin[90]="Dikkat!";    
-		$metin[91]="E&#287;er parola de&#287;i&#351;ikli&#287;i yapacaksan&#305;z, <br />&quot;Þimdilik Parola G&uuml;ncelleme&quot; se&ccedil;ene&#287;ini iptal edin ve <br />&quot;Parola&quot; k&#305;sm&#305;na yeni bir de&#287;er yaz&#305;n.";    
+		$metin[91]="E&#287;er <strong>parola de&#287;i&#351;ikli&#287;i</strong> yapacaksan&#305;z, <br />&quot;Þimdilik Parola G&uuml;ncelleme&quot; se&ccedil;ene&#287;ini iptal edin ve <br />&quot;Parola&quot; k&#305;sm&#305;na yeni bir de&#287;er yaz&#305;n.";    
 		$metin[92]="Belirsiz";    
 		$metin[93]="Pasif";    
 		$metin[94]="&Ouml;&#287;renci";    
@@ -328,7 +328,7 @@ Lesser General Public License for more details.
 		$metin[255]="<a href='lessons.php'><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Ders Sayfasýnda</a> G&ouml;ster";				
 		$metin[256]="Konu Arama ve Diðer Simgeler";				
 		$metin[257]="Ders Aðacý";				
-		$metin[258]="Sayfa &Ouml;nizleme";				
+		$metin[258]="&Ouml;nizleme";				
 		$metin[259]="Yorumlar";				
 		$metin[260]="Oy Ver";				
 	
@@ -750,6 +750,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[574] = "Ana sayfaya dönebilirsiniz";
 		$metin[575] = "Kurs durumunuza bakabilirsiniz";
 		$metin[576] = "Site istatistiklerine bakabilirsiniz";
-		$metin[577] = "";
+		$metin[577] = " <ul>
+                        <li> Seçenek aktif olduðu halde istediðiniz gözükmüyor ise, <strong>yönetici</strong> bu seçeneði kapatmýþ olabilir. </li>
+                        <li> Bazý deðiþikliklerin etkin olabilmesi için <strong><a href=\"userSettings.php\">sayfayý</a> yenilemeniz</strong> gerekebilir. </li>
+                        <li> Bazý deðiþiklikler ile sitenin <strong>çalýþma hýzý</strong> artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz. </li>
+                      </ul>";
 		
 ?>

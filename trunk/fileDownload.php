@@ -25,16 +25,33 @@ include "conf.php";
  $physicalFileName = $_uploadFolder.'/'.$dosya;
 	// security check
 	if (file_exists($physicalFileName)) {
-			header('Content-Type: application/octet-stream');
-			//header('Content-type: application/force-download');
-			
-			header('Content-Disposition: attachment; filename="'.$_GET['file'].'"');
-			header('Content-Length: '.(string)filesize($physicalFileName));
-			header('Cache-Control: no-store, no-cache, must-revalidate');
-			header('Pragma: no-cache');
-			header('Expires: 0');
-			downloadSayac(RemoveXSS($_GET["id"]));
-			readfile($physicalFileName);
-			die();
+		switch($_GET["islem"]){
+			case "goster":				
+                  $content = dosyaGoster($dosya); /* get the buffer */
+				  if(file_ext($dosya)=="jpg")
+	                  header("Content-Type: image/jpg");
+				  elseif(file_ext($dosya)=="png")
+	                  header("Content-Type: image/png");
+				  elseif(file_ext($dosya)=="gif")
+	                  header("Content-Type: image/gif");
+				  elseif(file_ext($dosya)=="jpeg")
+	                  header("Content-Type: image/jpeg");
+                  echo $content;
+				  downloadSayac(RemoveXSS($_GET["id"]));
+                  die('');		 
+			break;
+			default:
+					header('Content-Type: application/octet-stream');
+					//header('Content-type: application/force-download');
+					
+					header('Content-Disposition: attachment; filename="'.$_GET['file'].'"');
+					header('Content-Length: '.(string)filesize($physicalFileName));
+					header('Cache-Control: no-store, no-cache, must-revalidate');
+					header('Pragma: no-cache');
+					header('Expires: 0');
+					downloadSayac(RemoveXSS($_GET["id"]));
+					readfile($physicalFileName);
+					die();
+		}
 	}
 ?>

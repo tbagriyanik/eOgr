@@ -119,7 +119,7 @@ Lesser General Public License for more details.
 		$metin[88]="(administrator) You can administer the <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> site</a>.";    
 		$metin[89]="(unknown type)";    
 		$metin[90]="Attention!";    
-		$metin[91]="If you will change your password, <br />Uncheck &quot;Don't update password for now!&quot; option and <br /> Write your new &quot;Password&quot;.";    
+		$metin[91]="If you will <strong>change your password</strong>, <br />Uncheck &quot;Don't update password for now!&quot; option and <br /> Write your new &quot;Password&quot;.";    
 		$metin[92]="Unknown";    
 		$metin[93]="Passive";    
 		$metin[94]="Student";    
@@ -321,7 +321,7 @@ Lesser General Public License for more details.
 		$metin[255]="Show These in <a href='lessons.php'><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Lessons Page</a>";				
 		$metin[256]="Topic Search and Other Icons";				
 		$metin[257]="Lesson Tree";				
-		$metin[258]="Page Preview";				
+		$metin[258]="Preview";				
 		$metin[259]="Comments";				
 		$metin[260]="Rating";				
 
@@ -735,6 +735,10 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[574] = "You can go to the main page";
 		$metin[575] = "You can check your course data";
 		$metin[576] = "You can check the site statistics";
-		$metin[577] = "";		
+		$metin[577] = " <ul>
+                        <li> If the option you want does not appear to be active, the <strong>administrator</strong> may have turned off this option.</li>
+                        <li> To be effective, some changes may need to <strong><a href=\"userSettings.php\">refresh</a> the page</strong>. </li>
+                        <li> With some changes may increase the operating <strong>speed of the site</strong>, often do not use the features do not occupy space. </li>
+                      </ul>";		
 												
 ?>

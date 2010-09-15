@@ -904,6 +904,18 @@ function dosyaGoster($filename){
 	return $sData;
 }
 /*
+findexts:
+dosya uzantýsýný bulur
+*/
+function file_ext($filename) 
+{ 
+ $filename = strtolower($filename) ; 
+ $exts = split("[/\\.]", $filename) ; 
+ $n = count($exts)-1; 
+ $exts = $exts[$n]; 
+ return $exts; 
+} 
+/*
 getSizeAsString:
 Returns the size of a file (given in byte) as a String with kB/MB unit
  */

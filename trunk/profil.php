@@ -572,22 +572,22 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 			case 0:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp; 
 				<span style="background: transparent url(img/activity-level.png)
-				-48px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+				-48px 0px no-repeat;width:16px;height:16px;border:0px;padding-left:16px;"></span><br/>';	
 			break;
 			case 1:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
 				<span style="background: transparent url(img/activity-level.png)
-				-32px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+				-32px 0px no-repeat;width:16px;height:16px;border:0px;padding-left:16px;"></span><br/>';	
 			break;
 			case 2:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
 				<span style="background: transparent url(img/activity-level.png)
-				-16px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+				-16px 0px no-repeat;width:16px;height:16px;border:0px;padding-left:16px;"></span><br/>';	
 			break;
 			case 3:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp;
 				<span style="background: transparent url(img/activity-level.png)
-				0px 0px no-repeat;width:16px;height:16px;padding-left:16px;"></span><br/>';	
+				0px 0px no-repeat;width:16px;height:16px;border:0px;padding-left:16px;"></span><br/>';	
 			break;
 		}
 	

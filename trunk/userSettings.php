@@ -468,11 +468,7 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                           </tr>
                         </table>
                       </form>
-                      <ul>
-                        <li> Seçenek aktif olduðu halde istediðiniz gözükmüyor ise, yönetici bu seçeneði kapatmýþ olabilir. </li>
-                        <li> Bazý deðiþikliklerin etkin olabilmesi için sayfayý yenilemeniz gerekebilir. </li>
-                        <li> Bazý deðiþiklikler ile sitenin çalýþma hýzý artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz. </li>
-                      </ul>
+                     <?php echo $metin[577]?>
                     </div>
                     <div class="cleared"></div>
                   </div>
