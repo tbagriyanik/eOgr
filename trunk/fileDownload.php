@@ -13,20 +13,35 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-include "conf.php";
+	ob_start();
+	session_start();
 	
-    checkLoginLang(true,true,"fileDownload.php");
+	include "conf.php";
+	
+    checkLoginLang(false,true,"fileDownload.php");
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>"); 
 
 	$dosya = RemoveXSS($_GET["file"]);
 	$dosya = str_replace("..", "", $dosya);
 	$dosya = str_replace("/", "", $dosya);
 
- $physicalFileName = $_uploadFolder.'/'.$dosya;
+	$physicalFileName = $_uploadFolder.'/'.$dosya;
 	// security check
 	if (file_exists($physicalFileName)) {
 		switch($_GET["islem"]){
-			case "goster":				
+			case "goster":
+			
+			if(in_array(file_ext($dosya),array("flv","swf","mp3","mp4"))){
+				
+				$_SESSION["id"] = RemoveXSS($_GET["id"]);
+				header("Location:lib/player.php?id=".RemoveXSS($_GET["id"]));
+				
+				//include("lib/player.php");
+				
+				downloadSayac(RemoveXSS($_GET["id"]));											
+				die();
+			}
+							
                   $content = dosyaGoster($dosya); /* get the buffer */
 				  if(file_ext($dosya)=="jpg")
 	                  header("Content-Type: image/jpg");

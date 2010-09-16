@@ -52,7 +52,7 @@ padding-left:20px;
 line-height:18px;
 }
   /* Video Links */
-a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'] {
+a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'], a[href$='.mp4'] {
 background:transparent url("../img/file/video.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;

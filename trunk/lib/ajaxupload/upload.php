@@ -75,13 +75,13 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
 	 }   
  else{
 	 try{
-		$target_path = $destination_path . basename( $_FILES['myfile']['name']);
+		$target_path = $destination_path . basename( strtolower($_FILES['myfile']['name']) );
 		if (file_exists($target_path)){
 		   $result = -2; 
 			trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 		} else if(@move_uploaded_file($_FILES['myfile']['tmp_name'], $target_path)) {
 		  $result = 1;
-		  dosyaKaydet($_FILES['myfile']['name'], getUserID2($_SESSION["usern"]));
+		  dosyaKaydet(strtolower($_FILES['myfile']['name']), getUserID2($_SESSION["usern"]));
 		  trackUser($currentFile,"success,FileUp",$_SESSION["usern"]);
 		}else
 		  $result = 0;		  

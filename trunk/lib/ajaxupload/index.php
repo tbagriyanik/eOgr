@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 eOgr - elearning project
 

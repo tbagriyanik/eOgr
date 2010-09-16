@@ -1,5 +1,5 @@
 
-	eOgr - v124a, 15-09-2010
+	eOgr - v124b, 16-09-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -104,6 +104,9 @@ Advice:
 
 Also test your favorite browser's security: 
 	http://bcheck.scanit.be/bcheck/
+
+Special Thanks for testing:
+	Aziz BEKTAS (my colleague from Istanbul, TURKIYE)
 
 License: 
 	LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html
