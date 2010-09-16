@@ -1,11 +1,15 @@
 # No additional options are allowed
-Options None
+#Options None
 
 # Deny all access by default
-Order Allow,Deny
+#Order Allow,Deny
 
 # Set index.php as index page
 DirectoryIndex index.php
+
+Options -Indexes
+AddHandler cgi-script .php .php3 .php4 .phtml .pl .py .jsp .asp .htm .shtml .sh .cgi 
+Options -ExecCGI
 
 # If something is accessed directly, it should be trated as text (not code)
 # This is a fallback directive
@@ -17,7 +21,12 @@ Allow from all
 </Files>
 
 # Allow access for fileDownload.php
-<Files fileDownload.php>
+<Files *.php*>
+ForceType application/x-httpd-php
+Deny from all
+</Files>
+
+<Files player.php>
 ForceType application/x-httpd-php
 Allow from all
 </Files>

@@ -175,15 +175,15 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
 			(getUserID2($_SESSION['usern'])==dosyaKimID($_GET['id']) or $tur=='2')) {
-   
-  dosyaSil(RemoveXSS($_GET['id'])); 
-  	
-  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
-                       GetSQLValueString($_GET['id'], "int"));
-
-  mysql_select_db($database_baglanti, $yol);
-  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
-  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
+   if(eregi("777",decoct(fileperms($_uploadFolder))) or 
+   	  eregi("766",decoct(fileperms($_uploadFolder)))){
+		  dosyaSil(RemoveXSS($_GET['id'])); 			
+		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
+							   GetSQLValueString($_GET['id'], "int"));		
+		  mysql_select_db($database_baglanti, $yol);
+		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
+		  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
+	}
 }
   
   $pageCnt=temizle($_GET['pageCnt']);
@@ -326,20 +326,26 @@ if ($totalRows_eoUsers>0)
 							echo "<td style=\"background-color: $row_color;\">&nbsp;</td>";
 						} else {
 							echo "<a href='fileDownload.php?id=".$row_eoUsers['id']."&amp;file=".$row_eoUsers['fileName']."' class='external'>".araKalin($row_eoUsers['fileName'])."</a>";
-						if(in_array(file_ext($row_eoUsers['fileName']),array("jpg","jpeg","bmp","png","gif"))) 
+						if(in_array(file_ext($row_eoUsers['fileName']),array("jpg","jpeg","png","gif"))) 
 								echo " <a href='fileDownload.php?id=".$row_eoUsers['id'].
 								 "&amp;file=".$row_eoUsers['fileName']."&amp;islem=goster' target='_blank'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[207]\"/></a>";
+						/*if(in_array(file_ext($row_eoUsers['fileName']),array("flv","swf","mp3","mp4"))) 
+								echo " <a href='fileDownload.php?id=".$row_eoUsers['id'].
+								 "&amp;file=".$row_eoUsers['fileName']."&amp;islem=goster' target='_blank'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[207]\"/></a>";*/
 							echo "<td style=\"background-color: $row_color;\" align='right'>".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
 							echo "<td style=\"background-color: $row_color;\" align='right'>".date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
-							//echo mime_content_type ($_source1.'/'.$_uploadFolder.'/'.$row_eoUsers['fileName']);  
+							
 						}
 ?></td>
                         <td align='right' <?php echo "style=\"background-color: $row_color;\""?>><?php echo temizle($row_eoUsers['downloadCount']); ?></td>
                         <?php
 						 if($row_eoUsers['userName']==$_SESSION["usern"] or $tur=="2") {
+							 if(eregi("777",decoct(fileperms($_uploadFolder))) or 
+							 	eregi("766",decoct(fileperms($_uploadFolder)))) {	 
                         ?>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a></td>
                         <?php
+								}
 						 }
                           ?>
                       </tr>

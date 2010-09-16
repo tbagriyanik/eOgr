@@ -916,6 +916,21 @@ function file_ext($filename)
  return $exts; 
 } 
 /*
+idtoDosyaAdi:
+gelen id ile dosya adý döner
+*/
+function idtoDosyaAdi($gelen){
+	$sql1 = "select fileName from eo_files where id='$gelen'";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && mysql_numrows($result1) == 1){
+		$sonuc = @mysql_fetch_array($result1);
+	  }
+   	@mysql_free_result($result1);	 
+	return $sonuc[0];	
+}
+/*
 getSizeAsString:
 Returns the size of a file (given in byte) as a String with kB/MB unit
  */
