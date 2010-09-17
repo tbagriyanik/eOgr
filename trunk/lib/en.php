@@ -664,10 +664,10 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[512] = "bad";
 		$metin[513] = "suspicious";
 		
-		$metin[514] = "<li>File name can be less than 50 characters.</li>
-      <li>File name must contain English letters.</li>
-      <li>The maximum file size 5 MB.</li>
-      <li>A file can not be sent again.</li>";
+		$metin[514] = "<li>File name can be less than <strong>50 characters</strong>.</li>
+      <li>File name must contain only <strong>English letters</strong> without space.</li>
+      <li>The maximum file size<strong> 5 MB</strong>.</li>
+      <li>A file can not be sent <strong>again</strong>.</li>";
 		$metin[515] = "File Upload";
 		$metin[516] = "File";
 		$metin[517] = "Upload";
