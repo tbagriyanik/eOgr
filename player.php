@@ -18,25 +18,27 @@ Lesser General Public License for more details.
 	
 	header("Content-Type: text/html; charset=UTF-8");
 
-	include "../conf.php";
+	include "conf.php";
 
 if(!empty($_GET["id"])){
-	$yol = $_source1."/".$_uploadFolder."/".idtoDosyaAdi(RemoveXSS($_SESSION["id"])); 
-	$oyna = "<script type=\"text/javascript\" src=\"../lib/swfobject.js\"></script>
+	$yol = idtoDosyaAdi(RemoveXSS($_GET["id"]));
+	if(file_ext($yol)=="mp3") 
+		   $provider = "so.addParam('provider','sound');";
+	   else
+		   $provider = "so.addParam('provider','video');";
+	$yolUp = ($_uploadFolder);
+	$oyna = "<script type=\"text/javascript\" src=\"lib/swfobject.js\"></script>
 			<div id=\"player\">content</div>
 			<script type=\"text/javascript\">
-			var so = new SWFObject('../lib/player.swf','mpl','470','320','9');
+			var so = new SWFObject('$yolUp/player.swf','mpl','470','320','9');
 			so.addParam('allowscriptaccess','always');
 			so.addParam('allowfullscreen','true');
-			so.addParam('logo','../img/logo1.png');
-			  so.addVariable('backcolor','CCCCCC');
-			  so.addVariable('frontcolor','000000');
-			  so.addVariable('lightcolor','000000');
-			  so.addVariable('screencolor','0000FF');
-			  so.addParam('flashvars', 'file=$yol&image=../img/logo1.png');
+			so.addParam('logo','img/logo1.png');
+			so.addParam('wmode','transparent');$provider
+		    so.addParam('flashvars', 'file=$yol&image=img/logo1.png&backcolor=cccccc&screencolor=ffffff');
 			so.write('player');
 			</script>";
-	echo $oyna;
-	echo "<br/>Kod:<textarea cols=80 rows=8>$oyna</textarea>";		
+	echo $oyna;	
+	downloadSayac(RemoveXSS($_GET["id"]));	
 }
 ?>

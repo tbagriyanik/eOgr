@@ -679,10 +679,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[512] = "kötü";
 		$metin[513] = "þüpheli";
 		
-		$metin[514] = "<li>Dosya adý 50 karakteri geçmemelidir. </li>
-      <li>Dosya adýnda Türkçe karakter ve boþluk olmamalýdýr.</li>
-      <li>Dosya boyutu en fazla 5 MB olabilir.</li>
-      <li>Var olan bir dosya tekrar gönderilemez.</li>";
+		$metin[514] = "<li>Dosya adý <strong>50 karakteri</strong> geçmemelidir. </li>
+      <li>Dosya adýnda Türkçe karakter ve boþluk <strong>olmamalýdýr</strong>.</li>
+      <li>Dosya boyutu en fazla <strong>5 MB</strong> olabilir.</li>
+      <li>Var olan bir dosya <strong>tekrar gönderilemez</strong>.</li>";
 		$metin[515] = "Dosya Yükleme";
 		$metin[516] = "Dosya";
 		$metin[517] = "Yükle";

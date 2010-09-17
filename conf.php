@@ -814,7 +814,7 @@ function dosya_uploads_uyumu(){
 	  }
 	 
 	 foreach(dosyaListele($_uploadFolder) as $eleman){		   
-		 	if(!in_array($eleman,array(".svn",".htaccess","index.php")) and !in_array($eleman,$dosyalarVTdeki)) {
+		 	if(!in_array($eleman,array(".svn",".htaccess","index.php","player.swf")) and !in_array($eleman,$dosyalarVTdeki)) {
 				$sonuc .= "~ ".$eleman."<br/>"; 
 				//klasördeki dosya vt içinde yok ise
 				}		 
@@ -875,7 +875,7 @@ function dosyaTemizle(){
 	  }
 	 
 	 foreach(dosyaListele($_uploadFolder) as $eleman){		   
-		 	if(!in_array($eleman,array(".svn",".htaccess","index.php")) and !in_array($eleman,$dosyalarVTdeki)) {
+		 	if(!in_array($eleman,array(".svn",".htaccess","index.php","player.swf")) and !in_array($eleman,$dosyalarVTdeki)) {
 				$sonuc .= "~ ".$eleman." $metin[502]<br/>";
 				if(is_dir($_uploadFolder."/".$eleman))
 					klasorSil($_uploadFolder."/".$eleman);
@@ -3238,7 +3238,7 @@ if ($handle = opendir($dir)) {
 	$i = 0;
 	while ($obj = readdir($handle)) {
 		if ($obj!= '.' and $obj!= '..')
-				if (is_file($dir.$obj) and !($obj== 'index.php' or $obj== '.htaccess')) {
+				if (is_file($dir.$obj) and !($obj== 'index.php' or $obj== '.htaccess' or $obj=="player.swf")) {
 					$i++;
 					if ($i>100) 
 					 return false; //zaman aþýmý gibi, çok dosya var

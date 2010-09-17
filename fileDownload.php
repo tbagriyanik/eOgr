@@ -31,14 +31,11 @@ Lesser General Public License for more details.
 		switch($_GET["islem"]){
 			case "goster":
 			
-			if(in_array(file_ext($dosya),array("flv","swf","mp3","mp4"))){
+			if(in_array(file_ext($dosya),array("flv","mp4"))){
 				
-				$_SESSION["id"] = RemoveXSS($_GET["id"]);
-				header("Location:lib/player.php?id=".RemoveXSS($_GET["id"]));
-				
-				//include("lib/player.php");
-				
-				downloadSayac(RemoveXSS($_GET["id"]));											
+				$oyna = "<iframe src=\"player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
+				echo $oyna;
+				echo "<p>Bu Kodu Kopyalayýnýz: <br/><textarea cols=80 rows=8>$oyna</textarea></p>";															
 				die();
 			}
 							

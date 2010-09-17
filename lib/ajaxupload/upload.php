@@ -52,7 +52,7 @@ $wgMimeTypeBlacklist= array(
 if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
 {
 
- if(in_array(strtolower($_FILES['myfile']['name']),array(".htaccess"))){ 
+ if(in_array(strtolower($_FILES['myfile']['name']),array(".htaccess","index.php","player.swf"))){ 
    $result = -1; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
   }   
