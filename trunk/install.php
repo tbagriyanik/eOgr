@@ -39,43 +39,7 @@ ajax desteði var mý
 */
 function is_ajax()
 {
-	return (isset($_SERVER['X_REQUESTED_WITH']) AND
-	strtolower($_SERVER['X_REQUESTED_WITH']) === 'xmlhttprequest');
-}
-/*
-getStats:
-fake func
-*/
-function getStats(){
-}
-/*
-Sec2Time2:
-saniyeyi üst zaman birimlerine çevirir
-*/
-function Sec2Time2($time){
-  if(is_numeric($time)){
-    $value = "";
-    if($time >= 31556926){
-      $value = floor($time/31556926)."y ";
-      $time = ($time%31556926);
-    }
-    if($time >= 86400){
-      $value .= floor($time/86400)."d ";
-      $time = ($time%86400);
-    }
-    if($time >= 3600){
-      $value .= strlen(floor($time/3600))==1?"0".floor($time/3600).":":floor($time/3600).":";
-      $time = ($time%3600);
-    }
-    if($time >= 60){
-      $value .= strlen(floor($time/60))==1?"0".floor($time/60).":":floor($time/60).":";
-      $time = ($time%60);
-    }
-    $value .= strlen(floor($time))==1?"0".floor($time)."s":floor($time)."s";
-    return $value;
-  }else{
-    return (bool) FALSE;
-  }
+	return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 }
 /*
 dilCevir:
@@ -369,7 +333,7 @@ require 'lib/flood-protection.php'; // include the class
               <div class="Post-inner">
                 <div class="PostContent">
                   <?php 
-				  echo "<h2>eOgr Projesinin Temel Gereksinimleri ve Sunucu Testi : </h2><ul>";
+				  echo "<h2>$metin[579]</h2><ul>";
 				//--------------------------------------	
 				  echo '<li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
 				  $baglan3= @mysql_connect($host, $dbUser, $dbPassword);
@@ -388,50 +352,50 @@ require 'lib/flood-protection.php'; // include the class
 				  if(!empty($dbPassword))
 					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
 					  else
-					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> boþ!</li>";								  				  if(file_exists("installation_Database.sql"))
+					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> boþ!</li>";								  				  				if(file_exists("installation_Database.sql"))
 					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
 					  else
-					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";//mysql_error();
+					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";//mysql_error();
 				  try{
-					if(eregi("777",decoct(fileperms($_uploadFolder))) 
-				  or eregi("766",decoct(fileperms($_uploadFolder)))) {
+					if(eregi("777",decoct(@fileperms($_uploadFolder))) 
+				  or eregi("766",decoct(@fileperms($_uploadFolder)))) {
 					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  }else{
-					  echo "<li>* Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  echo "<li>* Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yazýlabilir deðil!</li>";
 					  }  
 				  }
 				  catch(Exception $e){
-					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> baþka bir sorun!</li>";
 				  }	  
 				  
 				  if(function_exists("gzencode"))
 				    echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('gd') && function_exists('gd_info'))
 				    echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('iconv') && function_exists('iconv'))
 				    echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('json') && function_exists('json_decode'))
 				    echo "<li><strong>JSON</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>JSON</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>JSON</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('curl') && function_exists('curl_init'))
 				    echo "<li><strong>cURL</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>cURL</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>cURL</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 					if(extension_loaded('pdf') && function_exists('pdf_new'))
 				    echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('mysqli'))
 				    echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(is_ajax())
 				    echo "<li><strong>AJAX</strong> komutlarý desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
@@ -439,80 +403,80 @@ require 'lib/flood-protection.php'; // include the class
 				  if(ini_get('memory_limit'))
 				    echo "<li><strong>Bellek</strong> maksimum desteði : ".ini_get('memory_limit')."</li>";
 				   else
-				   	echo "<li><strong>Bellek</strong> maksimum desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>Bellek</strong> maksimum desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(ini_get('upload_max_filesize'))
 				    echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : ".ini_get('upload_max_filesize')."</li>";
 				   else
-				   	echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(ini_get('post_max_size'))
 				    echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : ".ini_get('post_max_size')."</li>";
 				   else
-				   	echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				   	echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(ini_get('file_uploads')==1)
 				    echo "<li><strong>Dosya</strong> gönderme izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Dosya</strong> gönderme izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>Dosya</strong> gönderme izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";		
 				  if(ini_get('register_globals')==1)
-				    echo "<li><strong>Global</strong> deðiþkenler (register_globals) : <u>açýk!</u> - tavsiye edilmez <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>Global</strong> deðiþkenler (register_globals) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk! - tavsiye edilmez</li>";
 				   else
 				   	echo "<li><strong>Global</strong> deðiþkenler (register_globals) : kapalý <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
 				  if(ini_get('magic_quotes_gpc')==1)
 				    echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : açýk <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : <u>kapalý!</u> <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kapalý!</li>";	
 				  try{
 				  $modHT = apache_get_modules()	;
 				  if(in_array("mod_rewrite",$modHT))
 				    echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";						  
+				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";						  
 				  }
 				  catch(Exception $e){
-					  echo "<li>* <strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  echo "<li>* <strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  }						
 				  if($sessVar)
 				    echo "<li><strong>Oturum</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Oturum</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>Oturum</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
 				  if( ini_get('safe_mode') )
 				    echo "<li><strong>Güvenli</strong> mod (safe_mode) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Güvenli</strong> mod (safe_mode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>Güvenli</strong> mod (safe_mode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
 				  if( ini_get('display_errors') )
-				    echo "<li><strong>Hata</strong> bildirimi (display_errors) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>Hata</strong> bildirimi (display_errors) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";
 				   else
 				   	echo "<li><strong>Hata</strong> bildirimi (display_errors) : iþlevsiz! <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
-				  if( ini_get('SMTP') )
-				    echo "<li><strong>Eposta</strong> SMTP deðeri : ". ini_get('SMTP')."</li>";
+				  if( function_exists('mail') )
+				    echo "<li><strong>Eposta</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Eposta</strong> SMTP deðeri : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>Eposta</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
 				  if(ini_get('allow_url_fopen')!=1)
 				    echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
 				  if(ini_get('allow_url_include')!=1)
 				    echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
 				  if(ini_get('display_errors')!=1)
 				    echo "<li><strong>display_errors</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>display_errors</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>display_errors</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
 				  if(ini_get('expose_php')!=1)
 				    echo "<li><strong>expose_php</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>expose_php</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>expose_php</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
 				  if(ini_get('open_basedir')==1)
 				    echo "<li><strong>open_basedir</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>open_basedir</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>open_basedir</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok - tavsiye edilmez!</li>";		
 				  if(ini_get('use_trans_sid')!=1)
 				    echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
 				//--------------------------------------	
 				  echo "</ul>";
-				  echo "<hr noshade=\"noshade\"/><p>Eðer varsa <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý dikkate alýnýz.<br/>Bu deðerler tavsiye edilmez veya tehlikeye neden olabilir!</p>";
+				  echo "<hr noshade=\"noshade\"/><p>$metin[578]</p>";
 				  ?>
                 </div>
                 <div class="cleared"></div>

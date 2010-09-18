@@ -175,8 +175,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
 			(getUserID2($_SESSION['usern'])==dosyaKimID($_GET['id']) or $tur=='2')) {
-   if(eregi("777",decoct(fileperms($_uploadFolder))) or 
-   	  eregi("766",decoct(fileperms($_uploadFolder)))){
+   if(eregi("777",decoct(@fileperms($_uploadFolder))) or 
+   	  eregi("766",decoct(@fileperms($_uploadFolder)))){
 		  dosyaSil(RemoveXSS($_GET['id'])); 			
 		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
 							   GetSQLValueString($_GET['id'], "int"));		
@@ -272,8 +272,8 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
 
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 if($seceneklerimiz[16]=="1")
-	if(eregi("777",decoct(fileperms($_uploadFolder))) 
-	 or eregi("766",decoct(fileperms($_uploadFolder)))
+	if(eregi("777",decoct(@fileperms($_uploadFolder))) 
+	 or eregi("766",decoct(@fileperms($_uploadFolder)))
 	 ) {
 ?>
                   <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
@@ -340,8 +340,8 @@ if ($totalRows_eoUsers>0)
                         <td align='right' <?php echo "style=\"background-color: $row_color;\""?>><?php echo temizle($row_eoUsers['downloadCount']); ?></td>
                         <?php
 						 if($row_eoUsers['userName']==$_SESSION["usern"] or $tur=="2") {
-							 if(eregi("777",decoct(fileperms($_uploadFolder))) or 
-							 	eregi("766",decoct(fileperms($_uploadFolder)))) {	 
+							 if(eregi("777",decoct(@fileperms($_uploadFolder))) or 
+							 	eregi("766",decoct(@fileperms($_uploadFolder)))) {	 
                         ?>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a></td>
                         <?php

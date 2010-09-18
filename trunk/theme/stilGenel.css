@@ -401,10 +401,11 @@ label.error {
 	font-weight: bold;
 	background-image: url(../img/error.png);
 	background-repeat: no-repeat;
-	background-position:left top;
+	background-position:left ;
 	width: 30px;
 	height:20px;
-	padding-left: 20px;
+	padding-left: 24px;
+	padding-top: 8px;
 	cursor: pointer;
 }
 .yorumItem {
@@ -532,7 +533,7 @@ h1, h2, h3 {
 	z-index:5000;
 	padding:5px 0px 5px 0px;
 	margin:3px;
-	margin-bottom:10px;
+	margin-bottom:10px;	
 	margin-left:10px;
 }
 .aramaDiv strong {

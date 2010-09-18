@@ -103,7 +103,6 @@ Shadowbox.init({
 </script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<script src="lib/jquery.cookie.js" type="text/javascript"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {

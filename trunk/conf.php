@@ -3280,9 +3280,8 @@ function sonSatirGetir($tablo){
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[5]' rel='facebox'>".$gelen[6]."</a>, ".
 					"<a href='dersBilgisi.php?ders=$gelen[14]' rel='facebox'>".$gelen[15]."</a>, "
-					.$gelen[3].", "
+					.yildizYap($gelen[3]).", "
 					.$insansi;
-				$sonuc .= " <a href='dataRatingList.php'>$metin[162]</a>";
 			}		
 		break;
 		case "yorum":
@@ -3301,9 +3300,8 @@ function sonSatirGetir($tablo){
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
 					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
-					.smartShort($gelen[3]).", "
+					.smileAdd(smartShort($gelen[3])).", "
 					.$insansi;
-				$sonuc .= " <a href='dataCommentList.php'>$metin[162]</a>";
 			}		
 		break;
 		case "sohbet":
@@ -3319,10 +3317,9 @@ function sonSatirGetir($tablo){
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[1]."</a>, "
-					.smartShort($gelen[3]).", "
+					.smileAdd(smartShort($gelen[3])).", "
 					.odaGetir($gelen[4]).", "
 					.$insansi;
-				$sonuc .= " <a href='dataChatActions.php'>$metin[162]</a>";
 			}		
 		break;
 		case "uye":
@@ -3338,7 +3335,6 @@ function sonSatirGetir($tablo){
 				$sonuc = "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, <span style='text-transform: capitalize;'>"
 					.strtolower($gelen[3])."</span>, "
 					.$insansi;
-				$sonuc .= " <a href='siteSettings.php'>$metin[162]</a>";
 			}		
 		break;
 		case "ders":
@@ -3357,9 +3353,9 @@ function sonSatirGetir($tablo){
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
 					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.Sec2Time2($gelen[3]).", "
 					.$gelen[4].", "
 					.$insansi;
-				$sonuc .= " <a href='dataWorkList2.php'>$metin[162]</a>";
 			}		
 		break;
 		case "dosya":
@@ -3378,7 +3374,189 @@ function sonSatirGetir($tablo){
 					$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[5]."</a>, "
 						."<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
 						.$gelen[3].", ".$insansi;
-					$sonuc .= " <a href='fileShare.php'>$metin[162]</a>";
+				}
+			}		
+		break;
+	}
+	return $sonuc;
+}
+/*
+sonBilgileriGetir:
+(bir kullanýcýnýn/herkes) bir tablodan son 1 haftadaki en son iþlemleri getirir
+*/
+function sonBilgileriGetir($tablo, $userID){
+	global $yol1,$metin,$_uploadFolder;	
+	$sonuc = "";
+	$humanRelativeDate = new HumanRelativeDate();
+
+	if(!empty($userID))	{
+			$kisiAdi = getUserName($userID);
+			$kisiFiltre2 = " WHERE eo_shoutbox.name = '$kisiAdi' ";
+			$kisiFiltre = " WHERE eo_users.id = '$userID' ";
+		}
+		else {
+			$kisiFiltre2 = "";
+			$kisiFiltre = "";
+		}
+
+			
+	switch($tablo){
+		case "oy":
+			$sql1 = "SELECT * 
+					 FROM eo_rating
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_rating.userID					 
+					 INNER JOIN eo_4konu 
+					 ON eo_4konu.id  = eo_rating.konuID	
+					 $kisiFiltre				 
+					 ORDER BY eo_rating.rateDate DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			if ($result1 && mysql_numrows($result1) >= 1){				
+				while($gelen = mysql_fetch_array($result1)){			
+					
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
+				if(empty($userID))	{
+				$sonuc .= "<a href='profil.php?kim=$gelen[5]' rel='facebox'>".$gelen[6]."</a>, ".
+					"<a href='dersBilgisi.php?ders=$gelen[14]' rel='facebox'>".$gelen[15]."</a>, "
+					.yildizYap($gelen[3]).", "
+					.$insansi."<br/>";
+				}else{
+				$sonuc .= "<a href='dersBilgisi.php?ders=$gelen[14]' rel='facebox'>".$gelen[15]."</a>, "
+					.yildizYap($gelen[3]).", "
+					.$insansi."<br/>";
+					}
+				}
+			}		
+		break;
+		case "yorum":
+			if(empty($kisiFiltre))
+			  $aramaFiltre = " WHERE active='1' ";
+			  else
+			  $aramaFiltre = " $kisiFiltre and active='1' ";
+			$sql1 = "SELECT * 
+					 FROM eo_comments
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_comments.userID					 
+					 INNER JOIN eo_4konu 
+					 ON eo_4konu.id  = eo_comments.konuID					 
+					 $aramaFiltre
+					 ORDER BY eo_comments.commentDate DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) >= 1){
+				while($gelen = mysql_fetch_array($result1)){			
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
+				
+				if(empty($userID))	{
+				$sonuc .= "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
+					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.smileAdd(smartShort($gelen[3])).", "
+					.$insansi."<br/>";
+				}else{
+				$sonuc .= "<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.smileAdd(smartShort($gelen[3])).", "
+					.$insansi."<br/>";
+					}
+				}
+			}		
+		break;
+		case "sohbet":
+			$sql1 = "SELECT * 
+					 FROM eo_shoutbox
+					 INNER JOIN eo_users 
+					 ON eo_users.userName  = eo_shoutbox.name					 
+					 $kisiFiltre2
+					 ORDER BY eo_shoutbox.date DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) >= 1){
+				while($gelen = mysql_fetch_array($result1)){			
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
+				
+				if(empty($userID))	{
+				$sonuc .= "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[1]."</a>, "
+					.smileAdd(smartShort($gelen[3])).", "
+					.odaGetir($gelen[4]).", "
+					.$insansi."<br/>";
+				}else{
+				$sonuc .= 
+						smileAdd(smartShort($gelen[3])).", "
+					.odaGetir($gelen[4]).", "
+					.$insansi."<br/>";
+					}
+				}
+			}		
+		break;
+		case "uye":
+			$sql1 = "SELECT * 
+					 FROM eo_users
+					 ORDER BY requestDate DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) >= 1){
+				while($gelen = mysql_fetch_array($result1)){			
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[7]);
+				
+				$sonuc .= "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, <span style='text-transform: capitalize;'>"
+					.strtolower($gelen[3])."</span>, "
+					.$insansi."<br/>";
+				}
+			}		
+		break;
+		case "ders":
+			$sql1 = "SELECT * 
+					 FROM eo_userworks
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_userworks.userID					 
+					 INNER JOIN eo_4konu 
+					 ON eo_4konu.id  = eo_userworks.konuID	
+					 $kisiFiltre				 
+					 ORDER BY eo_userworks.calismaTarihi DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) >= 1){
+				while($gelen = mysql_fetch_array($result1)){			
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
+				
+				if(empty($userID))	{
+				$sonuc .= "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
+					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.Sec2Time2($gelen[3]).", "
+					.$gelen[4].", "
+					.$insansi."<br/>";
+				}else{
+				$sonuc .= "<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
+					.Sec2Time2($gelen[3]).", "
+					.$gelen[4].", "
+					.$insansi."<br/>";
+					}
+				}
+			}		
+		break;
+		case "dosya":
+			$sql1 = "SELECT * 
+					 FROM eo_files
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_files.userID					 
+					 $kisiFiltre
+					 ORDER BY eo_files.id DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) >= 1){
+				while($gelen = mysql_fetch_array($result1)){			
+					if(file_exists($_uploadFolder."/".$gelen[2])) {	
+						$insansi = $humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s", filemtime($_uploadFolder."/".$gelen[2])));
+						
+					if(empty($userID))	{
+						$sonuc .= "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[5]."</a>, "
+							."<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
+							.$gelen[3].", ".$insansi."<br/>";
+					}else{
+					$sonuc .= "<a href='fileDownload.php?id=$gelen[0]&file=$gelen[2]'>".$gelen[2]."</a>, "
+							.$gelen[3].", ".$insansi."<br/>";
+						}
+				
+					}
 				}
 			}		
 		break;

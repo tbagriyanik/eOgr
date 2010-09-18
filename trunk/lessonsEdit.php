@@ -1852,7 +1852,7 @@ bkLib.onDomLoaded(function() {
 	 }
  
 ?>
-                    <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.8.4.custom.min.js"></script> 
+                    <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.8.5.custom.min.js"></script> 
                     <script language="JavaScript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script> 
                     <script type="text/javascript">
 $(document).ready(function(){ 
