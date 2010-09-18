@@ -616,12 +616,12 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[471] = " Notices";		
 		$metin[472] = " Members";		
 		
-		$metin[473] = "<strong>Last membership information : </strong> ";		
-		$metin[474] = "<strong>Last chat information (message, room) : </strong> ";		
-		$metin[475] = "<strong>Last comment information (comment) : </strong> ";		
-		$metin[476] = "<strong>Last rating information (rate) : </strong> ";		
-		$metin[477] = "<strong>Last lesson working information (completion state) : </strong> ";		
-		$metin[478] = "<strong>Last file information (download count) : </strong> ";		
+		$metin[473] = "<strong><a href=\"siteSettings.php\">Membership Information</a> : </strong> ";		
+		$metin[474] = "<strong><a href=\"dataChatActions.php\">Chat Information</a> (message, room) : </strong> ";		
+		$metin[475] = "<strong><a href=\"dataCommentList.php\">Comments</a> (comment) : </strong> ";		
+		$metin[476] = "<strong><a href=\"dataRatingList.php\">Rating</a> (rate) : </strong> ";		
+		$metin[477] = "<strong><a href=\"dataWorkList.php\">Lesson Works</a> (completion duration and state) : </strong> ";		
+		$metin[478] = "<strong><a href=\"fileShare.php\">Files</a> (download count) : </strong> ";		
 		
 		$metin[479] = "Recent Staff";		
 		$metin[480] = "All News";	
@@ -739,6 +739,11 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
                         <li> If the option you want does not appear to be active, the <strong>administrator</strong> may have turned off this option.</li>
                         <li> To be effective, some changes may need to <strong><a href=\"userSettings.php\">refresh</a> the page</strong>. </li>
                         <li> With some changes may increase the operating <strong>speed of the site</strong>, often do not use the features do not occupy space. </li>
-                      </ul>";		
+                      </ul>";	
+		$metin[578] = "If there are <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> red icons, you need to pay attention to the warnings.<br/>These values are not recommended or may cause <strong>danger</strong>!";
+		$metin[579] = "eOgr - Server Test : ";					  	
+		$metin[580] = "Friend";
+		$metin[581] = "Everyone";
+		$metin[582] = "Me";
 												
 ?>

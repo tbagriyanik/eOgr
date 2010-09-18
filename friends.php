@@ -40,17 +40,117 @@ Lesser General Public License for more details.
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script language="javascript" src="lib/jquery.cookie.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+//http://www.netlobo.com/url_query_string_javascript.html
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+			
+		$(document).ready(function($) { 
+		if(parseInt($.cookie('seciliTab'))==1){	
+			$("#tab1D > span").css ("font-weight", "bold");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab1").show("slow");	
+			$("#tab2").hide("slow");	
+			$("#tab3").hide("slow");	
+		}
+		else if(parseInt($.cookie('seciliTab'))==2)	{
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "bold");
+			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab1").hide("slow");	
+			$("#tab2").show("slow");	
+			$("#tab3").hide("slow");	
+		}
+		else if(parseInt($.cookie('seciliTab'))==3 || gup("kisi")!="")	{
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "bold");
+			$("#tab1").hide("slow");	
+			$("#tab2").hide("slow");	
+			$("#tab3").show("slow");	
+		}
+		else {
+			$("#tab1D > span").css ("font-weight", "bold");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "100");
+//			$("#tab1").hide("slow");	
+			$("#tab2").hide("slow");	
+			$("#tab3").hide("slow");	
+		}
+
+                var COOKIE_NAME = 'seciliTab';
+                var options = { path: '/', expires: 10 };
+
+                $('#tab1D').click(function() {
+					$("#tab1").show("slow");
+					$("#tab2").hide("slow");
+					$("#tab3").hide("slow");
+			$("#tab1D > span").css ("font-weight", "bold");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "100");
+					$.cookie(COOKIE_NAME, '1', options);					
+                    return false;
+                });
+
+                $('#tab2D').click(function() {
+					$("#tab1").hide("slow");
+					$("#tab2").show("slow");
+					$("#tab3").hide("slow");
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "bold");
+			$("#tab3D > span").css ("font-weight", "100");
+					$.cookie(COOKIE_NAME, '2', options);
+                    return false;
+                });
+
+                $('#tab3D').click(function() {
+					$("#tab1").hide("slow");
+					$("#tab2").hide("slow");
+					$("#tab3").show("slow");
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "bold");
+					$.cookie(COOKIE_NAME, '3', options);
+                    return false;
+                });
+				
+            });
+
+
+   jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
         
       }) 
     })
 </script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<style type="text/css">
+#tabs {
+	text-align: right;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+	top: 10px;
+	padding:5px;
+}
+.tabContent {
+	padding:10px;
+}
+</style>
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -126,31 +226,15 @@ Lesser General Public License for more details.
             <div class="Post-body">
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[549]?> </span> </h2>
-                <div class="PostContent"> 
+                <div class="PostContent">
                   <?php
 	if (in_array($tur, array("1","2","0")))	{
 	 //
 
 $currentPage = $_SERVER["PHP_SELF"];
-//if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
-
-		echo "<font id='tamam'>Bu özellik yapým aþamasýndadýr...</font>";
+if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 		
 //-----------------------here we go		
-	 //index.php'den 
-	 $uyeListesi=getUsersOnline();
-		 if(!empty($uyeListesi)){
-			 echo "<br/>$metin[446]<strong>";
-			 foreach($uyeListesi as $eleman){
-				 echo "<a href='profil.php?kim=".getUserID2($eleman)."' rel='facebox'>".$eleman."</a> ";
-				 }
-			 echo "</strong>";	 
-		 }
-		 //iz sayýsý
-	if (getTrackCount(false)>0){
-						 echo "<br/><strong>".$metin[194]." : </strong> ".getTrackCount(false)." ".$metin[195]." %".round(getTrackCount(true)*100/getTrackCount(false),1);
-	 }
-						 
 	 switch($_SESSION["tur"]){
 	  case '-1':$ktut=$metin[85];break;	  
 	  case '0':$ktut=$metin[86];break;	  
@@ -158,9 +242,13 @@ $currentPage = $_SERVER["PHP_SELF"];
 	  case '2':$ktut=$metin[88];break;	  
 	  default:$ktut=$metin[89];
 	 } 
-						 
-?>	
-                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".getUserID2($adi)."&amp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
+$geceliKullID = getUserID2($adi);	
+if(isset($_GET["kisi"]))				 
+	if(!empty($_GET["kisi"])){
+		$_SESSION["seciliArkadas"] = RemoveXSS($_GET["kisi"]);
+	}
+?>
+                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".$geceliKullID."&amp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
                   <?php
 				 if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
@@ -177,7 +265,66 @@ $currentPage = $_SERVER["PHP_SELF"];
 					  }
 				  }			  
 					 		 
-	// echo '<hr noshade="noshade" color="#333333">';
+	 //index.php'den 
+	 $uyeListesi=getUsersOnline();
+		 if(!empty($uyeListesi)){
+			 echo "<br/>$metin[446]<strong>";
+			 foreach($uyeListesi as $eleman){
+				 echo "<a href='profil.php?kim=".getUserID2($eleman)."' rel='facebox'>".$eleman."</a> ";
+				 }
+			 echo "</strong>";	 
+		 }
+						 
+?>
+                  <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[581]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a></div>
+                  <div id="tab1" class="tabContent"><?php
+	$bilgi1 = sonBilgileriGetir("sohbet","");
+	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
+	$bilgi2 = sonBilgileriGetir("yorum","");
+	if(!empty($bilgi2))	echo $metin[475]."<p class='ozetBilgi'>".$bilgi2."</p>";
+	$bilgi3 = sonBilgileriGetir("oy","");
+	if(!empty($bilgi3))	echo $metin[476]."<p class='ozetBilgi'>".$bilgi3."</p>";
+	$bilgi4 = sonBilgileriGetir("ders","");
+	if(!empty($bilgi4))	echo $metin[477]."<p class='ozetBilgi'>".$bilgi4."</p>";
+	$bilgi5 = sonBilgileriGetir("uye","");
+	if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
+	$bilgi6 = sonBilgileriGetir("dosya","");
+	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";				  
+                  ?></div>
+                  <div id="tab2" class="tabContent"><?php
+	$bilg_1 = sonBilgileriGetir("sohbet",$geceliKullID);
+	if(!empty($bilg_1))	echo $metin[474]."<p class='ozetBilgi'>".$bilg_1."</p>";
+	$bilg_2 = sonBilgileriGetir("yorum",$geceliKullID);
+	if(!empty($bilg_2))	echo $metin[475]."<p class='ozetBilgi'>".$bilg_2."</p>";
+	$bilg_3 = sonBilgileriGetir("oy",$geceliKullID);
+	if(!empty($bilg_3))	echo $metin[476]."<p class='ozetBilgi'>".$bilg_3."</p>";
+	$bilg_4 = sonBilgileriGetir("ders",$geceliKullID);
+	if(!empty($bilg_4))	echo $metin[477]."<p class='ozetBilgi'>".$bilg_4."</p>";
+	$bilg_6 = sonBilgileriGetir("dosya",$geceliKullID);
+	if(!empty($bilg_6))	echo $metin[478]."<p class='ozetBilgi'>".$bilg_6."</p>";				  
+	if(empty($bilg_1) and empty($bilg_2) and empty($bilg_3) and empty($bilg_4) and empty($bilg_6))
+	  echo "Hiçbir aktivitesiniz yok!";			  
+                  ?></div>
+                  <div id="tab3" class="tabContent"><?php
+if($_SESSION["seciliArkadas"]<>"") {
+	$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
+	echo "<p>Seçili Kiþi : <strong>".getUserName($seciliKisi)."</strong></p>";				  
+	$bil_1 = sonBilgileriGetir("sohbet",$seciliKisi);
+	if(!empty($bil_1))	echo $metin[474]."<p class='ozetBilgi'>".$bil_1."</p>";
+	$bil_2 = sonBilgileriGetir("yorum",$seciliKisi);
+	if(!empty($bil_2))	echo $metin[475]."<p class='ozetBilgi'>".$bil_2."</p>";
+	$bil_3 = sonBilgileriGetir("oy",$seciliKisi);
+	if(!empty($bil_3))	echo $metin[476]."<p class='ozetBilgi'>".$bil_3."</p>";
+	$bil_4 = sonBilgileriGetir("ders",$seciliKisi);
+	if(!empty($bil_4))	echo $metin[477]."<p class='ozetBilgi'>".$bil_4."</p>";
+	$bil_6 = sonBilgileriGetir("dosya",$seciliKisi);
+	if(!empty($bil_6))	echo $metin[478]."<p class='ozetBilgi'>".$bil_6."</p>";	
+	if(empty($bil_1) and empty($bil_2) and empty($bil_3) and empty($bil_4) and empty($bil_6))
+	  echo "Hiçbir aktivitesi yok!";			  
+}else
+	echo "Kimse seçmediniz. Mini profilden 'Arkadaþ' simgesine týklatýnýz.";
+                  ?></div>
+                  <?php	
 
 //------------------------end of all
 	}

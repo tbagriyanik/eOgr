@@ -631,12 +631,12 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[471] = " Bildirimler";		
 		$metin[472] = " Üyeler";		
 		
-		$metin[473] = "<strong>Son üye bilgisi : </strong> ";		
-		$metin[474] = "<strong>Son sohbet bilgisi (mesaj, oda) : </strong> ";		
-		$metin[475] = "<strong>Son yorum bilgisi (yorum) : </strong> ";		
-		$metin[476] = "<strong>Son oy bilgisi (oy derecesi) : </strong> ";		
-		$metin[477] = "<strong>Son ders bilgisi (bitirme yüzdesi) : </strong> ";		
-		$metin[478] = "<strong>Son dosya bilgisi (indirme sayýsý) : </strong> ";		
+		$metin[473] = "<strong><a href=\"siteSettings.php\">Üyeler</a> : </strong> ";		
+		$metin[474] = "<strong><a href=\"dataChatActions.php\">Sohbet bilgisi</a> (mesaj, oda) : </strong> ";		
+		$metin[475] = "<strong><a href=\"dataCommentList.php\">Yorumlar</a> (yorum) : </strong> ";		
+		$metin[476] = "<strong><a href=\"dataRatingList.php\">Oylar</a> (oy derecesi) : </strong> ";		
+		$metin[477] = "<strong><a href=\"dataWorkList.php\">Ders Çalýþmalar</a> (bitirme süresi ve yüzdesi) : </strong> ";		
+		$metin[478] = "<strong><a href=\"fileShare.php\">Dosyalar</a> (indirme sayýsý) : </strong> ";		
 		
 		$metin[479] = "Son Çalýþanlar";		
 		$metin[480] = "Tüm Haberler";	
@@ -755,5 +755,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
                         <li> Bazý deðiþikliklerin etkin olabilmesi için <strong><a href=\"userSettings.php\">sayfayý</a> yenilemeniz</strong> gerekebilir. </li>
                         <li> Bazý deðiþiklikler ile sitenin <strong>çalýþma hýzý</strong> artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz. </li>
                       </ul>";
-		
+		$metin[578] = "Eðer varsa <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý <strong>dikkate alýnýz</strong>.<br/>Bu deðerler <strong>tavsiye edilmez</strong> veya tehlikeye neden olabilir!";
+		$metin[579] = "eOgr - Sunucu Testi : ";
+		$metin[580] = "Arkadaþ";
+		$metin[581] = "Herkes";
+		$metin[582] = "Ben";
+
 ?>

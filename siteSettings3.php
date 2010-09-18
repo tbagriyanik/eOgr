@@ -380,7 +380,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
             id="ayar5char17" value="1" <?php if($secenekler[16]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                     <img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> <?php echo $metin[529];
-	if(substr(sprintf('%o', fileperms($_uploadFolder)), -4)=="0755"){
+	if(substr(sprintf('%o', @fileperms($_uploadFolder)), -4)=="0755"){
 		echo "</td></tr><tr><td colspan='2'><p><strong>$_uploadFolder</strong> $metin[532]</p>";
 	}else{
 		echo "</td></tr><tr><td colspan='2'><p><strong>$_uploadFolder</strong> $metin[533]</p>";
