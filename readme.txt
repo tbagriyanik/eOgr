@@ -79,8 +79,9 @@ Used Classes and Referred Sites:
 	http://www.shadowbox-js.com/
 - HTML Graphs: v4.8 
 	http://www.gerd-tentler.de/tools/phpgraphs
-- JW Player: v5.2
-	http://www.longtailvideo.com/
+- Flash Video Player: v3.5
+	http://www.longtailvideo.com/players/jw-flv-player/
+	http://www.jeroenwijering.com
 - SQL_Export: 
 	http://www.phpclasses.org/browse/file/7633.html
 - SQL_Import: 
