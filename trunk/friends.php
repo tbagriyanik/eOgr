@@ -59,37 +59,65 @@ function gup( name )
 }
 			
 		$(document).ready(function($) { 
-		if(parseInt($.cookie('seciliTab'))==1){	
+		if(gup("kisi")!="")	{
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "bold");
+			$("#tab4D > span").css ("font-weight", "100");
+			$("#tab1").hide("slow");	
+			$("#tab2").hide("slow");	
+			$("#tab3").show("slow");	
+			$("#tab4").hide("slow");	
+		}
+		else if(parseInt($.cookie('seciliTab'))==1){	
 			$("#tab1D > span").css ("font-weight", "bold");
 			$("#tab2D > span").css ("font-weight", "100");
 			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "100");
 			$("#tab1").show("slow");	
 			$("#tab2").hide("slow");	
 			$("#tab3").hide("slow");	
+			$("#tab4").hide("slow");	
 		}
 		else if(parseInt($.cookie('seciliTab'))==2)	{
 			$("#tab1D > span").css ("font-weight", "100");
 			$("#tab2D > span").css ("font-weight", "bold");
 			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "100");
 			$("#tab1").hide("slow");	
 			$("#tab2").show("slow");	
 			$("#tab3").hide("slow");	
+			$("#tab4").hide("slow");	
 		}
-		else if(parseInt($.cookie('seciliTab'))==3 || gup("kisi")!="")	{
+		else if(parseInt($.cookie('seciliTab'))==3)	{
 			$("#tab1D > span").css ("font-weight", "100");
 			$("#tab2D > span").css ("font-weight", "100");
 			$("#tab3D > span").css ("font-weight", "bold");
+			$("#tab4D > span").css ("font-weight", "100");
 			$("#tab1").hide("slow");	
 			$("#tab2").hide("slow");	
 			$("#tab3").show("slow");	
+			$("#tab4").hide("slow");	
+		}
+		else if(parseInt($.cookie('seciliTab'))==4)	{
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "bold");
+			$("#tab1").hide("slow");	
+			$("#tab2").hide("slow");	
+			$("#tab3").hide("slow");	
+			$("#tab4").show("slow");	
 		}
 		else {
 			$("#tab1D > span").css ("font-weight", "bold");
 			$("#tab2D > span").css ("font-weight", "100");
 			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "100");
 //			$("#tab1").hide("slow");	
 			$("#tab2").hide("slow");	
 			$("#tab3").hide("slow");	
+			$("#tab4").hide("slow");	
 		}
 
                 var COOKIE_NAME = 'seciliTab';
@@ -99,9 +127,11 @@ function gup( name )
 					$("#tab1").show("slow");
 					$("#tab2").hide("slow");
 					$("#tab3").hide("slow");
+					$("#tab4").hide("slow");
 			$("#tab1D > span").css ("font-weight", "bold");
 			$("#tab2D > span").css ("font-weight", "100");
 			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "100");
 					$.cookie(COOKIE_NAME, '1', options);					
                     return false;
                 });
@@ -110,9 +140,11 @@ function gup( name )
 					$("#tab1").hide("slow");
 					$("#tab2").show("slow");
 					$("#tab3").hide("slow");
+					$("#tab4").hide("slow");
 			$("#tab1D > span").css ("font-weight", "100");
 			$("#tab2D > span").css ("font-weight", "bold");
 			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "100");
 					$.cookie(COOKIE_NAME, '2', options);
                     return false;
                 });
@@ -121,10 +153,26 @@ function gup( name )
 					$("#tab1").hide("slow");
 					$("#tab2").hide("slow");
 					$("#tab3").show("slow");
+					$("#tab4").hide("slow");
 			$("#tab1D > span").css ("font-weight", "100");
 			$("#tab2D > span").css ("font-weight", "100");
 			$("#tab3D > span").css ("font-weight", "bold");
+			$("#tab4D > span").css ("font-weight", "100");
 					$.cookie(COOKIE_NAME, '3', options);
+                    return false;
+                });
+				
+
+                $('#tab4D').click(function() {
+					$("#tab1").hide("slow");
+					$("#tab2").hide("slow");
+					$("#tab3").hide("slow");
+					$("#tab4").show("slow");
+			$("#tab1D > span").css ("font-weight", "100");
+			$("#tab2D > span").css ("font-weight", "100");
+			$("#tab3D > span").css ("font-weight", "100");
+			$("#tab4D > span").css ("font-weight", "bold");
+					$.cookie(COOKIE_NAME, '4', options);
                     return false;
                 });
 				
@@ -268,7 +316,7 @@ if(isset($_GET["kisi"]))
 	 //index.php'den 
 	 $uyeListesi=getUsersOnline();
 		 if(!empty($uyeListesi)){
-			 echo "<br/>$metin[446]<strong>";
+			 echo "$metin[446]<strong>";
 			 foreach($uyeListesi as $eleman){
 				 echo "<a href='profil.php?kim=".getUserID2($eleman)."' rel='facebox'>".$eleman."</a> ";
 				 }
@@ -276,8 +324,31 @@ if(isset($_GET["kisi"]))
 		 }
 						 
 ?>
-                  <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[581]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a></div>
-                  <div id="tab1" class="tabContent"><?php
+<br/>
+<div class="aramaDiv2"> <p>
+<?php echo $metin[589]?> : <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>
+  <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[590]?>" title="<?php echo $metin[590]?>"/>
+  </p>
+</div>
+<script type="text/javascript">
+                        var options = {
+                            script:"lib/as/test2.php?",
+                            varname:"input",
+                            json:true,
+                            shownoresults:false,
+                            maxresults:3,
+                            callback: function (obj) {
+								location.href = eval('\"friends.php?kisi='+obj.id+'\"');
+							}
+                        };
+                        var as_json = new bsn.AutoSuggest('searchterm2', options);                                                
+</script>
+
+                  <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[583]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a> | <a href="#" id="tab4D"><span><?php echo $metin[581]?></span></a></div>
+                  <div id="tab1" class="tabContent">
+                    <?php
+					//GRUP
+	if(arkadasListesi()!=""){				
 	$bilgi1 = sonBilgileriGetir("sohbet","");
 	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
 	$bilgi2 = sonBilgileriGetir("yorum","");
@@ -290,8 +361,15 @@ if(isset($_GET["kisi"]))
 	if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
 	$bilgi6 = sonBilgileriGetir("dosya","");
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";				  
-                  ?></div>
-                  <div id="tab2" class="tabContent"><?php
+	}else{
+		echo "<font id='uyari'>$metin[588]</font>";
+	}
+                  ?>
+                  </div>
+                  <div id="tab2" class="tabContent">
+                    <?php
+					//BEN
+	echo "<h3>$metin[585] : </h3>";			  
 	$bilg_1 = sonBilgileriGetir("sohbet",$geceliKullID);
 	if(!empty($bilg_1))	echo $metin[474]."<p class='ozetBilgi'>".$bilg_1."</p>";
 	$bilg_2 = sonBilgileriGetir("yorum",$geceliKullID);
@@ -303,12 +381,15 @@ if(isset($_GET["kisi"]))
 	$bilg_6 = sonBilgileriGetir("dosya",$geceliKullID);
 	if(!empty($bilg_6))	echo $metin[478]."<p class='ozetBilgi'>".$bilg_6."</p>";				  
 	if(empty($bilg_1) and empty($bilg_2) and empty($bilg_3) and empty($bilg_4) and empty($bilg_6))
-	  echo "Hiçbir aktivitesiniz yok!";			  
-                  ?></div>
-                  <div id="tab3" class="tabContent"><?php
+	  echo "<font id='uyari'>$metin[586]</font>";			  
+                  ?>
+                  </div>
+                  <div id="tab3" class="tabContent">
+                    <?php
+					//ARKADAS
 if($_SESSION["seciliArkadas"]<>"") {
 	$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
-	echo "<p>Seçili Kiþi : <strong>".getUserName($seciliKisi)."</strong></p>";				  
+	echo "<p>$metin[584] : <strong><a href='profil.php?kim=".$seciliKisi."' rel='facebox'>".getUserName($seciliKisi)."</a></strong></p>";				  
 	$bil_1 = sonBilgileriGetir("sohbet",$seciliKisi);
 	if(!empty($bil_1))	echo $metin[474]."<p class='ozetBilgi'>".$bil_1."</p>";
 	$bil_2 = sonBilgileriGetir("yorum",$seciliKisi);
@@ -320,10 +401,34 @@ if($_SESSION["seciliArkadas"]<>"") {
 	$bil_6 = sonBilgileriGetir("dosya",$seciliKisi);
 	if(!empty($bil_6))	echo $metin[478]."<p class='ozetBilgi'>".$bil_6."</p>";	
 	if(empty($bil_1) and empty($bil_2) and empty($bil_3) and empty($bil_4) and empty($bil_6))
-	  echo "Hiçbir aktivitesi yok!";			  
+	  echo "<font id='uyari'>$metin[586]</font>";	
+	if ($seciliKisi!=$geceliKullID)   			  
+		echo "<p><a href='friends.php?ekle=".$seciliKisi."'>$metin[591]</a></p>";
 }else
-	echo "Kimse seçmediniz. Mini profilden 'Arkadaþ' simgesine týklatýnýz.";
-                  ?></div>
+	echo "<font id='uyari'>$metin[587]</font>";
+                  ?>
+                  </div>
+                  <div id="tab4" class="tabContent">
+                    <?php
+					//HERKES (sadece öðretmen ve yöneticilere)
+	if(in_array($tur, array("1","2"))){				
+		$bilgi1 = sonBilgileriGetir("sohbet","");
+		if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
+		$bilgi2 = sonBilgileriGetir("yorum","");
+		if(!empty($bilgi2))	echo $metin[475]."<p class='ozetBilgi'>".$bilgi2."</p>";
+		$bilgi3 = sonBilgileriGetir("oy","");
+		if(!empty($bilgi3))	echo $metin[476]."<p class='ozetBilgi'>".$bilgi3."</p>";
+		$bilgi4 = sonBilgileriGetir("ders","");
+		if(!empty($bilgi4))	echo $metin[477]."<p class='ozetBilgi'>".$bilgi4."</p>";
+		$bilgi5 = sonBilgileriGetir("uye","");
+		if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
+		$bilgi6 = sonBilgileriGetir("dosya","");
+		if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";				  
+	}else{
+		echo "<font id='hata'>$metin[448]</font>";
+	}
+                  ?>
+                  </div>
                   <?php	
 
 //------------------------end of all
