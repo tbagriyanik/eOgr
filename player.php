@@ -35,7 +35,7 @@ if(!empty($_GET["id"])){
 			so.addParam('allowfullscreen','true');
 			so.addParam('logo','img/logo1.png');
 			so.addParam('wmode','transparent');$provider
-		    so.addParam('flashvars', 'file=$yol&image=img/logo1.png&backcolor=cccccc&screencolor=ffffff');
+		    so.addParam('flashvars', 'file=$yol&image=img/logo1.png');
 			so.write('player');
 			</script>";
 	echo $oyna;	

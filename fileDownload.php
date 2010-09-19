@@ -31,9 +31,9 @@ Lesser General Public License for more details.
 		switch($_GET["islem"]){
 			case "goster":
 			
-			if(in_array(file_ext($dosya),array("flv","mp4"))){
+			if(in_array(file_ext($dosya),array("flv"))){
 				
-				$oyna = "<iframe src=\"player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
+				$oyna = "<iframe src=\"$_source1/player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
 				echo $oyna;
 				echo "<p>Bu Kodu Kopyalayýnýz: <br/><textarea cols=80 rows=8>$oyna</textarea></p>";															
 				die();
