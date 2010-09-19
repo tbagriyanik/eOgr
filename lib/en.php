@@ -583,8 +583,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
    	  	$metin[445]	= "Last member is <strong>%s</strong> %s.";
 		$metin[446]	= "Members that login in the last 5 hours : ";		
 
-		$metin[447]	= "Students or teachers can not use this page!";
-		$metin[448]	= "Students can not use this page!";	
+		$metin[447]	= "Students or teachers can not use this feature!";
+		$metin[448]	= "Students can not use this feature!";	
 		
 		$metin[449]	= "File name is not compatible!";
 		$metin[450]	= "Your account is passive. You are not allowed to continue!";
@@ -620,7 +620,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[474] = "<strong><a href=\"dataChatActions.php\">Chat Information</a> (message, room) : </strong> ";		
 		$metin[475] = "<strong><a href=\"dataCommentList.php\">Comments</a> (comment) : </strong> ";		
 		$metin[476] = "<strong><a href=\"dataRatingList.php\">Rating</a> (rate) : </strong> ";		
-		$metin[477] = "<strong><a href=\"dataWorkList.php\">Lesson Works</a> (completion duration and state) : </strong> ";		
+		$metin[477] = "<strong><a href=\"dataWorkList.php\">Lesson Works</a> (duration  and working percentage) : </strong> ";		
 		$metin[478] = "<strong><a href=\"fileShare.php\">Files</a> (download count) : </strong> ";		
 		
 		$metin[479] = "Recent Staff";		
@@ -745,5 +745,14 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[580] = "Friend";
 		$metin[581] = "Everyone";
 		$metin[582] = "Me";
+		$metin[583] = "Group";
+		$metin[584] = "Selected Person";
+		$metin[585] = "Your Data";
+		$metin[586] = "There is no activity for now!";
+		$metin[587] = "You did not choose anybody.";
+		$metin[588] = "You do not have any friends for now!";
+		$metin[589] = "Search for a Friend";
+		$metin[590] = "You can search in the real name";
+		$metin[591] = "Add as a Friend";		
 												
 ?>

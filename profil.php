@@ -134,23 +134,6 @@ function kullAdi($id)
 	}
 }
 /*
-kullGercekAdi:
-kullanýcýnýn gerçek adý
-*/
-function kullGercekAdi($id)
-{
-	global $yol1;	
-	$id = substr(temizle2($id),0,15);
-    $sql1 = "SELECT realName FROM eo_users where id='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
-
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "realName"));
-    }else {
-	   return ("");
-	}
-}
-/*
 kullTur:
 kullanýcýnýn türü
 */
@@ -597,7 +580,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 		echo " | <a href='friends.php?kisi=".$_GET["kim"]."'>$metin[580]</a>";
 		if($_SESSION["tur"]==1 or $_SESSION["tur"]==2)
 		  if(dersCalismaSay($_GET["kim"])>0)	
-			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\" class=\"external\">$metin[461]</a>";
+			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\">$metin[461]</a>";
 	 }
  } else
   echo "$metin[540]";  

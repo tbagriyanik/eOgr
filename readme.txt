@@ -1,5 +1,5 @@
 
-	eOgr - v124b, 19-09-2010
+	eOgr - v124c, 19-09-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -52,7 +52,7 @@ Used Classes and Referred Sites:
 	http://archive.free-php.org.uk
 - jQuery: v1.4.2 
 	http://jquery.com
-- jQuery UI: v1.8.5 
+- jQuery UI: v1.8.5 custom - sortable only
 	http://jqueryui.com
 - jQuery TreeView: v1.4 
 	http://bassistance.de/jquery-plugins/jquery-plugin-treeview

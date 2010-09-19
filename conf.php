@@ -3381,6 +3381,13 @@ function sonSatirGetir($tablo){
 	return $sonuc;
 }
 /*
+arkadasListesi:
+oturum açan kiþinin arkadaþ listesi
+*/
+function arkadasListesi(){
+	return false;
+}
+/*
 sonBilgileriGetir:
 (bir kullanýcýnýn/herkes) bir tablodan son 1 haftadaki en son iþlemleri getirir
 */
@@ -3564,6 +3571,23 @@ function sonBilgileriGetir($tablo, $userID){
 	return $sonuc;
 }
 /*
+kullGercekAdi:
+kullanýcýnýn gerçek adý
+*/
+function kullGercekAdi($id)
+{
+	global $yol1;	
+	$id = substr(temizle($id),0,15);
+    $sql1 = "SELECT realName FROM eo_users where id='".$id."' limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1){
+       return (mysql_result($result1, 0, "realName"));
+    }else {
+	   return ("");
+	}
+}
+/*
 getUserName:
 kimlik ile kullanýcý isimlerini alma
 */
@@ -3575,7 +3599,7 @@ function getUserName($id){
 	
     if ($result1 && mysql_numrows($result1) == 1){
 		$gelen = mysql_fetch_array($result1);		
-		return "".$gelen[0].", ".$gelen[1];
+		return $gelen[0].", <span style='text-transform: capitalize;'>".strtolower($gelen[1])."</span>";
 	}
 	
 	return "-";

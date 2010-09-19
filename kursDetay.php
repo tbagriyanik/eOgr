@@ -252,9 +252,9 @@ Shadowbox.init({
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
-                  <div class="tekKolon"> Seçili Kullanýcý :
+                  <div class="tekKolon"> <?php echo $metin[584]?> :
                     <?php				    
-				    echo "<strong>".getUserName($uID)."</strong><br/>";
+				    echo "<strong><a href='profil.php?kim=".$uID."' rel='facebox'><span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($uID))."</span></a></strong><br/>";
 					echo getStats(12,$uID);
                   ?>
                   </div>

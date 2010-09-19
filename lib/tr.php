@@ -597,8 +597,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
  	  	$metin[445]	= "Son üyemiz <strong>%s</strong>, %s üye oldu.";		
 		$metin[446]	= "Son 5 saatte giriþ yapan üyeler : ";
 		
-		$metin[447]	= "Bu sayfa i&ccedil;in &ouml;ðrencilerin veya &ouml;ðretmenlerin iþlem yapma izni yoktur!";
-		$metin[448]	= "Bu sayfa i&ccedil;in &ouml;ðrencilerin iþlem yapma izni yoktur!";
+		$metin[447]	= "Bu özelliði &ouml;ðrenciler veya &ouml;ðretmenler kullanamaz!";
+		$metin[448]	= "Bu özelliði &ouml;ðrenciler kullanamaz!";
 		
 		$metin[449]	= "Dosya uyumlu deðil!";
 		$metin[450]	= "Hesabýnýz pasif haldedir. Ýþlem yapma izniniz yoktur!";
@@ -634,8 +634,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[473] = "<strong><a href=\"siteSettings.php\">Üyeler</a> : </strong> ";		
 		$metin[474] = "<strong><a href=\"dataChatActions.php\">Sohbet bilgisi</a> (mesaj, oda) : </strong> ";		
 		$metin[475] = "<strong><a href=\"dataCommentList.php\">Yorumlar</a> (yorum) : </strong> ";		
-		$metin[476] = "<strong><a href=\"dataRatingList.php\">Oylar</a> (oy derecesi) : </strong> ";		
-		$metin[477] = "<strong><a href=\"dataWorkList.php\">Ders Çalýþmalar</a> (bitirme süresi ve yüzdesi) : </strong> ";		
+		$metin[476] = "<strong><a href=\"dataRatingList.php\">Oylar</a> (oy) : </strong> ";		
+		$metin[477] = "<strong><a href=\"dataWorkList.php\">Ders Çalýþmalar</a> (süre ve bitirme yüzdesi) : </strong> ";		
 		$metin[478] = "<strong><a href=\"fileShare.php\">Dosyalar</a> (indirme sayýsý) : </strong> ";		
 		
 		$metin[479] = "Son Çalýþanlar";		
@@ -760,5 +760,14 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[580] = "Arkadaþ";
 		$metin[581] = "Herkes";
 		$metin[582] = "Ben";
-
+		$metin[583] = "Grup";
+		$metin[584] = "Seçili Kiþi";
+		$metin[585] = "Kendi Bilgileriniz";
+		$metin[586] = "Þimdilik hiçbir aktivite bulunmuyor!";
+		$metin[587] = "Þimdilik kimseyi seçmediniz.";
+		$metin[588] = "Þimdilik hiçbir arkadaþýnýz bulunmuyor!";
+		$metin[589] = "Bir Arkadaþ Arama";
+		$metin[590] = "Gerçek adý içinde arama yapabilirsiniz";
+		$metin[591] = "Arkadaþ Olarak Ekle";
+		
 ?>
