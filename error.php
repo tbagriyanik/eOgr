@@ -4,7 +4,7 @@ if(!in_array($_GET["error"],array("5","6"))) {
 	checkLoginLang(false,true,"error.php");
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 }else
-	header("Location:install.php");
+	header("Location: install.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -75,6 +75,7 @@ if(!in_array($_GET["error"],array("5","6"))) {
 <p style="font-size:10px;">
   <?php
  echo "<strong>$metin[491] :</strong> ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
+// echo "<strong>$metin[492] :</strong> ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>"; 
  echo "<strong>$metin[129] :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
  
  if($_GET["error"]!=11){

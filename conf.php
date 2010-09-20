@@ -47,7 +47,7 @@ function baglan()
 }
 
 if(!baglan()) {  
- @header("Location:error.php?error=5");
+ @header("Location: error.php?error=5");
  die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
 }
 
@@ -56,7 +56,7 @@ $yol1	=	baglan();
 
 	if (!@mysql_select_db($_db, $yol))
 	{
-		@header("Location:error.php?error=5");
+		@header("Location: error.php?error=5");
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
 		  You need to go to <a href=install.php>installing page</a>!<br/>
@@ -66,7 +66,7 @@ $yol1	=	baglan();
 		$yol = baglan();
 		$result = @mysql_query($sql, $yol);
 		if(!$result){
-		   @header("Location:error.php?error=6");
+		   @header("Location: error.php?error=6");
 			die("<font id='hata'> Tablo <a href=install.php>kurulumunu (installation)</a> yapmad&#305;n&#305;z!</font>");
 		}
 		@mysql_free_result($result); 	
@@ -108,16 +108,14 @@ function check_source()
 {  
 	global  $_source1;
 	global  $_source2;
-//	$adresteki = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-	$adresteki = $_SERVER['HTTP_REFERER'];
 	
-// if(isset($_SERVER['HTTP_REFERER'])) 	
-  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki)) 
-  	  ) { 
-	@header("Location:error.php?error=3");
+	$adresteki = $_SERVER['HTTP_REFERER'];
+//	$adresteki = $_SESSION['this_page'];
+	
+  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki))  ) { 
+	@header("Location: error.php?error=3");
 	return false;
   }else{
-	//  echo eregi("^$_source1",$adresteki);
 	return true;
   }
 }  
@@ -225,7 +223,7 @@ function checkLoginLang($lgn,$lng,$src){
 		   $par	=temizle($_SESSION["userp"]);
 		  
 			if($adi==""|| $par==""){ //EMPTY?
-			   @header("Location:error.php?error=2");
+			   @header("Location: error.php?error=2");
 			   die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); 
 			}
 		 
@@ -233,7 +231,7 @@ function checkLoginLang($lgn,$lng,$src){
 			
 			if ($tur<=-1 || $tur>2) { 
 			   sessionDestroy();
-			   @header("Location:error.php?error=7");
+			   @header("Location: error.php?error=7");
 			   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
 			  }
 			  else 
@@ -321,7 +319,7 @@ function currentFileCheck($fileName){
 	global $currentFile;
 	global $metin; 
 	if($currentFile!=$fileName ){ 
-	 @header("Location:error.php?error=8");
+	 @header("Location: error.php?error=8");
 	 die ("<font id='hata'>$metin[449]</font>");
 	}
 }	
@@ -3869,7 +3867,7 @@ Site bakýmda mý diye kontrol edildiði yer
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 if ($seceneklerimiz[15]=="1"){
 	if(basename(RemoveXSS($_SERVER['SCRIPT_FILENAME']))!="error.php") //sonsuz döngü
-		header("Location:error.php?error=11");	
+		header("Location: error.php?error=11");	
 }
 
 ?>

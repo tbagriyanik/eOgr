@@ -231,7 +231,7 @@ Lesser General Public License for more details.
 			  }				
 			
 }	else {
-	  @header("Location:error.php?error=9");	
+	  @header("Location: error.php?error=9");	
 	  die($metin[447]);
 	}
 	  

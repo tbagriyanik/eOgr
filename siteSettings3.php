@@ -214,7 +214,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		
 	}
 	else {
-	  @header("Location:error.php?error=9");	
+	  @header("Location: error.php?error=9");	
 	  die($metin[447]);
 	}
 	

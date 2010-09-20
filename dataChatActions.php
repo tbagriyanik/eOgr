@@ -422,7 +422,7 @@ if ($totalRows_eoUsers==0) echo "<font id='hata'> Arama sonucuna uyan bilgi bulu
 
 	}
 	else {
-	  @header("Location:error.php?error=9");	
+	  @header("Location: error.php?error=9");	
 	  die($metin[447]);
 	}
 ?>

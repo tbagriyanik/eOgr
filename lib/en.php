@@ -745,7 +745,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[580] = "Friend";
 		$metin[581] = "Everyone";
 		$metin[582] = "Me";
-		$metin[583] = "Group";
+		$metin[583] = "My Friends";
 		$metin[584] = "Selected Person";
 		$metin[585] = "Your Data";
 		$metin[586] = "There is no activity for now!";

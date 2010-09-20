@@ -760,7 +760,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[580] = "Arkadaþ";
 		$metin[581] = "Herkes";
 		$metin[582] = "Ben";
-		$metin[583] = "Grup";
+		$metin[583] = "Arkadaþlarým";
 		$metin[584] = "Seçili Kiþi";
 		$metin[585] = "Kendi Bilgileriniz";
 		$metin[586] = "Þimdilik hiçbir aktivite bulunmuyor!";

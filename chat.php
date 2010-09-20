@@ -25,7 +25,7 @@ Lesser General Public License for more details.
 	
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	if($seceneklerimiz[10]!="1"){
-		header("Location:error.php?error=12");
+		header("Location: error.php?error=12");
 		}	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

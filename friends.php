@@ -21,7 +21,6 @@ Lesser General Public License for more details.
 	$time = getmicrotime();  	
 	checkLoginLang(true,true,"friends.php");	
 	$seciliTema=temaBilgisi();
-	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -197,6 +196,8 @@ function gup( name )
 }
 .tabContent {
 	padding:10px;
+	background-color:#FFF;
+	color:#000;
 }
 </style>
 </head>
@@ -280,7 +281,7 @@ function gup( name )
 	 //
 
 $currentPage = $_SERVER["PHP_SELF"];
-if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
+//if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 		
 //-----------------------here we go		
 	 switch($_SESSION["tur"]){
@@ -324,26 +325,25 @@ if(isset($_GET["kisi"]))
 		 }
 						 
 ?>
-<br/>
-<div class="aramaDiv2"> <p>
-<?php echo $metin[589]?> : <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>
-  <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[590]?>" title="<?php echo $metin[590]?>"/>
-  </p>
-</div>
-<script type="text/javascript">
+                  <br/>
+                  <div class="aramaDiv2">
+                    <p> <?php echo $metin[589]?> :
+                      <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>
+                      <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[590]?>" title="<?php echo $metin[590]?>"/> </p>
+                  </div>
+                  <script type="text/javascript">
                         var options = {
                             script:"lib/as/test2.php?",
                             varname:"input",
                             json:true,
                             shownoresults:false,
                             maxresults:3,
-                            callback: function (obj) {
-								location.href = eval('\"friends.php?kisi='+obj.id+'\"');
+                            callback: function (obj) {								
+								location.href = "friends.php?kisi="+obj.id;
 							}
                         };
                         var as_json = new bsn.AutoSuggest('searchterm2', options);                                                
 </script>
-
                   <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[583]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a> | <a href="#" id="tab4D"><span><?php echo $metin[581]?></span></a></div>
                   <div id="tab1" class="tabContent">
                     <?php
@@ -387,8 +387,8 @@ if(isset($_GET["kisi"]))
                   <div id="tab3" class="tabContent">
                     <?php
 					//ARKADAS
-if($_SESSION["seciliArkadas"]<>"") {
-	$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
+$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
+if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	echo "<p>$metin[584] : <strong><a href='profil.php?kim=".$seciliKisi."' rel='facebox'>".getUserName($seciliKisi)."</a></strong></p>";				  
 	$bil_1 = sonBilgileriGetir("sohbet",$seciliKisi);
 	if(!empty($bil_1))	echo $metin[474]."<p class='ozetBilgi'>".$bil_1."</p>";
@@ -434,7 +434,7 @@ if($_SESSION["seciliArkadas"]<>"") {
 //------------------------end of all
 	}
 	else {
-	  @header("Location:error.php?error=9");	
+	  @header("Location: error.php?error=9");	
 	  die($metin[447]);
 	}
 	

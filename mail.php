@@ -30,7 +30,7 @@ Lesser General Public License for more details.
   $seciliTema=temaBilgisi();	
 
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-		@header("Location:error.php?error=4");
+		@header("Location: error.php?error=4");
 	  echo('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> &#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.'.
 		  '<br/>L&#252;ften bir s&#252;re sonra <a href='.$_SERVER['PHP_SELF'].'>tekrar</a> deneyiniz!'); // die there flooding
 		$hata = true;
