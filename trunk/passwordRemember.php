@@ -21,7 +21,7 @@ Lesser General Public License for more details.
   checkLoginLang(false,true,"passwordRemember.php");	   
 
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-		@header("Location:error.php?error=4");	
+		@header("Location: error.php?error=4");	
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;" alt="warning"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
   $seciliTema=temaBilgisi();	

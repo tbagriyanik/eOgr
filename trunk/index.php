@@ -28,7 +28,7 @@ Lesser General Public License for more details.
         $taraDili= browserdili(); 
         if($taraDili!="TR") $taraDili="EN";
 		setcookie("lng",$taraDili,time()+60*60*24*30);
-		header("Location:index.php");
+		header("Location: index.php");
     }
    else
     {
@@ -88,16 +88,16 @@ Lesser General Public License for more details.
 					"friends.php",
 					"install.php"
 					)))
-			header("Location:".$_GET["oldPath"]);
+			header("Location: ".$_GET["oldPath"]);
 		else
-			header("Location:index.php"); 				
+			header("Location: index.php"); 				
 	}
 
    if(isset($_GET["forgetMe"]))
     {
 		if(!empty($_GET["forgetMe"])) {
 		setcookie("remUser","",time()-9999);	
-		header("Location:index.php");
+		header("Location: index.php");
 		}
 	}
 

@@ -149,7 +149,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	  die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
 	 }else
 	 if ($tur=="0") {
-	  @header("Location:error.php?error=10");	
+	  @header("Location: error.php?error=10");	
 	  die($metin[448]);
 	 } 
 ?>

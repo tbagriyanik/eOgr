@@ -33,7 +33,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (550 hours programming, 17.000 lines PHP, 22.000 lines Javascript and CSS)
+	15-11-2008 (550 hours programming, 17.500 lines PHP, 25.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix

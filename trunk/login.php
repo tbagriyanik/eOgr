@@ -42,7 +42,7 @@ Lesser General Public License for more details.
 	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-	  @header("Location:error.php?error=4");
+	  @header("Location: error.php?error=4");
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
@@ -60,12 +60,12 @@ Lesser General Public License for more details.
 	   else {
 		    setcookie("theme",kullaniciTema($adi),time()+60*60*24*30);	
 	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
-			header("Location:index.php");
+			header("Location: index.php");
 	     }
 	  }
   
 	if($adi=="" || $par=="") {
-		header("Location:error.php?error=2");
+		header("Location: error.php?error=2");
 		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
 	}
 	

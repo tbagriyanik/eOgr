@@ -190,7 +190,7 @@ if ($tur=="2")	{//yönetici ise
 	
 }
 	else {
-	  @header("Location:error.php?error=9");	
+	  @header("Location: error.php?error=9");	
 	  die($metin[447]);
 	}
 ?>

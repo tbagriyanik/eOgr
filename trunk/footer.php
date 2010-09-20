@@ -13,6 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
+	session_start();
 
 	$adi	=@temizle(substr($_SESSION["usern"],0,15));
 	
@@ -85,3 +86,5 @@ echo ("&nbsp;|&nbsp;<font size='-3'>".$metin[217]." ".$insansi."</font>");
  mysql_close($yol);
  mysql_close($yol1);
 ?>
+
+

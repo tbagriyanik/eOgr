@@ -339,7 +339,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   <?php
 	}
 	else {
-	  @header("Location:error.php?error=10");	
+	  @header("Location: error.php?error=10");	
 	  die($metin[448]);
 	}
 	

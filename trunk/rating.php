@@ -36,16 +36,13 @@ if(!function_exists("check_source")){
 	{  
 		global  $_source1;
 		global  $_source2;
-	//	$adresteki = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		$adresteki = $_SERVER['HTTP_REFERER'];
 		
-	// if(isset($_SERVER['HTTP_REFERER'])) 	
 	  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki)) 
 		  ) { 
-		@header("Location:error.php?error=3");
+		@header("Location: error.php?error=3");
 		return false;
 	  }else{
-		//  echo eregi("^$_source1",$adresteki);
 		return true;
 	  }
 	}

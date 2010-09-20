@@ -106,7 +106,7 @@ require 'lib/flood-protection.php'; // include the class
     $protect -> db             = $_db; 
     
     if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
-  	  @header("Location:error.php?error=4");
+  	  @header("Location: error.php?error=4");
       die('<br/><img src="img/warning.png" align="absmiddle" border="0" style="vertical-align: middle;" alt=\"warning\"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 }
 	$host =  $_host;

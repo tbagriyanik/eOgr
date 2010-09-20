@@ -178,28 +178,33 @@ ob_start (); // Buffer output
 
 		require("menu.php");	
                 ?>
-               <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;"> 
-                <?php
+        <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;">
+          <?php
 				if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 				echo " $metin[556] : ";
                 if(isKonu($_GET["konu"])){
 				?>
-        <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank"><?php 	echo $metin[553];?></a> | 
-        <?php
+          <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank">
+          <?php 	echo $metin[553];?>
+          </a> |
+          <?php
 				}
         ?>
-        <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'><?php 		
+          <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'>
+          <?php 		
 		if($eMode=="2") 
 			echo "<strong>$metin[552]</strong>";
 		else
 			echo $metin[552];
-		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'><?php  		
+		?>
+          </a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
+          <?php  		
 		if($eMode=="3") 
 			echo "<strong>$metin[557]</strong>";
 		else
 			echo $metin[557];
-		?></a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
-        </div>
+		?>
+          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> </div>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>
@@ -623,9 +628,9 @@ fix_flash();
 	   
 ?>
           <div class="cleared"></div>
-              <?php  						
+          <?php  						
 				 if($eMode!="1") 	{									
-              ?>          
+              ?>
           <div class="Footer">
             <div class="Footer-inner">
               <?php  						
@@ -633,11 +638,12 @@ fix_flash();
               ?>
             </div>
             <div class="Footer-background"></div>
-              <?php  						
+            <?php  						
 				 }
-              ?>            
+              ?>
           </div>
-        </div><div class="cleared"></div>
+        </div>
+        <div class="cleared"></div>
       </div>
       <div class="cleared"></div>
     </div>
