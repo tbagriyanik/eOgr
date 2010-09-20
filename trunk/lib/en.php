@@ -616,9 +616,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[471] = " Notices";		
 		$metin[472] = " Members";		
 		
-		$metin[473] = "<strong><a href=\"siteSettings.php\">Membership Information</a> : </strong> ";		
+		$metin[473] = "<strong>Last Memberships : </strong> ";		
 		$metin[474] = "<strong><a href=\"dataChatActions.php\">Chat Information</a> (message, room) : </strong> ";		
-		$metin[475] = "<strong><a href=\"dataCommentList.php\">Comments</a> (comment) : </strong> ";		
+		$metin[475] = "<strong><a href=\"dataCommentList2.php\">Comments</a> (comment) : </strong> ";		
 		$metin[476] = "<strong><a href=\"dataRatingList.php\">Rating</a> (rate) : </strong> ";		
 		$metin[477] = "<strong><a href=\"dataWorkList.php\">Lesson Works</a> (duration  and working percentage) : </strong> ";		
 		$metin[478] = "<strong><a href=\"fileShare.php\">Files</a> (download count) : </strong> ";		

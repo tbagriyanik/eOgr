@@ -18,15 +18,15 @@ $_password 		= '';
 $_username 		= 'root'; 
 $_db 			= 'eogr'; 
 
-$_source1		= "http://localhost/eogr";		//eogr site address for check_source
-$_source2		= "http://127.0.0.1/eogr";		//must set to the exact values
+$_source1		= "http://localhost/eogr";		//for check_source()
+$_source2		= "http://127.0.0.1/eogr";		//MUST set to the exact values!
 
 $_uploadFolder	= "uploads";						
-//766 or 777 permission needs this folder
+//766 or 777 permission needs this folder, NOT obligatory!
 
 $_siteUnlockPwd	= "11111";							
-//when the site maintenance is engaged, this password is needed to reopen the site
+//when the site maintenance is engaged, this password is needed to REOPEN the site
 
 $_defaultTheme 	= "Simple";
-//what will be the theme at any first run...
+//what will be the default THEME...
 ?>

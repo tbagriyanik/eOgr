@@ -139,7 +139,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[67]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-	if ($tur=="2")	{
+	if ($tur=="2" or $tur=="1")	{
 	 //
 
 $currentPage = $_SERVER["PHP_SELF"];
@@ -149,7 +149,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
+if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && $tur=="2") {
   $deleteSQL = sprintf("DELETE FROM eo_shoutbox WHERE messageid=%s",
                        GetSQLValueString($_GET['id'], "int"));
 
@@ -184,7 +184,7 @@ $arayici =  temizle($_GET['arama']);
 		    $filtr2=" where (name like '%$arayici%' or message like '%$arayici%') ";
    }
 
-if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet") {
+if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet" && $tur=="2") {
    $silinenler = "''";
    for ($i = 0; $i < count($_POST["sil"]); $i++)
       $silinenler .= ",'".$_POST["sil"][$i]."'";
@@ -196,7 +196,7 @@ if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet") {
 	 echo "<font id='hata'>Se&ccedil;ilen kayýt(lar) silinemedi!</font>";
  }   
 
-if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3") && $tur=="2") {
   if ( 
      GetSQLValueString($_POST['messageid'], "text")=='NULL' || 
      GetSQLValueString($_POST['message'], "text")=='NULL'  	 
@@ -282,7 +282,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if ($_GET["upd"]=="1" && isset($_GET["messageid"]) ){
+if ($_GET["upd"]=="1" && isset($_GET["messageid"]) && $tur=="2" ){
 	//güncelleme
 ?>
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
@@ -353,10 +353,13 @@ else if ($totalRows_eoUsers>0)
 		echo odaGetir($row_eoUsers['ip']);				
 	  ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['date']); ?></td>
+                        <?php  if($tur=="2"){ ?>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="<?php echo $currentPage;?>?messageid=<?php echo $row_eoUsers['messageid'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['messageid']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['messageid']; ?>" value="<?php echo $row_eoUsers['messageid']; ?>" /></td>
+                        <?php } ?>
                       </tr>
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
+                      <?php  if($tur=="2"){ ?>
                       <tr>
                         <td colspan="7" align="center" valign="middle" class="tabloAlt" ><label>
                             <input name="tumunuSec" type="checkbox" id="tumunuSec" onclick="javascript: 
@@ -376,6 +379,7 @@ else if ($totalRows_eoUsers>0)
                             <input type="submit" name="Sil" id="Sil" value="<?php echo $metin[37]?>" />
                           </label></td>
                       </tr>
+                      <?php } ?>
                     </table>
                     <?php
 if ($totalRows_eoUsers> $maxRows_eoUsers)

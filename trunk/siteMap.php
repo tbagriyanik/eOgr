@@ -233,8 +233,14 @@ Lesser General Public License for more details.
                             <li><img src="img/ogrt_user.png" border="0" style="vertical-align: middle;" alt="<?php echo $metin[95]?>"/> <?php echo $metin[95]?>
                               <ul style="list-style:none">
                                 <li><a href="lessonsEdit.php"><span><span> <?php echo $metin[62].$bilgi4?></span></span></a></li>
-                                <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?></span></span></a></li>
-                                <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?></span></span></a></li>
+                                <li><?php echo $metin[185];?>
+                                  <ul style="list-style:none">
+                                    <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?></span></span></a></li>
+                                    <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
+                                    <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
+                                    <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?></span></span></a></li>
+                                  </ul>
+                                </li>
                               </ul>
                             </li>
                           </ul></td>
@@ -245,12 +251,16 @@ Lesser General Public License for more details.
                                 <li><a href="siteSettings.php"><span><span> <?php echo $metin[472].$bilgi5?> </span></span></a></li>
                                 <li><a href="siteSettings2.php"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/> <?php echo $metin[156]?> </span></span></a></li>
                                 <li><a href="siteSettings3.php"><span><span> <?php echo $metin[112]?> </span></span></a></li>
-                                <li><a href="rssEdit.php"><span><span> <?php echo $metin[70].$bilgi7?> </span></span></a></li>
-                                <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
-                                <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
-                                <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
-                                <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
-                                <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288].$bilgi2?> </span></span></a></li>
+                                <li><a href="rssEdit.php"><span><span> <?php echo $metin[70].$bilgi7?> </span></span></a> </li>
+                                <li><?php echo $metin[185];?>
+                                  <ul style="list-style:none">
+                                    <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
+                                    <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
+                                    <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
+                                    <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
+                                    <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?></span></span></a></li>
+                                  </ul>
+                                </li>
                               </ul>
                             </li>
                           </ul></td>

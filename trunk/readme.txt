@@ -1,5 +1,5 @@
 
-	eOgr - v124c, 19-09-2010
+	eOgr - v124d, 20-09-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -33,7 +33,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (545 hours programming, 17.000 lines PHP, 22.000 lines Javascript and CSS)
+	15-11-2008 (550 hours programming, 17.000 lines PHP, 22.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -105,10 +105,10 @@ CSS, RSS and HTML Validations:
 Advice:
 	Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
 
-Also test your favorite browser's security: 
+Also test your favorite Browser's Security: 
 	http://bcheck.scanit.be/bcheck/
 
-Special Thanks for testing:
+Special Thanks for Testing:
 	Aziz BEKTAS (my colleague from Istanbul, TURKIYE)
 
 License: 
