@@ -743,6 +743,45 @@ function yetimKayitNolar($tablo){
 				}					
 		   
 		 break;
+		 case "eo_friends":
+		 
+				$sql1 =    "SELECT eo_friends.id 
+							FROM eo_friends
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_friends.davetEdenID
+							WHERE eo_users.userName is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc .= "<a href='dataFriends.php'>[".$row_gelen['id']."]</a> ";
+				     
+				   if (empty($sonuc)) 
+				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
+					else
+					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				}	
+								
+				$sql1 =    "SELECT eo_friends.id 
+							FROM eo_friends
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_friends.davetEdilenID
+							WHERE eo_users.userName is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc2 = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc2 .= "<a href='dataFriends.php'>[".$row_gelen['id']."]</a> ";
+				     
+				   if (empty($sonuc2)) 
+				    $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
+					else
+					$sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc2;
+				}					
+		   
+		 break;
 	 }
 	@mysql_free_result($result1); 
 	return $sonuc;

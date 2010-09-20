@@ -382,7 +382,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	font-size: 12px;
 	font-style: normal;
 	font-weight: normal;
-	color: #999;
+	color: #000;
 	padding: 0 5px;
 	margin: 0 3px;
 	line-height: 26px;
@@ -401,11 +401,10 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	background-position: right -26px;
 }
 .artmenu a:hover span span {
-	color: #3C6D80;
+	background-color:#FC6;
 	background-position: left -26px;
 }
 .artmenu li:hover a span span {
-	color: #3C6D80;
 	background-position: left -26px;
 }
 .artmenu a.active {
@@ -415,7 +414,8 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	background-position: right -52px;
 }
 .artmenu a.active span span {
-	color: #404C2F;
+	color:  #00F;
+	background-color:#FC6;
 	background-position: left -52px;
 }
 /* end MenuItem */
@@ -458,12 +458,11 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	margin-left: auto;
 }
 .artmenu ul li a:hover {
-	color: #CEE1E8;
 	border-color: #7C806F;
+	background-color:#FC6;
 	background-position: 0 -22px;
 }
 .artmenu ul li:hover>a {
-	color: #CEE1E8;
 	border-color: #7C806F;
 	background-position: 0 -22px;
 }

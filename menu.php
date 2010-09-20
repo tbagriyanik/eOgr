@@ -106,7 +106,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <ul class="artmenu">
   <li><a href="index.php" 
 						<?php
-						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php" || $currentFile=="friends.php"|| $currentFile=="dataCommentList2.php")
+						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php"|| $currentFile=="dataChatActions.php"|| $currentFile=="dataRatingList.php" || $currentFile=="friends.php"|| $currentFile=="dataCommentList2.php")
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
@@ -120,8 +120,20 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 							 if ($tur=='2' || $tur=='1'){
                             ?>
       <li><a href="lessonsEdit.php"><span><span> <?php echo $metin[62].$bilgi4?> </span></span></a></li>
-      <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
-      <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?> </span></span></a></li>
+      <li><a href="dataWorkList.php"><span><span>
+        <?php
+				    echo $metin[185];
+					$boyut=20-strlen($metin[185]);
+					for($boy=1;$boy<=$boyut;$boy++) echo "&nbsp;";
+				  ?>
+        &#8250; </span></span></a>
+        <ul>
+          <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
+          <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
+          <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
+          <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[288].$bilgi2?> </span></span></a></li>
+        </ul>
+      </li>
       <?php
 							 }
                             ?>

@@ -201,8 +201,8 @@ Lesser General Public License for more details.
 						$host =  $_host;
 						$dbUser =  $_username;
 						$dbPassword =  $_password;
-						$sqlFile = "REPAIR  TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files; 
-									OPTIMIZE TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files;";
+						$sqlFile = "REPAIR  TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files, eo_friends; 
+		OPTIMIZE TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files, eo_friends;";
 						
 						$baglan2=mysql_connect($host, $dbUser, $dbPassword);
 						
@@ -256,6 +256,7 @@ Lesser General Public License for more details.
                       <strong>eo_rating <?php echo getTableSize("eo_rating"); ?> :</strong> <?php echo yetimKayitNolar("eo_rating")?><br />
                       <strong>eo_comments <?php echo getTableSize("eo_comments"); ?> :</strong> <?php echo yetimKayitNolar("eo_comments")?><br />
                       <strong>eo_files <?php echo getTableSize("eo_files"); ?> :</strong> <?php echo yetimKayitNolar("eo_files")?><br />
+                      <strong>eo_friends <?php echo getTableSize("eo_friends"); ?> :</strong> <?php echo yetimKayitNolar("eo_friends")?><br />
                       eo_users <?php echo getTableSize("eo_users"); ?> - (<?php echo $metin[212]?>)<br />
                       eo_shoutbox <?php echo getTableSize("eo_shoutbox"); ?> - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
                       eo_usertrack <?php echo getTableSize("eo_usertrack"); ?> - (<?php echo $metin[212].", ".$metin[238];?>)<br />

@@ -1,7 +1,10 @@
-<?php 
+<?php
+if(!in_array($_GET["error"],array("5","6"))) {
 	require("conf.php");
 	checkLoginLang(false,true,"error.php");
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
+}else
+	header("Location:install.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,12 +50,6 @@
 		 case "4":
 		  echo "<font id='hata'> $metin[401]</font>"; //flood
 		  break;		 
-		 case "5":			 //installation
-		  echo "<font id='hata'> $metin[487]</font>";
-		  break;		  		  
-		 case "6":			//tables not found	
-		  echo "<font id='hata'> $metin[488]</font>";
-		  break;		  
 		 case "7":			//bad login
 		  echo "<font id='hata'> ".$metin[404]."</font><br/>".$metin[402];
 		  break;		  

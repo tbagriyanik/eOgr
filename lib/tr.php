@@ -631,9 +631,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[471] = " Bildirimler";		
 		$metin[472] = " Üyeler";		
 		
-		$metin[473] = "<strong><a href=\"siteSettings.php\">Üyeler</a> : </strong> ";		
+		$metin[473] = "<strong>Son Üyeler : </strong> ";		
 		$metin[474] = "<strong><a href=\"dataChatActions.php\">Sohbet bilgisi</a> (mesaj, oda) : </strong> ";		
-		$metin[475] = "<strong><a href=\"dataCommentList.php\">Yorumlar</a> (yorum) : </strong> ";		
+		$metin[475] = "<strong><a href=\"dataCommentList2.php\">Yorumlar</a> (yorum) : </strong> ";		
 		$metin[476] = "<strong><a href=\"dataRatingList.php\">Oylar</a> (oy) : </strong> ";		
 		$metin[477] = "<strong><a href=\"dataWorkList.php\">Ders Çalýþmalar</a> (süre ve bitirme yüzdesi) : </strong> ";		
 		$metin[478] = "<strong><a href=\"fileShare.php\">Dosyalar</a> (indirme sayýsý) : </strong> ";		
