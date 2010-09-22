@@ -8,7 +8,7 @@ the returned xml has the following structure
 */
 session_start();
 
-include ("../../conf.php");
+include ("conf.php");
 
 $aUsers =array();
 $aID 	=array();

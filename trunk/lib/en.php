@@ -754,5 +754,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[589] = "Search for a Friend";
 		$metin[590] = "You can search in the real name";
 		$metin[591] = "Add as a Friend";		
+		$metin[592] = "Your pending friendship approvals :";	
+		$metin[593] = "There is no pending friendship approvals.";
 												
 ?>
