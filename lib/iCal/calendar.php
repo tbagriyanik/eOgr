@@ -158,31 +158,6 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
         <link rel="stylesheet" href="master.css" type="text/css" media="screen" charset="utf-8" />
         <script src="../jquery-1.4.2.min.js" type="text/javascript"> </script>
         <script src="coda.js" type="text/javascript"> </script>
-        <style type="text/css">
-.date_has_event {
-	cursor:help;
-}
-h2 {
-	padding:0px;
-	margin:0px;
-}
-a.date_selector {
-	font-size:90%;
-	color: #000;
-	text-decoration:none;
-}
-a:hover.date_selector {
-	font-size:90%;
-	color: #00f;
-	text-decoration:underline;
-}
-body, td, th {
-	font-size: 14px;
-}
-body {
-	background-color: #FFF;
-}
-</style>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
         </head>
         <body>

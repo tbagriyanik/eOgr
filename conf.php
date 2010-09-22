@@ -785,6 +785,13 @@ function yetimKayitNolar($tablo){
 	return $sonuc;
 }
 /*
+getFriendApprovals:
+kullanýcýnýn bekleyen arkadaþlýk istekleri
+*/
+function getFriendApprovals(){
+	return "";
+}
+/*
 dosyaSil:
 dosyanýn fiziksel olarak silinmesi
 */

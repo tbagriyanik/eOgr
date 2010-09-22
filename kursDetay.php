@@ -208,10 +208,10 @@ Shadowbox.init({
 	  	//die($metin[448]);	 		  
 		
 	 if (trim(getStats(11))!=""){
-		 echo "<br/><div class='ikiKolon'>";
-		 echo "<strong>".$metin[213]."</strong><br/>".getStats(11)."</div>";
+		 //echo "<br/><div class='ikiKolon'>";
+		 //echo "<strong>".$metin[213]."</strong><br/>".getStats(11)."</div>";
 		 if (trim(getStats(12))!=""){
-			 echo "<div class='ikiKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
+			 echo "<div class='tekKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
 		 }		 
 	 }else
 	  echo "$metin[485]";			

@@ -47,22 +47,22 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	$bilgi9 = sonTarihGetir("calis");
 	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
 ?>
-<script  type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
-<script  type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3_comp.js" charset="utf-8"></script>
 
 <div class="aramaDiv"> <a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a>&nbsp;&nbsp;<a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a>&nbsp;&nbsp;<a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a>&nbsp;&nbsp;
   <input name="searchterm" type="text" id="searchterm" size="15" maxlength="50" title="<?php echo $metin[177]?>"/>
   <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[168]?>" title="<?php echo $metin[168]?>"/></div>
 <script type="text/javascript">
                         var options = {
-                            script:"lib/as/test.php?",
+                            script:"getLesson.php?",
                             varname:"input",
                             json:true,
                             shownoresults:false,
                             maxresults:5,
-                            callback: function (obj) { 							
-								location.href = eval('\"lessons.php?konu='+obj.id+'\"');
+                            callback: function (obj) { 	
+								document.location.href = eval('\"lessons.php?konu='+obj.id+'\"');
 							}
                         };
                         var as_json = new bsn.AutoSuggest('searchterm', options);                                                

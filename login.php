@@ -281,9 +281,17 @@ Shadowbox.init({
                   <div class="BlockContent-body">
                     <div>
                       <div class="msg_list">
-                        <h2><?php echo $metin[542]?></h2>
-                        <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="750" height="575" align="middle" marginheight="45" allowtransparency="false" style="background-color: white"></iframe>
-                      </div>
+                        <?php
+					  $bekleyenArkadas = getFriendApprovals();
+					   if(!empty($bekleyenArkadas)) {
+								echo $metin[592]."<br/>";
+								echo $bekleyenArkadas;
+						   }else{
+							 	echo "<font id='tamam'>$metin[593]</font>" ;
+						   }	   
+                      ?>
+                        <br />
+                        <a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a> </div>
                     </div>
                   </div>
                 </div>

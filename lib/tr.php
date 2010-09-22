@@ -769,5 +769,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[589] = "Bir Arkadaþ Arama";
 		$metin[590] = "Gerçek adý içinde arama yapabilirsiniz";
 		$metin[591] = "Arkadaþ Olarak Ekle";
+		$metin[592] = "Onay bekleyen arkadaþlýk teklifleriniz :";
+		$metin[593] = "Onay bekleyen arkadaþlýk teklifleriniz yoktur.";
 		
 ?>

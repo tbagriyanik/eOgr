@@ -185,8 +185,7 @@ ob_start (); // Buffer output
                 if(isKonu($_GET["konu"])){
 				?>
           <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank">
-          <?php 	echo $metin[553];?>
-          </a> |
+          <?php 	echo $metin[553];?></a>&nbsp; |
           <?php
 				}
         ?>
@@ -196,15 +195,13 @@ ob_start (); // Buffer output
 			echo "<strong>$metin[552]</strong>";
 		else
 			echo $metin[552];
-		?>
-          </a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
+		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
           <?php  		
 		if($eMode=="3") 
 			echo "<strong>$metin[557]</strong>";
 		else
 			echo $metin[557];
-		?>
-          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> </div>
+		?></a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> </div>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>

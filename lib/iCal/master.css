@@ -91,3 +91,23 @@ td.today:hover {
 	font-weight: bold;
 	color: #222;
 }
+.date_has_event {
+	cursor:help;
+}
+h2 {
+	padding:0px;
+	margin:0px;
+}
+a.date_selector {
+	font-size:90%;
+	color: #00a;
+	text-decoration:none;
+}
+a:hover.date_selector {
+	font-size:90%;
+	color: #00f;
+	text-decoration:underline;
+}
+body, td, th {
+	font-size: 14px;
+}
