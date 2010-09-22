@@ -336,7 +336,7 @@ if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
                     <br />
                     <div class="rating">
                       <?php
-						$id = RemoveXSS($_GET["konu"]);
+						$_SESSION["aktifDers"] = RemoveXSS($_GET["konu"]);
 						include "rating.php";
                     ?>
                     </div>

@@ -26,29 +26,6 @@ session_start();
         require("lib/en.php");         
 
 require 'database.php'; 
-
-/*
-check_source:  
-sayfa güvenliði için kontrol
-*/
-if(!function_exists("check_source")){
-	function check_source()  
-	{  
-		global  $_source1;
-		global  $_source2;
-		$adresteki = $_SERVER['HTTP_REFERER'];
-		
-	  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki)) 
-		  ) { 
-		@header("Location: error.php?error=3");
-		return false;
-	  }else{
-		return true;
-	  }
-	}
-}
-check_source();
-
 /*
 baglan2:
 veritabaný baðlantýsý
@@ -199,36 +176,38 @@ function oyOrtalama($konuID){
 
 if(getUserIDrate($_SESSION["usern"],$_SESSION["userp"])=="") die ("");
 
-if (!isset($id) && isset($_GET['konu2']) && !empty($_GET['konu2'])) {
- $id = temizle2($_GET['konu2']);
-}
+$id = $_SESSION["aktifDers"];
 
-if (isset($_GET['konu2']) && $_GET['konu2'] == $id && !empty($_GET['konu2'])) {
- if (isset($_GET['rating']) && is_numeric($_GET['rating']) && $_GET['rating']>0 && $_GET['rating']<6 ) {
-  		oyGonder(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ),temizle2($_GET['rating']));
-		echo $metin[275];
- } else
-  echo "Oy hatalý";
+if (!empty($id)) {
+	//eðer ders sayfasýndan gelen bir DEÐER var ise 
+	//yoksa adresten gelindi ise olmaz
+		if (isset($_GET['konu2']) && $_GET['konu2'] == $id && !empty($_GET['konu2'])) {
+		 if (isset($_GET['rating']) && is_numeric($_GET['rating']) && $_GET['rating']>0 && $_GET['rating']<6 ) {
+				oyGonder(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ),temizle2($_GET['rating']));
+				echo $metin[275];
+		 } else
+		  die("Oy hatalý");
+		}
+		if (oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))>0) {
+		 echo "
+		 <p>".$metin[249]." :</p>
+		  <ul class=\"rate".oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))."\">";
+		 } else {
+		 echo "
+		 <p>".$metin[248]." :</p>
+		  <ul>";
+		}
+		
+		echo '
+		   <li  style="list-style-type:none;"><a class="rate1" title="'.$metin[250].'" href="?konu2='.$id.'&amp;rating=1">1</a></li>
+		   <li  style="list-style-type:none;"><a class="rate2" title="'.$metin[251].'" href="?konu2='.$id.'&amp;rating=2">2</a></li>
+		   <li  style="list-style-type:none;"><a class="rate3" title="'.$metin[252].'" href="?konu2='.$id.'&amp;rating=3">3</a></li>
+		   <li  style="list-style-type:none;"><a class="rate4" title="'.$metin[253].'" href="?konu2='.$id.'&amp;rating=4">4</a></li>
+		   <li  style="list-style-type:none;"><a class="rate5" title="'.$metin[254].'" href="?konu2='.$id.'&amp;rating=5">5</a></li>
+		  </ul>';
+		  if(oyToplam($id)>0)
+			echo "$metin[273] : ".oyToplam($id).", $metin[274] : ".round(oyOrtalama($id),1);   
+			else
+			echo "$metin[278]";
 }
-if (oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))>0) {
- echo "
- <p>".$metin[249]." :</p>
-  <ul class=\"rate".oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))."\">";
- } else {
- echo "
- <p>".$metin[248]." :</p>
-  <ul>";
-}
-
-echo '
-   <li  style="list-style-type:none;"><a class="rate1" title="'.$metin[250].'" href="?konu2='.$id.'&amp;rating=1">1</a></li>
-   <li  style="list-style-type:none;"><a class="rate2" title="'.$metin[251].'" href="?konu2='.$id.'&amp;rating=2">2</a></li>
-   <li  style="list-style-type:none;"><a class="rate3" title="'.$metin[252].'" href="?konu2='.$id.'&amp;rating=3">3</a></li>
-   <li  style="list-style-type:none;"><a class="rate4" title="'.$metin[253].'" href="?konu2='.$id.'&amp;rating=4">4</a></li>
-   <li  style="list-style-type:none;"><a class="rate5" title="'.$metin[254].'" href="?konu2='.$id.'&amp;rating=5">5</a></li>
-  </ul>';
-  if(oyToplam($id)>0)
-	echo "$metin[273] : ".oyToplam($id).", $metin[274] : ".round(oyOrtalama($id),1);   
-	else
-	echo "$metin[278]";
 ?>

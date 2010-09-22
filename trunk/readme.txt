@@ -1,5 +1,5 @@
 
-	eOgr - v125a, 20-09-2010
+	eOgr - v125a, 22-09-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -38,7 +38,8 @@ Start Date:
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
-INSTALLATION (read INSTALL.txt):
+
+INSTALLATION (please, read INSTALL.txt for more details):
 -------------
 (1) Edit your settings in "database.php" with an editor
 (2) " http://localhost/eogr/install.php " is for installation.     
