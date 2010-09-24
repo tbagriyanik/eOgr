@@ -238,20 +238,20 @@ Shadowbox.init({
 				 if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
 					  if($siniflar!=""){
-						  echo $metin[210]." : ".$siniflar;
-			   		  	  echo "<br/>";
+						  echo "<p>".$metin[210]." : ".$siniflar;
+			   		  	  echo "</p>";
 					  }
 				  }			  
 				 if($_SESSION["tur"]=='1' || $_SESSION["tur"]=='2') {
 					  $pasifYorumlar = getpasifYorumlar();
 					  if($pasifYorumlar>0){
-						  echo $metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
-			   		  	  echo "<br/>";
+						  echo "<p>".$metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
+			   		  	  echo "</p>";
 					  }
 				  }			  
 
 	 if (trim(getStats(11))!=""){
-		 echo "<br/><div class='ikiKolon'>";
+		 echo "<div class='ikiKolon'>";
 		 echo "<strong>".$metin[213]."</strong><br/>".getStats(11)."</div>";
 		 if (trim(getStats(12))!=""){
 			 echo "<div class='ikiKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
@@ -281,7 +281,8 @@ Shadowbox.init({
                   <div class="BlockContent-body">
                     <div>
                       <div class="msg_list">
-                        <?php
+                        <p>
+                          <?php
 					  $bekleyenArkadas = getFriendApprovals();
 					   if(!empty($bekleyenArkadas)) {
 								echo $metin[592]."<br/>";
@@ -290,7 +291,8 @@ Shadowbox.init({
 							 	echo "<font id='tamam'>$metin[593]</font>" ;
 						   }	   
                       ?>
-                        <br />
+                        
+                        <p/>
                         <a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a> </div>
                     </div>
                   </div>

@@ -789,7 +789,22 @@ getFriendApprovals:
 kullanýcýnýn bekleyen arkadaþlýk istekleri
 */
 function getFriendApprovals(){
-	return "";
+	global $metin,$yol1;
+	$aktifKullID = getUserID2($_SESSION["usern"]);
+	$sql1 =    "SELECT * 
+				FROM eo_friends
+				WHERE davetEdenID='$aktifKullID' and kabul='0'
+				LIMIT 0,5";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc .= "<a href='askForFriendship.php?adi=".kullAdi($row_gelen['davetEdilenID'])."&amp;id=".$row_gelen['davetEdilenID']."' rel='facebox'>".kullAdi($row_gelen['davetEdilenID'])."</a> ";
+				     
+				}	
+	return $sonuc;
 }
 /*
 arkadasKabulDurumu:
@@ -810,6 +825,32 @@ function arkadasKabulDurumu($id){
 		default:
 		 return "";
 	}
+}
+/*
+arkadasTeklifEt:
+birine arkadaþ isteði gönderme
+*/
+function arkadasTeklifEt($id){
+	global $yol1,$gonderenID;				
+		
+		$datem	=	date("Y-n-j H:i:s");		
+		
+		if(!empty($gonderenID) && !empty($kisi)) {			
+			if($kabul=="1")
+				$sql2 = "UPDATE eo_friends
+				   SET kabul='1'
+				   WHERE davetEdenID='$gonderenID' and davetEdilenID='$kisi'
+				   "; 
+			 else			  
+				$sql2 = "UPDATE eo_friends
+				   SET kabul='2'
+				   WHERE davetEdenID='$gonderenID' and davetEdilenID='$kisi'"; 
+
+			$result2 = mysql_query($sql2, $yol1); 
+			return $result2;
+		 }
+	
+	return "-";
 }
 /*
 dosyaSil:

@@ -764,6 +764,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[599] = "Waiting";												
 		$metin[600] = "Approved";												
 		$metin[601] = "Disaproved";												
-		
-												
+		$metin[602] = "You approved!";												
+		$metin[603] = "You disaproved!";												
+										
 ?>
