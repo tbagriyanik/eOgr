@@ -42,6 +42,7 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script language="javascript" src="lib/jquery.cookie.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
@@ -300,11 +301,6 @@ if(isset($_GET["kisi"]))
 	if(!empty($_GET["kisi"])){
 		$_SESSION["seciliArkadas"] = RemoveXSS($_GET["kisi"]);
 	}
-if(isset($_GET["ekle"]))				 
-	if(!empty($_GET["ekle"])){
-		echo "<p>".arkadasTeklifEt(RemoveXSS($_GET["ekle"]))."
-		</p>";
-	}
 ?>
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".$geceliKullID."&amp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
                   <?php
@@ -333,11 +329,18 @@ if(isset($_GET["ekle"]))
 			 echo "</strong></p>";	 
 		 }
 		 
+if(isset($_GET["ekle"]))				 
+	if(!empty($_GET["ekle"])){
+		if(arkadasTeklifEt(RemoveXSS($_GET["ekle"])))
+			echo "<font id='tamam'>Teklifiniz iletildi.</font>";
+		 else
+			echo "<font id='hata'>Bir hata meydana geldi!</font>";
+	}
 	//login sayfasýndan				 
 	  $bekleyenArkadas = getFriendApprovals();
 	   if(!empty($bekleyenArkadas)) {
-				echo "<p>".$metin[592]." ";
-				echo $bekleyenArkadas."</p>";
+				echo "<font id='uyari'>".$metin[592]." ";
+				echo $bekleyenArkadas."</font>";
 		   }else{
 				echo "<font id='tamam'>$metin[593]</font>" ;
 		   }	   
@@ -364,20 +367,10 @@ if(isset($_GET["ekle"]))
                   <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[583]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a> | <a href="#" id="tab4D"><span><?php echo $metin[581]?></span></a></div>
                   <div id="tab1" class="tabContent">
                     <?php
-					//GRUP
-	if(arkadasListesi()!=""){				
-	$bilgi1 = sonBilgileriGetir("sohbet","");
-	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
-	$bilgi2 = sonBilgileriGetir("yorum","");
-	if(!empty($bilgi2))	echo $metin[475]."<p class='ozetBilgi'>".$bilgi2."</p>";
-	$bilgi3 = sonBilgileriGetir("oy","");
-	if(!empty($bilgi3))	echo $metin[476]."<p class='ozetBilgi'>".$bilgi3."</p>";
-	$bilgi4 = sonBilgileriGetir("ders","");
-	if(!empty($bilgi4))	echo $metin[477]."<p class='ozetBilgi'>".$bilgi4."</p>";
-	$bilgi5 = sonBilgileriGetir("uye","");
-	if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
-	$bilgi6 = sonBilgileriGetir("dosya","");
-	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";				  
+					//ARKADASLARIM
+		$arkadaslarim = arkadasListesi();			
+	if($arkadaslarim!=""){				
+		echo "$arkadaslarim";
 	}else{
 		echo "<font id='uyari'>$metin[588]</font>";
 	}
@@ -419,7 +412,7 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	if(!empty($bil_6))	echo $metin[478]."<p class='ozetBilgi'>".$bil_6."</p>";	
 	if(empty($bil_1) and empty($bil_2) and empty($bil_3) and empty($bil_4) and empty($bil_6))
 	  echo "<font id='uyari'>$metin[586]</font>";	
-	if ($seciliKisi!=$geceliKullID)   			  
+	if ($seciliKisi!=$geceliKullID and !arkadasTeklifVarMi($geceliKullID,$seciliKisi))   			  
 		echo "<p><a href='friends.php?ekle=".$seciliKisi."'>$metin[591]</a></p>";
 }else
 	echo "<font id='uyari'>$metin[587]</font>";

@@ -82,12 +82,15 @@ function islemGonder($gonderenID, $kisi, $kabul){
 			if($kabul=="1")
 				$sql2 = "UPDATE eo_friends
 				   SET kabul='1',kabulTarihi ='$datem'
-				   WHERE davetEdenID='$gonderenID' and davetEdilenID='$kisi'
+				   WHERE (davetEdenID='$gonderenID' and davetEdilenID='$kisi') or 
+				   		(davetEdilenID='$gonderenID' and davetEdenID='$kisi')
 				   "; 
 			 else			  
 				$sql2 = "UPDATE eo_friends
 				   SET kabul='2',kabulTarihi ='$datem'
-				   WHERE davetEdenID='$gonderenID' and davetEdilenID='$kisi'"; 
+				   WHERE (davetEdenID='$gonderenID' and davetEdilenID='$kisi') or 
+				   		(davetEdilenID='$gonderenID' and davetEdenID='$kisi')
+				   "; 
 
 			$result2 = mysql_query($sql2, $yol1); 
 			return $result2;
@@ -104,7 +107,7 @@ if (in_array($kabul,array("0","1")) && $gonderenID!="") {
 	  else
 	  echo "ERR";
 } else {
-   echo "";
+   echo "ERR";
    }
 
 ?>
