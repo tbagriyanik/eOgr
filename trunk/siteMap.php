@@ -50,7 +50,7 @@ Lesser General Public License for more details.
 	top:20px;
 	left:220px;
 	min-width:73%;
-	min-height:77%;
+	min-height:80%;
 	z-index:1000;
 }
 .underShadow2 {
@@ -61,7 +61,7 @@ Lesser General Public License for more details.
 	top:20px;
 	left:420px;
 	min-width:50%;
-	min-height:77%;
+	min-height:80%;
 	z-index:1000;
 }
 .underShadow3 {
@@ -72,7 +72,7 @@ Lesser General Public License for more details.
 	top:20px;
 	left:620px;
 	min-width:25%;
-	min-height:77%;
+	min-height:80%;
 	z-index:1000;
 }
 .underShadow4 {

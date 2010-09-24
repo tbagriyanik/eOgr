@@ -785,24 +785,46 @@ function yetimKayitNolar($tablo){
 	return $sonuc;
 }
 /*
+arkadasListesi:
+oturum açan kiþinin arkadaþ listesi
+*/
+function arkadasListesi(){
+	global $metin,$yol1;
+	$aktifKullID = getUserID2($_SESSION["usern"]);
+	$sonuc = "";	
+	$sql1 =    "SELECT * 
+				FROM eo_friends
+				WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
+				LIMIT 0,5";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{				    
+				   while($row_gelen = mysql_fetch_assoc($result1)) {
+					if($row_gelen['davetEdenID']!=$aktifKullID)
+					    $sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdenID']."'>".kullAdi($row_gelen['davetEdenID'])."</a> ";				     
+					else
+						$sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdilenID']."'>".kullAdi($row_gelen['davetEdilenID'])."</a> ";						
+				   }
+				}	
+	return $sonuc;
+}
+/*
 getFriendApprovals:
 kullanýcýnýn bekleyen arkadaþlýk istekleri
 */
 function getFriendApprovals(){
 	global $metin,$yol1;
 	$aktifKullID = getUserID2($_SESSION["usern"]);
+	$sonuc = "";
 	$sql1 =    "SELECT * 
 				FROM eo_friends
-				WHERE davetEdenID='$aktifKullID' and kabul='0'
+				WHERE davetEdilenID='$aktifKullID' and kabul='0'
 				LIMIT 0,5";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1){				  	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='askForFriendship.php?adi=".kullAdi($row_gelen['davetEdilenID'])."&amp;id=".$row_gelen['davetEdilenID']."' rel='facebox'>".kullAdi($row_gelen['davetEdilenID'])."</a> ";
-				     
+				    $sonuc .= "<a href='askForFriendship.php?adi=".kullAdi($row_gelen['davetEdenID'])."&amp;id=".$row_gelen['davetEdenID']."' rel='facebox'>".kullAdi($row_gelen['davetEdenID'])."</a> ";		     
 				}	
 	return $sonuc;
 }
@@ -831,26 +853,40 @@ arkadasTeklifEt:
 birine arkadaþ isteði gönderme
 */
 function arkadasTeklifEt($id){
-	global $yol1,$gonderenID;				
+	global $yol1;				
+	$gonderenID	= getUserID($_SESSION["usern"],$_SESSION["userp"]);
+	$datem	=	date("Y-n-j H:i:s");		
 		
-		$datem	=	date("Y-n-j H:i:s");		
-		
-		if(!empty($gonderenID) && !empty($kisi)) {			
-			if($kabul=="1")
-				$sql2 = "UPDATE eo_friends
-				   SET kabul='1'
-				   WHERE davetEdenID='$gonderenID' and davetEdilenID='$kisi'
-				   "; 
-			 else			  
-				$sql2 = "UPDATE eo_friends
-				   SET kabul='2'
-				   WHERE davetEdenID='$gonderenID' and davetEdilenID='$kisi'"; 
+		if(!empty($gonderenID) && !empty($id)) {			
+			if(!arkadasTeklifVarMi($gonderenID,$id)){
+				 $sql2 = "INSERT INTO eo_friends
+				    (kabul, davetEdenID, davetEdilenID, davetTarihi)
+				 	VALUES 
+					('0','$gonderenID','$id','$datem')";  
 
-			$result2 = mysql_query($sql2, $yol1); 
-			return $result2;
+				$result2 = mysql_query($sql2, $yol1); 
+				return $result2;
+			}
+			return false; //zaten teklif var!
 		 }
 	
-	return "-";
+	return false;
+}
+/*
+arkadasTeklifVarMi:
+daha önceden var mý arkadaþ teklifi?
+*/
+function arkadasTeklifVarMi($gonderenID,$id){
+	
+	$sql1 = "SELECT * FROM eo_friends 
+			WHERE 
+			(davetEdenID='$gonderenID' and davetEdilenID='$id') or
+			(davetEdilenID='$gonderenID' and davetEdenID='$id') 
+			LIMIT 0,1";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	return ($result1 && mysql_numrows($result1) == 1); 
 }
 /*
 dosyaSil:
@@ -3530,13 +3566,6 @@ function sonSatirGetir($tablo){
 		break;
 	}
 	return $sonuc;
-}
-/*
-arkadasListesi:
-oturum açan kiþinin arkadaþ listesi
-*/
-function arkadasListesi(){
-	return false;
 }
 /*
 sonBilgileriGetir:

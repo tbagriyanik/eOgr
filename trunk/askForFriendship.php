@@ -23,7 +23,6 @@ Lesser General Public License for more details.
 	$adi = RemoveXSS($_GET["adi"]);
 	$id = RemoveXSS($_GET["id"]);	
 ?>
-<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <h4><?php echo $metin[591]." : ".$adi;?></h4>
 <div id="commAdderResult1" style="visibility:hidden;"> <?php echo $metin[602];?> </div>
 <div id="commAdderResult2" style="visibility:hidden;"> <?php echo $metin[603];?> </div>
@@ -37,17 +36,19 @@ islemYap1: parametresiz,
 arkadas kabul edilmesi
 */
 function islemYap1(){
-	arkadasOnayla(<?php echo $id?>);	
-	document.getElementById('commAdder').style.visibility = 'hidden' ;
-	document.getElementById('commAdderResult1').style.visibility = 'visible' ;
+	if(arkadasOnayla(<?php echo $id?>)!=""){		
+		document.getElementById('commAdder').style.visibility = 'hidden' ;
+		document.getElementById('commAdderResult1').style.visibility = 'visible' ;
+	}
 }            
 /*
 islemYap2: parametresiz, 
 arkadas red edilmesi
 */
 function islemYap2(){
-	arkadasOnaylama(<?php echo $id?>);	
-	document.getElementById('commAdder').style.visibility = 'hidden' ;
-	document.getElementById('commAdderResult2').style.visibility = 'visible' ;
+	if(arkadasOnaylama(<?php echo $id?>)!=""){		
+		document.getElementById('commAdder').style.visibility = 'hidden' ;
+		document.getElementById('commAdderResult2').style.visibility = 'visible' ;
+	}
 }            
 </script> 
