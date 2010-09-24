@@ -239,7 +239,7 @@ Lesser General Public License for more details.
 		$metin[189]="* If user's working period is over %s seconds and work percentage is 100 are <span style=\"background-color: wheat;\">marked</span>.<br/>* Abbreviation for time: y - year, d - day, s - second";
 		
 		$metin[190]="Students";
-		$metin[191]="Unregistered Users (demo)";
+		$metin[191]="Unregistered Users";
 		$metin[192]="All Users";    	
 		
 		$metin[193]="Remember my user name";    	
@@ -248,7 +248,7 @@ Lesser General Public License for more details.
 		
 		$metin[196]="Forget my user name";    	
 		
-		$metin[197]="Statistics";    	
+		$metin[197]=" Statistics";    	
 		$metin[198]="Most working student(s)";    	
 		$metin[199]="Rarely working student(s)";    	
 		$metin[200]="Most worked topics";    	
@@ -384,7 +384,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[286]="eOgr - simply elearning";
 		
-		$metin[287]="Rating Data";
+		$metin[287]=" Rating Data";
 		$metin[288]=" Comment Data";
 		$metin[289]="Rating";
 		$metin[290]="Comment";
@@ -403,12 +403,12 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[300]="If this doesn't work, use Ctrl+D shortcut";
 		
 		$metin[301]="Topic Information";
-		$metin[302]="Last demo user works";
+		$metin[302]="Last unregistered user works";
 		
 		$metin[303]="Other General Options";		
 		$metin[304]="Enable Chat";
 		$metin[305]="Enable News (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
-		$metin[306]="Last demo user works (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
+		$metin[306]="Last unregistered user works (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
 		$metin[307]="Ping Image";
 		$metin[308]="Statistics and Recent Staff";
 		
@@ -756,5 +756,14 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[591] = "Add as a Friend";		
 		$metin[592] = "Your pending friendship approvals :";	
 		$metin[593] = "There is no pending friendship approvals.";
+		$metin[594] = " Friendship Status";
+		$metin[595] = "Invitation";												
+		$metin[596] = "Approve Date";												
+		$metin[597] = "Wall";												
+		$metin[598] = "You can search in the user name and wall.";																									
+		$metin[599] = "Waiting";												
+		$metin[600] = "Approved";												
+		$metin[601] = "Disaproved";												
+		
 												
 ?>

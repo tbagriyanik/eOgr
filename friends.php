@@ -414,8 +414,8 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
                   </div>
                   <div id="tab4" class="tabContent">
                     <?php
-					//HERKES (sadece öðretmen ve yöneticilere)
-	if(in_array($tur, array("1","2"))){				
+					//HERKES 
+	if(in_array($tur, array("0","1","2"))){				
 		$bilgi1 = sonBilgileriGetir("sohbet","");
 		if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
 		$bilgi2 = sonBilgileriGetir("yorum","");
@@ -429,7 +429,7 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 		$bilgi6 = sonBilgileriGetir("dosya","");
 		if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";				  
 	}else{
-		echo "<font id='hata'>$metin[448]</font>";
+		echo "<font id='hata'>$metin[400]</font>";
 	}
                   ?>
                   </div>

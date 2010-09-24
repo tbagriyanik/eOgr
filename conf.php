@@ -576,7 +576,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataWorkList.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='dataWorkList2.php'>[".$row_gelen['id']."]</a> ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -594,7 +594,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataWorkList.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='dataWorkList2.php'>[".$row_gelen['id']."]</a> ";
 				     
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
@@ -753,7 +753,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataFriends.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='dataFriendActions.php'>[".$row_gelen['id']."]</a> ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -771,7 +771,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataFriends.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='dataFriendActions.php'>[".$row_gelen['id']."]</a> ";
 				     
 				   if (empty($sonuc2)) 
 				    $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -790,6 +790,26 @@ kullanýcýnýn bekleyen arkadaþlýk istekleri
 */
 function getFriendApprovals(){
 	return "";
+}
+/*
+arkadasKabulDurumu:
+arkadaþ teklifi durumu
+*/
+function arkadasKabulDurumu($id){
+	global $metin;
+	switch($id){
+		case 0://beklemede
+		 echo "<img src=\"img/i_warn.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[599]\" title=\"$metin[599]\"/>";
+		 break;
+		case 1://kabul
+		 echo "<img src=\"img/i_note.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[600]\" title=\"$metin[600]\"/>";
+		 break;
+		case 2://red
+		 echo "<img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[601]\" title=\"$metin[601]\"/>";
+		 break;
+		default:
+		 return "";
+	}
 }
 /*
 dosyaSil:
@@ -1849,6 +1869,23 @@ function kullaniciHakSayisi($gelen, $adi, $par){
        return ($sonuc);
     }else {
 	   return (0);
+	}
+}
+/*
+kullAdi:
+kullanýcýnýn adý
+*/
+function kullAdi($id)
+{
+	global $yol1;	
+	$id = substr(temizle($id),0,15);
+    $sql1 = "SELECT userName FROM eo_users where id='".$id."' limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1){
+       return (mysql_result($result1, 0, "userName"));
+    }else {
+	   return ("");
 	}
 }
 /*
@@ -3264,6 +3301,17 @@ function sonTarihGetir($tablo){
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
+		case "arkadas":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_friends
+					 WHERE DATE_FORMAT(davetTarihi, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
 		case "dosya":
 			$sonuc = sonDosyaTarihi($_uploadFolder);		
 		break;
@@ -3399,6 +3447,24 @@ function sonSatirGetir($tablo){
 					"<a href='dersBilgisi.php?ders=$gelen[2]' rel='facebox'>".$gelen[16]."</a>, "
 					.Sec2Time2($gelen[3]).", "
 					.$gelen[4].", "
+					.$insansi;
+			}		
+		break;
+		case "arkadas":
+			$sql1 = "SELECT * 
+					 FROM eo_friends
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_friends.davetEdenID					 
+					 ORDER BY eo_friends.id DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[3]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[8]."</a>, ".
+					"<a href='profil.php?kim=$gelen[2]' rel='facebox'>".kullAdi($gelen[2])."</a>, "
+					.($gelen[5]).", "
 					.$insansi;
 			}		
 		break;

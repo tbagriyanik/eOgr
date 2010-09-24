@@ -117,23 +117,6 @@ function Sec2Time22($time){
   }
 }
 /*
-kullAdi:
-kullanýcýnýn adý
-*/
-function kullAdi($id)
-{
-	global $yol1;	
-	$id = substr(temizle2($id),0,15);
-    $sql1 = "SELECT userName FROM eo_users where id='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
-
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "userName"));
-    }else {
-	   return ("");
-	}
-}
-/*
 kullTur:
 kullanýcýnýn türü
 */
@@ -502,7 +485,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 }
 
 /*main*/
- if (isset($_GET['kim']) && is_numeric($_GET['kim']) && $_GET['kim']>0 && getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" ) {
+ if (isset($_GET['kim']) && is_numeric($_GET['kim']) && $_GET['kim']>0 && getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" and kullAdi($_GET["kim"])<>"") {
 		echo "<h3>$metin[312]</h3>";
 		echo "<strong>$metin[17] :</strong> ".kullAdi($_GET["kim"])." - <span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($_GET["kim"]))."</span><br/>";
 		echo "<strong>$metin[22] :</strong> ".kullTur($_GET["kim"])."<br/>";
