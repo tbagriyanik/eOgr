@@ -188,7 +188,7 @@ if ($tur=="2")	{//yönetici ise
 	$bilgi6 = sonSatirGetir("dosya");
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
 	$bilgi7 = sonSatirGetir("arkadas");
-	if(!empty($bilgi7))	echo $metin[594]."<p class='ozetBilgi'>".$bilgi7."</p>";
+	if(!empty($bilgi7))	echo "<strong><a href=\"dataFriendActions.php\">$metin[594]</a> :</strong>"."<p class='ozetBilgi'>".$bilgi7."</p>";
 	
 }
 	else {

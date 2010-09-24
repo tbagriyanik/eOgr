@@ -300,36 +300,49 @@ if(isset($_GET["kisi"]))
 	if(!empty($_GET["kisi"])){
 		$_SESSION["seciliArkadas"] = RemoveXSS($_GET["kisi"]);
 	}
+if(isset($_GET["ekle"]))				 
+	if(!empty($_GET["ekle"])){
+		echo "<p>".arkadasTeklifEt(RemoveXSS($_GET["ekle"]))."
+		</p>";
+	}
 ?>
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".$geceliKullID."&amp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
                   <?php
 				 if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
 					  if($siniflar!=""){
-						  echo $metin[210]." : ".$siniflar;
-			   		  	  echo "<br/>";
+						  echo "<p>".$metin[210]." : ".$siniflar;
+			   		  	  echo "</p>";
 					  }
 				  }			  
 				 if($_SESSION["tur"]=='1' || $_SESSION["tur"]=='2') {
 					  $pasifYorumlar = getpasifYorumlar();
 					  if($pasifYorumlar>0){
-						  echo $metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
-			   		  	  echo "<br/>";
+						  echo "<p>".$metin[294]." : <a href=dataCommentList2.php>".$pasifYorumlar." <img src='img/uyari.gif' border='0' style=\"vertical-align: middle;\" alt=\"imp\" /></a>";
+			   		  	  echo "</p>";
 					  }
 				  }			  
 					 		 
 	 //index.php'den 
 	 $uyeListesi=getUsersOnline();
 		 if(!empty($uyeListesi)){
-			 echo "$metin[446]<strong>";
+			 echo "<p>"."$metin[446]<strong>";
 			 foreach($uyeListesi as $eleman){
 				 echo "<a href='profil.php?kim=".getUserID2($eleman)."' rel='facebox'>".$eleman."</a> ";
 				 }
-			 echo "</strong>";	 
+			 echo "</strong></p>";	 
 		 }
-						 
+		 
+	//login sayfasýndan				 
+	  $bekleyenArkadas = getFriendApprovals();
+	   if(!empty($bekleyenArkadas)) {
+				echo "<p>".$metin[592]." ";
+				echo $bekleyenArkadas."</p>";
+		   }else{
+				echo "<font id='tamam'>$metin[593]</font>" ;
+		   }	   
 ?>
-                  <br/>
+                  
                   <div class="aramaDiv2">
                     <p> <?php echo $metin[589]?> :
                       <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>

@@ -779,5 +779,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[599] = "Beklemede";												
 		$metin[600] = "Kabul";												
 		$metin[601] = "Red";												
+		$metin[602] = "Kabul Ettiniz!";												
+		$metin[603] = "Reddettiniz!";												
+		
 		
 ?>
