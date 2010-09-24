@@ -187,6 +187,8 @@ if ($tur=="2")	{//yönetici ise
 	if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
 	$bilgi6 = sonSatirGetir("dosya");
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
+	$bilgi7 = sonSatirGetir("arkadas");
+	if(!empty($bilgi7))	echo $metin[594]."<p class='ozetBilgi'>".$bilgi7."</p>";
 	
 }
 	else {

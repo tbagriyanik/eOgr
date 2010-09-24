@@ -175,6 +175,8 @@ Lesser General Public License for more details.
 	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
 	$bilgi9 = sonTarihGetir("calis");
 	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi10 = sonTarihGetir("arkadas");
+	$bilgi10 = ($bilgi10)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
 ?>
                     <table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
@@ -238,7 +240,7 @@ Lesser General Public License for more details.
                                     <li><a href="dataWorkList.php"><span><span> <?php echo $metin[186].$bilgi9?></span></span></a></li>
                                     <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
                                     <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
-                                    <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?></span></span></a></li>
+                                    <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[288].$bilgi2?></span></span></a></li>
                                   </ul>
                                 </li>
                               </ul>
@@ -258,7 +260,8 @@ Lesser General Public License for more details.
                                     <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
                                     <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
                                     <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
-                                    <li><a href="dataCommentList2.php"><span><span> <?php echo $metin[259].$bilgi2?></span></span></a></li>
+                                    <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288].$bilgi2?></span></span></a></li>
+                                    <li><a href="dataFriendActions.php"><span><span> <?php echo $metin[594].$bilgi10?></span></span></a></li>
                                   </ul>
                                 </li>
                               </ul>

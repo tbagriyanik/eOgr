@@ -245,7 +245,7 @@ Lesser General Public License for more details.
 		$metin[189]="* &Ccedil;alýþma s&uuml;resi %s saniye &uuml;zerinde olan ve bitirme y&uuml;zdesi 100 olanlar <span style=\"background-color: wheat;\">renkli</span> olarak iþaretlenmiþtir.<br/>* S&uuml;re i&ccedil;inde ge&ccedil;en kýsaltmalar: y - yýl, d - g&uuml;n, s - saniye";
 		
 		$metin[190]="&Ouml;ðrenciler";
-		$metin[191]="Kayýtlý Olmayan Kullanýcýlar (demo)";
+		$metin[191]="Kayýtlý Olmayan Kullanýcýlar";
 		$metin[192]="T&uuml;m Kullanýcýlar";    	
 
 		$metin[193]="Kullanýcý Adýmý Hatýrla";    	
@@ -254,7 +254,7 @@ Lesser General Public License for more details.
 		
 		$metin[196]="Kullanýcý Adýmý Unut";    	
 		
-		$metin[197]="Ýstatistikler";    	
+		$metin[197]=" Ýstatistikler";    	
 		$metin[198]="En fazla &ccedil;alýþan &ouml;ðrenci(ler)";    	
 		$metin[199]="En az &ccedil;alýþan &ouml;ðrenci(ler)";    	
 		$metin[200]="En fazla &ccedil;alýþýlan konular";    	
@@ -396,7 +396,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[286]="eOgr - kolay eÖðrenme";
 		
-		$metin[287]="Oy Verileri";
+		$metin[287]=" Oy Verileri";
 		$metin[288]=" Yorum Verileri";
 		$metin[289]="Oy";
 		$metin[290]="Yorum";
@@ -416,7 +416,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 
 		$metin[301]="Konu Bilgisi";
 
-		$metin[302]="Son çalýþmalar (demo)";
+		$metin[302]="Son çalýþmalar (kayýtlý olmayan kullanýcýlar)";
 		
 		$metin[303]="Diðer Genel Seçenekler";		
 		$metin[304]="Sohbet";
@@ -771,5 +771,13 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[591] = "Arkadaþ Olarak Ekle";
 		$metin[592] = "Onay bekleyen arkadaþlýk teklifleriniz :";
 		$metin[593] = "Onay bekleyen arkadaþlýk teklifleriniz yoktur.";
+		$metin[594] = " Arkadaþlýk Durumu";												
+		$metin[595] = "Davet Tarihi";												
+		$metin[596] = "Kabul Tarihi";												
+		$metin[597] = "Duvar Yazýsý";												
+		$metin[598] = "Davet eden adý ve duvar yazýsý içinde arama yapýlabilir.";												
+		$metin[599] = "Beklemede";												
+		$metin[600] = "Kabul";												
+		$metin[601] = "Red";												
 		
 ?>

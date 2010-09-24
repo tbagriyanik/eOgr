@@ -46,6 +46,8 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
 	$bilgi9 = sonTarihGetir("calis");
 	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
+	$bilgi10 = sonTarihGetir("arkadas");
+	$bilgi10 = ($bilgi10)?' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />':'';
 ?>
 <script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
@@ -164,7 +166,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
                             ?>
   <li><a href="siteNotices.php"
 						<?php
-						 if ($currentFile=="siteNotices.php" || $currentFile=="siteSettings.php" || $currentFile=="siteSettings2.php" ||  $currentFile=="siteSettings3.php" || $currentFile=="rssEdit.php" || $currentFile=="dataChatActions.php" || $currentFile=="dataActions.php" || $currentFile=="dataWorkList2.php" || $currentFile=="dataRatingList.php" || $currentFile=="dataCommentList.php")
+						 if ($currentFile=="siteNotices.php" || $currentFile=="siteSettings.php" || $currentFile=="siteSettings2.php" ||  $currentFile=="siteSettings3.php" || $currentFile=="rssEdit.php" || $currentFile=="dataChatActions.php" || $currentFile=="dataFriendActions.php" || $currentFile=="dataActions.php" || $currentFile=="dataWorkList2.php" || $currentFile=="dataRatingList.php" || $currentFile=="dataCommentList.php")
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="admin"/> <?php echo $metin[58]?> </span></span></a>
@@ -188,12 +190,13 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 					for($boy=1;$boy<=$boyut;$boy++) echo "&nbsp;";
 				  ?>
         &#8250; </span></span></a>
-        <ul>
+        <ul>          
           <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
           <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
           <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
           <li><a href="dataChatActions.php"><span><span> <?php echo $metin[67].$bilgi1?> </span></span></a></li>
           <li><a href="dataCommentList.php"><span><span> <?php echo $metin[288].$bilgi2?> </span></span></a></li>
+          <li><a href="dataFriendActions.php"><span><span> <?php echo $metin[594].$bilgi10?> </span></span></a></li>
         </ul>
       </li>
     </ul>
