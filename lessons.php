@@ -274,7 +274,7 @@ ob_start (); // Buffer output
                     <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>
                     <form name="sunum" style="text-align:right">
                       <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
-                      <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="Seçili ise sunum durur, seçili deðil ise sunum devam eder."
+                      <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="<?php echo $metin[604]?>"
                     value="1" onclick="
                     if(document.sunum.sunuDurdur.checked)
 	                    $('#cevapSuresi').stopTime();

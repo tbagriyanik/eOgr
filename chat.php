@@ -79,15 +79,15 @@ body, td, th {
           <br />
           <select id="oda" name="oda" onchange="odaSec();" style="background-color:#FFF;border:none;border-color:#FFF;height:20px;font-size:10px;margin-top:3px;">
             <option value="0" <?php if ($_SESSION["oda"]=="0") echo "selected='selected'"?>> <?php echo $metin[97]?> </option>
-            <option value="1" <?php if ($_SESSION["oda"]=="1") echo "selected='selected'"?>><?php printf($metin[98],1) ?></option>
-            <option value="2" <?php if ($_SESSION["oda"]=="2") echo "selected='selected'"?>><?php printf($metin[98],2) ?></option>
-            <option value="3" <?php if ($_SESSION["oda"]=="3") echo "selected='selected'"?>><?php printf($metin[98],3) ?></option>
-            <option value="4" <?php if ($_SESSION["oda"]=="4") echo "selected='selected'"?>><?php printf($metin[98],4) ?></option>
-            <option value="5" <?php if ($_SESSION["oda"]=="5") echo "selected='selected'"?>><?php printf($metin[98],5) ?></option>
-            <option value="6" <?php if ($_SESSION["oda"]=="6") echo "selected='selected'"?>><?php printf($metin[98],6) ?></option>
-            <option value="7" <?php if ($_SESSION["oda"]=="7") echo "selected='selected'"?>><?php printf($metin[98],7) ?></option>
-            <option value="8" <?php if ($_SESSION["oda"]=="8") echo "selected='selected'"?>><?php printf($metin[98],8) ?></option>
-            <option value="9" <?php if ($_SESSION["oda"]=="9") echo "selected='selected'"?>><?php printf($metin[98],9) ?></option>
+            <option value="1" <?php if ($_SESSION["oda"]=="1") echo "selected='selected'"?>><?php printf($metin[605],1) ?></option>
+            <option value="2" <?php if ($_SESSION["oda"]=="2") echo "selected='selected'"?>><?php printf($metin[605],2) ?></option>
+            <option value="3" <?php if ($_SESSION["oda"]=="3") echo "selected='selected'"?>><?php printf($metin[605],3) ?></option>
+            <option value="4" <?php if ($_SESSION["oda"]=="4") echo "selected='selected'"?>><?php printf($metin[605],4) ?></option>
+            <option value="5" <?php if ($_SESSION["oda"]=="5") echo "selected='selected'"?>><?php printf($metin[605],5) ?></option>
+            <option value="6" <?php if ($_SESSION["oda"]=="6") echo "selected='selected'"?>><?php printf($metin[605],6) ?></option>
+            <option value="7" <?php if ($_SESSION["oda"]=="7") echo "selected='selected'"?>><?php printf($metin[605],7) ?></option>
+            <option value="8" <?php if ($_SESSION["oda"]=="8") echo "selected='selected'"?>><?php printf($metin[605],8) ?></option>
+            <option value="9" <?php if ($_SESSION["oda"]=="9") echo "selected='selected'"?>><?php printf($metin[605],9) ?></option>
           </select>
           <input type='hidden' id='url' name='url' value='http://' />
           <textarea rows='4' cols='10' id='message'  name='message' >mesaj</textarea>
@@ -127,6 +127,6 @@ body, td, th {
     </div>
   </div>
 </div>
-<p> <?php echo $metin[101]?> </p>
+<div style="margin-left:5px;"> <?php echo $metin[101]?> </div>
 </body>
 </html>
