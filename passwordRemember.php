@@ -208,11 +208,11 @@ $().ready(function() {
                     <form action="passwordRemember.php" method="post" id="form1">
                       <fieldset>
                         <legend><?php echo $metin[65]?></legend>
-                        <div>
+                        <div style="width:600px;">
                           <label for="userName"> <?php echo $metin[39]?> :</label>
                           <input name="userName" type="text" id="userName" size="15" maxlength="15"  class="required" />
                         </div>
-                        <div>
+                        <div style="width:600px;">
                           <label for="email"> <?php echo $metin[41]?> :</label>
                           <input name="email" type="text" id="email" size="20" maxlength="50" class="required email" />
                         </div>

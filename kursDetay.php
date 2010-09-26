@@ -208,10 +208,8 @@ Shadowbox.init({
 	  	//die($metin[448]);	 		  
 		
 	 if (trim(getStats(11))!=""){
-		 //echo "<br/><div class='ikiKolon'>";
-		 //echo "<strong>".$metin[213]."</strong><br/>".getStats(11)."</div>";
 		 if (trim(getStats(12))!=""){
-			 echo "<div class='tekKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
+			 echo "<div class='tekKolon'><h3>".$metin[239]."</h3>".getStats(12)."</div>";
 		 }		 
 	 }else
 	  echo "$metin[485]";			
@@ -252,7 +250,7 @@ Shadowbox.init({
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
-                  <div class="tekKolon"> <?php echo $metin[584]?> :
+                  <div class="tekKolon"> <h3><?php echo $metin[584]?> :</h3>
                     <?php				    
 				    echo "<strong><a href='profil.php?kim=".$uID."' rel='facebox'><span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($uID))."</span></a></strong><br/>";
 					echo getStats(12,$uID);
