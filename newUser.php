@@ -140,6 +140,68 @@ function prepareInputsForHints() {
 	}
 }
 addLoadEvent(prepareInputsForHints);
+
+$().ready(function() {
+	$("#form1").validate({
+		rules: {
+			realN: {
+				required: true,
+				minlength: 5,
+				maxlength: 30
+			},
+			userName: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			},
+			userPassword1: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			},
+			userPassword2: {
+				required: true,
+				minlength: 5,
+				maxlength: 15,				
+				equalTo: "#userPassword1"
+			},
+			birth: {
+				required: true,
+				maxlength: 10,	
+				dateDE: true			
+			},
+			email: {
+				minlength: 5,
+				maxlength: 50,				
+				required: true,
+				email: true
+			},
+			onay: "required"
+		},
+		messages: {
+			realN: "<?php echo $metin[606]?>",
+			userName: {
+				required: "<?php echo $metin[607]?>",
+				minlength: "<?php echo $metin[608]?>"
+			},
+			userPassword1: {
+				required: "<?php echo $metin[610]?>",
+				minlength: "<?php echo $metin[609]?>"
+			},
+			userPassword2: {
+				required: "<?php echo $metin[610]?>",
+				minlength: "<?php echo $metin[609]?>",
+				equalTo: "<?php echo $metin[611]?>"
+			},
+			birth: {
+				required: "<?php echo $metin[612]?>",
+				dateDE: "<?php echo $metin[614]?>"
+			},
+			email: "<?php echo $metin[613]?>",
+			onay: "<?php echo $metin[615]?>"
+		}
+	});	
+});
 </script>
 </head>
 <body>
@@ -409,7 +471,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="birth" type="text" id="birth" size="35" maxlength="30"  style="width:150px" class="required" value="31-12-1990" />
+                              <input name="birth" type="text" id="birth" size="35" maxlength="30"  style="width:150px" class="required dateDE" value="31.12.1990" />
                               <span class="hint"><?php echo $metin[285];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dd>
@@ -427,11 +489,6 @@ $ajax->Run();
                       </fieldset>
                     </form>
                   </div>
-                  <script type="text/javascript">
-  $(document).ready(function(){
-    $("#form1").validate();
-  });
-  </script>
                   <?php
 	}
 ?>

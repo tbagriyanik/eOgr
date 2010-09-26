@@ -178,6 +178,32 @@ Lesser General Public License for more details.
 if($_SESSION["passRem"]=="yes") die($metin[410]); //form data?
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+                  <script type="text/javascript">
+$().ready(function() {
+	$("#form1").validate({
+		rules: {
+			userName: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			},
+			email: {
+				minlength: 5,
+				maxlength: 50,				
+				required: true,
+				email: true
+			}
+		},
+		messages: {
+			userName: {
+				required: "<?php echo $metin[607]?>",
+				minlength: "<?php echo $metin[608]?>"
+			},
+			email: "<?php echo $metin[613]?>"			
+		}
+	});	
+});
+  </script>
                   <div id="contact-wrapper">
                     <form action="passwordRemember.php" method="post" id="form1">
                       <fieldset>
@@ -198,11 +224,6 @@ if($_SESSION["passRem"]=="yes") die($metin[410]); //form data?
                       </fieldset>
                     </form>
                   </div>
-                  <script type="text/javascript">
-  $(document).ready(function(){
-    $("#form1").validate();
-  });
-  </script>
                   <?php
 	}
 ?>
