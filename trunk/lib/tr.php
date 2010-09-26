@@ -131,7 +131,7 @@ Lesser General Public License for more details.
 		$metin[98]="S&#305;n&#305;f ";    
 		$metin[99]="Tazele";    
 		$metin[100]="G&ouml;nder";    
-		$metin[101]="Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar sorumludurlar.";  
+		$metin[101]="<p>Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar <strong>sorumludurlar</strong>.</p><p><strong>Yönetici</strong> bazý kelimeleri silebilir veya düzenleyebilir.</p>";  
 		
 		$metin[102]="Sil";    
 		$metin[103]="D&uuml;zenle";    
@@ -781,6 +781,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[601] = "Red";												
 		$metin[602] = "Kabul Ettiniz!";												
 		$metin[603] = "Reddettiniz!";												
-		
+		$metin[604] = "Seçili ise sunum durur, seçili deðil ise sunum devam eder.";	
+		$metin[605]	= "S&#305;n&#305;f %s";    
 		
 ?>

@@ -103,8 +103,6 @@ CSS, RSS and HTML Validations:
 - http://validator.w3.org/feed
 - http://validator.w3.org/check
 
-- http://spritegen.website-performance.org/ for the sprite image
-
 Advice:
 	Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
 

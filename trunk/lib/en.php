@@ -130,7 +130,7 @@ Lesser General Public License for more details.
 		$metin[98]="Classroom ";    
 		$metin[99]="Refresh";    
 		$metin[100]="Send";    
-		$metin[101]="Users are responsible for their conversation.";    
+		$metin[101]="<p>Users are <strong>responsible</strong> for their conversation.</p><p><strong>Administrator</strong> can delete or edit some words.</p>";    
 		
 		$metin[102]="Delete";    
 		$metin[103]="Edit";    
@@ -766,5 +766,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[601] = "Disaproved";												
 		$metin[602] = "You approved!";												
 		$metin[603] = "You disaproved!";												
+		$metin[604] = "When selected, presentation stops. If not selected, presentation goes on.";	
+		$metin[605]	= "Classroom %s";    		
 										
 ?>
