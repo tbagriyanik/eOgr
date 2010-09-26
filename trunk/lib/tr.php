@@ -120,7 +120,7 @@ Lesser General Public License for more details.
 		$metin[88]="(<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> y&ouml;neticisiniz) <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
 		$metin[89]="(t&uuml;r&uuml;n&uuml;z belli de&#287;ildir)";    
 		$metin[90]="Dikkat!";    
-		$metin[91]="E&#287;er <strong>parola de&#287;i&#351;ikli&#287;i</strong> yapacaksan&#305;z, <br />&quot;Þimdilik Parola G&uuml;ncelleme&quot; se&ccedil;ene&#287;ini iptal edin ve <br />&quot;Parola&quot; k&#305;sm&#305;na yeni bir de&#287;er yaz&#305;n.";    
+		$metin[91]="E&#287;er <strong>parola de&#287;i&#351;ikli&#287;i</strong> yapacaksan&#305;z, &quot;Þimdilik Parola G&uuml;ncelleme&quot; se&ccedil;ene&#287;ini iptal edin ve &quot;parola&quot; k&#305;sm&#305;na yeni bir de&#287;er yaz&#305;n.";    
 		$metin[92]="Belirsiz";    
 		$metin[93]="Pasif";    
 		$metin[94]="&Ouml;&#287;renci";    
@@ -761,7 +761,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[581] = "Herkes";
 		$metin[582] = "Ben";
 		$metin[583] = "Arkadaþlarým";
-		$metin[584] = "Seçili Kiþi";
+		$metin[584] = "Seçili Üye";
 		$metin[585] = "Kendi Bilgileriniz";
 		$metin[586] = "Þimdilik hiçbir aktivite bulunmuyor!";
 		$metin[587] = "Þimdilik kimseyi seçmediniz.";
@@ -794,5 +794,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[613]	= "Lütfen geçerli bir e-posta adresi giriniz";
 		$metin[614]	= "Lütfen geçerli bir tarih giriniz";		
 		$metin[615]	= "Lütfen bilgilerinizi onaylayýnýz";
+		$metin[616]	= "Bir konuda düzenleme yaptýðýnýzda, sizin düzenlediðiniz konularda listelenir.";	
 		
 ?>

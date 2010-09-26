@@ -119,7 +119,7 @@ Lesser General Public License for more details.
 		$metin[88]="(administrator) You can administer the <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> site</a>.";    
 		$metin[89]="(unknown type)";    
 		$metin[90]="Attention!";    
-		$metin[91]="If you will <strong>change your password</strong>, <br />Uncheck &quot;Don't update password for now!&quot; option and <br /> Write your new &quot;Password&quot;.";    
+		$metin[91]="If you will <strong>change your password</strong>, uncheck &quot;Don't update password for now!&quot; option and write your new &quot;Password&quot;.";    
 		$metin[92]="Unknown";    
 		$metin[93]="Passive";    
 		$metin[94]="Student";    
@@ -746,7 +746,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[581] = "Everyone";
 		$metin[582] = "Me";
 		$metin[583] = "My Friends";
-		$metin[584] = "Selected Person";
+		$metin[584] = "Selected Member";
 		$metin[585] = "Your Data";
 		$metin[586] = "There is no activity for now!";
 		$metin[587] = "You did not choose anybody.";
@@ -779,5 +779,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[613]	= "Please enter a valid email address";
 		$metin[614]	= "Please enter a valid date";
 		$metin[615]	= "Please confirm your information";
+		$metin[616]	= "Simply editing a page makes your edited topics listed here.";	
 		
 ?>

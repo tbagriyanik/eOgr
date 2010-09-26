@@ -249,6 +249,38 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
 
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+                  <script type="text/javascript">
+$().ready(function() {
+	$("#form1").validate({
+		rules: {
+			realName: {
+				required: true,
+				minlength: 5,
+				maxlength: 30
+			},
+			userBirthDate: {
+				required: true,
+				maxlength: 10,	
+				dateDE: true			
+			},
+			userEmail: {
+				minlength: 5,
+				maxlength: 50,				
+				required: true,
+				email: true
+			}
+		},
+		messages: {
+			realName: "<?php echo $metin[606]?>",
+			userBirthDate: {
+				required: "<?php echo $metin[612]?>",
+				dateDE: "<?php echo $metin[614]?>"
+			},
+			userEmail: "<?php echo $metin[613]?>"
+		}
+	});	
+});
+  </script> 
                   <div id="contact-wrapper">
                     <form action="<?php echo $editFormAction; ?>" method="post" id="form1">
                       <fieldset>
@@ -263,44 +295,39 @@ $row_eoUsers = mysql_fetch_row($eoUsers);
                         <?php echo $metin[23]?> : <?php echo tarihOku(GetSQLValueStringNo($row_eoUsers[7], "text")); ?><br />
                         <br />
                         <label for="userPassword"> <?php echo $metin[18]?> :</label>
-                        <div>
+                        <div style="width:500px;"> 
                           <input name="userPassword" id="userPassword" type="password" value="" size="32" maxlength="40" style="width:150px"  />
                           <font color="red"> <strong> <?php echo $metin[90]?> </strong></font> </div>
                         <label for="userPassword2"> <?php echo $metin[152]?> :</label>
-                        <div>
+                        <div style="width:500px;"> 
                           <input name="userPassword2" id="userPassword2" type="password" value="" size="32" maxlength="40" style="width:150px" />
                         </div>
                         <label for="realName"> <?php echo $metin[38]?> :</label>
-                        <div>
+                        <div style="width:500px;"> 
                           <input name="realName" id="realName" type="text" value="<?php echo GetSQLValueStringNo($row_eoUsers[3], "text"); ?>" size="32" maxlength="50" style="width:150px"  class="required" />
                         </div>
                         <label for="userEmail"> <?php echo $metin[20]?> :</label>
-                        <div>
+                        <div style="width:550px;"> 
                           <input name="userEmail" id="userEmail" type="text" size="32" maxlength="50"   class="required email" value="<?php echo GetSQLValueStringNo($row_eoUsers[4], "text"); ?>"  style="width:250px" />
                         </div>
                         <label for="userBirthDate"> <?php echo $metin[21]?> :</label>
-                        <div>
-                          <input name="userBirthDate" id="userBirthDate" type="text" value="<?php echo tarihOku(GetSQLValueStringNo($row_eoUsers[5], "text")); ?>" size="32" maxlength="50" class="required" style="width:150px" />
+                        <div style="width:500px;"> 
+                          <input name="userBirthDate" id="userBirthDate" type="text" value="<?php echo tarihOku3(GetSQLValueStringNo($row_eoUsers[5], "text")); ?>" size="32" maxlength="50" class="required" style="width:150px" />
                         </div>
                         <label>
                           <input name="prldeg" type="checkbox" id="prldeg" checked="checked"  value="secili"/>
                           <?php echo $metin[24]?> </label>
-                        <br />
+                        <p>
                         <label>
                           <input type="submit" value="<?php echo $metin[25]?>" />
                         </label>
-                        <br />
+                        </p>
                         <tt><?php echo $metin[91]?></tt>
                         <input type="hidden" name="MM_update" value="form3" />
                         <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
                       </fieldset>
                     </form>
                   </div>
-                  <script type="text/javascript">
-  $(document).ready(function(){
-    $("#form1").validate();
-  });
-  </script> 
                 </div>
                 <div class="cleared"></div>
               </div>

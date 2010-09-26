@@ -282,6 +282,14 @@ function tarihOku($gelenTarih){
 	return date("d-m-Y", strtotime($gelenTarih));
 }
 /*
+tarihOku3:
+TR formatýnda tarih bilgisi biçimi
+*/
+function tarihOku3($gelenTarih){
+	//Y-m-d > d-m-Y 	
+	return date("d.m.Y", strtotime($gelenTarih));
+}
+/*
 tarihYap:
 TR formatýnda tarih bilgisi biçimi
 */

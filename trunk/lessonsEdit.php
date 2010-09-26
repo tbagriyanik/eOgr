@@ -1258,7 +1258,8 @@ if($seciliSekme=="0") {
                       &nbsp;
                       <input type="submit" value="<?php echo $metin[484];?>" name="konuBenim" id="konuBenim"
                       <?php if($_SESSION["konuKimGel"]==1){ ?>style="border:inset 2px #ccc;"<?php } ?>  />
-                      <br/>Bir konuda düzenleme yapmak için bir sayfa düzenlemeniz yeterlidir. Bu sayede o konu sizin düzenlediðiniz konularda çýkacaktýr. 
+                      <?php
+                      echo $metin[616];?>
                     </form>
                     <br/>
                     <form action="lessonsEdit.php?tab=3" method="post" name="araFiltrele" id="araFiltrele">
@@ -1325,8 +1326,9 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="bitisTarihi"><?php echo $metin[381] ?> : </label></td>
-                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" /><br />
-<tt><?php echo $metin[546]?></tt></td>
+                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" />
+                            <br />
+                            <tt><?php echo $metin[546]?></tt></td>
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> <?php echo $metin[382] ?> : </label></td>
@@ -1336,7 +1338,8 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> <?php echo $metin[383] ?> : </label></td>
-                          <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" onclick="chekDisable();" /><br/>
+                          <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" onclick="chekDisable();" />
+                            <br/>
                             <tt><?php echo $metin[384] ?></tt>
                             <table>
                               <tr>
@@ -1434,8 +1437,9 @@ if($seciliSekme=="0") {
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="bitisTarihi"><?php echo $metin[381] ?> : </label></td>
-                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" value="<?php echo (mysql_result($result2, 0, "bitisTarihi")=="0000-00-00")?"":tarihOku(mysql_result($result2, 0, "bitisTarihi"))?>" /><br />
-<tt><?php echo $metin[546]?></tt></td>
+                          <td ><input name="bitisTarihi" type="text" id="bitisTarihi" size="32" maxlength="50" value="<?php echo (mysql_result($result2, 0, "bitisTarihi")=="0000-00-00")?"":tarihOku(mysql_result($result2, 0, "bitisTarihi"))?>" />
+                            <br />
+                            <tt><?php echo $metin[546]?></tt></td>
                         </tr>
                         <tr>
                           <td align="right" nowrap="nowrap"><label for="konuyuKilitle"><?php echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?> <?php echo $metin[382] ?> : </label></td>
@@ -1447,7 +1451,8 @@ if($seciliSekme=="0") {
                         <tr>
                           <td align="right" nowrap="nowrap" valign="top"><label for="sadeceKayitlilarGorebilir"><?php echo "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";?> <?php echo $metin[383] ?> : </label></td>
                           <td ><input name="sadeceKayitlilarGorebilir" type="checkbox" id="sadeceKayitlilarGorebilir" value="1" 
-              <?php echo (mysql_result($result2, 0, "sadeceKayitlilarGorebilir")!="0") ? "checked=\"checked\"" : ""?> onclick="chekDisable();"/><br />
+              <?php echo (mysql_result($result2, 0, "sadeceKayitlilarGorebilir")!="0") ? "checked=\"checked\"" : ""?> onclick="chekDisable();"/>
+                            <br />
                             <tt><?php echo $metin[384] ?></tt>
                             <table>
                               <tr>
