@@ -270,6 +270,34 @@ if (isset($_COOKIE["remUser"]))
   if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){$_SESSION["usern"]="";$_SESSION["userp"]="";
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+                  <script type="text/javascript">
+$().ready(function() {
+	$("#form1").validate({
+		rules: {
+			userN: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			},
+			userP: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			}
+		},
+		messages: {
+			userN: {
+				required: "<?php echo $metin[607]?>",
+				minlength: "<?php echo $metin[608]?>"
+			},
+			userP: {
+				required: "<?php echo $metin[610]?>",
+				minlength: "<?php echo $metin[609]?>"
+			}
+		}
+	});	
+});
+  </script>
                   <div id="contact-wrapper">
                     <form id="form1" method="post" action="login.php">
                       <label for="userN"> <?php echo $metin[0]?> : </label>

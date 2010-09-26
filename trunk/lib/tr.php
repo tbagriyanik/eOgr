@@ -111,7 +111,7 @@ Lesser General Public License for more details.
 		$metin[80]="Ge&ccedil;ersiz eposta adresi";    
 		$metin[81]="En az %d karakter olmal&#305;d&#305;r";    
 		$metin[82]="En fazla %d karakter olabilir";    
-		$metin[83]="<ul><li>Parolan&#305;z&#305;n yenilenmesi i&ccedil;in, kullan&#305;c&#305; ad&#305;n&#305;z&#305; ve eposta adresinizi belirtiniz.</li><li>Eposta adresinizi (spam klas&ouml;r&uuml; de dahil) bir s&uuml;re sonra kontrol ediniz.</li></ul>";    
+		$metin[83]="<ul><li>Parolan&#305;z&#305;n yenilenmesi i&ccedil;in, <strong>kullan&#305;c&#305; ad&#305;n&#305;z&#305; ve eposta</strong> adresinizi belirtiniz.</li><li>Eposta adresinizi (spam klas&ouml;r&uuml; de dahil) bir s&uuml;re sonra <strong>kontrol</strong> ediniz.</li></ul>";    
 		$metin[84]="Son g&uuml;ncellenen konular";    
 		
 		$metin[85]="(<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> pasifsiniz) Herhangi bir i&#351;lem yapamazs&#305;n&#305;z.";    
@@ -214,7 +214,7 @@ Lesser General Public License for more details.
                   <p><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></p>
 ";
 				  
-		$metin[165]=" <p>Varsayýlan olarak &quot;&ouml;ðrenci&quot; t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak istenmeyen kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li>Birden fazla &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola ayný olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya tekrarlanan deðerler olamaz.</li><li>Bu form sadece bir kere doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
+		$metin[165]=" <p>Varsayýlan olarak <strong>&quot;&ouml;ðrenci&quot;</strong> t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak <strong>istenmeyen</strong> kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li><strong>Birden fazla</strong> &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola <strong>ayný</strong> olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya <strong>tekrarlanan</strong> deðerler olamaz.</li><li>Bu form sadece <strong>bir kere</strong> doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
 
 		$metin[166]="&Ouml;nceki Konu";
 		$metin[167]="Sonraki Konu";
@@ -783,5 +783,16 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[603] = "Reddettiniz!";												
 		$metin[604] = "Seçili ise sunum durur, seçili deðil ise sunum devam eder.";	
 		$metin[605]	= "S&#305;n&#305;f %s";    
+		   		
+		$metin[606]	= "Lütfen gerçek ad ve soyadýnýzý giriniz";									
+		$metin[607]	= "Lütfen kullanýcý adýnýzý giriniz";
+		$metin[608]	= "Kullanýcý adýnýz en az 5 karakter olabilir";
+		$metin[609]	= "Parolanýz en az 5 karakter olabilir";
+		$metin[610]	= "Lütfen parolanýzý giriniz";
+		$metin[611]	= "Lütfen yukarýdaki gibi parola giriniz";
+		$metin[612]	= "Lütfen doðum gününüzü giriniz";
+		$metin[613]	= "Lütfen geçerli bir e-posta adresi giriniz";
+		$metin[614]	= "Lütfen geçerli bir tarih giriniz";		
+		$metin[615]	= "Lütfen bilgilerinizi onaylayýnýz";
 		
 ?>

@@ -110,7 +110,7 @@ Lesser General Public License for more details.
 		$metin[80]="Invalid Email Address";    
 		$metin[81]="Minimum %d characters";    
 		$metin[82]="Maximum %d characters";    
-		$metin[83]="<ul><li>Fill your user name and email address to renew your password.</li><li>Then check your email, including spam folder.</li></ul>";    
+		$metin[83]="<ul><li>Fill your <strong>user name and email</strong> address to renew your password.</li><li>Then <strong>check</strong> your email, including spam folder.</li></ul>";    
 		$metin[84]="Last updated topics";    
 		
 		$metin[85]="(passive) You can not do anything.";    
@@ -208,7 +208,7 @@ Lesser General Public License for more details.
 	
 		$metin[164]="<p>eOgr is an application for all fields, you can participate any topic freely.</p><p>Moreover you can get in touch with the other students and teachers. Animation and video support makes easier to learn.</p><p><em>Free, easy and simple learning...</em></p>";
 
-		$metin[165]=" <p>As default, you can join as &quot;student&quot; type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be passive or active by an administrator later.</li>                  <li>If there are more than one registration, administrators can erase any registration.</li>                    <li>Don't use same username and password.</li>                    <li>Don't use 12345678 or repeating values for the password.</li><li>This is a one time usable form. On error, please go to the main page.</li>                  </ul>";
+		$metin[165]=" <p>As default, you can join as <strong>&quot;student&quot;</strong> type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be <strong>passive</strong> or active by an administrator later.</li>                  <li>If there are <strong>more than one</strong> registration, administrators can erase any registration.</li>                    <li>Don't use <strong>same</strong> username and password.</li>                    <li>Don't use 12345678 or <strong>repeating</strong> values for the password.</li><li>This is a <strong>one time</strong> usable form. On error, please go to the main page.</li>                  </ul>";
 
 		$metin[166]="Previous topic";
 		$metin[167]="Next topic";
@@ -767,6 +767,17 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[602] = "You approved!";												
 		$metin[603] = "You disaproved!";												
 		$metin[604] = "When selected, presentation stops. If not selected, presentation goes on.";	
-		$metin[605]	= "Classroom %s";    		
-										
+		$metin[605]	= "Classroom %s"; 
+		   		
+		$metin[606]	= "Please enter your full name and surname";									
+		$metin[607]	= "Please enter your username";
+		$metin[608]	= "Your username must be at least 5 characters";
+		$metin[609]	= "Your password must be at least 5 characters";
+		$metin[610]	= "Please enter your password";
+		$metin[611]	= "Please enter the same password as above";
+		$metin[612]	= "Please enter your birthdate";
+		$metin[613]	= "Please enter a valid email address";
+		$metin[614]	= "Please enter a valid date";
+		$metin[615]	= "Please confirm your information";
+		
 ?>
