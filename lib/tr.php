@@ -777,8 +777,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[597] = "Duvar Yazýsý";												
 		$metin[598] = "Davet eden adý ve duvar yazýsý içinde arama yapýlabilir.";												
 		$metin[599] = "Beklemede";												
-		$metin[600] = "Kabul";												
-		$metin[601] = "Red";												
+		$metin[600] = "Kabul Et";												
+		$metin[601] = "Reddet";												
 		$metin[602] = "Kabul Ettiniz!";												
 		$metin[603] = "Reddettiniz!";												
 		$metin[604] = "Seçili ise sunum durur, seçili deðil ise sunum devam eder.";	
@@ -795,5 +795,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[614]	= "Lütfen geçerli bir tarih giriniz";		
 		$metin[615]	= "Lütfen bilgilerinizi onaylayýnýz";
 		$metin[616]	= "Bir konuda düzenleme yaptýðýnýzda, sizin düzenlediðiniz konularda listelenir.";	
+		$metin[617]	= "Duvara Yazýn";
+		$metin[618]	= "Doðum Günü Yaklaþan Arkadaþlarým";
+		$metin[619]	= "Arkadaþlýk <strong>davet</strong> tarihi";
+		$metin[620]	= "Arkadaþlýðýn <strong>kabul</strong> edildiði tarih";
 		
 ?>

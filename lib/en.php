@@ -762,8 +762,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[597] = "Wall";												
 		$metin[598] = "You can search in the user name and wall.";																									
 		$metin[599] = "Waiting";												
-		$metin[600] = "Approved";												
-		$metin[601] = "Disaproved";												
+		$metin[600] = "Approve";												
+		$metin[601] = "Disaprove";												
 		$metin[602] = "You approved!";												
 		$metin[603] = "You disaproved!";												
 		$metin[604] = "When selected, presentation stops. If not selected, presentation goes on.";	
@@ -780,5 +780,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[614]	= "Please enter a valid date";
 		$metin[615]	= "Please confirm your information";
 		$metin[616]	= "Simply editing a page makes your edited topics listed here.";	
-		
+		$metin[617]	= "Write to the Wall";
+		$metin[618]	= "Upcoming Birthdays";
+		$metin[619]	= "Friendship <strong>invitation</strong> date";
+		$metin[620]	= "Friendship <strong>approve</strong> date";
+				
 ?>

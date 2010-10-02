@@ -369,8 +369,14 @@ if(isset($_GET["ekle"]))
                     <?php
 					//ARKADASLARIM
 		$arkadaslarim = arkadasListesi();			
+		$arkadaslarDogum = arkadasListesi();			
 	if($arkadaslarim!=""){				
-		echo "$arkadaslarim";
+		echo "<p><img src=\"img/users.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"users\"/> <strong>$metin[549] :</strong> $arkadaslarim</p>";
+		if($arkadaslarDogum!="")
+		echo "<p> 
+		<img src=\"img/birthday.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[590]\" title=\"$metin[590]\"/>
+		<strong>$metin[618] : </strong>$arkadaslarDogum		
+		</p>";
 	}else{
 		echo "<font id='uyari'>$metin[588]</font>";
 	}
@@ -412,8 +418,61 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	if(!empty($bil_6))	echo $metin[478]."<p class='ozetBilgi'>".$bil_6."</p>";	
 	if(empty($bil_1) and empty($bil_2) and empty($bil_3) and empty($bil_4) and empty($bil_6))
 	  echo "<font id='uyari'>$metin[586]</font>";	
-	if ($seciliKisi!=$geceliKullID and !arkadasTeklifVarMi($geceliKullID,$seciliKisi))   			  
+	if ($seciliKisi!=$geceliKullID and 
+	    !arkadasTeklifVarMi($geceliKullID,$seciliKisi) and
+		!arkadasMi($geceliKullID,$seciliKisi)
+		)   			  
 		echo "<p><a href='friends.php?ekle=".$seciliKisi."'>$metin[591]</a></p>";
+	if (arkadasTeklifVarMi($geceliKullID,$seciliKisi) or arkadasMi($geceliKullID,$seciliKisi))
+		echo "<p>$metin[619] : ".getArkadaslikDavetTarihi($geceliKullID,$seciliKisi)."</p>";	
+	if (arkadasMi($geceliKullID,$seciliKisi)) {
+		echo "<p>$metin[620] : ".getArkadaslikKabulTarihi($geceliKullID,$seciliKisi)."</p>";	
+		echo "<p><strong>$metin[617] :</strong> <br>";
+?>
+<script language="javascript" type="text/javascript">
+/*
+getHTTPObject:
+Ajax nesnesinin hazýrlanmasý
+*/
+function getHTTPObject(){
+  var xmlhttp = null;
+  if (window.XMLHttpRequest) {
+   xmlhttp = new XMLHttpRequest();
+   	    if (xmlhttp.overrideMimeType) {
+            xmlhttp.overrideMimeType('text/xml; charset=iso-8859-9');
+         }
+  } else if(window.ActiveXObject) {
+   try {
+    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+   } catch (e) {
+    try {
+     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (e) {
+	 alert("Your browser does not support AJAX.");
+     xmlhttp = null;
+    }
+   }
+  }
+  return xmlhttp;		 
+} 
+/*
+duvarKaydet:
+arkadaþ ile ortak olan duvara yaz
+*/
+function duvarKaydet(icerik, gonderen, alan){    
+    httpObject = getHTTPObject();
+    if (httpObject != null) {
+        httpObject.open("POST", "addWall.php", true);
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+  		httpObject.send('duvar='+encodeURIComponent(icerik) + '&gonderen=' + encodeURIComponent(gonderen) + '&alan=' + encodeURIComponent(alan));		
+    }
+}
+</script>
+	<textarea id="duvarYazisi" cols="45" rows="4" style="background-color:#FFF;border:thin solid #ccc;"><?php echo arkadasDuvarYazisi($geceliKullID,$seciliKisi)?></textarea>&nbsp;<input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick="fadeUp(document.getElementById('duvarYazisi'),255,255,0,150,0,0);
+    duvarKaydet(document.getElementById('duvarYazisi').value.substr(0,139),<?php echo $geceliKullID ?>,<?php echo $seciliKisi ?>);">
+<?php		
+		echo "</p>";
+	}
 }else
 	echo "<font id='uyari'>$metin[587]</font>";
                   ?>

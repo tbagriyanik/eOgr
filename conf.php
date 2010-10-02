@@ -888,13 +888,91 @@ function arkadasTeklifVarMi($gonderenID,$id){
 	
 	$sql1 = "SELECT * FROM eo_friends 
 			WHERE 
-			(davetEdenID='$gonderenID' and davetEdilenID='$id') or
-			(davetEdilenID='$gonderenID' and davetEdenID='$id') 
+			((davetEdenID='$gonderenID' and davetEdilenID='$id') or
+			 (davetEdilenID='$gonderenID' and davetEdenID='$id'))
+			 and kabul = '0' 
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
 	$result1 = @mysql_query($sql1, $yol1);
 	return ($result1 && mysql_numrows($result1) == 1); 
+}
+/*
+arkadasMi:
+arkadaþ iseler TRUE
+*/
+function arkadasMi($gonderenID,$id){
+	
+	$sql1 = "SELECT * FROM eo_friends 
+			WHERE 
+			((davetEdenID='$gonderenID' and davetEdilenID='$id') or
+			 (davetEdilenID='$gonderenID' and davetEdenID='$id') )
+			 and
+			kabul = '1' 
+			LIMIT 0,1";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	return ($result1 && mysql_numrows($result1) == 1); 
+}
+/*
+getArkadaslikDavetTarihi:
+arkadaþ ile ne zaman teklif edildi
+*/
+function getArkadaslikDavetTarihi($kendi,$diger){
+	
+	$sql1 = "SELECT davetTarihi FROM eo_friends 
+			WHERE 
+			(davetEdenID='$kendi' and davetEdilenID='$diger') or
+			(davetEdilenID='$kendi' and davetEdenID='$diger') 
+			LIMIT 0,1";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	$duvarYazisi = mysql_fetch_array($result1);
+	
+		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate($duvarYazisi[0]);
+
+	return $insansi; 
+}
+/*
+getArkadaslikKabulTarihi:
+arkadaþ ile ne zaman kabul edildi
+*/
+function getArkadaslikKabulTarihi($kendi,$diger){
+	
+	$sql1 = "SELECT kabulTarihi FROM eo_friends 
+			WHERE 
+			(davetEdenID='$kendi' and davetEdilenID='$diger') or
+			(davetEdilenID='$kendi' and davetEdenID='$diger') 
+			LIMIT 0,1";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	$duvarYazisi = mysql_fetch_array($result1);
+	
+		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate($duvarYazisi[0]);
+
+	return $insansi; 
+}
+/*
+arkadasDuvarYazisi:
+arkadaþ ile ortak duvar yazýsý getirme
+*/
+function arkadasDuvarYazisi($kendi,$diger){
+	
+	$sql1 = "SELECT duvarYazisi FROM eo_friends 
+			WHERE 
+			(davetEdenID='$kendi' and davetEdilenID='$diger') or
+			(davetEdilenID='$kendi' and davetEdenID='$diger') 
+			LIMIT 0,1";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	$duvarYazisi = mysql_fetch_array($result1);
+	return RemoveXSS($duvarYazisi[0]); 
 }
 /*
 dosyaSil:
