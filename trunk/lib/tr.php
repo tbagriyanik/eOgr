@@ -800,4 +800,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[619]	= "Arkadaþlýk <strong>davet</strong> tarihi";
 		$metin[620]	= "Arkadaþlýðýn <strong>kabul</strong> edildiði tarih";
 		
+		$metin[621]	= "gün";
+		$metin[622]	= "bugün";
+		
 ?>

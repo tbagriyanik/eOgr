@@ -817,6 +817,42 @@ function arkadasListesi(){
 	return $sonuc;
 }
 /*
+arkadasDogumListesi:
+oturum açan kiþinin arkadaþlarýndan doðum gününe 15 gün kalanlar
+*/
+function arkadasDogumListesi(){
+	global $metin,$yol1;
+	$aktifKullID = getUserID2($_SESSION["usern"]);
+	$sonuc = "";	
+	$sql1 =    "SELECT eo_friends.davetEdilenID,
+				eo_friends.davetEdenID,
+				eo_users.userBirthDate,DAYOFYEAR( eo_users.userBirthDate + INTERVAL YEAR( NOW() ) 
+				   - YEAR( eo_users.userBirthDate ) YEAR ) - DAYOFYEAR( NOW() ) as fark 
+				FROM eo_friends, eo_users				
+				WHERE 
+				 (eo_users.id = eo_friends.davetEdilenID or eo_users.id = eo_friends.davetEdenID) and
+				  eo_friends.kabul='1' and  
+				 (DAYOFYEAR( eo_users.userBirthDate + INTERVAL YEAR( NOW() ) 
+				   - YEAR( eo_users.userBirthDate ) YEAR ) - DAYOFYEAR( NOW() ) 
+				    BETWEEN 0 AND 15)
+				LIMIT 0,5";
+//				echo "$sql1";
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{				    
+				   while($row_gelen = mysql_fetch_assoc($result1)) {
+					   if($row_gelen['fark']!="0")
+					    $fark = $row_gelen['fark']." $metin[621] ";
+						else
+						$fark = " $metin[622] ";
+					if($row_gelen['davetEdenID']!=$aktifKullID)
+					    $sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdenID']."'>".kullAdi($row_gelen['davetEdenID'])."</a> $fark";				     
+					else
+						$sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdilenID']."'>".kullAdi($row_gelen['davetEdilenID'])."</a> $fark";						
+				   }
+				}	
+	return $sonuc;
+}
+/*
 getFriendApprovals:
 kullanýcýnýn bekleyen arkadaþlýk istekleri
 */
