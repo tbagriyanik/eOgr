@@ -209,8 +209,7 @@ Lesser General Public License for more details.
 		
 		$metin[164]="<p> eOgr uygulamasý ile istediðiniz alanda &uuml;cretsiz eðitim alabilirsiniz. </p>
                   <p>Ayrýca diðer &ouml;ðrenciler ve &ouml;ðretmenler ile anlýk olarak iletiþime
-                    ge&ccedil;ebilirsiniz. Animasyon ve video desteði ile
-                    konular daha akýcý hale getirilmiþtir.</p>
+                    ge&ccedil;ebilirsiniz. Projeye katýlarak sosyal bir öðrenme ortamýndan faydalanacaksýnýz.</p>
                   <p><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></p>
 ";
 				  
@@ -802,6 +801,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[621]	= "gün";
 		$metin[622]	= "bugün";
-		$metin[623]	= "Herkes (özellikle veliler, öðrenciler ve öðretmenler) ders çalýþmalarýný takip edebilir";
+		$metin[623]	= "Veliler, öðrenciler ve öðretmenler ders çalýþmalarýný takip edebilir";
 		
 ?>

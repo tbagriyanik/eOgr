@@ -320,7 +320,7 @@ if ($totalRows_eoUsers>0)
                         <td nowrap="nowrap" align="right" <?php echo "style=\"background-color: $row_color;\"";?>><?php echo tarihOku($row_eoUsers['davetTarihi']); ?></td>
                         <td nowrap="nowrap" align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku($row_eoUsers['kabulTarihi']); ?></td>
                         <td align="center" <?php echo "style=\"background-color: $row_color;\""?>><?php echo arkadasKabulDurumu($row_eoUsers['kabul']);  ?></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>><?php   echo araKalin(smartShort($row_eoUsers['duvarYazisi']));  ?></td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?> title="<?php echo $row_eoUsers['duvarYazisi'];?>"><?php   echo araKalin(smartShort($row_eoUsers['duvarYazisi']));  ?></td>
                         <td align="center" valign="middle" nowrap="nowrap"><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>
                       </tr>
