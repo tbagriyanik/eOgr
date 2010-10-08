@@ -1817,7 +1817,52 @@ function getStats($num,$uID="")
 				   return ("");
 				}
 				
-				break;						
+				break;	
+									
+		case 19:
+		//þu anki kullanýcýnýn bitirdiði dersler
+				if($uID=="")
+				//kendi kimliði lazým
+					$uID = getUserID($_SESSION["usern"],$_SESSION["userp"]);	
+					
+				$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
+									eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi,
+									eo_3ders.id as dersID,  
+									sum(eo_userworks.toplamZaman) as toplam 
+							FROM eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_userworks, eo_users 
+							WHERE eo_4konu.id = eo_userworks.konuID and 
+								  eo_users.id = eo_userworks.userID and
+								  eo_3ders.id = eo_4konu.dersID and
+								  eo_2sinif.id = eo_3ders.sinifID and
+								  eo_1okul.id = eo_2sinif.okulID and
+							      eo_users.id = ".$uID."
+							GROUP BY dersAdi
+							ORDER BY toplam DESC";
+				
+				$yol1 = baglan();
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   if(mysql_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
+				   $sayGelen = 1;
+				   while($row_gelen = mysql_fetch_assoc($result1)){
+				    $ekle .= "<li style='list-style-type:none;'>".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay2.php?kurs=".$row_gelen['dersID']."&amp;kisi=$uID'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font></li>";
+					$sayGelen++;
+					if ($sayGelen > ayarGetir("ayar2int")) break 1;
+				}
+					
+				   $ekle .= "</ul>";
+				   
+				   if (mysql_num_rows($result1) > ayarGetir("ayar2int"))	
+					   $ekle .="<div><a href='getFullList.php?case=19'  rel=\"shadowbox;height=400;width=800\" title='$metin[239]' class='more'>$metin[162]</a></div>"; 
+					@mysql_free_result($result1);
+				   return ($ekle);
+				}else {
+				   return ("");
+				}
+				
+				break;
+		
 	} //switch	
 
 return "";

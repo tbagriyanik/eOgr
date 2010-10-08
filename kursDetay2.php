@@ -23,7 +23,7 @@ Lesser General Public License for more details.
       $_SESSION ['ready'] = TRUE; 
 	require("conf.php");	
 	$time = getmicrotime();  
-	checkLoginLang(true,true,"kursDetay.php");	
+	checkLoginLang(false,true,"kursDetay2.php");	
 	check_source();
 	$seciliTema=temaBilgisi();	
 ob_start (); // Buffer output
@@ -37,7 +37,7 @@ ob_start (); // Buffer output
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr - <?php echo $metin[461]?>
+<title>eOgr -<?php echo $metin[461]?>
 <!--TITLE-->
 </title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
@@ -156,116 +156,50 @@ Shadowbox.init({
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[461]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-	
-  $adi	=substr(temizle($_POST["userN"]),0,15);
-  $par	=sha1(substr(temizle($_POST["userP"]),0,15));
-  
-   if ($adi=="") {
-	   $adi	=temizle(substr($_SESSION["usern"],0,15));
-	   $par	=temizle($_SESSION["userp"]);
-	  }
-	  else
-	  {
-	   if(checkRealUser($adi,$par)=="-2")	   
-		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
-	   else {
-	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
-	     }
-	  }
-  
-	if($adi=="" || $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-    $tur=checkRealUser($adi,$par);
-
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= ($adi);
-    	$_SESSION["userp"] 	= ($par);
-	  }	
-
-	 switch($_SESSION["tur"]){
-	  case '-1':$ktut=$metin[85];break;	  
-	  case '0':$ktut=$metin[86];break;	  
-	  case '1':$ktut=$metin[87];break;	  
-	  case '2':$ktut=$metin[88];break;	  
-	  default:$ktut=$metin[89];
-	 } 
-
-?>
-                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
-                  <?php
 				  
-	$uID = temizle($_GET["user"]);
-	if($uID!="") $_SESSION["kursUser"]=$uID;
-
-//	if($uID != getUserID($_SESSION["usern"],$_SESSION["userp"]) and $_SESSION["tur"]==0) 
-	  	//die($metin[448]);	 		  
-		
-	 if (trim(getStats(11))!=""){
-		 if (trim(getStats(12))!=""){
-			 echo "<div class='tekKolon'><h3>".$metin[239]."</h3>".getStats(12)."</div>";
-		 }		 
-	 }else
-	  echo "$metin[485]";			
+	$uID = temizle($_GET["kisi"]);
+	if($uID!="") $_SESSION["kursUser2"]=$uID;
 		 
 ?>
+                  <div class="aramaDiv2">
+                    <p> <?php echo $metin[29]?> :
+                      <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>
+                      <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[590]?>" title="<?php echo $metin[590]?>"/> </p>
+                  </div>
+                  <script type="text/javascript">
+                        var options = {
+                            script:"lib/as/test2.php?",
+                            varname:"input",
+                            json:true,
+                            shownoresults:false,
+                            maxresults:3,
+                            callback: function (obj) {								
+								location.href = "kursDetay2.php?kisi="+obj.id;
+							}
+                        };
+                        var as_json = new bsn.AutoSuggest('searchterm2', options);                                                
+</script> 
+				<?php if($uID!="") {?>
+                  <div class="tekKolon"> <h3><?php echo $metin[584]?> :</h3>
+                    <?php				    
+				    echo "<strong><a href='profil.php?kim=".$uID."' rel='facebox'><span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($uID))."</span></a></strong><br/>";
+					if(strlen(getStats(19,$uID))==0)					
+						echo "<font id='uyari'>$metin[586]</font>";
+					else					
+						echo getStats(19,$uID);
+                  ?>
+                  </div>
+                  <?php
+                  }
+				  ?>
                 </div>
                 <div class="cleared" ></div>
               </div>
             </div>
           </div>
           <?php
-		  if(($_SESSION["tur"]==1 or $_SESSION["tur"]==2)and($uID!="" and $uID != getUserID($_SESSION["usern"],$_SESSION["userp"]))){
-          ?>
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <div class="PostContent">
-                  <div class="tekKolon"> <h3><?php echo $metin[584]?> :</h3>
-                    <?php				    
-				    echo "<strong><a href='profil.php?kim=".$uID."' rel='facebox'><span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($uID))."</span></a></strong><br/>";
-					echo getStats(12,$uID);
-                  ?>
-                  </div>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-          <?php
-		  }
-		  ?>
-          <?php
 					$dersID = temizle($_GET["kurs"]);
-					$uID = temizle($_GET["user"]);
+					$uID = temizle($_GET["kisi"]);
 			if(! empty($dersID) ) {
           ?>
           <div class="Post">

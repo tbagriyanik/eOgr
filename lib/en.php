@@ -787,5 +787,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[621]	= "day(s)";
 		$metin[622]	= "today";
+		$metin[623]	= "Everybody (especially parents, students and teachers) can follow lesson works";		
 						
 ?>

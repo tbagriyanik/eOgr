@@ -413,7 +413,54 @@ function listeGetir($userID, $durum){
 						   return ("");
 						}
 						
-						break;		
+						break;	
+							
+					case 19:
+					//þu anki kullanýcýnýn bitirdiði dersler
+					if($_SESSION["kursUser2"]!="")
+					//eðer baþka kullanýcý inceleniyor ise
+					  $userID = temizle($_SESSION["kursUser2"]);
+					  
+							$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
+												eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi,
+												eo_3ders.id as dersID, 
+												sum(eo_userworks.toplamZaman) as toplam 
+										FROM eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_userworks, eo_users 
+										WHERE eo_4konu.id = eo_userworks.konuID and 
+											  eo_users.id = eo_userworks.userID and
+											  eo_3ders.id = eo_4konu.dersID and
+											  eo_2sinif.id = eo_3ders.sinifID and
+											  eo_1okul.id = eo_2sinif.okulID and
+											  eo_users.id = ".$userID."
+										GROUP BY dersAdi
+										ORDER BY toplam DESC";
+							
+							$result1 = mysql_query($sql1, $yol1);
+							if ($result1)
+							{
+							   if(mysql_num_rows($result1)==0) return "";	 
+							   								
+							   $ekle = "<ul><li>";
+							   $donguSon = mysql_num_rows($result1);
+							   for($i=0; $i<$donguSon ;$i++){
+									$row_gelen = mysql_fetch_assoc($result1);
+									if($i % 15 == 0 and $i>0){
+											$ekle .=  "</li><li>";
+										}
+									
+									$ekle .=  ($i+1)." ".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay2.php?kurs=".$row_gelen['dersID']."&amp;kisi=$userID' target='_parent'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
+								echo $ekle;
+							   return ($ekle);
+							}else {
+							   return ("");
+							}
+							
+							break;
+					
 					default:
 						die("");	
 				} //switch	
