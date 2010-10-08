@@ -369,7 +369,7 @@ if(isset($_GET["ekle"]))
                     <?php
 					//ARKADASLARIM
 		$arkadaslarim = arkadasListesi();			
-		$arkadaslarDogum = arkadasListesi();			
+		$arkadaslarDogum = arkadasDogumListesi();			
 	if($arkadaslarim!=""){				
 		echo "<p><img src=\"img/users.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"users\"/> <strong>$metin[549] :</strong> $arkadaslarim</p>";
 		if($arkadaslarDogum!="")

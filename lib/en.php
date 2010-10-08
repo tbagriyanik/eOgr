@@ -784,5 +784,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[618]	= "Upcoming Birthdays";
 		$metin[619]	= "Friendship <strong>invitation</strong> date";
 		$metin[620]	= "Friendship <strong>approve</strong> date";
-				
+		
+		$metin[621]	= "day(s)";
+		$metin[622]	= "today";
+						
 ?>

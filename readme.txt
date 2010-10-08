@@ -1,5 +1,5 @@
 
-	eOgr - v125b, 26-09-2010
+	eOgr - v125c, 08-10-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -7,9 +7,12 @@ ABOUT:
 ------
 Simply you can get online "education". With animations and videos, you can learn any subject better. And also you can interact with teachers or other students at real time or send email. 
 
-This project is simple and has easy usage, and has free membership...
+This project is simple, it is easy to use and has free membership...
 
-Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages, quizes and many activities. Teachers can follow the students works, they can add and modify lesson modules. Administrator users manage the site maintenance like editing users, database optimization and site settings.
+Every member can share their files and they can become friends. They can view or write their walls.
+Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages, quizes and many activities. 
+Teachers and parents can follow the students works. Teachers can add and modify lesson modules. 
+Administrator users manage the site maintenance like editing users, database optimization and site settings.
 
 Available language support is English and Turkish.
 
@@ -33,7 +36,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (555 hours programming, 17.500 lines PHP, 25.000 lines Javascript and CSS)
+	15-11-2008 (560 hours programming, 17.500 lines PHP, 25.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
