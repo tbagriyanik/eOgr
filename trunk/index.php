@@ -73,6 +73,7 @@ Lesser General Public License for more details.
 					"fileShare.php",
 					"help.php",
 					"kursDetay.php",
+					"kursDetay2.php",
 					"lessonsEdit.php",
 					"login.php",
 					"newUser.php",
@@ -269,7 +270,7 @@ if (isset($_COOKIE["remUser"]))
                   <?php 				  
   if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){$_SESSION["usern"]="";$_SESSION["userp"]="";
 ?>
-                  <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+                  <script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
                   <script type="text/javascript">
 $().ready(function() {
 	$("#form1").validate({
@@ -362,6 +363,7 @@ $().ready(function() {
 				  }
 	}
 ?>
+                  <p><?php echo $metin[623]?><br/><a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
                 </div>
                 <div class="cleared"></div>
               </div>

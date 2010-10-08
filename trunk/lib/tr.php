@@ -802,5 +802,6 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[621]	= "gün";
 		$metin[622]	= "bugün";
+		$metin[623]	= "Herkes (özellikle veliler, öðrenciler ve öðretmenler) ders çalýþmalarýný takip edebilir";
 		
 ?>
