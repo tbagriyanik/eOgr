@@ -180,9 +180,9 @@ Shadowbox.init({
                         var as_json = new bsn.AutoSuggest('searchterm2', options);                                                
 </script> 
 				<?php if($uID!="") {?>
-                  <div class="tekKolon"> <h3><?php echo $metin[584]?> :</h3>
+                  <div class="tekKolon"> <h4><?php echo $metin[584]?> :</h4>
                     <?php				    
-				    echo "<strong><a href='profil.php?kim=".$uID."' rel='facebox'><span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($uID))."</span></a></strong><br/>";
+				    echo "<p><span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($uID))."</span></strong></p>";
 					if(strlen(getStats(19,$uID))==0)					
 						echo "<font id='uyari'>$metin[586]</font>";
 					else					

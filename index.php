@@ -363,7 +363,7 @@ $().ready(function() {
 				  }
 	}
 ?>
-                  <p><?php echo $metin[623]?><br/><a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
+                  <p><?php echo $metin[623]?> <img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
                 </div>
                 <div class="cleared"></div>
               </div>

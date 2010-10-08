@@ -187,7 +187,7 @@ Lesser General Public License for more details.
                                 <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> </li>
                                 <li><a href="newUser.php"><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
                                 <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
-                                <li><a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a></li>
+                                <li><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a></li>
                                 <li><a href="rss.php"><span><span> <?php echo $metin[153].$bilgi7?></span></span></a></li>
                                 <li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
                                 <li><a href="siteMap.php"><span><span><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /> <?php echo $metin[547]?></span></span></a></li>
@@ -218,7 +218,7 @@ Lesser General Public License for more details.
                             <li><img src="img/ogr_user.png" border="0" style="vertical-align: middle;" alt="<?php echo $metin[94]?>"/> <?php echo $metin[94]?>
                               <ul style="list-style:none">
                                 <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/> <?php echo $metin[60]?></span></span></a></li>
-                                <li><a href="kursDetay.php"><span><span> <?php echo $metin[461]?></span></span></a></li>
+                                <li><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay.php"><span><span> <?php echo $metin[461]?></span></span></a></li>
                                 <li><a href="stats.php"><span><span> <?php echo $metin[197]?></span></span></a></li>
                                 <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?></span></span></a></li>
                                 <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?></span></span></a></li>
