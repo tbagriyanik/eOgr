@@ -24,7 +24,7 @@ Lesser General Public License for more details.
 	require("conf.php");	
 	$time = getmicrotime();  
 	checkLoginLang(false,true,"kursDetay2.php");	
-	check_source();
+	//check_source();
 	$seciliTema=temaBilgisi();	
 ob_start (); // Buffer output
 ?>
