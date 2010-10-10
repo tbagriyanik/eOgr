@@ -332,9 +332,16 @@ if(isset($_GET["kisi"]))
 if(isset($_GET["ekle"]))				 
 	if(!empty($_GET["ekle"])){
 		if(arkadasTeklifEt(RemoveXSS($_GET["ekle"])))
-			echo "<font id='tamam'>Teklifiniz iletildi.</font>";
+			echo "<font id='tamam'>$metin[625]</font>";
 		 else
-			echo "<font id='hata'>Bir hata meydana geldi!</font>";
+			echo "<font id='hata'>$metin[626]</font>";
+	}
+if(isset($_GET["reddet"]))				 
+	if(!empty($_GET["reddet"])){
+		if(arkadasReddet(RemoveXSS($_GET["reddet"])))
+			echo "<font id='tamam'>$metin[603]</font>";
+		 else
+			echo "<font id='hata'>$metin[626]</font>";
 	}
 	//login sayfasýndan				 
 	  $bekleyenArkadas = getFriendApprovals();
@@ -422,11 +429,12 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	    !arkadasTeklifVarMi($geceliKullID,$seciliKisi) and
 		!arkadasMi($geceliKullID,$seciliKisi)
 		)   			  
-		echo "<p><a href='friends.php?ekle=".$seciliKisi."'>$metin[591]</a></p>";
+		echo "<p><a href='friends.php?ekle=".$seciliKisi."'><img src=\"img/user_add.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[591]\"/> $metin[591]</a></p>";
 	if (arkadasTeklifVarMi($geceliKullID,$seciliKisi) or arkadasMi($geceliKullID,$seciliKisi))
 		echo "<p>$metin[619] : ".getArkadaslikDavetTarihi($geceliKullID,$seciliKisi)."</p>";	
 	if (arkadasMi($geceliKullID,$seciliKisi)) {
 		echo "<p>$metin[620] : ".getArkadaslikKabulTarihi($geceliKullID,$seciliKisi)."</p>";	
+		echo "<p><a href='friends.php?reddet=$seciliKisi'><img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[624]\"/> $metin[624]</a></p>";	
 		echo "<p><strong>$metin[617] :</strong> <br>";
 ?>
 <script language="javascript" type="text/javascript">

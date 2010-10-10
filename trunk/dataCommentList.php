@@ -312,7 +312,7 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 	//güncelleme
 ?>
-<form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
+                  <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
                     <table width="500" border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">
                         <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <?php echo $metin[452]?> </div></th>
@@ -333,7 +333,7 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                     <input type="hidden" name="MM_update" value="form3" />
                     <input type="hidden" name="id" value="<?php echo $row_eoUsers['id']; ?>" />
                   </form>
-<?php	
+                  <?php	
 }
 else if ($totalRows_eoUsers>0)
    {
@@ -391,7 +391,7 @@ else if ($totalRows_eoUsers>0)
 						?>
                           </a></td>
                         <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
-                        <td align="left" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd($row_eoUsers['comment']);   ?></td>
+                        <td align="left" title="<?php echo $row_eoUsers['comment']?>" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd(smartShort($row_eoUsers['comment']));   ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>

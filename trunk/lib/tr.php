@@ -616,7 +616,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[459] = "Tümünü Aç";
 		$metin[460] = "Tümünü Deðiþtir";
 		
-		$metin[461] = "Kurs Detaylarý";
+		$metin[461] = " Kurs Detaylarý";
 		$metin[462] = "Yazdýr";		
 		
 		$metin[463] = "Dosyalar";		
@@ -767,9 +767,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[588] = "Þimdilik hiçbir arkadaþýnýz bulunmuyor!";
 		$metin[589] = "Bir Arkadaþ Arama";
 		$metin[590] = "Gerçek adý içinde arama yapabilirsiniz";
-		$metin[591] = "Arkadaþ Olarak Ekle";
-		$metin[592] = "Arkadaþlýk teklifleri :";
-		$metin[593] = "Þimdilik sizin için arkadaþlýk teklifi yoktur.";
+		$metin[591] = "Arkadaþ Olarak Davet Et";
+		$metin[592] = "Arkadaþlýk davetleri :";
+		$metin[593] = "Þimdilik sizin için arkadaþlýk daveti yoktur.";
 		$metin[594] = " Arkadaþlýk Durumu";												
 		$metin[595] = "Davet Tarihi";												
 		$metin[596] = "Kabul Tarihi";												
@@ -802,5 +802,11 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[621]	= "gün";
 		$metin[622]	= "bugün";
 		$metin[623]	= "Veliler, öðrenciler ve öðretmenler ders çalýþmalarýný takip edebilir";
+		
+		$metin[624]	= "Arkadaþlýðý Reddet!";
+		$metin[625]	= "Davetiniz iletildi.";	
+		$metin[626]	= "Bir hata meydana geldi!";	
+		
+		$metin[627]	= "Arkadaþlýk Güncelleme Formu";			
 		
 ?>

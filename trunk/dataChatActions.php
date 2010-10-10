@@ -295,7 +295,7 @@ if ($_GET["upd"]=="1" && isset($_GET["messageid"]) && $tur=="2" ){
                         <td><?php echo $row_eoUsers['messageid']; ?></td>
                       </tr>
                       <tr valign="baseline">
-                        <td align="right" nowrap="nowrap"><label for="message"> <?php echo $metin[52]?> :</label></td>
+                        <td align="right" nowrap="nowrap"><label for="message"> <?php echo $metin[50]?> :</label></td>
                         <td bgcolor="#CCFFFF"><textarea name="message" id="message" cols="60" rows="8"><?php echo GetSQLValueStringNo($row_eoUsers['message'],"text"); ?></textarea></td>
                       </tr>
                       <tr valign="baseline">
@@ -348,7 +348,7 @@ else if ($totalRows_eoUsers>0)
                       <tr >
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['messageid']; ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['name']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['name']); ?></a></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin(smileAdd(temizle($row_eoUsers['message']))); ?></td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?> title="<?php echo $row_eoUsers['message']?>"><?php echo araKalin(smileAdd(temizle(smartShort($row_eoUsers['message'],45)))); ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><?php
 		echo odaGetir($row_eoUsers['ip']);				
 	  ?></td>
