@@ -310,8 +310,8 @@ if ($totalRows_eoUsers>0)
                         echo ($row_eoUsers['konuAdi'])?araKalin($row_eoUsers['konuAdi']):"<span class=bosVeri>###</span>";; 
 						?>
                           </a></td>
-                        <td align="right" nowrap="nowrap"  <?php echo "style=\"background-color: $row_color;\""?>><?php 
-					    echo $row_eoUsers['value'];   
+                        <td align="left" nowrap="nowrap"  <?php echo "style=\"background-color: $row_color;\""?>><?php 
+					    echo yildizYap($row_eoUsers['value']);   
 					  ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['rateDate']); ?></td>
                         <?php  if($tur=="2") { ?>

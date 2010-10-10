@@ -161,6 +161,25 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
+
+			$updateSQL = sprintf("UPDATE eo_friends SET duvarYazisi=%s WHERE id=%s",
+							   RemoveXSS(GetSQLValueString($_POST['wall'], "text")),
+							   temizle(GetSQLValueString($_POST['id'], "int"))
+							   );
+		
+		  mysql_select_db($database_baglanti, $yol);
+		  $Result1 = mysql_query($updateSQL, $yol);
+		  if($Result1) {
+			   	trackUser($currentFile,"success,WallInfo",$adi);
+				echo ("<font id='tamam'>$metin[536]</font>");
+		    }
+			else {
+			    trackUser($currentFile,"fail,WallInfo",$adi);
+				echo ("<font id='hata'>$metin[626]</font>");
+			}
+}
+
 if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_friends WHERE id=%s",
                        GetSQLValueString($_GET['id'], "int"));
@@ -219,6 +238,17 @@ if (empty($_SESSION["siraYonu"])) {
 	
 	$sirAlan=temizle($_GET['order']);
 	
+if ($_GET["upd"]=="1")
+   {
+	   $upID =  GetSQLValueString($_GET['id'], "int"); 
+	    $query_eoUsers = "
+					SELECT eo_friends.id as id,eo_friends.*,eo_users.userName as userName FROM eo_friends
+					INNER JOIN eo_users
+					ON eo_users.id = eo_friends.davetEdenID
+					WHERE eo_friends.id = '$upID'";   
+   }
+   else
+    {
 	  if ($sirAlan!="")
 	    $query_eoUsers = "
 					SELECT eo_friends.id as id,eo_friends.*,eo_users.userName as userName FROM eo_friends
@@ -235,14 +265,14 @@ if (empty($_SESSION["siraYonu"])) {
 					ORDER BY id DESC";  
 		$sirAlan="id";
 	   }
-//echo  $query_eoUsers ;
+	}
+
  if ($_GET["upd"]=="1")
 	$query_limit_eoUsers = sprintf("%s", $query_eoUsers);
  else
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
 
 $eoUsers = mysql_query($query_limit_eoUsers, $yol) or die(mysql_error());
-//$eoUsers = mysql_query($query_eoUsers, $yol) or die(mysql_error());
 $row_eoUsers = mysql_fetch_assoc($eoUsers);
 $totalRows_eoUsers = mysql_num_rows($eoUsers);
 
@@ -271,7 +301,32 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if ($totalRows_eoUsers>0)
+if ($_GET["upd"]=="1" && isset($_GET["id"]) ){	//güncelleme
+?>
+                  <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
+                    <table width="500" border="0" align="center" cellpadding="3" cellspacing="0">
+                      <tr valign="baseline">
+                        <th colspan="2" align="right" nowrap="nowrap"><div align="center"> <?php echo $metin[627]?> </div></th>
+                      </tr>
+                      <tr valign="baseline">
+                        <td align="right" nowrap="nowrap"><?php echo $metin[26]?> :</td>
+                        <td><?php echo $row_eoUsers['id']; ?></td>
+                      </tr>
+                      <tr valign="baseline">
+                        <td align="right" nowrap="nowrap"><label for="wall"> <?php echo $metin[597]?> :</label></td>
+                        <td bgcolor="#CCFFFF"><textarea name="wall" id="wall" cols="60" rows="8"><?php echo RemoveXSS($row_eoUsers['duvarYazisi']); ?></textarea></td>
+                      </tr>
+                      <tr valign="baseline">
+                        <td colspan="2" align="center" bgcolor="#CCFFFF" class="tabloAlt"><input type="submit" value="<?php echo $metin[25]?>" />
+                          <input name="geri" type="button" id="geri" onclick="location.href = &quot;dataFriendActions.php&quot;;" value="<?php echo $metin[28]?>" /></td>
+                      </tr>
+                    </table>
+                    <input type="hidden" name="MM_update" value="form3" />
+                    <input type="hidden" name="id" value="<?php echo $row_eoUsers['id']; ?>" />
+                  </form>
+                  <?php	
+}
+else if ($totalRows_eoUsers>0)
    {
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="dataFriendActions.php">
@@ -321,7 +376,7 @@ if ($totalRows_eoUsers>0)
                         <td nowrap="nowrap" align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku($row_eoUsers['kabulTarihi']); ?></td>
                         <td align="center" <?php echo "style=\"background-color: $row_color;\""?>><?php echo arkadasKabulDurumu($row_eoUsers['kabul']);  ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?> title="<?php echo $row_eoUsers['duvarYazisi'];?>"><?php   echo araKalin(smartShort($row_eoUsers['duvarYazisi']));  ?></td>
-                        <td align="center" valign="middle" nowrap="nowrap"><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
+                        <td align="center" valign="middle" nowrap="nowrap"><a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>
                       </tr>
                       <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
@@ -356,7 +411,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                     <?php
    }
  ?>
-                  </form>                  
+                  </form>
                   <form method="get" id="sayfaSec" name="sayfaSec" action="dataFriendActions.php">
                     <p>
                       <label> <?php echo $metin[110]?> :

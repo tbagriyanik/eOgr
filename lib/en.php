@@ -602,7 +602,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[459] = "Expande All";
 		$metin[460] = "Toggle All";
 		
-		$metin[461] = "Course Details";
+		$metin[461] = " Course Details";
 		$metin[462] = "Print";		
 		
 		$metin[463] = "Files";		
@@ -753,9 +753,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[588] = "You do not have any friends for now!";
 		$metin[589] = "Search for a Friend";
 		$metin[590] = "You can search in the real name";
-		$metin[591] = "Add as a Friend";		
-		$metin[592] = "Your pending friendship approvals :";	
-		$metin[593] = "There is no pending friendship approvals.";
+		$metin[591] = "Invite as a Friend";		
+		$metin[592] = "Your pending friendship invitations :";	
+		$metin[593] = "There is no pending friendship invitations.";
 		$metin[594] = " Friendship Status";
 		$metin[595] = "Invitation";												
 		$metin[596] = "Approve Date";												
@@ -763,9 +763,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[598] = "You can search in the user name and wall.";																									
 		$metin[599] = "Waiting";												
 		$metin[600] = "Approve";												
-		$metin[601] = "Disaprove";												
+		$metin[601] = "Disapprove";												
 		$metin[602] = "You approved!";												
-		$metin[603] = "You disaproved!";												
+		$metin[603] = "You disapproved!";												
 		$metin[604] = "When selected, presentation stops. If not selected, presentation goes on.";	
 		$metin[605]	= "Classroom %s"; 
 		   		
@@ -788,5 +788,11 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[621]	= "day(s)";
 		$metin[622]	= "today";
 		$metin[623]	= "Parents, students and teachers can follow lesson works";		
+		
+		$metin[624]	= "Disapprove This Friendship!";
+		$metin[625]	= "Your invitation is sent.";	
+		$metin[626]	= "There is an error!";	
+		
+		$metin[627]	= "Friendship Update Form";			
 						
 ?>

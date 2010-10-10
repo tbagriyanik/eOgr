@@ -286,8 +286,8 @@ Shadowbox.init({
                           <?php
 					  $bekleyenArkadas = getFriendApprovals();
 					   if(!empty($bekleyenArkadas)) {
-								echo $metin[592]."<br/>";
-								echo $bekleyenArkadas;
+								echo "<font id='tamam'>".$metin[592]." ";
+								echo $bekleyenArkadas."</font>";
 						   }else{
 							 	echo "<font id='tamam'>$metin[593]</font>" ;
 						   }	   

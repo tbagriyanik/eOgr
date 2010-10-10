@@ -824,19 +824,31 @@ function arkadasDogumListesi(){
 	global $metin,$yol1;
 	$aktifKullID = getUserID2($_SESSION["usern"]);
 	$sonuc = "";	
-	$sql1 =    "SELECT eo_friends.davetEdilenID,
-				eo_friends.davetEdenID,
+				
+	$sql1 =    "SELECT eo_users.id,
 				eo_users.userBirthDate,DAYOFYEAR( eo_users.userBirthDate + INTERVAL YEAR( NOW() ) 
 				   - YEAR( eo_users.userBirthDate ) YEAR ) - DAYOFYEAR( NOW() ) as fark 
-				FROM eo_friends, eo_users				
+				FROM eo_users				
 				WHERE 
-				 (eo_users.id = eo_friends.davetEdilenID or eo_users.id = eo_friends.davetEdenID) and
-				  eo_friends.kabul='1' and  
+				  (
+				  eo_users.id in (
+				  SELECT  davetEdenID
+					FROM eo_friends
+					WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
+				  ) or
+				  eo_users.id in (
+				  SELECT  davetEdilenID
+					FROM eo_friends
+					WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
+				  )
+				  ) and
+				  eo_users.id <> '$aktifKullID' and 
 				 (DAYOFYEAR( eo_users.userBirthDate + INTERVAL YEAR( NOW() ) 
 				   - YEAR( eo_users.userBirthDate ) YEAR ) - DAYOFYEAR( NOW() ) 
 				    BETWEEN 0 AND 15)
+				ORDER BY fark 	
 				LIMIT 0,5";
-//				echo "$sql1";
+				//echo "$sql1";
 				$result1 = mysql_query($sql1, $yol1);
 				if ($result1)	{				    
 				   while($row_gelen = mysql_fetch_assoc($result1)) {
@@ -844,10 +856,7 @@ function arkadasDogumListesi(){
 					    $fark = $row_gelen['fark']." $metin[621] ";
 						else
 						$fark = " $metin[622] ";
-					if($row_gelen['davetEdenID']!=$aktifKullID)
-					    $sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdenID']."'>".kullAdi($row_gelen['davetEdenID'])."</a> $fark";				     
-					else
-						$sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdilenID']."'>".kullAdi($row_gelen['davetEdilenID'])."</a> $fark";						
+					    $sonuc .= "<a href='friends.php?kisi=".$row_gelen['id']."'>".kullAdi($row_gelen['id'])."</a> $fark";						
 				   }
 				}	
 	return $sonuc;
@@ -902,16 +911,26 @@ function arkadasTeklifEt($id){
 	$datem	=	date("Y-n-j H:i:s");		
 		
 		if(!empty($gonderenID) && !empty($id)) {			
-			if(!arkadasTeklifVarMi($gonderenID,$id)){
-				 $sql2 = "INSERT INTO eo_friends
+		//eðer zaten arkadaþ teklifi var veya önceden reddedildiyse
+			if(!arkadasTeklifVarMi2($gonderenID,$id)){
+				//yok yeni bir arkadaþlýk
+				$sql2 = "INSERT INTO eo_friends
 				    (kabul, davetEdenID, davetEdilenID, davetTarihi)
 				 	VALUES 
 					('0','$gonderenID','$id','$datem')";  
 
 				$result2 = mysql_query($sql2, $yol1); 
 				return $result2;
+			}else{
+				//önceden birþeyler olmuþ!
+				$sql2 = "UPDATE eo_friends
+				    SET kabul='0',davetTarihi ='$datem'
+				   WHERE (davetEdenID='$gonderenID' and davetEdilenID='$id') or 
+				   		(davetEdilenID='$gonderenID' and davetEdenID='$id')";  
+
+				$result2 = mysql_query($sql2, $yol1); 
+				return $result2;
 			}
-			return false; //zaten teklif var!
 		 }
 	
 	return false;
@@ -927,6 +946,23 @@ function arkadasTeklifVarMi($gonderenID,$id){
 			((davetEdenID='$gonderenID' and davetEdilenID='$id') or
 			 (davetEdilenID='$gonderenID' and davetEdenID='$id'))
 			 and kabul = '0' 
+			LIMIT 0,1";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+	return ($result1 && mysql_numrows($result1) == 1); 
+}
+/*
+arkadasTeklifVarMi2:
+daha önceden var mý arkadaþ teklifi veya Red mi edilmiþti?
+*/
+function arkadasTeklifVarMi2($gonderenID,$id){
+	
+	$sql1 = "SELECT * FROM eo_friends 
+			WHERE 
+			((davetEdenID='$gonderenID' and davetEdilenID='$id') or
+			 (davetEdilenID='$gonderenID' and davetEdenID='$id'))
+			 and (kabul = '0' or kabul='2')
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
@@ -1009,6 +1045,28 @@ function arkadasDuvarYazisi($kendi,$diger){
 	$result1 = @mysql_query($sql1, $yol1);
 	$duvarYazisi = mysql_fetch_array($result1);
 	return RemoveXSS($duvarYazisi[0]); 
+}
+/*
+arkadasReddet: reddedilen kisi id
+kullanýcý adý ile kisi red edilir
+*/
+function arkadasReddet($kisi){
+		global $yol1;				
+		
+		$datem	=	date("Y-n-j H:i:s");		
+		$gonderenID	= getUserID($_SESSION["usern"],$_SESSION["userp"]);
+		
+		if(!empty($gonderenID) && !empty($kisi)) {			
+				$sql2 = "UPDATE eo_friends
+				   SET kabul='2',kabulTarihi ='$datem'
+				   WHERE (davetEdenID='$gonderenID' and davetEdilenID='$kisi') or 
+				   		(davetEdilenID='$gonderenID' and davetEdenID='$kisi')
+				   "; 
+
+			$result2 = mysql_query($sql2, $yol1); 
+			return $result2;
+		 }		
+	return false;
 }
 /*
 dosyaSil:
