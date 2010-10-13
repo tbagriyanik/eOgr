@@ -98,7 +98,7 @@ function setOutputKonu(sayfaNo, konu, noCount){
 
     if(httpObject.readyState != 4){
 		//yukleniyor
-		//document.getElementById('yukleniyor').style.visibility = "visible";			
+		document.getElementById('yukleniyor').style.visibility = "visible";			
 		window.clearTimeout(timeoutId);
 		timeoutId = window.setTimeout(function() { 
 										httpObject.onreadystatechange = function(){};
@@ -111,7 +111,7 @@ function setOutputKonu(sayfaNo, konu, noCount){
     if(httpObject.readyState == 4)
 	 if(httpObject.status == 200 || httpObject.status == 304){
 		window.clearTimeout(timeoutId);
-		//document.getElementById('yukleniyor').style.visibility = "hidden";
+		document.getElementById('yukleniyor').style.visibility = "hidden";
 		
         var response = httpObject.responseText;
 
