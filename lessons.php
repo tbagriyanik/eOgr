@@ -101,6 +101,31 @@ ob_start (); // Buffer output
 		$(".msg_head2").click(function(){
 			$(this).next(".msg_body2").slideToggle(200);
 		});
+		
+			$("#ileriDugmesi, #geriDugmesi").hover(function() {
+			$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
+			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
+				.animate({
+					marginTop: '-8px', /* The next 4 lines will vertically align this image */ 
+					marginLeft: '-6px',
+					top: '50%',
+					left: '50%',
+					width: '40px', /* Set new width */
+					height: '40px' /* Set new height */
+				}, 100); /* this value of "200" is the speed of how fast/slow this hover animates */
+		
+			} , function() {
+			$(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
+			$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
+				.animate({
+					marginTop: '0', /* The next 4 lines will vertically align this image */ 
+					marginLeft: '0',
+					top: '0',
+					left: '0',
+					width: '25px', /* Set width back to default */
+					height: '25px' /* Set height back to default */
+				}, 150);
+		});
 	});
 
 </script>
@@ -108,8 +133,12 @@ ob_start (); // Buffer output
 <style type="text/css">
 /*register texboxes*/
 #hint {
+	left:374px;
+	top:411px;
+	z-index:1000;
+	position:absolute;
+
 	display: none;
-	position: absolute;
 	right: 20px;
 	width: 100px;
 	margin-top: -4px;
@@ -124,7 +153,7 @@ ob_start (); // Buffer output
 #hint .hint-pointer {
 	position: absolute;
 	left: -10px;
-	top: 6px;
+	top: 16px;
 	width: 10px;
 	height: 19px;
 	background: url(img/pointer.gif) left top no-repeat;
@@ -183,20 +212,18 @@ ob_start (); // Buffer output
 				if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 				echo " $metin[556] : ";
                 if(isKonu($_GET["konu"])){
+//					konuHazirla($_GET["konu"]);		//devamlý VT yorulmasýn, session'a veriler yüklenecekti...			
 				?>
-          <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank">
-          <?php 	echo $metin[553];?></a>&nbsp; |
+          <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank"><?php 	echo $metin[553];?></a>&nbsp; |
           <?php
 				}
         ?>
-          <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'>
-          <?php 		
+          <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'><?php 		
 		if($eMode=="2") 
 			echo "<strong>$metin[552]</strong>";
 		else
 			echo $metin[552];
-		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
-          <?php  		
+		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'><?php  		
 		if($eMode=="3") 
 			echo "<strong>$metin[557]</strong>";
 		else
@@ -240,7 +267,7 @@ ob_start (); // Buffer output
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent" style="height:450px;">
+                <div class="PostContent" style="height:480px;">
                   <?php  
 
 	$_SESSION["cevaplar"] = ""; 
@@ -266,7 +293,7 @@ ob_start (); // Buffer output
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
                     (<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
-                    <span id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span></span> <span id="hint"><?php echo $metin[486];?><span class="hint-pointer">&nbsp;</span></span> &nbsp;&nbsp; <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
+					<span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
                     <span id="bitirmeYuzdesi"></span><br />
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
@@ -283,6 +310,7 @@ ob_start (); // Buffer output
                     "/>
                     </form>
                   </div>
+                  <div id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span> <span id="hint"><?php echo $metin[486];?><span class="hint-pointer">&nbsp;</span></span></div>
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />

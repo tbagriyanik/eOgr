@@ -26,7 +26,7 @@ Lesser General Public License for more details.
   require("conf.php");  		
   $time = getmicrotime();
   checkLoginLang(true,true,"mail.php");	  
-  check_source(); 
+//  check_source(); 
   $seciliTema=temaBilgisi();	
 
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user

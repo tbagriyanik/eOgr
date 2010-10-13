@@ -1308,6 +1308,25 @@ function dosyaKaydet($dosya,$uID){
    	@mysql_free_result($result1);
 }
 /*
+konuHazirla:
+konu bilgilerini oturuma kaydeder
+*/
+function konuHazirla($konuID){
+/*	global $yol1;
+	$sql = "SELECT id, anaMetin FROM eo_5sayfa
+			WHERE konuID = '$konuID'
+			ORDER BY sayfaSirasi";
+	$result = @mysql_query($sql,$yol1);
+	
+	$_SESSION["sayfalar"]=array();//önce eskileri sileriz
+	$i=0;
+	while($gelen=@mysql_fetch_array($result)){		
+		$_SESSION["sayfalar"][$i]=$gelen;
+		$i++;
+	}			
+*/
+}
+/*
 sonCalisanKullanicilar:
 ders çalýþma sayfasýnda son çalýþan kullanýcý isimleri
 */
