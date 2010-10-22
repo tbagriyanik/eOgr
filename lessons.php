@@ -212,7 +212,6 @@ ob_start (); // Buffer output
 				if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 				echo " $metin[556] : ";
                 if(isKonu($_GET["konu"])){
-//					konuHazirla($_GET["konu"]);		//devamlý VT yorulmasýn, session'a veriler yüklenecekti...			
 				?>
           <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank"><?php 	echo $metin[553];?></a>&nbsp; |
           <?php
@@ -638,9 +637,10 @@ fix_flash();
           <?php	 
 	 if(isset($_GET["konu"]) && isKonu($_GET["konu"])){
 		  echo "<script type=\"text/javascript\">
-		  	document.getElementById('konu_id').value=".
-			RemoveXSS($_GET["konu"]).
-			";document.getElementById('sonSayfaHidden').value=0;konuSec2(1);</script>";
+		  	document.getElementById('konu_id').value=".RemoveXSS($_GET["konu"]).";
+			document.getElementById('sonSayfaHidden').value=0;
+			konuHazirla(".RemoveXSS($_GET["konu"]).");
+			</script>";
 			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
 			ob_end_clean (); // Wipe the buffer
 			echo str_replace ('<!--TITLE-->', " - ".konuAdiGetir($_GET["konu"]), $pageContents);	   			

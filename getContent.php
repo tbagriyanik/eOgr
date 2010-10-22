@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 eOgr - elearning project
 
@@ -13,48 +13,24 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-header("Content-Type: text/html; charset=iso-8859-9"); 
-      session_start (); 
-	  ob_start();
-      $_SESSION ['ready'] = TRUE; 
-require("conf.php");  	
-     $taraDili=$_COOKIE["lng"];    
-   if(!($taraDili=="TR" || $taraDili=="EN")) 
-    $taraDili="EN";
-   dilCevir($taraDili);
-   
-	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
+    session_start (); 
+	ob_start();
+	require("conf.php"); 
 /*
-getOncekiKonuAdi:
-önceki konunun adýný getirme
+getKonuKayitliKullanici:
+konunun sadece kayýtlý kullanýcýlar bilgisi
 */
-function getOncekiKonuAdi($gelenID){
+function getKonuKayitliKullanici($gelenID){
 	global $yol1;
-	$sql1	= 	"select konuAdi from eo_4konu where id ='".temizle($gelenID)."'";
+	$sql1	= 	"select sadeceKayitlilarGorebilir from eo_4konu where id ='".temizle($gelenID)."'";
 	$result1= 	mysql_query($sql1,$yol1);
 
-	if($result1) {
+	if($result1 and mysql_num_rows($result1)==1) {
 		mysql_fetch_row($result1);
-		return @mysql_result($result1,$sayfaNo,"konuAdi");
+		return mysql_result($result1,0,"sadeceKayitlilarGorebilir");
 	}
 	else
-		return "";
-}
-/*
-getSonrakiKonu:
-sonraki konunun bilgisi
-*/
-function getSonrakiKonu($suAnkiID, $alanAdi){
-	global $yol1;
-	$sql1	= 	"select $alanAdi from eo_4konu where oncekiKonuID ='".temizle($suAnkiID)."'";
-	$result1= 	mysql_query($sql1,$yol1);
-
-	if($result1) {
-		mysql_fetch_row($result1);
-		return @mysql_result($result1,$sayfaNo,"$alanAdi");
-	}
-	else
-		return "";
+		return "1";
 }
 /*
 konudakiSayfaSayisi:
@@ -86,16 +62,6 @@ function anaMetniOku($gelen, $sayfaNo)
 	if (empty($gelen)) return "<font id='uyari'>$metin[176]</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 	if (empty($sayfaNo)) return "<font id='uyari'>$metin[176]</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 	
-	$kayitSayisi = konudakiSayfaSayisi($gelen);
-			
-		if ($sayfaNo<0) 
-		  	$sayfaNo=0; 	
-		else if ($sayfaNo>$kayitSayisi)	
-		    $sayfaNo = $kayitSayisi - 1; 
-		else		
-			$sayfaNo = $sayfaNo - 1 ; 		//0 index kayit baslangicidir
-		
-
 	$sql1	= 	"select 
 	            eo_5sayfa.id,eo_5sayfa.anaMetin as ana,eo_5sayfa.cevap as cevap,
 				eo_5sayfa.eklenmeTarihi as tarih,				
@@ -111,31 +77,39 @@ function anaMetniOku($gelen, $sayfaNo)
 				from eo_5sayfa, eo_users, eo_4konu 
 				where eo_5sayfa.konuID='$gelen' and 
 				(eo_users.id=eo_5sayfa.ekleyenID) and (eo_4konu.id=eo_5sayfa.konuID) 
-				order by eo_5sayfa.sayfaSirasi
-				LIMIT $sayfaNo,1";
+				order by eo_5sayfa.sayfaSirasi";
 				
 	$result1= 	mysql_query($sql1,$yol1);
 
 	if($result1) {
-		$row = mysql_fetch_assoc($result1);		
-		$sayfaNo = 0; //tek kayýt okunacak
+		mysql_fetch_row($result1);
+		
+		$kayitSayisi = @mysql_numrows($result1);
+		
+		if ($sayfaNo<0) 
+		  	$sayfaNo=0; 	
+		else if ($sayfaNo>$kayitSayisi)	
+		    $sayfaNo = $kayitSayisi - 1; 
+		else		
+			$sayfaNo = $sayfaNo - 1 ; 		//0 index kayit baslangicidir
+		
 	
 	 $humanRelativeDate = new HumanRelativeDate();
-	 $insansi = $humanRelativeDate->getTextForSQLDate($row["tarih"]);
+	 $insansi = $humanRelativeDate->getTextForSQLDate(@mysql_result($result1,$sayfaNo,"tarih"));
 		$tarih			= $insansi;
-		$user			= $row["user"];
-		$cevap			= $row["cevap"];
-		$konuAdi		= $row["konuAdi"];
-		$konuyuKilitle	= $row["konuyuKilitle"];
-		$bitisTarihi	= $row["bitisTarihi"];
-		$sKayitlilarG	= $row["skg"];
-		$aktifKonuNo	= $row["aktifKonuNo"];
-		$oncekiKonuID	= $row["oncekiKonuID"];
-		$calismaHakS	= $row["calismaHakSayisi"];
-		$sgSuresi		= temizle($row["sgSuresi"]);
-		$cSuresi		= temizle($row["cSuresi"]);
-		$calismaSuresiD	= ($sKayitlilarG)?$row["calismaSuresiDakika"]:"0";
-		$sinifOgreK		= ($sKayitlilarG)?$row["sinifaDahilKullaniciGorebilir"]:"0";
+		$user			= @mysql_result($result1,$sayfaNo,"user");
+		$cevap			= @mysql_result($result1,$sayfaNo,"cevap");
+		$konuAdi		= @mysql_result($result1,$sayfaNo,"konuAdi");
+		$konuyuKilitle	= @mysql_result($result1,$sayfaNo,"konuyuKilitle");
+		$bitisTarihi	= @mysql_result($result1,$sayfaNo,"bitisTarihi");
+		$sKayitlilarG	= @mysql_result($result1,$sayfaNo,"skg");
+		$aktifKonuNo	= @mysql_result($result1,$sayfaNo,"aktifKonuNo");
+		$oncekiKonuID	= @mysql_result($result1,$sayfaNo,"oncekiKonuID");
+		$calismaHakS	= @mysql_result($result1,$sayfaNo,"calismaHakSayisi");
+		$sgSuresi		= temizle(@mysql_result($result1,$sayfaNo,"sgSuresi"));
+		$cSuresi		= temizle(@mysql_result($result1,$sayfaNo,"cSuresi"));
+		$calismaSuresiD	= ($sKayitlilarG)?@mysql_result($result1,$sayfaNo,"calismaSuresiDakika"):"0";
+		$sinifOgreK		= ($sKayitlilarG)?@mysql_result($result1,$sayfaNo,"sinifaDahilKullaniciGorebilir"):"0";
 		$oncekiKonuAdi	= getOncekiKonuAdi($oncekiKonuID);
 		$sonrakiKonuID	= getSonrakiKonu($gelen,"id");
 		$sonrakiKonuAdi	= getSonrakiKonu($gelen,"konuAdi");		
@@ -170,14 +144,14 @@ function anaMetniOku($gelen, $sayfaNo)
 			if($gunFarki <= 0) 
 				return "<font id='hata'>'$konuAdi' ".$metin[180]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";				
 				
-			$cevaplanmisMi = @array_key_exists($row["id"],$_SESSION["cevaplar"]);
+			$cevaplanmisMi = @array_key_exists(mysql_result($result1,$sayfaNo,"id"),$_SESSION["cevaplar"]);
 			
 			if(($cevap!="" || is_numeric($cevap)) && !$cevaplanmisMi) 
-			   $cevap = $row["id"];
+			   $cevap = mysql_result($result1,$sayfaNo,"id");
 			   else
 			   $cevap = "-";
 			
-			return html_entity_decode($row["ana"])."|".
+			return html_entity_decode(@mysql_result($result1,$sayfaNo,"ana"))."|".
 					$tarih. "|".$user."|".$kayitSayisi."|".$sayfaNo."|".$konuAdi.
 					"|".$oncekiKonuID."|".$oncekiKonuAdi."|".$sonrakiKonuID.
 					"|".$sonrakiKonuAdi."|".$calismaSuresiD."|".$cevap.
@@ -192,12 +166,38 @@ function anaMetniOku($gelen, $sayfaNo)
  
  return "<font id='hata'>".$metin[184]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";
 }
+/*
+konuHazirla:
+konu bilgilerini oturuma kaydeder
+*/
+function konuHazirla($konuID){
+	global $yol1;
+	$sql = "SELECT id, anaMetin FROM eo_5sayfa
+			WHERE konuID = '$konuID'
+			ORDER BY sayfaSirasi";
+	$result = @mysql_query($sql,$yol1);
+	
+	$_SESSION["sayfalar"]=array();//önce eskileri sileriz
+	$i=0;
+	while($gelen=@mysql_fetch_array($result)){		
+		$_SESSION["sayfalar"][$i]=$gelen;
+		$i++;
+	}	
+}
 
-if (isset($_POST['tur']) && isset($_POST['secilen'])){
-	  if($_POST['tur']==3){//metinler gelsin
-			echo anaMetniOku(temizle($_POST['secilen']),temizle($_POST['sayfaNo']) );
-	  }
-   }else
-   echo "";
-
+	 
+    $adi	=temizle(substr($_SESSION["usern"],0,15));
+    $par	=temizle($_SESSION["userp"]);
+	
+	if ($adi=="" or $par=="")	
+		$tur = -2;
+	  else
+		$tur =checkRealUser($adi,$par);	 
+	 
+/*	if($tur=="-2" and getKonuKayitliKullanici(temizle($_POST['konu']))=="1") 
+			echo "0";
+		else
+			echo "1";
+	//dönüþ deðeri yok...
+*/
 ?>
