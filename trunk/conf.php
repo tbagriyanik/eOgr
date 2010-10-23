@@ -1656,7 +1656,7 @@ function getStats($num,$uID="")
 				   $ekle .= "</ul>";
 				   
 				   if (mysql_num_rows($result1) > ayarGetir("ayar2int"))	
-					   $ekle .="<div><a href='getFullList.php?case=12'  rel=\"shadowbox;height=400;width=800\" title='$metin[239]' class='more'>$metin[162]</a></div>"; 
+					   $ekle .="<div><a href='getFullList.php?case=12&amp;user=$uID'  rel=\"shadowbox;height=400;width=800\" title='$metin[239]' class='more'>$metin[162]</a></div>"; 
 					@mysql_free_result($result1);
 				   return ($ekle);
 				}else {

@@ -17,6 +17,39 @@ Lesser General Public License for more details.
 	ob_start();
 	require("conf.php"); 
 /*
+getOncekiKonuAdi:
+önceki konunun adýný getirme
+*/
+function getOncekiKonuAdi($gelenID){
+	global $yol1;
+	$sql1	= 	"select konuAdi from eo_4konu where id ='".temizle($gelenID)."'";
+	$result1= 	mysql_query($sql1,$yol1);
+
+	if($result1) {
+		mysql_fetch_row($result1);
+		return @mysql_result($result1,$sayfaNo,"konuAdi");
+	}
+	else
+		return "";
+}
+/*
+getSonrakiKonu:
+sonraki konunun bilgisi
+*/
+function getSonrakiKonu($suAnkiID, $alanAdi){
+	global $yol1;
+	$sql1	= 	"select $alanAdi from eo_4konu where oncekiKonuID ='".temizle($suAnkiID)."'";
+	$result1= 	mysql_query($sql1,$yol1);
+
+	if($result1) {
+		mysql_fetch_row($result1);
+		return @mysql_result($result1,$sayfaNo,"$alanAdi");
+	}
+	else
+		return "";
+}
+
+/*
 getKonuKayitliKullanici:
 konunun sadece kayýtlý kullanýcýlar bilgisi
 */
@@ -172,19 +205,18 @@ konu bilgilerini oturuma kaydeder
 */
 function konuHazirla($konuID){
 	global $yol1;
-	$sql = "SELECT id, anaMetin FROM eo_5sayfa
+	$sql = "SELECT id FROM eo_5sayfa
 			WHERE konuID = '$konuID'
 			ORDER BY sayfaSirasi";
 	$result = @mysql_query($sql,$yol1);
 	
 	$_SESSION["sayfalar"]=array();//önce eskileri sileriz
-	$i=0;
+	$i=1;
 	while($gelen=@mysql_fetch_array($result)){		
-		$_SESSION["sayfalar"][$i]=$gelen;
+		$_SESSION["sayfalar"][$i]=anaMetniOku($konuID,$i);
 		$i++;
 	}	
 }
-
 	 
     $adi	=temizle(substr($_SESSION["usern"],0,15));
     $par	=temizle($_SESSION["userp"]);
@@ -194,10 +226,8 @@ function konuHazirla($konuID){
 	  else
 		$tur =checkRealUser($adi,$par);	 
 	 
-/*	if($tur=="-2" and getKonuKayitliKullanici(temizle($_POST['konu']))=="1") 
-			echo "0";
-		else
-			echo "1";
-	//dönüþ deðeri yok...
-*/
+	 if(temizle($_POST['konu'])<>"")
+		 konuHazirla(temizle($_POST['konu']));
+//	 print_r($_SESSION["sayfalar"]);
+//  dönüþ deðeri yok...
 ?>
