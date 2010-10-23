@@ -181,8 +181,8 @@ function anaMetniOku($gelen, $sayfaNo)
 			
 			if(($cevap!="" || is_numeric($cevap)) && !$cevaplanmisMi) 
 			   $cevap = mysql_result($result1,$sayfaNo,"id");
-			   else
-			   $cevap = "-";
+			   else			  
+				$cevap = "-";
 			
 			return html_entity_decode(@mysql_result($result1,$sayfaNo,"ana"))."|".
 					$tarih. "|".$user."|".$kayitSayisi."|".$sayfaNo."|".$konuAdi.

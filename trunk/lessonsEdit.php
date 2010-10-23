@@ -156,7 +156,12 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   <?php
 $seciliSekme = $_GET["tab"];
 
-if ($seciliSekme=="") $seciliSekme=3;
+function temizleCubuk($gelen){
+	 $gelen = str_replace("|", "¦", temizle($gelen));
+	 return $gelen;	
+}
+
+if ($seciliSekme=="") $seciliSekme=3; //varsayýlan konudur
 
 if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_array($seciliSekme ,array("0","1","2","3","4")))
  {
@@ -219,18 +224,18 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
    							$sql="Update $tabloAdi set dersAdi='$dersAdi',sinifID='$sinifID' where id=$seciliKayit";
 					 }else
 				 if($seciliSekme=="3") {
-				        $konuAdi=temizle($_POST["konuAdi"]);
-				        $dersID=temizle($_POST["dersAdlari"]);
+				        $konuAdi=temizleCubuk($_POST["konuAdi"]);
+				        $dersID=temizleCubuk($_POST["dersAdlari"]);
 						if(empty($_POST["bitisTarihi"]))
 						  $bitisTarihi="";
 						 else
 				          $bitisTarihi=tarihYap(temizle($_POST["bitisTarihi"])); 
-				        $oncekiKonuID=temizle($_POST["oncekiKonuID"]);
-				        $calismaSuresiDakika=temizle($_POST["calismaSuresiDakika"]);
-				        $calismaHakSayisi=temizle($_POST["calismaHakSayisi"]);
-				        $konuyuKilitle=temizle($_POST["konuyuKilitle"]);
-				        $sadeceKayitlilarGorebilir=temizle($_POST["sadeceKayitlilarGorebilir"]);
-				        $sinifaDahilKullaniciGorebilir=temizle($_POST["sinifaDahilKullaniciGorebilir"]);
+				        $oncekiKonuID=temizleCubuk($_POST["oncekiKonuID"]);
+				        $calismaSuresiDakika=temizleCubuk($_POST["calismaSuresiDakika"]);
+				        $calismaHakSayisi=temizleCubuk($_POST["calismaHakSayisi"]);
+				        $konuyuKilitle=temizleCubuk($_POST["konuyuKilitle"]);
+				        $sadeceKayitlilarGorebilir=temizleCubuk($_POST["sadeceKayitlilarGorebilir"]);
+				        $sinifaDahilKullaniciGorebilir=temizleCubuk($_POST["sinifaDahilKullaniciGorebilir"]);
 						
 						if (!empty($dersID) && !empty($konuAdi))
    							$sql="Update $tabloAdi set konuAdi='$konuAdi', dersID='$dersID', bitisTarihi='$bitisTarihi', oncekiKonuID='$oncekiKonuID', calismaSuresiDakika='$calismaSuresiDakika', calismaHakSayisi='$calismaHakSayisi', konuyuKilitle='$konuyuKilitle', sadeceKayitlilarGorebilir='$sadeceKayitlilarGorebilir', sinifaDahilKullaniciGorebilir='$sinifaDahilKullaniciGorebilir'  where id=$seciliKayit";
@@ -238,18 +243,19 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 					 }else
 				 if($seciliSekme=="4") {
 				        $anaMetin	=	trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
+				        $anaMetin	=	trim(str_replace("|", "¦", $anaMetin)); //temizle PROBLEM!
 					    $datem	=	date("Y-n-j H:i:s");
 						$userID =  getUserID2($adi);
-				        $cevap		=temizle($_POST["cevap"]);
-				        $secenek1	=temizle($_POST["secenek1"]);
-				        $secenek2	=temizle($_POST["secenek2"]);
-				        $secenek3	=temizle($_POST["secenek3"]);
-				        $secenek4	=temizle($_POST["secenek4"]);
-				        $secenek5	=temizle($_POST["secenek5"]);
-				        $secenek6	=temizle($_POST["secenek6"]);
-				        $slideGecisSuresi	=temizle($_POST["slideGecisSuresi"]);
-				        $cevapSuresi		=temizle($_POST["cevapSuresi"]);
-				        $konuID		=temizle($_POST["konuID"]);
+				        $cevap		=temizleCubuk($_POST["cevap"]);
+				        $secenek1	=temizleCubuk($_POST["secenek1"]);
+				        $secenek2	=temizleCubuk($_POST["secenek2"]);
+				        $secenek3	=temizleCubuk($_POST["secenek3"]);
+				        $secenek4	=temizleCubuk($_POST["secenek4"]);
+				        $secenek5	=temizleCubuk($_POST["secenek5"]);
+				        $secenek6	=temizleCubuk($_POST["secenek6"]);
+				        $slideGecisSuresi	=temizleCubuk($_POST["slideGecisSuresi"]);
+				        $cevapSuresi		=temizleCubuk($_POST["cevapSuresi"]);
+				        $konuID		=temizleCubuk($_POST["konuID"]);
 						if (!empty($anaMetin) && !empty($konuID))
    							$sql="Update $tabloAdi set 
 									anaMetin='$anaMetin', cevap = '$cevap',
@@ -286,18 +292,18 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 						   $sql="Insert into $tabloAdi (dersAdi, sinifID) values ('$dersAdi','$sinifID')";
 					 }else
 				 if($seciliSekme=="3") {
-				        $konuAdi		=temizle($_POST["konuAdi"]);
-				        $dersID			=temizle($_POST["dersAdlari"]);
+				        $konuAdi		=temizleCubuk($_POST["konuAdi"]);
+				        $dersID			=temizleCubuk($_POST["dersAdlari"]);
 						if(empty($_POST["bitisTarihi"]))
 						  $bitisTarihi="";
 						 else
-				          $bitisTarihi=tarihYap(temizle($_POST["bitisTarihi"])); 
-				        $oncekiKonuID	=temizle($_POST["oncekiKonuID"]);
-				        $calismaSuresiDakika=temizle($_POST["calismaSuresiDakika"]);
-				        $calismaHakSayisi=temizle($_POST["calismaHakSayisi"]);
-				        $konuyuKilitle	=temizle($_POST["konuyuKilitle"]);
-				        $sadeceKayitlilarGorebilir=temizle($_POST["sadeceKayitlilarGorebilir"]);
-				        $sinifaDahilKullaniciGorebilir=temizle($_POST["sinifaDahilKullaniciGorebilir"]);
+				          $bitisTarihi=tarihYap(temizleCubuk($_POST["bitisTarihi"])); 
+				        $oncekiKonuID	=temizleCubuk($_POST["oncekiKonuID"]);
+				        $calismaSuresiDakika=temizleCubuk($_POST["calismaSuresiDakika"]);
+				        $calismaHakSayisi=temizleCubuk($_POST["calismaHakSayisi"]);
+				        $konuyuKilitle	=temizleCubuk($_POST["konuyuKilitle"]);
+				        $sadeceKayitlilarGorebilir=temizleCubuk($_POST["sadeceKayitlilarGorebilir"]);
+				        $sinifaDahilKullaniciGorebilir=temizleCubuk($_POST["sinifaDahilKullaniciGorebilir"]);
 
 						if (!empty($dersID) && !empty($konuAdi))
 						   $sql="Insert into $tabloAdi (konuAdi, dersID, bitisTarihi, oncekiKonuID, konuyuKilitle, calismaHakSayisi, calismaSuresiDakika, sadeceKayitlilarGorebilir, sinifaDahilKullaniciGorebilir) values ('$konuAdi', '$dersID', '$bitisTarihi', '$oncekiKonuID', '$konuyuKilitle', '$calismaHakSayisi', '$calismaSuresiDakika', '$sadeceKayitlilarGorebilir', '$sinifaDahilKullaniciGorebilir')";
@@ -306,18 +312,19 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 					    $datem	=	date("Y-n-j H:i:s");
 						$userID =  getUserID2($adi);
 						$toplamSayfaSay = totalGet (4);
-				        $cevap		=temizle($_POST["cevap"]);
-				        $secenek1	=temizle($_POST["secenek1"]);
-				        $secenek2	=temizle($_POST["secenek2"]);
-				        $secenek3	=temizle($_POST["secenek3"]);
-				        $secenek4	=temizle($_POST["secenek4"]);
-				        $secenek5	=temizle($_POST["secenek5"]);
-				        $secenek6	=temizle($_POST["secenek6"]);
-				        $slideGecisSuresi	=temizle($_POST["slideGecisSuresi"]);
-				        $cevapSuresi		=temizle($_POST["cevapSuresi"]);
-						$konuID		=temizle($_SESSION["seciliKonu"]);
+				        $cevap		=temizleCubuk($_POST["cevap"]);
+				        $secenek1	=temizleCubuk($_POST["secenek1"]);
+				        $secenek2	=temizleCubuk($_POST["secenek2"]);
+				        $secenek3	=temizleCubuk($_POST["secenek3"]);
+				        $secenek4	=temizleCubuk($_POST["secenek4"]);
+				        $secenek5	=temizleCubuk($_POST["secenek5"]);
+				        $secenek6	=temizleCubuk($_POST["secenek6"]);
+				        $slideGecisSuresi	=temizleCubuk($_POST["slideGecisSuresi"]);
+				        $cevapSuresi		=temizleCubuk($_POST["cevapSuresi"]);
+						$konuID		=temizleCubuk($_SESSION["seciliKonu"]);
 						
-				        $anaMetin= trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
+				        $anaMetin   = trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
+				        $anaMetin	= trim(str_replace("|", "¦", $anaMetin)); //temizle PROBLEM!
 						if (!empty($anaMetin) && !empty($konuID))
 						   $sql="Insert into $tabloAdi 
 						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,secenek6,slideGecisSuresi,cevapSuresi)
