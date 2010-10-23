@@ -160,6 +160,7 @@ ob_start (); // Buffer output
 }
 </style>
 </head>
+ <?php flush(); ?>
 <body id="intro">
 <div class="PageBackgroundGradient"></div>
 <div class="Main">

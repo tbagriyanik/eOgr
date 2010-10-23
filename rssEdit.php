@@ -272,7 +272,7 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 mysql_select_db($database_baglanti, $yol);
 
 if (empty($_SESSION["siraYonu"])) {  
-		$siraYonu="asc";
+		$siraYonu="desc";
 		$_SESSION["siraYonu"]=$siraYonu;
 	} else {
 		if ($_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
@@ -292,7 +292,7 @@ if ($_GET["upd"]=="1")
 	   $query_eoUsers = "SELECT * FROM eo_webref_rss_items where id='$upID' ORDER BY $sirAlan $siraYonu";
 	   else 
 	   { 
-	   $sirAlan = "id";
+	   $sirAlan = "pubDate";
 	   $query_eoUsers = "SELECT * FROM eo_webref_rss_items where id='$upID' ORDER BY $sirAlan DESC";
 	   }
    }
@@ -301,7 +301,7 @@ if ($_GET["upd"]=="1")
 	  if ($sirAlan!="")
 	    $query_eoUsers = "SELECT * FROM eo_webref_rss_items $filtr2 ORDER BY $sirAlan $siraYonu";   
 	   else {
-  	    $sirAlan = "id";
+  	    $sirAlan = "pubDate";
 	    $query_eoUsers = "SELECT * FROM eo_webref_rss_items $filtr2 ORDER BY $sirAlan DESC";  
 	   }
 	}

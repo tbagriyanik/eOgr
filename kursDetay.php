@@ -201,14 +201,13 @@ Shadowbox.init({
                   <?php
 				  
 	$uID = temizle($_GET["user"]);
-	if($uID!="") $_SESSION["kursUser"]=$uID;
 
 //	if($uID != getUserID($_SESSION["usern"],$_SESSION["userp"]) and $_SESSION["tur"]==0) 
 	  	//die($metin[448]);	 		  
 		
 	 if (trim(getStats(11))!=""){
-		 if (trim(getStats(12))!=""){
-			 echo "<div class='tekKolon'><h3>".$metin[239]."</h3>".getStats(12)."</div>";
+		 if (trim(getStats(12,getUserID($_SESSION["usern"],$_SESSION["userp"])))!=""){
+			 echo "<div class='tekKolon'><h3>".$metin[239]."</h3>".getStats(12,getUserID($_SESSION["usern"],$_SESSION["userp"]))."</div>";
 		 }		 
 	 }else
 	  echo "$metin[485]";			
