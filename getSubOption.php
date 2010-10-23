@@ -30,7 +30,19 @@ sayfa bilgisinin ana metnini getirir
 */
 function anaMetniOku($sayfaNo)
 { 
-  $sonuc = $_SESSION["sayfalar"][$sayfaNo];
+ 	$sayfaCevapla = explode("|",$_SESSION["sayfalar"][$sayfaNo]);
+	$cevapDegeri = $sayfaCevapla[11];
+	if($cevapDegeri=="-") 
+	   return $_SESSION["sayfalar"][$sayfaNo];
+	
+		$cevaplanmisMi = @array_key_exists($cevapDegeri,$_SESSION["cevaplar"]);
+		
+		if(!$cevaplanmisMi) 
+		   return $_SESSION["sayfalar"][$sayfaNo];			
+		   
+		$sayfaCevapla[11] = "-";//sayfalar sonradan güncellenmemiþti, þimdi deðer deðiþtirildi
+	
+  $sonuc = implode("|",$sayfaCevapla);
   return $sonuc;
 }
 
