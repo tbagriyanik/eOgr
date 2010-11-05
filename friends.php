@@ -375,14 +375,22 @@ if(isset($_GET["reddet"]))
                   <div id="tab1" class="tabContent">
                     <?php
 					//ARKADASLARIM
+		
 		$arkadaslarim = arkadasListesi();			
-		$arkadaslarDogum = arkadasDogumListesi();			
+		$arkadaslarDogum = arkadasDogumListesi();
+		$taniyorOlabilir = arkadasTaniyor();
+					
 	if($arkadaslarim!=""){				
 		echo "<p><img src=\"img/users.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"users\"/> <strong>$metin[549] :</strong> $arkadaslarim</p>";
 		if($arkadaslarDogum!="")
 		echo "<p> 
 		<img src=\"img/birthday.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[590]\" title=\"$metin[590]\"/>
 		<strong>$metin[618] : </strong>$arkadaslarDogum		
+		</p>";
+		if($taniyorOlabilir!="")
+		echo "<p> 
+		<img src=\"img/friendsFriend.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[631]\" title=\"$metin[631]\"/>
+		<strong>$metin[631] : </strong>$taniyorOlabilir		
 		</p>";
 	}else{
 		echo "<font id='uyari'>$metin[588]</font>";

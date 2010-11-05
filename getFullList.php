@@ -178,10 +178,12 @@ function listeGetir($userID, $durum){
 							break;
 					case 11:
 					//þu anki kullanýcýnýn &ccedil;alýþma konularý ve sayýlarý
-							$sql1 =    "SELECT eo_4konu.id  as id, eo_4konu.konuAdi as konuAdi, count(*) as toplam 
+							$sql1 =    "SELECT eo_4konu.id  as id, eo_4konu.konuAdi as konuAdi, 
+												count(*) as toplam 
 										FROM eo_4konu,eo_userworks, eo_users 
-										WHERE eo_4konu.id = eo_userworks.konuID and eo_users.id = eo_userworks.userID
-											  and eo_users.id = ".$userID."
+										WHERE eo_4konu.id = eo_userworks.konuID 
+											  and eo_users.id = eo_userworks.userID
+											  and eo_users.id = '".$userID."'
 										GROUP BY konuAdi
 										ORDER BY toplam DESC, konuAdi";
 							
@@ -228,7 +230,7 @@ function listeGetir($userID, $durum){
 											  eo_3ders.id = eo_4konu.dersID and
 											  eo_2sinif.id = eo_3ders.sinifID and
 											  eo_1okul.id = eo_2sinif.okulID and
-											  eo_users.id = ".$userID."
+											  eo_users.id = '".$userID."'
 										GROUP BY dersAdi
 										ORDER BY toplam DESC";
 							

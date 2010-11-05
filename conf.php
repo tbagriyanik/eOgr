@@ -796,14 +796,15 @@ function yetimKayitNolar($tablo){
 arkadasListesi:
 oturum açan kiþinin arkadaþ listesi
 */
-function arkadasListesi(){
+function arkadasListesi($gelen=""){
 	global $metin,$yol1;
-	$aktifKullID = getUserID2($_SESSION["usern"]);
-	$sonuc = "";	
-	$sql1 =    "SELECT * 
+	if($gelen==""){
+		$aktifKullID = getUserID2($_SESSION["usern"]);
+		$sql1 =    "SELECT * 
 				FROM eo_friends
 				WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
 				LIMIT 0,5";
+		$sonuc = "";	
 				
 				$result1 = mysql_query($sql1, $yol1);
 				if ($result1)	{				    
@@ -814,6 +815,27 @@ function arkadasListesi(){
 						$sonuc .= "<a href='friends.php?kisi=".$row_gelen['davetEdilenID']."'>".kullAdi($row_gelen['davetEdilenID'])."</a> ";						
 				   }
 				}	
+	}
+	  else{
+		$aktifKullID = getUserID2($_SESSION["usern"]);		 	
+		$sql1 =    "SELECT davetEdenID,davetEdilenID 
+				FROM eo_friends
+				WHERE (davetEdilenID='$gelen' or davetEdenID='$gelen') 
+				 and  (davetEdilenID<>'$aktifKullID' and davetEdenID<>'$aktifKullID')
+				 and kabul='1'
+				LIMIT 0,5";
+		$sonuc = array();	
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{				    
+				   while($row_gelen = mysql_fetch_assoc($result1)) {
+					if($row_gelen['davetEdenID']==$gelen)
+					    $sonuc[] = $row_gelen['davetEdilenID'];				     
+					else
+					    $sonuc[] = $row_gelen['davetEdenID'];				     
+				   }
+				}	
+	  	}
 	return $sonuc;
 }
 /*
@@ -857,6 +879,48 @@ function arkadasDogumListesi(){
 						else
 						$fark = " $metin[622] ";
 					    $sonuc .= "<a href='friends.php?kisi=".$row_gelen['id']."'>".kullAdi($row_gelen['id'])."</a> $fark";						
+				   }
+				}	
+	return $sonuc;
+}
+/*
+arkadasTaniyor:
+oturum açan kiþinin arkadaþlarýnýn arkadaþý olabilir
+*/
+function arkadasTaniyor(){
+	global $metin,$yol1;
+	$aktifKullID = getUserID2($_SESSION["usern"]);
+	$sonuc = "";	
+				
+	$sql1 =    "SELECT eo_users.id
+				FROM eo_users				
+				WHERE 
+				  (
+				  eo_users.id in (
+				  SELECT  davetEdenID
+					FROM eo_friends
+					WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
+				  ) or
+				  eo_users.id in (
+				  SELECT  davetEdilenID
+					FROM eo_friends
+					WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
+				  )
+				  ) and
+				  eo_users.id <> '$aktifKullID' 				 
+				LIMIT 0,50";
+				//echo "$sql1";
+				$sonuc = "";
+				$sonucA = array();
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{				    
+				   while($row_gelen = mysql_fetch_assoc($result1)) {
+					    $sonucA = array_merge($sonucA,arkadasListesi($row_gelen['id']));						
+				   }
+				   $sonucA = array_unique($sonucA);//tekrarlardan kurtulalým
+				   sort($sonucA);
+			 	   foreach($sonucA as $eleman){
+					  $sonuc .= "<a href='friends.php?kisi=".$eleman."'>".kullAdi($eleman)."</a> ";
 				   }
 				}	
 	return $sonuc;
