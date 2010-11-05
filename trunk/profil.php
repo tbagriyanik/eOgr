@@ -360,6 +360,26 @@ function dosyaSay($id)
 	}
 }
 /*
+arkadasSay:
+kullanýcýnýn arkadaþ sayýsý 
+*/
+function arkadasSay($id)
+{
+	global $yol1;	
+	$id = substr(temizle2($id),0,15);
+    $sql1 = "SELECT count(id) as say FROM eo_friends where 
+	        (davetEdenID='".$id."' or davetEdilenID='".$id."')
+			and kabul='1'
+			 limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1){
+       return (mysql_result($result1, 0, "say"));
+    }else {
+	   return ("");
+	}
+}
+/*
 getOgrenciSiniflari2:
 kullanýcýnýn sýnýf bilgileri
 */
@@ -528,6 +548,9 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 		
 	if(dosyaSay($_GET["kim"])>0)
 		echo "<strong>$metin[470] :</strong> ".dosyaSay($_GET["kim"])."<br/>";
+	
+	if(arkadasSay($_GET["kim"])>0)
+		echo "<strong>$metin[630] :</strong> ".arkadasSay($_GET["kim"])."<br/>";
 	
 	$aktivi1 = girisSayisiRank($_GET["kim"],false,true);
 	$aktivi2 = dersCalismaRank($_GET["kim"],false,true);

@@ -811,5 +811,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[628]	= " Soru Sor";			
 		$metin[629]	= "Kurs Detaylarý sayfamýzda üyelerin katýldýðý kurslar ile ilgili bilgi edinebilirsiniz.";			
+		$metin[630] = "Arkadaþ Sayýsý";
+		$metin[631] = "Belki Tanýyorsundur";		
 		
 ?>
