@@ -88,6 +88,7 @@ Lesser General Public License for more details.
 					"siteMap.php",
 					"friends.php",
 					"dataFriendActions.php",
+					"askQuestion.php",
 					"install.php"
 					)))
 			header("Location: ".$_GET["oldPath"]);

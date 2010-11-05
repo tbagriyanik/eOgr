@@ -809,4 +809,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[627]	= "Arkadaþlýk Güncelleme Formu";			
 		
+		$metin[628]	= " Soru Sor";			
+		$metin[629]	= "Kurs Detaylarý sayfamýzda üyelerin katýldýðý kurslar ile ilgili bilgi edinebilirsiniz.";			
+		
 ?>

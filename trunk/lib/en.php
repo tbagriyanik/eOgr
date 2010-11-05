@@ -794,5 +794,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[626]	= "There is an error!";	
 		
 		$metin[627]	= "Friendship Update Form";			
+		
+		$metin[628]	= " Ask Question";					
+		$metin[629]	= "Course Details page gives you information about members joined courses.";			
+		
 						
 ?>

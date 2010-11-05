@@ -155,6 +155,7 @@ Shadowbox.init({
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[461]?> </span> </h2>
                 <div class="PostContent">
+                 <p><?php echo $metin[629];?></p>
                   <?php
 				  
 	$uID = temizle($_GET["kisi"]);

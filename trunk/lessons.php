@@ -353,6 +353,9 @@ if(isKonu($_GET["konu"])){
                     <br />
                     <br />
                     <label id="addBookmarkContainer" title="<?php echo $metin[300]?>" > <img src="img/favcenter.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[244]?>"/> </label>
+                    <br />
+                    <br />
+                    <a href="askQuestion.php" title="<?php echo $metin[628]?>" > <img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628]?></a>
                     <?php
 if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
    if(isset($_GET["konu"]) && !empty($_GET["konu"]))

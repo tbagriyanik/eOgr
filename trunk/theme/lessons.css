@@ -37,7 +37,7 @@ td {
 #navigation2 {
 	position:absolute;
 	left:655px;
-	top:225px;
+	top:215px;
 	width:210px;
 	height:auto;
 	z-index:0;
@@ -118,4 +118,12 @@ td {
 #sonrakiKonu a {
 	color: #F60;
 	text-decoration:underline;
+}
+#navigation2 a {
+	font-size: 11px;
+	text-decoration: none;
+}
+#navigation2 label {
+	font-size: 11px;
+	text-decoration: none;
 }
