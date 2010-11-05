@@ -16,6 +16,11 @@ Lesser General Public License for more details.
     session_start (); 
 	ob_start();
 	require("conf.php"); 
+     
+	$taraDili=$_COOKIE["lng"];    
+    if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
+	    dilCevir($taraDili);
+	
 /*
 getOncekiKonuAdi:
 önceki konunun adýný getirme

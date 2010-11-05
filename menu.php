@@ -108,7 +108,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <ul class="artmenu">
   <li><a href="index.php" 
 						<?php
-						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php"|| $currentFile=="dataChatActions.php"|| $currentFile=="dataRatingList.php" || $currentFile=="friends.php"|| $currentFile=="dataCommentList2.php")
+						 if ($currentFile=="index.php" || $currentFile=="kursDetay.php" || $currentFile=="fileShare.php" || $currentFile=="stats.php" || $currentFile=="login.php" || $currentFile=="lessonsEdit.php"|| $currentFile=="dataWorkList.php"|| $currentFile=="dataChatActions.php"|| $currentFile=="dataRatingList.php" || $currentFile=="friends.php"|| $currentFile=="dataCommentList2.php"|| $currentFile=="askQuestion.php")
 						   echo "class=\" active\"";
                         ?>                       
                         ><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
@@ -117,7 +117,8 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
       <li><a href="kursDetay.php"><span><span><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" />  <?php echo $metin[461]?> </span></span></a></li>
       <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
       <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a></li>
-      <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?> </span></span></a></li>
+      <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?> </span></span></a></li>      
+      <li><a href="askQuestion.php"><span><span><img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628]?> </span></span></a></li>
       <?php
 							 if ($tur=='2' || $tur=='1'){
                             ?>
