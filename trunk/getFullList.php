@@ -36,7 +36,7 @@ Lesser General Public License for more details.
     <link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-    <script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
     <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
     <script src="lib/jquery.anythingslider.js" type="text/javascript" charset="utf-8"></script>
@@ -104,8 +104,8 @@ function temizle2($metin)
     $metin = str_replace("'", "`", $metin);
     //$metin = str_replace('"', '¨', $metin);
     $metin = str_replace("\\", "|", $metin);
-    $metin = str_replace("<", "‹", $metin);
-    $metin = str_replace(">", "›", $metin);
+    $metin = str_replace("<", "<", $metin);
+    $metin = str_replace(">", ">", $metin);
     $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlspecialchars($metin)));
     return $metin;
 }

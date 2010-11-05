@@ -68,12 +68,12 @@ ob_start (); // Buffer output
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script><script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
 <script src="lib/jquery.cookie.js" type="text/javascript"></script>
-<script src="lib/jquery-treeview/jquery.treeview.pack.js" type="text/javascript"></script>
+<script src="lib/jquery-treeview/jquery.treeview.js" type="text/javascript"></script>
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$("#lessonTree").treeview({
