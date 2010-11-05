@@ -217,7 +217,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
   <?php
 	}
     ?>
-  </li>
+  
   <?php
   }
 ?>

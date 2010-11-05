@@ -91,7 +91,7 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>

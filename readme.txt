@@ -1,5 +1,5 @@
 
-	eOgr - v126b, 05-11-2010
+	eOgr - v126c, 05-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -37,7 +37,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (575 hours programming, 16.000 lines PHP, 20.000 lines Javascript and CSS)
+	15-11-2008 (580 hours programming, 17.000 lines PHP, 20.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -55,11 +55,11 @@ Used Classes and Referred Sites:
 	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
 - flood-protection: v1.0
 	http://archive.free-php.org.uk
-- jQuery: v1.4.2 
+- jQuery: v1.4.3 
 	http://jquery.com
-- jQuery UI: v1.8.5 custom - sortable only
+- jQuery UI: v1.8.6 custom - sortable only
 	http://jqueryui.com
-- jQuery TreeView: v1.4 
+- jQuery TreeView: v1.4.1 
 	http://bassistance.de/jquery-plugins/jquery-plugin-treeview
 - jQuery simplepager: v1.1 
 	http://plugins.jquery.com/project/SimplePager
@@ -67,8 +67,8 @@ Used Classes and Referred Sites:
 	http://www.bennadel.com/index.cfm?event=blog.view&id=1591
 - jQuery Sliding Page: v1.3 
 	http://css-tricks.com/anythingslider-jquery-plugin/
-- jQuery bad browser: v1.4 
-	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4
+- jQuery bad browser: v1.4.8 
+	https://github.com/ProLoser/AnythingSlider
 - iCal-like Calendar with jQuery: 
 	http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery
 	http://www.frecosse.com/?p=252
@@ -79,7 +79,7 @@ Used Classes and Referred Sites:
 - wtag: v1.0Beta 
 	http://spacegirlpippa.co.uk
 - Facebox: v1.2 
-	http://famspam.com/facebox
+	https://github.com/defunkt/facebox
 - shadowbox: v3.0.3 
 	http://www.shadowbox-js.com/
 - HTML Graphs: v4.8 
