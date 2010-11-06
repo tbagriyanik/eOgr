@@ -14,11 +14,11 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 
-    header("Expires: Sun, 1 Jan 2000 12:00:00 GMT");
-    header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
-    header("Cache-Control: no-store, no-cache, must-revalidate");
-    header("Cache-Control: post-check=0, pre-check=0", false);
-    header("Pragma: no-cache");
+    // header("Expires: Sun, 1 Jan 2000 12:00:00 GMT");
+    // header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
+    // header("Cache-Control: no-store, no-cache, must-revalidate");
+    // header("Cache-Control: post-check=0, pre-check=0", false);
+    // header("Pragma: no-cache");
 
       session_start (); 
       $_SESSION ['ready'] = TRUE; 
@@ -159,9 +159,35 @@ ob_start (); // Buffer output
 	background: url(img/pointer.gif) left top no-repeat;
 }
 </style>
+<script type="text/javascript" language="javascript">
+var ns = (document.layers)? true:false;
+var ie = (document.all)? true:false;
+if (ns) document.captureEvents(Event.MOUSEDOWN || Event.CLICK);
+document.onclick = sourcecodeprotect;
+document.onmousedown = sourcecodeprotect;
+
+// ***********************************************************
+function sourcecodeprotect(e) {
+  if (ns&&(e.which==3)) return false;
+  else if (ie&&(window.event.button==2)) {
+    //alert("Source code protected");
+	}
+  else return true;
+  }
+
+//***********************************************************
+function cleanup() {
+  if (ns) document.releaseEvents(Event.MOUSEDOWN || Event.CLICK);
+}
+        $(function() {
+            $(this).bind("contextmenu", function(e) {
+                e.preventDefault();
+            });
+        }); 
+</script>
 </head>
  <?php flush(); ?>
-<body id="intro">
+<body id="intro" onselectstart="return false" ondragstart="return false" oncontextmenu="return false" onunload="cleanup()" >
 <div class="PageBackgroundGradient"></div>
 <div class="Main">
   <div class="Sheet">
@@ -214,7 +240,7 @@ ob_start (); // Buffer output
 				echo " $metin[556] : ";
                 if(isKonu($_GET["konu"])){
 				?>
-          <a href='lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1' onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external" target="_blank"><?php 	echo $metin[553];?></a>&nbsp; |
+          <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external"><?php 	echo $metin[553];?></label>&nbsp; |
           <?php
 				}
         ?>
@@ -328,7 +354,7 @@ ob_start (); // Buffer output
                     <?php 					
 					  if(($tur==1 || $tur==2) && isKonu($_GET["konu"])){ 
                     ?>
-                    <label onclick='konuDuzenle();'> <img src="img/edit.png" alt="<?php echo $metin[103];?>"  title="<?php echo $metin[103];?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[241]?></label>
+                    <label style="color:#0000ff;" onclick='konuDuzenle();'> <img src="img/edit.png" alt="<?php echo $metin[103];?>"  title="<?php echo $metin[103];?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[241]?></label>
                     <?php
 					  }
                     ?>
