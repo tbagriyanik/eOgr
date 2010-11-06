@@ -467,6 +467,7 @@ label.error {
 	clear:both
 }
 .external {
+	color: #0000ff;
 	background: url(../img/external.png) center right no-repeat;
 	padding-right: 12px;
 }
