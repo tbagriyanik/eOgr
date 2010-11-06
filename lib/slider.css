@@ -1,136 +1,178 @@
 /*
-    anythingSlider v1.2
-    
+    AnythingSlider v1.4.1+ Default (base) theme
+
     By Chris Coyier: http://css-tricks.com
     with major improvements by Doug Neiner: http://pixelgraphics.us/
     based on work by Remy Sharp: http://jqueryfordesigners.com/
 */
-.anythingSlider {
-	width: 760px;
-	height: 360px;
+
+/******* SET DEFAULT DIMENSIONS HERE ********/
+div.anythingSlider {
+	width: 650px;
+	height: 330px;
+	margin: 0 auto;
+}
+/****** SET COLORS HERE *******/
+/* Default State */
+div.anythingSlider .thumbNav a.cur, div.anythingSlider .thumbNav a {
+	background: #777;
+	color: #000;
+}
+div.anythingSlider .anythingWindow {
+	border-top: 3px solid #777;
+	border-bottom: 3px solid #777;
+}
+div.anythingSlider .start-stop {
+	background-color: #040;
+	color: #fff;
+}
+div.anythingSlider .start-stop.playing {
+	background-color: #800;
+}
+div.anythingSlider .start-stop:hover, div.anythingSlider .start-stop.hover {
+	color: #ddd;
+}
+/* Active State */
+div.anythingSlider.activeSlider .anythingWindow {
+	border-color: #7C9127;
+}
+div.anythingSlider.activeSlider .thumbNav a.cur, div.anythingSlider.activeSlider .thumbNav a {
+	background-color: #7C9127;
+}
+div.anythingSlider .start-stop {
+	background-color: #080;
+	color: #fff;
+}
+div.anythingSlider .start-stop.playing {
+	background-color: #d00;
+}
+div.anythingSlider .start-stop:hover, div.anythingSlider .start-stop.hover {
+	color: #fff;
+}
+/**** DO NOT CHANGE BELOW THIS LINE ****/
+/* anythingSlider viewport window */
+div.anythingSlider .anythingWindow {
+	overflow: hidden;
 	position: relative;
-	margin: 0 auto 15px;
+	width: 100%;
+	height: 100%;
 }
-.anythingSlider .wrapper {
-	width: 680px;
-	overflow: auto;
-	height: 324px;
-	margin: 0 40px;
-	position: absolute;
-	top: 0;
-	left: 0;
+/* wrapper: 45px right & left padding for the arrows, 28px @ bottom for navigation */
+div.anythingSlider {
+	position: relative;
+	padding: 0 45px 28px 45px;
 }
-/* Width below is max for Opera */
-.anythingSlider .wrapper ul {
-	width: 32700px;
+/* anythingSlider base UL */
+ul.anythingBase {
+	background: transparent;
+	
 	list-style: none;
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #eee;
-	border-top: 3px solid #e0a213;
-	border-bottom: 3px solid #e0a213;
 	margin: 0;
+	padding: 0;
 }
-.anythingSlider .wrapper ul li {
+ul.anythingBase li.panel {
+	background: transparent;
 	display: block;
-	line-height:1.2em;
 	float: left;
-	padding: 0px;
-	padding-left:5px;
-	height: 317px;
-	width: 680px;
+	padding: 0;
 	margin: 0;
 }
-.anythingSlider .arrow {
-	display: block;
-	height: 200px;
-	width: 67px;
-	background: url(arrows.png) no-repeat 0 0;
-	text-indent: -9999px;
+/* Navigation Arrows */
+div.anythingSlider .arrow {
+	top: 50%;
 	position: absolute;
-	top: -250px;
-	cursor: pointer;
+	display: block;
+	z-index: 100;
 }
-.anythingSlider .forward {
-	background-position: 0 0;
-	right: -20px;
+div.anythingSlider .arrow a {
+	display: block;
+	height: 95px;
+	margin-top: -47px; /* half height of image */
+	width: 45px;
+	outline: 0;
+	background: url(arrows-metallic.png) no-repeat;
+	text-indent: -9999px;
 }
-.anythingSlider .back {
-	background-position: -67px 0;
-	left: -20px;
+div.anythingSlider .forward {
+	right: 0;
 }
-.anythingSlider .forward:hover {
-	background-position: 0 -200px;
+div.anythingSlider .back {
+	left: 0;
 }
-.anythingSlider .back:hover {
-	background-position: -67px -200px;
+div.anythingSlider .forward a {
+	 background-position: right bottom;
 }
-.thumbNav {
-	position: relative;
-	top: 323px;
-	text-align: center;
+div.anythingSlider .back a {
+	 background-position: left bottom;
 }
-.thumbNav li {
+div.anythingSlider .forward a:hover, div.anythingSlider .forward a.hover {
+	background-position: right top;
+}
+div.anythingSlider .back a:hover, div.anythingSlider .back a.hover {
+	background-position: left top;
+}
+/* Navigation Links */
+div.anythingSlider .anythingControls {
+	outline: 0;
+}
+div.anythingSlider .thumbNav {
+	margin: 0;
+}
+div.anythingSlider .thumbNav li {
 	display: inline;
 }
-.thumbNav a {
-	color: black;
+div.anythingSlider .thumbNav a {
 	font: 11px/18px Georgia, Serif;
 	display: inline-block;
+	text-decoration: none;
 	padding: 2px 8px;
 	height: 18px;
 	margin: 0 5px 0 0;
-	background: #c58b04 url(cellshade.png) repeat-x;
-	text-align: center;
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-}
-.thumbNav a:hover {
-	background-image: none;
-}
-.thumbNav a.cur {
-	background: #e0a213;
-}
-.start-stop {
-	z-index: 10;
-	background: green;
 	background-image: url(cellshade.png);
 	background-repeat: repeat-x;
-	color: white;
+	text-align: center;
+	outline: 0;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+}
+div.anythingSlider .thumbNav a:hover {
+	background-image: none;
+}
+/* slider autoplay right-to-left, reverse order of nav links to look better */
+div.anythingSlider.rtl .thumbNav a {
+	float: right;
+} /* reverse order of nav links */
+div.anythingSlider.rtl .thumbNav {
+	float: left;
+}    /* move nav link group to left */
+/* div.anythingSlider.rtl .start-stop { float: right; } */ /* move start/stop button - in case you want to switch sides */
+
+/* Autoplay Start/Stop button */
+div.anythingSlider .start-stop {
+	background-image: url(cellshade.png);
+	background-repeat: repeat-x;
+	background-position: center top;
 	padding: 2px 5px;
 	width: 40px;
 	text-align: center;
-	position: absolute;
-	right: 45px;
-	top: 323px;
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
+	text-decoration: none;
+	float: right;
+	z-index: 100;
+	outline: 0;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
 }
-.start-stop.playing {
-	background-color: red;
-}
-.start-stop:hover {
+div.anythingSlider .start-stop:hover, div.anythingSlider .start-stop.hover {
 	background-image: none;
 }
-/*
-  Prevents
-*/
-.anythingSlider .wrapper ul ul {
-	position: static;
-	margin: 0;
-	background: none;
-	overflow: visible;
-	width: auto;
-	border: 0;
-}
-.anythingSlider .wrapper ul ul li {
-	float: none;
-	height: auto;
-	width: auto;
-	background: none;
+div.anythingSlider, div.anythingSlider .anythingWindow, div.anythingSlider .thumbNav a, div.anythingSlider .arrow a, div.anythingSlider .start-stop {
+	transition-duration: 0;
+	-o-transition-duration: 0;
+	-moz-transition-duration: 0;
+	-webkit-transition-duration: 0;
 }

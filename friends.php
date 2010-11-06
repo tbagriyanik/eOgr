@@ -384,7 +384,7 @@ if(isset($_GET["reddet"]))
 		echo "<p><img src=\"img/users.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"users\"/> <strong>$metin[549] :</strong> $arkadaslarim</p>";
 		if($arkadaslarDogum!="")
 		echo "<p> 
-		<img src=\"img/birthday.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[590]\" title=\"$metin[590]\"/>
+		<img src=\"img/birthday.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[618]\" title=\"$metin[618]\"/>
 		<strong>$metin[618] : </strong>$arkadaslarDogum		
 		</p>";
 		if($taniyorOlabilir!="")

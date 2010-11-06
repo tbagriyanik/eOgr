@@ -44,7 +44,7 @@ Lesser General Public License for more details.
     
         $(function () {
         
-            $('.anythingSlider').anythingSlider({
+            $('#anythingSlider').anythingSlider({
                 easing: "easeInOutBack",        // Anything other than "linear" or "swing" requires the easing plugin
                 autoPlay: true,                 // This turns off the entire FUNCTIONALY, not just if it starts running or not.
                 delay: 3000,                    // How long between slide transitions in AutoPlay mode
@@ -56,14 +56,14 @@ Lesser General Public License for more details.
         		startText: ">",             // Start text
 		        stopText: "×",               // Stop text
 		        navigationFormatter: null       // Details at the top of the file on this use (advanced use)
-            });
+           });
             
         });
     </script>
     </head>
     <body>
     <br />
-    <div class="anythingSlider">
+    <div class="">
       <div class="wrapper">
         <?php
 /*
@@ -155,7 +155,7 @@ function listeGetir($userID, $durum){
 							{
 							   if(mysql_num_rows($result1)==0)  return "";
 							   
-							   $ekle = "<ul><li>";
+							   $ekle = "<ul id='anythingSlider'><li>";
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result1);
@@ -192,7 +192,7 @@ function listeGetir($userID, $durum){
 							{
 							   if(mysql_num_rows($result1)==0) return "";							   
 							   								
-							   $ekle = "<ul><li>";
+							   $ekle = "<ul id='anythingSlider'><li>";
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result1);
@@ -203,8 +203,8 @@ function listeGetir($userID, $durum){
 									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["id"]."\"  target='_parent'>".$data["konuAdi"]." </a> <font size='-3'>".($data["toplam"])."</font><br/>";										
 									
 									}
-										$ekle .=  "</li>";
-									  	$ekle .= "</ul>";
+								$ekle .=  "</li>";
+								$ekle .= "</ul>";
 										
 								echo $ekle;
 							   return true;
@@ -239,7 +239,7 @@ function listeGetir($userID, $durum){
 							{
 							   if(mysql_num_rows($result1)==0) return "";	 
 							   								
-							   $ekle = "<ul><li>";
+							   $ekle = "<ul id='anythingSlider'><li>";
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$row_gelen = mysql_fetch_assoc($result1);
@@ -275,7 +275,7 @@ function listeGetir($userID, $durum){
 							 {
 								 if (@mysql_numrows($result) > 0) {
 									
-									  $ekle = "<ul><li>";
+									  $ekle = "<ul id='anythingSlider'><li>";
 									$donguSon = mysql_num_rows($result);
 							   		for($i=0; $i<$donguSon ;$i++){
 										$data = mysql_fetch_assoc($result);
@@ -316,7 +316,7 @@ function listeGetir($userID, $durum){
 								 if (@mysql_numrows($result) > 0) {
 								$donguSon = @mysql_numrows($result);
 								
-									  	$ekle .= "<ul>";
+									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
@@ -354,7 +354,7 @@ function listeGetir($userID, $durum){
 								 if (@mysql_numrows($result) > 0) {
 								$donguSon = @mysql_numrows($result);
 								
-									  	$ekle .= "<ul>";
+									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
@@ -392,7 +392,7 @@ function listeGetir($userID, $durum){
 								
 								$donguSon = @mysql_numrows($result);
 								
-									  	$ekle .= "<ul>";
+									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
@@ -442,7 +442,7 @@ function listeGetir($userID, $durum){
 							{
 							   if(mysql_num_rows($result1)==0) return "";	 
 							   								
-							   $ekle = "<ul><li>";
+							   $ekle = "<ul id='anythingSlider'><li>";
 							   $donguSon = mysql_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
 									$row_gelen = mysql_fetch_assoc($result1);
