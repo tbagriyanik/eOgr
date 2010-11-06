@@ -803,7 +803,8 @@ function arkadasListesi($gelen=""){
 		$sql1 =    "SELECT * 
 				FROM eo_friends
 				WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
-				LIMIT 0,5";
+				ORDER BY id
+				LIMIT 0,50";
 		$sonuc = "";	
 				
 				$result1 = mysql_query($sql1, $yol1);
@@ -918,6 +919,25 @@ function arkadasTaniyor(){
 					    $sonucA = array_merge($sonucA,arkadasListesi($row_gelen['id']));						
 				   }
 				   $sonucA = array_unique($sonucA);//tekrarlardan kurtulalým
+				   
+					$aktifKullID = getUserID2($_SESSION["usern"]);
+					$sql1 =    "SELECT * 
+							FROM eo_friends
+							WHERE (davetEdilenID='$aktifKullID' or davetEdenID='$aktifKullID') and kabul='1'
+							";
+					$sonucKendi = array();	
+							
+							$result1 = mysql_query($sql1, $yol1);
+							if ($result1)	{				    
+							   while($row_gelen = mysql_fetch_assoc($result1)) {
+								if($row_gelen['davetEdenID']!=$aktifKullID)
+									$sonucKendi[] = $row_gelen['davetEdenID'];				     
+								else
+									$sonucKendi[] = $row_gelen['davetEdilenID'];						
+							   }
+							}
+					$sonucA = array_diff($sonucA, $sonucKendi);//bir önceki arkadaþlar ve biz çýkmayalým
+					
 				   sort($sonucA);
 			 	   foreach($sonucA as $eleman){
 					  $sonuc .= "<a href='friends.php?kisi=".$eleman."'>".kullAdi($eleman)."</a> ";

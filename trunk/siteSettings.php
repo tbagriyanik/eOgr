@@ -460,7 +460,7 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                       </tr>
                       <tr valign="baseline">
                         <td align="right" nowrap="nowrap"><label for="userEmail"> <?php echo $metin[20]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="userEmail" id="userEmail" value="<?php echo GetSQLValueStringNo($row_eoUsers['userEmail'],"text"); ?>" size="32" /></td>
+                        <td bgcolor="#CCFFFF"><input type="text" name="userEmail" id="userEmail" value="<?php echo GetSQLValueStringNo($row_eoUsers['userEmail'],"text"); ?>" size="32" /> <a href="mail.php?to=<?php echo $row_eoUsers['id'] ?>" title="mail" target="_blank"><img src="img/email.png" border="0" style="vertical-align: middle;"/></a> | <a href="mailto:<?php echo $row_eoUsers['userEmail'] ?>?Subject=eOgr" title="mail" target="_blank"><img src="img/email.png" border="0" style="vertical-align: middle;"/></a></td>
                       </tr>
                       <tr valign="baseline">
                         <td align="right" nowrap="nowrap"><label for="userBirthDate"> <?php echo $metin[21]?> :</label></td>
