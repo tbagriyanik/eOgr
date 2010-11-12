@@ -799,5 +799,6 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[629]	= "Course Details page gives you information about members joined courses.";			
 		$metin[630] = "Friends";		
 		$metin[631] = "You May Know";		
-						
+		$metin[632] = "Same Named Members";
+								
 ?>

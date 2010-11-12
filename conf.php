@@ -1392,6 +1392,35 @@ function dosyaKaydet($dosya,$uID){
    	@mysql_free_result($result1);
 }
 /*
+isimleriAyniUyeler:
+üyelerin tekrar üye olduklarýnýn tespiti
+*/
+function isimleriAyniUyeler(){
+	global $metin;
+	$sql1 = "
+			SELECT id, realName
+			FROM eo_users
+			WHERE 
+			  realName in (
+				SELECT realName
+				FROM eo_users 		 			 
+				GROUP BY realName
+				HAVING (count(id)>1)
+				)
+			ORDER BY realName";	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+
+	if(@mysql_num_rows($result1)>0){
+ 	 while($gelen=@mysql_fetch_array($result1)){
+			$liste .= "<a href='siteSettings.php?arama=".$gelen['realName']."'>`".$gelen['realName']."`</a> ";
+	 }//while
+	}//if
+   	@mysql_free_result($result1);
+	
+	 return $liste; 	
+}
+/*
 sonCalisanKullanicilar:
 ders çalýþma sayfasýnda son çalýþan kullanýcý isimleri
 */
