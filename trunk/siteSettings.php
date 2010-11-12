@@ -432,6 +432,10 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
    }
    }
 if ($totalRows_eoUsers==0) die( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
+                  
+				    if(isimleriAyniUyeler()!="")
+					    echo "<p><strong>$metin[632] :</strong> ". isimleriAyniUyeler()."</p>";
+
 
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 ?>
@@ -460,7 +464,8 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                       </tr>
                       <tr valign="baseline">
                         <td align="right" nowrap="nowrap"><label for="userEmail"> <?php echo $metin[20]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="userEmail" id="userEmail" value="<?php echo GetSQLValueStringNo($row_eoUsers['userEmail'],"text"); ?>" size="32" /> <a href="mail.php?to=<?php echo $row_eoUsers['id'] ?>" title="mail" target="_blank"><img src="img/email.png" border="0" style="vertical-align: middle;"/></a> | <a href="mailto:<?php echo $row_eoUsers['userEmail'] ?>?Subject=eOgr" title="mail" target="_blank"><img src="img/email.png" border="0" style="vertical-align: middle;"/></a></td>
+                        <td bgcolor="#CCFFFF"><input type="text" name="userEmail" id="userEmail" value="<?php echo GetSQLValueStringNo($row_eoUsers['userEmail'],"text"); ?>" size="32" />
+                          <a href="mail.php?to=<?php echo $row_eoUsers['id'] ?>" title="mail" target="_blank"><img src="img/email.png" border="0" style="vertical-align: middle;"/></a> | <a href="mailto:<?php echo $row_eoUsers['userEmail'] ?>?Subject=eOgr" title="mail" target="_blank"><img src="img/email.png" border="0" style="vertical-align: middle;"/></a></td>
                       </tr>
                       <tr valign="baseline">
                         <td align="right" nowrap="nowrap"><label for="userBirthDate"> <?php echo $metin[21]?> :</label></td>
@@ -531,7 +536,7 @@ if ($_GET["upd"]!="1"){
                     </label>
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
                   </form>
-                  <br/>
+                  <br />
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                     <table border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">

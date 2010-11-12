@@ -1,20 +1,27 @@
 
-	eOgr - v126c, 06-11-2010
+	eOgr - v126d, 12-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
-ABOUT:
-------
-Simply you can get online "education". With animations and videos, you can learn any subject better. And also you can interact with teachers or other students at real time or send email. 
+ABOUT
+-----
+
+Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends. They can view or write their walls. Every member can share their files and homeworks. 
 
 This project is simple, it is easy to use and has free membership...
 
-Every member can share their files and they can become friends. They can view or write their walls.
-Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages, quizes and many activities. 
+Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages (rich text, images), quizes (multiple choice, classic, test) and many activities (presentation, simulation). 
 Teachers and parents can follow the students works. Teachers can add and modify lesson modules. 
-Administrator users manage the site maintenance like editing users, database optimization and site settings.
+Administrator users manage the site maintenance like editing users, database (backup, optimization) and site settings.
 
 Available language support is English and Turkish.
+
+INSTALLATION (please, read INSTALL.txt for more details):
+------------
+
+(1) Edit your settings in "database.php" with an editor
+(2) " http://localhost/eogr/install.php " is for installation.     
+(3) Login as administrator user: name "admin" and password "11111"
 
 Developer Name: 
 	Tarik Bagriyanik
@@ -43,14 +50,9 @@ Programs:
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 
-INSTALLATION (please, read INSTALL.txt for more details):
--------------
-(1) Edit your settings in "database.php" with an editor
-(2) " http://localhost/eogr/install.php " is for installation.     
-(3) Login as administrator user: name "admin" and password "11111"
+Used Classes and Referred Sites
+-------------------------------
 
-
-Used Classes and Referred Sites:
 - autosuggest: v2.1.3
 	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
 - flood-protection: v1.0
@@ -65,7 +67,7 @@ Used Classes and Referred Sites:
 	http://plugins.jquery.com/project/SimplePager
 - jQuery print: 
 	http://www.bennadel.com/index.cfm?event=blog.view&id=1591
-- jQuery Sliding Page: v1.3 
+- jQuery AnythingSlider: v1.4.7 
 	http://github.com/ProLoser/AnythingSlider
 - jQuery bad browser: v1.4
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/
@@ -110,12 +112,14 @@ CSS, RSS and HTML Validations:
 Advice:
 	Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
 
-Also test your favorite Browser's Security: 
+Also Test Your Favorite Browser's Security: 
 	http://bcheck.scanit.be/bcheck/
 
-Special Thanks for Testing:
+Special Thanks for Testing
+--------------------------
+
 	Aziz BEKTAS, Yakup ARAS (my colleagues from Istanbul, TURKIYE)
 	Semih TURKEL, Umut YURUR (my students from Istanbul, TURKIYE)
 
-License: 
-	LGPL - LESSER GENERAL PUBLIC LICENSE http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+LGPL - LESSER GENERAL PUBLIC LICENSE 
+http://www.gnu.org/licenses/lgpl-3.0-standalone.html

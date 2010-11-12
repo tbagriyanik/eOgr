@@ -4,7 +4,7 @@
 body {
 	margin: 0 auto;
 	padding: 0;
-	background-color: #CCCC99;
+	background-color: #FFC;
 }
 .Main {
 	position: absolute;
@@ -327,7 +327,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 }
 .artmenu {
 	padding: 3px;
-	background-color:#fFC;
+	background-color:#996;
 }
 .nav .l, .nav .r, .nav .r div {
 	top: 0;
@@ -357,7 +357,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 /* begin MenuItem */
 .artmenu ul li {
 	clear: both;
-	background-color:#FFC;
+	background-color:#996;
 }
 .artmenu a, .artmenu a span {
 	height: 26px;
@@ -382,7 +382,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	font-size: 12px;
 	font-style: normal;
 	font-weight: normal;
-	color: #000;
+	color: #eef;
 	padding: 0 5px;
 	margin: 0 3px;
 	line-height: 26px;
@@ -401,7 +401,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	background-position: right -26px;
 }
 .artmenu a:hover span span {
-	background-color:#FC6;
+	background-color:#39f;
 	background-position: left -26px;
 }
 .artmenu li:hover a span span {
@@ -414,8 +414,8 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	background-position: right -52px;
 }
 .artmenu a.active span span {
-	color:  #00F;
-	background-color:#FC6;
+	color:  #000;
+	background-color:#FC0;
 	background-position: left -52px;
 }
 /* end MenuItem */
@@ -448,7 +448,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	text-indent: 6px;
 	text-decoration: none;
 	line-height: 22px;
-	color: #3D3F37;
+	color: #fff;
 	font-family: Verdana, Geneva, Arial, Helvetica, Sans-Serif;
 	font-size: 12px;
 	font-style: normal;
@@ -459,7 +459,7 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 }
 .artmenu ul li a:hover {
 	border-color: #7C806F;
-	background-color:#FC6;
+	background-color:#39F;
 	background-position: 0 -22px;
 }
 .artmenu ul li:hover>a {
@@ -467,10 +467,10 @@ h1.logo-name, h1.logo-name a, h1.logo-name a:link, h1.logo-name a:visited, h1.lo
 	background-position: 0 -22px;
 }
 .nav .artmenu ul li a:hover span, .nav .artmenu ul li a:hover span span {
-	color: #000;
+	color: #eee;
 }
 .nav .artmenu ul li:hover>a span, .nav .artmenu ul li:hover>a span span {
-	color: #000;
+	color: #eee;
 }
 /* end MenuSubItem */
 
@@ -1123,7 +1123,7 @@ input, select {
 	text-align: center;
 }
 .Footer .Footer-background {
-	background-color:#FFC;
+	background-color:#996;
 	position:absolute;
 	z-index:-1;
 	width: 965px;
