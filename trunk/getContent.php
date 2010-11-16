@@ -14,7 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
     session_start (); 
-	ob_start();
+
 	require("conf.php"); 
      
 	$taraDili=$_COOKIE["lng"];    
@@ -220,7 +220,8 @@ function konuHazirla($konuID){
 	while($gelen=@mysql_fetch_array($result)){		
 		$_SESSION["sayfalar"][$i]=anaMetniOku($konuID,$i);
 		$i++;
-	}	
+	}
+	return $i;	
 }
 	 
     $adi	=temizle(substr($_SESSION["usern"],0,15));
@@ -231,8 +232,9 @@ function konuHazirla($konuID){
 	  else
 		$tur =checkRealUser($adi,$par);	 
 	 
-	 if(temizle($_POST['konu'])<>"")
-		 konuHazirla(temizle($_POST['konu']));
-//	 print_r($_SESSION["sayfalar"]);
-//  dönüþ deðeri yok...
+	 	$sonuc = konuHazirla(temizle($_POST['konu']));
+		 if(temizle($_POST['konu'])<>"" and $sonuc>1)
+			echo "OK";
+		 else	 
+		    echo "ER";
 ?>

@@ -114,12 +114,12 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		document.getElementById('yukleniyor').style.visibility = "hidden";
 		
         var response = httpObject.responseText;
-		
+//alert(httpObject.responseText);alert(sayfaNo);
         var items = new Array();
 		items = response.split("|");
 		
 		if(items.length!=15 || items=="1"){//bazen sadece 1 geliyor...
-			return; //exit function
+			//return; //exit function
 		}
 
 		var birSayi, kayitSayisi, yuzdesi;
@@ -365,29 +365,6 @@ function konuHazirla(konuNo){
     }
 }
 /*
-setOutputOda:
-sohbet odasýnýn iþlemi
-*/ 
-function setOutputOda(){
-    if(httpObject.readyState == 4)
-	 if(httpObject.status == 200 || httpObject.status == 304){
-		
-    }
-}
-/*
-odaSec:
-sohbet odasýnýn deðiþtirilmesi
-*/
-function odaSec(){    
-    httpObject = getHTTPObject();
-    if (httpObject != null) {
-        httpObject.open("POST", "setOda.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
-  		httpObject.send('oda='+encodeURIComponent(document.getElementById('oda').value));
-        httpObject.onreadystatechange = setOutputOda;		
-    }
-}
-/*
 saveUserWork:
 ders bittiðinde kullanýcýya ders bilgisinin kaydedilmesi
 */
@@ -400,66 +377,6 @@ function saveUserWork(){
     }
 }
 /*
-trim:
-sað ve soldaki boþluklarý siler
-*/
-function trim(stringToTrim)
-{
-	return stringToTrim.replace(/^\s+|\s+$/g,"");
-}
-/*
-setOutputAll:
-yazýcý önizlemesi yapýmý
-*/
-function setOutputAll(){	
-    if(httpObject.readyState == 4)
-	 if(httpObject.status == 200 || httpObject.status == 304){
-		if(trim(httpObject.responseText)!="")
-		  if(trim(httpObject.responseText)!="1") {			
-			w=window.open('about:blank','onizleme','height=600,width=700,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=yes,scrollbars=yes');
-			w.document.open();
-			w.document.writeln("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-9\" />");
-			w.document.write("<title>&Ouml;nizleme/Preview</title></head><body>" + httpObject.responseText);			
-			w.document.writeln("</body></html>");
-			w.document.close();
-			}
-	}
-}
-/*
-printIt:
-sayfalarýn yazdýrýlmasý için bilgilerinin istenmesi
-*/
-function printIt()		{
-    httpObject = getHTTPObject();
-    if (httpObject != null) {
-        httpObject.onreadystatechange = setOutputAll;
-        httpObject.open("GET", "getSubOption2.php?"+'konuID='+encodeURIComponent(document.getElementById('konu_id').value), true);
-  		httpObject.send(null);	
-    }
-}
-/*
-setYardim:
-yardým için diziden gerekli sekmenin bilgilerinin çaðrýlmasý
-*/
-function setYardim(){
-    if(httpObject.readyState == 4)
-	 if(httpObject.status == 200 || httpObject.status == 304){
-		document.getElementById('icerisi').innerHTML = (httpObject.responseText);
-    }
-}
-/*
-yardimGoster:
-yardým için diziden gerekli sekmenin bilgilerinin çaðrýlmasý
-*/ 
-function yardimGoster(gelen){
-    httpObject = getHTTPObject();
-    if (httpObject != null) {
-        httpObject.onreadystatechange = setYardim;
-        httpObject.open("GET", "getYardim.php?"+'konu='+encodeURIComponent(gelen), true);
-  		httpObject.send(null);	
-    }
-}
-/*
 yorumGonder:
 derse kullanýcýnýn yorum eklemesi
 */
@@ -469,32 +386,6 @@ function yorumGonder(konuID, comment){
         httpObject.open("POST", "addComment2.php", true);
 		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
   		httpObject.send('yorum='+encodeURIComponent(comment) + '&konu=' + encodeURIComponent(konuID));
-        httpObject.onreadystatechange = setOutputOda;		
-    }
-}
-/*
-arkadasOnayla:
-arkadaþ eklemesi
-*/
-function arkadasOnayla(ID){    
-    httpObject = getHTTPObject();
-    if (httpObject != null) {
-        httpObject.open("POST", "askForFriendship2.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
-  		httpObject.send('kabul=1&kisi=' + encodeURIComponent(ID));
-        httpObject.onreadystatechange = setOutputOda;		
-    }
-}
-/*
-arkadasOnaylama:
-arkadaþ eklenmemesi
-*/
-function arkadasOnaylama(ID){    
-    httpObject = getHTTPObject();
-    if (httpObject != null) {
-        httpObject.open("POST", "askForFriendship2.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
-  		httpObject.send('kabul=0&kisi=' + encodeURIComponent(ID));
         httpObject.onreadystatechange = setOutputOda;		
     }
 }
