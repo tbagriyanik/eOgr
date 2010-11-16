@@ -3,17 +3,18 @@ td {
 	color: #000;
 }
 #kapsayici {
-	position:relative;
+	position:absolute;
 	top:10px;
 	z-index:auto;
 	float: left;
-	height: 420px;
-	width: 640px;
+	height: 410px;
+	width: 630px;
 	overflow: auto;
 	color: #333;
 	background: #fff;
 	border: 1px outset #666;
-	padding: 2px;
+	padding: 8px;
+	overflow:none;
 }
 #anaMetin {
 	height: 290px;

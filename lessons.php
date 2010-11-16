@@ -66,7 +66,7 @@ ob_start (); // Buffer output
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
+<script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script><script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
@@ -293,7 +293,7 @@ function cleanup() {
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent" style="height:480px;">
+                <div class="PostContent" style="height:500px;overflow:hidden;">
                   <?php  
 
 	$_SESSION["cevaplar"] = ""; 

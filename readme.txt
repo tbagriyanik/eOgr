@@ -1,5 +1,5 @@
 
-	eOgr - v126d, 12-11-2010
+	eOgr - v126d, 16-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -36,9 +36,12 @@ Demo Sites:
 
 Source Track:	
 	http://eogr.googlecode.com 
-	http://www.ohloh.net/p/eogr 
+
+Other Sites: 
 	http://github.com/tbagriyanik/eOgr
 	http://yunus.svn.sourceforge.net/viewvc/yunus
+	http://www.ohloh.net/p/eogr
+	http://www.hotscripts.com/listing/eogr
 
 Download All Versions:	
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
