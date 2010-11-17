@@ -30,9 +30,10 @@ Developer Site:
 	http://yunus.sourceforge.net
 
 Demo Sites:	
-	http://www.tuzlaatl.k12.tr/eogr
-	http://tbagriyanik.justfree.com
+	http://yunus.sourceforge.net/eogr
+	http://yunus.sourceforge.net/eogr	
 	http://tbagriyanik.xtreemhost.com/eogr		
+	http://tbagriyanik.justfree.com
 
 Source Track:	
 	http://eogr.googlecode.com 

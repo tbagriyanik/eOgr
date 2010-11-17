@@ -106,7 +106,7 @@ if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://www.tuzlaatl.k12.tr/eogr
+Demo Site:		http://yunus.sourceforge.net/eogr
 Source Track:	http://eogr.googlecode.com 
 Support:		http://www.ohloh.net/p/eogr
 
