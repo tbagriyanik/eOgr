@@ -31,7 +31,7 @@ Developer Site:
 
 Demo Sites:	
 	http://yunus.sourceforge.net/eogr
-	http://yunus.sourceforge.net/eogr	
+	http://www.tuzlaatl.k12.tr/eogr	
 	http://tbagriyanik.xtreemhost.com/eogr		
 	http://tbagriyanik.justfree.com
 
