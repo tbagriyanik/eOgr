@@ -16,25 +16,27 @@ Lesser General Public License for more details.
 	header("Content-Type: text/html; charset=iso-8859-9"); 
     session_start (); 
 
-if (isset($_POST['tur']) && isset($_POST['secilen'])){
-	  if($_POST['tur']==3){//metinler gelsin
+ if((int)$_POST['sayfaNo']>0){
 	  
- 	$sayfaCevapla = explode("|",$_SESSION["sayfalar"][($_POST['sayfaNo'])]);
+ 	$sayfaCevapla = explode("|",$_SESSION["sayfalar"][$_POST['sayfaNo']]);
 	$cevapDegeri = $sayfaCevapla[11];
 
-		if($cevapDegeri=="-")  echo $_SESSION["sayfalar"][($_POST['sayfaNo'])];
+		if($cevapDegeri=="-") {//soru deðilmiþ
+		  echo $_SESSION["sayfalar"][$_POST['sayfaNo']];
+		  exit();
+		}
 	
 			$cevaplanmisMi = @array_key_exists($cevapDegeri,$_SESSION["cevaplar"]);
 		
-			if(!$cevaplanmisMi) 
-		   		echo $_SESSION["sayfalar"][($_POST['sayfaNo'])];			
+			if(!$cevaplanmisMi){ //bu soru daha cevaplanmamýþ
+		   		echo $_SESSION["sayfalar"][$_POST['sayfaNo']];			
+				exit();
+			}
 		   
 			$sayfaCevapla[11] = "-";//sayfalar sonradan güncellenmemiþti, þimdi deðer deðiþtirildi
 	
 		  $sonuc = implode("|",$sayfaCevapla);
-		echo($sonuc);		
-	  }
+		echo $sonuc;		
    }else
    echo "";
-
 ?>
