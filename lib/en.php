@@ -3,7 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://www.tuzlaatl.k12.tr/eogr
+Demo Site:		http://yunus.sourceforge.net/eogr
 Source Track:	http://eogr.googlecode.com 
 Support:		http://www.ohloh.net/p/eogr
 
@@ -101,7 +101,7 @@ Lesser General Public License for more details.
 		$metin[72]="Database Patch Installation";    
 		$metin[73]="Be sure that you have edited the settings in 'database.php' for MySQL!";    
 		$metin[74]="";    
-		$metin[75]="<p><strong>Developer : </strong>Tarik Bagriyanik<br /><strong>Official Site : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Start Date :</strong> November 2008<br /><br />For Turkish video tutorials click <a href='http://www.tuzlaatl.k12.tr/eogr/Video' target='_blank'>here</a>.</p>";    
+		$metin[75]="<p><strong>Developer : </strong>Tarik Bagriyanik<br /><strong>Official Site : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Start Date :</strong> November 2008<br /><br />For Turkish video tutorials click <a href='http://yunus.sourceforge.net/eogr/Video' target='_blank'>here</a>.</p>";    
 		$metin[76]="<p>Welcome to <strong>eOgr </strong> project!</p>";    
 		$metin[77]="What is eOgr?";    
 		$metin[78]="Registration Form";    
