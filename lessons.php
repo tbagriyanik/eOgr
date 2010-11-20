@@ -69,7 +69,8 @@ ob_start (); // Buffer output
 <script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script><script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
 <script src="lib/jquery.cookie.js" type="text/javascript"></script>
@@ -82,7 +83,7 @@ ob_start (); // Buffer output
 				persist: "cookie",
 				control:"#sidetreecontrol"
 			});
-		})		
+		});
 </script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -611,7 +612,7 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1" and $eMode!="2"){
           <?php
 }
 ?>
-          <script language="javascript" type="text/javascript">  
+<script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
 document.getElementById('sunuDurdur').style.visibility = 'hidden';

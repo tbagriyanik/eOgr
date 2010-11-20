@@ -77,6 +77,61 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	if($tur=="-2") 
 	{
 ?>
+
+<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript" src="lib/tlogin/js/twitterLogin.js"></script>
+
+<!-- BEGIN DEMO -->
+<div id="loginWrapper">
+<!-- BEGIN LOGIN BUTTON -->
+<div id="loginButton">
+<a href="#"><?php echo $metin[2];?></a>
+</div>
+<!-- END LOGIN BUTTON -->
+
+<!-- BEGIN HIDDEN FORM -->
+<div id="loginForm">
+<fieldset>
+                    <form id="form2" method="post" action="login.php">
+                      <label for="userN"> <?php echo $metin[0]?> : </label>
+                      <input type="hidden" name="form" value="login" />
+                      <div>
+                        <input name="userN" type="text" id="userN" size="18" maxlength="15" class="required"  style="width:150px" 
+                     value="<?php echo ($remUser)?temizle($_COOKIE["remUser"]):""?>" />
+                      </div>
+                      <label for="userP"> <?php echo $metin[1]?> : </label>
+                      <div>
+                        <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
+                      </div>
+                      <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
+                      &nbsp;
+                      <?php
+	 if (!empty($_COOKIE["remUser"])){
+    ?>
+                      <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
+                      <?php
+	} else {
+    ?>
+                      <br/>
+                      <br/>
+                      <label>
+                        <input type="checkbox" name="remUser" id="remUser" value="1"/>
+                        <?php echo $metin[193]?> </label>
+                      <?php
+	}
+    ?>
+                    </form>
+</fieldset>
+
+<ul>
+<li><a href="newUser.php"><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[3]?></a></li>
+<li><a href="passwordRemember.php"><?php echo $metin[4]?></a></li>
+</ul>
+</div>
+<!-- END HIDDEN FORM -->
+</div>
+<!-- END MENU DEMO -->
+
 <ul class="artmenu"  style="list-style-type:none">
   <li><a href="index.php" <?php
 						 if ($currentFile=="index.php") echo "class=\" active\"";
