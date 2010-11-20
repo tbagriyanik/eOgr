@@ -15,6 +15,7 @@ td {
 	border: 1px outset #666;
 	padding: 8px;
 	overflow:none;
+	border: solid 1px #000; 
 }
 #anaMetin {
 	height: 290px;

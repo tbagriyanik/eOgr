@@ -562,10 +562,12 @@ if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") 
 <div class="cleared"></div>
 <script type="text/javascript">
 <!--
-if (document.getElementById("userN")!=null && document.getElementById("userN").value=="")  document.getElementById("userN").focus();
-if (document.getElementById("userN")!=null && document.getElementById("userN").value!="")  document.getElementById("userP").focus();
-if (document.getElementById("userP")!=null) document.getElementById("userP").setAttribute( "autocomplete","off" );
-
+/*if (document.getElementById("userN")!=null && document.getElementById("userN").value=="")  
+   document.getElementById("userN").focus();
+if (document.getElementById("userN")!=null && document.getElementById("userN").value!="")  
+   document.getElementById("userP").focus();*/
+if (document.getElementById("userP")!=null) 
+   document.getElementById("userP").setAttribute( "autocomplete","off" );
 //-->
 </script>
 <?php  						

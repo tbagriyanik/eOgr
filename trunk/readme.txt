@@ -1,5 +1,5 @@
 
-	eOgr - v126d, 17-11-2010
+	eOgr - v127a, 20-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -48,7 +48,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (580 hours programming, 17.000 lines PHP, 20.000 lines Javascript and CSS)
+	15-11-2008 (590 hours programming, 17.000 lines PHP, 20.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -75,6 +75,8 @@ Used Classes and Referred Sites
 	http://github.com/ProLoser/AnythingSlider
 - jQuery bad browser: v1.4
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/
+- twitter Login: v1 
+ 	http://www.skyrocketlabs.com/articles/twitter-style-login-with-jquery-and-css3.php
 - iCal-like Calendar with jQuery: 
 	http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery
 	http://www.frecosse.com/?p=252
