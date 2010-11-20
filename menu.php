@@ -51,7 +51,15 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 ?>
 <script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3_comp.js" charset="utf-8"></script>
+<script type="text/javascript" src="lib/jquery.ui.totop.js" charset="utf-8"></script>
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript">
+   jQuery().ready(function() { 
+      jQuery('body').UItoTop({ text: 'To Top', min: 200, scrollSpeed: 600, easingType: 'easeInOutQuad'});
+   });
+</script>
 
 <div class="aramaDiv"> <a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a>&nbsp;&nbsp;<a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a>&nbsp;&nbsp;<a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a>&nbsp;&nbsp;
   <input name="searchterm" type="text" id="searchterm" size="15" maxlength="50" title="<?php echo $metin[177]?>"/>
@@ -77,58 +85,54 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	if($tur=="-2") 
 	{
 ?>
-
 <link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-<script type="text/javascript" src="lib/tlogin/js/twitterLogin.js"></script>
+<script type="text/javascript" src="lib/tlogin/js/twitterLogin.js"></script> 
 
 <!-- BEGIN DEMO -->
-<div id="loginWrapper">
-<!-- BEGIN LOGIN BUTTON -->
-<div id="loginButton">
-<a href="#"><?php echo $metin[2];?></a>
-</div>
-<!-- END LOGIN BUTTON -->
-
-<!-- BEGIN HIDDEN FORM -->
-<div id="loginForm">
-<fieldset>
-                    <form id="form2" method="post" action="login.php">
-                      <label for="userN"> <?php echo $metin[0]?> : </label>
-                      <input type="hidden" name="form" value="login" />
-                      <div>
-                        <input name="userN" type="text" id="userN" size="18" maxlength="15" class="required"  style="width:150px" 
+<div id="loginWrapper"> 
+  <!-- BEGIN LOGIN BUTTON -->
+  <div id="loginButton"> <a href="#"><?php echo $metin[2];?></a> </div>
+  <!-- END LOGIN BUTTON --> 
+  
+  <!-- BEGIN HIDDEN FORM -->
+  <div id="loginForm">
+    <fieldset>
+      <form id="form2" method="post" action="login.php">
+        <label for="userN"> <?php echo $metin[0]?> : </label>
+        <input type="hidden" name="form" value="login" />
+        <div>
+          <input name="userN" type="text" id="userN" size="18" maxlength="15" class="required"  style="width:150px" 
                      value="<?php echo ($remUser)?temizle($_COOKIE["remUser"]):""?>" />
-                      </div>
-                      <label for="userP"> <?php echo $metin[1]?> : </label>
-                      <div>
-                        <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
-                      </div>
-                      <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
-                      &nbsp;
-                      <?php
+        </div>
+        <label for="userP"> <?php echo $metin[1]?> : </label>
+        <div>
+          <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
+        </div>
+        <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
+        &nbsp;
+        <?php
 	 if (!empty($_COOKIE["remUser"])){
     ?>
-                      <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
-                      <?php
+        <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
+        <?php
 	} else {
     ?>
-                      <br/>
-                      <br/>
-                      <label>
-                        <input type="checkbox" name="remUser" id="remUser" value="1"/>
-                        <?php echo $metin[193]?> </label>
-                      <?php
+        <br/>
+        <br/>
+        <label>
+          <input type="checkbox" name="remUser" id="remUser" value="1"/>
+          <?php echo $metin[193]?> </label>
+        <?php
 	}
     ?>
-                    </form>
-</fieldset>
-
-<ul>
-<li><a href="newUser.php"><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[3]?></a></li>
-<li><a href="passwordRemember.php"><?php echo $metin[4]?></a></li>
-</ul>
-</div>
-<!-- END HIDDEN FORM -->
+      </form>
+    </fieldset>
+    <ul>
+      <li><a href="newUser.php"><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[3]?></a></li>
+      <li><a href="passwordRemember.php"><?php echo $metin[4]?></a></li>
+    </ul>
+  </div>
+  <!-- END HIDDEN FORM --> 
 </div>
 <!-- END MENU DEMO -->
 
@@ -169,10 +173,10 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
                         ><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a>
     <ul>
       <li><a href="login.php"><span><span><img src="img/mainPage.gif" border="0" style="vertical-align: middle;" alt="login"/> <?php echo $metin[60]?> </span></span></a></li>
-      <li><a href="kursDetay.php"><span><span><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" />  <?php echo $metin[461]?> </span></span></a></li>
+      <li><a href="kursDetay.php"><span><span><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <?php echo $metin[461]?> </span></span></a></li>
       <li><a href="stats.php"><span><span> <?php echo $metin[197]?> </span></span></a></li>
       <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a></li>
-      <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?> </span></span></a></li>      
+      <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?> </span></span></a></li>
       <li><a href="askQuestion.php"><span><span><img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628]?> </span></span></a></li>
       <?php
 							 if ($tur=='2' || $tur=='1'){
@@ -246,7 +250,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 					for($boy=1;$boy<=$boyut;$boy++) echo "&nbsp;";
 				  ?>
         &#8250; </span></span></a>
-        <ul>          
+        <ul>
           <li><a href="dataActions.php"><span><span> <?php echo $metin[66].$bilgi8?> </span></span></a></li>
           <li><a href="dataWorkList2.php"><span><span> <?php echo $metin[186].$bilgi9?> </span></span></a></li>
           <li><a href="dataRatingList.php"><span><span> <?php echo $metin[287].$bilgi3?> </span></span></a></li>
@@ -272,7 +276,6 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
   <?php
 	}
     ?>
-  
   <?php
   }
 ?>

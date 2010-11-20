@@ -75,8 +75,10 @@ Used Classes and Referred Sites
 	http://github.com/ProLoser/AnythingSlider
 - jQuery bad browser: v1.4
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/
-- twitter Login: v1 
+- jQuery twitter Login: v1 
  	http://www.skyrocketlabs.com/articles/twitter-style-login-with-jquery-and-css3.php
+- jQuery uiTop: v1.1
+	http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
 - iCal-like Calendar with jQuery: 
 	http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery
 	http://www.frecosse.com/?p=252
