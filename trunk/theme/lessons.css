@@ -80,10 +80,6 @@ td {
 	font-weight: bold;
 	font-variant: small-caps;
 }
-#searchterm {
-	font-size: 12px;
-	border: thin outset #666;
-}
 #bitirmeYuzdesi {
 	width: 100px;
 	display: block;

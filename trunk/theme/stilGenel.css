@@ -306,6 +306,14 @@ input[type=checkbox] {
 input[type=radio] {
 	cursor:pointer;
 }
+#searchterm {
+	font-size: 12px;
+	border-color:#B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
+	border-style:solid;
+	border-width:1px;
+	color:#333333;
+	font-size:11px;
+}
 label {
 	cursor: pointer;
 }
