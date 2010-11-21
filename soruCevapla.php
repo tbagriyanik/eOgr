@@ -332,7 +332,6 @@ if (document.getElementById("cevapSuresi")!=null) fadeUp(document.getElementById
 
 </script>
 
-<script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" language="javascript">
         $(document).ready(function() {
             $(".cevap").keydown(function(e) {
