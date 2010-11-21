@@ -41,7 +41,7 @@
 	padding: 0;
 	float: left;
 }
-.rating li a {
+.rating li label {
 	display: block;
 	position: absolute;
 	width: 20px;
@@ -50,39 +50,39 @@
 	overflow: hidden;
 	z-index: 20;
 }
-.rating a.rate1 {
+.rating label.rate1 {
 	left: 0;
 }
-.rating a.rate2 {
+.rating label.rate2 {
 	left: 20px;
 }
-.rating a.rate3 {
+.rating label.rate3 {
 	left: 40px;
 }
-.rating a.rate4 {
+.rating label.rate4 {
 	left: 60px;
 }
-.rating a.rate5 {
+.rating label.rate5 {
 	left: 80px;
 }
-.rating li a:hover {
+.rating li label:hover {
 	background: transparent url("../img/star.gif") left repeat-x;
 	left: 0;
 	z-index: 1;
 }
-.rating a.rate1:hover {
+.rating label.rate1:hover {
 	width: 20px;
 }
-.rating a.rate2:hover {
+.rating label.rate2:hover {
 	width: 40px;
 }
-.rating a.rate3:hover {
+.rating label.rate3:hover {
 	width: 60px;
 }
-.rating a.rate4:hover {
+.rating label.rate4:hover {
 	width: 80px;
 }
-.rating a.rate5:hover {
+.rating label.rate5:hover {
 	width: 100px;
 }
 .rating img.loading {
