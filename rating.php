@@ -199,11 +199,11 @@ if (!empty($id)) {
 		}
 		
 		echo '
-		   <li  style="list-style-type:none;"><a class="rate1" title="'.$metin[250].'" href="?konu2='.$id.'&amp;rating=1">1</a></li>
-		   <li  style="list-style-type:none;"><a class="rate2" title="'.$metin[251].'" href="?konu2='.$id.'&amp;rating=2">2</a></li>
-		   <li  style="list-style-type:none;"><a class="rate3" title="'.$metin[252].'" href="?konu2='.$id.'&amp;rating=3">3</a></li>
-		   <li  style="list-style-type:none;"><a class="rate4" title="'.$metin[253].'" href="?konu2='.$id.'&amp;rating=4">4</a></li>
-		   <li  style="list-style-type:none;"><a class="rate5" title="'.$metin[254].'" href="?konu2='.$id.'&amp;rating=5">5</a></li>
+		   <li  style="list-style-type:none;"><label class="rate1" title="'.$metin[250].'" href="?konu2='.$id.'&amp;rating=1">1</label></li>
+		   <li  style="list-style-type:none;"><label class="rate2" title="'.$metin[251].'" href="?konu2='.$id.'&amp;rating=2">2</label></li>
+		   <li  style="list-style-type:none;"><label class="rate3" title="'.$metin[252].'" href="?konu2='.$id.'&amp;rating=3">3</label></li>
+		   <li  style="list-style-type:none;"><label class="rate4" title="'.$metin[253].'" href="?konu2='.$id.'&amp;rating=4">4</label></li>
+		   <li  style="list-style-type:none;"><label class="rate5" title="'.$metin[254].'" href="?konu2='.$id.'&amp;rating=5">5</label></li>
 		  </ul>';
 		  if(oyToplam($id)>0)
 			echo "$metin[273] : ".oyToplam($id).", $metin[274] : ".round(oyOrtalama($id),1);   

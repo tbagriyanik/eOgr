@@ -1,5 +1,5 @@
 
-	eOgr - v127a, 20-11-2010
+	eOgr - v127b, 21-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -16,8 +16,8 @@ Administrator users manage the site maintenance like editing users, database (ba
 
 Available language support is English and Turkish.
 
-INSTALLATION (please, read INSTALL.txt for more details):
-------------
+INSTALLATION (please, read INSTALL.txt for more details)
+--------------------------------------------------------
 
 (1) Edit your settings in "database.php" with an editor
 (2) " http://localhost/eogr/install.php " is for installation.     
@@ -123,8 +123,8 @@ Advice:
 Also Test Your Favorite Browser's Security: 
 	http://bcheck.scanit.be/bcheck/
 
-Special Thanks for Testing
---------------------------
+Special Thanks
+--------------
 
 	Aziz BEKTAS, Yakup ARAS (my colleagues from Istanbul, TURKIYE)
 	Semih TURKEL, Umut YURUR (my students from Istanbul, TURKIYE)
