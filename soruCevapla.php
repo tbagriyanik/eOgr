@@ -196,7 +196,7 @@ function secenekleriGetir($id)
 				}
 				
 	     if($secenek1!="")
-			 $sonuc .= "<input type='radio' value='A' name='cevap' class='cevap' style='width:35px;' onclick='cevapDegerlendir(\"$sor_a\",$id);' /> $sor_a_met<br/><br/>";
+			 $sonuc .= "<input type='radio' value='A' name='cevap' class='cevap' style='width:35px;' onclick='cevapDegerlendir(\"$sor_a\",$id);' onkeypress='' /> $sor_a_met<br/><br/>";
 	     if($secenek2!="")
 		     $sonuc .= "<input type='radio' value='B' name='cevap' class='cevap' style='width:35px;'  onclick='cevapDegerlendir(\"$sor_b\",$id);' /> $sor_b_met<br/><br/>";
 	     if($secenek3!="")
@@ -330,10 +330,16 @@ if (document.getElementById("tekCevap")!=null)  document.getElementById("tekCeva
 window.setTimeout("tekCevapFocus()",500);
 if (document.getElementById("cevapSuresi")!=null) fadeUp(document.getElementById("cevapSuresi"),255,0,0,150,0,0);
 
-//jquery ile UP DOWN LEFT RIGHT tuþlarýný yakalama
-$('.cevap').keypress(function(event) {
-	if (event.keyCode >= '37' && event.keyCode <= '40') {
-     return false;
-   }
-});
 </script>
+
+<script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $(".cevap").keydown(function(e) {
+                var evt = e || window.event;                
+                if (evt.keyCode >= 37 && evt.keyCode <= 40) {
+                    return false;
+                }
+            });
+        });        
+</script> 
