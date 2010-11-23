@@ -43,7 +43,7 @@ Lesser General Public License for more details.
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
