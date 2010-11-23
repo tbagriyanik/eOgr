@@ -48,7 +48,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (600 hours programming, 17.000 lines PHP, 20.000 lines Javascript and CSS)
+	15-11-2008 (600 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -71,7 +71,7 @@ Used Classes and Referred Sites
 	http://plugins.jquery.com/project/SimplePager
 - jQuery print: 
 	http://www.bennadel.com/index.cfm?event=blog.view&id=1591
-- jQuery AnythingSlider: v1.4.7 
+- jQuery AnythingSlider: v1.4.7 < 1.5.2
 	http://github.com/ProLoser/AnythingSlider
 - jQuery bad browser: v1.4
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/
@@ -89,7 +89,7 @@ Used Classes and Referred Sites
 - wtag: v1.0Beta 
 	http://spacegirlpippa.co.uk
 - Facebox: v1.3 
-	https://github.com/defunkt/facebox
+	http://github.com/defunkt/facebox
 - shadowbox: v3.0.3 
 	http://www.shadowbox-js.com/
 - HTML Graphs: v4.8 
