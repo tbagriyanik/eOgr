@@ -1,5 +1,5 @@
 
-	eOgr - v127b, 21-11-2010
+	eOgr - v127c, 23-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -48,7 +48,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (590 hours programming, 17.000 lines PHP, 20.000 lines Javascript and CSS)
+	15-11-2008 (600 hours programming, 17.000 lines PHP, 20.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -61,7 +61,7 @@ Used Classes and Referred Sites
 	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
 - flood-protection: v1.0
 	http://archive.free-php.org.uk
-- jQuery: v1.4.3 
+- jQuery: v1.4.4 
 	http://jquery.com
 - jQuery UI: v1.8.6 custom - sortable only
 	http://jqueryui.com
@@ -88,7 +88,7 @@ Used Classes and Referred Sites
 	http://www.phplivex.com
 - wtag: v1.0Beta 
 	http://spacegirlpippa.co.uk
-- Facebox: v1.2 
+- Facebox: v1.3 
 	https://github.com/defunkt/facebox
 - shadowbox: v3.0.3 
 	http://www.shadowbox-js.com/
