@@ -88,6 +88,35 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="lib/tlogin/js/twitterLogin.js"></script> 
 
+<script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
+<script type="text/javascript">
+$().ready(function() {
+	$("#form1").validate({
+		rules: {
+			userN: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			},
+			userP: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			}
+		},
+		messages: {
+			userN: {
+				required: "<?php echo $metin[607]?>",
+				minlength: "<?php echo $metin[608]?>"
+			},
+			userP: {
+				required: "<?php echo $metin[610]?>",
+				minlength: "<?php echo $metin[609]?>"
+			}
+		}
+	});	
+});
+  </script>
 <!-- BEGIN DEMO -->
 <div id="loginWrapper"> 
   <!-- BEGIN LOGIN BUTTON -->
@@ -97,7 +126,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
   <!-- BEGIN HIDDEN FORM -->
   <div id="loginForm">
     <fieldset>
-      <form id="form2" method="post" action="login.php">
+      <form id="form1" method="post" action="login.php">
         <label for="userN"> <?php echo $metin[0]?> : </label>
         <input type="hidden" name="form" value="login" />
         <div>
@@ -135,6 +164,11 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
   <!-- END HIDDEN FORM --> 
 </div>
 <!-- END MENU DEMO -->
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#form1").validate();
+  });
+  </script>
 
 <ul class="artmenu"  style="list-style-type:none">
   <li><a href="index.php" <?php

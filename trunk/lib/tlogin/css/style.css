@@ -52,7 +52,7 @@ skyrocketlabs@gmail.com
 /* THIS IS THE HIDDEN FORM */
 
 #loginForm {
-	position: fixed;
+	position:fixed ;
 	width: 200px;
 	font-size: 0.8em;
 	color: #477;

@@ -11,8 +11,8 @@
  		var defaults = {
 			text: 'To Top',
 			min: 200,
-			inDelay:600,
-			outDelay:400,
+			inDelay:200,
+			outDelay:200,
   			containerID: 'toTop',
 			containerHoverID: 'toTopHover',
 			scrollSpeed: 1200,
@@ -41,6 +41,9 @@
 			});
 					
 		$(window).scroll(function() {
+				$("#loginForm").fadeOut(100);
+				$("#loginButton a").removeClass("active");
+
 			var sd = $(window).scrollTop();
 			if(typeof document.body.style.maxHeight === "undefined") {
 				$(containerIDhash).css({

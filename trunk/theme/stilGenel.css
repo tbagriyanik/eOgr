@@ -411,8 +411,6 @@ label.error {
 	background-image: url(../img/error.png);
 	background-repeat: no-repeat;
 	background-position:left top;
-	width: 30px;
-	height:20px;
 	padding-left: 24px;
 	padding-top: 8px;
 	cursor: pointer;

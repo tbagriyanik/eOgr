@@ -1500,7 +1500,10 @@ function getStats($num,$uID="")
 				{
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+				   		if($_SESSION["userp"]=="")
+				    	$ekle .= $row_gelen['userName'].", ";
+						else
+				    	$ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
@@ -1527,7 +1530,10 @@ function getStats($num,$uID="")
 				   $ekle = "";
 				   if(@mysql_numrows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+				   		if($_SESSION["userp"]=="")
+				    		$ekle .= $row_gelen['userName'].", ";
+						else
+				    		$ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
@@ -1584,7 +1590,10 @@ function getStats($num,$uID="")
 				{
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href='dersBilgisi.php?ders=".$row_gelen['id']."' rel='facebox'>".$row_gelen['konuAdi']."</a>, ";
+				   		if($_SESSION["userp"]=="")
+				    		$ekle .= $row_gelen['konuAdi'].", ";
+						else
+				    		$ekle .= "<a href='dersBilgisi.php?ders=".$row_gelen['id']."' rel='facebox'>".$row_gelen['konuAdi']."</a>, ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
 					@mysql_free_result($result1);
@@ -1611,7 +1620,7 @@ function getStats($num,$uID="")
 				{
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href='lessons.php?konu=".$row_gelen['id']."' >".$row_gelen['konuAdi']."</a>, " ;
+						    $ekle .= "<a href='lessons.php?konu=".$row_gelen['id']."' >".$row_gelen['konuAdi']."</a>, " ;
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
 				     @mysql_free_result($result1);
@@ -1638,7 +1647,10 @@ function getStats($num,$uID="")
 				{
 				   $ekle = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+				   		if($_SESSION["userp"]=="")
+					    	$ekle .= $row_gelen['userName'].", ";
+						else
+						    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
 					         .$row_gelen['userName']."</a>, ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
@@ -1948,7 +1960,10 @@ function getStats($num,$uID="")
 				   $ekle = "";
 				   if(@mysql_numrows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+				   		if($_SESSION["userp"]=="")
+					    	$ekle .= $row_gelen['userName'].", ";
+						else
+						    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
@@ -1978,7 +1993,10 @@ function getStats($num,$uID="")
 				   $ekle = "";
 				   if(@mysql_numrows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
+				   		if($_SESSION["userp"]=="")
+					    	$ekle .= $row_gelen['userName'].", ";
+						else
+						    $ekle .= "<a href=\"profil.php?kim=".$row_gelen['id']."\" rel='facebox'>"
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
