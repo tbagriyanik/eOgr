@@ -158,22 +158,7 @@ if ($tur=="2")	{//yönetici ise
 		  echo "<font id='hata'> $metin[498] ($_uploadFolder)<br/>$dosyUpload<br/>";
 		  echo "<a href='fileShare.php?clean=1'>$metin[499]!</a></font>";	
 	  }
-
-	 //index.php'den 
-	 $uyeListesi=getUsersOnline();
-		 if(!empty($uyeListesi)){
-			 echo "<br/>$metin[446]<strong>";
-			 foreach($uyeListesi as $eleman){
-				 echo $eleman." ";
-				 }
-			 echo "</strong>";	 
-		 }
-		 //iz sayýsý
-	if (getTrackCount(false)>0){
-						 echo "<br/><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (<a href='dataActions.php'>".$metin[195]." ".getTrackCount(true)."</a> %".round(getTrackCount(true)*100/getTrackCount(false),1).")";
-						 }
-						 		 
-	 echo '<hr noshade="noshade" color="#333333">';
+	echo "<br/>";
  	//son yapýlan iþlemler ve tarihi	
 	$bilgi1 = sonSatirGetir("sohbet");
 	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";
@@ -189,6 +174,15 @@ if ($tur=="2")	{//yönetici ise
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
 	$bilgi7 = sonSatirGetir("arkadas");
 	if(!empty($bilgi7))	echo "<strong><a href=\"dataFriendActions.php\">$metin[594]</a> :</strong>"."<p class='ozetBilgi'>".$bilgi7."</p>";
+
+	$bilgiSayfa1 = enFazlaIslemGetir(1);
+	if(!empty($bilgiSayfa1))	echo "<strong>".$metin[633]." ($metin[544]) :</strong> <p class='ozetBilgi'>".$bilgiSayfa1."</p>";
+	$bilgiSayfa2 = enFazlaIslemGetir(2);
+	if(!empty($bilgiSayfa2))	echo "<strong>".$metin[634]." ($metin[544]) :</strong> <p class='ozetBilgi'>".$bilgiSayfa2."</p>";
+
+	if (getTrackCount(false)>0){
+						 echo "<p><strong>".$metin[194]." : </strong><br/>".getTrackCount(false)." (<a href='dataActions.php'>".$metin[195]." ".getTrackCount(true)."</a> %".round(getTrackCount(true)*100/getTrackCount(false),1).")</p>";
+						 }
 	
 }
 	else {

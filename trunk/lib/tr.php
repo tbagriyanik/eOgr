@@ -420,7 +420,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[303]="Diðer Genel Seçenekler";		
 		$metin[304]="Sohbet";
 		$metin[305]="Haberler (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
-		$metin[306]="Son kullanýcý çalýþmalarý (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
+		$metin[306]="Son kullanýcý çalýþmalarý, son güncellenen konular (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
 		$metin[307]="Ping Resmi";
 		$metin[308]="Ýstatistikler ve Son Çalýþanlar";
 		
@@ -814,5 +814,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[630] = "Arkadaþ Sayýsý";
 		$metin[631] = "Tanýyor Olabilirsin";		
 		$metin[632] = "Ayný Ýsimli Üyeler";
+		
+		$metin[633] = "En fazla iþlem yapýlan sayfalar";
+		$metin[634] = "En fazla hata yapýlan sayfalar";
 		
 ?>

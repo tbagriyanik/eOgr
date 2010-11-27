@@ -329,7 +329,7 @@ if ($totalRows_eoUsers>0)
 						if(in_array(file_ext($row_eoUsers['fileName']),array("jpg","jpeg","png","gif"))) 
 								echo " <a href='fileDownload.php?id=".$row_eoUsers['id'].
 								 "&amp;file=".$row_eoUsers['fileName']."&amp;islem=goster' target='_blank'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[207]\"/></a>";
-						if(in_array(file_ext($row_eoUsers['fileName']),array("flv"))) 
+						if(in_array(file_ext($row_eoUsers['fileName']),array("flv","swf","mp3","avi","mp4","wmv"))) 
 								echo " <a href='fileDownload.php?id=".$row_eoUsers['id'].
 								 "&amp;file=".$row_eoUsers['fileName']."&amp;islem=goster' target='_blank'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[207]\"/></a>";
 							echo "<td style=\"background-color: $row_color;\" align='right'>".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";

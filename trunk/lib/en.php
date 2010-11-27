@@ -408,7 +408,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[303]="Other General Options";		
 		$metin[304]="Enable Chat";
 		$metin[305]="Enable News (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
-		$metin[306]="Last unregistered user works (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
+		$metin[306]="Last unregistered user works and last updated topics(<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
 		$metin[307]="Ping Image";
 		$metin[308]="Statistics and Recent Staff";
 		
@@ -800,5 +800,8 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[630] = "Friends";		
 		$metin[631] = "You May Know";		
 		$metin[632] = "Same Named Members";
+		
+		$metin[633] = "Most active pages";
+		$metin[634] = "Most failed pages";
 								
 ?>
