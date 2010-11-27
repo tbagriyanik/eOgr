@@ -450,7 +450,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=1&id=".$row_gelen['id']."&upd=1'>[".$row_gelen['id']."]</a>, ";
+				    $sonuc .= "<a href='lessonsEdit.php?tab=1&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
 				     
 				   $sonuc = substr($sonuc,0,strlen($sonuc)-2);
 				   if (empty($sonuc)) 
@@ -472,7 +472,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=2&id=".$row_gelen['id']."&upd=1'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='lessonsEdit.php?tab=2&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[220]"; 
@@ -493,7 +493,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=3&id=".$row_gelen['id']."&upd=1'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='lessonsEdit.php?tab=3&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				     $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[222]";
@@ -520,7 +520,7 @@ function yetimKayitNolar($tablo){
 							$resultici = mysql_query($sqlici, $yol1);
 							if ($resultici){
 								if (@mysql_numrows($resultici)==0)
-							    	$sonuc2 .= "<a href='lessonsEdit.php?tab=3&id=".$row_gelen['id']."&upd=1'>[".$row_gelen['id']."]</a> ";
+							    	$sonuc2 .= "<a href='lessonsEdit.php?tab=3&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
 							}
 							@mysql_free_result($resultici); 	
 
@@ -545,7 +545,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=4&id=".$row_gelen['id']."&upd=1'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='lessonsEdit.php?tab=4&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				     $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[226]";
@@ -563,7 +563,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='lessonsEdit.php?tab=4&id=".$row_gelen['id']."&upd=1'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='lessonsEdit.php?tab=4&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[228]";
@@ -584,7 +584,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataWorkList2.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='dataWorkList2.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -602,7 +602,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataWorkList2.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='dataWorkList2.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
@@ -623,7 +623,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "[".$row_gelen['id']."] ";
+				    $sonuc .= " ".$row_gelen['id'].", ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[234]";
@@ -641,7 +641,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "[".$row_gelen['id']."] ";
+				    $sonuc2 .= " ".$row_gelen['id'].", ";
 				     
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[236]";
@@ -662,7 +662,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataCommentList.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='dataCommentList.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -680,7 +680,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataCommentList.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='dataCommentList.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
@@ -701,7 +701,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataRatingList.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='dataRatingList.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -719,7 +719,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataRatingList.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='dataRatingList.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
@@ -740,7 +740,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='fileShare.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='fileShare.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -761,7 +761,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataFriendActions.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc .= "<a href='dataFriendActions.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc)) 
 				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -779,7 +779,7 @@ function yetimKayitNolar($tablo){
 				{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataFriendActions.php'>[".$row_gelen['id']."]</a> ";
+				    $sonuc2 .= "<a href='dataFriendActions.php'>".$row_gelen['id']."</a>, ";
 				     
 				   if (empty($sonuc2)) 
 				    $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
@@ -3777,6 +3777,45 @@ if ($handle = opendir($dir)) {
 		return false;
 	}
 return false;
+}
+/*
+enFazlaIslemGetir:
+Sayfa olarak en fazla yapýlan iþlem ve hata sayýlarý
+*/
+function enFazlaIslemGetir($islem){
+	global $yol1;
+	switch($islem){
+		case "1":
+			$sql1 = "SELECT processName, count(processName) as say 
+					 FROM eo_usertrack
+					 GROUP BY processName						
+					 ORDER BY say DESC 
+					 LIMIT 0,5"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1){
+				while($gelen = mysql_fetch_array($result1)){				
+					$sonuc .= "<a href='$gelen[0]'>".$gelen[0]."($gelen[1])</a> ";				
+				}
+			}							
+		break;
+		case "2":
+			$sql1 = "SELECT processName, count(processName) as say 
+					 FROM eo_usertrack
+					 WHERE otherInfo like 'fail%'
+					 GROUP BY processName						
+					 ORDER BY say DESC 
+					 LIMIT 0,5"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1){
+				while($gelen = mysql_fetch_array($result1)){				
+					$sonuc .= "<a href='$gelen[0]'>".$gelen[0]."($gelen[1])</a> ";				
+				}
+			}	
+		break;		
+	}
+	return $sonuc;
 }
 /*
 sonSatirGetir:

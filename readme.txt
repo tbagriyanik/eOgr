@@ -79,6 +79,8 @@ Used Classes and Referred Sites
  	http://www.skyrocketlabs.com/articles/twitter-style-login-with-jquery-and-css3.php
 - jQuery uiTop: v1.1
 	http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
+- SWFObject v2.2 
+	http://code.google.com/p/swfobject
 - iCal-like Calendar with jQuery: 
 	http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery
 	http://www.frecosse.com/?p=252

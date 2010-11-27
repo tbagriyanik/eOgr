@@ -22,12 +22,9 @@ Lesser General Public License for more details.
 
 if(!empty($_GET["id"])){
 	$yol = idtoDosyaAdi(RemoveXSS($_GET["id"]));
-	if(file_ext($yol)=="mp3") 
-		   $provider = "so.addParam('provider','sound');";
-	   else
-		   $provider = "so.addParam('provider','video');";
+    $provider = "so.addParam('provider','video');";
 	$yolUp = ($_uploadFolder);
-	$oyna = "<script type=\"text/javascript\" src=\"lib/swfobject.js\"></script>
+	$oyna = "<script type=\"text/javascript\" src=\"lib/swfobject1.js\"></script>
 			<div id=\"player\">content</div>
 			<script type=\"text/javascript\">
 			var so = new SWFObject('$yolUp/player.swf','mpl','470','320','9');
