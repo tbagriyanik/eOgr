@@ -478,7 +478,7 @@ function listeGetir($userID, $durum){
 if (isset($_GET['case']) && !empty($_GET['case']) && getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 	if ( !listeGetir(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_GET['case'])) )		
 		echo "Error!";
-} elseif ($_GET['case']=="16") {
+} elseif ($_GET['case']=="16" or $_GET['case']=="13") {
 	if ( !listeGetir("-1", temizle2($_GET['case'])) )		
 		echo "Error!";
 }

@@ -140,7 +140,16 @@ Lesser General Public License for more details.
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script src="lib/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+        
+      }) 
+    })
+</script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/jquery.cookie.js"></script>
@@ -269,78 +278,10 @@ if (isset($_COOKIE["remUser"]))
               <div class="Post-inner">
                 <div class="PostContent">
                   <?php 				  
-  if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){$_SESSION["usern"]="";$_SESSION["userp"]="";
-?>
-                  <script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
-                  <script type="text/javascript">
-$().ready(function() {
-	$("#form1").validate({
-		rules: {
-			userN: {
-				required: true,
-				minlength: 5,
-				maxlength: 15
-			},
-			userP: {
-				required: true,
-				minlength: 5,
-				maxlength: 15
-			}
-		},
-		messages: {
-			userN: {
-				required: "<?php echo $metin[607]?>",
-				minlength: "<?php echo $metin[608]?>"
-			},
-			userP: {
-				required: "<?php echo $metin[610]?>",
-				minlength: "<?php echo $metin[609]?>"
-			}
-		}
-	});	
-});
-  </script>
-                  <div id="contact-wrapper">
-                    <form id="form1" method="post" action="login.php">
-                      <label for="userN"> <?php echo $metin[0]?> : </label>
-                      <input type="hidden" name="form" value="login" />
-                      <div>
-                        <input name="userN" type="text" id="userN" size="18" maxlength="15" class="required"  style="width:150px" 
-                     value="<?php echo ($remUser)?temizle($_COOKIE["remUser"]):""?>" />
-                      </div>
-                      <label for="userP"> <?php echo $metin[1]?> : </label>
-                      <div>
-                        <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
-                      </div>
-                      <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
-                      &nbsp;
-                      <?php
-	 if (!empty($_COOKIE["remUser"])){
-    ?>
-                      <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
-                      <?php
-	} else {
-    ?>
-                      <br/>
-                      <br/>
-                      <label>
-                        <input type="checkbox" name="remUser" id="remUser" value="1"/>
-                        <?php echo $metin[193]?> </label>
-                      <?php
-	}
-    ?>
-                      <br />
-                      <br />
-                      <a href="newUser.php"><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[3]?></a>&nbsp;|&nbsp;<a href="passwordRemember.php"><?php echo $metin[4]?></a>
-                    </form>
-                    <br />
-                  </div>
-                  <script type="text/javascript">
-  $(document).ready(function(){
-    $("#form1").validate();
-  });
-  </script>
-                  <?php
+						 
+  if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){
+	  $_SESSION["usern"]="";
+	  $_SESSION["userp"]="";
 	}
 	else{
 
@@ -363,6 +304,35 @@ $().ready(function() {
 					  echo $metin[210]." : ".$siniflar;
 				  }
 	}
+		 if (sonUyeAdiGetir("ad")!=""){
+							 echo "<p>";							 
+						     $humanRelativeDate = new HumanRelativeDate();
+							 $insansi = $humanRelativeDate->getTextForSQLDate(sonUyeAdiGetir("tarih"));
+							 printf($metin[445],sonUyeAdiGetir("ad"),$insansi);
+							 $uyeListesi=getUsersOnline();
+							 if(!empty($uyeListesi)){
+								 echo "<br/>$metin[446] <strong>";
+								 foreach($uyeListesi as $eleman){
+									 echo $eleman." ";
+									 }
+								 echo "</strong>";	 
+							 }
+							 echo "</p>";							 
+						 }
+							 echo "<p style='font-size:11px;'>";
+ 					 if (trim(getStats(18))!="") echo "<strong><img src=\"img/i_low.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[457]." :</strong> ".getStats(18)."<br/>";
+					 if (trim(getStats(0))!="") echo "<strong><img src=\"img/i_note.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[198]." :</strong> ".getStats(0)."<br/>";
+					 if (trim(getStats(1))!="") echo "<strong><img src=\"img/i_medium.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[199]." :</strong> ".getStats(1)."<br/>";
+					 if (trim(getStats(17))!="") echo "<strong><img src=\"img/i_warn.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[456]." :</strong> ".getStats(17)."<br/>";
+					 if (trim(getStats(3))!="") echo "<strong><img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> ".$metin[201]." :</strong> ".getStats(3)."<br/>";
+			//		 if (trim(getStats(4))!="") echo "<strong>".$metin[202]." :</strong> ".getStats(4)."<br/>";
+					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
+					 echo "<p>";
+					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
+					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
+					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10));
+ 					 echo "</p></p>";
+
 ?>
                   <p><?php echo $metin[623]?> <img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
                 </div>
@@ -408,20 +378,6 @@ $().ready(function() {
 							 echo "<strong>".$metin[10]." </strong><br/>";
 							 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
 							 echo "<br /><br /> ";
-						 }
-						 if (sonUyeAdiGetir("ad")!=""){
-						     $humanRelativeDate = new HumanRelativeDate();
-							 $insansi = $humanRelativeDate->getTextForSQLDate(sonUyeAdiGetir("tarih"));
-							 printf($metin[445],sonUyeAdiGetir("ad"),$insansi);
-							 $uyeListesi=getUsersOnline();
-							 if(!empty($uyeListesi)){
-								 echo "<br/>$metin[446]<br/><strong>";
-								 foreach($uyeListesi as $eleman){
-									 echo $eleman." ";
-									 }
-								 echo "</strong>";	 
-							 }
-							 echo " <br />";							 
 						 }
 						 
 						 ?>
@@ -509,7 +465,41 @@ $().ready(function() {
         <?php
 	
 if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") {
-?>
+
+if (trim(getStats(13))!=""){//son g&uuml;ncellenen
+	 ?>   
+        <div class="Block">
+          <div class="Block-tl"></div>
+          <div class="Block-tr"></div>
+          <div class="Block-bl"></div>
+          <div class="Block-br"></div>
+          <div class="Block-tc"></div>
+          <div class="Block-bc"></div>
+          <div class="Block-cl"></div>
+          <div class="Block-cr"></div>
+          <div class="Block-cc"></div>
+          <div class="Block-body">
+            <div class="BlockHeader">
+              <div class="header-tag-icon">
+                <div class="BlockHeader-text"><?php echo $metin[84]?></div>
+              </div>
+              <div class="l"></div>
+              <div class="r">
+                <div>&nbsp;</div>
+              </div>
+            </div>
+            <div class="BlockContent">
+              <div class="BlockContent-body">
+                <div>
+                  <div class="PostContent"> <?php echo getStats(13);?> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<?php
+}
+?>        
         <div class="Block">
           <div class="Block-tl"></div>
           <div class="Block-tr"></div>
@@ -539,7 +529,7 @@ if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") 
             </div>
           </div>
         </div>
-        <?php
+<?php
 }
 ?>
       </div>
@@ -562,10 +552,6 @@ if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") 
 <div class="cleared"></div>
 <script type="text/javascript">
 <!--
-/*if (document.getElementById("userN")!=null && document.getElementById("userN").value=="")  
-   document.getElementById("userN").focus();
-if (document.getElementById("userN")!=null && document.getElementById("userN").value!="")  
-   document.getElementById("userP").focus();*/
 if (document.getElementById("userP")!=null) 
    document.getElementById("userP").setAttribute( "autocomplete","off" );
 //-->

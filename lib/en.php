@@ -206,7 +206,7 @@ Lesser General Public License for more details.
 
 		$metin[163]="Passwords are not matched!";
 	
-		$metin[164]="<p>eOgr is an application for all fields, you can participate any topic freely.</p><p>Moreover you can get in touch with the other students and teachers. Joining this project you will find a social learning environment.</p><p><em>Free, easy and simple learning...</em></p>";
+		$metin[164]="<p>eOgr is an application for all fields, you can participate any topic freely.</p><p>You can get in touch with the other students and teachers. Joining this project you will find yourself in a social learning environment.</p><p><em>Free, easy and simple learning...</em></p>";
 
 		$metin[165]=" <p>As default, you can join as <strong>&quot;student&quot;</strong> type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be <strong>passive</strong> or active by an administrator later.</li>                  <li>If there are <strong>more than one</strong> registration, administrators can erase any registration.</li>                    <li>Don't use <strong>same</strong> username and password.</li>                    <li>Don't use 12345678 or <strong>repeating</strong> values for the password.</li><li>This is a <strong>one time</strong> usable form. On error, please go to the main page.</li>                  </ul>";
 

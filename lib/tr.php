@@ -21,7 +21,7 @@ Lesser General Public License for more details.
         $metin[3]="Yeni &Uuml;yelik";
         $metin[4]="Parolam&#305; Hat&#305;rlam&#305;yorum?";
         $metin[5]="Kullan&#305;c&#305; giri&#351; sayfasý i&ccedil;in <a href=\"login.php\"><img src=\"img/mainPage.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"login\"/> t&#305;klat&#305;n&#305;z!</a>";
-        $metin[6]="Oturumu Kapatmak i&ccedil;in <a href=\"index.php?logout=1\"><img src=\"img/logout.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"logout\"/> t&#305;klat&#305;n&#305;z</a>";
+        $metin[6]="Oturumu kapatmak i&ccedil;in <a href=\"index.php?logout=1\"><img src=\"img/logout.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"logout\"/> t&#305;klat&#305;n&#305;z</a>";
         $metin[7]="Merhaba";    
         $metin[8]="Toplam &Uuml;ye Say&#305;m&#305;z :";   
         $metin[9]="&ouml;&#287;retmen ve y&ouml;netici say&#305;s&#305;";     
@@ -209,7 +209,7 @@ Lesser General Public License for more details.
 		
 		$metin[164]="<p> eOgr uygulamasý ile istediðiniz alanda &uuml;cretsiz eðitim alabilirsiniz. </p>
                   <p>Ayrýca diðer &ouml;ðrenciler ve &ouml;ðretmenler ile anlýk olarak iletiþime
-                    ge&ccedil;ebilirsiniz. Projeye katýlarak sosyal bir öðrenme ortamýndan faydalanacaksýnýz.</p>
+                    ge&ccedil;ebilirsiniz. Sosyal çevrimiçi öðrenme ortamýndan faydalanabilirsiniz.</p>
                   <p><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></p>
 ";
 				  
