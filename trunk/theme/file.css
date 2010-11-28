@@ -15,7 +15,7 @@ line-height:18px;
 }
  
 /* Excel Documents links */
-a[href$='.xls'], a[href$='.csv'], a[href$='.xlw'], a[href$='.xlt'], a[href$='.xlsx'] {
+a[href$='.xls'], a[href$='.csv'], a[href$='.xlw'], a[href$='.xlt'], a[href$='.xlsx'], a[href$='.ods'] {
 background:transparent url("../img/file/xls.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
@@ -23,7 +23,7 @@ line-height:18px;
 }
  
 /* Word Document Links */
-a[href$='.doc'], a[href$='.rtf'], a[href$='.wps'], a[href$='.txt'], a[href$='.docx'] {
+a[href$='.doc'], a[href$='.rtf'], a[href$='.wps'], a[href$='.txt'], a[href$='.docx'], a[href$='.odt'] {
 background:transparent url("../img/file/doc.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
@@ -31,35 +31,35 @@ line-height:18px;
 }
   
 /* PPT Links */
-a[href$='.ppt'], a[href$='.pps'],a[href$='.pptx'] {
+a[href$='.ppt'], a[href$='.pps'],a[href$='.pptx'], a[href$='.odp'] {
 background:transparent url("../img/file/ppt.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
 line-height:18px;
 }
  /* Access Links */
-a[href$='.mdb'], a[href$='.accdb'] {
+a[href$='.mdb'], a[href$='.accdb'], a[href$='.odb'] {
 background:transparent url("../img/file/access.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
 line-height:18px;
 }
   /* Music Links */
-a[href$='.mp3'], a[href$='.wav'], a[href$='.wma'] {
+a[href$='.mp3'], a[href$='.wav'], a[href$='.wma'], a[href$='.ra'], a[href$='.ogg'], a[href$='.mid'], a[href$='.aif'] {
 background:transparent url("../img/file/audio.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
 line-height:18px;
 }
   /* Video Links */
-a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'], a[href$='.mp4'] {
+a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'], a[href$='.mp4'], a[href$='.mov'], a[href$='.mpeg'],a[href$='.mpg'], a[href$='.mkv'], a[href$='.rm'], a[href$='.vob'] {
 background:transparent url("../img/file/video.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
 line-height:18px;
 }
   /* Image Links */
-a[href$='.jpg'], a[href$='.gif'], a[href$='.png'], a[href$='.jpeg'], a[href$='.bmp'], a[href$='.svg'] {
+a[href$='.jpg'], a[href$='.gif'], a[href$='.png'], a[href$='.jpeg'], a[href$='.bmp'], a[href$='.svg'], a[href$='.tif'] {
 background:transparent url("../img/file/image.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
