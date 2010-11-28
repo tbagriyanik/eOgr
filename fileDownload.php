@@ -31,29 +31,13 @@ Lesser General Public License for more details.
 		switch($_GET["islem"]){
 			case "goster":
 			
-			if(in_array(file_ext($dosya),array("flv"))){
+			if(in_array(file_ext($dosya),array("flv","swf","mp3","avi","mp4","wmv","mov"))){
 				
-				$oyna = "<iframe src=\"$_source1/player1.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
+				$oyna = "<iframe src=\"$_source1/player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
 				echo $oyna;
 				echo "<p>Bu Kodu Kopyalayýnýz: <br/><textarea cols=80 rows=8>$oyna</textarea></p>";															
 				die();
-			}
-							
-			if(in_array(file_ext($dosya),array("swf","mp3"))){
-				
-				$oyna = "<iframe src=\"$_source1/player2.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
-				echo $oyna;
-				echo "<p>Bu Kodu Kopyalayýnýz: <br/><textarea cols=80 rows=8>$oyna</textarea></p>";															
-				die();
-			}
-							
-			if(in_array(file_ext($dosya),array("avi","mp4","wmv"))){
-				
-				$oyna = "<iframe src=\"$_source1/player3.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
-				echo $oyna;
-				echo "<p>Bu Kodu Kopyalayýnýz: <br/><textarea cols=80 rows=8>$oyna</textarea></p>";															
-				die();
-			}
+			}							
 							
                   $content = dosyaGoster($dosya); /* get the buffer */
 				  if(file_ext($dosya)=="jpg")
