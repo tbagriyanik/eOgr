@@ -29,4 +29,7 @@ $_siteUnlockPwd	= "11111";
 
 $_defaultTheme 	= "Simple";
 //what will be the default THEME...
+
+$_filesToPlay	= array("flv","swf","mp3","avi","mp4","wmv","mov","rm","ra","rpm","ram","asf","mpg","mpeg","mkv","ogg","qt","wav","mid","class");
+//what types suitable to be played
 ?>

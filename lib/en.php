@@ -666,7 +666,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[514] = "<li>File name can be less than <strong>50 characters</strong>.</li>
       <li>File name must contain only <strong>English letters</strong> without space.</li>
-      <li>The maximum file size<strong> 5 MB</strong>.</li>
+      <li>The maximum file size<strong> 10 MB</strong>.</li>
       <li>A file can not be sent <strong>again</strong>.</li>";
 		$metin[515] = "File Upload";
 		$metin[516] = "File";
