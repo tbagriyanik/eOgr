@@ -23,7 +23,7 @@ line-height:18px;
 }
  
 /* Word Document Links */
-a[href$='.doc'], a[href$='.rtf'], a[href$='.wps'], a[href$='.txt'], a[href$='.docx'], a[href$='.odt'] {
+a[href$='.doc'], a[href$='.rtf'], a[href$='.wps'], a[href$='.txt'], a[href$='.docx'], a[href$='.odt'], a[href$='.class'] {
 background:transparent url("../img/file/doc.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;

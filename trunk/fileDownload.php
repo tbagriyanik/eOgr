@@ -31,7 +31,7 @@ Lesser General Public License for more details.
 		switch($_GET["islem"]){
 			case "goster":
 			
-			if(in_array(file_ext($dosya),array("flv","swf","mp3","avi","mp4","wmv","mov"))){
+			if(in_array(file_ext($dosya),$_filesToPlay)){
 				
 				$oyna = "<iframe src=\"$_source1/player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
 				echo $oyna;

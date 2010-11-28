@@ -680,7 +680,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[514] = "<li>Dosya adý <strong>50 karakteri</strong> geçmemelidir. </li>
       <li>Dosya adýnda Türkçe karakter ve boþluk <strong>olmamalýdýr</strong>.</li>
-      <li>Dosya boyutu en fazla <strong>5 MB</strong> olabilir.</li>
+      <li>Dosya boyutu en fazla <strong>10 MB</strong> olabilir.</li>
       <li>Var olan bir dosya <strong>tekrar gönderilemez</strong>.</li>";
 		$metin[515] = "Dosya Yükleme";
 		$metin[516] = "Dosya";
