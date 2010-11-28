@@ -112,16 +112,20 @@ if(!empty($_GET["id"])){
 		case "mov":
 		case "qt":
 ?>
-<OBJECT classid='clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B' width="465"
-        height="320" codebase='http://www.apple.com/qtactivex/qtplugin.cab'>
-  <param name='src' value="<?php echo $yol;?>">
-  <param name="type" value="video/quicktime" height="320" width="465">
-  <param name='autoplay' value="false">
-  <param name='controller' value="false">
-  <param name='loop' value="false">
-  <EMBED src="<?php echo $yol;?>" width="465" height="320" autoplay="false" 
-        controller="false" loop="false" pluginspage='http://www.apple.com/quicktime/download/'> </EMBED>
-</OBJECT>
+<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab" width="465" height="320">
+  <param name="src" value="<?php echo $yol;?>" />
+  <param name="controller" value="true" />
+  <param name="autoplay" value="false" />
+  <param name="scale" value="tofit" />
+  <!--[if !IE]>-->
+  <object type="video/quicktime" data="<?php echo $yol;?>" 
+    width="465" height="320">
+    <param name="autoplay" value="false" />
+    <param name="controller" value="true" />
+    <param name="scale" value="tofit" />
+  </object>
+  <!--<![endif]-->
+</object>
 <?php		
 		break;
 		case "rm":
