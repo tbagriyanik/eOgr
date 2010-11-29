@@ -34,6 +34,8 @@ if(!empty($_GET["id"])){
 	die("?");
 
 	switch(file_ext($dosyaAdi)){
+		case "mp3":
+		case "mp4":
 		case "flv":
 			$oyna = "<script type=\"text/javascript\" src=\"lib/swfobject1.js\"></script>
 					<div id=\"player\">eOgr</div>
@@ -43,7 +45,7 @@ if(!empty($_GET["id"])){
 					so.addParam('allowfullscreen','true');
 					so.addParam('logo','img/logo1.png');
 					so.addParam('wmode','transparent');$provider
-					so.addParam('flashvars', 'file=$yol&image=img/logo1.png');
+					so.addParam('flashvars', 'file=$yol&amp;image=img/logo1.png');
 					so.write('player');
 					</script>";
 			echo $oyna;	
