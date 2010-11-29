@@ -1,11 +1,10 @@
 
-	eOgr - v127c, 27-11-2010
+	eOgr - v127d, 29-11-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
 ABOUT
 -----
-
 Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends. They can view or write their walls. Every member can share their files and homeworks. 
 
 This project is simple, it is easy to use and has free membership...
@@ -18,7 +17,6 @@ Available language support is English and Turkish.
 
 INSTALLATION (please, read INSTALL.txt for more details)
 --------------------------------------------------------
-
 (1) Edit your settings in "database.php" with an editor
 (2) " http://localhost/eogr/install.php " is for installation.     
 (3) Login as administrator user: name "admin" and password "11111"
@@ -48,7 +46,7 @@ Download All Versions:
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
 	
 Start Date: 	
-	15-11-2008 (600 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
+	15-11-2008 (610 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
 
 Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -56,7 +54,6 @@ Programs:
 
 Used Classes and Referred Sites
 -------------------------------
-
 - autosuggest: v2.1.3
 	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
 - flood-protection: v1.0
@@ -115,9 +112,9 @@ Used Classes and Referred Sites
 	http://www.inventpartners.com/content/free-php-class-friendly-relative-time
 
 CSS, RSS and HTML Validations:  
-- http://jigsaw.w3.org/css-validator/validator
-- http://validator.w3.org/feed
-- http://validator.w3.org/check
+	http://jigsaw.w3.org/css-validator/validator
+	http://validator.w3.org/feed
+	http://validator.w3.org/check
 
 Advice:
 	Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
@@ -127,7 +124,6 @@ Also Test Your Favorite Browser's Security:
 
 Special Thanks
 --------------
-
 	Aziz BEKTAS, Yakup ARAS (my colleagues from Istanbul, TURKIYE)
 	Semih TURKEL, Umut YURUR (my students from Istanbul, TURKIYE)
 
