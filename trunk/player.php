@@ -85,6 +85,7 @@ if(!empty($_GET["id"])){
 <?php		
 		break;
 		case "mp3":
+		//mp3'ler burada deðil artýk
 ?>
 <object type="audio/mpeg" data="<?php echo $yol;?>" width="465" height="320">
   <param name="src" value="<?php echo $yol;?>">
@@ -96,6 +97,7 @@ if(!empty($_GET["id"])){
 		case "avi":
 		case "asf":
 		case "mp4":
+		//mp4'ler burada deðil artýk
 		case "mpg":
 		case "mpeg":
 		case "mkv":
