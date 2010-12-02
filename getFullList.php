@@ -32,19 +32,77 @@ Lesser General Public License for more details.
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
     <title>eOgr</title>
-    <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
     <script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+    <script src="lib/jquery.anythingslider.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
-    <script src="lib/jquery.anythingslider.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
     <script type="text/javascript">
     
-        $(function () {
+$(function () {
+
+$('#anythingSlider').anythingSlider({
+  // Appearance
+  width               : null,      // Override the default CSS width
+  height              : null,      // Override the default CSS height
+  resizeContents      : true,      // If true, solitary images/objects in the panel will expand to fit the viewport
+  tooltipClass        : 'tooltip', // Class added to navigation & start/stop button (text copied to title if it is hidden by a negative text indent)
+  theme               : 'metallic', // Theme name
+  themeDirectory      : 'lib/theme-{theme}.css',
+
+  // Navigation
+  startPanel          : 1,         // This sets the initial panel
+  hashTags            : false,      // Should links change the hashtag in the URL?
+  enableKeyboard      : true,      // if false, keyboard arrow keys will not work for the current panel.
+  buildArrows         : true,      // If true, builds the forwards and backwards buttons
+  toggleArrows        : true,     // if true, side navigation arrows will slide out on hovering & hide @ other times
+  buildNavigation     : true,      // If true, builds a list of anchor links to link to each panel
+  enableNavigation    : true,      // if false, navigation links will still be visible, but not clickable.
+  toggleControls      : false,     // if true, slide in controls (navigation + play/stop button) on hover and slide change, hide @ other times
+  appendControlsTo    : null,      // A HTML element (jQuery Object, selector or HTMLNode) to which the controls will be appended if not null
+  navigationFormatter : null,      // Details at the top of the file on this use (advanced use)
+  forwardText         : "&raquo;", // Link text used to move the slider forward (hidden by CSS, replaced with arrow image)
+  backText            : "&laquo;", // Link text used to move the slider back (hidden by CSS, replace with arrow image)
+
+  // Slideshow options
+  enablePlay          : true,      // if false, the play/stop button will still be visible, but not clickable.
+  autoPlay            : true,      // This turns off the entire slideshow FUNCTIONALY, not just if it starts running or not
+  startStopped        : true,     // If autoPlay is on, this can force it to start stopped
+  pauseOnHover        : true,      // If true & the slideshow is active, the slideshow will pause on hover
+  resumeOnVideoEnd    : true,      // If true & the slideshow is active & a youtube video is playing, it will pause the autoplay until the video is complete
+  stopAtEnd           : false,     // If true & the slideshow is active, the slideshow will stop on the last page
+  playRtl             : false,     // If true, the slideshow will move right-to-left
+  startText           : "&raquo;",   // Start button text
+  stopText            : "&curren;",    // Stop button text
+  delay               : 3000,      // How long between slideshow transitions in AutoPlay mode (in milliseconds)
+  animationTime       : 200,       // How long the slideshow transition takes (in milliseconds)
+//  easing              : "swing",   // Anything other than "linear" or "swing" requires the easing plugin
+
+  // Callbacks
+  onBeforeInitialize  : null,      // Callback before the plugin initializes
+  onInitialized       : null,      // Callback when the plugin finished initializing
+  onShowStart         : null,      // Callback on slideshow start
+  onShowStop          : null,      // Callback after slideshow stops
+  onShowPause         : null,      // Callback when slideshow pauses
+  onShowUnpause       : null,      // Callback when slideshow unpauses - may not trigger properly if user clicks on any controls
+  onSlideInit         : null,      // Callback when slide initiates, before control animation
+  onSlideBegin        : null,      // Callback before slide animates
+  onSlideComplete     : null,      // Callback when slide completes
+
+  // Interactivity
+  clickArrows         : "click",         // Event used to activate arrow functionality (e.g. "click" or "mouseenter")
+  clickControls       : "click focusin", // Events used to activate navigation control functionality
+  clickSlideshow      : "click",         // Event used to activate slideshow play/stop button
+
+  // Misc options
+  addWmodeToObject    : "opaque",  // If your slider has an embedded object, the script will automatically add a wmode parameter with this setting, if swfobject.js is active
+  maxOverallWidth     : 32766      // Max width (in pixels) of combined sliders (side-to-side); set to 32766 to prevent problems with Opera
+});			
         
-            $('#anythingSlider').anythingSlider({
+/*            $('#anythingSlider').anythingSlider({
                 easing: "easeInOutBack",        // Anything other than "linear" or "swing" requires the easing plugin
                 autoPlay: true,                 // This turns off the entire FUNCTIONALY, not just if it starts running or not.
                 delay: 3000,                    // How long between slide transitions in AutoPlay mode
@@ -57,15 +115,12 @@ Lesser General Public License for more details.
 		        stopText: "×",               // Stop text
 		        navigationFormatter: null       // Details at the top of the file on this use (advanced use)
            });
-            
+            */
         });
     </script>
     </head>
     <body>
-    <br />
-    <div class="">
-      <div class="wrapper">
-        <?php
+    <?php
 /*
 baglan2:
 veritabaný baðlantýsý
@@ -487,7 +542,5 @@ else
    
 
 ?>
-      </div>
-    </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 
-	eOgr - v127d, 29-11-2010
+	eOgr - v127d, 02-12-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -30,25 +30,24 @@ Developer Site:
 Demo Sites:	
 	http://yunus.sourceforge.net/eogr
 	http://www.tuzlaatl.k12.tr/eogr	
-	http://tbagriyanik.xtreemhost.com/eogr		
-	http://tbagriyanik.justfree.com
-
-Source Track:	
-	http://eogr.googlecode.com 
-
-Other Sites: 
-	http://github.com/tbagriyanik/eOgr
-	http://yunus.svn.sourceforge.net/viewvc/yunus
-	http://www.ohloh.net/p/eogr
-	http://www.hotscripts.com/listing/eogr
+	http://tbagriyanik.xtreemhost.com/eogr			
 
 Download All Versions:	
 	http://cid-d0b01df58868413e.office.live.com/browse.aspx/Ortak/eogr
+
+Source Track:	
+	http://eogr.googlecode.com 
+	http://yunus.svn.sourceforge.net/viewvc/yunus
+	http://github.com/tbagriyanik/eOgr
+
+Other Sites: 
+	http://www.ohloh.net/p/eogr
+	http://www.hotscripts.com/listing/eogr
 	
 Start Date: 	
 	15-11-2008 (610 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
 
-Programs: 	
+Designing and Building Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
 
 
@@ -68,7 +67,7 @@ Used Classes and Referred Sites
 	http://plugins.jquery.com/project/SimplePager
 - jQuery print: 
 	http://www.bennadel.com/index.cfm?event=blog.view&id=1591
-- jQuery AnythingSlider: v1.4.7 < 1.5.2
+- jQuery AnythingSlider: v1.5.4
 	http://github.com/ProLoser/AnythingSlider
 - jQuery bad browser: v1.4
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/
