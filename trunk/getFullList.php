@@ -533,12 +533,15 @@ function listeGetir($userID, $durum){
 if (isset($_GET['case']) && !empty($_GET['case']) && getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 	if ( !listeGetir(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_GET['case'])) )		
 		echo "Error!";
-} elseif ($_GET['case']=="16" or $_GET['case']=="13") {
+} elseif (in_array($_GET['case'],array("13","16","19"))) {
 	if ( !listeGetir("-1", temizle2($_GET['case'])) )		
+		echo "Error!";
+} elseif (in_array($_GET['case'],array("19"))) {
+	if ( !listeGetir($_SESSION["kursUser2"], temizle2($_GET['case'])) )		
 		echo "Error!";
 }
 else
-   echo "";
+   echo "?";
    
 
 ?>

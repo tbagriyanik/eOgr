@@ -1398,7 +1398,7 @@ isimleriAyniUyeler:
 function isimleriAyniUyeler(){
 	global $metin;
 	$sql1 = "
-			SELECT id, realName
+			SELECT DISTINCT realName
 			FROM eo_users
 			WHERE 
 			  realName in (
@@ -1413,7 +1413,7 @@ function isimleriAyniUyeler(){
 
 	if(@mysql_num_rows($result1)>0){
  	 while($gelen=@mysql_fetch_array($result1)){
-			$liste .= "<a href='siteSettings.php?arama=".$gelen['realName']."'>`".$gelen['realName']."`</a> ";
+			$liste .= "<a href='siteSettings.php?arama=".$gelen['realName']."'>'".$gelen['realName']."'</a> ";
 	 }//while
 	}//if
    	@mysql_free_result($result1);

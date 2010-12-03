@@ -430,12 +430,12 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
                   </table>
                   <?php 
    }
-   }
+				    if(isimleriAyniUyeler()!="")
+					    echo "<p><strong>$metin[632] :</strong><br/>". isimleriAyniUyeler()."</p>";
+}
+
 if ($totalRows_eoUsers==0) die( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
                   
-				    if(isimleriAyniUyeler()!="")
-					    echo "<p><strong>$metin[632] :</strong> ". isimleriAyniUyeler()."</p>";
-
 
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 ?>

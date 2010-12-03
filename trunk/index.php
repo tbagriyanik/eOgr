@@ -327,11 +327,11 @@ if (isset($_COOKIE["remUser"]))
 					 if (trim(getStats(3))!="") echo "<strong><img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> ".$metin[201]." :</strong> ".getStats(3)."<br/>";
 			//		 if (trim(getStats(4))!="") echo "<strong>".$metin[202]." :</strong> ".getStats(4)."<br/>";
 					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
-					 echo "<p>";
+					 echo "<br/>";
 					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
 					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
 					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10));
- 					 echo "</p></p>";
+ 					 echo "</p>";
 
 ?>
                   <p><?php echo $metin[623]?> <img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
@@ -462,74 +462,25 @@ if (isset($_COOKIE["remUser"]))
             </div>
           </div>
         </div>
+        <div class="cleared"></div>
         <?php
 	
 if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") {
 
 if (trim(getStats(13))!=""){//son g&uuml;ncellenen
-	 ?>   
-        <div class="Block">
-          <div class="Block-tl"></div>
-          <div class="Block-tr"></div>
-          <div class="Block-bl"></div>
-          <div class="Block-br"></div>
-          <div class="Block-tc"></div>
-          <div class="Block-bc"></div>
-          <div class="Block-cl"></div>
-          <div class="Block-cr"></div>
-          <div class="Block-cc"></div>
-          <div class="Block-body">
-            <div class="BlockHeader">
-              <div class="header-tag-icon">
-                <div class="BlockHeader-text"><?php echo $metin[84]?></div>
-              </div>
-              <div class="l"></div>
-              <div class="r">
-                <div>&nbsp;</div>
-              </div>
-            </div>
-            <div class="BlockContent">
-              <div class="BlockContent-body">
-                <div>
-                  <div class="PostContent"> <?php echo getStats(13);?> </div>
-                </div>
-              </div>
-            </div>
-          </div>
+	 ?>
+        <div class="ikiKolon">
+          <div class="BlockHeader-text"><?php echo $metin[84]?></div>
+          <?php echo getStats(13);?>
         </div>
-<?php
+        <?php
 }
-?>        
-        <div class="Block">
-          <div class="Block-tl"></div>
-          <div class="Block-tr"></div>
-          <div class="Block-bl"></div>
-          <div class="Block-br"></div>
-          <div class="Block-tc"></div>
-          <div class="Block-bc"></div>
-          <div class="Block-cl"></div>
-          <div class="Block-cr"></div>
-          <div class="Block-cc"></div>
-          <div class="Block-body">
-            <div class="BlockHeader">
-              <div class="header-tag-icon">
-                <div class="BlockHeader-text"><?php echo $metin[302]?></div>
-              </div>
-              <div class="l"></div>
-              <div class="r">
-                <div>&nbsp;</div>
-              </div>
-            </div>
-            <div class="BlockContent">
-              <div class="BlockContent-body">
-                <div>
-                  <div class="PostContent"> <?php echo getStats(16);?> </div>
-                </div>
-              </div>
-            </div>
-          </div>
+?>
+        <div class="ikiKolon">
+          <div class="BlockHeader-text"><?php echo $metin[302]?></div>
+          <?php echo getStats(16);?>
         </div>
-<?php
+        <?php
 }
 ?>
       </div>

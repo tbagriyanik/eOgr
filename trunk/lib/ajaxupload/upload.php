@@ -49,6 +49,9 @@ $wgMimeTypeBlacklist= array(
 	'application/zip'
 );
 
+$dBoyu = $_FILES['myfile']['size'];
+$maxBoy = 1024*1024*$_fileMaxUploadSize; 
+
 if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
 {
 
@@ -56,8 +59,8 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
    $result = -1; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
   }   
- else if ($_FILES['myfile']['size']>1024*1024*10 and $_FILES['myfile']['size']<0 ){
-	 //5242880*2 byte sýnýrý
+ else if ($dBoyu>$maxBoy or $dBoyu<0 ){
+	 //maksimum dosya gönderim sýnýrý
    $result = -3; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 	 }   
