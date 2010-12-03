@@ -347,7 +347,7 @@ if ($totalRows_eoUsers>0)
                       <tr >
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>  ><?php echo $row_eoUsers['id']; ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['userName']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a></td>
-                        <td <?php echo "style=\"background-color: $row_color;\""?>><a href='<?php echo araKalin($row_eoUsers['processName']); ?>'><?php echo araKalin($row_eoUsers['processName']); ?></a></td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?>><a href='<?php echo ($row_eoUsers['processName']); ?>'><?php echo araKalin($row_eoUsers['processName']); ?></a></td>
                         <td <?php echo (strpos($row_eoUsers['otherInfo'],"fail")!==false)?"style='background-color:#F44'":"style=\"background-color: $row_color;\"";?>><?php echo araKalin($row_eoUsers['otherInfo']); ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['dateTime']); ?></td>
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php   echo $row_eoUsers['IP'];  ?></td>

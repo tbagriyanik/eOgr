@@ -176,8 +176,14 @@ if(!empty($_GET["id"])){
 		break;
 		case "class":
 ?>
-<APPLET code="<?php echo $yol;?>" width="465" height="320">
-</APPLET>
+<applet code="<?php echo $yol;?>" width="465" height="320">
+</applet>
+<?php
+
+		case "pdf":
+?>
+<object data="<?php echo $yol;?>" type="application/pdf" width="465" height="320">  
+</object>
 <?php
 		break;
 	}

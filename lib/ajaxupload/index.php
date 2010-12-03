@@ -107,7 +107,7 @@ body {
     </form>
     <ul>
       <?php
-	echo $metin[514]; 
+	printf($metin[514],$_fileMaxUploadSize); 
 ?>
     </ul>
 <?php
