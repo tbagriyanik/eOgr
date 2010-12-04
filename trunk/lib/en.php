@@ -206,7 +206,7 @@ Lesser General Public License for more details.
 
 		$metin[163]="Passwords are not matched!";
 	
-		$metin[164]="<p>eOgr is an application for all fields, you can participate any topic freely.</p><p>You can get in touch with the other students and teachers. Joining this project you will find yourself in a social learning environment.</p><p><em>Free, easy and simple learning...</em></p>";
+		$metin[164]="<p><em>Free, easy and simple learning...</em></p>";
 
 		$metin[165]=" <p>As default, you can join as <strong>&quot;student&quot;</strong> type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be <strong>passive</strong> or active by an administrator later.</li>                  <li>If there are <strong>more than one</strong> registration, administrators can erase any registration.</li>                    <li>Don't use <strong>same</strong> username and password.</li>                    <li>Don't use 12345678 or <strong>repeating</strong> values for the password.</li><li>This is a <strong>one time</strong> usable form. On error, please go to the main page.</li>                  </ul>";
 
@@ -255,9 +255,9 @@ Lesser General Public License for more details.
 		$metin[201]="Never worked topic(s)";    	
 		$metin[202]="Unregistered users most worked topic(s)";    	
 		$metin[203]="Most page edited teacher(s)";    	
-		$metin[204]="All users total work time";    	
-		$metin[205]="Average work time";    	
-		$metin[206]="Average work complete percentage";    	
+		$metin[204]="Total course duration";    	
+		$metin[205]="Average topic duration";    	
+		$metin[206]="Average completion percentage";    	
 		
 		$metin[207]="Preview All Pages";    	
 		
@@ -362,7 +362,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[270]="<ol><li>Edit your settings in <b>database.php</b> with an editor<li>http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<li>Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong></ol>";				
 		
 		$metin[271]="Contents";				
-		$metin[272]="<h4>eOgr Project Help Page</h4>Please, click any topic on the left.";				
+		$metin[272]="<h4>eOgr Project Help Page</h4>eOgr is an application for all fields, you can participate any topic freely.</p><p>You can get in touch with the other students and teachers. Joining this project you will find yourself in a social learning environment.<br/><br/>Please, click any topic on the left.";				
 		
 		$metin[273]="Ratings";
 		$metin[274]="Average";

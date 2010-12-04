@@ -207,10 +207,7 @@ Lesser General Public License for more details.
 
 		$metin[163]="Parola e&#351;le&#351;medi!";
 		
-		$metin[164]="<p> eOgr uygulamasý ile istediðiniz alanda &uuml;cretsiz eðitim alabilirsiniz. </p>
-                  <p>Ayrýca diðer &ouml;ðrenciler ve &ouml;ðretmenler ile anlýk olarak iletiþime
-                    ge&ccedil;ebilirsiniz. Sosyal çevrimiçi öðrenme ortamýndan faydalanabilirsiniz.</p>
-                  <p><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></p>
+		$metin[164]="<p><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></p>
 ";
 				  
 		$metin[165]=" <p>Varsayýlan olarak <strong>&quot;&ouml;ðrenci&quot;</strong> t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak <strong>istenmeyen</strong> kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li><strong>Birden fazla</strong> &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola <strong>ayný</strong> olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya <strong>tekrarlanan</strong> deðerler olamaz.</li><li>Bu form sadece <strong>bir kere</strong> doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
@@ -260,9 +257,9 @@ Lesser General Public License for more details.
 		$metin[201]="Hiç &ccedil;alýþýlmamýþ konu(lar)";    	
 		$metin[202]="Kayýtlý olmayan kullanýcýlarýn en fazla &ccedil;alýþtýðý konu(lar)";    	
 		$metin[203]="En fazla sayfa d&uuml;zenleyen &ouml;ðretmen(ler)";    	
-		$metin[204]="T&uuml;m kullanýcýlarýn toplam ders &ccedil;alýþma s&uuml;resi";    	
-		$metin[205]="Ortalama ders &ccedil;alýþma s&uuml;resi";    	
-		$metin[206]="Ortalama ders &ccedil;alýþma y&uuml;zdesi";    	
+		$metin[204]="Toplam ders &ccedil;alýþma s&uuml;resi";    	
+		$metin[205]="Ders &ccedil;alýþma s&uuml;resi";    	
+		$metin[206]="Ders bitirme y&uuml;zdesi";    	
 		
 		$metin[207]="Sayfalarý &Ouml;nizleme";    	
 		
@@ -373,7 +370,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[270]="<ol><li><strong>database.php</strong> dosyasýný düzenleyiniz<li>http://localhost/eogr/install.php adresi veritabaný kurulum adresidir. MySQL kullanýcýnýzýn <b>CREATE TABLE</b> izni olmalýdýr!<li>Yönetici kullanýcý olarak girmek için : isim <strong>admin</strong> ve parola <strong>11111</strong></ol>";				
 
 		$metin[271]="Ý&ccedil;indekiler";				
-		$metin[272]="<h4>eOgr Projesi Yardým Sayfasý</h4>Lütfen, sol taraftaki bir konu &uuml;zerine týklatýnýz.";				
+		$metin[272]="<h4>eOgr Projesi Yardým Sayfasý</h4><p> eOgr uygulamasý ile istediðiniz alanda &uuml;cretsiz eðitim alabilirsiniz. </p>
+                  <p>Ayrýca diðer &ouml;ðrenciler ve &ouml;ðretmenler ile anlýk olarak iletiþime
+                    ge&ccedil;ebilirsiniz. Sosyal çevrimiçi öðrenme ortamýndan faydalanabilirsiniz.</p>Lütfen, sol taraftaki bir konu &uuml;zerine týklatýnýz.";				
 		
 		$metin[273]="Oy Sayýsý";
 		$metin[274]="Ortalama";

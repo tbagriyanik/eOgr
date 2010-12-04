@@ -144,9 +144,7 @@ Lesser General Public License for more details.
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -157,7 +155,6 @@ Lesser General Public License for more details.
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="lib/jquery.badBrowser.js"></script>
@@ -283,145 +280,12 @@ if (isset($_COOKIE["remUser"]))
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent">
-                  <?php 				  
-						 
-  if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){
-	  $_SESSION["usern"]="";
-	  $_SESSION["userp"]="";
-	}
-	else{
-
-	 switch($_SESSION["tur"]){
-	  case '-1':$ktut=$metin[85];break;	  
-	  case '0':$ktut=$metin[86];break;	  
-	  case '1':$ktut=$metin[87];break;	  
-	  case '2':$ktut=$metin[88];break;	  
-	  default:$ktut=$metin[89];
-	 } 
-
-?>
-                  <p style="text-align:left"> <?php echo $metin[7]?> , <?php echo temizle($_SESSION["userr"])." ".$ktut." "?> </p>
-                  <p> <?php echo $metin[5]?> </p>
-                  <?php
-				  if($_SESSION["tur"]=='0') {
-					  $siniflar = getOgrenciSiniflari();
-					  if($siniflar!="")
-					  echo $metin[210]." : ".$siniflar;
-				  }
-	}
-		 if (sonUyeAdiGetir("ad")!=""){
-							 echo "<p>";							 
-						     $humanRelativeDate = new HumanRelativeDate();
-							 $insansi = $humanRelativeDate->getTextForSQLDate(sonUyeAdiGetir("tarih"));
-							 printf($metin[445],sonUyeAdiGetir("ad"),$insansi);
-							 $uyeListesi=getUsersOnline();
-							 if(!empty($uyeListesi)){
-								 echo "<br/>$metin[446] <strong>";
-								 foreach($uyeListesi as $eleman){
-									 echo $eleman." ";
-									 }
-								 echo "</strong>";	 
-							 }
-							 echo "</p>";							 
-						 }
-							 echo "<p style='font-size:11px;'>";
- 					 if (trim(getStats(18))!="") echo "<strong><img src=\"img/i_low.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[457]." :</strong> ".getStats(18)."<br/>";
-					 if (trim(getStats(0))!="") echo "<strong><img src=\"img/i_note.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[198]." :</strong> ".getStats(0)."<br/>";
-			//		 if (trim(getStats(1))!="") echo "<strong><img src=\"img/i_medium.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[199]." :</strong> ".getStats(1)."<br/>";
-			//		 if (trim(getStats(17))!="") echo "<strong><img src=\"img/i_warn.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[456]." :</strong> ".getStats(17)."<br/>";
-					 if (trim(getStats(3))!="") echo "<strong><img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> ".$metin[201]." :</strong> ".getStats(3)."<br/>";
-			//		 if (trim(getStats(4))!="") echo "<strong>".$metin[202]." :</strong> ".getStats(4)."<br/>";
-					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
-					 echo "<br/>";
-					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
-					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
-					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10));
- 					 echo "</p>";
-
-?>
-                  <p><?php echo $metin[623]?> <img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[77]?> </span> </span> </h2>
-                <div class="PostContent"> <?php echo $metin[76]?> <?php echo $metin[164]?><br />
-                  <?php
-						 if (totalGet(0)>0){
-							 echo "<strong>".$metin[8]." </strong><br/>";
-							 echo totalGet(0)." (".$metin[9]." ".totalGet(1).")";
-							 echo "<br /> ";
-						 }
-						 if (totalGet(2)>0){
-							 echo "<strong>".$metin[10]." </strong><br/>";
-							 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
-							 echo "<br /><br /> ";
-						 }
-						 
-						 ?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sidebar1">
+                <div class="PostContent">                
         <?php
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
-        <div class="Block">
-          <div class="Block-tl"></div>
-          <div class="Block-tr"></div>
-          <div class="Block-bl"></div>
-          <div class="Block-br"></div>
-          <div class="Block-tc"></div>
-          <div class="Block-bc"></div>
-          <div class="Block-cl"></div>
-          <div class="Block-cr"></div>
-          <div class="Block-cc"></div>
-          <div class="Block-body">
-            <div class="BlockHeader">
-              <div class="header-tag-icon">
-                <div class="BlockHeader-text"> <?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?> </div>
-              </div>
-              <div class="l"></div>
-              <div class="r">
-                <div>&nbsp;</div>
-              </div>
-            </div>
-            <div class="BlockContent">
-              <div class="BlockContent-body">
-                <div>
+<div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div> 
                   <ul>
                     <?php									
 						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
@@ -438,7 +302,7 @@ if (isset($_COOKIE["remUser"]))
 												$humanRelativeDate = new HumanRelativeDate();
 												$insansi = $humanRelativeDate->getTextForSQLDate(haberGetir($i,"pubDate"));
 
-												echo $insansi;                       ?>
+												echo "<font size='-2'>$insansi</font>";                       ?>
                       <br />
                       <p> <?php echo smileAdd(haberGetir($i,"description"))?>
                         <?php
@@ -463,6 +327,98 @@ if (isset($_COOKIE["remUser"]))
 						  echo "<li>$metin[405]</li>";
                                         ?>
                   </ul>
+
+                </div>
+                <div class="cleared"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar1">
+        <div class="Block">
+          <div class="Block-tl"></div>
+          <div class="Block-tr"></div>
+          <div class="Block-bl"></div>
+          <div class="Block-br"></div>
+          <div class="Block-tc"></div>
+          <div class="Block-bc"></div>
+          <div class="Block-cl"></div>
+          <div class="Block-cr"></div>
+          <div class="Block-cc"></div>
+          <div class="Block-body">
+            <div class="BlockContent">
+              <div class="BlockContent-body">
+                <div>
+                  <?php 				  
+						 
+  if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){
+	  $_SESSION["usern"]="";
+	  $_SESSION["userp"]="";
+	}
+	else{
+
+	 switch($_SESSION["tur"]){
+	  case '-1':$ktut=$metin[85];break;	  
+	  case '0':$ktut=$metin[86];break;	  
+	  case '1':$ktut=$metin[87];break;	  
+	  case '2':$ktut=$metin[88];break;	  
+	  default:$ktut=$metin[89];
+	 } 
+
+?>
+                  <?php echo $metin[7]?> , <?php echo temizle($_SESSION["userr"])." ".$ktut." "?>
+                  <p> <?php echo $metin[5]?> </p>
+                  <?php
+				  if($_SESSION["tur"]=='0') {
+					  $siniflar = getOgrenciSiniflari();
+					  if($siniflar!="")
+					  echo $metin[210]." : ".$siniflar;
+				  }
+	echo "<hr noshade=\"noshade\">";
+	}
+		 if (sonUyeAdiGetir("ad")!=""){
+						 echo "<p>";							 
+						     $humanRelativeDate = new HumanRelativeDate();
+							 $insansi = $humanRelativeDate->getTextForSQLDate(sonUyeAdiGetir("tarih"));
+							 printf($metin[445],sonUyeAdiGetir("ad"),$insansi);
+							 $uyeListesi=getUsersOnline();
+							 if(!empty($uyeListesi)){
+								 echo "<br/>$metin[446] <strong>";
+								 foreach($uyeListesi as $eleman){
+									 echo $eleman." ";
+									 }
+								 echo "</strong>";	 
+							 }
+							 echo "</p>";							 
+						 }
+/*								 echo "<p>";
+ 					 if (trim(getStats(18))!="") echo "<strong><img src=\"img/i_low.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[457]." :</strong> ".getStats(18)."<br/>";
+					 if (trim(getStats(0))!="") echo "<strong><img src=\"img/i_note.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[198]." :</strong> ".getStats(0)."<br/>";
+			//		 if (trim(getStats(1))!="") echo "<strong><img src=\"img/i_medium.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[199]." :</strong> ".getStats(1)."<br/>";
+			//		 if (trim(getStats(17))!="") echo "<strong><img src=\"img/i_warn.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> ".$metin[456]." :</strong> ".getStats(17)."<br/>";
+					 if (trim(getStats(3))!="") echo "<strong><img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> ".$metin[201]." :</strong> ".getStats(3)."<br/>";
+			//		 if (trim(getStats(4))!="") echo "<strong>".$metin[202]." :</strong> ".getStats(4)."<br/>";
+					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
+*/					 echo "<p>";
+					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
+					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
+					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10));
+ 					 echo "</p>";
+	
+						 if (totalGet(0)>0){
+							 echo "<strong>".$metin[8]." </strong><br/>";
+							 echo totalGet(0)." (".$metin[9]." ".totalGet(1).")";
+							 echo "<br /> ";
+						 }
+						 if (totalGet(2)>0){
+							 echo "<strong>".$metin[10]." </strong><br/>";
+							 echo totalGet(2)." (".$metin[49]." ".totalGet(3).")";						 
+							 echo "<br /><br /> ";
+						 }
+					 
+						 ?>
+                  <p><?php echo $metin[623]?> <img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>
                 </div>
               </div>
             </div>
@@ -477,15 +433,13 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 ?>
         <div class="ikiKolon">
           <div class="BlockHeader-text"><?php echo $metin[84]?></div>
-          <?php echo getStats(13);?>
-        </div>
+          <?php echo getStats(13);?> </div>
         <?php
 }
 ?>
         <div class="ikiKolon">
           <div class="BlockHeader-text"><?php echo $metin[302]?></div>
-          <?php echo getStats(16);?>
-        </div>
+          <?php echo getStats(16);?> </div>
         <?php
 }
 ?>
