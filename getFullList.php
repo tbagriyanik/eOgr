@@ -100,22 +100,7 @@ $('#anythingSlider').anythingSlider({
   // Misc options
   addWmodeToObject    : "opaque",  // If your slider has an embedded object, the script will automatically add a wmode parameter with this setting, if swfobject.js is active
   maxOverallWidth     : 32766      // Max width (in pixels) of combined sliders (side-to-side); set to 32766 to prevent problems with Opera
-});			
-        
-/*            $('#anythingSlider').anythingSlider({
-                easing: "easeInOutBack",        // Anything other than "linear" or "swing" requires the easing plugin
-                autoPlay: true,                 // This turns off the entire FUNCTIONALY, not just if it starts running or not.
-                delay: 3000,                    // How long between slide transitions in AutoPlay mode
-                startStopped: true,            // If autoPlay is on, this can force it to start stopped
-                animationTime: 600,             // How long the slide transition takes
-                hashTags: false,                 // Should links change the hashtag in the URL?
-                buildNavigation: true,          // If true, builds and list of anchor links to link to each slide
-        		pauseOnHover: true,             // If true, and autoPlay is enabled, the show will pause on hover
-        		startText: ">",             // Start text
-		        stopText: "×",               // Stop text
-		        navigationFormatter: null       // Details at the top of the file on this use (advanced use)
-           });
-            */
+});			        
         });
     </script>
     </head>
