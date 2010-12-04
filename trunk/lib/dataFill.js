@@ -17,7 +17,7 @@ function getHTTPObject(){
   if (window.XMLHttpRequest) {
    xmlhttp = new XMLHttpRequest();
    	    if (xmlhttp.overrideMimeType) {
-            xmlhttp.overrideMimeType('text/xml; charset=iso-8859-9');
+            xmlhttp.overrideMimeType('text/xml; charset=iso_8859-9');
          }
   } else if(window.ActiveXObject) {
    try {
@@ -51,7 +51,7 @@ function odaSec(){
     httpObject = getHTTPObject();
     if (httpObject != null) {
         httpObject.open("POST", "setOda.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso_8859-9');
   		httpObject.send('oda='+encodeURIComponent(document.getElementById('oda').value));
         httpObject.onreadystatechange = setOutputOda;		
     }
@@ -86,7 +86,7 @@ function arkadasOnayla(ID){
     httpObject = getHTTPObject();
     if (httpObject != null) {
         httpObject.open("POST", "askForFriendship2.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso_8859-9');
   		httpObject.send('kabul=1&kisi=' + encodeURIComponent(ID));
         httpObject.onreadystatechange = setOutputOda;		
     }
@@ -99,7 +99,7 @@ function arkadasOnaylama(ID){
     httpObject = getHTTPObject();
     if (httpObject != null) {
         httpObject.open("POST", "askForFriendship2.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso_8859-9');
   		httpObject.send('kabul=0&kisi=' + encodeURIComponent(ID));
         httpObject.onreadystatechange = setOutputOda;		
     }

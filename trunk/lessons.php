@@ -55,11 +55,12 @@ ob_start (); // Buffer output
 <title>eOgr -<?php echo $metin[55]?>
 <!--TITLE-->
 </title>
+<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script type="text/javascript" src="lib/flashMode.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="lib/hijax.js"></script>
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" /><script type="text/javascript" src="lib/hijax.js"></script>
 <link href="theme/ratings.css" rel="stylesheet" type="text/css" />
 <link href="theme/lessons.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>

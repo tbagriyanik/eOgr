@@ -38,7 +38,7 @@ if(!empty($_GET["id"])){
 		case "mp4":
 		case "flv":
 			$oyna = "<script type=\"text/javascript\" src=\"lib/swfobject1.js\"></script>
-					<div id=\"player\">eOgr</div>
+					<div id=\"player\"><h4>eOgr - Sorry, we can not play this file.</h4></div>
 					<script type=\"text/javascript\">
 					var so = new SWFObject('lib/player.swf','mpl','465','320','9');
 					so.addParam('allowscriptaccess','always');
@@ -72,7 +72,7 @@ if(!empty($_GET["id"])){
     <param name="BGCOLOR" value="#FFFFFF" />
     <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
     <div>
-      <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+      <h4>eOgr - Sorry, we can not play this file.</h4>
       <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
     </div>
     <!--[if !IE]>-->
@@ -91,6 +91,7 @@ if(!empty($_GET["id"])){
   <param name="src" value="<?php echo $yol;?>">
   <param name="autoplay" value="false">
   <param name="autoStart" value="0">
+  <h4>eOgr - Sorry, we can not play this file.</h4>
 </object>
 <?php
 		break;		
@@ -109,7 +110,9 @@ if(!empty($_GET["id"])){
   <param name="EnableFullScreenControls" value="1">
   <param name='transparentatStart' value='true'>
   <param name="autoStart" value="False">
-  <embed type="application/x-mplayer2" src="<?php echo $yol;?>" width=465 height=320></embed>
+  <embed type="application/x-mplayer2" src="<?php echo $yol;?>" width=465 height=320> 
+  <h4>eOgr - Sorry, we can not play this file.</h4>  
+  </embed>
 </object>
 <?php
 		break;	
@@ -127,6 +130,7 @@ if(!empty($_GET["id"])){
     <param name="autoplay" value="false" />
     <param name="controller" value="true" />
     <param name="scale" value="tofit" />
+    <h4>eOgr - Sorry, we can not play this file.</h4>
   </object>
   <!--<![endif]-->
 </object>
@@ -145,7 +149,9 @@ if(!empty($_GET["id"])){
   <param name='console' value='video'>
   <param name='loop' value="false">
   <EMBED src="<?php echo $yol;?>" width="465" height="320" 
-        loop="false" type='audio/x-pn-realaudio-plugin' controls='ControlPanel' console='video' autostart="false"> </EMBED>
+        loop="false" type='audio/x-pn-realaudio-plugin' controls='ControlPanel' console='video' autostart="false">
+  <h4>eOgr - Sorry, we can not play this file.</h4>
+  </EMBED>
 </OBJECT>
 <?php		
 		break;
@@ -153,6 +159,7 @@ if(!empty($_GET["id"])){
 ?>
 <object type="application/ogg" data="<?php echo $yol;?>" width="465" height="320">
   <param name="src" value="<?php echo $yol;?>">
+  <h4>eOgr - Sorry, we can not play this file.</h4>
 </object>
 <?php		
 		break;
@@ -162,6 +169,7 @@ if(!empty($_GET["id"])){
   <param name="src" value="<?php echo $yol;?>">
   <param name="autoplay" value="false">
   <param name="autoStart" value="0">
+  <h4>eOgr - Sorry, we can not play this file.</h4>
 </object>
 <?php
 		break;
@@ -171,18 +179,20 @@ if(!empty($_GET["id"])){
   <param name="src" value="<?php echo $yol;?>">
   <param name="autoplay" value="false">
   <param name="autoStart" value="0">
+  <h4>eOgr - Sorry, we can not play this file.</h4>
 </object>
 <?php
 		break;
 		case "class":
 ?>
 <applet code="<?php echo $yol;?>" width="465" height="320">
+  <h4>eOgr - Sorry, we can not play this file.</h4>
 </applet>
 <?php
 
 		case "pdf":
 ?>
-<object data="<?php echo $yol;?>" type="application/pdf" width="465" height="320">  
+<object data="<?php echo $yol;?>" type="application/pdf" width="465" height="320">
 </object>
 <?php
 		break;

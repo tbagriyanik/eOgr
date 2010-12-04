@@ -22,7 +22,7 @@ Lesser General Public License for more details.
     checkLoginLang(true,true,"index.php");
 ?>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso_8859-9" />
 <title><?php echo $metin[515]?></title>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">

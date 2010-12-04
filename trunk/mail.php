@@ -48,7 +48,7 @@ Lesser General Public License for more details.
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[69]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" /><script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script src="lib/jquery-1.4.4.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
