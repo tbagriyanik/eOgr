@@ -44,7 +44,9 @@ Lesser General Public License for more details.
 <title>eOgr -<?php echo " ".$metin[243]?></title>
 <script language="JavaScript" type="text/javascript" src="lib/dataFill.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" /><link rel="shortcut icon" href="img/favicon.ico"/>
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
+<link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <style type="text/css">

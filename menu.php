@@ -113,7 +113,7 @@ $().ready(function() {
 		}
 	});	
 });
-  </script>
+  </script> 
 <!-- BEGIN DEMO -->
 <div id="loginWrapper"> 
   <!-- BEGIN LOGIN BUTTON -->
@@ -160,13 +160,12 @@ $().ready(function() {
   </div>
   <!-- END HIDDEN FORM --> 
 </div>
-<!-- END MENU DEMO -->
-  <script type="text/javascript">
+<!-- END MENU DEMO --> 
+<script type="text/javascript">
   $(document).ready(function(){
     $("#form1").validate();
   });
   </script>
-
 <ul class="artmenu"  style="list-style-type:none">
   <li><a href="index.php" <?php
 						 if ($currentFile=="index.php") echo "class=\" active\"";
