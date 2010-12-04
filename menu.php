@@ -54,7 +54,6 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3_comp.js" charset="utf-8"></script>
 <script type="text/javascript" src="lib/jquery.ui.totop.js" charset="utf-8"></script>
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript">
    jQuery().ready(function() { 
       jQuery('body').UItoTop({ text: 'To Top', min: 200, scrollSpeed: 600, easingType: 'easeInOutQuad'});
@@ -85,9 +84,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	if($tur=="-2") 
 	{
 ?>
-<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="lib/tlogin/js/twitterLogin.js"></script> 
-
 <script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
 <script type="text/javascript">
 $().ready(function() {

@@ -127,7 +127,7 @@ Lesser General Public License for more details.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso_8859-9" />
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="pragma" content="no-cache"/>
@@ -143,6 +143,7 @@ Lesser General Public License for more details.
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -151,6 +152,8 @@ Lesser General Public License for more details.
     })
 </script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="lib/jquery.badBrowser.js"></script>
@@ -296,7 +299,6 @@ if (isset($_COOKIE["remUser"]))
 ?>
                   <p style="text-align:left"> <?php echo $metin[7]?> , <?php echo temizle($_SESSION["userr"])." ".$ktut." "?> </p>
                   <p> <?php echo $metin[5]?> </p>
-                  <p> <?php echo $metin[6]?> </p>
                   <?php
 				  if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
@@ -471,15 +473,13 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 ?>
         <div class="ikiKolon">
           <div class="BlockHeader-text"><?php echo $metin[84]?></div>
-          <?php echo getStats(13);?>
-        </div>
+          <?php echo getStats(13);?> </div>
         <?php
 }
 ?>
         <div class="ikiKolon">
           <div class="BlockHeader-text"><?php echo $metin[302]?></div>
-          <?php echo getStats(16);?>
-        </div>
+          <?php echo getStats(16);?> </div>
         <?php
 }
 ?>
