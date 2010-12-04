@@ -39,7 +39,9 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" /><script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
+<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>

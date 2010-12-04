@@ -105,10 +105,10 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 			} else {
 				$olayVar = buTarihtekiOlayListesi($onday,$month,$year);
 				if ($onday==date('d') && $month==date('m') && empty($olayVar) ) {
-					//bugï¿½nï¿½ iï¿½aretle
+					//bugünü iþaretle
 					echo "<td class=\"today\">{$onday}</td>";
 				} elseif ($onday==date('d') && $month==date('m') && !empty($olayVar) ) {
-					//bugï¿½nï¿½ ve olay var ise iï¿½aretle
+					//bugünü ve olay var ise iþaretle
 					echo "<td class=\"date_has_event today\">{$onday}
 					<div class=\"events\">
 						<ul>
@@ -117,7 +117,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 					</div>					
 					</td>";
 				} elseif (!empty($olayVar)) {
-					//bu gï¿½nde olaylar varsa
+					//bu günde olaylar varsa
 					echo "<td class=\"date_has_event\">{$onday}
 					<div class=\"events\">
 						<ul>
@@ -126,7 +126,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 					</div>
 					</td>";
 				} else {
-					//boï¿½ bir gï¿½n
+					//boþ bir gün
 					echo "<td>{$onday}</td>";
 				}
 				$onday++;
@@ -158,7 +158,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
         <link rel="stylesheet" href="master.css" type="text/css" media="screen" charset="utf-8" />
         <script src="../jquery-1.4.4.min.js" type="text/javascript"> </script>
         <script src="coda.js" type="text/javascript"> </script>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso_8859-9" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
         </head>
         <body>
 <div style="width:550px;margin:0 auto;">
