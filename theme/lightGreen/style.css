@@ -4,7 +4,6 @@ body {
 	background-color: #ACD76A;
 	background-image: url('images/Page-BgGradient.jpg');
 	background-repeat: repeat-x;
-	height: 910px;
 }
 .Main {
 	position: absolute;
@@ -1015,7 +1014,7 @@ body {
 	font-size: 12px;
 	font-style: normal;
 	font-weight: normal;
-	color: #BFC3B6;
+	color: #999;
 }
 .PostContent {
 	font-family: Tahoma, Arial, Helvetica, Sans-Serif;
@@ -1030,13 +1029,13 @@ body {
 a {
 	font-family: Tahoma, Arial, Helvetica, Sans-Serif;
 	text-decoration: underline;
-	color: #9F0;
+	color: #F30;
 }
 /* Adds special style to an unvisited link. */
 a:link {
 	font-family: Tahoma, Arial, Helvetica, Sans-Serif;
 	text-decoration: none;
-	color: #F90;
+	color: #F30;
 }
 /* Adds special style to a visited link. */
 a:visited, a.visited {
@@ -1116,7 +1115,7 @@ h6, h6 a, h6 a:link, h6 a:visited, h6 a:hover {
 
 ul {
 	list-style-type: none;
-	color: #BFC3B6;
+	color: #000;
 	margin:0;
 	padding:0;
 }
