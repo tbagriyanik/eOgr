@@ -47,7 +47,6 @@ Lesser General Public License for more details.
 <title>eOgr -<?php echo $metin[464]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -187,7 +186,22 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") &&
 		  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
 	}
 }
+
   
+$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
+if($seceneklerimiz[16]=="1")
+	if(eregi("777",decoct(@fileperms($_uploadFolder))) 
+	 or eregi("766",decoct(@fileperms($_uploadFolder)))
+	 ) {
+?>
+                  <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
+return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a> </blockquote>
+                  <?php	
+}
+
+require_once("lib/phplivex.php");  
+  
+function getString($gelenArama){ 
   $pageCnt=temizle($_GET['pageCnt']);
 
   if($pageCnt=="")  
@@ -208,7 +222,7 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($database_baglanti, $yol);
 
-$arayici =  temizle($_GET['arama']);   
+$arayici =  temizle($gelenArama);   
   if ($arayici!="") 
    {
 		    $filtr2=" where ((eo_files.fileName like '%$arayici%' or eo_users.userName like '%$arayici%') and eo_users.id=eo_files.userID) ";
@@ -272,18 +286,6 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-if($seceneklerimiz[16]=="1")
-	if(eregi("777",decoct(@fileperms($_uploadFolder))) 
-	 or eregi("766",decoct(@fileperms($_uploadFolder)))
-	 ) {
-?>
-                  <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
-return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a> </blockquote>
-                  <?php	
-}
-if ($totalRows_eoUsers>0)
-   {
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="fileShare.php">
                     <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
@@ -382,18 +384,30 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   </form>
                   <?php
    }
+   
+	if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font>";
+    	
+     return "<font id='hata'> $metin[497]</font>";  
+}
+
+$ajax = new PHPLiveX(array("getString")); 
+$ajax->Run(); 
+
+//if ($totalRows_eoUsers>0)
+   {	   
  ?>
+                  <div id="testArea"></div>
+                  <div id="prl" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></div>
                   <form id="aramak" name="aramak" method="get" action="fileShare.php">
                     <p>
                       <label> <?php echo $metin[29]?> :
-                        <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[469]?>" value="<?php echo $arayici?>" />
+                        <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[469]?>" value="<?php echo $arayici?>" onkeypress="getString(this.value,{target:'testArea', preloader:'prl'});" autofocus="true"/>
                       </label>
-                      <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
+                      <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara" style="vertical-align: middle;"/>
                     </p>
                   </form>
                   <?php  
-   }
-if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font>";
+ } 
 
 if ($tur=="2") {
 	$dosyUpload = dosya_uploads_uyumu();
