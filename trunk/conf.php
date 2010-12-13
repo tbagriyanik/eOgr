@@ -3299,7 +3299,7 @@ function dersAgaci($gelen=null){
 					while($i<@mysql_numrows($okulAdlari)){
 				?>
 				
-				<li  style='list-style-type:none;' title='<?php echo $metin[296]?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace;margin-left:0px;padding-left:0px;">
+				<li  style='list-style-type:none;' title='<?php echo @mysql_result($okulAdlari,$i,"okulAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace;margin-left:0px;padding-left:0px;">
 				  <?php 
 				    echo smartShort(@mysql_result($okulAdlari,$i,"okulAdi"));
 					$boyut=20-strlen(smartShort(@mysql_result($okulAdlari,$i,"okulAdi")));
@@ -3316,7 +3316,7 @@ function dersAgaci($gelen=null){
 								if(@mysql_numrows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_numrows($sinifAdlari)){		   
 						   ?>
-					<li title='<?php echo $metin[297]?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
+					<li title='<?php echo @mysql_result($sinifAdlari,$j,"sinifAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
 					  <?php
 					 echo smartShort(@mysql_result($sinifAdlari,$j,"sinifAdi")); 
 					$boyut=20-strlen(smartShort(@mysql_result($sinifAdlari,$j,"sinifAdi")));
@@ -3332,7 +3332,7 @@ function dersAgaci($gelen=null){
 										if(@mysql_numrows($dersAdlari)>0) echo "<ul>";
 										while($k<@mysql_numrows($dersAdlari)){		   
 									?>
-						<li title='<?php echo $metin[298]?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
+						<li title='<?php echo @mysql_result($dersAdlari,$k,"dersAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
 					  <?php
 					 echo smartShort(@mysql_result($dersAdlari,$k,"dersAdi")); 
 					$boyut=20-strlen(smartShort(@mysql_result($dersAdlari,$k,"dersAdi")));
@@ -3351,7 +3351,7 @@ function dersAgaci($gelen=null){
 														@mysql_result($konuAdlari,$l,"id")."'";
 												$sayfaSayisi = mysql_query($sqlSayfa, $yol1);
 												$s_sayisi = mysql_result($sayfaSayisi,0,"toplam");													   						  ?>
-										<li title='<?php echo $metin[299]?>'><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="background:none;background-color:#3399ee;"><span><span style="font-family:'Lucida Console', Monaco, monospace">
+										<li title='<?php echo @mysql_result($konuAdlari,$l,"konuAdi")?>'><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="background:none;background-color:#3399ee;"><span><span style="font-family:'Lucida Console', Monaco, monospace">
 										  <?php echo smartShort(@mysql_result($konuAdlari,$l,"konuAdi"))?>
 						  <?php echo (mysql_result($konuAdlari,$l,"konuyuKilitle")?"<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />":"")?>
                           <?php echo (mysql_result($konuAdlari,$l,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />":"")?>
@@ -3395,7 +3395,7 @@ function dersAgaci($gelen=null){
 					while($i<@mysql_numrows($okulAdlari)){
 				?>
 				
-				<li style="color:#C9F;" title='<?php echo $metin[296]?>' class="open">
+				<li style="color:#C9F;" class="open">
 				  <span><?php echo (@mysql_result($okulAdlari,$i,"okulAdi"))?> </span>
 				  
 					<?php
@@ -3405,7 +3405,7 @@ function dersAgaci($gelen=null){
 								if(@mysql_numrows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_numrows($sinifAdlari)){		   
 						   ?>
-					<li style="color:#C3F" title='<?php echo $metin[297]?>'>
+					<li style="color:#C3F">
                     <span>
 					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> </span>
 						<?php
@@ -3415,7 +3415,7 @@ function dersAgaci($gelen=null){
 										if(@mysql_numrows($dersAdlari)>0) echo "<ul>";										
 										while($k<@mysql_numrows($dersAdlari)){		   
 									?>
-						<li style="color:#C0F" title='<?php echo $metin[298]?>'>
+						<li style="color:#C0F">
 						  <span><?php echo (@mysql_result($dersAdlari,$k,"dersAdi"))?> </span>
 						  
 						  <?php
@@ -3429,7 +3429,7 @@ function dersAgaci($gelen=null){
 												$sayfaSayisi = mysql_query($sqlSayfa, $yol1);
 												$s_sayisi = mysql_result($sayfaSayisi,0,"toplam");												   
 						  ?>
-										<li title='<?php echo $metin[299]?>' class="noktasiz"><span><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="text-decoration:none;color:#00F;">
+										<li class="noktasiz"><span><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="text-decoration:none;color:#00F;">
 										  <?php echo (@mysql_result($konuAdlari,$l,"konuAdi"))?></a>&nbsp;
                           <?php  if(mysql_result($konuAdlari,$l,"konuyuKilitle")) echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?>
                           <?php echo (mysql_result($konuAdlari,$l,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />":"")?>
