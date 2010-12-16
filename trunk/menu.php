@@ -88,7 +88,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
 <script type="text/javascript">
 $().ready(function() {
-	$("#form1").validate({
+	$("#formLogin").validate({
 		rules: {
 			userN: {
 				required: true,
@@ -123,7 +123,7 @@ $().ready(function() {
   <!-- BEGIN HIDDEN FORM -->
   <div id="loginForm">
     <fieldset>
-      <form id="form1" method="post" action="login.php">
+      <form id="formLogin" method="post" action="login.php">
         <label for="userN"> <?php echo $metin[0]?> : </label>
         <input type="hidden" name="form" value="login" />
         <div>
@@ -134,6 +134,7 @@ $().ready(function() {
         <div>
           <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
         </div>
+        <br />
         <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
         &nbsp;
         <?php
@@ -143,27 +144,23 @@ $().ready(function() {
         <?php
 	} else {
     ?>
-        <br/>
-        <br/>
-        <label>
-          <input type="checkbox" name="remUser" id="remUser" value="1"/>
-          <?php echo $metin[193]?> </label>
+        <p>
+          <label>
+            <input type="checkbox" name="remUser" id="remUser" value="1"/>
+            <?php echo $metin[193]?> </label>
+        </p>
         <?php
 	}
     ?>
       </form>
     </fieldset>
-    <ul>
-      <li><a href="newUser.php"><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[3]?></a></li>
-      <li><a href="passwordRemember.php"><?php echo $metin[4]?></a></li>
-    </ul>
   </div>
   <!-- END HIDDEN FORM --> 
 </div>
 <!-- END MENU DEMO --> 
 <script type="text/javascript">
   $(document).ready(function(){
-    $("#form1").validate();
+    $("#formLogin").validate();
   });
   </script>
 <ul class="artmenu"  style="list-style-type:none">

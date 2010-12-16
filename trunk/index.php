@@ -144,7 +144,6 @@ Lesser General Public License for more details.
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -152,8 +151,6 @@ Lesser General Public License for more details.
       }) 
     })
 </script>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/jquery.cookie.js"></script>
