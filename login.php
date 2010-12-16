@@ -106,7 +106,7 @@ Shadowbox.init({
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
+<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -195,8 +195,7 @@ Shadowbox.init({
                   <?php
 	
 	
-		switch ($_POST['form'])
-		{
+		switch ($_POST['form']){
 			case 'login':
 				$allowed = array();
 				$allowed[] = 'form';
@@ -205,8 +204,7 @@ Shadowbox.init({
 				$allowed[] = 'sumb';
 				$allowed[] = 'remUser';
 				$sent = array_keys($_POST);
-				if ($allowed != $sent)
-				{
+				if ($allowed != $sent){
 					die("<font id='hata'> ".$metin[400]." (1)</font><br/>".$metin[402]); //form data?
 					exit;
 				}
@@ -218,7 +216,8 @@ Shadowbox.init({
 
 	if ($tur<=-1 || $tur>2) { 
 	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
+	   echo ("<font id='hata'> ".$metin[404]."</font><p>".$metin[402]."</p>");
+	   $pass = true;
 	  }
 	  else 
 	  {
@@ -234,7 +233,7 @@ Shadowbox.init({
 	  case '2':$ktut=$metin[88];break;	  
 	  default:$ktut=$metin[89];
 	 } 
-
+if(!$pass){
 ?>
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
                   <?php
@@ -294,7 +293,6 @@ Shadowbox.init({
 							 	echo "<font id='tamam'>$metin[593]</font>" ;
 						   }	   
                       ?>
-                        
                         <p/>
                         <a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a> </div>
                     </div>
@@ -303,6 +301,9 @@ Shadowbox.init({
               </div>
             </div>
           </div>
+          <?php
+		  	}
+          ?>
         </div>
         <div class="cleared"></div>
         <div class="Footer">

@@ -59,6 +59,9 @@ function stopUpload(success){
 			 case -6:
 			    result += "<strong><?php echo $metin[525]?></strong><br/><br/>";					
 			 	break;
+			 case -7:
+			    result += "<strong><?php echo $metin[525]."...";?></strong><br/><br/>";					
+			 	break;
 			 default:
 			    result += "<strong><?php echo  $metin[526]?></strong><br/><br/>";					
 		 }

@@ -8,7 +8,7 @@ skyrocketlabs@gmail.com
 
 #loginWrapper {
 	float: right;
-	width: 230px;
+	width: 195px;
 	height: auto;
 	margin-right:10px;
 }
@@ -53,11 +53,11 @@ skyrocketlabs@gmail.com
 
 #loginForm {
 	position:fixed ;
-	width: 200px;
+	width: 185px;
 	font-size: 0.8em;
 	color: #477;
 	margin: 32px 0 0 0;
-	padding: 15px;
+	padding: 5px;
 	background: #ddeef6;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
@@ -99,11 +99,11 @@ skyrocketlabs@gmail.com
 	display: block;
 	width: 186px;
 	font: 1.2em arial;
-	color: #000;
 	margin: 0 0 10px 0;
-	padding: 6px;
-	background: #fff;
-	border: 1px solid #0bacea;
+	border:1px inset #666;
+	color:#444;
+	background-color: #d6e7ef;
+	padding: 2px;
 }
 .loginButton {
 	font: bold 1.1em tahoma;

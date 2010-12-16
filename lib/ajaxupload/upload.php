@@ -35,18 +35,23 @@ $wgFileBlacklist = array(
   'shtml', 'jhtml', 'pl', 'py', 'cgi',
   # May contain harmful executables for Windows victims
   'exe', 'scr', 'dll', 'msi', 'vbs', 'bat', 'com', 'pif', 'cmd', 'vxd', 'cpl' );
-$wgMimeTypeBlacklist= array(
+$wgMimeTypeBlacklist = array(
 	# HTML may contain cookie-stealing JavaScript and web bugs
 	'text/html', 'text/javascript', 'text/x-javascript',  'application/x-shellscript',
 	# PHP scripts may execute arbitrary code on the server
-	'application/x-php', 'text/x-php',
+	'application/x-php', 'text/x-php', 'application/x-httpd-php',
 	# Other types that may be interpreted by some servers
 	'text/x-python', 'text/x-perl', 'text/x-bash', 'text/x-sh', 'text/x-csh',
+	# Client-side hazards on Internet Explorer
+	'text/scriptlet', 'application/x-msdownload',
 	# Windows metafile, client-side vulnerability on some systems
 	'application/x-msmetafile',
 	# A ZIP file may be a valid Java archive containing an applet which exploits the
-	# same-origin policy to steal cookies      
-	'application/zip'
+	# same-origin policy to steal cookies
+	'application/zip',
+	# MS Office OpenXML and other Open Package Conventions files are zip files
+	# and thus blacklisted just as other zip files
+	'application/x-opc+zip',
 );
 
 $dBoyu = $_FILES['myfile']['size'];
@@ -70,6 +75,10 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
 	 }   
  else if (in_array(end(explode(".",strtolower($_FILES['myfile']['name']))),$wgFileBlacklist) ){
    $result = -5; 
+	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
+	 }   
+ else if (in_array(strtolower($_FILES['myfile']['type']),$wgMimeTypeBlacklist)){
+   $result = -7; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 	 }   
  else if (strlen($_FILES['myfile']['name']>50)){
@@ -96,7 +105,7 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
 	}
  }
 }
-//echo "<script>alert('$result - Hata : ".$target_path."');</script>"; 
+//echo "<script>alert('$result - Hata : ".$_FILES['myfile']['type']."');</script>"; 
  
 sleep(1); //?
 ?>

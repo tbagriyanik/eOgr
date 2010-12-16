@@ -2,9 +2,9 @@
 /* begin Page */
 
 body {
-	margin: 0 auto;
+	margin: 2px;
 	padding: 0;
-	background-color: #FFC;
+	background-color: #eee;
 }
 .Main {
 	position: absolute;
@@ -197,7 +197,7 @@ div.Header-png {
 	left: 0;
 	width: 973px;
 	height: 50px;
-	background-color:#900;
+	background-color:#666;
 }
 div.Header-jpeg {
 	position: absolute;
@@ -1123,7 +1123,7 @@ input, select {
 	text-align: center;
 }
 .Footer .Footer-background {
-	background-color:#996;
+	background-color:#999;
 	position:absolute;
 	z-index:-1;
 	width: 965px;
