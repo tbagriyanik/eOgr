@@ -20,6 +20,15 @@ Lesser General Public License for more details.
 	$time = getmicrotime();  	
 	checkLoginLang(true,true,"askQuestion.php");	
 	$seciliTema=temaBilgisi();
+	
+	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
+
+	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
+	  @header("Location: error.php?error=4");
+	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
+		}
+
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +42,6 @@ Lesser General Public License for more details.
 <title>eOgr -<?php echo $metin[628]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -48,6 +56,14 @@ Lesser General Public License for more details.
         
       }) 
     })
+</script>
+<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
+<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
 </script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script language="JavaScript" type="text/javascript">
@@ -140,14 +156,92 @@ function delWithCon(deletepage_url,field_value,messagetext) {
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[628]?> </span> </h2>
                 <div class="PostContent"><br />
-<br />
-<br />
-<br />
-
                   <?php
-	if ($tur=="2" or $tur=="1" or $tur=="0")	{
+	if ($tur=="2" or $tur=="1" or $tur=="0")	{	
 	 //öðrenci, öðretmen ve yönetici girebilir
-		echo "<font id='uyari'>$metin[209]</font>";
+	
+		if(isset($_POST["gonder"])) {
+			if ($_POST["ccode3"]==$_SESSION["ccode3"]){
+				if(!empty($_POST["soru"]) and !empty($_POST["dersID"])) {
+					if(soruEkle($_POST))
+						echo "<font id='tamam'>Sorunuz eklendi.</font>";
+					else
+						echo "<font id='hata'>Sorunuz eklenemedi!</font>";
+				}
+			}			
+		}
+	
+		$ccode3 = newPassw();
+		$_SESSION["ccode3"]=$ccode3;	
+?>
+                  <p>
+                  
+                  <form action="askQuestion.php" method="post" name="soruGonder">
+                    Sorunuz
+                    <textarea cols="50" rows="5" name="soru" style="height:93px;"></textarea>
+                    <select name="dersID" size="7" style="height:100px;">
+                      <option value="" selected="selected">Seçiniz</option>
+                      <?php echo dersAdlariOption();?>
+                    </select>
+                    <input type="hidden" name="ccode3" value="<?php echo $ccode3 ?>" />
+                    <input type="submit" name="gonder" value="Gönder" />
+                  </form>
+                  </p>
+                  <p>
+                  
+                  <form action="askQuestion.php" method="get" name="soruAra">
+                    Arama :
+                    <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS($_GET["ara"]);?>"  />
+                    <input name="arama" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
+                  </form>
+                  </p>
+                  <?php
+					$arama = str_replace("'", "`", $_GET['ara']);
+					$arama = substr(temizle($arama),0,250);
+									  
+				  	if($arama!="")
+					  	$veriSQL = "SELECT * FROM eo_askquestion WHERE question 
+							LIKE '%$arama%'
+						 	ORDER BY eklenmeTarihi DESC";
+					 else
+					  	$veriSQL = "SELECT * FROM eo_askquestion ORDER BY eklenmeTarihi DESC";
+					 	
+					$veriSonuc = mysql_query($veriSQL,$yol1);
+					$kaySay = mysql_num_rows($veriSonuc);
+					if($kaySay>0){
+                  ?>
+                  <p>
+                  
+                  <table width="100%" cellspacing="0" cellpadding="2">
+                    <caption style="font-weight:bold;font-size:16px;">
+                    Sorular
+                    </caption>
+                    <tr>
+                      <th width="15%">Gönderen </th>
+                      <th width="65%">Soru </th>
+                      <th width="20%">Tarih </th>
+                    </tr>
+                    <?php
+					$satirRenk=0;
+					while($satir=mysql_fetch_assoc($veriSonuc)){
+						$humanRelativeDate = new HumanRelativeDate();
+						$insansi = $humanRelativeDate->getTextForSQLDate($satir['eklenmeTarihi']);
+    					$satirRenk++;
+				        if ($satirRenk & 1) $row_color = "#CCC"; else $row_color = "#ddd"; 
+								
+                    ?>
+                    <tr>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='profil.php?kim=".$satir['userID']."' rel='facebox'>".kullAdi($satir['userID'])."</a>" ;?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],50)."</a> (".dersAdiGetir($satir['dersID']).")" ;?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $insansi ;?></td>
+                    </tr>
+                    <?php
+					}
+                    ?>
+                  </table>
+                  </p>
+                  <?php	
+					}
 	}
 	else {
 	  @header("Location: error.php?error=9");	

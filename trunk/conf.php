@@ -4376,6 +4376,44 @@ function getUsersOnline() {
 		return $data['values'];
 }
 /*
+soruEkle:
+soru eklenmesi
+*/
+function soruEkle($gelen){
+	$soru = str_replace("'", "`", $gelen['soru']);
+	$soruMetni = substr(temizle($soru),0,250);
+	$datem	=	date("Y-n-j H:i:s");
+	$gonderenID	= getUserID($_SESSION["usern"],$_SESSION["userp"]);
+
+	global $yol1;
+	
+	$sql = "INSERT INTO eo_askquestion 
+			(userID, question, eklenmeTarihi, dersID) 
+			VALUES 
+			($gonderenID,'$soruMetni','$datem',".temizle($gelen['dersID']).")";
+		
+	$result = mysql_query($sql, $yol1);
+		
+	return $result;
+}
+/*
+dersAdlariOption:
+ders adlarýný Option içine doldurarak getirir
+*/
+function dersAdlariOption(){
+	global $yol1;
+	
+	$sql = "SELECT id, dersAdi FROM eo_3ders ORDER BY dersAdi";
+		
+	$result = mysql_query($sql, $yol1);	
+	
+	while($satir=mysql_fetch_array($result)){
+		$sonuc .= "<option value='$satir[0]'>$satir[1]</option>\n";
+	}
+	
+	return $sonuc;
+}
+/*
 is_ajax:
 ajax desteði var mý
 */

@@ -1,5 +1,5 @@
 
-	eOgr - v128c, 16-12-2010
+	eOgr - v128c, 17-12-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -56,7 +56,7 @@ Used Classes and Referred Sites
 	http://archive.free-php.org.uk
 - jQuery: v1.4.4 
 	http://jquery.com
-- jQuery UI: v1.8.6 custom - sortable only
+- jQuery UI: v1.8.6 custom - sortable only <1.8.7
 	http://jqueryui.com
 - jQuery TreeView: v1.4.1 
 	http://bassistance.de/jquery-plugins/jquery-plugin-treeview
@@ -64,7 +64,7 @@ Used Classes and Referred Sites
 	http://plugins.jquery.com/project/SimplePager
 - jQuery print: 
 	http://www.bennadel.com/index.cfm?event=blog.view&id=1591
-- jQuery AnythingSlider: v1.5.4
+- jQuery AnythingSlider: v1.5.4 <1.5.6.1
 	http://github.com/ProLoser/AnythingSlider
 - jQuery bad browser: v1.4
 	http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/
