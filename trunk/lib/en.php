@@ -803,5 +803,9 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		
 		$metin[633] = "Most active pages";
 		$metin[634] = "Most failed pages";
+
+		$metin[635] = "Question Count";
+		$metin[636] = "Answer Count";
+		$metin[637] = "<strong><a href=\"askQuestion.php\">Questions</a> : </strong> ";		
 								
 ?>

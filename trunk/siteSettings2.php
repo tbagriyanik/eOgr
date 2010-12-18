@@ -259,6 +259,7 @@ Lesser General Public License for more details.
                       <strong>eo_comments <?php echo getTableSize("eo_comments"); ?> :</strong> <?php echo yetimKayitNolar("eo_comments")?><br />
                       <strong>eo_files <?php echo getTableSize("eo_files"); ?> :</strong> <?php echo yetimKayitNolar("eo_files")?><br />
                       <strong>eo_friends <?php echo getTableSize("eo_friends"); ?> :</strong> <?php echo yetimKayitNolar("eo_friends")?><br />
+                      <strong>eo_askquestion <?php echo getTableSize("eo_askquestion"); ?> :</strong> <?php echo yetimKayitNolar("eo_askquestion")?><br />
                       eo_users <?php echo getTableSize("eo_users"); ?> - (<?php echo $metin[212]?>)<br />
                       eo_shoutbox <?php echo getTableSize("eo_shoutbox"); ?> - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
                       eo_usertrack <?php echo getTableSize("eo_usertrack"); ?> - (<?php echo $metin[212].", ".$metin[238];?>)<br />

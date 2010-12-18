@@ -3745,6 +3745,17 @@ function sonTarihGetir($tablo){
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
+		case "soru":
+			$sql1 = "SELECT count(*) as say 
+					 FROM eo_askquestion
+					 WHERE DATE_FORMAT(eklenmeTarihi, '%d-%m-%Y') = '$bugun'"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){				
+				$gelen = mysql_fetch_array($result1);						
+				$sonuc = $gelen['say']>0;				
+			}		
+		break;
 		case "dosya":
 			$sonuc = sonDosyaTarihi($_uploadFolder);		
 		break;
@@ -3883,6 +3894,23 @@ function sonSatirGetir($tablo){
 				$sonuc = "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[1]."</a>, "
 					.smileAdd(smartShort($gelen[3])).", "
 					.odaGetir($gelen[4]).", "
+					.$insansi;
+			}		
+		break;
+		case "soru":
+			$sql1 = "SELECT * 
+					 FROM eo_askquestion
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_askquestion.userID					 
+					 ORDER BY eo_askquestion.eklenmeTarihi DESC limit 0,1"; 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) == 1){
+				$gelen = mysql_fetch_array($result1);		
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[3]);
+				
+				$sonuc = "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[7]."</a>, "
+					.smileAdd(smartShort($gelen[2],20)).", "
 					.$insansi;
 			}		
 		break;

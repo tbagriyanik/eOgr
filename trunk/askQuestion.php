@@ -159,23 +159,41 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	
 	if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
 		if($tur=="2" or soruEkleyenID($_GET['id'])==getUserID($_SESSION["usern"],$_SESSION["userp"])){
-		  $deleteSQL = sprintf("DELETE FROM eo_askquestion WHERE id=%s",
-							   GetSQLValueString($_GET['id'], "int"));
-		
 		  mysql_select_db($database_baglanti, $yol);
-		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
-		  if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
+		  
+		  $deleteSQL1 = sprintf("DELETE FROM eo_askanswerrate WHERE cevapID in
+		    					(select id from eo_askanswer WHERE soruID in
+								  (select id from eo_askquestion where id=%s)
+								)",
+							   GetSQLValueString($_GET['id'], "int"));		
+		  $Result1 = mysql_query($deleteSQL1, $yol) or die(mysql_error());
+		  if ($Result1) $delSonuc = "Cevap oylarý silindi,";
+		  $deleteSQL2 = sprintf("DELETE FROM eo_askanswer WHERE soruID in
+								  (select id from eo_askquestion where id=%s)
+								",
+							   GetSQLValueString($_GET['id'], "int"));		
+		  $Result2 = mysql_query($deleteSQL2, $yol) or die(mysql_error());
+		  if ($Result2)  $delSonuc .= " cevap bilgileri silindi,";
+		  $deleteSQL3 = sprintf("DELETE FROM eo_askquestion WHERE id=%s",
+							   GetSQLValueString($_GET['id'], "int"));		
+		  $Result3 = mysql_query($deleteSQL3, $yol) or die(mysql_error());
+		  if ($Result3) $delSonuc ="<font id='uyari'>$delSonuc soru bilgisi silindi</font>";
+		  trackUser($currentFile,"success,DelQue",$adi);
+		  echo $delSonuc;
 		}
 	}
-
 	
 		if(isset($_POST["gonder"])) {
 			if ($_POST["ccode3"]==$_SESSION["ccode3"]){
 				if(!empty($_POST["soru"]) and !empty($_POST["dersID"])) {
-					if(soruEkle($_POST))
+					if(soruEkle($_POST)){
+						  trackUser($currentFile,"success,AddQue",$adi);
 						echo "<font id='tamam'>Sorunuz eklendi.</font>";
-					else
+					}
+					else{
+						  trackUser($currentFile,"fail,AddQue",$adi);
 						echo "<font id='hata'>Sorunuz eklenemedi!</font>";
+					}
 				}
 			}			
 		}

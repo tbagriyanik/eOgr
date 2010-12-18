@@ -160,26 +160,29 @@ Lesser General Public License for more details.
                 <div class="PostContent">
                   <div id="contact-wrapper">
                     <?php
+	$imge =  ' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />';
 	$bilgi1 = sonTarihGetir("sohbet");
-	$bilgi1 = ($bilgi1)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi1 = ($bilgi1)?$imge:'';
 	$bilgi2 = sonTarihGetir("yorum");
-	$bilgi2 = ($bilgi2)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi2 = ($bilgi2)?$imge:'';
 	$bilgi3 = sonTarihGetir("oy");
-	$bilgi3 = ($bilgi3)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi3 = ($bilgi3)?$imge:'';
 	$bilgi4 = sonTarihGetir("ders");
-	$bilgi4 = ($bilgi4)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi4 = ($bilgi4)?$imge:'';
 	$bilgi5 = sonTarihGetir("uye");
-	$bilgi5 = ($bilgi5)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi5 = ($bilgi5)?$imge:'';
 	$bilgi6 = sonTarihGetir("dosya");
-	$bilgi6 = ($bilgi6)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi6 = ($bilgi6)?$imge:'';
 	$bilgi7 = sonTarihGetir("haber");
-	$bilgi7 = ($bilgi7)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi7 = ($bilgi7)?$imge:'';
 	$bilgi8 = sonTarihGetir("islem");
-	$bilgi8 = ($bilgi8)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi8 = ($bilgi8)?$imge:'';
 	$bilgi9 = sonTarihGetir("calis");
-	$bilgi9 = ($bilgi9)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi9 = ($bilgi9)?$imge:'';
 	$bilgi10 = sonTarihGetir("arkadas");
-	$bilgi10 = ($bilgi10)?' <img src="img/imp.gif" border="0" style="vertical-align: top;" alt="new" />':'';
+	$bilgi10 = ($bilgi10)?$imge:'';
+	$bilgi11 = sonTarihGetir("soru");
+	$bilgi11 = ($bilgi11)?$imge:'';
 ?>
                     <table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
@@ -225,7 +228,7 @@ Lesser General Public License for more details.
                                 <li><a href="stats.php"><span><span> <?php echo $metin[197]?></span></span></a></li>
                                 <li><a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?></span></span></a></li>
                                 <li><a href="fileShare.php"><span><span> <?php echo $metin[463].$bilgi6?></span></span></a></li>
-                                <li><a href="askQuestion.php"><span><span><img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628]?> </span></span></a></li>
+                                <li><a href="askQuestion.php"><span><span><img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628].$bilgi11?> </span></span></a></li>
                                 <?php
   if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
 	echo ("<li><a href=\"chat.php\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=310,height=330,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");

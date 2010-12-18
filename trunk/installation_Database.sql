@@ -363,6 +363,7 @@ CREATE TABLE `eo_askquestion` (
 CREATE TABLE `eo_askanswer` (
 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `userID` INT NOT NULL ,
+`soruID` INT NOT NULL ,
 `answer` TEXT NOT NULL ,
 `eklenmeTarihi` DATETIME NOT NULL 
 ) ENGINE = MYISAM ;

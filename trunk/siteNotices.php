@@ -176,6 +176,8 @@ if ($tur=="2")	{//yönetici ise
 	if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";
 	$bilgi7 = sonSatirGetir("arkadas");
 	if(!empty($bilgi7))	echo "<strong><a href=\"dataFriendActions.php\">$metin[594]</a> :</strong>"."<p class='ozetBilgi'>".$bilgi7."</p>";
+	$bilgi8 = sonSatirGetir("soru");
+	if(!empty($bilgi8))	echo $metin[637]."<p class='ozetBilgi'>".$bilgi8."</p>";
 
 	$bilgiSayfa1 = enFazlaIslemGetir(1);
 	if(!empty($bilgiSayfa1))	echo "<strong>".$metin[633]." ($metin[544]) :</strong> <p class='ozetBilgi'>".$bilgiSayfa1."</p>";
