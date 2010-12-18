@@ -820,5 +820,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[635] = "Soru Sayýsý";
 		$metin[636] = "Cevap Sayýsý";
 		$metin[637] = "<strong><a href=\"askQuestion.php\">Sorular</a> : </strong> ";		
+		$metin[638] = "Cevap problemi yok";
+		$metin[639] = "Cevap problemleri";
+		$metin[640] = "Soru problemi yok";
+		$metin[641] = "Soru problemleri";
 		
 ?>
