@@ -4401,10 +4401,8 @@ dersAdlariOption:
 ders adlarýný Option içine doldurarak getirir
 */
 function dersAdlariOption(){
-	global $yol1;
-	
-	$sql = "SELECT id, dersAdi FROM eo_3ders ORDER BY dersAdi";
-		
+	global $yol1;	
+	$sql = "SELECT id, dersAdi FROM eo_3ders ORDER BY dersAdi";		
 	$result = mysql_query($sql, $yol1);	
 	
 	while($satir=mysql_fetch_array($result)){
@@ -4412,6 +4410,48 @@ function dersAdlariOption(){
 	}
 	
 	return $sonuc;
+}
+/*
+cevapSayisiGetir:
+sorulan sorunun cevap adedi
+*/
+function cevapSayisiGetir($id){
+	global $yol1;	
+	$sql = "SELECT count(id) FROM eo_askanswer";		
+	$result = mysql_query($sql, $yol1);	
+	
+	$satir=mysql_fetch_array($result);
+	if($satir[0]>0) 
+		return ("- $satir[0]");	
+}
+/*
+soruSayisiGetir:
+kac soru soruldu ise adeti
+*/
+function soruSayisiGetir($arama){
+	global $yol1;	
+	if($arama!="")
+		$sql = "SELECT count(id) FROM eo_askquestion WHERE question LIKE '%$arama%'";		
+	 else	
+		$sql = "SELECT count(id) FROM eo_askquestion";		
+	$result = mysql_query($sql, $yol1);	
+	
+	$satir=mysql_fetch_array($result);
+	return ($satir[0]);	
+}
+/*
+soruEkleyenID:
+sorunun sahibinin ID'si getirilir
+*/
+function soruEkleyenID($soruID){
+	global $yol1;
+	$soruID = (int) temizle($soruID);
+	$sql = "SELECT userID FROM eo_askquestion WHERE id=$soruID";		
+	$result = mysql_query($sql, $yol1);	
+	
+	$satir=mysql_fetch_array($result);
+	if($satir[0]!="") 
+		return ($satir[0]);		
 }
 /*
 is_ajax:
