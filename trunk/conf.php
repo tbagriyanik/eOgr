@@ -788,6 +788,123 @@ function yetimKayitNolar($tablo){
 				}					
 		   
 		 break;
+		 case "eo_askquestion":
+		 
+				$sql1 =    "SELECT eo_askquestion.id 
+							FROM eo_askquestion
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_askquestion.userID
+							WHERE eo_users.userName is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
+				     
+				   if (empty($sonuc)) 
+				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
+					else
+					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				}	
+								
+				$sql1 =    "SELECT eo_askquestion.id 
+							FROM eo_askquestion
+							LEFT OUTER JOIN eo_3ders ON eo_3ders.id  = eo_askquestion.dersID
+							WHERE eo_3ders.id is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc2 = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc2 .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
+				     
+				   if (empty($sonuc2)) 
+				    $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[220]";
+					else
+					$sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> : ".$sonuc2;
+				}					
+		   
+		 break;
+		 case "eo_askanswer":
+		 
+				$sql1 =    "SELECT eo_askanswer.id 
+							FROM eo_askanswer
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_askanswer.userID
+							WHERE eo_users.userName is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
+				     
+				   if (empty($sonuc)) 
+				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230] - ";
+					else
+					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				}	
+								
+				$sql1 =    "SELECT eo_askanswer.id 
+							FROM eo_askanswer
+							LEFT OUTER JOIN eo_askquestion ON eo_askquestion.id  = eo_askanswer.soruID
+							WHERE eo_askquestion.id is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc2 = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc2 .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
+				     
+				   if (empty($sonuc2)) 
+				    $sonuc .= "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[640]";
+					else
+					$sonuc .= "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[641] : ".$sonuc2;
+				}	
+								
+		break;								
+		 case "eo_askanswerrate":
+		 
+				$sql1 =    "SELECT eo_askanswerrate.id 
+							FROM eo_askanswerrate
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_askanswerrate.userID
+							WHERE eo_users.id is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
+				     
+				   if (empty($sonuc)) 
+				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230] - ";
+					else
+					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				}	
+								
+				$sql1 =    "SELECT eo_askanswerrate.id 
+							FROM eo_askanswerrate
+							LEFT OUTER JOIN eo_askanswer ON eo_askanswer.id  = eo_askanswerrate.cevapID
+							WHERE eo_askanswer.id is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   $sonuc2 = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc2 .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
+				     
+				   if (empty($sonuc2)) 
+				    $sonuc .= "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[638]";
+					else
+					$sonuc .= "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[639] : ".$sonuc2;
+				}	
+								
+		break;								
 	 }
 	@mysql_free_result($result1); 
 	return $sonuc;

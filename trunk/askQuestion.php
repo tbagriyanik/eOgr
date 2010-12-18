@@ -274,7 +274,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 								
                     ?>
                     <tr>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='profil.php?kim=".$satir['userID']."' rel='facebox'>".kullAdi($satir['userID'])."</a>" ;?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='profil.php?kim=".$satir['userID']."' rel='facebox'>".(kullAdi($satir['userID'])==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":kullAdi($satir['userID']))."</a>" ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>>
                       <?php
 					  	if($tur=="2" or $satir['userID']==getUserID($_SESSION["usern"],$_SESSION["userp"])){
@@ -284,7 +284,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 						}
                       ?>
 					  <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id']) ;?></td>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo dersAdiGetir($satir['dersID']) ;?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo (dersAdiGetir($satir['dersID'])==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":dersAdiGetir($satir['dersID'])) ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $insansi ;?></td>
                     </tr>
                     <?php
