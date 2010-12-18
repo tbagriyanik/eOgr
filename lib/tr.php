@@ -816,5 +816,9 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		
 		$metin[633] = "En fazla iþlem yapýlan sayfalar";
 		$metin[634] = "En fazla hata yapýlan sayfalar";
+
+		$metin[635] = "Soru Sayýsý";
+		$metin[636] = "Cevap Sayýsý";
+		$metin[637] = "<strong><a href=\"askQuestion.php\">Sorular</a> : </strong> ";		
 		
 ?>

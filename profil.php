@@ -380,6 +380,44 @@ function arkadasSay($id)
 	}
 }
 /*
+soruSay:
+kullanýcýnýn soru sayýsý 
+*/
+function soruSay($id)
+{
+	global $yol1;	
+	$id = substr(temizle2($id),0,15);
+    $sql1 = "SELECT count(id) as say FROM eo_askquestion
+			Where userID = $id 
+			 limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1){
+       return (mysql_result($result1, 0, "say"));
+    }else {
+	   return ("");
+	}
+}
+/*
+cevapSay:
+kullanýcýnýn cevap sayýsý 
+*/
+function cevapSay($id)
+{
+	global $yol1;	
+	$id = substr(temizle2($id),0,15);
+    $sql1 = "SELECT count(id) as say FROM eo_askanswer
+			Where userID = $id 
+			limit 0,1"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1){
+       return (mysql_result($result1, 0, "say"));
+    }else {
+	   return ("");
+	}
+}
+/*
 getOgrenciSiniflari2:
 kullanýcýnýn sýnýf bilgileri
 */
@@ -551,6 +589,12 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	
 	if(arkadasSay($_GET["kim"])>0)
 		echo "<strong>$metin[630] :</strong> ".arkadasSay($_GET["kim"])."<br/>";
+	
+	if(soruSay($_GET["kim"])>0)
+		echo "<strong>$metin[635] :</strong> ".soruSay($_GET["kim"])."<br/>";
+	
+	if(cevapSay($_GET["kim"])>0)
+		echo "<strong>$metin[636] :</strong> ".cevapSay($_GET["kim"])."<br/>";
 	
 	$aktivi1 = girisSayisiRank($_GET["kim"],false,true);
 	$aktivi2 = dersCalismaRank($_GET["kim"],false,true);
