@@ -1,11 +1,11 @@
 
-	eOgr - v128c, 17-12-2010
+	eOgr - v128c, 18-12-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
 ABOUT
 -----
-Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends. They can view or write their walls. Every member can share their files and homeworks. 
+Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends. They can view or write their walls. Every member can share their files and homeworks. They can ask questions or read the others answers. 
 
 Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages (rich text, images), quizes (multiple choice, classic, test) and many activities (presentation, simulation). 
 Teachers and parents can follow the students works. Teachers can add and modify lesson modules. 
@@ -42,7 +42,7 @@ Other Sites:
 	http://www.hotscripts.com/listing/eogr
 	
 Start Date: 	
-	15-11-2008 (620 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
+	15-11-2008 (630 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
 
 Designing and Building Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix

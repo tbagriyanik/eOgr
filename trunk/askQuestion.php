@@ -21,14 +21,11 @@ Lesser General Public License for more details.
 	checkLoginLang(true,true,"askQuestion.php");	
 	$seciliTema=temaBilgisi();
 	
-	if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
-
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
 	  @header("Location: error.php?error=4");
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
-	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -160,6 +157,18 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	if ($tur=="2" or $tur=="1" or $tur=="0")	{	
 	 //öðrenci, öðretmen ve yönetici girebilir
 	
+	if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
+		if($tur=="2" or soruEkleyenID($_GET['id'])==getUserID($_SESSION["usern"],$_SESSION["userp"])){
+		  $deleteSQL = sprintf("DELETE FROM eo_askquestion WHERE id=%s",
+							   GetSQLValueString($_GET['id'], "int"));
+		
+		  mysql_select_db($database_baglanti, $yol);
+		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
+		  if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
+		}
+	}
+
+	
 		if(isset($_POST["gonder"])) {
 			if ($_POST["ccode3"]==$_SESSION["ccode3"]){
 				if(!empty($_POST["soru"]) and !empty($_POST["dersID"])) {
@@ -196,15 +205,30 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   </form>
                   </p>
                   <?php
+					$currentPage = $_SERVER["PHP_SELF"];
+					
+				  	$devam = RemoveXSS($_GET['devam']);
+					
+					if($_SESSION['soruLimit']=="") 	
+						$_SESSION['soruLimit'] = 5;
+
+					$limit = RemoveXSS($_SESSION['soruLimit']);
 					$arama = str_replace("'", "`", $_GET['ara']);
 					$arama = substr(temizle($arama),0,250);
+					
+					$tumKaySay = soruSayisiGetir($arama);
+					
+					if($devam=="1" and $tumKaySay>$_SESSION['soruLimit']){ 				
+						$_SESSION['soruLimit'] += 3;
+						$limit = RemoveXSS($_SESSION['soruLimit']);
+					}
 									  
 				  	if($arama!="")
 					  	$veriSQL = "SELECT * FROM eo_askquestion WHERE question 
 							LIKE '%$arama%'
-						 	ORDER BY eklenmeTarihi DESC";
+						 	ORDER BY eklenmeTarihi DESC LIMIT 0,$limit";
 					 else
-					  	$veriSQL = "SELECT * FROM eo_askquestion ORDER BY eklenmeTarihi DESC";
+					  	$veriSQL = "SELECT * FROM eo_askquestion ORDER BY eklenmeTarihi DESC LIMIT 0,$limit";
 					 	
 					$veriSonuc = mysql_query($veriSQL,$yol1);
 					$kaySay = mysql_num_rows($veriSonuc);
@@ -217,9 +241,10 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                     Sorular
                     </caption>
                     <tr>
-                      <th width="15%">Gönderen </th>
-                      <th width="65%">Soru </th>
-                      <th width="20%">Tarih </th>
+                      <th width="15%">Gönderen</th>
+                      <th width="35%">Soru (varsa cevap sayýsý)</th>
+                      <th >Ders</th>
+                      <th width="20%">Tarih</th>
                     </tr>
                     <?php
 					$satirRenk=0;
@@ -232,7 +257,16 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                     ?>
                     <tr>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='profil.php?kim=".$satir['userID']."' rel='facebox'>".kullAdi($satir['userID'])."</a>" ;?></td>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],50)."</a> (".dersAdiGetir($satir['dersID']).")" ;?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>>
+                      <?php
+					  	if($tur=="2" or $satir['userID']==getUserID($_SESSION["usern"],$_SESSION["userp"])){
+                      ?>
+                      <a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $satir['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>&nbsp;
+                      <?php
+						}
+                      ?>
+					  <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id']) ;?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo dersAdiGetir($satir['dersID']) ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $insansi ;?></td>
                     </tr>
                     <?php
@@ -241,7 +275,9 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   </table>
                   </p>
                   <?php	
-					}
+				  if($tumKaySay>$limit)
+				 	 echo "<a href='askQuestion.php?devam=1&amp;ara=$arama'><font class=\"more\">Devamý...</font>";
+			}
 	}
 	else {
 	  @header("Location: error.php?error=9");	
@@ -251,7 +287,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                 </div>
                 <div class="cleared"></div>
               </div>
-              &nbsp;</div>
+            </div>
           </div>
           <div class="cleared"></div>
           <div class="Footer">
