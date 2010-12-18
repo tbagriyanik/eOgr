@@ -231,7 +231,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 					  	$veriSQL = "SELECT * FROM eo_askquestion ORDER BY eklenmeTarihi DESC LIMIT 0,$limit";
 					 	
 					$veriSonuc = mysql_query($veriSQL,$yol1);
-					$kaySay = mysql_num_rows($veriSonuc);
+					$kaySay = @mysql_num_rows($veriSonuc);
 					if($kaySay>0){
                   ?>
                   <p>

@@ -4420,7 +4420,7 @@ function cevapSayisiGetir($id){
 	$sql = "SELECT count(id) FROM eo_askanswer";		
 	$result = mysql_query($sql, $yol1);	
 	
-	$satir=mysql_fetch_array($result);
+	$satir=@mysql_fetch_array($result);
 	if($satir[0]>0) 
 		return ("- $satir[0]");	
 }
@@ -4436,7 +4436,7 @@ function soruSayisiGetir($arama){
 		$sql = "SELECT count(id) FROM eo_askquestion";		
 	$result = mysql_query($sql, $yol1);	
 	
-	$satir=mysql_fetch_array($result);
+	$satir=@mysql_fetch_array($result);
 	return ($satir[0]);	
 }
 /*
@@ -4449,7 +4449,7 @@ function soruEkleyenID($soruID){
 	$sql = "SELECT userID FROM eo_askquestion WHERE id=$soruID";		
 	$result = mysql_query($sql, $yol1);	
 	
-	$satir=mysql_fetch_array($result);
+	$satir=@mysql_fetch_array($result);
 	if($satir[0]!="") 
 		return ($satir[0]);		
 }

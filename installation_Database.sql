@@ -351,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `eo_friends` (
 `duvarYazisi` VARCHAR( 140 ) NOT NULL
 ) ENGINE = MYISAM COMMENT = 'arkadaslik';
 
-CREATE TABLE `eogr`.`eo_askquestion` (
+CREATE TABLE `eo_askquestion` (
 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `userID` INT NOT NULL ,
 `question` TEXT NOT NULL ,
@@ -360,14 +360,14 @@ CREATE TABLE `eogr`.`eo_askquestion` (
 `cevaplandi` INT NOT NULL
 ) ENGINE = MYISAM ;
 
-CREATE TABLE `eogr`.`eo_askanswer` (
+CREATE TABLE `eo_askanswer` (
 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `userID` INT NOT NULL ,
 `answer` TEXT NOT NULL ,
 `eklenmeTarihi` DATETIME NOT NULL 
 ) ENGINE = MYISAM ;
 
-CREATE TABLE `eogr`.`eo_askanswerrate` (
+CREATE TABLE `eo_askanswerrate` (
 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `userID` INT NOT NULL ,
 `cevapID` INT NOT NULL ,
