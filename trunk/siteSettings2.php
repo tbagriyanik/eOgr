@@ -247,7 +247,7 @@ Lesser General Public License for more details.
                         <input name="al" type="submit" id="al" value="<?php echo $metin[158]?>"/>
                       </form>
                       <h4><?php echo $metin[211]?> :</h4>
-                      <pre style="margin-left:-80px;line-height:12px;">
+                      <pre style="margin-left:-50px;line-height:12px;font-family:'Courier New', Courier, monospace">
                       eo_1okul		<?php echo getTableSize("eo_1okul"); ?> - (<?php echo $metin[212]?>)<br />
                       <strong>eo_2sinif		<?php echo getTableSize("eo_2sinif"); ?> :</strong> <?php echo yetimKayitNolar("eo_2sinif")?><br />
                       <strong>eo_3ders		<?php echo getTableSize("eo_3ders"); ?> :</strong> <?php echo yetimKayitNolar("eo_3ders")?><br />
