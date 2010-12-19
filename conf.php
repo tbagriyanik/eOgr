@@ -4526,7 +4526,7 @@ soru eklenmesi
 */
 function soruEkle($gelen){
 	$soru = str_replace("'", "`", $gelen['soru']);
-	$soruMetni = substr(temizle($soru),0,250);
+	$soruMetni = substr(temizle($soru),0,300);//soru çok uzun ise
 	$datem	=	date("Y-n-j H:i:s");
 	$gonderenID	= getUserID($_SESSION["usern"],$_SESSION["userp"]);
 
@@ -4562,7 +4562,7 @@ sorulan sorunun cevap adedi
 */
 function cevapSayisiGetir($id){
 	global $yol1;	
-	$sql = "SELECT count(id) FROM eo_askanswer";		
+	$sql = "SELECT count(id) FROM eo_askanswer WHERE soruID=$id";		
 	$result = mysql_query($sql, $yol1);	
 	
 	$satir=@mysql_fetch_array($result);

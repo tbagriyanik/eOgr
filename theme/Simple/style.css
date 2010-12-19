@@ -4,7 +4,8 @@
 body {
 	margin: 2px;
 	padding: 0;
-	background-color: #eee;
+	background:url(images/bg.png) repeat-x  top left fixed ;
+	background-color: #C1C3CC;
 }
 .Main {
 	position: absolute;

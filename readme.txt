@@ -1,5 +1,5 @@
 
-	eOgr - v128c, 18-12-2010
+	eOgr - v128d, 19-12-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 

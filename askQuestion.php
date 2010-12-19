@@ -214,8 +214,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                     <input type="submit" name="gonder" value="Gönder" />
                   </form>
                   </p>
-                  <p>
-                  
+                  <p>                  
                   <form action="askQuestion.php" method="get" name="soruAra">
                     Arama :
                     <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS($_GET["ara"]);?>"  />
@@ -252,6 +251,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 					$kaySay = @mysql_num_rows($veriSonuc);
 					if($kaySay>0){
                   ?>
+                  
                   <p>
                   
                   <table width="100%" cellspacing="0" cellpadding="2">
@@ -260,7 +260,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                     </caption>
                     <tr>
                       <th width="15%">Gönderen</th>
-                      <th width="35%">Soru (varsa cevap sayýsý)</th>
+                      <th width="35%">Soru (cevap sayýsý)</th>
                       <th >Ders</th>
                       <th width="20%">Tarih</th>
                     </tr>
@@ -275,15 +275,14 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                     ?>
                     <tr>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo "<a href='profil.php?kim=".$satir['userID']."' rel='facebox'>".(kullAdi($satir['userID'])==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":kullAdi($satir['userID']))."</a>" ;?></td>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>>
-                      <?php
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php
 					  	if($tur=="2" or $satir['userID']==getUserID($_SESSION["usern"],$_SESSION["userp"])){
                       ?>
-                      <a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $satir['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>&nbsp;
-                      <?php
+                        <a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $satir['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>&nbsp;
+                        <?php
 						}
                       ?>
-					  <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id']) ;?></td>
+                        <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id']) ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo (dersAdiGetir($satir['dersID'])==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":dersAdiGetir($satir['dersID'])) ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $insansi ;?></td>
                     </tr>
