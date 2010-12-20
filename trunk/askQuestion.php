@@ -152,7 +152,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
             <div class="Post-body">
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[628]?> </span> </h2>
-                <div class="PostContent"><br />
+                <div class="PostContent">
                   <?php
 	if ($tur=="2" or $tur=="1" or $tur=="0")	{	
 	 //öðrenci, öðretmen ve yönetici girebilir
@@ -201,20 +201,20 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 		$ccode3 = newPassw();
 		$_SESSION["ccode3"]=$ccode3;	
 ?>
+                  <fieldset>
+                    <legend>Sorunuz</legend>
+                    <form action="askQuestion.php" method="post" name="soruGonder">
+                      <textarea cols="50" rows="5" name="soru" style="height:93px;"></textarea>
+                      <select name="dersID" size="7" style="height:100px;">
+                        <option value="" selected="selected">Seçiniz</option>
+                        <?php echo dersAdlariOption();?>
+                      </select>
+                      <input type="hidden" name="ccode3" value="<?php echo $ccode3 ?>" />
+                      <input type="submit" name="gonder" value="Gönder" />
+                    </form>
+                  </fieldset>
                   <p>
                   
-                  <form action="askQuestion.php" method="post" name="soruGonder">
-                    Sorunuz
-                    <textarea cols="50" rows="5" name="soru" style="height:93px;"></textarea>
-                    <select name="dersID" size="7" style="height:100px;">
-                      <option value="" selected="selected">Seçiniz</option>
-                      <?php echo dersAdlariOption();?>
-                    </select>
-                    <input type="hidden" name="ccode3" value="<?php echo $ccode3 ?>" />
-                    <input type="submit" name="gonder" value="Gönder" />
-                  </form>
-                  </p>
-                  <p>                  
                   <form action="askQuestion.php" method="get" name="soruAra">
                     Arama :
                     <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS($_GET["ara"]);?>"  />
@@ -251,7 +251,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 					$kaySay = @mysql_num_rows($veriSonuc);
 					if($kaySay>0){
                   ?>
-                  
                   <p>
                   
                   <table width="100%" cellspacing="0" cellpadding="2">
@@ -282,7 +281,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                         <?php
 						}
                       ?>
-                        <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id']) ;?></td>
+                        <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id'])."" ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo (dersAdiGetir($satir['dersID'])==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":dersAdiGetir($satir['dersID'])) ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $insansi ;?></td>
                     </tr>
@@ -293,7 +292,8 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   </p>
                   <?php	
 				  if($tumKaySay>$limit)
-				 	 echo "<a href='askQuestion.php?devam=1&amp;ara=$arama'><font class=\"more\">Devamý...</font>";
+				 	 echo "<a href='askQuestion.php?devam=1&amp;ara=$arama'><font class=\"more\">Devamý...</font></a>";
+					 echo "<p>$tumKaySay soru var.</p>";
 			}
 	}
 	else {
