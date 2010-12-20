@@ -1,0 +1,107 @@
+body {
+	margin: 5px;
+}
+.temizle {
+	clear: both;
+}
+#kapsayici {
+	padding: 5px;
+	width: 95%;
+	margin: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../img/soruArka.gif);
+	background-repeat: repeat-x;
+	border-left-width: 7px;
+	border-left-style: solid;
+	border-left-color: #C00;
+}
+#kapsayici #soruMetni {
+	padding: 5px;
+	float: left;
+	width: 71%;
+}
+#kapsayici #soruSoran {
+	padding: 5px;
+	float: right;
+	width: 25%;
+}
+#kapsayici #dersAdi {
+	padding: 5px;
+	float: left;
+	width: 71%;
+}
+#kapsayici #soruTarihi {
+	float: right;
+	width: 25%;
+}
+.kapsayiciCevap {
+	padding: 5px;
+	width: 95%;
+	margin: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	border-left-width: 7px;
+	border-left-style: solid;
+	border-left-color: #F93;
+}
+.kapsayiciCevap .cevapMetni {
+	padding: 5px;
+	float: left;
+	width: 60%;
+}
+.kapsayiciCevap .cevaplayan {
+	padding: 5px;
+	float: right;
+	width: 25%;
+}
+.kapsayiciCevap .puanVer {
+	padding: 0px;
+	float: left;
+	width: auto;
+}
+.kapsayiciCevap .puanVer .evetOy {
+	background-image: url(../img/elOy.png);
+	background-repeat: no-repeat;
+	background-position: 0px -49px ;
+	height: 35px;
+	width: 35px;
+	display: block;
+	margin-bottom:3px;
+}
+.kapsayiciCevap .puanVer .evetOy:hover {
+	background-image: url(../img/elOy.png);
+	background-repeat: no-repeat;
+	background-position: -41px -49px ;
+	height: 35px;
+	width: 35px;
+	display: block;
+	margin-bottom:3px;
+}
+.kapsayiciCevap .puanVer .hayirOy {
+	background-image: url(../img/elOy.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 35px;
+	width: 35px;
+	display: block;
+}
+.kapsayiciCevap .puanVer .hayirOy:hover {
+	background-image: url(../img/elOy.png);
+	background-repeat: no-repeat;
+	background-position: -41px 0px;
+	height: 35px;
+	width: 35px;
+	display: block;
+}
+
+.kapsayiciCevap .puanlama {
+	padding: 5px;
+	float: left;
+	width: 71%;
+}
+.kapsayiciCevap .cevapTarihi {
+	padding: 5px;
+	float: right;
+	width: 25%;
+}

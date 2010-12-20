@@ -4567,7 +4567,7 @@ function cevapSayisiGetir($id){
 	
 	$satir=@mysql_fetch_array($result);
 	if($satir[0]>0) 
-		return ("- $satir[0]");	
+		return "($satir[0])";	
 }
 /*
 soruSayisiGetir:

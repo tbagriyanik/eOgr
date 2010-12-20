@@ -42,16 +42,8 @@ Lesser General Public License for more details.
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="lib/facebox/facebox.js"></script>
-<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-        
-      }) 
-    })
-</script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<link href="theme/cevap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <?php
@@ -63,6 +55,35 @@ Lesser General Public License for more details.
 	 //öðrenci, öðretmen ve yönetici girebilir
 	
 ?>
+<div id="kapsayici">
+  <div id="soruMetni">
+   asdasdasdasdasd
+      asdas
+  sdfsdfsdflkemfþkertkermtþkermtekrmtekrmt ekrtmekm tekrtmerkotmeroktmertkmeroktmerotkmeoktmerokt meortkmerotk meroktmerotkmerotk mertkmer tkmertkmertkm erkotmerkt mertm eorktmeokrtmeorktm eorktm erktm ekrtmeokrtm eokrtmerktme okrtmeorkmt eoprktm eorktmeokrtm erok tmerotkmeorktmertkmertkmerktmero ktmertk mwertk mtmeroktmertkmeroktmerotkmeoktmerokt meortkmerotk meroktmerotkmerotk mertkmer tkmertkmertk</div>
+  <div id="soruSoran">soran</div>
+  <div class="temizle"></div>
+  <div id="dersAdi">
+    ders
+  </div>
+  <div id="soruTarihi">tarih</div>
+  <div class="temizle"></div>
+</div>
+<h4>Cevaplar</h4>
+<div class="kapsayiciCevap">
+  <div class="cevapMetni">
+    asdasdasdasdasd
+      asdasasd asdasdasda
+    asd 
+  </div>
+  <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
+  <div class="cevaplayan">cev</div>
+  <div class="temizle"></div>
+  <div class="puanlama">
+    puan
+  </div>
+  <div class="cevapTarihi">tarih</div>
+  <div class="temizle"></div>
+</div>
 <?php
 	}
 	else {
