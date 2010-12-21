@@ -120,7 +120,7 @@ body {
 	font-size: 12px;
 	text-align: right;
 }
-.kapsayiciEkle {
+#kapsayiciEkle {
 	padding: 5px;
 	width: 755px;
 	margin: 10px;
