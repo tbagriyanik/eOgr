@@ -41,12 +41,63 @@ Lesser General Public License for more details.
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link href="theme/cevap.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+/*
+getHTTPObject:
+Ajax nesnesinin hazýrlanmasý
+*/
+function getHTTPObject(){
+  var xmlhttp = null;
+  if (window.XMLHttpRequest) {
+   xmlhttp = new XMLHttpRequest();
+   	    if (xmlhttp.overrideMimeType) {
+            xmlhttp.overrideMimeType('text/xml; charset=iso-8859-9');
+         }
+  } else if(window.ActiveXObject) {
+   try {
+    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+   } catch (e) {
+    try {
+     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (e) {
+	 alert("Your browser does not support AJAX.");
+     xmlhttp = null;
+    }
+   }
+  }
+  return xmlhttp;		 
+}
+/*
+setOutputOda:
+sohbet odasýnýn iþlemi
+*/  
+function setOutputOda(){
+    if(httpObject.readyState == 4)
+	 if(httpObject.status == 200 || httpObject.status == 304){
+		document.getElementById('kapsayiciEkle').innerHTML = (httpObject.responseText);
+    }
+}
+/*
+cevapKaydet:
+soruya cevap göndermek
+*/
+function cevapKaydet(icerik, gonderen, soruID){    
+    httpObject = getHTTPObject();
+    if (httpObject != null) {
+        httpObject.open("POST", "addCevap.php", true);
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+  		httpObject.send('cevap='+encodeURIComponent(icerik) + '&gonderen=' + encodeURIComponent(gonderen) + '&soruID=' + encodeURIComponent(soruID) );	
+		httpObject.onreadystatechange = setOutputOda;	
+    }
+}
+</script>
 </head>
 <body>
 <?php
 		$adi	=temizle(substr($_SESSION["usern"],0,15));
 		$par	=temizle($_SESSION["userp"]);
-		$tur=checkRealUser($adi,$par);
+		$tur	=checkRealUser($adi,$par);
+		$gecerliKullID = getUserID2($adi);
 
 	if ($tur=="2" or $tur=="1" or $tur=="0")	{	
 	 //öðrenci, öðretmen ve yönetici girebilir
@@ -85,7 +136,14 @@ Lesser General Public License for more details.
   <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
   <div class="cevaplayan"><?php echo getUserName($cevap_bilgileri["userID"])?></div>
   <div class="temizle"></div>
-  <div class="puanlama"> puan </div>
+  <div class="puanlama"><?php
+	  if($tur=="2" or $cevap_bilgileri["userID"]==$gecerliKullID){	  
+  ?>
+  <a href="#" onclick="javascript:return false;"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>&nbsp;
+  <?php
+	  }
+  ?>
+   puan </div>
   <div class="cevapTarihi">
     <?php 
   		$humanRelativeDate = new HumanRelativeDate();
@@ -100,11 +158,13 @@ Lesser General Public License for more details.
 		}else
 		echo "Þimdilik cevap verilmemiþtir.";			
 ?>
-<div class="kapsayiciEkle">
+<div id="kapsayiciEkle">
   <form>
     Sizin Cevabýnýz<br />
-    <textarea name="cevabim" cols="50" rows="5" style="background-color:#FFF;border:thin solid #ccc;" ></textarea>
-    <button>Gönder</button>
+    <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:thin solid #ccc;" ></textarea>
+    <input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick=" cevapKaydet(document.getElementById('cevabim').value.substr(0,250),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
+   //$('#kapsayiciEkle').hide('slow');
+   return false;">
   </form>
 </div>
 <?php			 
