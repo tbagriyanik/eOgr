@@ -1,59 +1,71 @@
 body {
 	margin: 5px;
+	background-color: #eee;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .temizle {
 	clear: both;
 }
 #kapsayici {
 	padding: 5px;
-	width: 95%;
+	width: 755px;
 	margin: 10px;
 	margin-right: auto;
 	margin-left: auto;
-	background-image: url(../img/soruArka.gif);
-	background-repeat: repeat-x;
 	border-left-width: 7px;
 	border-left-style: solid;
 	border-left-color: #C00;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #C00;
 }
 #kapsayici #soruMetni {
 	padding: 5px;
 	float: left;
 	width: 71%;
+	font-size:larger;
 }
 #kapsayici #soruSoran {
 	padding: 5px;
 	float: right;
 	width: 25%;
+	text-align: right;
 }
 #kapsayici #dersAdi {
 	padding: 5px;
 	float: left;
 	width: 71%;
+	font-size: 12px;
 }
 #kapsayici #soruTarihi {
 	float: right;
 	width: 25%;
+	font-size: 12px;
+	text-align: right;
 }
 .kapsayiciCevap {
 	padding: 5px;
-	width: 95%;
+	width: 755px;
 	margin: 10px;
 	margin-right: auto;
 	margin-left: auto;
 	border-left-width: 7px;
 	border-left-style: solid;
 	border-left-color: #F93;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #F93;
 }
 .kapsayiciCevap .cevapMetni {
 	padding: 5px;
 	float: left;
-	width: 60%;
+	width: 65%;
 }
 .kapsayiciCevap .cevaplayan {
 	padding: 5px;
 	float: right;
 	width: 25%;
+	text-align: right;
 }
 .kapsayiciCevap .puanVer {
 	padding: 0px;
@@ -99,9 +111,25 @@ body {
 	padding: 5px;
 	float: left;
 	width: 71%;
+	font-size: 12px;
 }
 .kapsayiciCevap .cevapTarihi {
 	padding: 5px;
 	float: right;
 	width: 25%;
+	font-size: 12px;
+	text-align: right;
+}
+.kapsayiciEkle {
+	padding: 5px;
+	width: 755px;
+	margin: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	border-left-width: 7px;
+	border-left-style: solid;
+	border-left-color: #00F;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #00F;
 }

@@ -38,9 +38,6 @@ Lesser General Public License for more details.
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link href="theme/cevap.css" rel="stylesheet" type="text/css" />
@@ -53,38 +50,64 @@ Lesser General Public License for more details.
 
 	if ($tur=="2" or $tur=="1" or $tur=="0")	{	
 	 //öðrenci, öðretmen ve yönetici girebilir
-	
+	 $gelenID = (int)RemoveXSS($_GET["oku"]);
+	 if(!($gelenID>0)) die("?");
+	 $srg = "select * from eo_askquestion where id=$gelenID limit 0,1";
+	 $sorgu = mysql_query($srg);
+	 $soru_bilgileri = mysql_fetch_array($sorgu);	
 ?>
 <div id="kapsayici">
-  <div id="soruMetni">
-   asdasdasdasdasd
-      asdas
-  sdfsdfsdflkemfþkertkermtþkermtekrmtekrmt ekrtmekm tekrtmerkotmeroktmertkmeroktmerotkmeoktmerokt meortkmerotk meroktmerotkmerotk mertkmer tkmertkmertkm erkotmerkt mertm eorktmeokrtmeorktm eorktm erktm ekrtmeokrtm eokrtmerktme okrtmeorkmt eoprktm eorktmeokrtm erok tmerotkmeorktmertkmertkmerktmero ktmertk mwertk mtmeroktmertkmeroktmerotkmeoktmerokt meortkmerotk meroktmerotkmerotk mertkmer tkmertkmertk</div>
-  <div id="soruSoran">soran</div>
+  <div id="soruMetni"><?php echo $soru_bilgileri["question"]?></div>
+  <div id="soruSoran"><?php echo getUserName($soru_bilgileri["userID"])?></div>
   <div class="temizle"></div>
-  <div id="dersAdi">
-    ders
+  <div id="dersAdi"><?php echo getDersAdi($soru_bilgileri["dersID"])?></div>
+  <div id="soruTarihi">
+    <?php 
+  		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate($soru_bilgileri["eklenmeTarihi"]);
+		echo $insansi
+		?>
   </div>
-  <div id="soruTarihi">tarih</div>
-  <div class="temizle"></div>
-</div>
-<h4>Cevaplar</h4>
-<div class="kapsayiciCevap">
-  <div class="cevapMetni">
-    asdasdasdasdasd
-      asdasasd asdasdasda
-    asd 
-  </div>
-  <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
-  <div class="cevaplayan">cev</div>
-  <div class="temizle"></div>
-  <div class="puanlama">
-    puan
-  </div>
-  <div class="cevapTarihi">tarih</div>
   <div class="temizle"></div>
 </div>
 <?php
+	 $soruID = $soru_bilgileri["id"];	
+	 $srgCev = "select * from eo_askanswer where soruID=$soruID order by eklenmeTarihi DESC";
+	 $sorguCev = mysql_query($srgCev);
+	if(@mysql_num_rows($sorguCev)>0){
+?>
+<h4>Cevaplar</h4>
+<?php 	 
+	while($cevap_bilgileri = mysql_fetch_array($sorguCev)){		
+?>
+<div class="kapsayiciCevap">
+  <div class="cevapMetni"><?php echo $cevap_bilgileri["answer"]?></div>
+  <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
+  <div class="cevaplayan"><?php echo getUserName($cevap_bilgileri["userID"])?></div>
+  <div class="temizle"></div>
+  <div class="puanlama"> puan </div>
+  <div class="cevapTarihi">
+    <?php 
+  		$humanRelativeDate = new HumanRelativeDate();
+		$insansi = $humanRelativeDate->getTextForSQLDate($cevap_bilgileri["eklenmeTarihi"]);
+		echo $insansi
+		?>
+  </div>
+  <div class="temizle"></div>
+</div>
+<?php
+			 }//while
+		}else
+		echo "Þimdilik cevap verilmemiþtir.";			
+?>
+<div class="kapsayiciEkle">
+  <form>
+    Sizin Cevabýnýz<br />
+    <textarea name="cevabim" cols="50" rows="5" style="background-color:#FFF;border:thin solid #ccc;" ></textarea>
+    <button>Gönder</button>
+  </form>
+</div>
+<?php			 
 	}
 	else {
 	  @header("Location: error.php?error=9");	

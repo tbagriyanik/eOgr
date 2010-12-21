@@ -204,7 +204,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   <fieldset>
                     <legend>Sorunuz</legend>
                     <form action="askQuestion.php" method="post" name="soruGonder">
-                      <textarea cols="50" rows="5" name="soru" style="height:93px;"></textarea>
+                      <textarea cols="50" rows="5" name="soru" style="height:93px;border:thin solid #ccc;"></textarea>
                       <select name="dersID" size="7" style="height:100px;">
                         <option value="" selected="selected">Seçiniz</option>
                         <?php echo dersAdlariOption();?>
