@@ -98,6 +98,32 @@ function cevapKaydet(icerik, gonderen, soruID){
 		httpObject.onreadystatechange = setOutputOda;	
     }
 }
+/*
+setOutputOda2:
+sohbet odasýnýn iþlemi
+*/  
+function setOutputOda2(){
+    if(httpObject2.readyState == 4)
+	 if(httpObject2.status == 200 || httpObject2.status == 304){
+		 if(trim(httpObject2.responseText) != "")
+			alert(httpObject2.responseText);
+    }
+}
+/*
+cevapSil:
+cevap silme
+*/
+function cevapSil(id, gonderen){ 
+ if(confirm("Cevap silinsin mi?")==1){   
+    httpObject2 = getHTTPObject();
+    if (httpObject2 != null) {
+        httpObject2.open("POST", "delCevap.php", true);
+		httpObject2.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+  		httpObject2.send('cevap='+encodeURIComponent(id) + '&gonderen=' + encodeURIComponent(gonderen) );	
+		httpObject2.onreadystatechange = setOutputOda2;	
+    }
+ }
+}
 </script>
 </head>
 <body>
@@ -116,7 +142,9 @@ function cevapKaydet(icerik, gonderen, soruID){
 	 $soru_bilgileri = mysql_fetch_array($sorgu);	
 ?>
 <div id="kapsayici">
-  <div id="soruMetni"><pre><?php echo $soru_bilgileri["question"]?></pre></div>
+  <div id="soruMetni">
+    <pre><?php echo $soru_bilgileri["question"]?></pre>
+  </div>
   <div id="soruSoran"><?php echo getUserName($soru_bilgileri["userID"])?></div>
   <div class="temizle"></div>
   <div id="dersAdi"><?php echo getDersAdi($soru_bilgileri["dersID"])?></div>
@@ -140,18 +168,21 @@ function cevapKaydet(icerik, gonderen, soruID){
 	while($cevap_bilgileri = mysql_fetch_array($sorguCev)){		
 ?>
 <div class="kapsayiciCevap">
-  <div class="cevapMetni"><pre><?php echo $cevap_bilgileri["answer"]?></pre></div>
+  <div class="cevapMetni">
+    <pre><?php echo $cevap_bilgileri["answer"]?></pre>
+  </div>
   <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
   <div class="cevaplayan"><?php echo getUserName($cevap_bilgileri["userID"])?></div>
   <div class="temizle"></div>
-  <div class="puanlama"><?php
+  <div class="puanlama">
+    <?php
 	  if($tur=="2" or $cevap_bilgileri["userID"]==$gecerliKullID){	  
   ?>
-  <a href="#" onclick="javascript:return false;"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>&nbsp;
-  <?php
+    <a href="#" onclick="javascript:cevapSil(<?php echo $cevap_bilgileri["id"]?>,<?php echo $gecerliKullID?>);return false;"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a>&nbsp;
+    <?php
 	  }
   ?>
-   puan </div>
+    puan </div>
   <div class="cevapTarihi">
     <?php 
   		$humanRelativeDate = new HumanRelativeDate();
@@ -164,7 +195,7 @@ function cevapKaydet(icerik, gonderen, soruID){
 <?php
 			 }//while
 		}else
-		echo "Þimdilik cevap verilmemiþtir.";			
+		echo "<strong>Þimdilik cevap verilmemiþtir.</strong>";			
 ?>
 <div id="kapsayiciEkle">
   <form>
