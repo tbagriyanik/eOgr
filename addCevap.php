@@ -72,7 +72,9 @@ kullanýcý cevap yazýyor
 function cevapYaz($cevapYazisi, $userID, $soruID){
 	global $yol1;				
 		if(!empty($userID) && !empty($soruID)) {
-			$cevapYazisi = strip_tags(iconv( "UTF-8","ISO-8859-9",$cevapYazisi));
+			$cevapYazisi = substr(strip_tags(iconv( "UTF-8","ISO-8859-9",$cevapYazisi)),0,250);
+			$cevapYazisi = str_replace("'", "`",$cevapYazisi);
+			$cevapYazisi = RemoveXSS($cevapYazisi);
 			$dateN = date("Y-m-d H:i:s");
 			
 			$sql2 = "INSERT INTO eo_askanswer 
@@ -82,9 +84,9 @@ function cevapYaz($cevapYazisi, $userID, $soruID){
 					"; 
 
 			$result2 = mysql_query($sql2, $yol1); 			
-			if($result2) echo "Cevabýnýz eklendi."; else echo "Cevabýnýz eklenemedi!";
+			if($result2) echo "<strong>Cevabýnýz eklendi.</strong>"; else echo "<strong>Cevabýnýz eklenemedi!</strong>";
 		 }else
-		 echo "Cevabýnýz eklenemiyor!";
+		 echo "<strong>Cevabýnýz eklenemiyor!</strong>";
 }
 
 $cevapGel 	= str_replace("'", "`", $_POST['cevap']);
@@ -92,6 +94,7 @@ $gonderen 	= $_POST['gonderen'];
 $soruID 	= $_POST['soruID'];
 
 if (isset($_POST['cevap'])        	
+		&& ($_POST['cevap']<>"")        	
 		&& getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="") 
 	cevapYaz(RemoveXSS($cevapGel),RemoveXSS($gonderen),RemoveXSS($soruID) );
 ?>

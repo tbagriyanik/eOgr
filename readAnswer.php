@@ -35,7 +35,6 @@ Lesser General Public License for more details.
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr</title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
@@ -68,13 +67,22 @@ function getHTTPObject(){
   return xmlhttp;		 
 }
 /*
+trim:
+sað ve soldaki boþluklarý siler
+*/
+function trim(stringToTrim)
+{
+	return stringToTrim.replace(/^\s+|\s+$/g,"");
+}
+/*
 setOutputOda:
 sohbet odasýnýn iþlemi
 */  
 function setOutputOda(){
     if(httpObject.readyState == 4)
 	 if(httpObject.status == 200 || httpObject.status == 304){
-		document.getElementById('kapsayiciEkle').innerHTML = (httpObject.responseText);
+		 if(trim(httpObject.responseText) != "")
+			document.getElementById('kapsayiciEkle').innerHTML = (httpObject.responseText);
     }
 }
 /*
@@ -108,7 +116,7 @@ function cevapKaydet(icerik, gonderen, soruID){
 	 $soru_bilgileri = mysql_fetch_array($sorgu);	
 ?>
 <div id="kapsayici">
-  <div id="soruMetni"><?php echo $soru_bilgileri["question"]?></div>
+  <div id="soruMetni"><pre><?php echo $soru_bilgileri["question"]?></pre></div>
   <div id="soruSoran"><?php echo getUserName($soru_bilgileri["userID"])?></div>
   <div class="temizle"></div>
   <div id="dersAdi"><?php echo getDersAdi($soru_bilgileri["dersID"])?></div>
@@ -132,7 +140,7 @@ function cevapKaydet(icerik, gonderen, soruID){
 	while($cevap_bilgileri = mysql_fetch_array($sorguCev)){		
 ?>
 <div class="kapsayiciCevap">
-  <div class="cevapMetni"><?php echo $cevap_bilgileri["answer"]?></div>
+  <div class="cevapMetni"><pre><?php echo $cevap_bilgileri["answer"]?></pre></div>
   <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
   <div class="cevaplayan"><?php echo getUserName($cevap_bilgileri["userID"])?></div>
   <div class="temizle"></div>
@@ -160,9 +168,9 @@ function cevapKaydet(icerik, gonderen, soruID){
 ?>
 <div id="kapsayiciEkle">
   <form>
-    Sizin Cevabýnýz<br />
-    <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:thin solid #ccc;" ></textarea>
-    <input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick=" cevapKaydet(document.getElementById('cevabim').value.substr(0,250),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
+    <strong>Sizin Cevabýnýz</strong><br />
+    <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:1px solid #000;" ></textarea>
+    <input type="image" width="25" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick=" cevapKaydet(document.getElementById('cevabim').value.substr(0,250),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
    //$('#kapsayiciEkle').hide('slow');
    return false;">
   </form>
