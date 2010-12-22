@@ -17,7 +17,7 @@ Lesser General Public License for more details.
 	header("Content-Type: text/html; charset=iso-8859-9"); 
 	
 	require "conf.php";		
-	checkLoginLang(true,true,"addCevap.php");
+	checkLoginLang(true,true,"delCevap.php");
 	//check_source();
 /*
 baglan2: parametresiz, 
@@ -65,38 +65,63 @@ function getUserIDcomment($usernam, $passwor)
 	}
 }
 /*
-cevapYaz: cevapYazizi, kullanýcý ID
-kullanýcý cevap yazýyor
+cevapSahibi: 
+kullanýcý kendi cevabýný silebilir
+*/
+function cevapSahibi($cevapID)
+{
+	global $yol1;
+	
+	$usernam = substr(temizle($usernam),0,15);
+    $sql1 = "SELECT userID FROM eo_askanswer 
+			where id='".temizle($cevapID)."'  limit 0,1"; 	
+
+    $result1 = mysql_query($sql1, $yol1); 
+
+    if ($result1 && mysql_numrows($result1) == 1)
+    {
+       return (mysql_result($result1, 0, "userID"));
+    }else {
+	   return ("");
+	}
+}
+/*
+cevapSil: cevap ID, kullanýcý ID
+kullanýcý cevap siliyor
 */
 
-function cevapYaz($cevapYazisi, $userID, $soruID){
-	global $yol1;				
-		if(!empty($userID) && !empty($soruID)) {
-			$cevapYazisi = substr(strip_tags(iconv( "UTF-8","ISO-8859-9",$cevapYazisi)),0,250);
-			$cevapYazisi = str_replace("'", "`",$cevapYazisi);
-			$cevapYazisi = RemoveXSS($cevapYazisi);
-			$dateN = date("Y-m-d H:i:s");
-			
-			$sql2 = "INSERT INTO eo_askanswer 
-					(answer,userID,soruID,eklenmeTarihi)
-			 		VALUES
-					('$cevapYazisi','$userID', '$soruID', '$dateN')
-					"; 
+function cevapSil($cevapID, $userID){
+	global $yol1,$tur;				
+		if(!empty($userID) && !empty($cevapID)) {
+  		 if($tur=="2" or cevapSahibi($cevapID)==$userID){
+			$sql2 = "DELETE FROM eo_askanswerrate 
+					 WHERE cevapID = $cevapID"; 
 
-			$result2 = mysql_query($sql2, $yol1); 			
-			if($result2) echo "<strong>Cevabýnýz eklendi.</strong>"; else echo "<strong>Cevabýnýz eklenemedi!</strong>";
-		 }else
-		 echo "<strong>Cevabýnýz eklenemiyor!</strong>";
+			$result2 = mysql_query($sql2, $yol1); 
+						
+			$sql2 = "DELETE FROM eo_askanswer 
+					 WHERE id = $cevapID"; 
+
+			$result2 = mysql_query($sql2, $yol1); 
+						
+			if($result2) echo "Cevap ve oylar silindi.";
+					 else echo "Cevap ve oylar silinemedi!";
+		 }
+		}else
+		     echo "Cevap ve oylar silinemiyor!";
 }
 
-$cevapGel 	= str_replace("'", "`", $_POST['cevap']);
-$gonderen 	= $_POST['gonderen'];
-$soruID 	= $_POST['soruID'];
+$adi	=temizle(substr($_SESSION["usern"],0,15));
+$par	=temizle($_SESSION["userp"]);
+$tur	=checkRealUser($adi,$par);
+
+$gonderen 	= RemoveXSS($_POST['gonderen']);
+$cevapID 	= RemoveXSS($_POST['cevap']);
 $gonderenID	= getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]);
 
 if (isset($_POST['cevap'])        	
 		&& ($_POST['cevap']<>"")        	
 		&& $gonderenID!=""
 		&& $gonderenID==$gonderen) 
-	cevapYaz(RemoveXSS($cevapGel),RemoveXSS($gonderen),RemoveXSS($soruID) );
+	cevapSil($cevapID,$gonderen);
 ?>
