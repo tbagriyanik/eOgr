@@ -167,17 +167,17 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 								)",
 							   GetSQLValueString($_GET['id'], "int"));		
 		  $Result1 = mysql_query($deleteSQL1, $yol) or die(mysql_error());
-		  if ($Result1) $delSonuc = "Cevap oylarý silindi,";
+		  
 		  $deleteSQL2 = sprintf("DELETE FROM eo_askanswer WHERE soruID in
 								  (select id from eo_askquestion where id=%s)
 								",
 							   GetSQLValueString($_GET['id'], "int"));		
 		  $Result2 = mysql_query($deleteSQL2, $yol) or die(mysql_error());
-		  if ($Result2)  $delSonuc .= " cevap bilgileri silindi,";
+		  
 		  $deleteSQL3 = sprintf("DELETE FROM eo_askquestion WHERE id=%s",
 							   GetSQLValueString($_GET['id'], "int"));		
 		  $Result3 = mysql_query($deleteSQL3, $yol) or die(mysql_error());
-		  if ($Result3) $delSonuc ="<font id='uyari'>$delSonuc soru bilgisi silindi</font>";
+		  if ($Result3) $delSonuc ="<font id='uyari'>Soru ve cevaplarý silindi</font>";
 		  trackUser($currentFile,"success,DelQue",$adi);
 		  echo $delSonuc;
 		}
@@ -204,7 +204,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   <fieldset>
                     <legend>Sorunuz</legend>
                     <form action="askQuestion.php" method="post" name="soruGonder">
-                      <textarea cols="50" rows="5" name="soru" style="height:93px;border:thin solid #ccc;"></textarea>
+                      <textarea cols="50" rows="5" name="soru" style="height:93px;border:1px solid #000;"></textarea>
                       <select name="dersID" size="7" style="height:100px;">
                         <option value="" selected="selected">Seçiniz</option>
                         <?php echo dersAdlariOption();?>

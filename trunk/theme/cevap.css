@@ -1,7 +1,7 @@
 body {
 	margin: 5px;
-	background-color: #eee;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	background-color: #C1C3CC;
 }
 .temizle {
 	clear: both;
@@ -12,12 +12,29 @@ body {
 	margin: 10px;
 	margin-right: auto;
 	margin-left: auto;
-	border-left-width: 7px;
-	border-left-style: solid;
-	border-left-color: #C00;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #C00;
+	border: 1px dotted;
+	border-left: 7px solid;
+	border-color: #90F;
+}
+#kapsayiciEkle {
+	padding: 5px;
+	width: 755px;
+	margin: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px dotted;
+	border-left: 7px solid;
+	border-color: #309;
+}
+.kapsayiciCevap {
+	padding: 5px;
+	width: 755px;
+	margin: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px dotted;
+	border-left: 7px solid;
+	border-color: #669;
 }
 #kapsayici #soruMetni {
 	padding: 5px;
@@ -43,19 +60,6 @@ body {
 	font-size: 12px;
 	text-align: right;
 }
-.kapsayiciCevap {
-	padding: 5px;
-	width: 755px;
-	margin: 10px;
-	margin-right: auto;
-	margin-left: auto;
-	border-left-width: 7px;
-	border-left-style: solid;
-	border-left-color: #F93;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #F93;
-}
 .kapsayiciCevap .cevapMetni {
 	padding: 5px;
 	float: left;
@@ -71,11 +75,12 @@ body {
 	padding: 0px;
 	float: left;
 	width: auto;
+	margin: 10px;
 }
 .kapsayiciCevap .puanVer .evetOy {
 	background-image: url(../img/elOy.png);
 	background-repeat: no-repeat;
-	background-position: 0px -49px ;
+	background-position: 0px -49px;
 	height: 35px;
 	width: 35px;
 	display: block;
@@ -84,7 +89,7 @@ body {
 .kapsayiciCevap .puanVer .evetOy:hover {
 	background-image: url(../img/elOy.png);
 	background-repeat: no-repeat;
-	background-position: -41px -49px ;
+	background-position: -41px -49px;
 	height: 35px;
 	width: 35px;
 	display: block;
@@ -106,11 +111,10 @@ body {
 	width: 35px;
 	display: block;
 }
-
 .kapsayiciCevap .puanlama {
 	padding: 5px;
 	float: left;
-	width: 71%;
+	width: 64%;
 	font-size: 12px;
 }
 .kapsayiciCevap .cevapTarihi {
@@ -120,16 +124,15 @@ body {
 	font-size: 12px;
 	text-align: right;
 }
-#kapsayiciEkle {
-	padding: 5px;
-	width: 755px;
-	margin: 10px;
-	margin-right: auto;
-	margin-left: auto;
-	border-left-width: 7px;
-	border-left-style: solid;
-	border-left-color: #00F;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #00F;
+pre {
+	overflow-x: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	/* width: 99%; */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+	font-family:"Courier New", Courier, monospace;
+	font-size:16px;
+	color:#009;
 }
