@@ -4599,6 +4599,30 @@ function soruEkleyenID($soruID){
 		return ($satir[0]);		
 }
 /*
+cevapOyToplami:
+cevap için verilen oylarýn toplamý
+*/
+function cevapOyToplami($cevapID){
+	global $yol1;
+	$cevapID = (int) temizle($cevapID);
+	$sonuc="";
+	$sql = "SELECT count(id) as say FROM eo_askanswerrate 
+		WHERE cevapID='$cevapID' and degeri='1'";		
+	$result = mysql_query($sql, $yol1);		
+	$satir=@mysql_fetch_array($result);
+	if($satir[0]>0) 
+		$sonuc = $satir[0]." <span class='dogruOy' title='dogru'></span> ";			
+	$sql = "SELECT count(id) as say FROM eo_askanswerrate
+		 WHERE cevapID='$cevapID' and degeri='-1'";		
+	$result = mysql_query($sql, $yol1);		
+	$satir=@mysql_fetch_array($result);
+	if($satir[0]>0) 
+		$sonuc .= $satir[0]." <span class='yanlisOy' title='yanlis'></span> ";
+	if($sonuc=="") $sonuc = "Þimdilik oy verilmemiþ.";
+	
+	return $sonuc;	
+}
+/*
 is_ajax:
 ajax desteði var mý
 */
