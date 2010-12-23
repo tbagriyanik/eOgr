@@ -124,6 +124,30 @@ function cevapSil(id, gonderen){
     }
  }
 }
+/*
+setOutputOda3:
+sohbet odasýnýn iþlemi
+*/  
+function setOutputOda3(){
+    if(httpObject3.readyState == 4)
+	 if(httpObject3.status == 200 || httpObject3.status == 304){
+		 if(trim(httpObject3.responseText) != "")
+			alert(httpObject3.responseText);
+    }
+}
+/*
+cevapOy:
+cevaba oy verilmesi
+*/
+function cevapOy(deger, gonderen, cevapID){ 
+    httpObject3 = getHTTPObject();
+    if (httpObject3 != null) {
+        httpObject3.open("POST", "oyCevap.php", true);
+		httpObject3.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+  		httpObject3.send('deger='+encodeURIComponent(deger) + '&gonderen=' + encodeURIComponent(gonderen) + '&cevapID=' + encodeURIComponent(cevapID) );	
+		httpObject3.onreadystatechange = setOutputOda3;	
+    }
+}
 </script>
 </head>
 <body>
@@ -159,7 +183,12 @@ function cevapSil(id, gonderen){
 </div>
 <?php
 	 $soruID = $soru_bilgileri["id"];	
-	 $srgCev = "select * from eo_askanswer where soruID=$soruID order by eklenmeTarihi DESC";
+	 $srgCev = "select *,(
+	 					select sum(eo_askanswerrate.degeri) from eo_askanswerrate
+						where cevapID=eo_askanswer.id
+						) as totalOy from eo_askanswer 
+	 			where eo_askanswer.soruID='$soruID' 
+				order by totalOy DESC, eo_askanswer.eklenmeTarihi DESC";
 	 $sorguCev = mysql_query($srgCev);
 	if(@mysql_num_rows($sorguCev)>0){
 ?>
@@ -171,7 +200,11 @@ function cevapSil(id, gonderen){
   <div class="cevapMetni">
     <pre><?php echo $cevap_bilgileri["answer"]?></pre>
   </div>
-  <div class="puanVer"><a href="#" class="evetOy" title="Doðru"></a> <a href="#" class="hayirOy" title="Yanlýþ"></a></div>
+  <div class="puanVer"><a href="#" class="evetOy" title="Doðru" 
+    onclick=" cevapOy('1',<?php echo $gecerliKullID ?>,<?php echo $cevap_bilgileri["id"] ?> );
+   return false;"></a> <a href="#" class="hayirOy" title="Yanlýþ" 
+   onclick=" cevapOy('-1',<?php echo $gecerliKullID ?>,<?php echo $cevap_bilgileri["id"] ?> );
+   return false;"></a></div>
   <div class="cevaplayan"><?php echo getUserName($cevap_bilgileri["userID"])?></div>
   <div class="temizle"></div>
   <div class="puanlama">
@@ -182,7 +215,10 @@ function cevapSil(id, gonderen){
     <?php
 	  }
   ?>
-    puan </div>
+    <?php
+		echo cevapOyToplami($cevap_bilgileri["id"]);
+    ?>
+  </div>
   <div class="cevapTarihi">
     <?php 
   		$humanRelativeDate = new HumanRelativeDate();
@@ -201,7 +237,7 @@ function cevapSil(id, gonderen){
   <form>
     <strong>Sizin Cevabýnýz</strong><br />
     <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:1px solid #000;" ></textarea>
-    <input type="image" width="25" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick=" cevapKaydet(document.getElementById('cevabim').value.substr(0,250),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
+    <input type="image" width="25" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick=" cevapKaydet(trim(document.getElementById('cevabim').value.substr(0,250)),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
    //$('#kapsayiciEkle').hide('slow');
    return false;">
   </form>

@@ -1,5 +1,5 @@
 
-	eOgr - v128d, 22-12-2010
+	eOgr - v129a, 23-12-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -42,7 +42,7 @@ Other Sites:
 	http://www.hotscripts.com/listing/eogr
 	
 Start Date: 	
-	15-11-2008 (630 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
+	15-11-2008 (635 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
 
 Designing and Building Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -50,10 +50,6 @@ Designing and Building Programs:
 
 Used Classes and Referred Sites
 -------------------------------
-- autosuggest: v2.1.3
-	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
-- flood-protection: v1.0
-	http://archive.free-php.org.uk
 - jQuery: v1.4.4 
 	http://jquery.com
 - jQuery UI: v1.8.7 custom - sortable only 
@@ -72,6 +68,10 @@ Used Classes and Referred Sites
  	http://www.skyrocketlabs.com/articles/twitter-style-login-with-jquery-and-css3.php
 - jQuery uiTop: v1.1
 	http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
+- autosuggest: v2.1.3
+	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
+- flood-protection: v1.0
+	http://archive.free-php.org.uk
 - SWFObject v2.2 
 	http://code.google.com/p/swfobject
 - iCal-like Calendar with jQuery: 

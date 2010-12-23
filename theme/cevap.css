@@ -111,11 +111,29 @@ body {
 	width: 35px;
 	display: block;
 }
+.dogruOy{
+	background-image: url(../img/elOy.png);
+	background-repeat: no-repeat;
+	background-position: -83px -49px;
+	height: 25px;
+	width: 25px;
+	display: inline-block;	
+	vertical-align:middle;
+}
+.yanlisOy{
+	background-image: url(../img/elOy.png);
+	background-repeat: no-repeat;
+	background-position: -83px 0px;
+	height: 25px;
+	width: 25px;
+	display: inline-block;	
+	vertical-align:middle;
+}
 .kapsayiciCevap .puanlama {
 	padding: 5px;
 	float: left;
 	width: 64%;
-	font-size: 12px;
+	font-size: 16px;
 }
 .kapsayiciCevap .cevapTarihi {
 	padding: 5px;
