@@ -825,4 +825,8 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[640] = "Soru problemi yok";
 		$metin[641] = "Soru problemleri";
 		
+		$metin[642] = "Soru sorma, cevap verme ve deðerlendirme sayfasýndasýnýz.";
+		$metin[643] = "Soru sorabilir, cevap verebilir veya oy verebilirsiniz.";
+		$metin[644] = "<strong><a href=\"askQuestion.php\">Sorular</a> (cevap sayýsý) : </strong> ";		
+		
 ?>

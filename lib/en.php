@@ -807,5 +807,13 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[635] = "Question Count";
 		$metin[636] = "Answer Count";
 		$metin[637] = "<strong><a href=\"askQuestion.php\">Questions</a> : </strong> ";		
+		$metin[638] = "Answers are OK";
+		$metin[639] = "Answer problems";
+		$metin[640] = "Question are OK";
+		$metin[641] = "Question problems";		
+		
+		$metin[642] = "You are at page about asking, answering or evaluating.";
+		$metin[643] = "You can ask a question, answer or vote for an answer.";
+		$metin[644] = "<strong><a href=\"askQuestion.php\">Questions</a> (answer count) : </strong> ";		
 								
 ?>

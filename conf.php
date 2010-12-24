@@ -4260,6 +4260,32 @@ function sonBilgileriGetir($tablo, $userID){
 				}
 			}		
 		break;
+		case "soru":
+			$sql1 = "SELECT * 
+					 FROM eo_askquestion
+					 INNER JOIN eo_users 
+					 ON eo_users.id  = eo_askquestion.userID					 
+					 $kisiFiltre				 
+					 ORDER BY eo_askquestion.eklenmeTarihi DESC limit 0,".ayarGetir("ayar2int"); 	
+			$result1 = mysql_query($sql1, $yol1); 
+			
+			if ($result1 && mysql_numrows($result1) >= 1){
+				while($gelen = mysql_fetch_array($result1)){			
+				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[3]);
+				
+				if(empty($userID))	{
+				$sonuc .= "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
+					"<a href='readAnswer.php?oku=$gelen[0]' rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($gelen['question'],30)."</a>, "
+					.$gelen["say"].", "
+					.$insansi."<br/>";
+				}else{
+				$sonuc .= "<a href='readAnswer.php?oku=$gelen[0]' rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($gelen['question'],30)."</a>, "
+					.$gelen["say"].", "
+					.$insansi."<br/>";
+					}
+				}
+			}		
+		break;
 		case "dosya":
 			$sql1 = "SELECT * 
 					 FROM eo_files
