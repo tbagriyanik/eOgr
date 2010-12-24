@@ -61,7 +61,7 @@ kullanýcý cevaba oy veriyor
 */
 
 function cevapOy($deger, $userID, $cevapID){
-	global $yol1;				
+	global $yol1,$currentFile;				
 		if(!empty($userID) && !empty($cevapID)) {			
 			
 			if(cevapOyVar($userID, $cevapID))
@@ -77,7 +77,13 @@ function cevapOy($deger, $userID, $cevapID){
 					"; 
 
 			$result2 = mysql_query($sql2, $yol1); 			
-			if($result2) echo "Oy verdiniz."; else echo "Oy verilemedi!";
+			if($result2) {
+				echo "Oy verdiniz.";
+				trackUser($currentFile,"success,QuesVote",RemoveXSS($_SESSION["usern"]));
+				} else {
+				echo "Oy verilemedi!";
+				trackUser($currentFile,"fail,QuesVote",RemoveXSS($_SESSION["usern"]));
+				};
 		 }else
 		 echo "Oy verilemedi!";
 }
@@ -90,4 +96,6 @@ if (isset($_POST['deger']) && ($_POST['deger']<>"") &&
 	isset($_POST['gonderen']) && ($_POST['gonderen']<>"") &&
 	isset($_POST['cevapID']) && ($_POST['cevapID']<>"") ) 
 	cevapOy($cevapGel,$gonderen,$cevapID);
+	else
+	echo "?";
 ?>

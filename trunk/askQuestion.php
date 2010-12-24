@@ -232,7 +232,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 
 					$limit = RemoveXSS($_SESSION['soruLimit']);
 					$arama = str_replace("'", "`", $_GET['ara']);
-					$arama = substr(temizle($arama),0,250);
+					$arama = substr(temizle($arama),0,300);
 					
 					$tumKaySay = soruSayisiGetir($arama);
 					
