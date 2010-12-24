@@ -41,6 +41,7 @@ Lesser General Public License for more details.
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
@@ -321,6 +322,9 @@ function delWithCon(deletepage_url,field_value,messagetext) {
     </div>
   </div>
 </div>
+<?php  						
+ require "feedback.php";
+?>
 </body>
 </html>
 <?php 

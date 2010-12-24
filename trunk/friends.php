@@ -38,7 +38,14 @@ Lesser General Public License for more details.
 <title>eOgr -<?php echo $metin[549]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
+<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
+<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
+</script>
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -413,7 +420,9 @@ if(isset($_GET["reddet"]))
 	if(!empty($bilg_4))	echo $metin[477]."<p class='ozetBilgi'>".$bilg_4."</p>";
 	$bilg_6 = sonBilgileriGetir("dosya",$geceliKullID);
 	if(!empty($bilg_6))	echo $metin[478]."<p class='ozetBilgi'>".$bilg_6."</p>";				  
-	if(empty($bilg_1) and empty($bilg_2) and empty($bilg_3) and empty($bilg_4) and empty($bilg_6))
+	$bilg_7 = sonBilgileriGetir("soru",$geceliKullID);
+	if(!empty($bilg_7))	echo $metin[644]."<p class='ozetBilgi'>".$bilg_7."</p>";				  
+	if(empty($bilg_1) and empty($bilg_2) and empty($bilg_3) and empty($bilg_4) and empty($bilg_6) and empty($bilg_7))
 	  echo "<font id='uyari'>$metin[586]</font>";			  
                   ?>
                   </div>
@@ -433,7 +442,9 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	if(!empty($bil_4))	echo $metin[477]."<p class='ozetBilgi'>".$bil_4."</p>";
 	$bil_6 = sonBilgileriGetir("dosya",$seciliKisi);
 	if(!empty($bil_6))	echo $metin[478]."<p class='ozetBilgi'>".$bil_6."</p>";	
-	if(empty($bil_1) and empty($bil_2) and empty($bil_3) and empty($bil_4) and empty($bil_6))
+	$bil_7 = sonBilgileriGetir("soru",$seciliKisi);
+	if(!empty($bil_7))	echo $metin[644]."<p class='ozetBilgi'>".$bil_7."</p>";	
+	if(empty($bil_1) and empty($bil_2) and empty($bil_3) and empty($bil_4) and empty($bil_6) and empty($bil_7))
 	  echo "<font id='uyari'>$metin[586]</font>";	
 	if ($seciliKisi!=$geceliKullID and 
 	    !arkadasTeklifVarMi($geceliKullID,$seciliKisi) and
@@ -511,6 +522,8 @@ function duvarKaydet(icerik, gonderen, alan){
 		if(!empty($bilgi5))	echo $metin[473]."<p class='ozetBilgi'>".$bilgi5."</p>";
 		$bilgi6 = sonBilgileriGetir("dosya","");
 		if(!empty($bilgi6))	echo $metin[478]."<p class='ozetBilgi'>".$bilgi6."</p>";				  
+		$bilgi7 = sonBilgileriGetir("soru","");
+		if(!empty($bilgi7))	echo $metin[644]."<p class='ozetBilgi'>".$bilgi7."</p>";				  
 	}else{
 		echo "<font id='hata'>$metin[400]</font>";
 	}
