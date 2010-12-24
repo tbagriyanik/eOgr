@@ -81,8 +81,10 @@ sohbet odasýnýn iþlemi
 function setOutputOda(){
     if(httpObject.readyState == 4)
 	 if(httpObject.status == 200 || httpObject.status == 304){
-		 if(trim(httpObject.responseText) != "")
-			document.getElementById('kapsayiciEkle').innerHTML = (httpObject.responseText);
+		 if(trim(httpObject.responseText) != "" || trim(httpObject.responseText) != "?"){
+			alert(httpObject.responseText);
+			location.reload();
+		 }
     }
 }
 /*
@@ -105,8 +107,10 @@ sohbet odasýnýn iþlemi
 function setOutputOda2(){
     if(httpObject2.readyState == 4)
 	 if(httpObject2.status == 200 || httpObject2.status == 304){
-		 if(trim(httpObject2.responseText) != "")
+		 if(trim(httpObject2.responseText) != "" || trim(httpObject2.responseText) != "?"){
 			alert(httpObject2.responseText);
+			location.reload();
+		 }
     }
 }
 /*
@@ -131,8 +135,10 @@ sohbet odasýnýn iþlemi
 function setOutputOda3(){
     if(httpObject3.readyState == 4)
 	 if(httpObject3.status == 200 || httpObject3.status == 304){
-		 if(trim(httpObject3.responseText) != "")
+		 if(trim(httpObject3.responseText) != "" || trim(httpObject3.responseText) != "?"){
 			alert(httpObject3.responseText);
+			location.reload();
+		 }
     }
 }
 /*
@@ -164,6 +170,7 @@ function cevapOy(deger, gonderen, cevapID){
 	 $srg = "select * from eo_askquestion where id=$gelenID limit 0,1";
 	 $sorgu = mysql_query($srg);
 	 $soru_bilgileri = mysql_fetch_array($sorgu);	
+if($soru_bilgileri["question"]<>""){					
 ?>
 <div id="kapsayici">
   <div id="soruMetni">
@@ -231,7 +238,7 @@ function cevapOy(deger, gonderen, cevapID){
 <?php
 			 }//while
 		}else
-		echo "<strong>Þimdilik cevap verilmemiþtir.</strong>";			
+		echo "<strong>Þimdilik cevap verilmemiþtir.</strong>";
 ?>
 <div id="kapsayiciEkle">
   <form>
@@ -242,7 +249,8 @@ function cevapOy(deger, gonderen, cevapID){
    return false;">
   </form>
 </div>
-<?php			 
+<?php
+}
 	}
 	else {
 	  @header("Location: error.php?error=9");	

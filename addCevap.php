@@ -70,9 +70,9 @@ kullanýcý cevap yazýyor
 */
 
 function cevapYaz($cevapYazisi, $userID, $soruID){
-	global $yol1;				
+	global $yol1,$currentFile;				
 		if(!empty($userID) && !empty($soruID)) {
-			$cevapYazisi = substr(strip_tags(iconv( "UTF-8","ISO-8859-9",$cevapYazisi)),0,250);
+			$cevapYazisi = substr(strip_tags(iconv( "UTF-8","ISO-8859-9",$cevapYazisi)),0,300);
 			$cevapYazisi = str_replace("'", "`",$cevapYazisi);
 			$cevapYazisi = RemoveXSS($cevapYazisi);
 			$dateN = date("Y-m-d H:i:s");
@@ -84,9 +84,16 @@ function cevapYaz($cevapYazisi, $userID, $soruID){
 					"; 
 
 			$result2 = mysql_query($sql2, $yol1); 			
-			if($result2) echo "<strong>Cevabýnýz eklendi.</strong>"; else echo "<strong>Cevabýnýz eklenemedi!</strong>";
+			if($result2) {
+				echo "Cevabýnýz eklendi.";
+				trackUser($currentFile,"success,AddAnsw",RemoveXSS($_SESSION["usern"]));
+				}
+			 else {
+				echo "Cevabýnýz eklenemedi!";
+				trackUser($currentFile,"fail,AddAnsw",RemoveXSS($_SESSION["usern"]));
+			 }
 		 }else
-		 echo "<strong>Cevabýnýz eklenemiyor!</strong>";
+		 echo "Cevabýnýz eklenemiyor!";
 }
 
 $cevapGel 	= str_replace("'", "`", $_POST['cevap']);
@@ -99,4 +106,6 @@ if (isset($_POST['cevap'])
 		&& $gonderenID!=""
 		&& $gonderenID==$gonderen) 
 	cevapYaz(RemoveXSS($cevapGel),RemoveXSS($gonderen),RemoveXSS($soruID) );
+	else
+	echo "?";
 ?>

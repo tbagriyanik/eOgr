@@ -91,7 +91,7 @@ kullanýcý cevap siliyor
 */
 
 function cevapSil($cevapID, $userID){
-	global $yol1,$tur;				
+	global $yol1,$tur,$currentFile;				
 		if(!empty($userID) && !empty($cevapID)) {
   		 if($tur=="2" or cevapSahibi($cevapID)==$userID){
 			$sql2 = "DELETE FROM eo_askanswerrate 
@@ -104,8 +104,14 @@ function cevapSil($cevapID, $userID){
 
 			$result2 = mysql_query($sql2, $yol1); 
 						
-			if($result2) echo "Cevap ve oylar silindi.";
-					 else echo "Cevap ve oylar silinemedi!";
+			if($result2) {
+				echo "Cevap ve oylar silindi.";
+				trackUser($currentFile,"success,DelAnsw",RemoveXSS($_SESSION["usern"]));
+				}
+ 			 else {
+  			 	echo "Cevap ve oylar silinemedi!";
+				trackUser($currentFile,"fail,DelAnsw",RemoveXSS($_SESSION["usern"]));
+			  };
 		 }
 		}else
 		     echo "Cevap ve oylar silinemiyor!";
@@ -124,4 +130,6 @@ if (isset($_POST['cevap'])
 		&& $gonderenID!=""
 		&& $gonderenID==$gonderen) 
 	cevapSil($cevapID,$gonderen);
+	else
+	echo "?";
 ?>

@@ -53,12 +53,14 @@ body {
 	float: left;
 	width: 71%;
 	font-size: 12px;
+	color:#666;
 }
 #kapsayici #soruTarihi {
 	float: right;
 	width: 25%;
 	font-size: 12px;
 	text-align: right;
+	color:#666;
 }
 .kapsayiciCevap .cevapMetni {
 	padding: 5px;
@@ -76,6 +78,7 @@ body {
 	float: left;
 	width: auto;
 	margin: 10px;
+	color:#666;
 }
 .kapsayiciCevap .puanVer .evetOy {
 	background-image: url(../img/elOy.png);
@@ -134,6 +137,7 @@ body {
 	float: left;
 	width: 64%;
 	font-size: 16px;
+	color:#666;
 }
 .kapsayiciCevap .cevapTarihi {
 	padding: 5px;
@@ -141,6 +145,7 @@ body {
 	width: 25%;
 	font-size: 12px;
 	text-align: right;
+	color:#666;
 }
 pre {
 	overflow-x: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */

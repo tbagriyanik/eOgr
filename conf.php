@@ -4261,7 +4261,8 @@ function sonBilgileriGetir($tablo, $userID){
 			}		
 		break;
 		case "soru":
-			$sql1 = "SELECT * 
+			$sql1 = "SELECT *,
+			             (select count(id) from eo_askanswer where soruID=eo_askquestion.id) as say 
 					 FROM eo_askquestion
 					 INNER JOIN eo_users 
 					 ON eo_users.id  = eo_askquestion.userID					 
@@ -4552,7 +4553,7 @@ soru eklenmesi
 */
 function soruEkle($gelen){
 	$soru = str_replace("'", "`", $gelen['soru']);
-	$soruMetni = substr(temizle($soru),0,300);//soru çok uzun ise
+	$soruMetni = substr(RemoveXSS($soru),0,300);//soru çok uzun ise
 	$datem	=	date("Y-n-j H:i:s");
 	$gonderenID	= getUserID($_SESSION["usern"],$_SESSION["userp"]);
 
