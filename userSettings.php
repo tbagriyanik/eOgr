@@ -165,7 +165,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 							   $ayarlar
 							   );
 							   
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 				$temaBilgisi =  numToTheme(temizle($_POST['ayarlar16']));
@@ -217,7 +217,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 							   temizle(RemoveXSS(GetSQLValueString($_POST['id'], "int")))
 							   );
 
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  
@@ -238,7 +238,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 }
 
 $upID =  getUserID($adi, $par); 
-mysql_select_db($database_baglanti, $yol);
+mysql_select_db($_db, $yol);
 
 if($upID=="") die("<font id='hata'>Kimlik hatasý</font>");
 
@@ -478,6 +478,7 @@ $().ready(function() {
                         ?>
                                 <option value="<?php echo $i;?>" 
 							  <?php 
+							  if(isset($secenekler[15]))
 							  	if ($secenekler[15]==$i) 
 										echo "selected=\"selected\"";
 								?>>

@@ -78,7 +78,9 @@ body, td, th {
           <input name='name' type='text' disabled="disabled" id='name' value='<?php echo $adi; ?>' readonly="readonly" />
           <br />
           <select id="oda" name="oda" onchange="odaSec();" style="background-color:#FFF;border:none;border-color:#FFF;height:20px;font-size:10px;margin-top:3px;">
-            <option value="0" <?php if ($_SESSION["oda"]=="0") echo "selected='selected'"?>> <?php echo $metin[97]?> </option>
+            <option value="0" <?php 
+				if(!isset($_SESSION["oda"])) $_SESSION["oda"]="0";
+					if ($_SESSION["oda"]=="0") echo "selected='selected'"?>> <?php echo $metin[97]?> </option>
             <option value="1" <?php if ($_SESSION["oda"]=="1") echo "selected='selected'"?>><?php printf($metin[605],1) ?></option>
             <option value="2" <?php if ($_SESSION["oda"]=="2") echo "selected='selected'"?>><?php printf($metin[605],2) ?></option>
             <option value="3" <?php if ($_SESSION["oda"]=="3") echo "selected='selected'"?>><?php printf($metin[605],3) ?></option>

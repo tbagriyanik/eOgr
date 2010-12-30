@@ -23,7 +23,8 @@ if(!in_array($_GET["error"],array("5","6"))) {
 
 <body bgcolor="#FFCCCC">
 <?php 
-	$adi = RemoveXSS($_SESSION["usern"]);
+	if(isset($_SESSION["usern"]))
+		$adi = RemoveXSS($_SESSION["usern"]);
 	if(isset($_POST["reopenPwd"]))
 		if($_POST["reopenPwd"]==$_siteUnlockPwd and 
 			!empty($_siteUnlockPwd) and 

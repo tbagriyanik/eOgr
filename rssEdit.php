@@ -162,7 +162,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 							   tarihYap2(temizle($_POST['pubDate'])),
 							   temizle(GetSQLValueString($_POST['id'], "int")));
 		
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,RSSUpdate",$adi);
@@ -189,7 +189,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 							   temizle(GetSQLValueString($_POST['description'], "text")),
 							   temizle(GetSQLValueString($_POST['link'], "text")),
 							   temizle(GetSQLValueString($_POST['language'], "text")));
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,RSSInfo",$adi);
@@ -219,7 +219,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        tarihYap2(temizle($_POST['pubDate2']))
 					   );
 
-  mysql_select_db($database_baglanti, $yol);
+  mysql_select_db($_db, $yol);
   $Result1 = mysql_query($insertSQL, $yol);
   if ($Result1) {
 			  trackUser($currentFile,"success,NewRSS",$adi);
@@ -240,7 +240,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_webref_rss_items WHERE id=%s",
                        temizle(GetSQLValueString($_GET['id'], "int")));
 
-  mysql_select_db($database_baglanti, $yol);
+  mysql_select_db($_db, $yol);
   $Result1 = mysql_query($deleteSQL, $yol);
  if ($Result1) {
 			  trackUser($currentFile,"success,DelRSS",$adi);
@@ -271,7 +271,7 @@ if (isset($_GET['pageNum_eoUsers'])) {
 }
 $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
-mysql_select_db($database_baglanti, $yol);
+mysql_select_db($_db, $yol);
 
 if (empty($_SESSION["siraYonu"])) {  
 		$siraYonu="desc";

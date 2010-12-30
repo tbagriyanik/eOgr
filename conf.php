@@ -95,9 +95,9 @@ browserdili: parametresiz,
 aktif tarayýcýnýn dil ayarýný bulma
 */
 function browserdili() {
-         $lang=split('[,;]',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
-         $lang=strtoupper($lang[0]);
-         $lang=split('[-]',$lang);
+         $lang=	preg_split('/[,;]/',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+         $lang=	strtoupper($lang[0]);
+         $lang=	preg_split('/[-]/',$lang);
          return $lang[0];
 }
 /*
@@ -112,7 +112,7 @@ function check_source()
 	$adresteki = $_SERVER['HTTP_REFERER'];
 //	$adresteki = $_SESSION['this_page'];
 	
-  if (!( eregi("^$_source1",$adresteki) || eregi("^$_source2",$adresteki))  ) { 
+  if (!( preg_match("|^$_source1|i",$adresteki) || preg_match("|^$_source2|i",$adresteki))  ) { 
 	@header("Location: error.php?error=3");
 	return false;
   }else{
@@ -173,7 +173,11 @@ function temaBilgisi(){
 	
 	if ($siteSecenekleri[1]=="1"){
 		$result = kullaniciTema();
-		$adresten = RemoveXSS($_GET["theme"]);
+		if(isset($_GET["theme"]))
+			$adresten = RemoveXSS($_GET["theme"]);
+			else
+			$adresten = "";
+			
 		$cerezden = RemoveXSS($_COOKIE["theme"]);
 	
 		if($adresten!="" and is_dir('theme/'.$adresten))
@@ -341,7 +345,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = mysql_escape_string($theValue);
+  $theValue = mysql_real_escape_string($theValue);
 
  switch ($theType) {
     case "text":
@@ -373,7 +377,7 @@ function GetSQLValueStringNo($theValue, $theType, $theDefinedValue = "", $theNot
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
- $theValue = mysql_escape_string($theValue);
+ $theValue = mysql_real_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -401,12 +405,12 @@ TR ve boþluk harici karakter kontrolü
 */
 function validInput($gelen)  
 {  
-  $pattern 	= "[^a-z0-9A-Z]" ;  
-  $valid	= ereg($pattern, $gelen) ;  
+  $pattern 	= '|^[a-z0-9_]*$|i' ;  
+  $valid	= preg_match($pattern, $gelen) ; 
   if($valid) 
-    return false;
+    return true;
    else
-    return true;  
+    return false;  
 }  
 /*
 getTableSize:
@@ -2178,6 +2182,7 @@ yildizYap:
 gelen sayýya göre yýldýz üretme
 */
 function yildizYap($num){
+	$sonuc ="";
 	if($num>0 && $num<6){
 		for($i=1;$i<=$num;$i++){
 			$sonuc.="<img src='img/star.gif' border='0' style='vertical-align:middle' alt='star' />";
@@ -2185,7 +2190,7 @@ function yildizYap($num){
 	}else
 		$sonuc = "problem";
 
-	return $sonuc;	
+	return $sonuc ;	
 }
 /*
 smileAdd:
@@ -2326,8 +2331,8 @@ function konuYorumSayisiGetir($id){
     {  
 	    if(@mysql_result($result1, 0, "toplam")>0)
 			$sonuc = " - ". @mysql_result($result1, 0, "toplam");
-		@mysql_free_result($result1); 	   
-       	return $sonuc;
+		@mysql_free_result($result1); 	   		
+       	return (isset($sonuc))?$sonuc:"";
     }else {
 	   return "";
 	}
@@ -2384,7 +2389,7 @@ kullanýcýnýn var olup olmadýðýný kontrol eder
 function checkRealUser($usernam, $passwor)
 {
 	$usernam = substr($usernam,0,15);
-	
+	if($usernam=="") return -2;
 	if (!validInput($usernam) || !validInput($passwor)) return -2;
 	
     $sql1 = "SELECT realName, userName, userPassword, userType FROM eo_users where userName='".temizle($usernam)."' AND userPassword='".temizle($passwor)."' limit 0,1";
@@ -2643,8 +2648,10 @@ email_valid:
 eposta formatýný kontrol eder
 */
 function email_valid ($email) {  
-	if (eregi("^[a-z0-9._-]+@[a-z0-9._-]+.[a-z]{2,6}$", $email)) 
-    	{ return TRUE; } else { return FALSE; }      
+	if(preg_match('/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/',$email))
+		return true;
+	else
+	    return false; 
 } 
 /*
 newParola:
@@ -2988,7 +2995,8 @@ function getGrafikValues3($lmt,$konu){
 		while($row = mysql_fetch_assoc($result)) {
 		      $data['values'][] = $row['count'];
 		}
-		return $data['values'];
+		if(isset($data['values']))
+			return $data['values'];
 }
 /*
 getGrafikLabels3:
@@ -3003,7 +3011,8 @@ function getGrafikLabels3($lmt,$konu){
 		while($row = mysql_fetch_assoc($result)) {
 		  $data['labels'][] = $row['date'];
 		}
-		return $data['labels'];
+		if(isset($data['labels']))
+			return $data['labels'];
 }
 /*
 getGrafikRecordCount2:
@@ -4661,18 +4670,19 @@ function is_ajax()
 /*
 Genel olarak session kontrol edilmesi
 */
-if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
+//if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
    //sessionDestroy();
 //	echo("$metin[400]"); //session?
 	//exit;
-} 
+//} 
 /*
 Genel olarak üye pasif durumda ise hata verir
 */
-if ($tur=="-1")	{
+if (isset($tur))
+	if ($tur=="-1")	{
 	   sessionDestroy();
 	   echo ("$metin[450]");
-} 
+	} 
 /*
 Site bakýmda mý diye kontrol edildiði yer
 */

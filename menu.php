@@ -17,7 +17,7 @@ Lesser General Public License for more details.
 	$adi	=substr(@temizle($_POST["userN"]),0,15);
 	$par	=sha1(substr(@temizle($_POST["userP"]),0,15));
 	
-   if ($adi=="") {
+   if ($adi=="" && isset($_SESSION["usern"])) {
 	   $adi	=temizle(substr($_SESSION["usern"],0,15));
 	   $par	=temizle($_SESSION["userp"]);
 	  }
@@ -181,7 +181,7 @@ $().ready(function() {
 						 if ($currentFile=="newUser.php" || $currentFile=="passwordRemember.php" )
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[149]?> </span></span></a>
+                        ><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a>
     <ul>
       <li><a href="newUser.php"><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
       <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>

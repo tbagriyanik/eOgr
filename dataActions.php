@@ -167,7 +167,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_usertrack WHERE id=%s",
                        GetSQLValueString($_GET['id'], "int"));
 
-  mysql_select_db($database_baglanti, $yol);
+  mysql_select_db($_db, $yol);
   $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
   if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
 }
@@ -190,7 +190,7 @@ if (isset($_GET['pageNum_eoUsers'])) {
 }
 $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
-mysql_select_db($database_baglanti, $yol);
+mysql_select_db($_db, $yol);
 
 $adminGizle = temizle($_GET["adminGizle"]);
 

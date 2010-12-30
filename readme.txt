@@ -1,15 +1,15 @@
 
-	eOgr - v129a, 24-12-2010
+	eOgr - v129b, 30-12-2010
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
 ABOUT
 -----
-Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends. They can view or write their walls. Every member can share their files and homeworks. They can ask questions or read the others answers. 
+Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends, view or write to their walls. Every member can share their files and homeworks. They can ask questions or read the others answers. 
 
-Students can register for online education resources. Materials (pages) are in the lesson modules. Each module has reading pages (rich text, images), quizes (multiple choice, classic, test) and many activities (presentation, simulation). 
-Teachers and parents can follow the students works. Teachers can add and modify lesson modules. 
-Administrator users manage the site maintenance like editing users, database (backup, optimization) and site settings.
+Students can register for online education resources. Material pages are in the lesson topics. Each topic has rich text formatted reading pages,  quizes (multiple choice, classic, test) and many more activities like presentation and simulation. 
+
+Teachers and parents can follow the students works. Teachers can add and modify lesson topics. Administrator users manage the site maintenance like editing users, database backup, database optimization and site settings.
 
 Available language support is English and Turkish.
 
@@ -69,7 +69,7 @@ Used Classes and Referred Sites
 - jQuery uiTop: v1.1
 	http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
 - autosuggest: v2.1.3
-	http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html 
+	http://www.brandspankingnew.net 
 - flood-protection: v1.0
 	http://archive.free-php.org.uk
 - SWFObject v2.2 

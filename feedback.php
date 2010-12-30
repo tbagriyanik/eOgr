@@ -13,8 +13,10 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
- $adi	=(substr($_SESSION["usern"],0,15));
- $par	=($_SESSION["userp"]);
+ if(isset($_SESSION["usern"])){
+	 $adi	=(substr($_SESSION["usern"],0,15));
+	 $par	=($_SESSION["userp"]);
+ }
  if(!($adi=="" or $par=="")) {
 ?>
 

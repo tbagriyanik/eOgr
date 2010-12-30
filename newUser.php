@@ -283,6 +283,7 @@ $().ready(function() {
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[64]?> </span> </h2>
                 <div class="PostContent">
                   <?php
+				  
     if(isset($_POST['form']) && $_POST["onay"]=="OK" && $_SESSION["newUser"]!="yes"){          
 	
 			switch ($_POST['form'])
@@ -329,6 +330,11 @@ $().ready(function() {
 					trackUser($currentFile,"success,NewUser",$_POST['userName']);
 					echo "<br/>$metin[7], ".temizle($_POST["realN"])."<br/><br/>";	
 					echo ($metin[408]); 
+					$_SESSION["tur"] 	= "0";//varsayýlan öðrencidir...
+					$_SESSION["usern"] 	= $_POST['userName'];
+					$_SESSION["userp"] 	= sha1($_POST['userPassword1']);
+					trackUser($currentFile,"success,Login",$_SESSION["usern"]);
+					
 						if(ayarGetir("ayar4char")!="") {
 						if (newUserMail($_POST['userName'], $_POST['email'])=="allOK")
 							 {

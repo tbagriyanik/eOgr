@@ -545,7 +545,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[405]="Þimdilik bir haber bulunmuyor veya haberler kapatýlmýþ.";
 		$metin[406]="Kod boþ veya hatalý girildi! Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>.";
 		$metin[407]="<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>";
-		$metin[408]="<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Giriþ yapmak i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
+		$metin[408]="<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Devam etmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[409]="<font id='hata'> &Uuml;yelik iþleminiz tamamlanamadý! Boþ ve izin verilmeyen deðerler var, kullanýcý adý veya eposta adresi kullanýlýyor olabilir.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[410]="<font id='hata'> Tekrar baþvuru yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[411]="Kullan&#305;lan bir kullan&#305;c&#305; ad&#305; girdiniz!";

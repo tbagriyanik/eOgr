@@ -36,11 +36,16 @@ ob_start (); // Buffer output
 	   }else
 		  $eMode = "3";
   }else{
+	  if(isset($_SESSION["mode"])){
 	   if(in_array($_SESSION["mode"],array("2","3")))
 		  	$eMode = $_SESSION["mode"];
-		  else
+		}
+		else
 		  	$eMode = "3"; //genel varsayýlan
   }  
+  
+  if(!isset($_GET["konu"]))				
+    $_GET["konu"]="";
     
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -234,7 +239,9 @@ function cleanup() {
         <?php
 	
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
+
+	 if(isset($_SESSION["usern"]))
+		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 
 		require("menu.php");	
                 ?>
@@ -242,6 +249,8 @@ function cleanup() {
           <?php
 				if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 				echo " $metin[556] : ";
+		
+			  if(isset($_GET["konu"]))				
                 if(isKonu($_GET["konu"])){
 				?>
           <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external"><?php 	echo $metin[553];?></label>&nbsp; |

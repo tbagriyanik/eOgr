@@ -157,7 +157,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_comments WHERE id=%s",
                        GetSQLValueString($_GET['id'], "int"));
 
-  mysql_select_db($database_baglanti, $yol);
+  mysql_select_db($_db, $yol);
   $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
   if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
 }
@@ -180,7 +180,7 @@ if (isset($_GET['pageNum_eoUsers'])) {
 }
 $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
-mysql_select_db($database_baglanti, $yol);
+mysql_select_db($_db, $yol);
 
 $arayici =  temizle($_GET['arama']);   
   if ($arayici!="") 
@@ -221,7 +221,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 							   );
 			
 		
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,EditCmnt",$adi);

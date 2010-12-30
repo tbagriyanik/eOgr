@@ -533,7 +533,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[405]="There are no news or this section is disabled.";
 		$metin[406]="Code error! <a href=# onclick=history.go(-1);>Click here</a> to retry.";
 		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><a href=# onclick=history.go(-1);>Click here</a> to retry.";
-		$metin[408]="<font id='uyari'> You are a new member now!</font> To login, please <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a> to go to the main page";
+		$metin[408]="<font id='uyari'> You are a new member now!</font> To continue, please <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a> to go to the main page";
 		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a>  to go to the main page.";
 		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a> to go to the main page.";
 		$metin[411]="This user name has been used previously";

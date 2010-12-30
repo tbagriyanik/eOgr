@@ -1,6 +1,7 @@
 INSTALLATION:
 -------------
 (1) Edit your settings in "database.php" with an editor. 
+   
     All values must be properly edited.
     For example, if you don't write your site URL into $_source1 value, the project may give errors.
 
@@ -15,6 +16,7 @@ INSTALLATION:
     If you don't want to use install.php, you can import "installation_Database.sql" from phpmyadmin page.
 
 (3) Login as administrator user: name "admin" and password "11111"
+    
     Change your password from your profile page immediately.
 	
     I hope you start and like this experience!	
