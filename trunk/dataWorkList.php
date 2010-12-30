@@ -159,7 +159,7 @@ if (isset($_GET['pageNum_eoUsers'])) {
 }
 $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
-mysql_select_db($database_baglanti, $yol);
+mysql_select_db($_db, $yol);
 
 if (isset($_GET["OgrenciTumu"])){
 			$OgrenciTumu = temizle($_GET["OgrenciTumu"]);

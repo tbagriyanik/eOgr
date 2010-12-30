@@ -158,37 +158,6 @@ Shadowbox.init({
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[461]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-	
-  $adi	=substr(temizle($_POST["userN"]),0,15);
-  $par	=sha1(substr(temizle($_POST["userP"]),0,15));
-  
-   if ($adi=="") {
-	   $adi	=temizle(substr($_SESSION["usern"],0,15));
-	   $par	=temizle($_SESSION["userp"]);
-	  }
-	  else
-	  {
-	   if(checkRealUser($adi,$par)=="-2")	   
-		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
-	   else {
-	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
-	     }
-	  }
-  
-	if($adi=="" || $par=="") die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
- 
-    $tur=checkRealUser($adi,$par);
-
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
-	  }
-	  else 
-	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= ($adi);
-    	$_SESSION["userp"] 	= ($par);
-	  }	
 
 	 switch($_SESSION["tur"]){
 	  case '-1':$ktut=$metin[85];break;	  

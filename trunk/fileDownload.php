@@ -14,7 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	ob_start();
-	session_start();
+	@session_start();
 	
 	include "conf.php";
 	

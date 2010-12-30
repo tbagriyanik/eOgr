@@ -196,7 +196,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 							   temizle(GetSQLValueString($_POST['ayar3int'], "int")),
 							   $ayar5char
 							   );
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,SiteInfo",$adi);

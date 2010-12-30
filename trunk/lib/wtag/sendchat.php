@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+@session_start();
 ob_start (); // Buffer output
 header("Expires: Sat, 05 Nov 2005 00:00:00 GMT");
 header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");

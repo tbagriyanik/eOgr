@@ -13,7 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-session_start();
+@session_start();
 ob_start();
 @header("Content-Type: text/html; charset=iso-8859-9"); 
 
@@ -392,6 +392,7 @@ function konuKisitlamalari($id){
 	if(konuKisitlamalari($_GET["ders"])!="")	
 	    echo "<strong>$metin[338] :</strong> <i>".konuKisitlamalari($_GET["ders"])."</i><br/>";
 	
+ if(isset($_GET['set']))
 	if($_GET['set']!="1"){	
 			echo"<br/>";
 			echo "<a href=\"lessons.php?konu=".$_GET["ders"]."\" ><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> $metin[339]</a>";

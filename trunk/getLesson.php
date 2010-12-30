@@ -6,7 +6,7 @@ the returned xml has the following structure
 	<rs>bar</rs>
 </results>
 */
-session_start();
+@session_start();
 
 include ("conf.php");
 

@@ -14,7 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	
-	session_start();
+	@session_start();
 	ob_start (); // Buffer output
 	header("Content-Type: text/html; charset=iso-8859-9");          
 

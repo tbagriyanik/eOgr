@@ -13,7 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-  session_start(); 
+  @session_start(); 
   ob_start();
 
   	$_SESSION['aThing'] = md5($_SERVER['HTTP_USER_AGENT']);
@@ -106,10 +106,11 @@ Lesser General Public License for more details.
 
     if ( !isset( $_SESSION ['ready'] ) ) 
      { 
-      session_start (); 
+      @session_start (); 
       $_SESSION ['ready'] = TRUE; 
      }
   
+	if (isset($_SESSION['aThing']))    	
 	if ($_SESSION['aThing'] != "") {   	
   	 if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   
 	    sessionDestroy();
@@ -278,9 +279,11 @@ if (isset($_COOKIE["remUser"]))
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">                
-        <?php
+        <?php		
+
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
-	$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
+	if(isset($_SESSION["usern"]))
+		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
 <div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div> 
                   <ul>
@@ -348,7 +351,8 @@ if (isset($_COOKIE["remUser"]))
               <div class="BlockContent-body">
                 <div>
                   <?php 				  
-						 
+					
+ if(isset($_SESSION["usern"]))						 
   if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){
 	  $_SESSION["usern"]="";
 	  $_SESSION["userp"]="";

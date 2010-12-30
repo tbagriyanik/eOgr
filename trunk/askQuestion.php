@@ -160,7 +160,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	
 	if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
 		if($tur=="2" or soruEkleyenID($_GET['id'])==getUserID($_SESSION["usern"],$_SESSION["userp"])){
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  
 		  $deleteSQL1 = sprintf("DELETE FROM eo_askanswerrate WHERE cevapID in
 		    					(select id from eo_askanswer WHERE soruID in
