@@ -14,7 +14,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	ob_start();
-    session_start (); 
+    @session_start (); 
     $_SESSION ['ready'] = TRUE; 
        
 	require("conf.php"); 
@@ -181,7 +181,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") &&
 		  dosyaSil(RemoveXSS($_GET['id'])); 			
 		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
 							   GetSQLValueString($_GET['id'], "int"));		
-		  mysql_select_db($database_baglanti, $yol);
+		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
 		  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
 	}
@@ -220,7 +220,7 @@ if (isset($_GET['pageNum_eoUsers'])) {
 }
 $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
-mysql_select_db($database_baglanti, $yol);
+mysql_select_db($_db, $yol);
 
 $arayici =  temizle($gelenArama);   
   if ($arayici!="") 
