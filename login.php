@@ -24,7 +24,7 @@ Lesser General Public License for more details.
 	require("conf.php");	
 	
 	$time = getmicrotime();
-	   $taraDili=$_COOKIE["lng"];    
+	   $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) 
     $taraDili="EN";
    dilCevir($taraDili);
@@ -46,8 +46,8 @@ Lesser General Public License for more details.
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
-  $adi	=substr(temizle($_POST["userN"]),0,15);
-  $par	=sha1(substr(temizle($_POST["userP"]),0,15));
+  $adi	=substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15);
+  $par	=sha1(substr(temizle((isset($_POST["userP"]))?$_POST["userP"]:""),0,15));
   
    if ($adi=="") {
 	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
@@ -194,7 +194,7 @@ Shadowbox.init({
                 <div class="PostContent">
                   <?php
 	
-	
+	if(isset($_POST['form']))
 		switch ($_POST['form']){
 			case 'login':
 				$allowed = array();
@@ -213,7 +213,7 @@ Shadowbox.init({
 
  
     $tur=checkRealUser($adi,$par);
-
+	$pass = false;
 	if ($tur<=-1 || $tur>2) { 
 	   sessionDestroy();
 	   echo ("<font id='hata'> ".$metin[404]."</font><p>".$metin[402]."</p>");

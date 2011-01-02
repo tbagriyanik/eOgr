@@ -176,7 +176,7 @@ belli bir tablodan istenen veri listesini alma (facebox için)
 function listeGetir($userID, $durum){
 	global $yol1;							
 	global $metin;	
-	
+	$ekle = "";
 		if(!empty($durum) && !empty($userID)) {			  
 				
 				$num = (int) substr($durum,0,15);

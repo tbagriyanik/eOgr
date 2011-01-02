@@ -18,7 +18,7 @@ Lesser General Public License for more details.
 	ob_start (); // Buffer output
 	header("Content-Type: text/html; charset=iso-8859-9");          
 
-	$taraDili=$_COOKIE["lng"];    
+	$taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
       if ($taraDili=="TR")
         require("lib/tr.php"); 

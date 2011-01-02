@@ -23,7 +23,7 @@ Lesser General Public License for more details.
   
   require("lib/SQL_Export.php");
  	 
- if(isset($_GET[dump]) && $_GET[dump]=="1")
+ if(isset($_GET["dump"]) && $_GET["dump"]=="1")
   {
 			$mysql_host = $_host;
 			$mysql_database= $_db;	
@@ -149,7 +149,7 @@ Lesser General Public License for more details.
 	if ($tur=="2")	{
 	 //yönetici ise
 			
-			 if(isset($_POST[sqlial]) && $_POST[sqlial]=="sqlimp")
+			 if(isset($_POST["sqlial"]) && $_POST["sqlial"]=="sqlimp")
 			  {
 						require("lib/SQL_Import.php");
 			
@@ -240,7 +240,7 @@ Lesser General Public License for more details.
                       <br />
                       <form id="sqlimp" name="sqlimp" method="post" action="siteSettings2.php">
                         <label title="<?php echo "SQL Import"?>"> <?php echo $metin[157]?> :
-                          <textarea name="sqlAl" cols="85" rows="10"><?php echo $sqlFile?>
+                          <textarea name="sqlAl" cols="85" rows="10"><?php echo (isset($sqlFile))?$sqlFile:""?>
 </textarea>
                         </label>
                         <input type="hidden" name="sqlial" value="sqlimp" />

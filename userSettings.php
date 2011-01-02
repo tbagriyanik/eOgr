@@ -187,8 +187,10 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
       )
 	 echo "<font id='hata'>&Uuml;ye bilgilerinizde eksik alanlar vardýr.</font>";
 	else{   
-        
-		if ($_POST['prldeg']!="secili" 
+        if(!isset($_POST['prldeg']))
+			$_POST['prldeg']="";
+		
+		if ( $_POST['prldeg']!="secili" 
 				  && (GetSQLValueString($_POST['userPassword'], "text")=='NULL' 
 				   || GetSQLValueString($_POST['userPassword2'], "text")=='NULL' 
 				   || $_POST["userPassword"]!=$_POST["userPassword2"] 
@@ -197,7 +199,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 				   || substr_count($_POST["userPassword"], substr($_POST["userPassword"],0,1))==strlen($_POST["userPassword"]) 
 				   || $_POST["userPassword"]=="12345678"				   
 				      ) )
-          	 echo "<p>&nbsp;</p><font id='hata'>Yeni parolanýzý yazmadýnýz, tekrarý boþ ge&ccedil;tiniz, parola ile kullanýcý adý ayný, tekrarlý deðer girdiniz, 12345678 girdiniz veya çok kýsa bir parola girdiniz!</font>";
+          	 echo "<font id='hata'>Yeni parolanýzý yazmadýnýz, tekrarý boþ ge&ccedil;tiniz, parola ile kullanýcý adý ayný, tekrarlý deðer girdiniz, 12345678 girdiniz veya çok kýsa bir parola girdiniz!</font>";
 			 
 		else {  
 

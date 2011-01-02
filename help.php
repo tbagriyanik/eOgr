@@ -19,7 +19,7 @@ Lesser General Public License for more details.
   	require("conf.php");	
 	$time = getmicrotime();
 	
-     $taraDili=$_COOKIE["lng"];    
+     $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) 
     $taraDili="EN";
    dilCevir($taraDili);

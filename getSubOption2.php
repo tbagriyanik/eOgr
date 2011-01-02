@@ -20,7 +20,7 @@ header("Content-Type: text/html; charset=iso-8859-9");
       $_SESSION ['ready'] = TRUE; 
 require("conf.php");  	
 
-     $taraDili=$_COOKIE["lng"];    
+     $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) 
     $taraDili="EN";
    dilCevir($taraDili);

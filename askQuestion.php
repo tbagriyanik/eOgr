@@ -218,20 +218,20 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   
                   <form action="askQuestion.php" method="get" name="soruAra">
                     Arama :
-                    <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS($_GET["ara"]);?>"  />
+                    <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS((isset($_GET["ara"]))?$_GET["ara"]:"");?>"  />
                     <input name="arama" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                   </form>
                   </p>
                   <?php
 					$currentPage = $_SERVER["PHP_SELF"];
 					
-				  	$devam = RemoveXSS($_GET['devam']);
+				  	$devam = RemoveXSS((isset($_GET["devam"]))?$_GET["devam"]:"");
 					
 					if($_SESSION['soruLimit']=="") 	
 						$_SESSION['soruLimit'] = 5;
 
 					$limit = RemoveXSS($_SESSION['soruLimit']);
-					$arama = str_replace("'", "`", $_GET['ara']);
+					$arama = str_replace("'", "`", (isset($_GET["ara"]))?$_GET["ara"]:"");
 					$arama = substr(temizle($arama),0,300);
 					
 					$tumKaySay = soruSayisiGetir($arama);

@@ -198,14 +198,6 @@ Shadowbox.init({
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 </head>
 <body>
-<?php
-$remUser = false;
-if (isset($_COOKIE["remUser"]))
-  if (strlen($_COOKIE["remUser"])>0){
-   $remUser = true;
-  }
- 
-?>
 <div class="PageBackgroundGradient"></div>
 <div class="Main">
   <div class="Sheet">

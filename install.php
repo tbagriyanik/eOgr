@@ -28,9 +28,9 @@ browserdili:
 tarayýcýnýn dil bilgisini alýr
 */
 function browserdili() {
-         $lang=split('[,;]',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+         $lang=preg_split('/[,;]/i',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
          $lang=strtoupper($lang[0]);
-         $lang=split('[-]',$lang);
+         $lang=preg_split('/[-]/i',$lang);
          return $lang[0];
 }
 /*
@@ -55,6 +55,8 @@ function dilCevir($dil){
 }
    
         $taraDili= (isset($_COOKIE["lng"]))?$_COOKIE["lng"]:""; 
+		if($taraDili=="")
+			$taraDili= browserdili(); 
         if($taraDili!="TR") $taraDili="EN";
 		setcookie("lng",$taraDili,time()+60*60*24*30);
 		

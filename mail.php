@@ -125,7 +125,7 @@ Lesser General Public License for more details.
                   <?php   
 echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a></div><br/>");
 				  
-   $address1	=	temizle($_REQUEST["to"]);
+   $address1	=	temizle(isset($_REQUEST["to"])?$_REQUEST["to"]:"");
    $address1 	= 	getMailAddress($address1);
 	if(!email_valid($address1) && !empty($address1)){
 			echo "<font id='hata'>&Ouml;z&uuml;r dileriz, kullanýcýnýn eposta adresi bilgisinde sorun var!</font>";
@@ -164,12 +164,12 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 						}
 	   }
 	   
-   $address = $_GET["to"];
+   $address = isset($_GET["to"])?$_GET["to"]:"";
    
    if(empty($address) &&  isset($_POST["address"]))  $address = $_POST["address"];
 				   
-   if(empty($address) || !is_numeric($address))
-   {
+   $hata=false;
+   if(empty($address) || !is_numeric($address))   {
 	    echo("<font id='hata'>Eposta bilgisi boþ olamaz!</font>");
 		$hata = true;
  	    $_SESSION["ccode"] = "";

@@ -13,13 +13,9 @@ class sqlImport {
 	$this -> ArchivoSql = ($ArchivoSql);
 	}
 
-	function dbConnect () {
-	$con = mysql_connect($this -> host, $this -> user, $this -> pass);
-	}
-	
 	function importa () 
 	{   
-	
+	$this -> con = mysql_connect($this -> host, $this -> user, $this -> pass);
    		if ($this -> con !== false) 
    		{
 

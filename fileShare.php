@@ -348,7 +348,8 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
 								echo " <a href='fileDownload.php?id=".$row_eoUsers['id'].
 								 "&amp;file=".$row_eoUsers['fileName']."&amp;islem=goster' target='_blank'><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"$metin[207]\"/></a>";
 							echo "<td style=\"background-color: $row_color;\" align='right'>".getSizeAsString(filesize($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
-							echo "<td style=\"background-color: $row_color;\" align='right'>".date ("d M Y H:i",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']))."</td>";
+							$humanRelativeDate = new HumanRelativeDate();
+							echo "<td style=\"background-color: $row_color;\" align='right'>".$humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",filemtime($_uploadFolder.'/'.$row_eoUsers['fileName']) ))."</td>";
 							
 						}
 ?></td>
@@ -395,10 +396,7 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)  {
                   <?php
    }
    
-	if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font>";
-    	
-     return "<font id='hata'> $metin[497]</font>";  
-}
+if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font>";    	    
 
 if ($totalRows_eoUsers>0)
    {	   
@@ -436,8 +434,8 @@ if ($tur=="2") {
 		  else
 		  	echo " <img src='img/i_high.png' alt='no file' title='$metin[468]' /> index.php ";
 	  echo "</p>";			
-}//if tur=2
-
+ }//if tur=2
+}
 	else {
 	  @header("Location: error.php?error=9");	
 	  die($metin[447]);

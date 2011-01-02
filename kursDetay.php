@@ -171,7 +171,7 @@ Shadowbox.init({
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
                   <?php
 				  
-	$uID = temizle($_GET["user"]);
+	$uID = temizle((isset($_GET["user"]))?$_GET["user"]:"");
 
 //	if($uID != getUserID($_SESSION["usern"],$_SESSION["userp"]) and $_SESSION["tur"]==0) 
 	  	//die($metin[448]);	 		  
@@ -234,8 +234,8 @@ Shadowbox.init({
 		  }
 		  ?>
           <?php
-					$dersID = temizle($_GET["kurs"]);
-					$uID = temizle($_GET["user"]);
+					$dersID = temizle((isset($_GET["kurs"]))?$_GET["kurs"]:"");
+					$uID = temizle((isset($_GET["user"]))?$_GET["user"]:"");
 			if(! empty($dersID) ) {
           ?>
           <div class="Post">
