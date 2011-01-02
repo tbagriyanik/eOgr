@@ -34,9 +34,9 @@ function getKonuKayitliKullanici($gelenID){
 		return "1";
 }
 	 
-    $adi	=temizle(substr($_SESSION["usern"],0,15));
-    $par	=temizle($_SESSION["userp"]);
-	
+    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    $par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");	
+
 	if ($adi=="" or $par=="")	
 		$tur = -2;
 	  else

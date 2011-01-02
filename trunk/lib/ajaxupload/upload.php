@@ -13,7 +13,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-    session_start (); 
+    @session_start (); 
 	ob_start();
 	  
 	include "../../conf.php";
@@ -69,7 +69,7 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
    $result = -3; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 	 }   
- else if (!eregi("^[A-Za-z0-9_-]+.[A-Za-z0-9]{2,6}$", $_FILES['myfile']['name']) ){
+ else if (!preg_match("/^[A-Za-z0-9_-]+.[A-Za-z0-9]{2,6}$/i", $_FILES['myfile']['name']) ){
    $result = -4; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
 	 }   
@@ -105,7 +105,7 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
 	}
  }
 }
-//echo "<script>alert('$result - Hata : ".$_FILES['myfile']['type']."');</script>"; 
+/*echo "<script>alert('$result - Hata : ".$_FILES['myfile']['name']."');</script>"; */
  
 sleep(1); //?
 ?>

@@ -223,8 +223,8 @@ function checkLoginLang($lgn,$lng,$src){
 		}
 		
 	if($lgn){
-		   $adi	=temizle(substr($_SESSION["usern"],0,15));
-		   $par	=temizle($_SESSION["userp"]);
+	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");	
 		  
 			if($adi==""|| $par==""){ //EMPTY?
 			   @header("Location: error.php?error=2");
@@ -258,7 +258,7 @@ function araKalin($neyi)
 {
 	$sonuc="";
 	
-	$arayici =  temizle($_GET['arama']);   
+	$arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");   
 	
 	if ($arayici=="") return $neyi;
 	
@@ -1436,7 +1436,7 @@ dosya uzantýsýný bulur
 function file_ext($filename) 
 { 
  $filename = strtolower($filename) ; 
- $exts = split("[/\\.]", $filename) ; 
+ $exts = preg_split('$[/\\.]$', $filename) ; 
  $n = count($exts)-1; 
  $exts = $exts[$n]; 
  return $exts; 
@@ -4554,6 +4554,7 @@ function getUsersOnline() {
 		while($row = mysql_fetch_assoc($result)) {
 		      $data['values'][] = $row['userName'];
 		}
+		if(isset($data['values']))
 		return $data['values'];
 }
 /*
