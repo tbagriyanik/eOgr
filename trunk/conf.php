@@ -16,7 +16,7 @@ Lesser General Public License for more details.
 require 'lib/flood-protection.php'; // include the class
 require 'database.php'; 
 
-$taraDili=$_COOKIE["lng"];    
+$taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
 if(!($taraDili=="TR" || $taraDili=="EN")) 
   require_once("lib/humanRelativeDate.class.php");
 else if($taraDili=="TR") 
@@ -95,9 +95,9 @@ browserdili: parametresiz,
 aktif tarayýcýnýn dil ayarýný bulma
 */
 function browserdili() {
-         $lang=	preg_split('/[,;]/',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+         $lang=	preg_split('/[,;]/i',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
          $lang=	strtoupper($lang[0]);
-         $lang=	preg_split('/[-]/',$lang);
+         $lang=	preg_split('/[-]/i',$lang);
          return $lang[0];
 }
 /*
@@ -178,7 +178,7 @@ function temaBilgisi(){
 			else
 			$adresten = "";
 			
-		$cerezden = RemoveXSS($_COOKIE["theme"]);
+		$cerezden = RemoveXSS((isset($_COOKIE["theme"]))?$_COOKIE["theme"]:"");
 	
 		if($adresten!="" and is_dir('theme/'.$adresten))
 		  {
@@ -217,7 +217,7 @@ function checkLoginLang($lgn,$lng,$src){
 	global $taraDili;
 	
 	if($lng){
-  		   $taraDili=$_COOKIE["lng"];    
+  		   $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
 		   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
 		   dilCevir($taraDili);		
 		}
@@ -341,11 +341,12 @@ tablodan String türünde veri alma
 */
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
+  global $yol1;		
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = mysql_real_escape_string($theValue);
+  $theValue = mysql_real_escape_string($theValue,$yol1);
 
  switch ($theType) {
     case "text":
@@ -419,6 +420,7 @@ tablo boyutunu Byte cinsinde alma
 function getTableSize($tableN){
 	
 	$yol1 = baglan();
+	$araDeger = "";
 	$res = mysql_query("SHOW TABLE STATUS LIKE '$tableN'", $yol1);
 	if ($res) {
 	  if(mysql_result($res, 0, "Data_free")>0) 
@@ -3131,6 +3133,7 @@ function sonDersCalisma($tarih){
 	$sql1	= 	"select id, konuAdi from eo_4konu where DATE_FORMAT(bitisTarihi, '%Y-%m-%d') = '$tarih'";
 	$result1= 	@mysql_query($sql1,$yol1);
 	if($result1){
+		$ekle = "";
 		while($gelen = mysql_fetch_array($result1)) {
 			$ekle .= $gelen["konuAdi"]."|".$gelen["id"]."|";
 			}
@@ -3921,6 +3924,7 @@ Sayfa olarak en fazla yapýlan iþlem ve hata sayýlarý
 */
 function enFazlaIslemGetir($islem){
 	global $yol1;
+	$sonuc = "";
 	switch($islem){
 		case "1":
 			$sql1 = "SELECT processName, count(processName) as say 

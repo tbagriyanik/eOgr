@@ -45,7 +45,7 @@ sureDolduTemizle:
 genel olarak ders sayfasýndaki bölümlerin temizlenmesi
 */
 function sureDolduTemizle(){
-		$("#calismaSuresi").stopTime();
+		//$("#calismaSuresi").stopTime();
 		$("#cevapSuresi").stopTime();
 		window.clearTimeout(timeoutId);
 				
@@ -260,7 +260,7 @@ cevap verme süresinin çalýþmasý
 */ 
 function sayacTetik2(sure)  {
 					$("#soruGeriSayim").oneTime((sure*60) + "s",function() {																		
-						$("#calismaSuresi").stopTime();
+						//$("#calismaSuresi").stopTime();
 						saveUserWork();//even if less then ignored limited time !!
 						sureDolduTemizle();
 					});
@@ -331,7 +331,7 @@ function konuSec2(sayfaNo, noCount){
 					var response = httpObject.responseText;
 
 					if(response==""){
-						document.getElementById('anaMetin').innerHTML =   "<font id='hata'>Sayfa yüklenemedi!<p>Baþka bir ders <a href='lessons.php'>seçiniz</a>.</p></font>";
+						document.getElementById('anaMetin').innerHTML =   "<font id='hata'>Sayfa yüklenemedi!...<p>Baþka bir ders <a href='lessons.php'>seçiniz</a>.</p></font>";
 						return;
 					}
 					

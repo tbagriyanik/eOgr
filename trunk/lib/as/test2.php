@@ -10,7 +10,7 @@ the returned xml has the following structure
 
 include ("../../conf.php");
 
-  		   $taraDili=$_COOKIE["lng"];    
+  		   $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
 		   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
 		   dilCevir($taraDili);		
 

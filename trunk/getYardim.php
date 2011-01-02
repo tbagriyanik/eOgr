@@ -20,7 +20,7 @@ Lesser General Public License for more details.
       $_SESSION ['ready'] = TRUE; 
 require("conf.php");  	
 
-     $taraDili=$_COOKIE["lng"];    
+     $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) 
     $taraDili="EN";
    dilCevir($taraDili);

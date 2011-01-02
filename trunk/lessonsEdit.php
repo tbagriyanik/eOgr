@@ -156,7 +156,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 	 } 
 ?>
                   <?php
-$seciliSekme = $_GET["tab"];
+$seciliSekme =(isset( $_GET["tab"]))? $_GET["tab"]:"";
 
 function temizleCubuk($gelen){
 	 $gelen = str_replace("|", "¦", temizle($gelen));

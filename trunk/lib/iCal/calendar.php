@@ -14,19 +14,16 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	ob_start();
-    session_start (); 
+    @session_start (); 
 	require("../../conf.php");	
 	checkLoginLang(true,true,"calendar.php");	
 
-$month=$_REQUEST['month'];
-$year=$_REQUEST['year'];
+$month	=(isset($_REQUEST['month']))?RemoveXSS($_REQUEST['month']):date('m');
+$year	=(isset($_REQUEST['year']))?RemoveXSS($_REQUEST['year']):date('Y');
 
-if (!$month) { $month=date('m'); }
-if (!$year) { $year=date('Y'); }
-
-$get_date=mktime(0, 0, 0, $month, 1, $year );
-$next_month=mktime(0, 0, 0, $month+1, 1, $year );
-$prev_month=mktime(0, 0, 0, $month-1, 1, $year );
+$get_date	=mktime(0, 0, 0, $month, 1, $year );
+$next_month	=mktime(0, 0, 0, $month+1, 1, $year );
+$prev_month	=mktime(0, 0, 0, $month-1, 1, $year );
 
 $next_m=date('m', $next_month);
 $next_y=date('Y', $next_month);
@@ -48,7 +45,7 @@ return mktime( 23, 59, 59, $month + 1, 0, $year );
 }
 
 function print_calendar( $month, $year, $weekdaytostart = 0 ) {
-	global $taraDili;
+	global $taraDili,$get_date;
 	$last = idate( 'd', last_day( $month, $year ) );
 	$firstdaystamp = mktime( 0, 0, 0, $month, 1, $year );
 	$firstwday = idate( 'w', $firstdaystamp );
@@ -70,10 +67,6 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 	if ($last_day_name=='Wed') { $last_day=$numDays-5; }
 	if ($last_day_name=='Thu') { $last_day=$numDays-6; }
 	
-	$lastfriday=$last_day;
-	$lastwednesday=$lastfriday-2;
-	$lastmonday=$lastwednesday-2;
-
 	echo "<table cellspacing=\"0\">\n";
 	
 	// SET UP DAYS

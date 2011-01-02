@@ -27,10 +27,8 @@ Lesser General Public License for more details.
 
 	$physicalFileName = $_uploadFolder.'/'.$dosya;
 	// security check
-	if (file_exists($physicalFileName) and isset($_GET["islem"])) {
-		switch($_GET["islem"]){
-			case "goster":
-			
+	if (file_exists($physicalFileName)) {
+ 		if(isset($_GET["islem"]) and $_GET["islem"]=="goster"){			
 			if(in_array(file_ext($dosya),$_filesToPlay)){
 				
 				$oyna = "<iframe src=\"$_source1/player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
@@ -51,8 +49,7 @@ Lesser General Public License for more details.
                   echo $content;
 				  downloadSayac(RemoveXSS($_GET["id"]));
                   die('');		 
-			break;
-			default:
+			}else {
 					header('Content-Type: application/octet-stream');
 					//header('Content-type: application/force-download');
 					
@@ -63,7 +60,7 @@ Lesser General Public License for more details.
 					header('Expires: 0');
 					downloadSayac(RemoveXSS($_GET["id"]));
 					readfile($physicalFileName);
-					die();
+					die("");
 		}
 	}
 ?>

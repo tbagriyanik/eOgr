@@ -123,8 +123,16 @@ $().ready(function() {
   <div id="loginButton"> <a href="#"><?php echo $metin[2];?></a> </div>
   <!-- END LOGIN BUTTON --> 
   
-  <!-- BEGIN HIDDEN FORM -->
+  <!-- BEGIN HIDDEN FORM -->  
   <div id="loginForm">
+<?php
+$remUser = false;
+if (isset($_COOKIE["remUser"]))
+  if (strlen($_COOKIE["remUser"])>0){
+   $remUser = true;
+  } 
+?>
+
     <fieldset>
       <form id="formLogin" method="post" action="login.php">
         <label for="userN"> <?php echo $metin[0]?> : </label>
