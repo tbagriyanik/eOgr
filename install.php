@@ -54,7 +54,7 @@ function dilCevir($dil){
         require("lib/en.php");         
 }
    
-        $taraDili= $_COOKIE["lng"]; 
+        $taraDili= (isset($_COOKIE["lng"]))?$_COOKIE["lng"]:""; 
         if($taraDili!="TR") $taraDili="EN";
 		setcookie("lng",$taraDili,time()+60*60*24*30);
 		
@@ -85,7 +85,7 @@ temanýn deðiþtirilmesi
 function temaBilgisi(){
 	global $_defaultTheme;
 	$result = $_defaultTheme;
-	$cerezden = temizle($_COOKIE["theme"]);
+	$cerezden = temizle((isset($_COOKIE["theme"]))?$_COOKIE["theme"]:"");
 
 	 if($cerezden!="" and is_dir('theme/'.$cerezden)){
 
@@ -347,7 +347,7 @@ require 'lib/flood-protection.php'; // include the class
 					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 
 				  }
 				  catch(Exception $e){
-					  echo "<li>* MySQL <strong>sunucu</strong> sürümü : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  }				  
 				  
 				  echo "<li>MySQL <strong>istemci</strong> sürümü : ".mysql_get_client_info()."</li>"; 	
@@ -359,11 +359,11 @@ require 'lib/flood-protection.php'; // include the class
 					  else
 					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";//mysql_error();
 				  try{
-					if(eregi("777",decoct(@fileperms($_uploadFolder))) 
-				  or eregi("766",decoct(@fileperms($_uploadFolder)))) {
+					if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
+				  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
 					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  }else{
-					  echo "<li>* Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yazýlabilir deðil!</li>";
+					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yazýlabilir deðil!</li>";
 					  }  
 				  }
 				  catch(Exception $e){
@@ -434,7 +434,7 @@ require 'lib/flood-protection.php'; // include the class
 				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";						  
 				  }
 				  catch(Exception $e){
-					  echo "<li>* <strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+					  echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  }						
 				  if($sessVar)
 				    echo "<li><strong>Oturum</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
@@ -475,7 +475,15 @@ require 'lib/flood-protection.php'; // include the class
 				  if(ini_get('use_trans_sid')!=1)
 				    echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
+				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";	
+?>
+	<script language="javascript" type="text/javascript">
+		document.write("<li>Dil : " + navigator.userLanguage +"</li>")	;
+		document.write("<li>Çerez Desteði : " + navigator.cookieEnabled +"</li>")	;
+		document.write("<li>JavaScript Desteði : " + navigator.javaEnabled() +"</li>")	;
+		document.write("<li>Tarayýcýnýz : " + navigator.userAgent +"</li>")	;
+	</script>
+<?php						
 				//--------------------------------------	
 				  echo "</ul>";
 				  echo "<hr noshade=\"noshade\"/><p>$metin[578]</p>";

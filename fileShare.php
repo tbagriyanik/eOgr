@@ -176,8 +176,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
 			(getUserID2($_SESSION['usern'])==dosyaKimID($_GET['id']) or $tur=='2')) {
-   if(eregi("777",decoct(@fileperms($_uploadFolder))) or 
-   	  eregi("766",decoct(@fileperms($_uploadFolder)))){
+	if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
+	  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
 		  dosyaSil(RemoveXSS($_GET['id'])); 			
 		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
 							   GetSQLValueString($_GET['id'], "int"));		
@@ -190,22 +190,33 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") &&
   
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 if($seceneklerimiz[16]=="1")
-	if(eregi("777",decoct(@fileperms($_uploadFolder))) 
-	 or eregi("766",decoct(@fileperms($_uploadFolder)))
-	 ) {
+ if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
+  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
 ?>
                   <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
 return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a> </blockquote>
                   <?php	
 }
 
-require_once("lib/phplivex.php");  
-  
-function getString($gelenArama){ 
-  $pageCnt=temizle($_GET['pageCnt']);
+   if(isset($_GET['arama'])) 
+     $aramaDegeri = temizle($_GET['arama']);
+	 else
+	 $aramaDegeri = "";
+	 
+   if(isset($_GET['pageNum_eoUsers'])) 
+     $pageNumDegeri = temizle($_GET['pageNum_eoUsers']);
+	 else
+	 $pageNumDegeri = "";	 
+	 
+   if(isset($_GET['ord'])) 
+     $siraDegeri = temizle($_GET['ord']);
+	 else
+	 $siraDegeri = "";	 
+	 
+  $pageCnt=temizle((isset($_GET['pageCnt']))?$_GET['pageCnt']:"");
 
   if($pageCnt=="")  
-    $pageCnt=GetSQLValueString($_SESSION['pageCnt3'], "int"); 
+    $pageCnt=GetSQLValueString((isset($_SESSION['pageCnt3']))?$_SESSION['pageCnt3']:"", "int"); 
 	else
 	$_SESSION['pageCnt3']=$pageCnt;
   
@@ -222,7 +233,7 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($_db, $yol);
 
-$arayici =  temizle($gelenArama);   
+$arayici =  temizle((isset($gelenArama))?$gelenArama:"");   
   if ($arayici!="") 
    {
 		    $filtr2=" where ((eo_files.fileName like '%$arayici%' or eo_users.userName like '%$arayici%') and eo_users.id=eo_files.userID) ";
@@ -235,14 +246,14 @@ if (empty($_SESSION["siraYonu2"])) {
 		$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
-	if ($_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (isset($_GET["yonU"]) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
 	$siraYonu=$_SESSION["siraYonu2"];
 	
-	$sirAlan=temizle($_GET['order']);
+	$sirAlan=temizle((isset($_GET['order']))?$_GET['order']:"");
 	
 	  if ($sirAlan!="")
 	    $query_eoUsers = "SELECT eo_files.id as id, eo_users.userName as userName, eo_files.fileName as fileName,
@@ -293,21 +304,21 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
                         <th><?php if ($sirAlan=="id") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
+                          <a href="?order=id&amp;ord=<?php echo $siraDegeri?>&amp;arama=<?php echo $aramaDegeri?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $pageNumDegeri?>"> <?php echo $metin[26]?> </a></th>
                         <th ><?php if ($sirAlan=="userName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
+                          <a href="?order=userName&amp;arama=<?php echo $aramaDegeri?>&amp;ord=<?php echo $siraDegeri?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $pageNumDegeri?>"> <?php echo $metin[17]?> </a></th>
                         <th ><?php if ($sirAlan=="fileName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="fileName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=fileName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[465]?> </a></th>
+                          <a href="?order=fileName&amp;arama=<?php echo $aramaDegeri?>&amp;ord=<?php echo $siraDegeri?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $pageNumDegeri?>"> <?php echo $metin[465]?> </a></th>
                         <th></th>
                         <th><?php echo $metin[129];?></th>
                         <th ><?php if ($sirAlan=="downloadCount") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="downloadCount")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=downloadCount&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[466]?> </a></th>
+                          <a href="?order=downloadCount&amp;arama=<?php echo $aramaDegeri?>&amp;ord=<?php echo $siraDegeri?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $pageNumDegeri?>"> <?php echo $metin[466]?> </a></th>
                       </tr>
                       <?php 
   $satirRenk=0;
@@ -344,8 +355,8 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
                         <td align='right' <?php echo "style=\"background-color: $row_color;\""?>><?php echo temizle($row_eoUsers['downloadCount']); ?></td>
                         <?php
 						 if($row_eoUsers['userName']==$_SESSION["usern"] or $tur=="2") {
-							 if(eregi("777",decoct(@fileperms($_uploadFolder))) or 
-							 	eregi("766",decoct(@fileperms($_uploadFolder)))) {	 
+							if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
+							  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
                         ?>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a></td>
                         <?php
@@ -358,8 +369,7 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
                     </table>
                   </form>
                   <?php
-if ($totalRows_eoUsers> $maxRows_eoUsers)
-   {
+if ($totalRows_eoUsers> $maxRows_eoUsers)  {
 ?>
                   <table border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCCCC" >
                     <tr>
@@ -390,18 +400,13 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
      return "<font id='hata'> $metin[497]</font>";  
 }
 
-$ajax = new PHPLiveX(array("getString")); 
-$ajax->Run(); 
-
-//if ($totalRows_eoUsers>0)
+if ($totalRows_eoUsers>0)
    {	   
  ?>
-                  <div id="testArea"></div>
-                  <div id="prl" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></div>
                   <form id="aramak" name="aramak" method="get" action="fileShare.php">
                     <p>
                       <label> <?php echo $metin[29]?> :
-                        <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[469]?>" value="<?php echo $arayici?>" onkeypress="getString(this.value,{target:'testArea', preloader:'prl'});" autofocus="true"/>
+                        <input name="arama" type="text" size="20" maxlength="20"  title="<?php echo $metin[469]?>" value="<?php echo (isset($arayici))?$arayici:""?>" autofocus="true"/>
                       </label>
                       <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara" style="vertical-align: middle;"/>
                     </p>
@@ -433,7 +438,6 @@ if ($tur=="2") {
 	  echo "</p>";			
 }//if tur=2
 
-	}
 	else {
 	  @header("Location: error.php?error=9");	
 	  die($metin[447]);

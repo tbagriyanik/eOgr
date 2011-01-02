@@ -27,7 +27,7 @@ Lesser General Public License for more details.
 
 	$physicalFileName = $_uploadFolder.'/'.$dosya;
 	// security check
-	if (file_exists($physicalFileName)) {
+	if (file_exists($physicalFileName) and isset($_GET["islem"])) {
 		switch($_GET["islem"]){
 			case "goster":
 			

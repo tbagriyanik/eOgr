@@ -132,7 +132,7 @@ function secenekleriGetir($id)
 		 //TEK SEÇENEK doðru - TEST
   	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5))+(!empty($secenek6));
 				
-	   $araCevDizi=split('[/]', rasgeleCevapHazirla($toplamCevapAdedi));
+	   $araCevDizi=preg_split('$[/]$', rasgeleCevapHazirla($toplamCevapAdedi));
 
 				switch ($araCevDizi[0])
 				{
@@ -213,7 +213,7 @@ function secenekleriGetir($id)
 			$_SESSION["hataSay"][$id]= "";
   	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5))+(!empty($secenek6));
 				
-	   $araCevDizi=split('[/]', rasgeleCevapHazirla($toplamCevapAdedi));
+	   $araCevDizi=preg_split('$[/]$', rasgeleCevapHazirla($toplamCevapAdedi));
 
 				switch ($araCevDizi[0])
 				{

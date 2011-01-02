@@ -44,7 +44,7 @@ if(!empty($_GET["id"])){
 					so.addParam('allowscriptaccess','always');
 					so.addParam('allowfullscreen','true');
 					so.addParam('logo','img/logo1.png');
-					so.addParam('wmode','transparent');$provider
+					so.addParam('wmode','transparent');
 					so.addParam('flashvars', 'file=$yol&amp;image=img/logo1.png');
 					so.write('player');
 					</script>";

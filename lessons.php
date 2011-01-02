@@ -357,8 +357,8 @@ function cleanup() {
                   <?php
                   if($eMode=="1")
 					  	echo ("<div id='lgout' style='top:-13px;'><a href='#' onclick='window.close();'>".$metin[34]."</a></div><br/>");
-				    $adi	=temizle(substr($_SESSION["usern"],0,15));
-	   				$par	=temizle($_SESSION["userp"]);
+	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
 				    $tur = checkRealUser($adi,$par); 
 					
   				   	if($tur!="-2" and !in_array($eMode,array("1","2"))){ 

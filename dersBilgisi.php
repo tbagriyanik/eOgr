@@ -360,7 +360,7 @@ function konuKisitlamalari($id){
 }
 
 /*main*/
- if (isset($_GET['ders']) && is_numeric($_GET['ders']) && $_GET['ders']>0 && getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" ) {
+ if (isset($_GET['ders']) && is_numeric($_GET['ders']) && $_GET['ders']>0 && isset($_SESSION["usern"]) &&  getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 		echo "<h3>$metin[327]</h3>";
 		echo "<strong>$metin[175] :</strong> ".konuAdi($_GET["ders"])."<br/>";
 		echo "<strong>$metin[328] :</strong> <i>".dersOkulSinif($_GET["ders"])."</i><br/>";
@@ -392,8 +392,7 @@ function konuKisitlamalari($id){
 	if(konuKisitlamalari($_GET["ders"])!="")	
 	    echo "<strong>$metin[338] :</strong> <i>".konuKisitlamalari($_GET["ders"])."</i><br/>";
 	
- if(isset($_GET['set']))
-	if($_GET['set']!="1"){	
+	if(!isset($_GET['set']) or $_GET['set']!="1"){	
 			echo"<br/>";
 			echo "<a href=\"lessons.php?konu=".$_GET["ders"]."\" ><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> $metin[339]</a>";
 	}

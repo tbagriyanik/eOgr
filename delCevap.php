@@ -117,9 +117,9 @@ function cevapSil($cevapID, $userID){
 		     echo "Cevap ve oylar silinemiyor!";
 }
 
-$adi	=temizle(substr($_SESSION["usern"],0,15));
-$par	=temizle($_SESSION["userp"]);
-$tur	=checkRealUser($adi,$par);
+	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
+		$tur	=checkRealUser($adi,$par);
 
 $gonderen 	= RemoveXSS($_POST['gonderen']);
 $cevapID 	= RemoveXSS($_POST['cevap']);

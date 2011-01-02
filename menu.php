@@ -18,8 +18,8 @@ Lesser General Public License for more details.
 	$par	=sha1(substr(@temizle($_POST["userP"]),0,15));
 	
    if ($adi=="" && isset($_SESSION["usern"])) {
-	   $adi	=temizle(substr($_SESSION["usern"],0,15));
-	   $par	=temizle($_SESSION["userp"]);
+	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
 	  }
 	  
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
