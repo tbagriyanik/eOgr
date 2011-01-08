@@ -1,5 +1,5 @@
 
-	eOgr - v129c, 02-01-2011
+	eOgr - v129d, 08-01-2011
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -7,7 +7,7 @@ ABOUT
 -----
 Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends, view or write to their walls. Every member can share their files and homeworks. They can ask questions or read the others answers. 
 
-Students can register for online education resources. Material pages are in the lesson topics. Each topic has rich text formatted reading pages,  quizes (multiple choice, classic, test) and many more activities like presentation and simulation. 
+Students can register for online education resources. Material pages are in the lesson topics. Each topic has rich text formatted reading pages,  quizes (multiple choice, classic, test) and more activities like presentation and simulation. 
 
 Teachers and parents can follow the students works. Teachers can add and modify lesson topics. Administrator users manage the site maintenance like editing users, database backup, database optimization and site settings.
 

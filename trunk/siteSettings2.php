@@ -240,7 +240,7 @@ Lesser General Public License for more details.
                       <br />
                       <form id="sqlimp" name="sqlimp" method="post" action="siteSettings2.php">
                         <label title="<?php echo "SQL Import"?>"> <?php echo $metin[157]?> :
-                          <textarea name="sqlAl" cols="85" rows="10"><?php echo (isset($sqlFile))?$sqlFile:""?>
+                          <textarea name="sqlAl" id="sqlAl"cols="85" rows="10"><?php echo (isset($sqlFile))?$sqlFile:""?>
 </textarea>
                         </label>
                         <input type="hidden" name="sqlial" value="sqlimp" />
