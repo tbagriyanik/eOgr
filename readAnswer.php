@@ -82,7 +82,7 @@ function setOutputOda(){
     if(httpObject.readyState == 4)
 	 if(httpObject.status == 200 || httpObject.status == 304){
 		 if(trim(httpObject.responseText) != "" || trim(httpObject.responseText) != "?"){
-			alert(httpObject.responseText);
+			//alert(httpObject.responseText);
 			location.reload();
 		 }
     }
@@ -108,7 +108,7 @@ function setOutputOda2(){
     if(httpObject2.readyState == 4)
 	 if(httpObject2.status == 200 || httpObject2.status == 304){
 		 if(trim(httpObject2.responseText) != "" || trim(httpObject2.responseText) != "?"){
-			alert(httpObject2.responseText);
+			//alert(httpObject2.responseText);
 			location.reload();
 		 }
     }
@@ -136,7 +136,7 @@ function setOutputOda3(){
     if(httpObject3.readyState == 4)
 	 if(httpObject3.status == 200 || httpObject3.status == 304){
 		 if(trim(httpObject3.responseText) != "" || trim(httpObject3.responseText) != "?"){
-			alert(httpObject3.responseText);
+			//alert(httpObject3.responseText);
 			location.reload();
 		 }
     }

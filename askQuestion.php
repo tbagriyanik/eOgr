@@ -227,7 +227,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 					
 				  	$devam = RemoveXSS((isset($_GET["devam"]))?$_GET["devam"]:"");
 					
-					if($_SESSION['soruLimit']=="") 	
+					if(empty($_SESSION['soruLimit'])) 	
 						$_SESSION['soruLimit'] = 5;
 
 					$limit = RemoveXSS($_SESSION['soruLimit']);

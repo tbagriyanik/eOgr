@@ -452,17 +452,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_1okul.okulAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=1&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
-				     
-				   $sonuc = substr($sonuc,0,strlen($sonuc)-2);
-				   if (empty($sonuc)) 
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_2sinif WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
 				     	$sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[218]";
 					 else
-					 	$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[219] : ".$sonuc;
+					 	$sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[219]</label>";
 				}					
 		   
 		 break;
@@ -474,16 +476,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_2sinif.sinifAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=2&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_3ders WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
 				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[220]"; 
 				   else 					 
-				   $sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[221] : ".$sonuc;
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[221]</label>";
 				}					
 		   
 		 break;
@@ -495,16 +500,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_3ders.dersAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=3&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				     $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[222]";
-					 else
-					 $sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[223] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_4konu WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[222]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[223]</label>";
 				}					
 		   
 				$sql1 =    "SELECT id ,oncekiKonuID
@@ -513,11 +521,9 @@ function yetimKayitNolar($tablo){
 				
 
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
-				   while($row_gelen = mysql_fetch_assoc($result1))
-				    {
+				   while($row_gelen = mysql_fetch_assoc($result1))    {
 							$sqlici =    "SELECT eo_4konu.id 
 										FROM eo_4konu
 										WHERE eo_4konu.id = ".$row_gelen['oncekiKonuID']  ;
@@ -526,16 +532,19 @@ function yetimKayitNolar($tablo){
 							$resultici = mysql_query($sqlici, $yol1);
 							if ($resultici){
 								if (@mysql_numrows($resultici)==0)
-							    	$sonuc2 .= "<a href='lessonsEdit.php?tab=3&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
+							    	$sonuc2 .= $row_gelen['id'].", ";
 							}
 							@mysql_free_result($resultici); 	
 
 					}
-					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_4konu WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[224]";
 					  else
-					  $sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[225] : ".$sonuc2;
+					  $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[225]</label>";
 				}					
 		   
 		 break;
@@ -547,16 +556,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_4konu.konuAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='lessonsEdit.php?tab=4&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				     $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[226]";
-					 else
-					 $sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[227] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_5sayfa WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[226]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[227]</label>";
 				}					
 		   
 				$sql1 =    "SELECT eo_5sayfa.id 
@@ -565,16 +577,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1) {
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='lessonsEdit.php?tab=4&id=".$row_gelen['id']."&upd=1'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_5sayfa WHERE id IN ($sonuc2);"; 
+				    
 				   if (empty($sonuc2)) 
 				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[228]";
-					  else
-					  $sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[229] : ".$sonuc2;
+					  else					  
+					  $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[229]</label>";
 				}					
 		   
 		 break;
@@ -586,16 +601,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL and eo_userworks.userID<>-1";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1) {
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataWorkList2.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[231] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_userworks WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[231]</label>";
 				}					
 		   
 				$sql1 =    "SELECT eo_userworks.id 
@@ -604,16 +622,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_4konu.konuAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataWorkList2.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_userworks WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
-					  else
-					  $sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233]</label>";
 				}					
 		   
 		 break;
@@ -625,16 +646,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL ";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= " ".$row_gelen['id'].", ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[234]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_sinifogre WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[234]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}					
 		   
 				$sql1 =    "SELECT eo_sinifogre.id 
@@ -643,16 +667,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_2sinif.sinifAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= " ".$row_gelen['id'].", ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_sinifogre WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[236]";
-					  else
-					  $sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[237] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[236]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[237]</label>";
 				}					
 		   
 		 break;
@@ -664,16 +691,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL and eo_comments.userID<>-1";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataCommentList.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[231] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_comments WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[231]</label>";
 				}					
 		   
 				$sql1 =    "SELECT eo_comments.id 
@@ -682,16 +712,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_4konu.konuAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataCommentList.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_comments WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
-					  else
-					  $sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233]</label>";
 				}					
 		   
 		 break;
@@ -703,16 +736,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL and eo_rating.userID<>-1";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataRatingList.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[231] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_rating WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[231]</label>";
 				}					
 		   
 				$sql1 =    "SELECT eo_rating.id 
@@ -721,16 +757,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_4konu.konuAdi is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataRatingList.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_rating WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				      $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]";
-					  else
-					  $sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[232]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233]</label>";
 				}					
 		   
 		 break;
@@ -742,16 +781,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='fileShare.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_files WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}					
 		   
 		 break;
@@ -763,16 +805,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='dataFriendActions.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_friends WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}	
 								
 				$sql1 =    "SELECT eo_friends.id 
@@ -781,16 +826,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='dataFriendActions.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_friends WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				    $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}					
 		   
 		 break;
@@ -802,16 +850,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_askquestion WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}	
 								
 				$sql1 =    "SELECT eo_askquestion.id 
@@ -820,16 +871,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_3ders.id is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_askquestion WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				    $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[220]";
-					else
-					$sonuc .= " - <img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[220]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233]</label>";
 				}					
 		   
 		 break;
@@ -841,16 +895,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.userName is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230] - ";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_askanswer WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}	
 								
 				$sql1 =    "SELECT eo_askanswer.id 
@@ -859,16 +916,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_askquestion.id is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_askanswer WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				    $sonuc .= "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[640]";
-					else
-					$sonuc .= "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[641] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[640]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[641]</label>";
 				}	
 								
 		break;								
@@ -880,16 +940,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_users.id is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
-				   $sonuc = "";	 
+				if ($result1)	{
+				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
-				     
-				   if (empty($sonuc)) 
-				    $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230] - ";
-					else
-					$sonuc = "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235] : ".$sonuc;
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_askanswerrate WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
 				}	
 								
 				$sql1 =    "SELECT eo_askanswerrate.id 
@@ -898,16 +961,19 @@ function yetimKayitNolar($tablo){
 							WHERE eo_askanswer.id is NULL";
 				
 				$result1 = mysql_query($sql1, $yol1);
-				if ($result1)
-				{
+				if ($result1)	{
 				   $sonuc2 = "";	 
 				   while($row_gelen = mysql_fetch_assoc($result1))
-				    $sonuc2 .= "<a href='askQuestion.php'>".$row_gelen['id']."</a>, ";
-				     
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_askanswerrate WHERE id IN ($sonuc2);"; 
+		
 				   if (empty($sonuc2)) 
-				    $sonuc .= "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[638]";
-					else
-					$sonuc .= "<img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[639] : ".$sonuc2;
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[638]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[639]</label>";
 				}	
 								
 		break;								
@@ -4640,25 +4706,51 @@ function soruEkleyenID($soruID){
 		return ($satir[0]);		
 }
 /*
+son5oyVeren:
+en son oy vermiþ 5 kiþi ismi
+*/
+function son5oyVeren($id,$deger){
+	global $yol1;
+	$id = (int) temizle($id);
+	$sorgu = "SELECT eo_users.userName FROM eo_users,eo_askanswerrate
+			WHERE eo_users.id = eo_askanswerrate.userID
+			and eo_askanswerrate.cevapID='$id' 
+			and eo_askanswerrate.degeri='$deger'
+			ORDER BY eo_users.userName
+			LIMIT 0,5";
+	$result = mysql_query($sorgu,$yol1);
+	if ($result){
+		$sonuc=" ";
+		while($gelen=mysql_fetch_array($result))
+		  $sonuc .= $gelen[0]." ";
+		return $sonuc;  
+	}else
+	return "";	
+}
+/*
 cevapOyToplami:
-cevap için verilen oylarýn toplamý
+cevap için verilen oylarýn toplamý (son oy verenlerin adlarý)
 */
 function cevapOyToplami($cevapID){
 	global $yol1;
 	$cevapID = (int) temizle($cevapID);
 	$sonuc="";
-	$sql = "SELECT count(id) as say FROM eo_askanswerrate 
+	
+	//dogru diyenler
+	$sql = "SELECT count(id) as say,cevapID FROM eo_askanswerrate 
 		WHERE cevapID='$cevapID' and degeri='1'";		
 	$result = mysql_query($sql, $yol1);		
 	$satir=@mysql_fetch_array($result);
 	if($satir[0]>0) 
-		$sonuc = $satir[0]." <span class='dogruOy' title='dogru'></span> ";			
-	$sql = "SELECT count(id) as say FROM eo_askanswerrate
+		$sonuc .= $satir[0]." <span class='dogruOy' title='".son5oyVeren($satir[1],"1")."'></span> ";	
+				
+	//hata diyenler
+	$sql = "SELECT count(id) as say,cevapID FROM eo_askanswerrate
 		 WHERE cevapID='$cevapID' and degeri='-1'";		
 	$result = mysql_query($sql, $yol1);		
 	$satir=@mysql_fetch_array($result);
 	if($satir[0]>0) 
-		$sonuc .= $satir[0]." <span class='yanlisOy' title='yanlis'></span> ";
+		$sonuc .= $satir[0]." <span class='yanlisOy' title='".son5oyVeren($satir[1],"-1")."'></span> ";
 	if($sonuc=="") $sonuc = "Þimdilik oy verilmemiþ.";
 	
 	return $sonuc;	
