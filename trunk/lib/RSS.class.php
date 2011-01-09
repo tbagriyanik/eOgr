@@ -25,7 +25,7 @@ mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_erro
 	
 	private function dbConnect()
 	{
-		DEFINE ('LINK', mysql_connect (DB_HOST, DB_USER, DB_PASSWORD));
+		mysql_connect (DB_HOST, DB_USER, DB_PASSWORD);
 	}
 	
 	private function smileAdd($gelen){
@@ -59,7 +59,7 @@ mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_erro
 		$detailsTable = "eo_webref_rss_details";
 		$this->dbConnect($detailsTable);
 		$query = "SELECT * FROM ". $detailsTable;
-		$result = mysql_db_query (DB_NAME, $query, LINK);
+		$result = mysql_query ($query);
 		
 		while($row = mysql_fetch_array($result))
 		{
@@ -83,7 +83,7 @@ mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_erro
 		$itemsTable = "eo_webref_rss_items";
 		$this->dbConnect($itemsTable);
 		$query = "SELECT * FROM ". $itemsTable;
-		$result = mysql_db_query (DB_NAME, $query, LINK);
+		$result = mysql_query ($query);
 		$items = '';
 		$i = 0;
 		while($row = mysql_fetch_array($result))

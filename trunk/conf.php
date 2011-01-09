@@ -3546,7 +3546,7 @@ function dersAgaci($gelen=null){
 														@mysql_result($konuAdlari,$l,"id")."'";
 												$sayfaSayisi = mysql_query($sqlSayfa, $yol1);
 												$s_sayisi = mysql_result($sayfaSayisi,0,"toplam");													   						  ?>
-										<li title='<?php echo @mysql_result($konuAdlari,$l,"konuAdi")?>'><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style="background:none;background-color:#3399ee;"><span><span style="font-family:'Lucida Console', Monaco, monospace">
+										<li title='<?php echo @mysql_result($konuAdlari,$l,"konuAdi")?>'><a href="lessons.php?konu=<?php echo @mysql_result($konuAdlari,$l,"id")?>" style=""><span><span style="font-family:'Lucida Console', Monaco, monospace">
 										  <?php echo smartShort(@mysql_result($konuAdlari,$l,"konuAdi"))?>
 						  <?php echo (mysql_result($konuAdlari,$l,"konuyuKilitle")?"<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />":"")?>
                           <?php echo (mysql_result($konuAdlari,$l,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />":"")?>
