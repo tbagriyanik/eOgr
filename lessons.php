@@ -46,7 +46,9 @@ ob_start (); // Buffer output
   
   if(!isset($_GET["konu"]))				
     $_GET["konu"]="";
-    
+
+  if(isset($_SESSION["usern"]))
+		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -79,6 +81,7 @@ ob_start (); // Buffer output
 <script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
+<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
 <script src="lib/jquery.cookie.js" type="text/javascript"></script>
@@ -424,7 +427,7 @@ if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
               &nbsp;</div>
           </div>
           <?php
-if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"]) && $tur>-2 and $eMode!="2"){
+if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"]) && $tur>-2 and $eMode!="2" and $eMode!="1"){
 ?>
           <div class="Post">
             <div class="Block">
@@ -514,7 +517,7 @@ $(document).ready(function() {
 	$sampleData2 = getGrafikValues3(20, $_GET["konu"]);
 	$labels2 = getGrafikLabels3(20, $_GET["konu"]);
 
-if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 and $eMode!="2" ){ 
+if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 and $eMode!="2" and $eMode!="1" ){ 
 ?>
           <div class="Post">
             <div class="Block">
@@ -556,7 +559,7 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
           </div>
           <?php
 }
-	if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and ($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"]) and $eMode!="2"){
+	if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and ($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"]) and $eMode!="2" and $eMode!="1"){
 ?>
           <div class="Post">
             <div class="Block">
@@ -592,7 +595,7 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
 	}
 ?>
           <?php
-if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1" and $eMode!="2"){
+if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1" and $eMode!="2" and $eMode!="1"){
 ?>
           <div class="Post">
             <div class="Block">

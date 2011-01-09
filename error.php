@@ -20,6 +20,12 @@ if(!in_array($_GET["error"],array("5","6"))) {
 * {
 	font-family:Verdana, Geneva, sans-serif;
 }
+body {
+	margin: 5px;
+	padding: 10px;
+	background:url(img/soruArka.gif) repeat-x  top left fixed ;
+	background-color: #fff;
+}
 </style>
 </head>
 <body>
