@@ -65,7 +65,58 @@ if($seceneklerimiz[1]=="1" and $kullaniciSecen[1]=="1") {
 
 if($seceneklerimiz[2]=="1" and $kullaniciSecen[2]=="1") {
 ?>
-    <a href='index.php?lng=<?php echo $taraDili?>&amp;oldPath=<?php echo $currentFile?>' title='Dil se&ccedil;iniz Choose a language'> <?php echo ($taraDili=="TR")?"<img src='img/turkish.png' border='0' alt='Dil' style='vertical-align: middle;' />":"<img src='img/english.png' border='0' alt='Language' style='vertical-align: middle;'/>"?></a>
+<script type="text/javascript">
+<!--
+var timeout         = 500;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+// open hidden layer
+function mopen(id){	
+	// cancel close timer
+	mcancelclosetime();
+
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+
+}
+// close showed layer
+function mclose(){
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime(){
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime(){
+	if(closetimer)	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose; 
+// -->
+</script>
+    <img src='<?php 
+	if($taraDili=="TR")
+	  echo "img/turkish.png";
+	  else
+	  echo "img/english.png";
+	?>' border='0' alt='Dil Language' 
+    style='vertical-align: middle;' 
+    title='Dil se&ccedil;iniz Choose a language'
+    onmouseover="mopen('dilSecimi');" 
+    onmouseout="mclosetime();" />
+    <div id="dilSecimi"   onmouseover="mcancelclosetime()" onmouseout="mclosetime()"> <a href='index.php?lng=EN&amp;oldPath=<?php echo $currentFile?>' ><img src='img/turkish.png' border='0' alt='Dil' style='vertical-align: middle;'/></a>&nbsp; <a href='index.php?lng=TR&amp;oldPath=<?php echo $currentFile?>'> <img src='img/english.png' border='0' alt='Language' style='vertical-align: middle;'/></a> </div>
     <?php
 }
 					
@@ -86,5 +137,3 @@ echo ("&nbsp;|&nbsp;<font size='-3'>".$metin[217]." ".$insansi."</font>");
  mysql_close($yol);
  mysql_close($yol1);
 ?>
-
-

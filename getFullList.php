@@ -514,6 +514,10 @@ function listeGetir($userID, $durum){
 	return false;
 }
 
+if(!isset($_SESSION["usern"]) or !isset($_SESSION["userp"])){
+	$_SESSION["usern"]="";
+	$_SESSION["userp"]="";
+} 
 
 if (isset($_GET['case']) && !empty($_GET['case']) && getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 	if ( !listeGetir(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_GET['case'])) )		

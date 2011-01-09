@@ -1,4 +1,6 @@
 <?php
+if(!isset($_GET["error"]))
+ $_GET["error"]="";
 if(!in_array($_GET["error"],array("5","6"))) {
 	require("conf.php");
 	checkLoginLang(false,true,"error.php");
@@ -20,8 +22,7 @@ if(!in_array($_GET["error"],array("5","6"))) {
 }
 </style>
 </head>
-
-<body bgcolor="#FFCCCC">
+<body>
 <?php 
 	if(isset($_SESSION["usern"]))
 		$adi = RemoveXSS($_SESSION["usern"]);
@@ -35,9 +36,13 @@ if(!in_array($_GET["error"],array("5","6"))) {
 			}
 		}
 ?>
-<h1 align="center">eOgr - <?php echo $metin[489]?></h1>
-<p style="margin-top:50px;"> <font color="#FF0000" size="+1"> <?php echo $metin[402]?> </font> </p>
-<?php
+<TABLE align="center" width="100%" height="100%" style="background-color:#C00">
+  <tr>
+    <td height="100%" valign="middle" ><table align="center">
+        <tr>
+          <td><h2 align="center">eOgr - <?php echo $metin[489]?></h2>
+            <p style="margin-top:50px;"> <font color="#FF0000" > <?php echo $metin[402]?> </font> </p>
+            <?php
 	 switch ($_GET["error"]){
 		 case "1":
 		  echo "<font id='hata'> $metin[400]</font>"; //not login
@@ -73,31 +78,36 @@ if(!in_array($_GET["error"],array("5","6"))) {
 		  echo "<font id='hata'>$metin[468]</font>";		  	  
 	}
 ?>
-<p style="font-size:10px;">
-  <?php
+            <p style="font-size:10px;">
+              <?php
  echo "<strong>$metin[491] :</strong> ".RemoveXSS($_SERVER['REMOTE_ADDR'])."<br/>";  
 // echo "<strong>$metin[492] :</strong> ".RemoveXSS($_SERVER['HTTP_REFERER'])."<br/>"; 
  echo "<strong>$metin[129] :</strong> ".date("d-m-Y H:i:s")."<br/>"; 
  
- if($_GET["error"]!=11){
+ if($_GET["error"]!=11 and !empty($_SESSION["usern"]) and !empty($_SESSION["userp"])){
 ?>
-</p>
-<h5> <?php echo $metin[490]?> </h5>
-<?php
+            </p>
+            <h5> <?php echo $metin[490]?> </h5>
+            <?php
 	 }
 
  if($seceneklerimiz[15]=="1" and $_GET["error"]==11){
 ?>
-<p>
-<form action="error.php?error=11" method="post" name="reopen">
-  <label>Enter Password :
-    <input name="reopenPwd" type="password" size="30" maxlength="30" />
-  </label>
-</form>
-</p>
-<?php
+            <p>
+            
+            <form action="error.php?error=11" method="post" name="reopen">
+              <label>Enter Password :
+                <input name="reopenPwd" type="password" size="30" maxlength="30" />
+              </label>
+            </form>
+            </p>
+            <?php
  }
-?>
+?></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
 <script type="text/javascript" language="javascript">
 if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 </script>

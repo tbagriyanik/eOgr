@@ -544,3 +544,17 @@ h1, h2, h3 {
 .aramaDiv strong {
 	color: #FFF;
 }
+#dilSecimi {
+	position: absolute;
+	visibility: hidden;
+	margin: 5px;
+	margin-top:-25px;
+	margin-left:150px;
+	padding: 5px;	
+	background: #EAEBD8;
+	opacity:0.8;
+	border: 1px solid #5970B2;
+	z-index:999;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
