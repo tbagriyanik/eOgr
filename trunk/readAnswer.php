@@ -199,7 +199,7 @@ if($soru_bilgileri["question"]<>""){
 	 $sorguCev = mysql_query($srgCev);
 	if(@mysql_num_rows($sorguCev)>0){
 ?>
-<h4>Cevaplar</h4>
+<h4><?php echo $metin[650]?></h4>
 <?php 	 
 	while($cevap_bilgileri = mysql_fetch_array($sorguCev)){		
 ?>
@@ -207,9 +207,9 @@ if($soru_bilgileri["question"]<>""){
   <div class="cevapMetni">
     <pre><?php echo $cevap_bilgileri["answer"]?></pre>
   </div>
-  <div class="puanVer"><a href="#" class="evetOy" title="Doðru" 
+  <div class="puanVer"><a href="#" class="evetOy" title="<?php echo $metin[652]?>" 
     onclick=" cevapOy('1',<?php echo $gecerliKullID ?>,<?php echo $cevap_bilgileri["id"] ?> );
-   return false;"></a> <a href="#" class="hayirOy" title="Yanlýþ" 
+   return false;"></a> <a href="#" class="hayirOy" title="<?php echo $metin[653]?>" 
    onclick=" cevapOy('-1',<?php echo $gecerliKullID ?>,<?php echo $cevap_bilgileri["id"] ?> );
    return false;"></a></div>
   <div class="cevaplayan"><?php echo getUserName($cevap_bilgileri["userID"])?></div>
@@ -238,13 +238,13 @@ if($soru_bilgileri["question"]<>""){
 <?php
 			 }//while
 		}else
-		echo "<strong>Þimdilik cevap verilmemiþtir.</strong>";
+		echo "<strong>$metin[654]</strong>";
 ?>
 <div id="kapsayiciEkle">
   <form>
-    <strong>Sizin Cevabýnýz</strong><br />
+    <strong><?php echo $metin[651]?></strong><br />
     <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:1px solid #000;" ></textarea>
-    <input type="image" width="25" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick=" cevapKaydet(trim(document.getElementById('cevabim').value.substr(0,250)),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
+    <input type="image" width="20" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/plus.png" onclick=" cevapKaydet(trim(document.getElementById('cevabim').value.substr(0,250)),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
    //$('#kapsayiciEkle').hide('slow');
    return false;">
   </form>

@@ -86,9 +86,9 @@ function duvarYaz($duvarYazisi, $userID, $arkadasID){
 		 echo "ERR";
 }
 
-$duvarGel = str_replace("'", "`", $_POST['duvar']);
-$gonderen = $_POST['gonderen'];
-$alan = $_POST['alan'];
+$duvarGel = str_replace("'", "`", (isset($_POST['duvar']))?$_POST['duvar']:"");
+$gonderen = (isset($_POST['gonderen']))?$_POST['gonderen']:"";
+$alan = (isset($_POST['alan']))?$_POST['alan']:"";
 
 if (isset($_POST['duvar'])        	
 						&& getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="") 

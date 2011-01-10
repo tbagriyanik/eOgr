@@ -829,4 +829,15 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[643] = "Soru sorabilir, cevap verebilir veya oy verebilirsiniz.";
 		$metin[644] = "<strong><a href=\"askQuestion.php\">Sorular</a> (cevap sayýsý) : </strong> ";		
 		
+		$metin[645] = "Sorunuz";
+		$metin[646] = "Sorular";
+		$metin[647] = "Soru (cevap sayýsý)";
+		$metin[648] = "%s soru var.";
+		$metin[649] = "Cevap Oku";
+		$metin[650] = "Cevaplar";
+		$metin[651] = "Sizin Cevabýnýz";
+		$metin[652] = "Doðru";
+		$metin[653] = "Yanlýþ";
+		$metin[654] = "Þimdilik cevap verilmemiþtir.";
+		$metin[655] = "Þimdilik oy verilmemiþtir.";
 ?>

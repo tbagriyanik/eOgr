@@ -497,7 +497,7 @@ function duvarKaydet(icerik, gonderen, alan){
     }
 }
 </script>
-	<textarea id="duvarYazisi" cols="45" rows="4" style="background-color:#FFF;border:thin solid #ccc;"><?php echo arkadasDuvarYazisi($geceliKullID,$seciliKisi)?></textarea>&nbsp;<input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/save.png" onclick="fadeUp(document.getElementById('duvarYazisi'),255,255,0,150,0,0);
+	<textarea id="duvarYazisi" cols="45" rows="4" style="background-color:#FFF;border:thin solid #ccc;"><?php echo arkadasDuvarYazisi($geceliKullID,$seciliKisi)?></textarea>&nbsp;<input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/plus.png" onclick="fadeUp(document.getElementById('duvarYazisi'),255,255,0,150,0,0);
     duvarKaydet(document.getElementById('duvarYazisi').value.substr(0,139),<?php echo $geceliKullID ?>,<?php echo $seciliKisi ?>);">
 <?php		
 		echo "</p>";

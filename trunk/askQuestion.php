@@ -9,7 +9,7 @@ Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Fo4undation; either
+License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
@@ -203,21 +203,21 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 		$_SESSION["ccode3"]=$ccode3;	
 ?>
                   <fieldset>
-                    <legend>Sorunuz</legend>
+                    <legend><?php echo $metin[645] ?></legend>
                     <form action="askQuestion.php" method="post" name="soruGonder">
                       <textarea cols="50" rows="5" name="soru" style="height:93px;border:1px solid #000;"></textarea>
                       <select name="dersID" size="7" style="height:100px;">
-                        <option value="" selected="selected">Seçiniz</option>
+                        <option value="" selected="selected">-<?php echo $metin[106] ?>-</option>
                         <?php echo dersAdlariOption();?>
                       </select>
                       <input type="hidden" name="ccode3" value="<?php echo $ccode3 ?>" />
-                      <input type="submit" name="gonder" value="Gönder" />
+                      <input type="submit" name="gonder" value="<?php echo $metin[100] ?>" />
                     </form>
                   </fieldset>
                   <p>
                   
                   <form action="askQuestion.php" method="get" name="soruAra">
-                    Arama :
+                    <?php echo $metin[29] ?> :
                     <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS((isset($_GET["ara"]))?$_GET["ara"]:"");?>"  />
                     <input name="arama" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                   </form>
@@ -256,13 +256,13 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   
                   <table width="100%" cellspacing="0" cellpadding="2">
                     <caption style="font-weight:bold;font-size:16px;">
-                    Sorular
+                    <?php echo $metin[646] ?>
                     </caption>
                     <tr>
-                      <th width="15%">Gönderen</th>
-                      <th width="35%">Soru (cevap sayýsý)</th>
-                      <th >Ders</th>
-                      <th width="20%">Tarih</th>
+                      <th width="15%"><?php echo $metin[17] ?></th>
+                      <th width="35%"><?php echo $metin[647] ?></th>
+                      <th ><?php echo $metin[363] ?></th>
+                      <th width="20%"><?php echo $metin[129] ?></th>
                     </tr>
                     <?php
 					$satirRenk=0;
@@ -282,7 +282,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                         <?php
 						}
                       ?>
-                        <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='Cevap Oku'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id'])."" ;?></td>
+                        <?php echo "<a href='readAnswer.php?oku=".$satir['id']."'  rel=\"shadowbox;height=400;width=800\" title='$metin[649]'>".smartShort($satir['question'],30)."</a> ".cevapSayisiGetir($satir['id'])."" ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo (dersAdiGetir($satir['dersID'])==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":dersAdiGetir($satir['dersID'])) ;?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $insansi ;?></td>
                     </tr>
@@ -294,7 +294,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   <?php	
 				  if($tumKaySay>$limit)
 				 	 echo "<a href='askQuestion.php?devam=1&amp;ara=$arama'><font class=\"more\">Devamý...</font></a>";
-					 echo "<p>$tumKaySay soru var.</p>";
+					 printf("<p>".$metin[648]."</p>",$tumKaySay);
 			}
 	}
 	else {
