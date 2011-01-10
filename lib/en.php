@@ -816,4 +816,15 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[643] = "You can ask a question, answer or vote for an answer.";
 		$metin[644] = "<strong><a href=\"askQuestion.php\">Questions</a> (answer count) : </strong> ";		
 								
+		$metin[645] = "Your Question";
+		$metin[646] = "Questions";
+		$metin[647] = "Question (answer count)";
+		$metin[648] = "There is/are %s question(s).";
+		$metin[649] = "Read the answer(s)";
+		$metin[650] = "Answers";
+		$metin[651] = "Your Answer";
+		$metin[652] = "Right";
+		$metin[653] = "Wrong";
+		$metin[654] = "There are no answers yet.";
+		$metin[655] = "There are no votes yet.";
 ?>

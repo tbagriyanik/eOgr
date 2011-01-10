@@ -4733,6 +4733,7 @@ cevap için verilen oylarýn toplamý (son oy verenlerin adlarý)
 */
 function cevapOyToplami($cevapID){
 	global $yol1;
+	global $metin;
 	$cevapID = (int) temizle($cevapID);
 	$sonuc="";
 	
@@ -4751,7 +4752,7 @@ function cevapOyToplami($cevapID){
 	$satir=@mysql_fetch_array($result);
 	if($satir[0]>0) 
 		$sonuc .= $satir[0]." <span class='yanlisOy' title='".son5oyVeren($satir[1],"-1")."'></span> ";
-	if($sonuc=="") $sonuc = "Þimdilik oy verilmemiþ.";
+	if($sonuc=="") $sonuc = $metin[655];
 	
 	return $sonuc;	
 }
