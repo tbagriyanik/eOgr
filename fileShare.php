@@ -297,6 +297,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
+if($totalRows_eoUsers>0){
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="fileShare.php">
                     <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
@@ -370,7 +371,9 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
                     </table>
                   </form>
                   <?php
-if ($totalRows_eoUsers> $maxRows_eoUsers)  {
+}
+
+if ($totalRows_eoUsers> $maxRows_eoUsers and $totalRows_eoUsers>0)  {
 ?>
                   <table border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCCCC" >
                     <tr>

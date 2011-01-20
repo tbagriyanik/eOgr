@@ -429,7 +429,11 @@ if(isset($_GET["reddet"]))
                   <div id="tab3" class="tabContent">
                     <?php
 					//ARKADAS
-$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
+if(isset($_SESSION["seciliArkadas"]))
+	$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
+	else
+	$seciliKisi = "";
+	
 if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	echo "<p>$metin[584] : <strong><a href='profil.php?kim=".$seciliKisi."' rel='facebox'>".getUserName($seciliKisi)."</a></strong></p>";				  
 	$bil_1 = sonBilgileriGetir("sohbet",$seciliKisi);

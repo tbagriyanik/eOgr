@@ -114,11 +114,11 @@ Lesser General Public License for more details.
 		$metin[83]="<ul><li>Parolan&#305;z&#305;n yenilenmesi i&ccedil;in, <strong>kullan&#305;c&#305; ad&#305;n&#305;z&#305; ve eposta</strong> adresinizi belirtiniz.</li><li>Eposta adresinizi (spam klas&ouml;r&uuml; de dahil) bir s&uuml;re sonra <strong>kontrol</strong> ediniz.</li></ul>";    
 		$metin[84]="Son g&uuml;ncellenen konular";    
 		
-		$metin[85]="(<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> pasifsiniz) Herhangi bir i&#351;lem yapamazs&#305;n&#305;z.";    
-		$metin[86]="(<img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> &ouml;&#287;rencisiniz) <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Derslere</a> kat&#305;labilirsiniz.";    
-		$metin[87]="(<img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> &ouml;&#287;retmensiniz) <a href=\"lessonsEdit.php\">Ders</a> d&uuml;zenleyebilirsiniz veya <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> derslere</a> kat&#305;labilirsiniz.";    
-		$metin[88]="(<img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> y&ouml;neticisiniz) <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
-		$metin[89]="(t&uuml;r&uuml;n&uuml;z belli de&#287;ildir)";    
+		$metin[85]=". <img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> Pasifsiniz. Herhangi bir i&#351;lem yapamazs&#305;n&#305;z.";    
+		$metin[86]=". <img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> &Ouml;&#287;rencisiniz. <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Derslere</a> kat&#305;labilirsiniz.";    
+		$metin[87]=". <img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> &Ouml;&#287;retmensiniz. <a href=\"lessonsEdit.php\">Ders</a> d&uuml;zenleyebilirsiniz veya <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> derslere</a> kat&#305;labilirsiniz.";    
+		$metin[88]=". <img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Y&ouml;neticisiniz. <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
+		$metin[89]=". T&uuml;r&uuml;n&uuml;z belli de&#287;ildir.";    
 		$metin[90]="Dikkat!";    
 		$metin[91]="E&#287;er <strong>parola de&#287;i&#351;ikli&#287;i</strong> yapacaksan&#305;z, &quot;Þimdilik Parola G&uuml;ncelleme&quot; se&ccedil;ene&#287;ini iptal edin ve &quot;parola&quot; k&#305;sm&#305;na yeni bir de&#287;er yaz&#305;n.";    
 		$metin[92]="Belirsiz";    

@@ -250,10 +250,11 @@ require 'lib/flood-protection.php'; // include the class
 						
 						if ($import["exito"] != 1)
 						{
-							echo "<font id='tamam'><br/>";
-						} else {
-							echo $import ["errorCode"]." ".$import ["errorText"];
 							echo "<font id='tamam'>Veritabaný kurulmuþ haldedir.<br/>Tablo oluþturmaya devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.<br/>Tablolarý zaten oluþturdu iseniz, bu uyarýyý gözardý ediniz. </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111</font>";
+						} else {
+							if(isset($import ["errorCode"]) or isset($import ["errorText"]) )
+								echo $import ["errorCode"]." ".$import ["errorText"];
+							echo "";
 						}
 									
 						

@@ -133,7 +133,8 @@ function secenekleriGetir($id)
   	   $toplamCevapAdedi=(!empty($secenek1))+(!empty($secenek2))+(!empty($secenek3))+(!empty($secenek4))+(!empty($secenek5))+(!empty($secenek6));
 				
 	   $araCevDizi=preg_split('$[/]$', rasgeleCevapHazirla($toplamCevapAdedi));
-
+			
+			if(isset($araCevDizi[0]))
 				switch ($araCevDizi[0])
 				{
 					case 1:$sor_a="a";$sor_a_met=$secenek1;break;
@@ -144,6 +145,7 @@ function secenekleriGetir($id)
 					case 6:$sor_a="f";$sor_a_met=$secenek6;break;
 					default:$sor_a="a";$sor_a_met=$secenek1;
 				}
+			if(isset($araCevDizi[1]))
 				switch ($araCevDizi[1])
 				{
 					case 1:$sor_b="a";$sor_b_met=$secenek1;break;
@@ -154,6 +156,7 @@ function secenekleriGetir($id)
 					case 6:$sor_b="f";$sor_b_met=$secenek6;break;
 					default:$sor_b="b";$sor_b_met=$secenek2;
 				}
+			if(isset($araCevDizi[2]))
 				switch ($araCevDizi[2])
 				{
 					case 1:$sor_c="a";$sor_c_met=$secenek1;break;
@@ -164,6 +167,7 @@ function secenekleriGetir($id)
 					case 6:$sor_c="f";$sor_c_met=$secenek6;break;
 					default:$sor_c="c";$sor_c_met=$secenek3;
 				}
+			if(isset($araCevDizi[3]))
 				switch ($araCevDizi[3])
 				{
 					case 1:$sor_d="a";$sor_d_met=$secenek1;break;
@@ -174,6 +178,7 @@ function secenekleriGetir($id)
 					case 6:$sor_d="f";$sor_d_met=$secenek6;break;
 					default:$sor_d="d";$sor_d_met=$secenek4;
 				}
+			if(isset($araCevDizi[4]))
 				switch ($araCevDizi[4])
 				{
 					case 1:$sor_e="a";$sor_e_met=$secenek1;break;
@@ -184,6 +189,7 @@ function secenekleriGetir($id)
 					case 6:$sor_e="f";$sor_e_met=$secenek6;break;
 					default:$sor_e="e";$sor_e_met=$secenek5;
 				}
+			if(isset($araCevDizi[5]))
 				switch ($araCevDizi[5])
 				{
 					case 1:$sor_f="a";$sor_f_met=$secenek1;break;
