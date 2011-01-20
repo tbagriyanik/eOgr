@@ -2018,6 +2018,7 @@ function getStats($num,$uID="")
 					   
 					 }		
 					 @mysql_free_result($result);
+				 if(isset($ekle))	 
 					return $ekle; 
 				}else {
 				   return ("");
@@ -2055,6 +2056,7 @@ function getStats($num,$uID="")
 					   
 					 }	
 					 @mysql_free_result($result);
+				 if(isset($ekle))	 
 					return $ekle; 
 				}else {
 				   return ("");
@@ -2091,6 +2093,7 @@ function getStats($num,$uID="")
 						   		$ekle .="<div><a href='getFullList.php?case=15'  rel=\"shadowbox;height=400;width=800\" title='$metin[277]' class='more'>$metin[162]</a></div>";
 					 }		
 					 @mysql_free_result($result);
+				 if(isset($ekle))	 
 					return $ekle; 
 				}else {
 				   return ("");
@@ -2127,7 +2130,7 @@ function getStats($num,$uID="")
 						   		$ekle .="<div><a href='getFullList.php?case=16' rel=\"shadowbox;height=400;width=800\" title='$metin[302]' class='more'>$metin[162]</a></div>";
 					 }		
 					 @mysql_free_result($result);
-					return $ekle; 
+					if (!empty($ekle))	 return $ekle; 
 				}else {
 				   return ("");
 				}

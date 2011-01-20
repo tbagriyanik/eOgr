@@ -466,7 +466,7 @@ function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 	   
-	   if($sadeYuzde)		
+	   if($sadeYuzde and @mysql_numrows($result1)>0)		
 	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ("$rank /".@mysql_numrows($result1));
@@ -499,7 +499,7 @@ function dersCalismaRank($id,$grafikli,$sadeYuzde=false){
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 	   
-	   if($sadeYuzde)		
+	   if($sadeYuzde and @mysql_numrows($result1)>0)		
 	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ($rank."/".@mysql_numrows($result1));
@@ -532,7 +532,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 	   
-	   if($sadeYuzde)		
+	   if($sadeYuzde and @mysql_numrows($result1)>0)		
 	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ($rank."/".@mysql_numrows($result1));
@@ -631,8 +631,12 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 				position: absolute;display: inline;"></span><br/>';	
 			break;
 		}
+if(isset($_GET['set']))	
+	$ayar = $_GET['set'];
+	else
+	$ayar = "0";
 	
-	if($_GET['set']!="1"){
+	if($ayar!="1"){
 		echo"<br/><br/>";
 		echo "<a href=\"mail.php?to=".$_GET["kim"]."\" class=\"external\" onclick='window.open(\"mail.php?to=".$_GET["kim"]."\");return false;'>$metin[69]</a>";
 		echo " | <a href='friends.php?kisi=".$_GET["kim"]."'>$metin[580]</a>";

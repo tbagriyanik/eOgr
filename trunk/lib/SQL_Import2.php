@@ -14,15 +14,10 @@ class sqlImport {
     $this -> ArchivoSql = $ArchivoSql;
     }
 
-    //Conexion a la base de datos
-    function dbConnect () {
-    $con = mysql_connect($this -> host, $this -> user, $this -> pass);
-    }
-    
     //Volcamos los datos
     function import () 
     {   
-    
+    	$this -> con = mysql_connect($this -> host, $this -> user, $this -> pass);
            if ($this -> con !== false) 
            {
 
@@ -52,13 +47,15 @@ class sqlImport {
     //controlamos y mostramos los posibles errores en el proceso
     function ShowErr () 
     {    
-           if ($this -> CodigoError == 0)
+           if (isset($this -> CodigoError) and $this -> CodigoError == 0)
            {
            $Salida ["exito"] =  1;
         }else{
-        $Salida ["exito"] =  0;           
-        $Salida ["errorCode"] = $this -> CodigoError;
-        $Salida ["errorText"] =  $this -> TextoError;
+        $Salida ["exito"] =  0; 
+		if(!empty($this -> CodigoError))          
+	        $Salida ["errorCode"] = $this -> CodigoError;
+		if(!empty($this -> TextoError))          
+	        $Salida ["errorText"] =  $this -> TextoError;
            }
 
     return $Salida;
