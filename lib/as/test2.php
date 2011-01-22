@@ -37,7 +37,10 @@ $aInfo	=array();
 		
 	};
 	
-	$input = strtolower($_GET['input']);
+	if(!empty($_GET['input']))
+		$input = strtolower($_GET['input']);
+	else	
+		$input = "";
 																					
 	$len = strlen($input);
 	$limit = 3;

@@ -32,7 +32,10 @@ $aInfo	=array();
 		$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["dersAdi"])));
 	};
 	
-	$input = strtolower($_GET['input']);
+	if(!empty($_GET['input']))
+		$input = strtolower($_GET['input']);
+	else	
+		$input = "";
 																					
 	$len = strlen($input);
 	$limit = 5;
