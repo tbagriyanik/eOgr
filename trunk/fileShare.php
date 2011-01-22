@@ -197,7 +197,8 @@ if($seceneklerimiz[16]=="1")
 return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a> </blockquote>
                   <?php	
 }
-
+?>
+<?php
    if(isset($_GET['arama'])) 
      $aramaDegeri = temizle($_GET['arama']);
 	 else

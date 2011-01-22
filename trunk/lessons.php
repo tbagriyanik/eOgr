@@ -199,7 +199,7 @@ function cleanup() {
 </script>
 </head>
  <?php flush(); ?>
-<body id="intro" onselectstart="return false" ondragstart="return false" oncontextmenu="return false" onunload="cleanup()" >
+<body id="intro" onselectstart="//return false;" ondragstart="return false" oncontextmenu="return false" onunload="cleanup()" >
 <div class="PageBackgroundGradient"></div>
 <div class="Main">
   <div class="Sheet">
