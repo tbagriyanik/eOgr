@@ -840,4 +840,11 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[653] = "Yanlýþ";
 		$metin[654] = "Þimdilik cevap verilmemiþtir.";
 		$metin[655] = "Þimdilik oy verilmemiþtir.";
+		
+		$metin[656] = "Ýþleminiz Devam Ediyor";
+		$metin[657] = "Boyut";
+		$metin[658] = "";
+		$metin[659] = "";
+		$metin[660] = "";
+
 ?>

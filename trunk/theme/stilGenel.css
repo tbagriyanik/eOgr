@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* CSS Document */
+body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
 tt {
 	font-family: Consolas, "Lucida Console", Monaco, monospace;
 	color:#900;
@@ -550,7 +553,7 @@ h1, h2, h3 {
 	margin: 5px;
 	margin-top:-25px;
 	margin-left:150px;
-	padding: 5px;	
+	padding: 5px;
 	background: #EAEBD8;
 	opacity:0.8;
 	border: 1px solid #5970B2;

@@ -108,6 +108,8 @@ function check_source()
 {  
 	global  $_source1;
 	global  $_source2;
+	if(!isset($_SERVER['HTTP_REFERER']))
+		return false;
 	
 	$adresteki = $_SERVER['HTTP_REFERER'];
 //	$adresteki = $_SESSION['this_page'];
