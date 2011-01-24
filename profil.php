@@ -1,3 +1,9 @@
+<style media="all" type="text/css">
+body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:12px;
+}
+</style>
 <?php
 /*
 eOgr - elearning project
@@ -36,15 +42,15 @@ function baglan2()
 }
 
 if(!baglan2())   
- die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
+ die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href='install.php' target='_parent'>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
  
 $yol1 = baglan2();
 
 	if (!@mysql_select_db($_db, $yol1))
 	{
 		die("<font id='hata'> 
-		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
-		  You need to go to <a href=install.php>installing page</a>!<br/>
+		  Veritaban&#305; <a href='install.php' target='_parent'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
+		  You need to go to <a href='install.php' target='_parent'>installing page</a>!<br/>
 			 </font>");
 	}
 include('lib/graphs.inc.php');	
@@ -639,10 +645,10 @@ if(isset($_GET['set']))
 	if($ayar!="1"){
 		echo"<br/><br/>";
 		echo "<a href=\"mail.php?to=".$_GET["kim"]."\" class=\"external\" onclick='window.open(\"mail.php?to=".$_GET["kim"]."\");return false;'>$metin[69]</a>";
-		echo " | <a href='friends.php?kisi=".$_GET["kim"]."'>$metin[580]</a>";
+		echo " | <a href='friends.php?kisi=".$_GET["kim"]."' target='_parent'>$metin[580]</a>";
 		if($_SESSION["tur"]==1 or $_SESSION["tur"]==2)
 		  if(dersCalismaSay($_GET["kim"])>0)	
-			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\">$metin[461]</a>";
+			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\" target='_parent'>$metin[461]</a>";
 	 }
  } else
   echo "$metin[540]";  

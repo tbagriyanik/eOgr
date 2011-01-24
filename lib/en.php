@@ -827,4 +827,11 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[653] = "Wrong";
 		$metin[654] = "There are no answers yet.";
 		$metin[655] = "There are no votes yet.";
+		
+		$metin[656] = "Please wait...";
+		$metin[657] = "Size";
+		$metin[658] = "";
+		$metin[659] = "";
+		$metin[660] = "";
+
 ?>
