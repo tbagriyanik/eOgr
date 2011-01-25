@@ -1,9 +1,3 @@
-<style media="all" type="text/css">
-body {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-size:12px;
-}
-</style>
 <?php
 /*
 eOgr - elearning project
