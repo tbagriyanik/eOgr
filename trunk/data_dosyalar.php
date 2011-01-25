@@ -194,7 +194,7 @@ require("conf.php");
 								 '&amp;file='.$aRow[ $aColumns[$i] ].'&amp;islem=goster\" target=\"_blank\"><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"??\"/></a> ';
 							$sOutput .=  " <font size='-2'>".getSizeAsString(filesize($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]));
 							$humanRelativeDate = new HumanRelativeDate();
-							$sOutput .=  " ".$humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",filemtime($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]) )).'</font>",';
+							$sOutput .=  " ".iconv( "ISO-8859-9","UTF-8",$humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",filemtime($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]) ))).'</font>",';
 
 				
 			}
