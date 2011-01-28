@@ -152,7 +152,7 @@ Lesser General Public License for more details.
       }) 
     })
 </script>
-<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="lib/jquery.badBrowser.js"></script>

@@ -52,10 +52,10 @@ var giRedraw = false;
 							"sSearch": "<?php echo $metin[29]?>",
 							"sUrl": "",
 							"oPaginate": {
-								"sFirst":    "<<",
-								"sPrevious": "<",
-								"sNext":     ">",
-								"sLast":     ">>"
+								"sFirst":    "&laquo;",
+								"sPrevious": "&lsaquo;",
+								"sNext":     "&rsaquo;",
+								"sLast":     "&raquo;"
 							}
 						},
 					"bProcessing": true,
@@ -65,53 +65,26 @@ var giRedraw = false;
 					"aaSorting": [[0,'desc']],
 					"sPaginationType": "full_numbers",
 					"bStateSave": true,
+					"aoColumnDefs": [
+								{ "bSortable": false, "aTargets": [ 4 ] }
+							],					
 					"aoColumns": [
 						{ "sClass": "right"  },
 						{ },
 						{  },
-						{ "sClass": "right"  }
+						{ "sClass": "right"  },
+						{ }
 					]
 				} );
-	/* Add a click handler to the rows - this could be used as a callback */
-	$("#example tbody").click(function(event) {
-		$(oTable.fnSettings().aoData).each(function (){
-			$(this.nTr).removeClass('row_selected');
-		});
-		$(event.target.parentNode).addClass('row_selected');
-	});
-	
-	/* Add a click handler for the delete row */
-	$('#delete').click( function() {
-		var anSelected = fnGetSelected( oTable );
-		oTable.fnDeleteRow( anSelected[0] );
-		alert(anSelected[0] );
-	} );
 	
 	/* Init the table */
 	oTable = $('#example').dataTable( );
 } );
 
-
-/* Get the rows which are currently selected */
-function fnGetSelected( oTableLocal )
-{
-	var aReturn = new Array();
-	var aTrs = oTableLocal.fnGetNodes();
-	
-	for ( var i=0 ; i<aTrs.length ; i++ )
-	{
-		if ( $(aTrs[i]).hasClass('row_selected') )
-		{
-			aReturn.push( aTrs[i] );
-		}
-	}
-	return aReturn;
-}
 </script>
 </head>
 
 <body>
-<p><a href="javascript:void(0)" id="delete"><?php echo $metin[37]?></a></p>
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="example" align="center">
   <thead>
     <tr>
@@ -119,11 +92,12 @@ function fnGetSelected( oTableLocal )
       <th width="25%"><?php echo $metin[17]?></th>
       <th width="45%"><?php echo $metin[657]." (".$metin[465].", ".$metin[129].")"?></th>
       <th width="5%"><?php echo $metin[466]?></th>
+      <th width="5%">&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td colspan="4" class="dataTables_empty"><img src="img/ajax-loader.gif"></td>
+      <td colspan="5" class="dataTables_empty"><img src="img/ajax-loader.gif"></td>
     </tr>
   </tbody>
 </table>
