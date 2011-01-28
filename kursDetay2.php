@@ -61,7 +61,7 @@ Shadowbox.init({
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-<link href="lib/tlogin/css/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {

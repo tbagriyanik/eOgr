@@ -93,7 +93,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	if($tur=="-2") 
 	{
 ?>
-<script type="text/javascript" src="lib/tlogin/js/twitterLogin.js"></script> 
+<script type="text/javascript" src="lib/tlogin/twitterLogin.js"></script> 
 <script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
 <script type="text/javascript">
 $().ready(function() {

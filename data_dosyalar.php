@@ -29,7 +29,8 @@ require("conf.php");
   
 //  if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
   
-	$aColumns = array( 'id', 'userID', 'fileName', 'downloadCount');
+	$aColumns = array( 'id', 'userID', 'fileName', 'downloadCount',' ');
+	$aColumns2 = array( 'id', 'userID', 'fileName', 'downloadCount');
 	
 	/* Indexed column (used for fast and accurate table cardinality) */
 	$sIndexColumn = "id";
@@ -81,7 +82,7 @@ require("conf.php");
 		{
 			if ( $_GET[ 'bSortable_'.intval($_GET['iSortCol_'.$i]) ] == "true" )
 			{
-				$sOrder .= $aColumns[ intval( $_GET['iSortCol_'.$i] ) ]."
+				$sOrder .= $aColumns2[ intval( $_GET['iSortCol_'.$i] ) ]."
 				 	".mysql_real_escape_string( $_GET['sSortDir_'.$i] ) .", ";
 			}
 		}
@@ -104,7 +105,7 @@ require("conf.php");
 	if (!empty($_GET['sSearch']) and  $_GET['sSearch'] != "" )
 	{
 		$sWhere = "WHERE (";
-		for ( $i=0 ; $i<count($aColumns) ; $i++ )
+		for ( $i=0 ; $i<count($aColumns)-1 ; $i++ )
 		{
 			$sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string( $_GET['sSearch'] )."%' OR ";
 		}
@@ -114,7 +115,7 @@ require("conf.php");
 	}
 	
 	/* Individual column filtering */
-	for ( $i=0 ; $i<count($aColumns) ; $i++ )
+	for ( $i=0 ; $i<count($aColumns)-1 ; $i++ )
 	{
 		if (!empty($_GET['bSearchable_'.$i]) and !empty($_GET['sSearch_'.$i]) and $_GET['bSearchable_'.$i] == "true" and $_GET['sSearch_'.$i] != '' )
 		{
@@ -138,7 +139,7 @@ require("conf.php");
 	 * Get data to display
 	 */
 	$sQuery = "
-		SELECT SQL_CALC_FOUND_ROWS ".str_replace(" , ", " ", implode(", ", $aColumns)).",
+		SELECT SQL_CALC_FOUND_ROWS ".str_replace(" , ", " ", implode(", ", $aColumns2)).",
 				(SELECT userName FROM eo_users WHERE 
 					eo_users.id=eo_files.userID
 					) as userName
@@ -179,8 +180,9 @@ require("conf.php");
 	while ( $aRow = mysql_fetch_array( $rResult ) )
 	{
 		$sOutput .= "[";
+		$kayNo = $aRow[ $aColumns[0] ];
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )
-		{
+		{			
 			if ( $aColumns[$i] == "fileName" )
 			{
 				/* Special output formatting */
@@ -192,9 +194,9 @@ require("conf.php");
 			if(in_array(file_ext($aRow[ $aColumns[$i] ]),$_filesToPlay)) 
 								$sOutput .=  ' <a href=\"fileDownload.php?id='.$aRow[ $aColumns[0] ].
 								 '&amp;file='.$aRow[ $aColumns[$i] ].'&amp;islem=goster\" target=\"_blank\"><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"??\"/></a> ';
-							$sOutput .=  " <font size='-2'>".getSizeAsString(filesize($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]));
+							$sOutput .=  " <font size='-2'>".getSizeAsString(@filesize($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]));
 							$humanRelativeDate = new HumanRelativeDate();
-							$sOutput .=  " ".iconv( "ISO-8859-9","UTF-8",$humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",filemtime($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]) ))).'</font>",';
+							$sOutput .=  " ".iconv( "ISO-8859-9","UTF-8",$humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",@filemtime($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]) ))).'</font>",';
 
 				
 			}
@@ -205,7 +207,12 @@ require("conf.php");
 			else if ( $aColumns[$i] != ' ' )
 			{
 				/* General output */
-				$sOutput .= '"'.str_replace('"', '\"', $aRow[ $aColumns[$i] ]).'",';
+				$sOutput .= '"'.str_replace('"', '\"', $aRow[ $aColumns[0] ]).'",';
+			}
+			else if ( $aColumns[$i] == ' ' )
+			{
+				/* Delete */
+				$sOutput .= '"<a href=\"fileShare.php?del='.$kayNo.'\" target=\"_parent\"><img src=\"img/cross.png\" alt=\"delete\" border=\"0\"></a>",';
 			}
 		}
 		
