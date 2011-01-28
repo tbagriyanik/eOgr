@@ -218,6 +218,7 @@ Shadowbox.init({
 	   sessionDestroy();
 	   echo ("<font id='hata'> ".$metin[404]."</font><p>".$metin[402]."</p>");
 	   $pass = true;
+	   $_SESSION["tur"] 	= "-1";
 	  }
 	  else 
 	  {
