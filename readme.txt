@@ -1,5 +1,5 @@
 
-	eOgr - v130b, 24-01-2011
+	eOgr - v130b, 28-01-2011
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -108,6 +108,8 @@ Used Classes and Referred Sites
 	http://www.onlineaspect.com/2009/08/13/javascript_to_fix_wmode_parameters
 - Human Relative Date : 
 	http://www.inventpartners.com/content/free-php-class-friendly-relative-time
+- Sliding Panel:
+	http://spyrestudios.com/demos/sliding-panel-fixed/
 
 CSS, RSS and HTML Validations:  
 	http://jigsaw.w3.org/css-validator/validator

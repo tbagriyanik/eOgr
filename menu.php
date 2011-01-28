@@ -25,6 +25,12 @@ Lesser General Public License for more details.
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 $kullaniciSecen = explode("-",ayarGetir3($adi));
 
+$remUser = false;
+if (isset($_COOKIE["remUser"]))
+  if (strlen($_COOKIE["remUser"])>0){
+   $remUser = true;
+  } 
+
 if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 ?>
 <?php
@@ -123,16 +129,8 @@ $().ready(function() {
   <div id="loginButton"> <a href="#"><?php echo $metin[2];?></a> </div>
   <!-- END LOGIN BUTTON --> 
   
-  <!-- BEGIN HIDDEN FORM -->  
+  <!-- BEGIN HIDDEN FORM -->
   <div id="loginForm">
-<?php
-$remUser = false;
-if (isset($_COOKIE["remUser"]))
-  if (strlen($_COOKIE["remUser"])>0){
-   $remUser = true;
-  } 
-?>
-
     <fieldset>
       <form id="formLogin" method="post" action="login.php">
         <label for="userN"> <?php echo $metin[0]?> : </label>
@@ -149,15 +147,18 @@ if (isset($_COOKIE["remUser"]))
         <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
         &nbsp;
         <?php
-	 if (!empty($_COOKIE["remUser"])){
+	 if ($remUser){
     ?>
         <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
+        <input type="hidden" name="remUser" id="remUser" value="1" />
         <?php
 	} else {
     ?>
         <p>
           <label>
-            <input type="checkbox" name="remUser" id="remUser" value="1"/>
+            <input type="checkbox" name="remUser" id="remUser" value="1" <?php
+	 if ($remUser){
+    ?>checked="checked"<?php }?>/>
             <?php echo $metin[193]?> </label>
         </p>
         <?php
@@ -304,9 +305,9 @@ if (isset($_COOKIE["remUser"]))
                             ?>
   <li><a href="index.php?logout=1"><span><span><img src="img/logout.png" border="0" style="vertical-align: middle;" alt="logout"/>
     <?php if (!empty($adi)) echo temizle($adi)." "; ?>
-    <?php echo $metin[59]?> </span></span></a></li>
+    <?php echo $metin[59]?> </span></span></a>
   <?php
-	 if (!empty($_COOKIE["remUser"])){
+	 if ($remUser){
     ?>
   <ul>
     <li> <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a> </li>
@@ -317,7 +318,9 @@ if (isset($_COOKIE["remUser"]))
   <?php
   }
 ?>
+</li>
 </ul>
 <?php
 	}	
+//include "reklam.php";	
 ?>
