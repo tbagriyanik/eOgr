@@ -1,23 +1,23 @@
 
-	eOgr - v130b, 28-01-2011
+	eOgr - v130b, 30-01-2011
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
 ABOUT
 -----
-Simply you can get "online education". You can learn any subject better with animations and videos. And also every member can interact with teachers or other students at real time or become friends, view or write to their walls. Every member can share their files and homeworks. They can ask questions or read the others answers. 
+Simply you can get "online education". You can learn any subject better with animations and videos.
 
-Students can register for online education resources. Material pages are in the lesson topics. Each topic has rich text formatted reading pages,  quizes (multiple choice, classic, test) and more activities like presentation and simulation. 
+Students can register for online education resources. Material pages are in the lesson topics. Each topic has rich text formatted reading pages,  quizes (multiple choice, classic, test) and more activities like presentation and simulation (games or experiments). 
+
+Every member can interact with teachers or other students at real time or become friends. Every member can share their files and homeworks. They can ask questions or read the others answers. 
 
 Teachers and parents can follow the students works. Teachers can add and modify lesson topics. Administrator users manage the site maintenance like editing users, database backup, database optimization and site settings.
 
-Available language support is English and Turkish.
-
-INSTALLATION (please, read INSTALL.txt for more details)
+INSTALLATION (more details in the INSTALL.txt)
 --------------------------------------------------------
-(1) Edit your settings in "database.php" with an editor
-(2) " http://localhost/eogr/install.php " is for installation.     
-(3) Login as administrator user: name "admin" and password "11111"
+(1) Edit your settings in "database.php"
+(2) " http://localhost/eogr/install.php " installation address     
+(3) Start using as an administrator user: name "admin" and password "11111"
 
 Developer Name: 
 	Tarik Bagriyanik
@@ -42,7 +42,7 @@ Other Sites:
 	http://www.hotscripts.com/listing/eogr
 	
 Start Date: 	
-	15-11-2008 (650 hours programming, 20.000 lines PHP, 17.000 lines Javascript and CSS)
+	15-11-2008 (650 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
 
 Designing and Building Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
@@ -52,9 +52,9 @@ Used Classes and Referred Sites
 -------------------------------
 - jQuery: v1.4.4 
 	http://jquery.com
-- jQuery UI: v1.8.7 custom - sortable only 
+- jQuery UI: v1.8.9 custom - sortable only 
 	http://jqueryui.com
-- jQuery AnythingSlider: v1.5.6.2 < v1.5.6.3
+- jQuery AnythingSlider: v1.5.6.5a
 	http://github.com/ProLoser/AnythingSlider
 - nicEdit: v0.9 r23 
 	http://www.nicedit.com
