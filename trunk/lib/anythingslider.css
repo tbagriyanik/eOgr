@@ -89,9 +89,8 @@ div.anythingSlider .arrow {
 div.anythingSlider .arrow a {
 	display: block;
 	height: 95px;
-	margin-top: -47px; /* half height of image */
+	margin-top: 0px; /* half height of image -47px*/
 	width: 45px;
-	outline: 0;
 	background: url(arrows-metallic.png) no-repeat;
 	text-indent: -9999px;
 }

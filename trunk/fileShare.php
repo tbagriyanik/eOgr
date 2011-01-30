@@ -67,20 +67,6 @@ Lesser General Public License for more details.
     });
 </script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="JavaScript" type="text/javascript">
-<!--
-/*
-delWithCon:
-onay ile silme iþlemi
-*/
-function delWithCon(deletepage_url,field_value,messagetext) { 
-  if (confirm(messagetext)==1){
-    location.href = eval('\"'+deletepage_url+'?id='+field_value+'&delCon=1\"');
-  }
-}
-
-//-->
-</script>
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -176,20 +162,6 @@ if (isset($_SERVER['QUERY_STRING'])) {
 	  	     echo "<font id='uyari'><strong>$metin[500] :</strong> <br/>$silSonuc</font>";
 	 }
 
-if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
-			(getUserID2($_SESSION['usern'])==dosyaKimID($_GET['id']) or $tur=='2')) {
-	if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
-	  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
-		  dosyaSil(RemoveXSS($_GET['id'])); 			
-		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
-							   GetSQLValueString($_GET['id'], "int"));		
-		  mysql_select_db($_db, $yol);
-		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
-		  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
-	}
-}
-
-  
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 if($seceneklerimiz[16]=="1")
  if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
