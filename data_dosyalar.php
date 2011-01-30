@@ -207,12 +207,18 @@ require("conf.php");
 			else if ( $aColumns[$i] != ' ' )
 			{
 				/* General output */
-				$sOutput .= '"'.str_replace('"', '\"', $aRow[ $aColumns[0] ]).'",';
+				$sOutput .= '"'.str_replace('"', '\"', $aRow[ $aColumns[$i] ]).'",';
 			}
 			else if ( $aColumns[$i] == ' ' )
 			{
 				/* Delete */
-				$sOutput .= '"<a href=\"fileShare.php?del='.$kayNo.'\" target=\"_parent\"><img src=\"img/cross.png\" alt=\"delete\" border=\"0\"></a>",';
+				if(($aRow[ 4 ]==$_SESSION["usern"] 
+					or getUserType($_SESSION["usern"])=="2") 
+					and (preg_match("/777/",decoct(@fileperms($_uploadFolder)))	 
+					or preg_match("/766/",decoct(@fileperms($_uploadFolder))))) 				
+				$sOutput .= '"<img src=\"img/cross.png\" alt=\"delete\" width=\"16\" height=\"16\" border=\"0\" style=\"vertical-align: middle;cursor:pointer;\"  onclick=\"javascript:delWithCon('.$kayNo.')\" title=\"'.$metin[102].'\"/>",';
+				else
+				$sOutput .= '"",';
 			}
 		}
 		

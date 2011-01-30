@@ -78,7 +78,7 @@ $('#anythingSlider').anythingSlider({
   startText           : "&raquo;",   // Start button text
   stopText            : "&curren;",    // Stop button text
   delay               : 3000,      // How long between slideshow transitions in AutoPlay mode (in milliseconds)
-  animationTime       : 200,       // How long the slideshow transition takes (in milliseconds)
+  animationTime       : 100,       // How long the slideshow transition takes (in milliseconds)
 //  easing              : "swing",   // Anything other than "linear" or "swing" requires the easing plugin
 
   // Callbacks

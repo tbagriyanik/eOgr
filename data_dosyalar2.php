@@ -34,7 +34,21 @@ body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 </style>
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+delWithCon:
+onay ile silme iþlemi
+*/
+function delWithCon(field_value) { 
+  if (confirm("<?php echo $metin[104]?>")==1){
+    location.href = eval('\"data_dosyalar2.php?id='+field_value+'&delCon=1\"');
+  }
+  return false;
+}
 
+//-->
+</script>
 <script type="text/javascript" charset="utf-8">
 var oTable;
 var giRedraw = false;
@@ -85,6 +99,20 @@ var giRedraw = false;
 </head>
 
 <body>
+<?php
+if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && 
+			(getUserID2($_SESSION['usern'])==dosyaKimID($_GET['id']) or getUserType($_SESSION['usern'])=='2')) {
+	if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
+	  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
+		  dosyaSil(RemoveXSS($_GET['id'])); 			
+		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
+							   GetSQLValueString($_GET['id'], "int"));		
+		  mysql_select_db($_db, $yol);
+		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
+		  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
+	}
+}  
+?>
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="example" align="center">
   <thead>
     <tr>
