@@ -39,7 +39,7 @@ Lesser General Public License for more details.
     <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
     <script src="lib/jquery.anythingslider.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
-    <link rel="stylesheet" href="lib/slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="lib/anythingslider.css" type="text/css" media="screen" />
     <script type="text/javascript">
     
 $(function () {
