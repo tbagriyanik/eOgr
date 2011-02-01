@@ -50,7 +50,6 @@ Lesser General Public License for more details.
 <style type="text/css">
 <!--
 #menu {
-	position:relative;
 	width:30%;
 	z-index:1;
 	float: left;
@@ -61,15 +60,16 @@ Lesser General Public License for more details.
 	padding: 3px;
 }
 #icerisi {
-	position:relative;
-	width:65%;
+	width:61%;
 	z-index:2;
 	float: left;
 	border-top-width: 4px;
 	border-top-style: solid;
 	border-top-color: #06F;
 	margin: 5px;
-	padding: 3px;
+	padding: 10px;
+	background-color:#FFF;
+	color:#333;
 }
 -->
 </style>
