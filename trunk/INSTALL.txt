@@ -28,9 +28,13 @@ Further information for administrators:
   If you don't want to enable file sharing, you are not forced to change any permission.
 
 - .htaccess enabled for security 
-  You can erase this file if having 500 security problems, or you can edit it properly for your server.
+  You can erase this file if having 500 security problems, or you can edit it properly for your server. When editing .htaccess file you will see a warning line there.
 
-For Clients (web users and testers need to check theese browser options):
+- My error reporting in the php.ini is:
+error_reporting = E_ALL & ~E_NOTICE & ~E_DEPRECATED
+  You may need to edit like this for not seeing warnings or errors.
+
+For Clients (web users and testers need to check these browser options):
 - Javascript (Ajax) enabled browser,
 - Cookies enabled (theme, language and user name),
 - Sending referrer address enabled (page navigation),

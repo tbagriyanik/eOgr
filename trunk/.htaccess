@@ -1,21 +1,21 @@
+#--------------------REWRITE ENGINE STARTS HERE
 RewriteEngine On
-
 RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
 RewriteRule ^(.*)$ error.php [F,L]
-
 RewriteCond %{QUERY_STRING} (\"|%22).*(\>|%3E|<|%3C).* [NC] 
 RewriteRule ^(.*)$ error.php [NC] 
-
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC] 
 RewriteRule ^(.*)$ error.php [NC] 
-
 RewriteCond %{QUERY_STRING} (\;|\'|\"|\%22).*(union|insert|where|select|update|drop|md5|or|and|if).* [NC] 
 RewriteRule ^(.*)$ error.php [NC] 
-
 RewriteRule (,|;|<|>|'|`) error.php [NC]
+RewriteRule ^ogre /eogr/lessons.php
+#url shorten sample .../ogre?konu=1 > .../lessons.php?konu=1
+RewriteRule ^download /eogr/fileDownload.php
+#----------------ERASE ALL "UPPER" LINES ON UNSUPPORTING MOD REWRITE
 
 ErrorDocument 400 /eogr/error.php
 ErrorDocument 401 /eogr/error.php
@@ -45,13 +45,9 @@ php_value register_globals Off
 php_value session.use_trans_sid 0
 # should be the same as.
 php_flag session.use_trans_sid off
-php_value upload_max_filesize 5M
+php_value upload_max_filesize 10M
 php_value post_max_size 5M
 Options +FollowSymlinks
-RewriteEngine On
-RewriteRule ^ogre /eogr/lessons.php
-#url shorten sample .../ogre?konu=1 > .../lessons.php?konu=1
-RewriteRule ^download /eogr/fileDownload.php
 
 <Files ~ "^\.ht">
  Order allow,deny
