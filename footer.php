@@ -40,7 +40,7 @@ if (document.getElementById("uyari")!=null) fadeUp(document.getElementById("uyar
 if (document.getElementById("tamam")!=null) fadeUp(document.getElementById("tamam"),0,255,0,0,150,0);  
   </script>
     <?php
-if($seceneklerimiz[1]=="1" and $kullaniciSecen[1]=="1") {
+if($seceneklerimiz[1]=="1" and $kullaniciSecen[1]=="1" and $currentFile!="help.php") {
 ?>
     <label for="theme"><?php echo $metin[154]?> : </label>
     <select name="theme" id="theme" onchange="document.themeSelect.submit();">

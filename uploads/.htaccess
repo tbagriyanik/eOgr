@@ -25,8 +25,3 @@ Allow from all
 ForceType application/x-httpd-php
 Deny from all
 </Files>
-
-<Files player.php>
-ForceType application/x-httpd-php
-Allow from all
-</Files>
