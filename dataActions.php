@@ -172,10 +172,10 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
 }
   
-  $pageCnt=GetSQLValueString($_GET['pageCnt'], "int");
+  $pageCnt=GetSQLValueString((isset($_GET['pageCnt']))?$_GET['pageCnt']:"", "int");
 
   if($pageCnt=="NULL")  
-    $pageCnt=GetSQLValueString($_SESSION['pageCnt2'], "int"); 
+    $pageCnt=GetSQLValueString((isset($_SESSION['pageCnt2']))?$_SESSION['pageCnt2']:"", "int"); 
 	else
 	$_SESSION['pageCnt2']=$pageCnt;
   
@@ -192,11 +192,11 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($_db, $yol);
 
-$adminGizle = temizle($_GET["adminGizle"]);
+$adminGizle = temizle((isset($_GET["adminGizle"]))?$_GET["adminGizle"]:"");
 
-if($_GET["go_button"]=="Filtrele" && empty($_GET["adminGizle"]))
- {
-  $_SESSION["adminGizle"] = "";
+$_SESSION["adminGizle"] = "";
+if(!empty($_GET["go_button"]) and $_GET["go_button"]=="Filtrele" && empty($_GET["adminGizle"]))
+ {  
   $adminGizle = "";
  }
   else
@@ -208,7 +208,7 @@ if(empty($_GET["adminGizle"]))
   $adminGizle = $_SESSION["adminGizle"];
   else
   $_SESSION["adminGizle"] = "";
-
+$filtr2="";
 if (isset($_GET['ord']) && $_GET['ord'] != "")
    {
 	   if ($adminGizle=="evet") 
@@ -231,7 +231,7 @@ if (isset($_GET['ord']) && $_GET['ord'] != "")
 if ($adminGizle=="evet" && $adGiz=="") 
 	 $filtr2=" where userName not in (select userName from eo_users where userType='2') ";  
 
-$arayici =  temizle($_GET['arama']);   
+$arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");   
   if ($arayici!="") 
    {
 	   if ($adminGizle=="evet")
@@ -254,14 +254,14 @@ if (empty($_SESSION["siraYonu"])) {
 		$_SESSION["siraYonu"]=$siraYonu;
 	}
 	else
-	if ($_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu"]=$siraYonu;
 	}
 	else
 	$siraYonu=$_SESSION["siraYonu"];
 	
-	$sirAlan=temizle($_GET['order']);
+	$sirAlan=temizle((isset($_GET['order']))?$_GET['order']:"");
 	
 	  if ($sirAlan!="")
 	    $query_eoUsers = "SELECT * FROM eo_usertrack $filtr2 ORDER BY $sirAlan $siraYonu";   
@@ -270,7 +270,7 @@ if (empty($_SESSION["siraYonu"])) {
 		$sirAlan="dateTime";
 	   }
 //echo  $query_eoUsers ;
- if ($_GET["upd"]=="1")
+ if (!empty($_GET["upd"]) and $_GET["upd"]=="1")
 	$query_limit_eoUsers = sprintf("%s", $query_eoUsers);
  else
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
@@ -307,6 +307,10 @@ $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers
 
 if ($totalRows_eoUsers>0)
    {
+	   $s1 = (isset($_GET["ord"]))?$_GET["ord"]:"";
+	   $a1 = (isset($_GET["arama"]))?$_GET["arama"]:"";
+	   $aa1 = (isset($_GET["pageNum_eoUsers"]))?$_GET["pageNum_eoUsers"]:"";
+	   
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="dataActions.php">
                     <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
@@ -314,27 +318,27 @@ if ($totalRows_eoUsers>0)
                         <th width="82"><?php if ($sirAlan=="id") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
+                          <a href="?order=id&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[26]?> </a></th>
                         <th width="138"><?php if ($sirAlan=="userName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
+                          <a href="?order=userName&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[17]?> </a></th>
                         <th width="161"><?php if ($sirAlan=="processName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="processName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=processName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[31]?> </a></th>
+                          <a href="?order=processName&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[31]?> </a></th>
                         <th width="136"><?php if ($sirAlan=="otherInfo") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="otherInfo")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=otherInfo&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[32]?> </a></th>
+                          <a href="?order=otherInfo&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[32]?> </a></th>
                         <th width="133"><?php if ($sirAlan=="dateTime") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="dateTime")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=dateTime&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
+                          <a href="?order=dateTime&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[33]?> </a></th>
                         <th width="100"><?php if ($sirAlan=="IP") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="IP")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=IP&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> IP</a></th>
+                          <a href="?order=IP&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> IP</a></th>
                       </tr>
                       <?php 
   $satirRenk=0;
@@ -392,12 +396,12 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                   <form name="formFilt" id="formFilt" method="get" action="dataActions.php">
                     <p>
                       <select name="ord" id="ord">
-                        <option value="" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
-                        <option value="0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[143]?> </option>
-                        <option value="1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[144]?> </option>
-                        <option value="2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[145]?> </option>
-                        <option value="3" <?php if (!(strcmp("3", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[146]?> </option>
-                        <option value="4" <?php if (!(strcmp("4", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[147]?> </option>
+                        <option value="" <?php if (!(strcmp("", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
+                        <option value="0" <?php if (!(strcmp("0", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[143]?> </option>
+                        <option value="1" <?php if (!(strcmp("1", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[144]?> </option>
+                        <option value="2" <?php if (!(strcmp("2", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[145]?> </option>
+                        <option value="3" <?php if (!(strcmp("3", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[146]?> </option>
+                        <option value="4" <?php if (!(strcmp("4", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[147]?> </option>
                       </select>
                       <input type="submit" name="go_button" id= "go_button" value="<?php echo $metin[109]?>"/>
                       <label>

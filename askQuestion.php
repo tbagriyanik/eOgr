@@ -215,7 +215,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                     </form>
                   </fieldset>
                   <p>
-                  
                   <form action="askQuestion.php" method="get" name="soruAra">
                     <?php echo $metin[29] ?> :
                     <input type="text" maxlength="50" size="50" name="ara" value="<?php echo RemoveXSS((isset($_GET["ara"]))?$_GET["ara"]:"");?>"  />
@@ -253,7 +252,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
 					if($kaySay>0){
                   ?>
                   <p>
-                  
                   <table width="100%" cellspacing="0" cellpadding="2">
                     <caption style="font-weight:bold;font-size:16px;">
                     <?php echo $metin[646] ?>

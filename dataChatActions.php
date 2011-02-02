@@ -160,7 +160,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && $
   if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
 }
   
-  $pageCnt=temizle($_GET['pageCnt']);
+  $pageCnt=temizle((isset($_GET['pageCnt']))?$_GET['pageCnt']:"");
 
   if($pageCnt=="")  
     $pageCnt=GetSQLValueString($_SESSION['pageCnt3'], "int"); 
@@ -180,13 +180,14 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($_db, $yol);
 
-$arayici =  temizle($_GET['arama']);   
+$filtr2 ="";
+$arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");   
   if ($arayici!="") 
    {
 		    $filtr2=" where (name like '%$arayici%' or message like '%$arayici%') ";
    }
 
-if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet" && $tur=="2") {
+if(!empty($_POST["sil"]) && !empty($_POST["silIzin"]) &&$_POST["silIzin"]=="evet" && $tur=="2") {
    $silinenler = "''";
    for ($i = 0; $i < count($_POST["sil"]); $i++)
       $silinenler .= ",'".$_POST["sil"][$i]."'";
@@ -234,14 +235,14 @@ if (empty($_SESSION["siraYonu2"])) {
 		$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
-	if ($_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
 	$siraYonu=$_SESSION["siraYonu2"];
 	
-	$sirAlan=temizle($_GET['order']);
+	$sirAlan=temizle((isset($_GET['order']))?$_GET['order']:"");
 	
 	  if ($sirAlan!="")
 	    $query_eoUsers = "SELECT * FROM eo_shoutbox $filtr2 ORDER BY $sirAlan $siraYonu";   
@@ -250,7 +251,7 @@ if (empty($_SESSION["siraYonu2"])) {
 		$sirAlan="date";
 	   }
 //echo  $query_eoUsers ;
- if ($_GET["upd"]=="1")
+ if (!empty($_GET["upd"]) and $_GET["upd"]=="1")
 	$query_limit_eoUsers = "SELECT * FROM eo_shoutbox where messageid='".RemoveXSS($_GET["messageid"])."'";
  else
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
@@ -284,7 +285,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if ($_GET["upd"]=="1" && isset($_GET["messageid"]) && $tur=="2" ){
+if (!empty($_GET["upd"]) and $_GET["upd"]=="1" && isset($_GET["messageid"]) && $tur=="2" ){
 	//güncelleme
 ?>
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
@@ -312,6 +313,10 @@ if ($_GET["upd"]=="1" && isset($_GET["messageid"]) && $tur=="2" ){
 }
 else if ($totalRows_eoUsers>0)
    {
+	   $siralama1 = (isset($_GET["ord"]))?$_GET["ord"]:"";
+	   $arama1 = (isset($_GET["arama"]))?$_GET["arama"]:"";
+	   $alanAdi1 = (isset($_GET["pageNum_eoUsers"]))?$_GET["pageNum_eoUsers"]:"";
+	   
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="dataChatActions.php">
                     <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
@@ -319,23 +324,23 @@ else if ($totalRows_eoUsers>0)
                         <th><?php if ($sirAlan=="messageid") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="messageid")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=messageid&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
+                          <a href="?order=messageid&amp;ord=<?php echo $siralama1?>&amp;arama=<?php echo $arama1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $alanAdi1?>"> <?php echo $metin[26]?> </a></th>
                         <th width="138"><?php if ($sirAlan=="name") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="name")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=name&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
+                          <a href="?order=name&amp;arama=<?php echo $arama1?>&amp;ord=<?php echo $siralama1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $alanAdi1?>"> <?php echo $metin[17]?> </a></th>
                         <th width="500"><?php if ($sirAlan=="message") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="message")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=message&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[50]?> </a></th>
+                          <a href="?order=message&amp;arama=<?php echo $arama1?>&amp;ord=<?php echo $siralama1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $alanAdi1?>"> <?php echo $metin[50]?> </a></th>
                         <th><?php if ($sirAlan=="ip") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="ip")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=ip&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[51]?> </a></th>
+                          <a href="?order=ip&amp;arama=<?php echo $arama1?>&amp;ord=<?php echo $siralama1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $alanAdi1?>"> <?php echo $metin[51]?> </a></th>
                         <th><?php if ($sirAlan=="date") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="date")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=date&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
+                          <a href="?order=date&amp;arama=<?php echo $arama1?>&amp;ord=<?php echo $siralama1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $alanAdi1?>"> <?php echo $metin[33]?> </a></th>
                       </tr>
                       <?php 
   $satirRenk=0;
