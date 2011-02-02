@@ -84,6 +84,12 @@ function anaMetniOku($konu)
 	 case 16:
 	  return "<h4>$metin[431]</h4>".$metin[442];
 	  break;
+	 case "TUMU":
+	 	$bilgiler = "$metin[261]|".$metin[266]."|1~";
+	 	$bilgiler .= "$metin[262]|".$metin[267]."|2~";
+	 	$bilgiler .= "$metin[431]|".$metin[442]."|3~";
+	  return $bilgiler;
+	  break;
 	
 	}
 	

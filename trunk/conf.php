@@ -95,6 +95,8 @@ browserdili: parametresiz,
 aktif tarayýcýnýn dil ayarýný bulma
 */
 function browserdili() {
+	if(empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) return "";
+	
          $lang=	preg_split('/[,;]/i',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
          $lang=	strtoupper($lang[0]);
          $lang=	preg_split('/[-]/i',$lang);
@@ -2831,6 +2833,8 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 		strlen($realName)>30 || strlen($userName)>15 ||  strlen($email)>50 ||  strlen($birth)>10 || strlen($password)>15 ) return false; 
 	     
 	if ($realName=="" || $userName=="" || $password=="" || $email=="" || $birth=="") return false;
+
+	if (substr_count($password, substr($password,0,1))==strlen($password)) return false; 
 	     
 	if ( !validInput($userName) || !validInput($password) ) return false;
       

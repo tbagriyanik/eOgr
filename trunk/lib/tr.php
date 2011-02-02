@@ -331,12 +331,12 @@ Lesser General Public License for more details.
 		$metin[261]="eOgr Nedir?";				
 		$metin[262]="Temel Gereksinimler";				
 		$metin[263]="Lisans Bilgisi";				
-		$metin[264]="Kullanýlan Programlar ve K&uuml;t&uuml;phaneler";				
+		$metin[264]="Kullanýlan Programlar ve Kütüphaneler";				
 		$metin[265]="Kurulum";				
-		$metin[266]="eOgr bir e&ouml;ðrenme projesidir.                  
-		           <p><strong>&Ouml;ðrenciler :</strong> Ders materyallerine ulaþabilir, okuma
-                    par&ccedil;alarýný okuyabilir ve sýnavlar ile kendini deneyebilir.</p>
-                  <p><strong>&Ouml;ðretmenler : </strong>Ders d&uuml;zenleyebilir, &ouml;ðrenci
+		$metin[266]="eOgr bir eöðrenme projesidir.                  
+		           <p><strong>Öðrenciler :</strong> Ders materyallerine ulaþabilir, okuma
+                    parçalarýný okuyabilir ve sýnavlar ile kendini deneyebilir.</p>
+                  <p><strong>Öðretmenler : </strong>Ders d&uuml;zenleyebilir, &ouml;ðrenci
                     iþlerini takip edebilir.</p>
                   <p><strong>Y&ouml;neticiler :</strong> Kullanýcý ve site y&ouml;netimini yapabilir, veri hareketlerini izleyebilir.</p>";				
 		$metin[267]="<strong>Web kullanýcýlarý</strong> :<br/>
@@ -559,17 +559,17 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[419]="Parola g&uuml;ncellenemiyor. Gelecek olan epostayý g&ouml;zardý ediniz.";
 		$metin[420]="Kay&#305;t silinmesini onayl&#305;yor musunuz?";
 		
-		$metin[421]="Site Se&ccedil;enekleri";
+		$metin[421]="Site Seçenekleri";
 		$metin[422]="Veri Hareketleri";
-		$metin[423]="Ders D&uuml;zenleme";
+		$metin[423]="Ders Düzenleme";
 		$metin[424]="Ders Kýsýtlamalarý";
-		$metin[425]="&Ouml;ðrenci Ýþlerini Takip Etmek";
-		$metin[426]="Ders &Ccedil;alýþma";
-		$metin[427]="Kullanýcý Se&ccedil;enekleri";
-		$metin[428]="G&uuml;venlik Tavsiyeleri";
+		$metin[425]="Öðrenci Ýþlerini Takip Etmek";
+		$metin[426]="Ders Çalýþma";
+		$metin[427]="Kullanýcý Seçenekleri";
+		$metin[428]="Güvenlik Tavsiyeleri";
 		$metin[429]="Sýk Sorulan Sorular";
-		$metin[430]="Ýpu&ccedil;larý ve Sorun Giderme";
-		$metin[431]="Bildiriler ve Teþekk&uuml;rler";
+		$metin[430]="Ýpuçlarý ve Sorun Giderme";
+		$metin[431]="Bildiriler ve Teþekkürler";
 		
 		$metin[432]="Site yönetim paneli sayfasýnda; kullanýcý listesi, yeni üye ekleme, veri yedekleme, yetim kayýt listesi ve diðer genel ayarlar bulunur.";
 		$metin[433]="Veri hareketleri genel veriler, sohbet bilgisi, ders çalýþma listesi, oy verileri ve yorum verileridir.";
