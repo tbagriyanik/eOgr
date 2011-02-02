@@ -162,7 +162,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   if ($Result1) echo "<font id='uyari'>$metin[501]</font>";
 }
 
-  $pageCnt=temizle($_GET['pageCnt']);
+  $pageCnt=temizle((isset($_GET['pageCnt']))?$_GET['pageCnt']:"");
 
   if($pageCnt=="")  
     $pageCnt=GetSQLValueString($_SESSION['pageCnt3'], "int"); 
@@ -182,7 +182,7 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($_db, $yol);
 
-$arayici =  temizle($_GET['arama']);   
+$arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");   
   if ($arayici!="") 
 		    $filtr2=" LEFT OUTER JOIN eo_users ON eo_comments.userID = eo_users.id
 						LEFT OUTER JOIN eo_4konu ON eo_comments.konuID = eo_4konu.id 
@@ -192,7 +192,7 @@ $arayici =  temizle($_GET['arama']);
 						LEFT OUTER JOIN eo_4konu ON eo_comments.konuID = eo_4konu.id 
 						";
 
-if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet") {
+if(!empty($_POST["sil"]) && !empty($_POST["silIzin"]) &&$_POST["silIzin"]=="evet") {
    $silinenler = "''";
    for ($i = 0; $i < count($_POST["sil"]); $i++)
       $silinenler .= ",'".$_POST["sil"][$i]."'";
@@ -260,14 +260,14 @@ if (empty($_SESSION["siraYonu2"])) {
 		$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
-	if ($_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
 	$siraYonu=$_SESSION["siraYonu2"];
 	
-	$sirAlan=temizle($_GET['order']);
+	$sirAlan=temizle((isset($_GET['order']))?$_GET['order']:"");
 	
 	  if ($sirAlan!="")
 	    $query_eoUsers = "SELECT eo_comments.id as id, eo_comments.konuID as konuID, eo_users.id as userID, eo_comments.active, eo_comments.comment, eo_comments.commentDate,eo_users.userName as userName, eo_4konu.konuAdi as konuAdi FROM eo_comments $filtr2 ORDER BY $sirAlan $siraYonu";   
@@ -276,7 +276,7 @@ if (empty($_SESSION["siraYonu2"])) {
 		$sirAlan="commentDate";
 	   }
 
- if ($_GET["upd"]=="1")
+ if (!empty($_GET["upd"]) and $_GET["upd"]=="1")
 	$query_limit_eoUsers = "SELECT eo_comments.id as id, eo_comments.comment FROM eo_comments where id='".RemoveXSS($_GET["id"])."'";
  else
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
@@ -311,7 +311,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
+if (!empty($_GET["upd"]) and $_GET["upd"]=="1" && isset($_GET["id"]) ){
 	//güncelleme
 ?>
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
@@ -339,6 +339,10 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
 }
 else if ($totalRows_eoUsers>0)
    {
+	   $s1 = (isset($_GET["ord"]))?$_GET["ord"]:"";
+	   $a1 = (isset($_GET["arama"]))?$_GET["arama"]:"";
+	   $aa1 = (isset($_GET["pageNum_eoUsers"]))?$_GET["pageNum_eoUsers"]:"";
+	   
 ?>
                   <form id="formSilme" name="formSilme" method="post" action="dataCommentList.php">
                     <table border="0" align="center" cellpadding="3" cellspacing="0" width="850">
@@ -346,27 +350,27 @@ else if ($totalRows_eoUsers>0)
                         <th><?php if ($sirAlan=="id") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
+                          <a href="?order=id&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[26]?> </a></th>
                         <th width="138" nowrap="nowrap"><?php if ($sirAlan=="userName") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=userName&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
+                          <a href="?order=userName&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[17]?> </a></th>
                         <th width="200"><?php if ($sirAlan=="konuAdi") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="konuAdi")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=konuAdi&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[175]?> </a></th>
+                          <a href="?order=konuAdi&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[175]?> </a></th>
                         <th width="20"  nowrap="nowrap"><?php if ($sirAlan=="active") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="active")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=active&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[291]?> </a></th>
+                          <a href="?order=active&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[291]?> </a></th>
                         <th  width="200" nowrap="nowrap"><?php if ($sirAlan=="comment") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="comment")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=comment&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[290]?> </a></th>
+                          <a href="?order=comment&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[290]?> </a></th>
                         <th><?php if ($sirAlan=="commentDate") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="commentDate")?"desc":"asc"?>.png" alt="desc" border="0" style="vertical-align: middle;" />
                           <?php } ?>
-                          <a href="?order=commentDate&amp;arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[33]?> </a></th>
+                          <a href="?order=commentDate&amp;arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[33]?> </a></th>
                       </tr>
                       <?php 
   $satirRenk=0;
@@ -392,7 +396,7 @@ else if ($totalRows_eoUsers>0)
                         echo ($row_eoUsers['konuAdi'])?araKalin($row_eoUsers['konuAdi']):"<span class=bosVeri>###</span>";; 
 						?>
                           </a></td>
-                        <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $_GET["arama"]?>&amp;ord=<?php echo $_GET["ord"]?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
+                        <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
                         <td align="left" title="<?php echo $row_eoUsers['comment']?>" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd(smartShort($row_eoUsers['comment']));   ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |

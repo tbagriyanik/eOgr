@@ -169,12 +169,12 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	   echo "<font id='hata'>&Uuml;ye bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
 
-		if ($_POST['prldeg']!="secili" && GetSQLValueString($_POST['userPassword'], "text")=='NULL')
+		if (!empty($_POST['prldeg']) and $_POST['prldeg']!="secili" && GetSQLValueString($_POST['userPassword'], "text")=='NULL')
           	 echo "<font id='hata'>Yeni bir parola yazmadýnýz!</font>";
 			 
 		else {  
 
-		  if ($_POST['prldeg']=="secili") 
+		  if (!empty($_POST['prldeg']) and $_POST['prldeg']=="secili") 
 			$updateSQL = sprintf("UPDATE eo_users SET userName=%s, realName=%s, userEmail=%s, userBirthDate='%s', userType=%s, requestDate='%s', ayarlar=%s WHERE id=%s",
 							   temizle(GetSQLValueString($_POST['userName'], "text")),
 							   temizle(GetSQLValueString($_POST['realName'], "text")),
@@ -247,11 +247,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   }
 }
 
-$arayici =  temizle($_GET['arama']);   
+$arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");   
   if ($arayici!="") 
     $filtr2=" where (userName like '%$arayici%' or realName like '%$arayici%' ) ";
 
-if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
+if ((isset($_GET['id'])) && ($_GET['id'] != "") && (!empty($_GET['delCon']) and $_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_users WHERE id=%s",
                        temizle(GetSQLValueString($_GET['id'], "int")));
 
@@ -268,10 +268,10 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
 
 }
   
-  $pageCnt=GetSQLValueString($_GET['pageCnt'], "int");
+  $pageCnt=GetSQLValueString((isset($_GET['pageCnt']))?$_GET['pageCnt']:"", "int");
 
   if($pageCnt=="NULL")  
-    $pageCnt=GetSQLValueString($_SESSION['pageCnt'], "int"); 
+    $pageCnt=GetSQLValueString((isset($_SESSION['pageCnt']))?$_SESSION['pageCnt']:"", "int"); 
 	else
 	$_SESSION['pageCnt']=$pageCnt;
   
@@ -288,6 +288,8 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($_db, $yol);
 
+$filtr1="";
+$filtr2="";
 if (isset($_GET['ord']) && $_GET['ord'] != "")
    {
 	   $filtr1=" and userType=".GetSQLValueString($_GET['ord'], "int");
@@ -298,7 +300,7 @@ if (empty($_SESSION["siraYonu"])) {
 		$siraYonu="desc";
 		$_SESSION["siraYonu"]=$siraYonu;
 	} else {
-		if ($_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+		if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 			$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 			$_SESSION["siraYonu2"]=$siraYonu;
 			}
@@ -306,9 +308,9 @@ if (empty($_SESSION["siraYonu"])) {
 		$siraYonu=$_SESSION["siraYonu2"];
 	}
 
-$sirAlan = temizle($_GET['order']);
+$sirAlan = temizle((isset($_GET['order']))?$_GET['order']:"");
 	
-if ($_GET["upd"]=="1")
+if (!empty($_GET["upd"]) and $_GET["upd"]=="1")
    {
    $upID =  GetSQLValueString($_GET['id'], "int"); 
       if ($sirAlan!="")
@@ -329,7 +331,7 @@ if ($_GET["upd"]=="1")
 	   }
 	}
 
- if ($_GET["upd"]=="1")
+ if (!empty($_GET["upd"]) and $_GET["upd"]=="1")
 	$query_limit_eoUsers = sprintf("%s", $query_eoUsers);
  else
 	$query_limit_eoUsers = sprintf("%s LIMIT %d, %d", $query_eoUsers, $startRow_eoUsers, $maxRows_eoUsers);
@@ -364,31 +366,37 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_eoUsers = sprintf("&amp;totalRows_eoUsers=%d%s", $totalRows_eoUsers, $queryString_eoUsers);
 
-if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
+if (!isset($_GET["upd"]))
+	$_GET["upd"]="";
+ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
    {
+	   $s1 = (isset($_GET["ord"]))?$_GET["ord"]:"";
+	   $a1 = (isset($_GET["arama"]))?$_GET["arama"]:"";
+	   $aa1 = (isset($_GET["pageNum_eoUsers"]))?$_GET["pageNum_eoUsers"]:"";
+	   
 ?>
                   <table border="0" align="center" cellpadding="3" cellspacing="0" >
                     <tr>
                       <th width="50"><?php if ($sirAlan=="id") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=id&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[26]?> </a></th>
+                        <a href="?order=id&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[26]?> </a></th>
                       <th width="150"><?php if ($sirAlan=="userName") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userName")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=userName&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[17]?> </a></th>
+                        <a href="?order=userName&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[17]?> </a></th>
                       <th width="200"><?php if ($sirAlan=="realName") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="realName")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=realName&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[19]?> </a></th>
+                        <a href="?order=realName&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[19]?> </a></th>
                       <th width="120"><?php if ($sirAlan=="userType") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userType")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=userType&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[22]?> </a></th>
+                        <a href="?order=userType&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[22]?> </a></th>
                       <th width="200"><?php if ($sirAlan=="requestDate") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="requestDate")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"  border="0" style="vertical-align: middle;"/>
                         <?php } ?>
-                        <a href="?order=requestDate&amp;ord=<?php echo $_GET["ord"]?>&amp;arama=<?php echo $_GET["arama"]?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $_GET['pageNum_eoUsers']?>"> <?php echo $metin[23]?> </a></th>
+                        <a href="?order=requestDate&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[23]?> </a></th>
                     </tr>
                     <?php
   $satirRenk=0;
@@ -514,11 +522,11 @@ if ($_GET["upd"]!="1"){
                   <br />
                   <form name="formFilt" id="formFilt" method="post" action="siteSettings.php">
                     <select name="jumpMenu" id="jumpMenu">
-                      <option value="siteSettings.php?ord=" <?php if (!(strcmp("", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
-                      <option value="siteSettings.php?ord=-1" <?php if (!(strcmp("-1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[93]?> </option>
-                      <option value="siteSettings.php?ord=0" <?php if (!(strcmp("0", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[94]?> </option>
-                      <option value="siteSettings.php?ord=1" <?php if (!(strcmp("1", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[95]?> </option>
-                      <option value="siteSettings.php?ord=2" <?php if (!(strcmp("2", htmlentities($_GET["ord"])))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[96]?> </option>
+                      <option value="siteSettings.php?ord=" <?php if (!(strcmp("", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[107]?> </option>
+                      <option value="siteSettings.php?ord=-1" <?php if (!(strcmp("-1", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[93]?> </option>
+                      <option value="siteSettings.php?ord=0" <?php if (!(strcmp("0", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[94]?> </option>
+                      <option value="siteSettings.php?ord=1" <?php if (!(strcmp("1", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[95]?> </option>
+                      <option value="siteSettings.php?ord=2" <?php if (!(strcmp("2", htmlentities($s1)))) {echo "selected=\"selected\"";} ?>> <?php echo $metin[96]?> </option>
                     </select>
                     <input type="button" name="go_button" id= "go_button" value="<?php echo $metin[109]?>" onclick="MM_jumpMenuGo('jumpMenu','parent',0)" />
                   </form>
@@ -546,27 +554,27 @@ if ($_GET["upd"]!="1"){
                       </tr>
                       <tr valign="baseline">
                         <td nowrap="nowrap" align="right"><label for="userName2"> <?php echo $metin[17]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="userName2" id="userName2" value="<?php echo $_POST["userName2"]?>" size="32" />
+                        <td bgcolor="#CCFFFF"><input type="text" name="userName2" id="userName2" value="<?php echo (isset($_POST["userName2"]))?$_POST["userName2"]:""?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
                         <td nowrap="nowrap" align="right"><label for="userPassword2"> <?php echo $metin[18]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="userPassword2" id="userPassword2" value="<?php echo $_POST["userPassword2"]?>" size="32" />
+                        <td bgcolor="#CCFFFF"><input type="text" name="userPassword2" id="userPassword2" value="<?php echo (isset($_POST["userPassword2"]))?$_POST["userPassword2"]:""?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
                         <td nowrap="nowrap" align="right"><label for="realName2"> <?php echo $metin[19]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="realName2" id="realName2" value="<?php echo $_POST["realName2"]?>" size="32" />
+                        <td bgcolor="#CCFFFF"><input type="text" name="realName2" id="realName2" value="<?php echo (isset($_POST["realName2"]))?$_POST["realName2"]:""?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
                         <td nowrap="nowrap" align="right"><label for="userEmail2"> <?php echo $metin[20]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="userEmail2" id="userEmail2" value="<?php echo $_POST["userEmail2"]?>" size="32" />
+                        <td bgcolor="#CCFFFF"><input type="text" name="userEmail2" id="userEmail2" value="<?php echo (isset($_POST["userEmail2"]))?$_POST["userEmail2"]:""?>" size="32" />
                           *</td>
                       </tr>
                       <tr valign="baseline">
                         <td nowrap="nowrap" align="right"><label for="userBirthDate2"> <?php echo $metin[21]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="userBirthDate2" id="userBirthDate2" value="<?php echo $_POST["userBirthDate2"]?>" size="32" />
+                        <td bgcolor="#CCFFFF"><input type="text" name="userBirthDate2" id="userBirthDate2" value="<?php echo (isset($_POST["userBirthDate2"]))?$_POST["userBirthDate2"]:""?>" size="32" />
                           <font size="-1">* <?php echo $metin[310]?></font></td>
                       </tr>
                       <tr valign="baseline">
