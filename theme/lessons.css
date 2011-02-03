@@ -4,7 +4,7 @@ td {
 }
 #kapsayici {
 	position:absolute;
-	top:10px;
+	top:15px;
 	z-index:auto;
 	float: left;
 	height: 410px;
@@ -15,7 +15,7 @@ td {
 	border: 1px outset #666;
 	padding: 8px;
 	overflow:none;
-	border: solid 1px #000; 
+	border: solid 1px #000;
 }
 #anaMetin {
 	height: 290px;
@@ -53,28 +53,20 @@ td {
 	text-align:left;
 	padding:2px;
 }
+#navigation2 a {
+	font-size: 11px;
+	text-decoration: none;
+}
+#navigation2 label {
+	font-size: 11px;
+	text-decoration: none;
+}
 #hazirlayan {
 	font-weight: bold;
 }
 #sayfaNo, #sayfaSayisi {
 	font-weight: bold;
 	font-size: 16px;
-}
-#geriDugmesi {
-	width: 24px;
-	height: 24px;
-	left:290px;
-	top:425px;
-	z-index:1000;
-	position:absolute;
-}
-#ileriDugmesi {
-	width: 24px;
-	height: 24px;
-	left:330px;
-	top:425px;
-	z-index:1000;
-	position:absolute;
 }
 #konuAdi {
 	font-weight: bold;
@@ -87,41 +79,62 @@ td {
 }
 #oncekiKonu {
 	position:absolute;
-	left:2px;
-	top:435px;
+	left:460px;
+	top:-5px;
 	overflow: hidden;
 	padding: 5px;
 	margin-top: 3px;
 	text-align:left;
-	height: 2em;
-	z-index: auto;
-	width:250px;
-}
-#oncekiKonu a {
-	color: #F60;
-	text-decoration:underline;
+	z-index: 1000;
 }
 #sonrakiKonu {
 	position:absolute;
-	left:380px;
-	top:435px;
+	left:562px;
+	top:-5px;
 	overflow: hidden;
 	padding: 5px;
 	margin-top: 3px;
 	text-align:right;
-	height: 2em;
-	z-index: auto;
-	width:250px;
+	z-index: 1000;
 }
-#sonrakiKonu a {
-	color: #F60;
-	text-decoration:underline;
+#geriDugmesi {
+	width: 24px;
+	height: 24px;
+	left:490px;
+	top:1px;
+	z-index:1000;
+	position:absolute;
 }
-#navigation2 a {
-	font-size: 11px;
-	text-decoration: none;
+#ileriDugmesi {
+	width: 24px;
+	height: 24px;
+	left:530px;
+	top:1px;
+	z-index:1000;
+	position:absolute;
 }
-#navigation2 label {
-	font-size: 11px;
-	text-decoration: none;
+#hint {
+	left:564px;
+	top:1px;
+	z-index:1000;
+	position:absolute;
+	display: none;
+	right: 20px;
+	width: 100px;
+	margin-top: -4px;
+	border: 1px solid #c93;
+	padding: 10px 12px;
+	background: #ffc url(../img/pointer.gif) no-repeat -10px 5px;
+	color:#600;
+	text-align:justify;
+	font-size:9px;
+	font-weight:bold;
+}
+#hint .hint-pointer {
+	position: absolute;
+	left: -10px;
+	top: 6px;
+	width: 10px;
+	height: 19px;
+	background: url(../img/pointer.gif) left top no-repeat;
 }
