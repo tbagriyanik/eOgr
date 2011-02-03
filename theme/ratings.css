@@ -1,6 +1,6 @@
 .rating {
 	position: relative;
-	border-top: 1px solid #FFF;
+	border: 1px solid #ccc;
 	color:#333;
 	padding: 2px;
 	background-color: #FFF;
