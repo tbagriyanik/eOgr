@@ -12,10 +12,9 @@ td {
 	overflow: auto;
 	color: #333;
 	background: #fff;
-	border: 1px outset #666;
+	border: 1px solid #CCC;
 	padding: 8px;
 	overflow:none;
-	border: solid 1px #000;
 }
 #anaMetin {
 	height: 290px;
@@ -24,7 +23,7 @@ td {
 #navigation {
 	position:absolute;
 	left:655px;
-	top:10px;
+	top:15px;
 	width:210px;
 	z-index:0;
 	float: left;
@@ -35,6 +34,7 @@ td {
 	background:#FFF;
 	height: 175px;
 	padding:2px;
+	border: 1px solid #CCC;
 }
 #navigation2 {
 	position:absolute;
@@ -137,4 +137,27 @@ td {
 	width: 10px;
 	height: 19px;
 	background: url(../img/pointer.gif) left top no-repeat;
+}
+#resizeMe {
+	position: relative;
+	width: 630px;
+	height: 410px;
+	margin-bottom: 5px;
+}
+#resizeS {
+	width: 50px;
+	height: 7px;
+	border:	outset 1px #CCC;
+	background-color: #f0f3f8;
+	bottom: -36px;
+	right: 0px;
+	position: absolute;
+	background-repeat:repeat-x;
+	background-image: url(../img/angle-nxs-bkg.gif);
+	background-position: center;
+	overflow: hidden;
+	font-size: 1px;
+	cursor: ns-resize;
+	cursor: n-resize;
+	text-align:center;
 }

@@ -66,9 +66,7 @@ ob_start (); // Buffer output
 <script type="text/javascript" src="lib/script.js"></script>
 <script type="text/javascript" src="lib/flashMode.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <script type="text/javascript" src="lib/hijax.js"></script>
 <link href="theme/ratings.css" rel="stylesheet" type="text/css" />
 <link href="theme/lessons.css" rel="stylesheet" type="text/css" />
@@ -95,6 +93,27 @@ ob_start (); // Buffer output
 				control:"#sidetreecontrol"
 			});
 		});
+		
+function degerOku(isim) {
+	if (document.cookie.length > 0) {
+		c_start = document.cookie.indexOf(isim + "=");
+		if (c_start != -1) {
+			c_start = c_start + isim.length + 1;
+			c_end   = document.cookie.indexOf(";",c_start);
+			if (c_end == -1) {
+				c_end = document.cookie.length;
+			}
+			return unescape(document.cookie.substring(c_start,c_end));
+		} 
+	}
+	return "";
+}
+
+function degerYaz(isim, deger, expiredays) {
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate() + expiredays);
+	document.cookie = isim + "=" + escape(deger) + ((expiredays === null) ? "" : ";expires=" + exdate.toGMTString());
+}		
 </script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -194,7 +213,7 @@ function cleanup() {
         }); 
 </script>
 </head>
- <?php flush(); ?>
+<?php flush(); ?>
 <body id="intro" onselectstart="//return false;" ondragstart="return false" oncontextmenu="return false" onunload="cleanup()" >
 <div class="PageBackgroundGradient"></div>
 <div class="Main">
@@ -252,21 +271,28 @@ function cleanup() {
 			  if(isset($_GET["konu"]))				
                 if(isKonu($_GET["konu"])){
 				?>
-          <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external"><?php 	echo $metin[553];?></label>&nbsp; |
+          <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external">
+            <?php 	echo $metin[553];?>
+          </label>
+          &nbsp; |
           <?php
 				}
         ?>
-          <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'><?php 		
+          <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'>
+          <?php 		
 		if($eMode=="2") 
 			echo "<strong>$metin[552]</strong>";
 		else
 			echo $metin[552];
-		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'><?php  		
+		?>
+          </a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
+          <?php  		
 		if($eMode=="3") 
 			echo "<strong>$metin[557]</strong>";
 		else
 			echo $metin[557];
-		?></a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> </div>
+		?>
+          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> </div>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>
@@ -305,7 +331,7 @@ function cleanup() {
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent" style="height:500px;overflow:hidden;">
+                <div class="PostContent" style="height:530px;overflow:hidden;">
                   <?php  
 
 	$_SESSION["cevaplar"] = ""; 
@@ -322,16 +348,19 @@ function cleanup() {
 ?>
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
-                  <div id="kapsayici">
-                    <div>
-                      <div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div>
+                  <div id="resizeMe">
+                    <div id="kapsayici">
+                      <div>
+                        <div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div>
+                      </div>
                     </div>
+                    <div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
                   </div>
                   <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
                     (<span id="eklenmeTarihi">-</span>)<br />
                     <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
-					<span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
+                    <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
                     <span id="bitirmeYuzdesi"></span><br />
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
@@ -623,7 +652,7 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1" and $eMode!="2" and $eMod
           <?php
 }
 ?>
-<script language="javascript" type="text/javascript">  
+          <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
 document.getElementById('sunuDurdur').style.visibility = 'hidden';
@@ -720,5 +749,34 @@ fix_flash();
  if($eMode!="1") 						
 	 require "feedback.php";
 ?>
+<script type="text/javascript">
+$(document).ready(
+	function()
+	{
+		if(degerOku('dersYukseklik')>300){
+//			$('#kapsayici', this).css('height', degerOku('dersYukseklik') + 'px');
+//			$('#resizeS', this).css('top', degerOku('dersYukseklik2')+ 'px');
+		}
+			
+		$('#resizeMe').Resizable(
+			{
+				minWidth: 50,
+				minHeight: 350,
+				maxHeight: 490,
+				handlers: {
+					s: '#resizeS'
+				},
+				onResize: function(size)
+				{
+					$('#kapsayici', this).css('height', size.height - 1 + 'px');
+//					degerYaz('dersYukseklik', size.height - 6, 7);
+//					degerYaz('dersYukseklik2', $('#resizeS').css('top'), 7);
+				}
+			}
+		);
+	}
+);
+</script> 
+<script type="text/javascript" src="lib/resize.js"></script>
 </body>
 </html>

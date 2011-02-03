@@ -58,6 +58,8 @@ Used Classes and Referred Sites
 	http://github.com/ProLoser/AnythingSlider
 - jQuery autoComplete: v1.1
 	http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete
+- interface for jQuery: v1.2
+	http://interface.eyecon.ro	
 - nicEdit: v0.9 r23 
 	http://www.nicedit.com
 - dataTables: v1.7.5  
