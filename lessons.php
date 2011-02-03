@@ -159,24 +159,24 @@ function degerYaz(isim, deger, expiredays) {
 		});			
 		
 		$("#oncekiKonu, #sonrakiKonu").hover(function() {
-			$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
+			$(this).css({'z-index' : '1000'}); /*Add a higher z-index value so this image stays on top*/ 
 			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
 				.animate({
 					marginTop: '-6px', /* The next 4 lines will vertically align this image */ 
 					marginLeft: '-6px',
-					top: '30%',
-					left: '30%',
+					top: '20%',
+					left: '20%',
 					width: '32px', /* Set new width */
 					height: '32px' /* Set new height */
 				}, 100); /* this value of "200" is the speed of how fast/slow this hover animates */
 		
 			} , function() {
-			$(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
+			$(this).css({'z-index' : '1000'}); /* Set z-index back to 0 */
 			$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
 				.animate({
 					marginTop: '0', /* The next 4 lines will vertically align this image */ 
 					marginLeft: '0',
-					top: '-5px',
+					top: '0px',
 					left: '0',
 					width: '16px', /* Set width back to default */
 					height: '16px' /* Set height back to default */

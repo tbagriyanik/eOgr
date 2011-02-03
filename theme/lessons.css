@@ -80,7 +80,7 @@ td {
 #oncekiKonu {
 	position:absolute;
 	left:460px;
-	top:-5px;
+	top:0px;
 	overflow: hidden;
 	padding: 5px;
 	margin-top: 3px;
@@ -90,7 +90,7 @@ td {
 #sonrakiKonu {
 	position:absolute;
 	left:562px;
-	top:-5px;
+	top:0px;
 	overflow: hidden;
 	padding: 5px;
 	margin-top: 3px;
