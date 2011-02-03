@@ -49,6 +49,8 @@ ob_start (); // Buffer output
 
   if(isset($_SESSION["usern"]))
 		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
+	else
+	 	$kullaniciSecen = array("","","","","","","","","","","","","","","");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -331,7 +333,7 @@ function cleanup() {
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent" style="height:530px;overflow:hidden;">
+                <div class="PostContent" style="height:542px;overflow:hidden;">
                   <?php  
 
 	$_SESSION["cevaplar"] = ""; 
@@ -349,12 +351,8 @@ function cleanup() {
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
                   <div id="resizeMe">
-                    <div id="kapsayici">
-                      <div>
-                        <div> <span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span> </div>
-                      </div>
+                    <div id="kapsayici"><span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span><div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
                     </div>
-                    <div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
                   </div>
                   <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
@@ -753,24 +751,22 @@ fix_flash();
 $(document).ready(
 	function()
 	{
-		if(degerOku('dersYukseklik')>300){
-//			$('#kapsayici', this).css('height', degerOku('dersYukseklik') + 'px');
-//			$('#resizeS', this).css('top', degerOku('dersYukseklik2')+ 'px');
+		var deger = degerOku('dersYukseklik');
+		if(deger>300){
+			$('#kapsayici').height (deger);
 		}
 			
 		$('#resizeMe').Resizable(
 			{
-				minWidth: 50,
 				minHeight: 350,
-				maxHeight: 490,
+				maxHeight: 500,
 				handlers: {
 					s: '#resizeS'
 				},
 				onResize: function(size)
 				{
 					$('#kapsayici', this).css('height', size.height - 1 + 'px');
-//					degerYaz('dersYukseklik', size.height - 6, 7);
-//					degerYaz('dersYukseklik2', $('#resizeS').css('top'), 7);
+					degerYaz('dersYukseklik', size.height - 6, 7);					
 				}
 			}
 		);

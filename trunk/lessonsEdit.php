@@ -1510,7 +1510,7 @@ if($seciliSekme=="0") {
                     <?php
    if($_GET["upd"]!=1) {
 
-	   $seciliKonu = temizle($_GET["seciliKonu"]);
+	   $seciliKonu = temizle((isset($_GET["seciliKonu"]))?$_GET["seciliKonu"]:"");
 	   if(empty($seciliKonu)) 
 	      $seciliKonu= temizle($_SESSION["seciliKonu"]);
 		 else

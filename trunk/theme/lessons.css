@@ -7,14 +7,13 @@ td {
 	top:15px;
 	z-index:auto;
 	float: left;
-	height: 410px;
+	height: 433px;
 	width: 630px;
-	overflow: auto;
 	color: #333;
 	background: #fff;
 	border: 1px solid #CCC;
 	padding: 8px;
-	overflow:none;
+	overflow:auto;
 }
 #anaMetin {
 	height: 290px;
@@ -52,6 +51,7 @@ td {
 	font-size: 12px;
 	text-align:left;
 	padding:2px;
+	border: 1px solid #CCC;
 }
 #navigation2 a {
 	font-size: 11px;
@@ -79,7 +79,7 @@ td {
 }
 #oncekiKonu {
 	position:absolute;
-	left:460px;
+	left:463px;
 	top:0px;
 	overflow: hidden;
 	padding: 5px;
@@ -89,7 +89,7 @@ td {
 }
 #sonrakiKonu {
 	position:absolute;
-	left:562px;
+	left:559px;
 	top:0px;
 	overflow: hidden;
 	padding: 5px;
@@ -141,15 +141,15 @@ td {
 #resizeMe {
 	position: relative;
 	width: 630px;
-	height: 410px;
+	height: 433px;
 	margin-bottom: 5px;
 }
 #resizeS {
-	width: 50px;
+	width: 20px;
 	height: 7px;
 	border:	outset 1px #CCC;
 	background-color: #f0f3f8;
-	bottom: -36px;
+	bottom: 0px;
 	right: 0px;
 	position: absolute;
 	background-repeat:repeat-x;

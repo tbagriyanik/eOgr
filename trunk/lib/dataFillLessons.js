@@ -342,6 +342,7 @@ function konuSec2(sayfaNo, noCount){
 					//bir sayfadaki temel öðeler
 					
 					document.getElementById("kapsayici").scrollTop = 0;
+					document.getElementById("kapsayici").scrollLeft = 0;
 
 					//deðerlerin iþlenmesi için alt programa gidelim
 					setOutputKonu(sayfaNo, document.getElementById('konu_id').value, noCount);
