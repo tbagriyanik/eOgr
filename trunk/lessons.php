@@ -114,7 +114,7 @@ ob_start (); // Buffer output
 			$(this).next(".msg_body2").slideToggle(200);
 		});
 		
-			$("#ileriDugmesi, #geriDugmesi").hover(function() {
+			$("#ileriDugmesi, #geriDugmesi, #oncekiKonu, #sonrakiKonu").hover(function() {
 			$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
 			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
 				.animate({
@@ -137,40 +137,36 @@ ob_start (); // Buffer output
 					width: '25px', /* Set width back to default */
 					height: '25px' /* Set height back to default */
 				}, 150);
+		});			
+		
+		$("#oncekiKonu, #sonrakiKonu").hover(function() {
+			$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
+			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
+				.animate({
+					marginTop: '-6px', /* The next 4 lines will vertically align this image */ 
+					marginLeft: '-6px',
+					top: '30%',
+					left: '30%',
+					width: '32px', /* Set new width */
+					height: '32px' /* Set new height */
+				}, 100); /* this value of "200" is the speed of how fast/slow this hover animates */
+		
+			} , function() {
+			$(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
+			$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
+				.animate({
+					marginTop: '0', /* The next 4 lines will vertically align this image */ 
+					marginLeft: '0',
+					top: '-5px',
+					left: '0',
+					width: '16px', /* Set width back to default */
+					height: '16px' /* Set height back to default */
+				}, 150);
 		});
 	});
 
 </script>
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<style type="text/css">
-/*register texboxes*/
-#hint {
-	left:374px;
-	top:411px;
-	z-index:1000;
-	position:absolute;
-
-	display: none;
-	right: 20px;
-	width: 100px;
-	margin-top: -4px;
-	border: 1px solid #c93;
-	padding: 10px 12px;
-	background: #ffc url(img/pointer.gif) no-repeat -10px 5px;
-	color:#C09;
-	text-align:justify;
-	font-size:11px;
-	font-weight:bold;
-}
-#hint .hint-pointer {
-	position: absolute;
-	left: -10px;
-	top: 16px;
-	width: 10px;
-	height: 19px;
-	background: url(img/pointer.gif) left top no-repeat;
-}
-</style>
 <script type="text/javascript" language="javascript">
 var ns = (document.layers)? true:false;
 var ie = (document.all)? true:false;
