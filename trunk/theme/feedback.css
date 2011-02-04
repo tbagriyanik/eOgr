@@ -76,7 +76,7 @@ a.triggerFB {
 	color:#fff;
 	padding: 15px 15px 15px 30px;
 	font-weight: 700;
-	background:#333333 url(../img/plus.png) 55% 55% no-repeat;
+	background:#333333 url(../img/help.png) 55% 55% no-repeat;
 	border:1px solid #444444;
 	-moz-border-radius-topleft: 20px;
 	-webkit-border-top-left-radius: 20px;
@@ -97,7 +97,7 @@ a.triggerFB:hover {
 	color:#fff;
 	padding: 15px 20px 15px 30px;
 	font-weight: 700;
-	background:#222222 url(../img/plus.png) 55% 55% no-repeat;
+	background:#222222 url(../img/help.png) 55% 55% no-repeat;
 	border:1px solid #444444;
 	-moz-border-radius-topleft: 20px;
 	-webkit-border-top-left-radius: 20px;

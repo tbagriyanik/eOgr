@@ -19,7 +19,6 @@ Lesser General Public License for more details.
  }
  if(!($adi=="" or $par=="")) {
 ?>
-
 <div id="containerFB">
   <div class="panelFB">
     <?php
@@ -145,7 +144,6 @@ Lesser General Public License for more details.
 		default:
 			echo $metin[444];
 	}
-	 
     ?>
     <div style="clear:both;"></div>
   </div>
