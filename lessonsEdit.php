@@ -373,12 +373,13 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 			 }
   }
 ?>
-                  <ol>
-                    <li class="<?php echo ($seciliSekme=="0")?"LinkYanAktif":"LinkYan";?>"><a href="lessonsEdit.php?tab=0"><img src="img/bullet.png" border="0" style="vertical-align: baseline;" alt="edit"/> <?php echo $metin[296];?></a> <?php echo $metin[352];?></li>
-                    <li class="<?php echo ($seciliSekme=="1")?"LinkYanAktif":"LinkYan";?>"><a href="lessonsEdit.php?tab=1"><img src="img/bullet.png" border="0" style="vertical-align: baseline;" alt="edit"/> <?php echo $metin[297];?></a> <?php echo $metin[353];?></li>
-                    <li class="<?php echo ($seciliSekme=="2")?"LinkYanAktif":"LinkYan";?>"><a href="lessonsEdit.php?tab=2"><img src="img/bullet.png" border="0" style="vertical-align: baseline;" alt="edit"/> <?php echo $metin[298];?></a> <?php echo $metin[354];?></li>
-                    <li class="<?php echo ($seciliSekme=="3" or $seciliSekme=="4")?"LinkYanAktif":"LinkYan";?>"><a href="lessonsEdit.php?tab=3"><img src="img/bullet.png" border="0" style="vertical-align: baseline;" alt="edit"/> <?php echo $metin[299];?></a> <?php echo $metin[355];?></li>
+                  <ol >
+                    <li class="LinkYan<?php echo ($seciliSekme=="0")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=0" title="<?php echo $metin[352];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="<?php echo $metin[352];?>" /> <?php echo $metin[296];?></a></li>
+                    <li class="LinkYan<?php echo ($seciliSekme=="1")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=1" title="<?php echo $metin[353];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit" /> <?php echo $metin[297];?></a></li>
+                    <li class="LinkYan<?php echo ($seciliSekme=="2")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=2" title="<?php echo $metin[354];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit" /> <?php echo $metin[298];?></a></li>
+                    <li class="LinkYan<?php echo ($seciliSekme=="3" or $seciliSekme=="4")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=3"  title="<?php echo $metin[355];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit"/> <?php echo $metin[299];?></a></li>
                   </ol>
+                  <div style="clear:both"></div>
                   <?php
  if(!isset($_POST["blokSayi"]))
 	 {
@@ -866,15 +867,18 @@ if($seciliSekme=="0") {
 	   $siraYap=temizle($_GET["siraYap"]);
 
 	   $filtreleme2=temizle((isset($_POST["filtreleme2"]))?$_POST["filtreleme2"]:"");
+	   if(isset($_POST["filtreleme2"]) and empty($_POST["filtreleme2"]))
+	     $filtreleme2 = "_";
+		 
 	   if($filtreleme2!="") 
 	     $_SESSION["filtreleme2"]=$filtreleme2;
 		 else
 		 $filtreleme2=temizle((isset($_SESSION["filtreleme2"]))?$_SESSION["filtreleme2"]:"");
 		 
 		if($filtreleme2!="") 
-		  $araFilter = " where dersAdi like '%$filtreleme2%' ";
+		  $araFilter = " dersAdi like '%$filtreleme2%' ";
 		  else
-		  $araFilter = "";
+		  $araFilter = " 1=1 ";
 	   
 		$siraYonu="asc";
 		if (empty($_SESSION["siraYonu5"])) {  
@@ -919,14 +923,17 @@ if($seciliSekme=="0") {
                       </tr>
                       <?php
 			$limitleme = sprintf("LIMIT %d, %d", $startRow1, $blokBuyuklugu);				 
-     		$sql = "SELECT eo_3ders.id, eo_3ders.dersAdi, eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi FROM eo_3ders left outer join eo_2sinif on eo_3ders.sinifID=eo_2sinif.id left outer join eo_1okul on eo_1okul.id=eo_2sinif.okulID $filtr $limitleme";
+     		$sql = "SELECT eo_3ders.id, eo_3ders.dersAdi, eo_2sinif.sinifAdi as sinifAdi, eo_1okul.okulAdi as okulAdi FROM eo_3ders left outer join eo_2sinif on eo_3ders.sinifID=eo_2sinif.id left outer join eo_1okul on eo_1okul.id=eo_2sinif.okulID where $filtr $limitleme";
 			
 			$result = mysql_query($sql, $yol);		
 			if($result){
-			$kayitSayisi = mysql_num_rows(mysql_query("select * from eo_3ders", $yol));			
+			$kayitSayisi = mysql_num_rows(mysql_query("select * from eo_3ders where $araFilter", $yol));			
 			$sayfaSayisi = ceil($kayitSayisi/$blokBuyuklugu)-1;
+			}else{
+				$kayitSayisi = 0;$sayfaSayisi = 0;
 			}
-	if (@mysql_numrows($result)==0)
+			
+	if (@mysql_num_rows($result)==0)
 	 {
 		 echo "<tr><td colspan='3'><font id='hata'>Kay&#305;t yok veya arama sonu&ccedil;suz kald&#305;!</font></td></tr>";
 	 }
@@ -986,7 +993,7 @@ if($seciliSekme=="0") {
                     <br />
                     <form action="lessonsEdit.php?tab=2" method="post" name="araFiltrele2" id="araFiltrele2">
                       <?php echo $metin[29] ?> :
-                      <input type="text" maxlength="50" size="32" name="filtreleme2" value="<?php echo $filtreleme2?>" title="<?php echo $metin[358] ?>" />
+                      <input type="text" maxlength="50" size="32" name="filtreleme2" value="<?php echo ($filtreleme2!="_")?$filtreleme2:""?>" title="<?php echo $metin[358] ?>" />
                       <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                     </form>
                     <br />
@@ -1101,13 +1108,15 @@ if($seciliSekme=="0") {
 	   $siraYap=temizle($_GET["siraYap"]);
 	   
 	   $filtreleme=temizle((isset($_POST["filtreleme"]))?$_POST["filtreleme"]:"");
+	   if(isset($_POST["filtreleme"]) and empty($_POST["filtreleme"]))
+	   		$filtreleme = "_";
 
 	   if(!empty($_POST["konuKimGel"]) and $_POST["konuKimGel"]=="1" and !empty($_POST["konuTumu"])) 
 		  	$_SESSION["konuKimGel"]=0;
 		if(!empty($_POST["konuKimGel"]) and $_POST["konuKimGel"]=="1" and !empty($_POST["konuBenim"])) 
 		  	$_SESSION["konuKimGel"]=1;
 
-	   if($_SESSION["konuKimGel"]=="")
+	   if(empty($_SESSION["konuKimGel"]))
 	      $_SESSION["konuKimGel"]=0;
 	   
 	   if($filtreleme!="") 
@@ -1281,7 +1290,7 @@ if($seciliSekme=="0") {
                     <br/>
                     <form action="lessonsEdit.php?tab=3" method="post" name="araFiltrele" id="araFiltrele">
                       <?php echo $metin[29] ?> :
-                      <input type="text" maxlength="50" size="32" name="filtreleme" value="<?php echo $filtreleme?>" title="<?php echo $metin[358] ?>" />
+                      <input type="text" maxlength="50" size="32" name="filtreleme" value="<?php echo ($filtreleme!="_")?$filtreleme:""?>" title="<?php echo $metin[358] ?>" />
                       <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                     </form>
                     <br />
@@ -1813,7 +1822,7 @@ bkLib.onDomLoaded(function() {
                 </div>
                 <div class="cleared"></div>
               </div>
-              &nbsp;</div>
+             </div>
           </div>
           <?php
 	if ($seciliSekme==4 && $seciliKonu>0){

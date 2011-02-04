@@ -43,7 +43,7 @@ $aInfo	=array();
 		$input = "";
 																					
 	$len = strlen($input);
-	$limit = 3;
+	$limit = 5;
 	
 	
 	$aResults = array();

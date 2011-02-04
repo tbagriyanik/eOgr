@@ -176,7 +176,7 @@ Shadowbox.init({
                             varname:"input",
                             json:true,
                             shownoresults:false,
-                            maxresults:3,
+                            maxresults:5,/* test2.php içinde limit var*/
                             callback: function (obj) {								
 								location.href = "kursDetay2.php?kisi="+obj.id;
 							}
