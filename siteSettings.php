@@ -247,9 +247,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   }
 }
 
+$filtr1="";
+$filtr2="";
+
 $arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");   
   if ($arayici!="") 
     $filtr2=" where (userName like '%$arayici%' or realName like '%$arayici%' ) ";
+	else
+	$filtr2=" where 1=1 ";
 
 if ((isset($_GET['id'])) && ($_GET['id'] != "") && (!empty($_GET['delCon']) and $_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_users WHERE id=%s",
@@ -288,8 +293,6 @@ $startRow_eoUsers = $pageNum_eoUsers * $maxRows_eoUsers;
 
 mysql_select_db($_db, $yol);
 
-$filtr1="";
-$filtr2="";
 if (isset($_GET['ord']) && $_GET['ord'] != "")
    {
 	   $filtr1=" and userType=".GetSQLValueString($_GET['ord'], "int");
