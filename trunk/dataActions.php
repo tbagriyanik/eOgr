@@ -249,12 +249,14 @@ if(!empty($_POST["sil"]) && $_POST["silIzin"]=="evet") {
 	if ($sonuc) echo "<font id='uyari'>$metin[501]!</font>";
  }   
 
+if(empty($_GET["yonU"]))  $_GET["yonU"]="";
+
 if (empty($_SESSION["siraYonu"])) {  
 		$siraYonu="desc";
 		$_SESSION["siraYonu"]=$siraYonu;
 	}
 	else
-	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu"]=$siraYonu;
 	}

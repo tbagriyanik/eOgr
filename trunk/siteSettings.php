@@ -296,11 +296,13 @@ if (isset($_GET['ord']) && $_GET['ord'] != "")
 	   $filtr2=" where userType=".GetSQLValueString($_GET['ord'], "int");
    }
 
+if(empty($_GET["yonU"]))  $_GET["yonU"]="";
+
 if (empty($_SESSION["siraYonu"])) {  
 		$siraYonu="desc";
 		$_SESSION["siraYonu"]=$siraYonu;
 	} else {
-		if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+		if (!empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 			$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 			$_SESSION["siraYonu2"]=$siraYonu;
 			}

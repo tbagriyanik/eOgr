@@ -194,7 +194,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
   $pageCnt=GetSQLValueString((isset($_GET['pageCnt']))?$_GET['pageCnt']:"", "int");
 
   if($pageCnt=="NULL")  
-    $pageCnt=GetSQLValueString($_SESSION['pageCnt2'], "int"); 
+    $pageCnt=GetSQLValueString((isset($_SESSION['pageCnt2']))?$_SESSION['pageCnt2']:"", "int"); 
 	else
 	$_SESSION['pageCnt2']=$pageCnt;
   
@@ -227,12 +227,14 @@ if(!empty($_POST["sil"]) && !empty($_POST["silIzin"]) &&$_POST["silIzin"]=="evet
 	if ($sonuc) echo "<font id='uyari'>$metin[501]!</font>";
  }   
 
+if(empty($_GET["yonU"]))  $_GET["yonU"]="";
+
 if (empty($_SESSION["siraYonu"])) {  
 		$siraYonu="desc";
 		$_SESSION["siraYonu"]=$siraYonu;
 	}
 	else
-	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu"]=$siraYonu;
 	}

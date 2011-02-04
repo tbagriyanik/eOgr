@@ -204,12 +204,14 @@ $arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");
 						LEFT OUTER JOIN eo_4konu ON eo_userworks.konuID = eo_4konu.id 
 						where $ogreTumu";
 
+if(empty($_GET["yonU"]))  $_GET["yonU"]="";
+
 if (empty($_SESSION["siraYonu2"])) {  
 		$siraYonu="desc";
 		$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
-	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu2"]=$siraYonu;
 	}
