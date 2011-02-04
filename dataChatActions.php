@@ -163,7 +163,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") && $
   $pageCnt=temizle((isset($_GET['pageCnt']))?$_GET['pageCnt']:"");
 
   if($pageCnt=="")  
-    $pageCnt=GetSQLValueString($_SESSION['pageCnt3'], "int"); 
+    $pageCnt=GetSQLValueString((isset($_SESSION['pageCnt3']))?$_SESSION['pageCnt3']:"", "int"); 
 	else
 	$_SESSION['pageCnt3']=$pageCnt;
   
@@ -230,12 +230,14 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3") && $tur=="2
 	}			
 }
 
+if(empty($_GET["yonU"]))  $_GET["yonU"]="";
+
 if (empty($_SESSION["siraYonu2"])) {  
 		$siraYonu="desc";
 		$_SESSION["siraYonu2"]=$siraYonu;
 	}
 	else
-	if (!empty($_GET["yonU"]) && !empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
+	if (!empty($_GET['siraYap']) and $_GET["yonU"]!="dur" && $_GET['siraYap']=="OK"){
 	$siraYonu=($_SESSION["siraYonu2"]=="desc")?"asc":"desc";
 	$_SESSION["siraYonu2"]=$siraYonu;
 	}
