@@ -310,7 +310,7 @@ if (empty($_SESSION["siraYonu"])) {
 			$_SESSION["siraYonu2"]=$siraYonu;
 			}
 	else
-		$siraYonu=$_SESSION["siraYonu2"];
+		$siraYonu=(isset($_SESSION["siraYonu2"]))?$_SESSION["siraYonu2"]:"";
 	}
 
 $sirAlan = temizle((isset($_GET['order']))?$_GET['order']:"");
@@ -413,7 +413,7 @@ if (!isset($_GET["upd"]))
             $row_color = "#ddd"; 
         }
    ?>
-                    <tr bgcolor="#CCFFFF">
+                    <tr bgcolor="#CCFFFF" title="<?php echo "[".$row_eoUsers['userEmail']."] ".tarihOku($row_eoUsers['userBirthDate']) ?>">
                       <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><a href='profil.php?kim=<?php echo $row_eoUsers['id']; ?>' rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin($row_eoUsers['realName']); ?></td>

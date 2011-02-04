@@ -91,6 +91,21 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
 <script type="text/javascript">
 $().ready(function() {
+	
+	$(function(){
+   /* $('#userN, #userP').keydown(function(e){
+        if (e.keyCode == 13) {
+            $('#formLogin').submit();
+            return false;
+        	}
+    	});
+	});*/
+
+			$(window).scroll(function() {
+				$("#loginForm").fadeOut(100);
+				$("#loginButton a").removeClass("active");
+			});
+
 	$("#formLogin").validate({
 		rules: {
 			userN: {
@@ -300,21 +315,20 @@ $().ready(function() {
   <li><a href="index.php?logout=1"><span><span><img src="img/logout.png" border="0" style="vertical-align: middle;" alt="logout"/>
     <?php if (!empty($adi)) echo temizle($adi)." "; ?>
     <?php echo $metin[59]?> </span></span></a>
-  <?php
+    <?php
 	 if ($remUser){
     ?>
-  <ul>
-    <li> <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a> </li>
-  </ul>
-  <?php
+    <ul>
+      <li> <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a> </li>
+    </ul>
+    <?php
 	}
     ?>
-  <?php
+    <?php
   }
 ?>
-</li>
+  </li>
 </ul>
 <?php
 	}	
-//include "reklam.php";	
 ?>

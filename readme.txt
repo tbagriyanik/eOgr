@@ -1,5 +1,5 @@
 
-	eOgr - v130d, 04-02-2011
+	eOgr - v131a, 04-02-2011
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -42,7 +42,7 @@ Other Sites:
 	http://www.hotscripts.com/listing/eogr
 	
 Start Date: 	
-	15-11-2008 (650 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
+	15-11-2008 (660 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
 
 Designing and Building Programs: 	
 	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
