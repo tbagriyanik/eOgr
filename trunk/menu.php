@@ -31,9 +31,17 @@ if (isset($_COOKIE["remUser"]))
    $remUser = true;
   } 
 
-if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
+$bilgi1 = "";$bilgi5 = "";$bilgi9 = "";
+$bilgi2 = "";$bilgi6 = "";$bilgi10 = "";
+$bilgi3 = "";$bilgi7 = "";$bilgi11 = "";
+$bilgi4 = "";$bilgi8 = "";$bilgi12 = "";
 ?>
+<script type="text/javascript" src="lib/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
+<script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
 <?php
+if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	$imge =  ' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />';
 	$bilgi1 = sonTarihGetir("sohbet");
 	$bilgi1 = ($bilgi1)?$imge:'';
@@ -58,10 +66,6 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	$bilgi11 = sonTarihGetir("soru");
 	$bilgi11 = ($bilgi11)?$imge:'';
 ?>
-<script type="text/javascript" src="lib/jquery-1.5.min.js"></script>
-<script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
-<script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3_comp.js" charset="utf-8"></script>
 
 <div class="aramaDiv"> <a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a>&nbsp;&nbsp;<a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a>&nbsp;&nbsp;<a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a>&nbsp;&nbsp;
   <input name="searchterm" type="text" id="searchterm" size="15" maxlength="50" title="<?php echo $metin[177]?>"/>

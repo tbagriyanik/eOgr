@@ -416,10 +416,10 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 
 		$metin[302]="Son çalýþmalar (kayýtlý olmayan kullanýcýlar)";
 		
-		$metin[303]="Diðer Genel Seçenekler";		
+		$metin[303]="<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Ana sayfa</a> için diðer genel seçenekler ";		
 		$metin[304]="Sohbet";
-		$metin[305]="Haberler (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
-		$metin[306]="Son kullanýcý çalýþmalarý, son güncellenen konular (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> ana sayfa</a>)";
+		$metin[305]="Haberler";
+		$metin[306]="Son kullanýcý çalýþmalarý, son güncellenen konular";
 		$metin[307]="Ping Resmi";
 		$metin[308]="Ýstatistikler ve Son Çalýþanlar";
 		
@@ -544,7 +544,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[404]="Kullanýcý adý veya parolanýz hatalýdýr. Hesabýnýz pasif halde olabilir.";
 		$metin[405]="Þimdilik bir haber bulunmuyor veya haberler kapatýlmýþ.";
 		$metin[406]="Kod boþ veya hatalý girildi! Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>.";
-		$metin[407]="<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>";
+		$metin[407]="<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[408]="<font id='uyari'> &Uuml;yelik iþleminiz tamamlandý!</font>Devam etmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[409]="<font id='hata'> &Uuml;yelik iþleminiz tamamlanamadý! Boþ ve izin verilmeyen deðerler var, kullanýcý adý veya eposta adresi kullanýlýyor olabilir.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[410]="<font id='hata'> Tekrar baþvuru yapýldý.</font><br/>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";

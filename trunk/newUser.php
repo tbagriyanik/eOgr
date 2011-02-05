@@ -283,8 +283,18 @@ $().ready(function() {
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[64]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-				  
-    if(isset($_POST['form']) && $_POST["onay"]=="OK" && $_SESSION["newUser"]!="yes"){          
+
+if ((!empty($_POST["ccode2"]) and !empty($_SESSION["ccode2"])) and $_POST["ccode2"] != $_SESSION["ccode2"]) {
+	$_SESSION["ccode2"]="";
+	echo ("<font id='hata'> ".$metin[406]."</font>");
+}elseif((!empty($_POST["userPassword2"]) and !empty($_POST["userPassword1"])) and $_POST["userPassword2"]!=$_POST["userPassword1"] || $_POST["userName"]==$_POST["userPassword1"] || $_POST["userPassword1"]=="12345678" ) {
+	$_SESSION["ccode2"]="";
+	echo($metin[407]);
+}elseif(!empty($_SESSION["newUser"]) and $_SESSION["newUser"]=="yes") {
+	$_SESSION["ccode2"]="";
+	echo($metin[410]); //form data?	
+}else{
+    if(isset($_POST['form']) && isset($_POST['onay']) && isset($_SESSION["newUser"]) && $_POST["onay"]=="OK" && $_SESSION["newUser"]!="yes"){          
 	
 			switch ($_POST['form'])
 			{
@@ -311,17 +321,7 @@ $().ready(function() {
 					break;
 			}
 			
-			if ($_POST["ccode2"] != $_SESSION["ccode2"]) {
-				$_SESSION["ccode2"]="";
-			  die ("<font id='hata'> ".$metin[406]."</font>");
-			}
-			else
-			{
-			
-				if($_POST["userPassword2"]!=$_POST["userPassword1"] || $_POST["userName"]==$_POST["userPassword1"] || $_POST["userPassword1"]=="12345678" ) {
-				$_SESSION["ccode2"]="";
-				  die($metin[407]);
-				}
+			{			
 			
 				$_SESSION["newUser"]="yes";
 				$_SESSION["ccode2"]="";
@@ -353,11 +353,6 @@ $().ready(function() {
 			}
 	}else{		
 
-if($_SESSION["newUser"]=="yes") {
-	$_SESSION["ccode2"]="";
-	die($metin[410]); //form data?
-}
-	
 require_once("lib/phplivex.php");
 /*
 validate:
@@ -438,7 +433,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="realN" type="text" id="realN" size="35" maxlength="30" class="required"  style="width:150px"/>
+                              <input name="realN" type="text" id="realN" size="35" maxlength="30" class="required"  style="width:150px" value="<?php echo (isset($_POST["realN"]))?temizle($_POST["realN"]):""?>"/>
                               <span class="hint"><?php echo $metin[280];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dt>
@@ -446,7 +441,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="userName" type="text" id="userName" size="35" maxlength="15" class="required"  style="width:150px" onkeyup="test();"/>
+                              <input name="userName" type="text" id="userName" size="35" maxlength="15" class="required"  style="width:150px" onkeyup="test();" value="<?php echo (isset($_POST["userName"]))?temizle($_POST["userName"]):""?>"/>
                               <span class="hint"><?php echo $metin[281];?><br />
                               <span id="msg"></span><span id="pr" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0"  style="vertical-align: middle;" alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
@@ -471,7 +466,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="email" type="text" id="email" size="35" maxlength="50"  style="width:150px" class="required email"  onkeyup="test2();"/>
+                              <input name="email" type="text" id="email" size="35" maxlength="50"  style="width:150px" class="required email"  onkeyup="test2();" value="<?php echo (isset($_POST["email"]))?temizle($_POST["email"]):""?>"/>
                               <span class="hint"><?php echo $metin[284];?><br />
                               <span id="msg2"></span><span id="pr2" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" style="vertical-align: middle;"  alt="loading" /></span><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
@@ -480,7 +475,7 @@ $ajax->Run();
                           </dt>
                           <dd>
                             <div>
-                              <input name="birth" type="text" id="birth" size="35" maxlength="30"  style="width:150px" class="required dateDE" value="31.12.1990" />
+                              <input name="birth" type="text" id="birth" size="35" maxlength="30"  style="width:150px" class="required dateDE" value="<?php echo (isset($_POST["birth"]))?temizle($_POST["birth"]):"31.12.1990"?>"/>
                               <span class="hint"><?php echo $metin[285];?><span class="hint-pointer">&nbsp;</span></span> </div>
                           </dd>
                           <dd>
@@ -500,6 +495,7 @@ $ajax->Run();
                   </div>
                   <?php
 	}
+}	
 ?>
                 </div>
                 <div class="cleared"></div>

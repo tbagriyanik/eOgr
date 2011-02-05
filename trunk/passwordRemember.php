@@ -178,7 +178,7 @@ Lesser General Public License for more details.
 		
 	}else{		
 
-if($_SESSION["passRem"]=="yes") die($metin[410]); //form data?
+if(!empty($_SESSION["passRem"]) and $_SESSION["passRem"]=="yes") echo($metin[410]); //form data?
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <script type="text/javascript">
