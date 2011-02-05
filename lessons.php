@@ -164,8 +164,8 @@ function degerYaz(isim, deger, expiredays) {
 			$(this).css({'z-index' : '1000'}); /*Add a higher z-index value so this image stays on top*/ 
 			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
 				.animate({
-					marginTop: '-6px', /* The next 4 lines will vertically align this image */ 
-					marginLeft: '-6px',
+					marginTop: '-9px', /* The next 4 lines will vertically align this image */ 
+					marginLeft: '-9px',
 					top: '20%',
 					left: '20%',
 					width: '32px', /* Set new width */
