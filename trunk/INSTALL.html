@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<title>eOgr - Installation (Project Details)</title>
+</head>
+
+<body>
+<pre style="font-family:'Courier New', Courier, monospace; line-height: 25px;">
+<a href="index.php">« Return to eOgr</a>
+
+INSTALLATION:
+-------------
+(1) Edit your settings in "database.php" with an editor. 
+   
+    All values must be properly edited.
+    For example, if you don't write your site URL into $_source1 value, 
+    the project may give "source errors".
+
+(2) " <a href="http://localhost/eogr/install.php">http://localhost/eogr/install.php</a> " is for installation. 
+
+    If you didn't create your database previously, you have to click install.php for 2 times.
+    First time to create your database, second time for table creation.
+
+    Your MySQL user must have "CREATE TABLE" permission! 
+    After a successful installation, you can remove/rename "installation_Database.sql" 
+    and install.php files.
+	
+    If you don't want to use install.php, you can import "installation_Database.sql" 
+    from phpmyadmin page.
+
+(3) Login as administrator user: name "admin" and password "11111"    
+    Change your password from your profile page immediately.	
+    I hope you start and like this experience!	
+
+Further information for administrators: 
+- This project needs at least PHP 5 version
+- MySQL 5 database server 
+- "uploads" folder needs write permission (766 or 777 can be)
+  If you don't want to enable file sharing, you are not forced to change any permission.
+
+- .htaccess enabled for security 
+  You can erase this file if having 500 security problems, 
+  or you can edit it properly for your server. 
+  When editing .htaccess file you will see a warning line there.
+
+For Clients (web users and testers need to check these browser options):
+- Javascript (Ajax) enabled browser,
+- Cookies enabled (theme, language and user name),
+- Sending referrer address enabled (page navigation),
+  "Invalid Source error" may be because of this.
+- Flash player installed (for lessons' page content)
+  Adobe Flash is not obligatory for the general project usage.
+
+Used Classes and Referred Sites
+-------------------------------
+- jQuery: v1.5 
+	<a href="http://jquery.com">http://jquery.com</a>
+- jQuery UI: v1.8.9 custom - sortable only 
+	<a href="http://jqueryui.com">http://jqueryui.com</a>
+- jQuery AnythingSlider: v1.5.6.5a
+	<a href="http://github.com/ProLoser/AnythingSlider">http://github.com/ProLoser/AnythingSlider</a>
+- jQuery interface (resize): v1.2
+	<a href="http://interface.eyecon.ro">http://interface.eyecon.ro</a>	
+- NicEdit: v0.9 r23 
+	<a href="http://www.nicedit.com">http://www.nicedit.com</a>
+- DataTables: v1.7.5  
+	<a href="http://www.datatables.net">http://www.datatables.net</a>
+- phplivex: v2.6 
+	<a href="http://www.phplivex.com">http://www.phplivex.com</a>
+- wtag: v1.0Beta 
+	<a href="http://spacegirlpippa.co.uk">http://spacegirlpippa.co.uk</a>
+- Facebox: v1.3 
+	<a href="http://github.com/defunkt/facebox">http://github.com/defunkt/facebox</a>
+- Shadowbox: v3.0.3 
+	<a href="http://www.shadowbox-js.com/">http://www.shadowbox-js.com</a>
+- jQuery AutoComplete: v1.1
+	<a href="http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete">http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete</a>
+- jQuery TreeView: v1.4.1 
+	<a href="http://bassistance.de/jquery-plugins/jquery-plugin-treeview">http://bassistance.de/jquery-plugins/jquery-plugin-treeview</a>
+- jQuery Validation: v1.7
+	<a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">http://bassistance.de/jquery-plugins/jquery-plugin-validation</a>    
+- jQuery simplepager: v1.1 
+	<a href="http://github.com/dan0/simplepager">http://github.com/dan0/simplepager</a>
+- jQuery print: 
+	<a href="http://www.bennadel.com/index.cfm?event=blog.view&amp;id=1591">http://www.bennadel.com/index.cfm?event=blog.view&amp;id=1591</a>
+- jQuery ping:
+ 	<a href="http://plugins.jquery.com/project/jqueryping">http://plugins.jquery.com/project/jqueryping</a>
+- jQuery Quick Pager: v1.1
+	<a href="http://blog.geekyjohn.com/">http://blog.geekyjohn.com</a>        
+- jQuery bad browser: v1.4
+	<a href="http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4/">http://blog.team-noir.net/2010/05/jquery-badbrowser-update-version-1-4</a>
+- jQuery twitter Login: v1 
+ 	<a href="http://www.skyrocketlabs.com/articles/twitter-style-login-with-jquery-and-css3.php">http://www.skyrocketlabs.com/articles/twitter-style-login-with-jquery-and-css3.php</a>
+- jQuery Bookmark: 
+	<a href="http://www.dynamicsitesolutions.com/javascript/add-bookmark-script">http://www.dynamicsitesolutions.com/javascript/add-bookmark-script</a>
+- jQuery iCal-like Calendar: 
+	<a href="http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery">http://www.stefanoverna.com/log/create-astonishing-ical-like-calendars-with-jquery</a>
+	<a href="http://www.frecosse.com/?p=252">http://www.frecosse.com/?p=252</a>
+- AutoSuggest: v2.1.3
+	<a href="http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html">http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html</a> 
+- Flood-protection: v1.0
+	<a href="http://archive.free-php.org.uk">http://archive.free-php.org.uk</a>
+- SWFObject v2.2 
+	<a href="http://code.google.com/p/swfobject">http://code.google.com/p/swfobject</a>
+- HTML Graphs: v4.8 
+	<a href="http://www.gerd-tentler.de/tools/phpgraphs">http://www.gerd-tentler.de/tools/phpgraphs</a>
+- Flash Video Player: v3.5
+	<a href="http://www.longtailvideo.com/players/jw-flv-player/">http://www.longtailvideo.com/players/jw-flv-player</a>
+	<a href="http://www.jeroenwijering.com">http://www.jeroenwijering.com</a>
+- SQL_Export: 
+	<a href="http://www.phpclasses.org/browse/file/7633.html">http://www.phpclasses.org/browse/file/7633.html</a>
+- SQL_Import: 
+	<a href="http://www.phpclasses.org/browse/package/4898.html">http://www.phpclasses.org/browse/package/4898.html</a>
+- Hijax: 
+	<a href="http://bulletproofajax.com">http://bulletproofajax.com</a>
+- Input field hints: 
+	<a href="http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html">http://www.askthecssguy.com/2007/03/form_field_hints_with_css_and.html</a>
+- Flash Fix: 
+	<a href="http://www.onlineaspect.com/2009/08/13/javascript_to_fix_wmode_parameters">http://www.onlineaspect.com/2009/08/13/javascript_to_fix_wmode_parameters</a>
+- Human Relative Date : 
+	<a href="http://www.inventpartners.com/content/free-php-class-friendly-relative-time">http://www.inventpartners.com/content/free-php-class-friendly-relative-time</a>
+- Sliding Panel:
+	<a href="http://spyrestudios.com/demos/sliding-panel-fixed/">http://spyrestudios.com/demos/sliding-panel-fixed</a>
+- Ajax Upload:
+	<a href="http://www.ajaxf1.com/product/ajax-file-upload.html">http://www.ajaxf1.com/product/ajax-file-upload.html</a>
+- RemoveXSS: 
+	<a href="http://doxygen.frozenkiwi.com/typo3/html/d8/d2c/classRemoveXSS.html">http://doxygen.frozenkiwi.com/typo3/html/d8/d2c/classRemoveXSS.html</a>
+</pre>    
+</body>
+</html>

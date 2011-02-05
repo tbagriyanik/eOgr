@@ -58,7 +58,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	$bilgi11 = sonTarihGetir("soru");
 	$bilgi11 = ($bilgi11)?$imge:'';
 ?>
-<script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="lib/jquery-1.5.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3_comp.js" charset="utf-8"></script>

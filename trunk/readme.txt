@@ -14,7 +14,7 @@ Every member can interact with teachers or other students at real time or become
 
 Teachers and parents can follow the students works. Teachers can add and modify lesson topics. Administrator users manage the site maintenance like editing users, database backup, database optimization and site settings.
 
-INSTALLATION (more details in the INSTALL.txt)
+INSTALLATION (more details in the INSTALL.html)
 ----------------------------------------------
 (1) Edit your settings in "database.php"
 (2) " http://localhost/eogr/install.php " installation address     
