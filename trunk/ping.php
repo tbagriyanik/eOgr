@@ -26,4 +26,4 @@ $(document).ready(function (){
 });
 </script>
 
-<img id="pingTest" src="img/loadingRect2.gif" alt="ping" title="ping" style="vertical-align: sub;" />
+<img id="pingTest" src="img/loadingRect2.gif" alt="ping" title="ping" style="vertical-align: middle;" />

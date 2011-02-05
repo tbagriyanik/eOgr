@@ -92,8 +92,8 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 <script type="text/javascript">
 $().ready(function() {
 	
-	$(function(){
-   /* $('#userN, #userP').keydown(function(e){
+	/*$(function(){
+    $('#userN, #userP').keydown(function(e){
         if (e.keyCode == 13) {
             $('#formLogin').submit();
             return false;
