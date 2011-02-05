@@ -19,7 +19,7 @@ Lesser General Public License for more details.
 	include "conf.php";
 	
     checkLoginLang(false,true,"fileDownload.php");
-	if (!check_source()) die ("<font id='hata'>$metin[295]</font>"); 
+	//if (!check_source()) die ("<font id='hata'>$metin[295]</font>"); 
 
 	$dosya = RemoveXSS($_GET["file"]);
 	$dosya = str_replace("..", "", $dosya);

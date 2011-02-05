@@ -265,9 +265,8 @@ function cleanup() {
 
 		require("menu.php");	
                 ?>
-        <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;">
-          <?php
-				if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+        <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;height:20px">
+          <?php				
 				echo " $metin[556] : ";
 		
 			  if(isset($_GET["konu"]))				
@@ -294,7 +293,11 @@ function cleanup() {
 		else
 			echo $metin[557];
 		?>
-          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> </div>
+          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> 
+		  <?php
+		  if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+		  ?>
+		  </div>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>
