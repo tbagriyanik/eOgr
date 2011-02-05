@@ -140,7 +140,7 @@ Lesser General Public License for more details.
 <title>eOgr</title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
-<script src="lib/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.5.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />

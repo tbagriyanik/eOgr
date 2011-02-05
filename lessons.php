@@ -78,7 +78,7 @@ ob_start (); // Buffer output
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
