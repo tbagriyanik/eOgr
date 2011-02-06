@@ -1,6 +1,6 @@
 eOgr 
 
-v131a, 05-02-2011 (660 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
+v131b, 06-02-2011 (666 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
@@ -44,20 +44,6 @@ Other Sites:
 	
 Start Date: 	
 	15-11-2008 
-
-Designing and Building Programs: 	
-	Xampp, Adobe Dreamweaver, Artisteer, PHP Manual, Acunetix
-
-CSS, RSS and HTML Validations:  
-	http://jigsaw.w3.org/css-validator/validator
-	http://validator.w3.org/feed
-	http://validator.w3.org/check
-
-Advice:
-	Mozilla Firefox extensions: "HTML Validator", FireBug, "Web Developer" 
-
-Also Test Your Favorite Browser's Security: 
-	http://bcheck.scanit.be/bcheck/
 
 Special Thanks
 --------------

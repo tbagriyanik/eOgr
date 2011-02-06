@@ -22,7 +22,7 @@ body {
 }
 #container #header #header_left {
 	float: left;
-	background-image: url(images/header_left.gif);
+	background-image: url(header_left.gif);
 	background-repeat: no-repeat;
 	height: 42px;
 	width: 45px;
@@ -76,7 +76,7 @@ body {
 	margin-left: 0px;
 }
 .sbtn {
-	background-image: url(images/button.gif);
+	background-image: url(button.gif);
 	border: 1px solid #000033;
 	height: 22px;
 	width: 82px;
@@ -92,7 +92,7 @@ button {
 	color: #FFFFFF;
 	height: 22px;
 	width: 82px;
-	background-image: url(images/button.gif);
+	background-image: url(button.gif);
 }
 #container #content #form1 legend {
 	padding: 5px;
@@ -107,7 +107,7 @@ form {
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 0px;
-	background-image: url(images/header_bg.gif);
+	background-image: url(header_bg.gif);
 	background-repeat: repeat-x;
 	height: 42px;
 }
