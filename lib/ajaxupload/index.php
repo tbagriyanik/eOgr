@@ -24,7 +24,7 @@ Lesser General Public License for more details.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
 <title><?php echo $metin[515]?></title>
-<link href="style/style.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">
 <!--
 function startUpload(){
