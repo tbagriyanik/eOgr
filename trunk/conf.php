@@ -3724,7 +3724,7 @@ derecelendirme grafiði
 */
 function rankGrafik($val,$max){
 	if(empty($max) or $max==0) return;
-	//if(empty($val) or $val==0) return;
+//	if($val<15) return;
 	echo "<p>";
 	$graph = new BAR_GRAPH("pBar");
 //	$graph->labels = "Sýra";
