@@ -270,14 +270,14 @@ Shadowbox.init({
             <div class="Post-cc"></div>
             <div class="Post-body">
               <div class="Post-inner">
-                <div class="PostContent">                
-        <?php		
+                <div class="PostContent">
+                  <?php		
 
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	if(isset($_SESSION["usern"]))
 		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
-<div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div> 
+                  <div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div>
                   <ul>
                     <?php									
 						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
@@ -319,7 +319,6 @@ Shadowbox.init({
 						  echo "<li>$metin[405]</li>";
                                         ?>
                   </ul>
-
                 </div>
                 <div class="cleared"></div>
               </div>
@@ -463,5 +462,10 @@ if (document.getElementById("userP")!=null)
 <?php  						
  require "feedback.php"; 
 ?>
+<div id="banner" style="position:fixed; " >
+  <div style="text-align:left;"> <ins style="display:inline-table;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><ins id="_ads_frame1_anchor" style="display:block;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:120px">
+    <iframe allowtransparency="true" frameborder="0" height="400" hspace="0" id="_ads_frame1" marginheight="0" marginwidth="0" name="ads_frame" scrolling="no" src="img/reklam.png" style="left:0;position:absolute;top:0" vspace="0" width="120"></iframe>
+    </ins></ins> </div>
+</div>
 </body>
 </html>
