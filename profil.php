@@ -463,11 +463,15 @@ function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 			 $rank = $i + 1;
 			 if(mysql_result($result1, $i, "userName")==kullAdi($id)) break;
 		 }	
+		 
+	   $yuzdesi = 100-round($rank*100/@mysql_numrows($result1)) ;
+		
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 	   
-	   if($sadeYuzde and @mysql_numrows($result1)>0)		
-	      return 100-round($rank*100/@mysql_numrows($result1));
+	   if($sadeYuzde and @mysql_numrows($result1)>0){		
+	      return 100-$yuzdesi;
+	   }
 		  
        return ("$rank /".@mysql_numrows($result1));
     }else {
@@ -603,11 +607,11 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	if(girisSayisi($_GET["kim"])>0)
 		switch($aktivSonuc){
 			case 0:
-				echo '<strong>'.$metin[555].' :</strong>&nbsp; 
+				/*echo '<strong>'.$metin[555].' :</strong>&nbsp; 
 				<span style="background: transparent url(img/activity-level.png)
 				 no-repeat top left;background-position: -48px 0px;
 				 width:16px;height:16px;margin: 0; padding: 0; 
-				position: absolute;display: inline;"></span><br/>';	
+				position: absolute;display: inline;"></span><br/>';	*/
 			break;
 			case 1:
 				echo '<strong>'.$metin[555].' :</strong>&nbsp;  
