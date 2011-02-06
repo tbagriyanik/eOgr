@@ -46,7 +46,7 @@ Lesser General Public License for more details.
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" type="text/javascript" src="lib/jquery-1.5.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="lib/jquery.autocomplete.pack.js"></script>
+<script language="JavaScript" type="text/javascript" src="lib/jquery.autocomplete.js"></script>
 <script language="JavaScript" type="text/javascript" >
   $(document).ready(function(){
 	  var verilerDizisi = [
@@ -65,7 +65,7 @@ Lesser General Public License for more details.
 			{ name: "<?php echo htmlspecialchars_decode($metin[428])?>", to: "<?php echo temizle($metin[438])?>", num: "13" },
 			{ name: "<?php echo htmlspecialchars_decode($metin[429])?>", to: "<?php echo temizle($metin[439])?>", num: "14" },
 			{ name: "<?php echo htmlspecialchars_decode($metin[430])?>", to: "<?php echo temizle($metin[440])?>", num: "15" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[431])?>", to: "<?php echo temizle($metin[441])?>", num: "16" },
+			{ name: "<?php echo htmlspecialchars_decode($metin[431])?>", to: "<?php echo temizle($metin[441])?>", num: "16" }
 		];
 
 	function findValueCallback(event, data, formatted) {
@@ -77,16 +77,16 @@ Lesser General Public License for more details.
     $("#ara").autocomplete(verilerDizisi, {
 		minChars: 0,
 		width: 310,
-		matchContains: "word",
+		matchContains: true,
 		autoFill: false,
 		formatItem: function(row, i, max) {
-			return row.name ;
+				return row.name ;
 		},
 		formatMatch: function(row, i, max) {
-			return row.name + " " + row.to;
+				return row.name + " " + row.to;
 		},
 		formatResult: function(row) {
-			return row.name ;
+				return row.name ;
 		}
 	});
 

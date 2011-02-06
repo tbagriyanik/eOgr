@@ -462,10 +462,5 @@ if (document.getElementById("userP")!=null)
 <?php  						
  require "feedback.php"; 
 ?>
-<div id="banner" style="position:fixed; " >
-  <div style="text-align:left;"> <ins style="display:inline-table;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><ins id="_ads_frame1_anchor" style="display:block;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:120px">
-    <iframe allowtransparency="true" frameborder="0" height="400" hspace="0" id="_ads_frame1" marginheight="0" marginwidth="0" name="ads_frame" scrolling="no" src="img/reklam.png" style="left:0;position:absolute;top:0" vspace="0" width="120"></iframe>
-    </ins></ins> </div>
-</div>
 </body>
 </html>
