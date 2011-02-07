@@ -464,14 +464,11 @@ function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 			 if(mysql_result($result1, $i, "userName")==kullAdi($id)) break;
 		 }	
 		 
-	   $yuzdesi = 100-round($rank*100/@mysql_numrows($result1)) ;
-		
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 	   
-	   if($sadeYuzde and @mysql_numrows($result1)>0){		
-	      return 100-$yuzdesi;
-	   }
+	   if($sadeYuzde)		
+	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ("$rank /".@mysql_numrows($result1));
     }else {
@@ -557,12 +554,12 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	if(getOgrenciSiniflari2($_GET["kim"])!="")	
 		echo "<strong>$metin[314] :</strong> ".getOgrenciSiniflari2($_GET["kim"])."<br/>";
 
-	$rank1 = ((girisSayisi($_GET["kim"])>0 and girisSayisiRank($_GET["kim"],false)>0)?
+	$rank1 = ((girisSayisi($_GET["kim"])>0 and girisSayisiRank($_GET["kim"],false,true)>0)?
 			"$metin[324] ".girisSayisiRank($_GET["kim"],true):"");	
 	if(girisSayisi($_GET["kim"])>0)
 		echo "<strong>$metin[315] :</strong> ".girisSayisi($_GET["kim"])." <u>$rank1</u><br/>";
 		
-	$rank2 = ((dersCalismaSay($_GET["kim"])>0 and dersCalismaRank($_GET["kim"],false)>0)?		
+	$rank2 = ((dersCalismaSay($_GET["kim"])>0 and dersCalismaRank($_GET["kim"],false,true)>0)?		
 			"$metin[324] ".dersCalismaRank($_GET["kim"],true):"");	
 	if(dersCalismaSay($_GET["kim"])>0)
 		echo "<strong>$metin[316] :</strong> ".dersCalismaSay($_GET["kim"])." <u>$rank2</u><br/>";
@@ -570,7 +567,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	if(dersCalismaSure($_GET["kim"])!="")
 		echo "<strong>$metin[317] :</strong> ".Sec2Time22(dersCalismaSure($_GET["kim"]))."<br/>";
 		
-	$rank3 = ((dersCalismaOrt($_GET["kim"])>0 and dersCalismaOrtRank($_GET["kim"],false)>0)?
+	$rank3 = ((dersCalismaOrt($_GET["kim"])>0 and dersCalismaOrtRank($_GET["kim"],false,true)>0)?
 			"$metin[324] ".dersCalismaOrtRank($_GET["kim"],true):"");	
 	if(dersCalismaOrt($_GET["kim"])>0)
 		echo "<strong>$metin[318] :</strong> ".round(dersCalismaOrt($_GET["kim"]),1)."% <u>$rank3</u><br/>";
@@ -604,6 +601,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	$aktivi2 = dersCalismaRank($_GET["kim"],false,true);
 	$aktivi3 = dersCalismaOrtRank($_GET["kim"],false,true);
 	$aktivSonuc = (int)($aktivi1>50)+(int)($aktivi2>50)+(int)($aktivi3>50);	
+
 	if(girisSayisi($_GET["kim"])>0)
 		switch($aktivSonuc){
 			case 0:
