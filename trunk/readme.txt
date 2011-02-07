@@ -1,6 +1,6 @@
 eOgr 
 
-v131b, 06-02-2011 (666 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
+v131b, 07-02-2011 (670 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 
