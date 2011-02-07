@@ -201,7 +201,7 @@ if (isset($_GET["OgrenciTumu"])){
 			}
 		}
 		else{
-			$OgrenciTumu = $_SESSION["OgrenciTumu"];
+			$OgrenciTumu = (isset($_SESSION["OgrenciTumu"]))?$_SESSION["OgrenciTumu"]:"";
 			if(empty($OgrenciTumu) || !is_numeric($OgrenciTumu) ) $OgrenciTumu=3;
 			$_SESSION["OgrenciTumu"]=$OgrenciTumu;
 			switch ($OgrenciTumu) {
