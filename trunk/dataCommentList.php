@@ -153,7 +153,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
+if (!empty($_GET['id']) and !empty($_GET['delCon']) and $_GET['delCon'] == "1") {
   $deleteSQL = sprintf("DELETE FROM eo_comments WHERE id=%s",
                        GetSQLValueString($_GET['id'], "int"));
 
@@ -235,7 +235,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	}			
 }
  
-if(!empty($_GET["id"]) && ($_GET["value"]=="0" || $_GET["value"]=="1")) {
+if(!empty($_GET["id"]) && !empty($_GET["value"]) and ($_GET["value"]=="0" || $_GET["value"]=="1")) {
 	$gelenID = temizle($_GET["id"]);
 	$gelenDeger = temizle($_GET["value"]);
 	
