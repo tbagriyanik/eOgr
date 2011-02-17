@@ -161,6 +161,8 @@ Lesser General Public License for more details.
 <?php
  }
 ?>
+<!--
 <div id="banner" style="position:fixed;" >
   <div style="text-align:left;display:inline-table;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><a href="index.php"><img src="img/reklam.png" border="0" /></a></div>
 </div>
+-->  

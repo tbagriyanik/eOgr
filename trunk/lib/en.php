@@ -340,8 +340,7 @@ Lesser General Public License for more details.
 	- This project needs PHP 5<br/>
 	- MySQL 5 database server <br/>
 	- enable .htaccess for security<br/><br/>
-	Older browsers (like Internet Explorer 6, Firefox 2) have lots of problems because of Ajax.<br/>
-These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0";				
+	Older browsers (like Internet Explorer 6) have lots of problems because of Ajax.";				
 		$metin[268]="eOgr is Freeware Open Source project.<br/> Please, read the licence from <a href='http://www.gnu.org/licenses/lgpl-3.0-standalone.html'>LGPL - LESSER GENERAL PUBLIC LICENSE</a>";				
 		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, Artisteer, PHP Manual<br/><br/>
 		Used Classes :<br/>
@@ -358,8 +357,14 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 - <a href='http://www.phpclasses.org/browse/file/7633.html'>SQL_Export</a><br/>
 - <a href='http://www.phpclasses.org/browse/package/4898.html'>SQL_Import</a><br/>
 - <a href='http://spacegirlpippa.co.uk/'>wtag</a>
+<p>
+For more details <a href=\"INSTALL.html\">click here</a>.
+</p>
 ";				
-		$metin[270]="<ol><li>Edit your settings in <b>database.php</b> with an editor<li>http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<li>Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong></ol>";				
+		$metin[270]="<ol><li>Edit your settings in <b>database.php</b> with an editor<li>http://localhost/eogr/install.php is for installation. Your MySQL user must have <b>CREATE TABLE</b> permission!<li>Login as administrator user : name <strong>admin</strong> and password <strong>11111</strong></ol>
+<p>
+For more details <a href=\"INSTALL.html\">click here</a>.
+</p>		";				
 		
 		$metin[271]="Contents";				
 		$metin[272]="<h4>eOgr Project Help Page</h4>eOgr is an application for all fields, you can participate any topic freely.</p><p>You can get in touch with the other students and teachers. Joining this project you will find yourself in a social learning environment.<br/><br/>Please, click any topic on the left.";				
@@ -569,7 +574,7 @@ These are fully tested : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.
 		$metin[439]="<ul style='list-style-type:none;'><li>Do not forget to logout at public places after working.<li>Do not write your password anywhere.</ul>";
 		$metin[440]="eOgr codes can be reviewed to be a news, sports or sharing site. Pages are for sliding any information continuously.";
 		$metin[441]="Be sure to edit exactly database.php file. Report error messages to your administrator.";
-		$metin[442]="Thanks to people for testing this project. Many thanks to library coders that distributing their code freely.";
+		$metin[442]="Thanks to people for testing this project.  <p><strong>Tuzla Technical and Vocational High School</strong> : Aziz BEKTAS, Yakup ARAS, Umut YURUR, Semih TURKEL</p>Many thanks to library coders that distributing their code freely.";
 	
 		$metin[443]	= "All Lessons";	
 		
