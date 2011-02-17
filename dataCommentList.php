@@ -235,7 +235,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 	}			
 }
  
-if(!empty($_GET["id"]) && !empty($_GET["value"]) and ($_GET["value"]=="0" || $_GET["value"]=="1")) {
+if(!empty($_GET["id"]) && isset($_GET["value"]) and ($_GET["value"]=="0" || $_GET["value"]=="1")) {
 	$gelenID = temizle($_GET["id"]);
 	$gelenDeger = temizle($_GET["value"]);
 	

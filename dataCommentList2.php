@@ -171,7 +171,7 @@ $arayici =  temizle((isset($_GET['arama']))?$_GET['arama']:"");
 						LEFT OUTER JOIN eo_4konu ON eo_comments.konuID = eo_4konu.id 
 						";
 
-if(!empty($_GET["id"]) && ($_GET["value"]=="0" || $_GET["value"]=="1")) {
+if(!empty($_GET["id"])  && isset($_GET["value"]) and ($_GET["value"]=="0" || $_GET["value"]=="1")) {
 	$gelenID = temizle($_GET["id"]);
 	$gelenDeger = temizle($_GET["value"]);
 	

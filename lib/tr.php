@@ -348,8 +348,7 @@ Lesser General Public License for more details.
 	- PHP 5<br/>
 	- MySQL 5 veritabaný sunucusu<br/>
 	- .htaccess güvenlik için<br/><br/>
-	Eski web tarayýcýlarý (Internet Explorer 6, Firefox 2 gibi) Ajax nedeni ile sorun çýkarabilir.<br/>
-Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, Safari 4.0.3, Chrome 3.0";				
+	Eski web tarayýcýlarý (Internet Explorer 6 gibi) Ajax nedeni ile sorun çýkarabilir.";				
 		$metin[268]="eOgr a&ccedil;ýk kaynak &uuml;cretsiz bir projedir.<br/> Lütfen, lisans bilgisini okuyunuz : <a href='http://www.gnu.org/licenses/lgpl-3.0-standalone.html'>LGPL - LESSER GENERAL PUBLIC LICENSE</a>";				
 		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, Artisteer, PHP El Kitabý<br/><br/>
 		Kullanýlan Kütüphaneler :<br/>
@@ -366,8 +365,14 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 - <a href='http://www.phpclasses.org/browse/file/7633.html'>SQL_Export</a><br/>
 - <a href='http://www.phpclasses.org/browse/package/4898.html'>SQL_Import</a><br/>
 - <a href='http://spacegirlpippa.co.uk/'>wtag</a>
+<p>
+Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
+</p>
 ";				
-		$metin[270]="<ol><li><strong>database.php</strong> dosyasýný düzenleyiniz<li>http://localhost/eogr/install.php adresi veritabaný kurulum adresidir. MySQL kullanýcýnýzýn <b>CREATE TABLE</b> izni olmalýdýr!<li>Yönetici kullanýcý olarak girmek için : isim <strong>admin</strong> ve parola <strong>11111</strong></ol>";				
+		$metin[270]="<ol><li><strong>database.php</strong> dosyasýný düzenleyiniz<li>http://localhost/eogr/install.php adresi veritabaný kurulum adresidir. MySQL kullanýcýnýzýn <b>CREATE TABLE</b> izni olmalýdýr!<li>Yönetici kullanýcý olarak girmek için : isim <strong>admin</strong> ve parola <strong>11111</strong></ol>
+<p>
+Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
+</p>		";				
 
 		$metin[271]="Ý&ccedil;indekiler";				
 		$metin[272]="<h4>eOgr Projesi Yardým Sayfasý</h4><p> eOgr uygulamasý ile istediðiniz alanda &uuml;cretsiz eðitim alabilirsiniz. </p>
@@ -581,7 +586,7 @@ Bu tarayýcýlar test edilmiþlerdir : Internet Explorer 8, Firefox 3.5, Opera 10, 
 		$metin[439]="<ul style='list-style-type:none;'><li>Halka açýk yerlerde çalýþtýktan sonra oturumu kapatmayý unutmayýnýz.<li>Parola bilginizi bir yerlere yazmayýnýz.</ul>";
 		$metin[440]="eOgr projesi kodlarý elden geçirilerek, bir haber, spor, paylaþým sitesi olarak da kullanýlabilir. Sayfalama halinde peþpeþe gösterilen maddeler ile istenen konu kullanýcýlara iletilebilir.";
 		$metin[441]="database.php dosyasýndaki ayarlarýn tam yapýldýðýndan emin olunuz. Hata mesajlarýný yöneticinize bildiriniz.";
-		$metin[442]="Test aþamasýnda yardýmcý olan kiþilere teþekkürler. Özellikle kütüphane kodlarýný serbest daðýtan programcýlara teþekkürler.";
+		$metin[442]="Test aþamasýnda yardýmcý olan kiþilere teþekkürler. <p><strong>Tuzla Teknik ve Endüstri Meslek Lisesi</strong> : Aziz BEKTAÞ, Yakup ARAS, Umut YÜRÜR, Semih TÜRKEL</p>Özellikle kütüphane kodlarýný serbest daðýtan programcýlara teþekkürler.";
 	
 		$metin[443]	= "Tüm Dersler";
 		
