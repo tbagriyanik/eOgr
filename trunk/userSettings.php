@@ -19,7 +19,7 @@ Lesser General Public License for more details.
   require("conf.php");  		
   $time = getmicrotime();
   checkLoginLang(true,true,"userSettings.php");	   
-  $seciliTema=temaBilgisi();	
+  $seciliTema=temaBilgisi();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -132,6 +132,18 @@ Lesser General Public License for more details.
 	if($protect -> check_request(getenv('REMOTE_ADDR'))) { // check the user
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
+
+  
+  if(isset($_GET["istek"]) and 
+		($_GET["istek"]==1 or $_GET["istek"]==2 or $_GET["istek"]==3)){
+			echo "<font id='uyari'>$metin[536]</font>";
+			if($_GET["istek"]==1)			
+				trackUser($currentFile,"request,student",$adi);
+			if($_GET["istek"]==2)			
+				trackUser($currentFile,"request,teacher",$adi);
+			if($_GET["istek"]==3)			
+				trackUser($currentFile,"request,administrator",$adi);
+	}		
 
 $editFormAction = $_SERVER['PHP_SELF'];
 
@@ -329,8 +341,19 @@ $().ready(function() {
                         <tt><?php echo $metin[91]?></tt>
                         <input type="hidden" name="MM_update" value="form3" />
                         <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
+                        <p>
+                        <?php echo $metin[661]?> : 
+                        <button onclick="location.href='userSettings.php?istek=1';return false;" value="<?php echo $metin[658]?>"><?php echo $metin[658]?></button>&nbsp;
+                        <button onclick="location.href='userSettings.php?istek=2';return false;" value="<?php echo $metin[659]?>"><?php echo $metin[659]?></button>&nbsp;
+                        <button onclick="location.href='userSettings.php?istek=3';return false;" value="<?php echo $metin[660]?>"><?php echo $metin[660]?></button>
+                        <?php 
+						$istekler = istekListesi();
+						if(strlen($istekler)>0)
+							echo "<br/><br/>".$metin[662]. " : <br/>".$istekler; 
+						?>
+                        </p>
                       </fieldset>
-                    </form>
+                    </form>                    
                   </div>
                 </div>
                 <div class="cleared"></div>

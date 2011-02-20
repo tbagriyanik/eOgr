@@ -848,8 +848,11 @@ Detaylar için <a href=\"INSTALL.html\">tıklatınız</a>.
 		
 		$metin[656] = "İşleminiz Devam Ediyor";
 		$metin[657] = "Boyut";
-		$metin[658] = "";
-		$metin[659] = "";
-		$metin[660] = "";
-
+		
+		$metin[658] = "Öğrencilik";
+		$metin[659] = "Öğretmenlik";
+		$metin[660] = "Yöneticilik";
+		$metin[661] = "İstekte Bulun";
+		$metin[662] = "Son 30 Gün İçindeki İstekleriniz";
+		
 ?>

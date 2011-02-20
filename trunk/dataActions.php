@@ -356,7 +356,14 @@ if ($totalRows_eoUsers>0)
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>  ><?php echo $row_eoUsers['id']; ?></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo getUserID2($row_eoUsers['userName']); ?>" rel="facebox"><?php echo araKalin($row_eoUsers['userName']); ?></a></td>
                         <td <?php echo "style=\"background-color: $row_color;\""?>><a href='<?php echo ($row_eoUsers['processName']); ?>'><?php echo araKalin($row_eoUsers['processName']); ?></a></td>
-                        <td <?php echo (strpos($row_eoUsers['otherInfo'],"fail")!==false)?"style='background-color:#F44'":"style=\"background-color: $row_color;\"";?>><?php echo araKalin($row_eoUsers['otherInfo']); ?></td>
+                        <td <?php
+						if(strpos($row_eoUsers['otherInfo'],"fail")!==false) 
+							echo "style='background-color:#F44'";
+						elseif(strpos($row_eoUsers['otherInfo'],"request")!==false)
+							echo "style=\"background-color: #0F0;\"";
+						else
+							echo "style=\"background-color: $row_color;\"";
+						?>><?php echo araKalin($row_eoUsers['otherInfo']); ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['dateTime']); ?></td>
                         <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php   echo $row_eoUsers['IP'];  ?></td>
                         <td align="center" valign="middle" nowrap="nowrap"><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |

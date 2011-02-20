@@ -835,8 +835,10 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		
 		$metin[656] = "Please wait...";
 		$metin[657] = "Size";
-		$metin[658] = "";
-		$metin[659] = "";
-		$metin[660] = "";
+		$metin[658] = "Studentship";
+		$metin[659] = "Teacher";
+		$metin[660] = "Administrator";
+		$metin[661] = "Request";
+		$metin[662] = "Your previous requests in the last 30 days";
 
 ?>
