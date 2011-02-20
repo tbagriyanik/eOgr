@@ -4767,6 +4767,24 @@ function cevapOyToplami($cevapID){
 	return $sonuc;	
 }
 /*
+istekListesi:
+kullanýcýnýn yetki deðiþtirme isteði tarihleri
+*/
+function istekListesi(){
+	global $yol1;
+	$lmt=30;//son 30 günlük yeter
+	$user= temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+	
+		$sql = "SELECT dateTime,DATE_FORMAT(dateTime, '%d-%m-%Y') as dt FROM eo_usertrack WHERE (unix_timestamp(now()) - unix_timestamp(dateTime) )/3600/24 <= $lmt and userName='$user' and otherInfo like 'request%' order by dateTime DESC";
+		$result = mysql_query($sql, $yol1);
+		$data = "";
+		while($row = mysql_fetch_assoc($result)) {
+		      $data .= $row['dt'].", ";
+		}
+		$data = substr($data,0,strlen($data)-2);	 //son , silindi					   
+		return $data;		
+}
+/*
 is_ajax:
 ajax desteði var mý
 */
