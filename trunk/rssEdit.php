@@ -284,7 +284,7 @@ if (empty($_SESSION["siraYonu"])) {
 			$_SESSION["siraYonu2"]=$siraYonu;
 			}
 			else
-			$siraYonu=$_SESSION["siraYonu2"];
+			$siraYonu=(isset($_SESSION["siraYonu2"]))?$_SESSION["siraYonu2"]:"";
 	}
 
 $sirAlan = temizle((isset($_GET['order']))?$_GET['order']:"");
@@ -484,7 +484,8 @@ if (!empty($_GET["upd"]) and $_GET["upd"]=="1" && isset($_GET["id"]) ){
                   </form>
                   <?php
 		  }
-if (!empty($_GET["upd"]) and $_GET["upd"]!="1"){
+if (isset($_GET["upd"]) and $_GET["upd"]!="1")
+{
 ?>
                   <br/>
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
