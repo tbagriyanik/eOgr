@@ -1702,7 +1702,8 @@ if($seciliSekme=="0") {
                     <script language="JavaScript" type="text/javascript" src="lib/nicEdit.js"></script> 
                     <script type="text/javascript">
 bkLib.onDomLoaded(function() {
-	new nicEditor({fullPanel  :  true}).panelInstance('anaMetin');
+//new nicEditor({fullPanel  :  true},{uploadURI : 'lib/nicEdit.php'}).panelInstance('anaMetin');
+	new nicEditor({buttonList : ['bold'    , 'italic'    , 'underline'    , 'left'    , 'center'    , 'right'    , 'justify'    , 'ol'    , 'ul'    , 'subscript'    , 'superscript'    , 'strikethrough'    , 'removeformat'    , 'indent'    , 'outdent'    , 'hr'    , 'image'    , 'forecolor'    , 'bgcolor'    , 'link' ,     , 'unlink'     , 'fontSize'     , 'fontFamily'     , 'fontFormat'     , 'xhtml']}).panelInstance('anaMetin');
 });
 </script>
                     <?php		}else		//update mode
