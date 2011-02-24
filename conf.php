@@ -1562,6 +1562,21 @@ function getDownloadCount($id){
 	return $sonuc[0]+1;
 }
 /*
+getDosyaID:
+dosya adý ile kimlik bilgisi getirir
+*/
+function getDosyaID($ad){
+	$sql1 = "select id from eo_files where fileName='$ad'";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && @mysql_num_rows($result1) == 1){
+		$sonuc = @mysql_fetch_array($result1);
+	  }
+   	@mysql_free_result($result1);	 
+	return $sonuc[0];
+}
+/*
 downloadSayac:
 kimlik ile sayacý artýralým
 */

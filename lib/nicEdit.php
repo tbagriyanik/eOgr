@@ -13,11 +13,14 @@
  * @sponsored by: DotConcepts (http://www.dotconcepts.net)
  * @version: 0.9.0
  */
+session_start(); 
+include "../conf.php";
+checkLoginLang(true,true,"nicEdit.php");	
 
-define('NICUPLOAD_PATH', '../uploads'); // Set the path (relative or absolute) to
+define('NICUPLOAD_PATH', "../$_uploadFolder"); // Set the path (relative or absolute) to
                                       // the directory to save image files
                                       
-define('NICUPLOAD_URI', '/uploads');   // Set the URL (relative or absolute) to
+define('NICUPLOAD_URI', $_uploadFolder);   // Set the URL (relative or absolute) to
                                       // the directory defined above
 
 $nicupload_allowed_extensions = array('jpg','jpeg','png','gif','bmp');
@@ -64,6 +67,8 @@ if($_SERVER['REQUEST_METHOD']=='POST') { // Upload is complete
         nicupload_error('Server error, failed to move file');
     }
     
+	$status = array();
+	
     if($rfc1867) {
         $status = apc_fetch('upload_'.$id);
     }
@@ -72,12 +77,17 @@ if($_SERVER['REQUEST_METHOD']=='POST') { // Upload is complete
     }
     $status['done'] = 1;
     $status['width'] = $size[0];
-    $status['url'] = nicupload_file_uri($filename);
+    $status['url'] = ($filename);
     
     if($rfc1867) {
         apc_store('upload_'.$id, $status);
     }
+		
+		  dosyaKaydet(strtolower($filename), getUserID2($_SESSION["usern"]));
+		  trackUser($currentFile,"success,FileUp",$_SESSION["usern"]);
 
+    $status['id'] = getDosyaID($filename);	
+		  
     nicupload_output($status, $rfc1867);
     exit;
 } else if(isset($_GET['check'])) { // Upload progress check
@@ -139,9 +149,9 @@ function nicupload_output($status, $showLoadingMsg = false) {
 echo <<<END
     <html><body>
         <div id="uploadingMessage" style="text-align: center; font-size: 14px;">
-            <img src="http://js.nicedit.com/ajax-loader.gif" style="float: right; margin-right: 40px;" />
-            <strong>Uploading...</strong><br />
-            Please wait...
+            <img src="img/ajax-loader.gif" style="float: right; margin-right: 40px;" />
+            <strong>Uploading (Gönderiliyor)...</strong><br />
+            Please wait (Bekleyiniz)...
         </div>
     </body></html>
 END;

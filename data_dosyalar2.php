@@ -117,8 +117,8 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") &&
   <thead>
     <tr>
       <th width="10%"><?php echo $metin[26]?></th>
-      <th width="25%"><?php echo $metin[17]?></th>
-      <th width="45%"><?php echo $metin[657]." (".$metin[465].", ".$metin[129].")"?></th>
+      <th width="20%"><?php echo $metin[17]?></th>
+      <th width="50%"><?php echo $metin[657]." (".$metin[465].", ".$metin[129].")"?></th>
       <th width="5%"><?php echo $metin[466]?></th>
       <th width="5%">&nbsp;</th>
     </tr>
