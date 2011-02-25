@@ -1600,6 +1600,21 @@ function dosyaKaydet($dosya,$uID){
    	@mysql_free_result($result1);
 }
 /*
+istekteBulunanSay:
+yetkisini deðiþtirmek isteyenlerin sayýsý
+*/
+function istekteBulunanSay(){
+	$sql1 = "select count(id) from eo_usertrack where otherInfo like 'request,%'";
+	
+	$yol1 = baglan();
+	$result1 = @mysql_query($sql1, $yol1);
+ 	  if ($result1 && @mysql_num_rows($result1) == 1){
+		$sonuc = @mysql_fetch_array($result1);
+	  }
+   	@mysql_free_result($result1);	 
+	return $sonuc[0];	
+}
+/*
 isimleriAyniUyeler:
 üyelerin tekrar üye olduklarýnýn tespiti
 */
