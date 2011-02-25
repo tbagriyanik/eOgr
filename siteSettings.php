@@ -448,7 +448,7 @@ if (!isset($_GET["upd"]))
 		if(isimleriAyniUyeler()!="")
 			echo "<p><strong>$metin[632] :</strong><br/>". isimleriAyniUyeler()."</p>";
 		if(istekteBulunanSay()>0)
-			printf("<p>%s adet <strong>yetki</strong> deðiþtirme isteðini görmek için <a href=\"dataActions.php?arama=request,\" title=\"istekler\">týklatýnýz</a>.<br/>Üye yetkisini üye düzenleyerek yapabilirsiniz veya reddetmek için isteði silebilirsiniz.</p>",istekteBulunanSay());	
+			printf("$metin[663]",istekteBulunanSay());	
 }
 
 if ($totalRows_eoUsers==0) die( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
