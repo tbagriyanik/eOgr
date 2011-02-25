@@ -36,7 +36,7 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/jquery-1.5.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
@@ -445,8 +445,10 @@ if (!isset($_GET["upd"]))
                   </table>
                   <?php 
    }
-				    if(isimleriAyniUyeler()!="")
-					    echo "<p><strong>$metin[632] :</strong><br/>". isimleriAyniUyeler()."</p>";
+		if(isimleriAyniUyeler()!="")
+			echo "<p><strong>$metin[632] :</strong><br/>". isimleriAyniUyeler()."</p>";
+		if(istekteBulunanSay()>0)
+			printf("<p>%s adet <strong>yetki</strong> deðiþtirme isteðini görmek için <a href=\"dataActions.php?arama=request,\" title=\"istekler\">týklatýnýz</a>.<br/>Üye yetkisini üye düzenleyerek yapabilirsiniz veya reddetmek için isteði silebilirsiniz.</p>",istekteBulunanSay());	
 }
 
 if ($totalRows_eoUsers==0) die( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");

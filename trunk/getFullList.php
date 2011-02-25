@@ -35,7 +35,7 @@ Lesser General Public License for more details.
     <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="lib/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
     <script src="lib/jquery.anythingslider.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
