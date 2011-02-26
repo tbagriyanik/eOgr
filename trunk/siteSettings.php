@@ -445,13 +445,9 @@ if (!isset($_GET["upd"]))
                   </table>
                   <?php 
    }
-		if(isimleriAyniUyeler()!="")
-			echo "<p><strong>$metin[632] :</strong><br/>". isimleriAyniUyeler()."</p>";
-		if(istekteBulunanSay()>0)
-			printf("$metin[663]",istekteBulunanSay());	
 }
 
-if ($totalRows_eoUsers==0) die( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
+if ($totalRows_eoUsers==0) echo( "<font id='hata'> Aranan &uuml;ye veya d&uuml;zenlenecek &uuml;ye bulunamadý!</font>");
                   
 
 if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
@@ -525,6 +521,7 @@ if ($_GET["upd"]=="1" && isset($_GET["id"]) ){
                   <?php
 		  }
 if ($_GET["upd"]!="1"){
+	if ($totalRows_eoUsers>0):
 ?>
                   <br />
                   <form name="formFilt" id="formFilt" method="post" action="siteSettings.php">
@@ -546,6 +543,9 @@ if ($_GET["upd"]!="1"){
                       <input type="submit" name="gonder" id="gonder" value="<?php echo $metin[30]?>" />
                     </label>
                   </form>
+<?php 
+	endif;
+?>                  
                   <br />
                   <form id="aramak" name="aramak" method="get" action="siteSettings.php">
                     <label title="<?php echo $metin[122]?>"> <?php echo $metin[29]?> :
@@ -554,6 +554,12 @@ if ($_GET["upd"]!="1"){
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
                   </form>
                   <br />
+<?php
+		if(isimleriAyniUyeler()!="")
+			echo "<p><strong>$metin[632] :</strong><br/>". isimleriAyniUyeler()."</p>";
+		if(istekteBulunanSay()>0)
+			printf("$metin[663]<br/>",istekteBulunanSay());	
+?>                  
                   <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                     <table border="0" align="center" cellpadding="3" cellspacing="0">
                       <tr valign="baseline">
