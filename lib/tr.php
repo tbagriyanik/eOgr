@@ -759,7 +759,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
                         <li> Bazý deðiþiklikler ile sitenin <strong>çalýþma hýzý</strong> artabilir; sýk kullanmadýðýnýz özellikler yer kaplamaz. </li>
                       </ul>";
 		$metin[578] = "Eðer varsa <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kýrmýzý simge ile gösterilen uyarýlarý <strong>dikkate alýnýz</strong>.<br/>Bu deðerler <strong>tavsiye edilmez</strong> veya tehlikeye neden olabilir!";
-		$metin[579] = "eOgr - Sunucu Testi : ";
+		$metin[579] = "Sunucu Testi";
 		$metin[580] = "Arkadaþ";
 		$metin[581] = "Herkes";
 		$metin[582] = "Ben";

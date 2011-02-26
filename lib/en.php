@@ -746,7 +746,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
                         <li> With some changes may increase the operating <strong>speed of the site</strong>, often do not use the features do not occupy space. </li>
                       </ul>";	
 		$metin[578] = "If there are <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> red icons, you need to pay attention to the warnings.<br/>These values are not recommended or may cause <strong>danger</strong>!";
-		$metin[579] = "eOgr - Server Test : ";					  	
+		$metin[579] = "Server Test";					  	
 		$metin[580] = "Friend";
 		$metin[581] = "Everyone";
 		$metin[582] = "Me";

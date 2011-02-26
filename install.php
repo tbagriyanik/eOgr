@@ -129,7 +129,15 @@ require 'lib/flood-protection.php'; // include the class
 <title>eOgr -<?php echo $metin[71]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.1.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+		$("#msg_body2").hide();
+		$("#msg_head").click(function(){
+			$(this).next("#msg_body2").slideToggle(200);
+		});
+      }) 
+</script>
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -229,18 +237,23 @@ require 'lib/flood-protection.php'; // include the class
 					
 					$baglan2= @mysql_connect($host, $dbUser, $dbPassword);
 					
-					if(!$baglan2) echo("<font id='hata'>MySQL sunucuya baðlantý yapýlamadý! L&#252;ften,'database.php' dosyasýný d&uuml;zenleyiniz.</font>".mysql_error()."<br/>Tekrar denemek i&ccedil;in <a href=install.php>týklatýnýz</a>!");
+					if(!$baglan2) echo("<font id='hata'>MySQL sunucuya baðlantý yapýlamadý!<br/> L&#252;ften,'database.php' dosyasýný d&uuml;zenleyiniz veya MySQL sunucunuzun açýk olduðundan emin olunuz.</font>".mysql_error()."<br/>Tekrar denemek i&ccedil;in <a href=install.php>týklatýnýz</a>!");
 					else{
 					$yol22 = $baglan2;
 					$vtSec = @mysql_select_db( $_db, $yol22);
 					if(!$vtSec){							 
-							  $vtYapsql = "CREATE DATABASE $db_name;";
-							  $result = @mysql_query($vtYapsql);
-							  if(!$result) 
-								die ("<font id='hata'>Veritabaný oluþturulamadý. Yetkilerinizi kontrol ediniz!</font>");
-								else
-								 echo("<font id='tamam'>$db_name veritabaný oluþturuldu!</font>");
+					  $vtYapsql = "CREATE DATABASE $db_name;";
+					  $result = @mysql_query($vtYapsql);
+					  if(!$result) 
+						die ("<font id='hata'>Veritabaný oluþturulamadý. Yetkilerinizi kontrol ediniz!</font>");
+						else
+						 echo("<font id='tamam'>$db_name veritabaný oluþturuldu!</font>");
 					  	}						 
+					 //2. týklama giderildi
+					mysql_close($baglan2);					 	
+					$baglan2= @mysql_connect($host, $dbUser, $dbPassword);
+					$yol22 = $baglan2;
+					$vtSec = @mysql_select_db( $_db, $yol22);
 							
 					  $newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);								
 					  //$importumuz = $newImport -> importa ();
@@ -250,7 +263,7 @@ require 'lib/flood-protection.php'; // include the class
 						
 						if ($import["exito"] != 1)
 						{
-							echo "<font id='tamam'>Veritabaný kurulmuþ haldedir.<br/>Tablo oluþturmaya devam etmek için 'Otomatik Kurulum' d&uuml;ðmesine tekrar basýnýz.<br/>Tablolarý zaten oluþturdu iseniz, bu uyarýyý gözardý ediniz. </font>".$metin[47]."<br/>Varsayýlan kullanýcý adý ve parolasý: admin 11111</font>";
+							echo "<font id='uyari'>Tablolar oluþturuldu!</font><p>$metin[47] Varsayýlan yönetici kullanýcý adý ve parolasý: <strong>admin 11111</strong></p>";
 						} else {
 							if(isset($import ["errorCode"]) or isset($import ["errorText"]) )
 								echo $import ["errorCode"]." ".$import ["errorText"];
@@ -338,9 +351,11 @@ require 'lib/flood-protection.php'; // include the class
               <div class="Post-inner">
                 <div class="PostContent">
                   <?php 
-				  echo "<h2>$metin[579]</h2><ul>";
-				//--------------------------------------	
-				  echo '<li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
+				  echo "<h2 id='msg_head' style=\"cursor:pointer;\">$metin[579]</h2>";
+                ?>
+                <div id="msg_body2">
+                  <?php 
+				  echo '<ul><li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
 				  $baglan3= @mysql_connect($host, $dbUser, $dbPassword);
 				  
 				  try{
@@ -401,10 +416,10 @@ require 'lib/flood-protection.php'; // include the class
 				    echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
 				   	echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
-				  if(is_ajax())
+				  /*if(is_ajax())
 				    echo "<li><strong>AJAX</strong> komutlarý desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>AJAX</strong> komutlarý desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>AJAX</strong> komutlarý desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";*/	
 				  if(ini_get('memory_limit'))
 				    echo "<li><strong>Bellek</strong> maksimum desteði : ".ini_get('memory_limit')."</li>";
 				   else
@@ -491,6 +506,7 @@ require 'lib/flood-protection.php'; // include the class
 				  echo "</ul>";
 				  echo "<hr noshade=\"noshade\"/><p>$metin[578]</p>";
 				  ?>
+                  </div>
                 </div>
                 <div class="cleared"></div>
               </div>
