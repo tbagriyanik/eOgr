@@ -841,6 +841,6 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[661] = "Request";
 		$metin[662] = "Your previous requests in the last 30 days";
 		
-		$metin[663] = "<p>There is/are %s <strong>authorization</strong> request(s), <a href=\"dataActions.php?arama=request,\" title=\"requests\">click</a> to see.<br/>You can change the authorization by editing membership data or you can erase the request record for rejecting.</p>";
+		$metin[663] = "<font id='uyari'>There is/are %s <strong>authorization</strong> request(s), <a href=\"dataActions.php?arama=request,\" title=\"requests\">click</a> to see.<br/>You can change the authorization by editing membership data or you can erase the request record for rejecting.</font>";
 
 ?>

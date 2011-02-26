@@ -855,6 +855,6 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[661] = "Ýstekte Bulun";
 		$metin[662] = "Son 30 Gün Ýçindeki Ýstekleriniz";
 		
-		$metin[663] = "<p>%s adet <strong>yetki</strong> deðiþtirme isteðini görmek için <a href=\"dataActions.php?arama=request,\" title=\"istekler\">týklatýnýz</a>.<br/>Üye yetkisini üye düzenleyerek yapabilirsiniz veya reddetmek için isteði silebilirsiniz.</p>";
+		$metin[663] = "<font id='uyari'>%s adet <strong>yetki</strong> deðiþtirme isteðini görmek için <a href=\"dataActions.php?arama=request,\" title=\"istekler\">týklatýnýz</a>.<br/>Üye yetkisini üye düzenleyerek yapabilirsiniz veya reddetmek için isteði silebilirsiniz.</font>";
 		
 ?>

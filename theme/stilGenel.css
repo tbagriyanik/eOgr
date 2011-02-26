@@ -70,7 +70,6 @@ td {
 	color: #333;
 	background-color: #FFF;
 	display: block;
-	width: 60%;
 	background-attachment: scroll;
 	background-image: url(../img/error.png);
 	background-repeat: no-repeat;
@@ -102,7 +101,6 @@ td {
 	color: #333;
 	background-color: #FFF;
 	display: block;
-	width: 60%;
 	background-attachment: scroll;
 	background-image: url(../img/tick_circle.png);
 	background-repeat: no-repeat;
@@ -131,7 +129,6 @@ td {
 	color: #333;
 	background-color: #FFF;
 	display: block;
-	width: 60%;
 	background-attachment: scroll;
 	background-image: url(../img/information.png);
 	background-repeat: no-repeat;

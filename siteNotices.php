@@ -155,12 +155,14 @@ if ($tur=="2")	{//yönetici ise
 		@chmod($_uploadFolder,0755);//linux yetki sorunu var, olmuyor		
 	}
 	if(empty($dosyUpload))
-		  echo "<font id='uyari'> $metin[496] ($_uploadFolder)</font>";
+		  echo "<font id='tamam'> $metin[496] ($_uploadFolder)</font>";
 	  else {
 		  echo "<font id='hata'> $metin[498] ($_uploadFolder)<br/>$dosyUpload<br/>";
 		  echo "<a href='fileShare.php?clean=1'>$metin[499]!</a></font>";	
 	  }
 	echo "<br/>";
+		if(istekteBulunanSay()>0)
+			printf("$metin[663]<br/>",istekteBulunanSay());					  	
  	//son yapýlan iþlemler ve tarihi	
 	$bilgi1 = sonSatirGetir("sohbet");
 	if(!empty($bilgi1))	echo $metin[474]."<p class='ozetBilgi'>".$bilgi1."</p>";

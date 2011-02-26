@@ -34,7 +34,6 @@ Lesser General Public License for more details.
 <title>eOgr -<?php echo $metin[70]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
@@ -154,10 +153,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
       )
 	   echo "<p>&nbsp;</p><font id='hata'>Haber bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
+	
+			$gelenyorum = str_replace("\r\n", "<br/>", $_POST['description3']);
+			$gelenyorum = RemoveXSS($gelenyorum);	
 
-			$updateSQL = sprintf("UPDATE eo_webref_rss_items SET title=%s, description=%s, link=%s, pubDate='%s' WHERE id=%s",
+			$updateSQL = sprintf("UPDATE eo_webref_rss_items SET title=%s, description='%s', link=%s, pubDate='%s' WHERE id=%s",
 							   temizle(GetSQLValueString($_POST['title'], "text")),
-							   temizle(GetSQLValueString($_POST['description3'], "text")),
+							   $gelenyorum,
 							   temizle(GetSQLValueString($_POST['link3'], "text")),
 							   tarihYap2(temizle($_POST['pubDate'])),
 							   temizle(GetSQLValueString($_POST['id'], "int")));
@@ -186,7 +188,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 	else{   
 			$updateSQL = sprintf("UPDATE eo_webref_rss_details SET title=%s, description=%s, link=%s, language=%s WHERE id=1",
 							   temizle(GetSQLValueString($_POST['title3'], "text")),
-							   temizle(GetSQLValueString($_POST['description'], "text")),
+							   temizle2(GetSQLValueString($_POST['description'], "text")),
 							   temizle(GetSQLValueString($_POST['link'], "text")),
 							   temizle(GetSQLValueString($_POST['language'], "text")));
 		  mysql_select_db($_db, $yol);
@@ -210,11 +212,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
       )
 	   echo "<p>&nbsp;</p><font id='hata'>Yeni haber bilgilerinde eksik alanlar vardýr.</font>";
 	else{   
-	  
-  $insertSQL = sprintf("INSERT INTO eo_webref_rss_items (title, description, link, pubDate) VALUES (%s, %s, %s, '%s')",
+	  		$gelenyorum = str_replace("\r\n", "<br/>", $_POST['description2']);
+			$gelenyorum = RemoveXSS($gelenyorum);	
+
+  $insertSQL = sprintf("INSERT INTO eo_webref_rss_items (title, description, link, pubDate) VALUES (%s, '%s', %s, '%s')",
 
                        temizle(GetSQLValueString($_POST['title2'], "text")),
-                       temizle(GetSQLValueString($_POST['description2'], "text")),
+                       $gelenyorum,
                        temizle(GetSQLValueString($_POST['link2'], "text")),
                        tarihYap2(temizle($_POST['pubDate2']))
 					   );
@@ -362,11 +366,11 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
                         <a href="?order=id&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[26]?> </a></th>
-                      <th width="150"><?php if ($sirAlan=="title") {?>
+                      <th width=""><?php if ($sirAlan=="title") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="title")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
                         <a href="?order=title&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[126]?> </a></th>
-                      <th width="350"><?php if ($sirAlan=="description") {?>
+                      <th width=""><?php if ($sirAlan=="description") {?>
                         <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="description")?"desc":"asc"?>.png" alt="Sýralama Y&ouml;n&uuml;"   border="0" style="vertical-align: middle;"/>
                         <?php } ?>
                         <a href="?order=description&amp;ord=<?php echo $s1?>&amp;arama=<?php echo $a1?>&amp;siraYap=OK&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo $metin[127]?> </a></th>
@@ -392,7 +396,7 @@ if ($_GET["upd"]!="1" && $totalRows_eoUsers>0)
                     <tr bgcolor="#CCFFFF">
                       <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['id']; ?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin($row_eoUsers['title']); ?></td>
-                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd(araKalin($row_eoUsers['description'])); ?></td>
+                      <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd(araKalin(smartShort(temizle($row_eoUsers['description']),45))); ?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo $row_eoUsers['link']; ?></td>
                       <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['pubDate']); ?></td>
                       <td align="center" valign="middle" width="50" nowrap="nowrap"><a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[102]?>"/></a></td>
@@ -437,11 +441,10 @@ if ($totalRows_eoUsers==0) echo( "<p>&nbsp;</p><font id='hata'> Aranan haber vey
                     </label>
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;" />
                   </form>
-<?php
+                  <?php
 	endif;
  }
  
-
 if (!empty($_GET["upd"]) and $_GET["upd"]=="1" && isset($_GET["id"]) ){
 ?>
                   <br />
@@ -461,7 +464,7 @@ if (!empty($_GET["upd"]) and $_GET["upd"]=="1" && isset($_GET["id"]) ){
                       </tr>
                       <tr valign="baseline">
                         <td align="right" nowrap="nowrap"><label for="description3"> <?php echo $metin[127]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="description3" id="description3" value="<?php echo GetSQLValueStringNo($row_eoUsers['description'],"text"); ?>" size="32" />
+                        <td bgcolor="#CCFFFF"><textarea name="description3" id="description3" rows="5" cols="30" /><?php echo $row_eoUsers['description']; ?></textarea>
                           *</td>
                       </tr>
                       <tr valign="baseline">
@@ -500,7 +503,7 @@ if (isset($_GET["upd"]) and $_GET["upd"]!="1")
                       </tr>
                       <tr valign="baseline">
                         <td nowrap="nowrap" align="right"><label for="description2"> <?php echo $metin[127]?> :</label></td>
-                        <td bgcolor="#CCFFFF"><input type="text" name="description2" id="description2" value="" size="32" />
+                        <td bgcolor="#CCFFFF"><textarea name="description2" id="description2" rows="5" cols="30" /></textarea>
                           *</td>
                       </tr>
                       <tr valign="baseline">
@@ -535,6 +538,9 @@ if (isset($_GET["upd"]) and $_GET["upd"]!="1")
           </div>
           <div class="contentLayout">
             <div class="content">
+              <?php
+if (isset($_GET["upd"]) and $_GET["upd"]!="1"){
+?>
               <div class="Post">
                 <div class="Post-tl"></div>
                 <div class="Post-tr">
@@ -601,6 +607,9 @@ if (isset($_GET["upd"]) and $_GET["upd"]!="1")
                   </div>
                 </div>
               </div>
+              <?php
+		  }
+          ?>
               <div class="cleared"></div>
               <div class="Footer">
                 <div class="Footer-inner">

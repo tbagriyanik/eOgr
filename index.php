@@ -359,7 +359,7 @@ Shadowbox.init({
 	 } 
 
 ?>
-                  <?php echo $metin[7]?> , <?php echo temizle($_SESSION["userr"])." ".$ktut." "?>
+                  <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut." "?>
                   <p> <?php echo $metin[5]?> </p>
                   <?php
 				  if($_SESSION["tur"]=='0') {
