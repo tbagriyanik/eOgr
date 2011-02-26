@@ -200,7 +200,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 		  $Result1 = mysql_query($updateSQL, $yol);
 		  if($Result1) {
 			   	trackUser($currentFile,"success,SiteInfo",$adi);
-				echo ("<font id='tamam'> $metin[536]</font>");
+				echo ("<font id='uyari'> $metin[536]</font>");
 		    }
 			else {
 			    trackUser($currentFile,"fail,SiteInfo",$adi);

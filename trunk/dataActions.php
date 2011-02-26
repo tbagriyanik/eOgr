@@ -435,6 +435,8 @@ if ($totalRows_eoUsers> $maxRows_eoUsers)
                     <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
                   </form>
                   <?php  
+		if(istekteBulunanSay()>0)
+			printf("<br/>$metin[663]",istekteBulunanSay());					  
    }
 if ($totalRows_eoUsers==0) echo "<font id='hata'> $metin[497]</font><br/>Geri d&ouml;nmek i&ccedil;in <a href=dataActions.php>týklatýnýz</a>";
 

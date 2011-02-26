@@ -182,7 +182,7 @@ if ($tur=="2") {
 		@chmod($_uploadFolder,0755);	//yetki sorunu var olabilir		
 	}
 	if(empty($dosyUpload))
-		  echo "<font id='uyari'> $metin[496]</font>";
+		  echo "<font id='tamam'> $metin[496]</font>";
 	  else {
 		  echo "<font id='hata'> $metin[498]<br/>$dosyUpload<br/>";
 		  echo "<a href='fileShare.php?clean=1'>$metin[499]!</a></font>";	
