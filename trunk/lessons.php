@@ -366,7 +366,7 @@ function cleanup() {
                     <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
                     <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
                     <span id="soruGeriSayim"></span><br/>
-                    <span id="cevapVer"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>
+                    <span id="cevapVer" title="<?php echo $metin[664]?>"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>
                     <form name="sunum" style="text-align:right">
                       <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
                       <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="<?php echo $metin[604]?>"
@@ -751,6 +751,34 @@ fix_flash();
 	 require "feedback.php";
 ?>
 <script type="text/javascript">
+
+//ileri ve geri dolaþma klavye tuþlarý: sað ok ve sol ok, Enter: Cevap ver.
+	$(document).keydown(function(event) {
+		var sayNosu;
+		sayNosu = parseInt(document.getElementById('sayfaNo').innerHTML);
+		switch (event.keyCode) {
+			case 13: 
+ 			  if(document.getElementById('cevapVer').style.visibility == 'visible') 			  
+			   if(document.getElementById("facebox_overlay")==null)
+				if(sayNosu>0)
+					$("#cevapLink").focus();
+				break;
+			case 37: 
+				if(document.getElementById('geriDugmesi').innerHTML.indexOf("img/2leftarrow.png")>0)
+				 if(document.getElementById('ileriGeri').style.visibility == 'visible')
+				  if(sayNosu>0)
+					konuSec2(sayNosu-1,1);
+				break;
+			case 39: 
+				if(document.getElementById('ileriDugmesi').innerHTML.indexOf("img/2rightarrow.png")>0)
+				 if(document.getElementById('ileriGeri').style.visibility == 'visible')
+				  if(sayNosu>0)
+					konuSec2(sayNosu+1,1);
+				break;
+		}
+	});
+
+
 $(document).ready(
 	function()
 	{
