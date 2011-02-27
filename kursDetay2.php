@@ -167,8 +167,7 @@ Shadowbox.init({
 ?>
                   <div class="aramaDiv2">
                     <p> <?php echo $metin[29]?> :
-                      <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>
-                      <img src="img/view.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[590]?>" title="<?php echo $metin[590]?>"/> </p>
+                      <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/></p>
                   </div>
                   <script type="text/javascript">
                         var options = {

@@ -545,7 +545,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 
 /*main*/
  if (isset($_GET['kim']) && is_numeric($_GET['kim']) && $_GET['kim']>0 && getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" and kullAdi($_GET["kim"])<>"") {
-		echo "<h3>$metin[312]</h3>";
+		echo "<h3 style=\"color:#000;\">$metin[312]</h3><p style=\"color:#000;\">";
 		echo "<strong>$metin[17] :</strong> ".kullAdi($_GET["kim"])." - <span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($_GET["kim"]))."</span><br/>";
 		echo "<strong>$metin[22] :</strong> ".kullTur($_GET["kim"])."<br/>";
 		echo "<strong>$metin[23] :</strong> ".uyeTarihi($_GET["kim"])."<br/>";
@@ -645,6 +645,7 @@ if(isset($_GET['set']))
 		if($_SESSION["tur"]==1 or $_SESSION["tur"]==2)
 		  if(dersCalismaSay($_GET["kim"])>0)	
 			echo " | <a href=\"kursDetay.php?user=".$_GET["kim"]."\" target='_parent'>$metin[461]</a>";
+	 echo "</p>";
 	 }
  } else
   echo "$metin[540]";  

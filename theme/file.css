@@ -7,7 +7,7 @@ padding-left:20px;
 line-height:18px;
 }
 /* PDF document links */
-a[href$='.pdf'],a[href$='.xps'] {
+a[href$='.pdf'], a[href$='.xps'] {
 background:transparent url("../img/file/pdf.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
@@ -31,7 +31,7 @@ line-height:18px;
 }
   
 /* PPT Links */
-a[href$='.ppt'], a[href$='.pps'],a[href$='.pptx'], a[href$='.odp'] {
+a[href$='.ppt'], a[href$='.pps'], a[href$='.pptx'], a[href$='.odp'] {
 background:transparent url("../img/file/ppt.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
@@ -52,7 +52,7 @@ padding-left:20px;
 line-height:18px;
 }
   /* Video Links */
-a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'], a[href$='.mp4'], a[href$='.mov'], a[href$='.mpeg'],a[href$='.mpg'], a[href$='.mkv'], a[href$='.rm'], a[href$='.vob'] {
+a[href$='.avi'], a[href$='.wmv'], a[href$='.flv'], a[href$='.swf'], a[href$='.mp4'], a[href$='.mov'], a[href$='.mpeg'], a[href$='.mpg'], a[href$='.mkv'], a[href$='.rm'], a[href$='.vob'] {
 background:transparent url("../img/file/video.gif") center left no-repeat;
 display:inline-block;
 padding-left:20px;
