@@ -134,7 +134,6 @@ Lesser General Public License for more details.
 					$allowed[] = 'userName';
 					$allowed[] = 'email';
 					$allowed[] = 'form';
-					$allowed[] = 'myform_key';
 					$allowed[] = 'sumb';
 					$sent = array_keys($_POST);
 					if ($allowed != $sent)
@@ -182,30 +181,30 @@ if(!empty($_SESSION["passRem"]) and $_SESSION["passRem"]=="yes") echo($metin[410
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <script type="text/javascript">
-$().ready(function() {
-	$("#form1").validate({
-		rules: {
-			userName: {
-				required: true,
-				minlength: 5,
-				maxlength: 15
-			},
-			email: {
-				minlength: 5,
-				maxlength: 50,				
-				required: true,
-				email: true
-			}
-		},
-		messages: {
-			userName: {
-				required: "<?php echo $metin[607]?>",
-				minlength: "<?php echo $metin[608]?>"
-			},
-			email: "<?php echo $metin[613]?>"			
-		}
-	});	
-});
+					$().ready(function() {
+						$("#form1").validate({
+							rules: {
+								userName: {
+									required: true,
+									minlength: 5,
+									maxlength: 15
+								},
+								email: {
+									minlength: 5,
+									maxlength: 50,				
+									required: true,
+									email: true
+								}
+							},
+							messages: {
+								userName: {
+									required: "<?php echo $metin[607]?>",
+									minlength: "<?php echo $metin[608]?>"
+								},
+								email: "<?php echo $metin[613]?>"			
+							}
+						});	
+					});
   </script>
                   <div id="contact-wrapper">
                     <form action="passwordRemember.php" method="post" id="form1">
@@ -221,7 +220,6 @@ $().ready(function() {
                         </div>
                         <div>
                           <input name="form" type="hidden" value="parola" />
-                          <input type="hidden" name="myform_key" value="<?php echo md5("eyogurt"); ?>" />
                           <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[44]?>" />
                         </div>
                       </fieldset>
