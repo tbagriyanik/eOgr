@@ -1,6 +1,6 @@
 eOgr 
 
-Version: 		132c 
+Version: 		132d 
 Last update: 	27-02-2011 
 (680 hours programming, 22.000 lines PHP, 17.500 lines Javascript and CSS)
 
