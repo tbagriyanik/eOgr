@@ -495,7 +495,7 @@ $(document).ready(function() {
 
 /* ]]> */
 </script>
-                      <table border="0" width="800" cellpadding="3" cellspacing="3" class="pageme">
+                      <table border="0" width="800" cellpadding="5" cellspacing="0" class="pageme">
                         <tbody>
                           <?php
 	  echo $yorumlar;
@@ -766,14 +766,16 @@ fix_flash();
 			case 37: 
 				if(document.getElementById('geriDugmesi').innerHTML.indexOf("img/2leftarrow.png")>0)
 				 if(document.getElementById('ileriGeri').style.visibility == 'visible')
-				  if(sayNosu>0)
-					konuSec2(sayNosu-1,1);
+				   if(document.getElementById("facebox_overlay")==null)
+					  if(sayNosu>0)
+						konuSec2(sayNosu-1,1);
 				break;
 			case 39: 
 				if(document.getElementById('ileriDugmesi').innerHTML.indexOf("img/2rightarrow.png")>0)
 				 if(document.getElementById('ileriGeri').style.visibility == 'visible')
-				  if(sayNosu>0)
-					konuSec2(sayNosu+1,1);
+				   if(document.getElementById("facebox_overlay")==null)
+					  if(sayNosu>0)
+						konuSec2(sayNosu+1,1);
 				break;
 		}
 	});

@@ -361,7 +361,7 @@ function konuKisitlamalari($id){
 
 /*main*/
  if (isset($_GET['ders']) && is_numeric($_GET['ders']) && $_GET['ders']>0 && isset($_SESSION["usern"]) &&  getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" ) {
-		echo "<h3>$metin[327]</h3>";
+		echo "<h3 style=\"color:#000;\">$metin[327]</h3><p style=\"color:#000;\">";
 		echo "<strong>$metin[175] :</strong> ".konuAdi($_GET["ders"])."<br/>";
 		echo "<strong>$metin[328] :</strong> <i>".dersOkulSinif($_GET["ders"])."</i><br/>";
 	
@@ -395,6 +395,7 @@ function konuKisitlamalari($id){
 	if(!isset($_GET['set']) or $_GET['set']!="1"){	
 			echo"<br/>";
 			echo "<a href=\"lessons.php?konu=".$_GET["ders"]."\" ><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> $metin[339]</a>";
+	echo "</p>";		
 	}
  } else
   echo "$metin[340]";  

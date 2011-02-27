@@ -1664,12 +1664,19 @@ function sonCalisanKullanicilar($konuID){
 			LIMIT 0,".ayarGetir("ayar2int");	
 	$yol1 = baglan();
 	$result1 = @mysql_query($sql1, $yol1);
-	$liste = "<table>";
+	$liste = '<table cellpadding="5" cellspacing="0">';
+	$satirRenk = 0;
 	if(@mysql_num_rows($result1)>0){
   	 $liste .= "<tr><th>$metin[17]</th><th>$metin[481]</th><th>$metin[240]</th><th>$metin[187]</th>
 	 			<th>$metin[482]</th></tr>";
  	 while($gelen=@mysql_fetch_array($result1)){
 		$simge = "";
+			$satirRenk++;
+				if ($satirRenk & 1) { 
+					$row_color = "#CCC"; 
+					} else { 
+					$row_color = "#ddd"; 
+					}		
 		if ($gelen['userType']=="-1" or $gelen['userType']=="" ) $simge =  "<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[93]\"/> "; 
 		else if ($gelen['userType']=="0") $simge =   "<img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[94]\"/> " ;
 		else if ($gelen['userType']=="1") $simge =   "<img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[95]\"/> ";
@@ -1679,16 +1686,16 @@ function sonCalisanKullanicilar($konuID){
 		$insansi = $humanRelativeDate->getTextForSQLDate($gelen['calismaTarihi']);
 		$liste .= "<tr>";
 		if(!empty($gelen[1]))		
-			$liste .= "<th align='left'><a href='profil.php?kim=$gelen[0]' rel='facebox'>$simge $gelen[1]</a></th>".
-					"<td>".$insansi."</td><td align='right'>".
+			$liste .= "<td align='left' style=\"background-color: $row_color;\"><a href='profil.php?kim=$gelen[0]' rel='facebox' style='color:#00F'>$simge $gelen[1]</a></td>".
+					"<td style=\"background-color: $row_color;\">".$insansi."</td><td align='right' style=\"background-color: $row_color;\">".
 					Sec2Time2($gelen['toplamZaman']).
-					"</td><td align='right'>".$gelen['lastPage'].
-					"</td><td align='right'>".$gelen['say']."</td>";
+					"</td><td align='right' style=\"background-color: $row_color;\">".$gelen['lastPage'].
+					"</td><td align='right' style=\"background-color: $row_color;\">".$gelen['say']."</td>";
 		 else
-		    $liste .= "<th align='left'>$simge demo</th><td>".$insansi."</td><td align='right'>".
+		    $liste .= "<td align='left' style=\"background-color: $row_color;\">$simge demo</td><td style=\"background-color: $row_color;\">".$insansi."</td><td align='right' style=\"background-color: $row_color;\">".
 					Sec2Time2($gelen['toplamZaman']).
-					"</td><td align='right'>".$gelen['lastPage'].
-					"</td><td align='right'>".$gelen['say']."</td>";	
+					"</td><td align='right' style=\"background-color: $row_color;\">".$gelen['lastPage'].
+					"</td><td align='right' style=\"background-color: $row_color;\">".$gelen['say']."</td>";	
 		$liste .= "</tr>";
 	 }//while
 	}//if
@@ -3779,7 +3786,7 @@ function getKursTablo($dersID,$uID){
     $result1 = mysql_query($sql1, $yol1); 
 	
     if ($result1 && @mysql_num_rows($result1) > 0){
-		$sonuc = '<table width="%99" border="0" align="center" cellpadding="3" cellspacing="1">';
+		$sonuc = '<table width="%99" border="0" align="center" cellpadding="5" cellspacing="0">';
 		$sonuc .= "<tr>
 		         	<th width='%50'>$metin[364]</th>
 					<th width='%15'>$metin[504]</th>
