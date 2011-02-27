@@ -239,7 +239,6 @@ if ((!empty($_POST["ccode2"]) and !empty($_SESSION["ccode2"])) and $_POST["ccode
 				case 'uyelik':
 					$allowed = array();
 					$allowed[] = 'form';
-					$allowed[] = 'myform_key';
 					$allowed[] = 'realN';
 					$allowed[] = 'userName';
 					$allowed[] = 'userPassword1';
@@ -423,9 +422,8 @@ $ajax->Run();
 					$ccode2 = newPassw();
 					$_SESSION["ccode2"]=$ccode2;
                   ?>
-                    <form action="newUser.php" method="post" id="form1">
+                    <form action="newUser.php" method="post" id="form1" >
                       <input name="form" type="hidden" value="uyelik" />
-                      <input type="hidden" name="myform_key" value="<?php echo md5("eyogurt"); ?>" />
                       <fieldset>
                         <legend><?php echo $metin[78]?> </legend>
                         <dl>
