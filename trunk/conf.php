@@ -16,6 +16,8 @@ Lesser General Public License for more details.
 require 'lib/flood-protection.php'; // include the class
 require 'database.php'; 
 
+require("lib/HTMLCleaner.php");	//ms word html temizleme
+
 $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
 if(!($taraDili=="TR" || $taraDili=="EN")) 
   require_once("lib/humanRelativeDate.class.php");
@@ -984,6 +986,53 @@ function yetimKayitNolar($tablo){
 	 }
 	@mysql_free_result($result1); 
 	return $sonuc;
+}
+/*
+temizleWordHTML:
+sayfalardaki word temizliði
+*/
+function temizleWordHTML($word){
+	global $yol1;
+	if($word!= ""){
+		$cleaner=new HTMLCleaner();
+	
+		$cleaner->Options['UseTidy']=false;
+		$cleaner->Options['OutputXHTML']=false;
+		$cleaner->Options['Optimize']=true;
+		
+		$cleaner->html=$word;
+		$cleanHTML=$cleaner->cleanUp('latin1');
+		
+		return $cleanHTML;		
+	}else{
+		$sql1 = "SELECT * FROM eo_5sayfa";
+						
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{				    						
+
+				   while($row_gelen = mysql_fetch_assoc($result1)) {
+			   			
+						$cleaner=new HTMLCleaner();		   
+						$word = $row_gelen['anaMetin'] ;
+						$cleaner->Options['UseTidy']=false;
+						$cleaner->Options['OutputXHTML']=false;
+						$cleaner->Options['Optimize']=true;
+						
+						$cleaner->html=$word;
+						$cleanHTML=$cleaner->cleanUp('latin1');						
+						
+						$sql2 = "UPDATE eo_5sayfa SET anaMetin='".htmlspecialchars($cleanHTML,ENT_COMPAT,"ISO-8859-1")."' where id='".$row_gelen['id']."'";
+						$guncel = mysql_query($sql2,$yol1);
+						//echo " <pre>".$cleanHTML."</pre>";
+						if($guncel) 
+							echo $row_gelen['id'].", ";
+						 //else
+						  	//return false;
+						
+				   }
+				   return true;
+				}			
+	}	
 }
 /*
 arkadasListesi:

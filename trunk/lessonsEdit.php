@@ -146,6 +146,8 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   <?php  
 	$currentPage = $_SERVER["PHP_SELF"];	
 
+//temizleWordHTML("");
+
 	if ($tur<=-1 || $tur>2) { 
 	  sessionDestroy();
 	  die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
@@ -245,7 +247,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 					 }else
 				 if($seciliSekme=="4") {
 				        $anaMetin	=	trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
-				        $anaMetin	=	trim(str_replace("|", "¦", $anaMetin)); //temizle PROBLEM!
+				        $anaMetin	=	temizleWordHTML(trim(str_replace("|", "¦", $anaMetin))); //temizle PROBLEM!
 					    $datem	=	date("Y-n-j H:i:s");
 						$userID =  getUserID2($adi);
 				        $cevap		=temizleCubuk($_POST["cevap"]);
@@ -326,7 +328,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 						$konuID		=temizleCubuk($_SESSION["seciliKonu"]);
 						
 				        $anaMetin   = trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
-				        $anaMetin	= trim(str_replace("|", "¦", $anaMetin)); //temizle PROBLEM!
+				        $anaMetin	= temizleWordHTML(trim(str_replace("|", "¦", $anaMetin))); //temizle PROBLEM!
 						if (!empty($anaMetin) && !empty($konuID))
 						   $sql="Insert into $tabloAdi 
 						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,secenek6,slideGecisSuresi,cevapSuresi)
