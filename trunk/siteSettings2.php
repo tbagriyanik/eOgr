@@ -65,6 +65,14 @@ Lesser General Public License for more details.
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+		$("#msg_body2").hide();
+		$("#msg_head").click(function(){
+			$(this).next("#msg_body2").slideToggle(200);
+		});
+      }) 
+</script>
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -246,8 +254,8 @@ Lesser General Public License for more details.
                         <input type="hidden" name="sqlial" value="sqlimp" />
                         <input name="al" type="submit" id="al" value="<?php echo $metin[158]?>"/>
                       </form>
-                      <h4><?php echo $metin[211]?> :</h4>
-                      <pre style="margin-left:-50px;line-height:12px;font-family:'Courier New', Courier, monospace">
+                      <h4 id='msg_head' style="cursor:pointer;"><img src="img/page-next.gif" alt='next' border='0' style="vertical-align: middle;"/><?php echo $metin[211]?></h4>
+                      <pre id="msg_body2" style="margin-left:-50px;line-height:12px;font-family:'Courier New', Courier, monospace">
                       eo_1okul		<?php echo getTableSize("eo_1okul"); ?> - (<?php echo $metin[212]?>)<br />
                       <strong>eo_2sinif		<?php echo getTableSize("eo_2sinif"); ?> :</strong> <?php echo yetimKayitNolar("eo_2sinif")?><br />
                       <strong>eo_3ders		<?php echo getTableSize("eo_3ders"); ?> :</strong> <?php echo yetimKayitNolar("eo_3ders")?><br />

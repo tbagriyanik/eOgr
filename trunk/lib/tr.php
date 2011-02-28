@@ -858,4 +858,5 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[663] = "<font id='uyari'>%s adet <strong>yetki</strong> deðiþtirme isteðini görmek için <a href=\"dataActions.php?arama=request,\" title=\"istekler\">týklatýnýz</a>.<br/>Üye yetkisini üye düzenleyerek yapabilirsiniz veya reddetmek için isteði silebilirsiniz.</font>";
 		$metin[664] = "Klavye Kýsayolu : Enter tuþu";
 		
+		$metin[665]	= "Boþ geçilemez";
 ?>
