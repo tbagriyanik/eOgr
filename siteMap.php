@@ -158,7 +158,6 @@ Lesser General Public License for more details.
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[547]?> </span> </h2>
                 <div class="PostContent">
-                  <div id="contact-wrapper">
                     <?php
 	$imge =  ' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />';
 	$bilgi1 = sonTarihGetir("sohbet");
@@ -280,7 +279,6 @@ Lesser General Public License for more details.
                         <td colspan="4">&nbsp;&nbsp;<img src="img/imp.gif" border="0" style="vertical-align: middle;" alt="new" /> <?php echo $metin[550]?></td>
                       </tr>
                     </table>
-                  </div>
                 </div>
                 <div class="cleared"></div>
               </div>

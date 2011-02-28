@@ -351,7 +351,7 @@ require 'lib/flood-protection.php'; // include the class
               <div class="Post-inner">
                 <div class="PostContent">
                   <?php 
-				  echo "<h2 id='msg_head' style=\"cursor:pointer;\">$metin[579]</h2>";
+				  echo "<h2 id='msg_head' style=\"cursor:pointer;\"><img src=\"img/page-next.gif\" alt='next' border='0' style=\"vertical-align: middle;\"/> $metin[579]</h2>";
                 ?>
                 <div id="msg_body2">
                   <?php 

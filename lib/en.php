@@ -843,5 +843,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		
 		$metin[663] = "<font id='uyari'>There is/are %s <strong>authorization</strong> request(s), <a href=\"dataActions.php?arama=request,\" title=\"requests\">click</a> to see.<br/>You can change the authorization by editing membership data or you can erase the request record for rejecting.</font>";
 		$metin[664] = "Shortcut : Press Enter";
+
+		$metin[665]	= "Required field";
 		
 ?>

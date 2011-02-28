@@ -144,7 +144,7 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
             <div class="Post-body">
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[471]?> </span> </h2>
-                <div class="PostContent" style="background:#FFF;color:#000;">
+                <div class="PostContent" style="background:#FFF;color:#000;padding:5px;">
                   <?php
 if ($tur=="2")	{//yönetici ise
   

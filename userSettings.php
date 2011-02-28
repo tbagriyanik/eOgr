@@ -341,7 +341,7 @@ $().ready(function() {
                         <tt><?php echo $metin[91]?></tt>
                         <input type="hidden" name="MM_update" value="form3" />
                         <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
-                        <p>
+                        <p style="border-top:thin #666 groove;padding-top:5px;">
                         <?php echo $metin[661]?> : 
                         <button onclick="location.href='userSettings.php?istek=1';return false;" value="<?php echo $metin[658]?>"><?php echo $metin[658]?></button>&nbsp;
                         <button onclick="location.href='userSettings.php?istek=2';return false;" value="<?php echo $metin[659]?>"><?php echo $metin[659]?></button>&nbsp;
@@ -383,9 +383,8 @@ $().ready(function() {
                 </div>
                 <div class="Post-cc"></div>
                 <div class="Post-body">
-                  <div class="Post-inner">
-                    <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><a name="ozel" id="ozel"></a> <?php echo $metin[112]?> </span> </h2>
-                    <div class="PostContent">
+                  <div class="Post-inner">                    
+                    <div class="PostContent"><a name="ozel" id="ozel"></a>
                       <form name="form5"  action="userSettings.php" method="post">
                         <table width="90%" border="0" cellspacing="0" cellpadding="3">
                           <tr>

@@ -74,7 +74,7 @@ Lesser General Public License for more details.
 	$(":text").result(findValueCallback).next().click(function() {
 		$(this).prev().search();
 	});		
-    $("#ara").autocomplete(verilerDizisi, {
+    $("#searchterm").autocomplete(verilerDizisi, {
 		minChars: 0,
 		width: 310,
 		matchContains: true,
@@ -198,7 +198,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 ?>
                   <div id="menu">
                     <p><?php echo $metin[29]?>
-                      <input id="ara" type="text" maxlength="20" style="border:thin solid #333"/>
+                      <input id="searchterm" type="text" maxlength="20" style="border:thin solid #333"/>
                     </p>
                     <ol id="result">
                     </ol>

@@ -191,7 +191,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                         </div>
                         <label for="icerik"> <?php echo $metin[125]?> :</label>
                         <div>
-                          <textarea name="icerik" id="icerik" cols="65" rows="8" class="required"></textarea>
+                          <textarea name="icerik" id="icerik" cols="50" rows="8" class="required"></textarea>
                         </div>
                         <input type="hidden" name="address" value='<?php echo $address?>'/>
                         <input type="hidden" name="ccode" value="<?php echo $ccode ?>" />
@@ -201,7 +201,29 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
                   </div>
                   <script type="text/javascript">
   $(document).ready(function(){
-    $("#form1").validate();
+    $("#form1").validate({
+						rules: {
+							konu: {
+								required: true,
+								minlength: 5,
+								maxlength: 30
+							},
+							icerik: {
+								required: true,
+								minlength: 5,
+								maxlength: 150
+							}
+						},
+						messages: {
+							konu: {
+								required: "<?php echo $metin[665]?>"
+							},
+							icerik: {
+								required: "<?php echo $metin[665]?>",
+								minlength: "<?php echo $metin[609]?>"
+							}
+						}
+					});
   });
   </script>
                   <?php
