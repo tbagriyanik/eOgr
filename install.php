@@ -128,7 +128,7 @@ require 'lib/flood-protection.php'; // include the class
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[71]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
 <script language="javascript" type="text/javascript" src="lib/jquery-1.5.1.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {

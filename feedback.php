@@ -28,7 +28,7 @@ Lesser General Public License for more details.
 		 	echo "<p>$metin[566]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='login.php'>$metin[569]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[570]</a></li>";
 		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
@@ -41,7 +41,7 @@ Lesser General Public License for more details.
 		 	echo "<p>$metin[565]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='login.php'>$metin[569]</a></li>";
 		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
 		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
@@ -50,6 +50,7 @@ Lesser General Public License for more details.
 		 	echo "<li><a href='userSettings.php'>$metin[573]</a></li>";
 		 	echo "</ul> $metin[558]";
 		break;
+		case "lessonsList.php":
 		case "lessons.php":
 		 	echo "<p>$metin[564]</p>";
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
@@ -68,7 +69,7 @@ Lesser General Public License for more details.
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
 		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
 		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
 		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
@@ -81,7 +82,7 @@ Lesser General Public License for more details.
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
 		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
 		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
 		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
@@ -94,7 +95,7 @@ Lesser General Public License for more details.
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
 		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
 		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";
 		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
@@ -107,7 +108,7 @@ Lesser General Public License for more details.
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
 		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
 		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
 		 	echo "<li><a href='askQuestion.php'>$metin[643]</a></li>";
@@ -120,7 +121,7 @@ Lesser General Public License for more details.
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
 		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
 		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
 		 	echo "<li><a href='fileShare.php'>$metin[572]</a></li>";
@@ -133,7 +134,7 @@ Lesser General Public License for more details.
 		 	echo "<img src=\"img/help.png\" border=\"0\" style=\"vertical-align:top\" alt='info'/> 
 			$metin[567] <ul>";
 		 	echo "<li><a href='index.php'>$metin[574]</a></li>";
-		 	echo "<li><a href='lessons.php'>$metin[568]</a></li>";
+		 	echo "<li><a href='lessonsList.php'>$metin[568]</a></li>";
 		 	echo "<li><a href='kursDetay.php'>$metin[575]</a></li>";
 		 	echo "<li><a href='stats.php'>$metin[576]</a></li>";
 		 	echo "<li><a href='friends.php'>$metin[571]</a></li>";

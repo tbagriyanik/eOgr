@@ -3304,6 +3304,116 @@ function sonDersCalisma($tarih){
 	return 0;
 }
 /*
+okulAdlari:
+okul adlarý getirilir
+*/
+function okulAdlari(){
+	global $yol1;
+	
+	$sql1	= 	"select id,okulAdi from eo_1okul order by okulAdi";
+	$result1= 	@mysql_query($sql1,$yol1);
+	
+	$i=0;
+	$sonuc="";
+	while($i<@mysql_num_rows($result1)) 
+	{
+		$sonuc .= "<a href='#' id='".@mysql_result($result1,$i,"id")."'>".@mysql_result($result1,$i,"okulAdi")."</a>";
+		$i++;
+	}
+	@mysql_free_result($result1);
+	return $sonuc;	
+}
+/*
+sinifAdlari:
+sýnýf adlarý getirilir
+*/
+function sinifAdlari($id){
+	global $yol1;
+	if($id=="all")
+		$sql1	= 	"select id,sinifAdi from eo_2sinif order by sinifAdi";
+	 else
+		$sql1	= 	"select id,sinifAdi from eo_2sinif where okulID='".RemoveXSS($id)."' order by sinifAdi";
+	 	
+	$result1= 	@mysql_query($sql1,$yol1);
+	
+	$i=0;
+	$sonuc="";
+	while($i<@mysql_num_rows($result1)) 
+	{
+		$sonuc .= "<a href='#' id='".@mysql_result($result1,$i,"id")."'>".@mysql_result($result1,$i,"sinifAdi")."</a>";
+		$i++;
+	}
+	@mysql_free_result($result1);
+	return $sonuc;	
+}
+/*
+dersAdlari:
+ders adlarý getirilir
+*/
+function dersAdlari($id,$nereden=""){
+	global $yol1;
+	
+	if($id=="all")
+		$sql1	= 	"select id,dersAdi from eo_3ders order by dersAdi";
+	else if($nereden == "0")
+		$sql1	= 	"select id,dersAdi from eo_3ders where sinifID='".RemoveXSS($id)."' order by dersAdi";
+	else if($nereden == "1")
+		$sql1	= 	"select eo_3ders.id,eo_3ders.dersAdi from eo_3ders,eo_2sinif 
+					where
+					 eo_3ders.sinifID = eo_2sinif.id and	 
+					 eo_2sinif.okulID='".RemoveXSS($id)."' 
+					order by eo_3ders.dersAdi";
+		
+	$result1= 	@mysql_query($sql1,$yol1);
+	
+	$i=0;
+	$sonuc="";
+	while($i<@mysql_num_rows($result1)) 
+	{
+		$sonuc .= "<a href='#' id='".@mysql_result($result1,$i,"id")."'>".@mysql_result($result1,$i,"dersAdi")."</a>";
+		$i++;
+	}
+	@mysql_free_result($result1);
+	return $sonuc;	
+}
+/*
+konuAdlari:
+konu adlarý getirilir
+*/
+function konuAdlari($id,$nereden=""){
+	global $yol1;
+	
+	if($id=="all")
+		$sql1	= 	"select id,konuAdi from eo_4konu order by konuAdi";
+	else if($nereden=="0")
+		$sql1	= 	"select id,konuAdi from eo_4konu where dersID='".RemoveXSS($id)."' order by konuAdi";
+	else if($nereden=="1")
+		$sql1	= 	"select eo_4konu.id,eo_4konu.konuAdi from eo_4konu, eo_3ders 
+				where 
+					eo_4konu.dersID = eo_3ders.id and
+					eo_3ders.sinifID='".RemoveXSS($id)."' 
+				order by eo_4konu.konuAdi";
+	else if($nereden=="2")
+		$sql1	= 	"select eo_4konu.id,eo_4konu.konuAdi from eo_4konu, eo_3ders, eo_2sinif
+				where 
+					eo_4konu.dersID = eo_3ders.id and
+					eo_3ders.sinifID = eo_2sinif.id and
+					eo_2sinif.okulID='".RemoveXSS($id)."' 
+				order by eo_4konu.konuAdi";
+		
+	$result1= 	@mysql_query($sql1,$yol1);
+	
+	$i=0;
+	$sonuc="";
+	while($i<@mysql_num_rows($result1)) 
+	{
+		$sonuc .= "<a href='lessons.php?konu=".@mysql_result($result1,$i,"id")."'>".@mysql_result($result1,$i,"konuAdi")."</a>";
+		$i++;
+	}
+	@mysql_free_result($result1);
+	return $sonuc;	
+}
+/*
 getSchoolNames:
 okul isimlerini getirir
 */
