@@ -89,6 +89,7 @@ Lesser General Public License for more details.
 					"friends.php",
 					"dataFriendActions.php",
 					"askQuestion.php",
+					"lessonsList.php",
 					"install.php"
 					)))
 			header("Location: ".$_GET["oldPath"]);
@@ -144,7 +145,7 @@ Lesser General Public License for more details.
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({

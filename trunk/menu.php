@@ -192,12 +192,12 @@ $().ready(function() {
   <li><a href="index.php" <?php
 						 if ($currentFile=="index.php") echo "class=\" active\"";
                         ?>><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a> </li>
-  <li><a href="lessons.php"
+  <li><a href="lessonsList.php"
 						<?php
-						 if ($currentFile=="lessons.php")
+						 if ($currentFile=="lessonsList.php" or $currentFile=="lessons.php")
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php echo dersAgaci()?> </li>
+                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php //echo dersAgaci()?> </li>
   <li><a href="newUser.php"
 						<?php
 						 if ($currentFile=="newUser.php" || $currentFile=="passwordRemember.php" )
@@ -256,12 +256,12 @@ $().ready(function() {
   <?php
   if ($_SESSION["usern"]!="" || $_POST["userN"]!=""){
 ?>
-  <li><a href="lessons.php"
+  <li><a href="lessonsList.php"
 						<?php
-						 if ($currentFile=="lessons.php")
+						 if ($currentFile=="lessonsList.php" or $currentFile=="lessons.php")
 						   echo "class=\" active\"";
                         ?>                       
-                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php echo dersAgaci()?> </li>
+                        ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php // echo dersAgaci()?> </li>
   <?php
   if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
 	echo ("<li><a href=\"#\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=315,height=335,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");

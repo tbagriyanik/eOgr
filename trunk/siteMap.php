@@ -33,7 +33,7 @@ Lesser General Public License for more details.
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[547]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/ui.totop.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
 <link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" src="lib/script.js"></script>
@@ -189,7 +189,7 @@ Lesser General Public License for more details.
                             <li><img src="img/user_manager.gif" border="0" style="vertical-align: middle;" alt="<?php echo $metin[551]?>"/> <?php echo $metin[551]?>
                               <ul style="list-style:none">
                                 <li><a href="index.php"><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?></a> </li>
-                                <li><a href="lessons.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> </li>
+                                <li><a href="lessonsList.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> </li>
                                 <li><a href="newUser.php"><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
                                 <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
                                 <li><a href="kursDetay2.php"><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <span><span> <?php echo $metin[461]?> </span></span></a></li>

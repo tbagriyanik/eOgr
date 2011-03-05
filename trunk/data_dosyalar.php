@@ -202,7 +202,7 @@ require("conf.php");
 			}
 			else if ( $aColumns[$i] == 'userID' )
 			{
-				$sOutput .= ' "<a href=\"profil.php?kim='.($aRow[ $aColumns[$i] ]).'&amp;set=1\" rel=\"facebox\">'.($aRow[ 4 ]).'</a>",';
+				$sOutput .= ' "'.($aRow[ 4 ]).'",';
 			}
 			else if ( $aColumns[$i] != ' ' )
 			{
