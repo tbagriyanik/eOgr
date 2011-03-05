@@ -14,23 +14,24 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	@session_start();
-
+	header("Content-Type: text/html; charset=utf-8");
+	
 	require("conf.php");
 	
   	checkLoginLang(false,true,"dataFill.php");	   
   	
 	if(isset($_GET["okul"])) {
-		echo sinifAdlari($_GET["okul"]);
+		echo iconv( "ISO-8859-9","UTF-8",sinifAdlari($_GET["okul"]));
 	}elseif(isset($_GET["sinif"]) and isset($_GET["okuldan"]) and $_GET["okuldan"]=="1") {
-		echo dersAdlari($_GET["sinif"],1);	//1=okuldan parametresi
+		echo iconv( "ISO-8859-9","UTF-8",dersAdlari($_GET["sinif"],1));	//1=okuldan parametresi
 	}elseif(isset($_GET["sinif"])) {
-		echo dersAdlari($_GET["sinif"],0);	//0=tüm sýnýflar
+		echo iconv( "ISO-8859-9","UTF-8",dersAdlari($_GET["sinif"],0));	//0=tüm sýnýflar
 	}elseif(isset($_GET["ders"]) and isset($_GET["okuldan"]) and  $_GET["okuldan"]=="2") {
-		echo konuAdlari($_GET["ders"],2); 	//2=okuldan 
+		echo iconv( "ISO-8859-9","UTF-8",konuAdlari($_GET["ders"],2)); 	//2=okuldan 
 	}elseif(isset($_GET["ders"]) and isset($_GET["siniftan"]) and  $_GET["siniftan"]=="1") {
-		echo konuAdlari($_GET["ders"],1); 	//1=sýnýftan 
+		echo iconv( "ISO-8859-9","UTF-8",konuAdlari($_GET["ders"],1)); 	//1=sýnýftan 
 	}elseif(isset($_GET["ders"])) {
-		echo konuAdlari($_GET["ders"],0);	//0=tüm konular
+		echo iconv( "ISO-8859-9","UTF-8",konuAdlari($_GET["ders"],0));	//0=tüm konular
 	}
 	
 ?>
