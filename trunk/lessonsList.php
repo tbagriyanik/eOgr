@@ -99,6 +99,11 @@ div.menu {
 	color:#000;
 	background-color:#aaa;
 }
+.menu ul > li > div > a.active {
+	color:#d00;
+	border-bottom:dotted 1px #D40000;
+	border-left:dotted 1px #D40000;
+}
 .menu ul li.okul {
 	background-color:#FDD017;
 	background-image:none;
@@ -167,17 +172,27 @@ var loading = $("#loading");
 
 	$(".okul div a").live("mouseover",function() {
 		showLoading();
+		
+		$(".okul div a").removeClass("active");
+		$(this).toggleClass("active");
+
 		sinif.load("dataFill.php?okul=" + this.id);
 		ders.load("dataFill.php?okuldan=1&sinif=" + this.id);
 		konu.load("dataFill.php?okuldan=2&ders=" + this.id, hideLoading);
 	});
 	$(".sinif div a").live("mouseover",function() {
 		showLoading();
+		$(".sinif div a").removeClass("active");
+		$(this).toggleClass("active");
+
 		ders.load("dataFill.php?sinif=" + this.id);
 		konu.load("dataFill.php?siniftan=1&ders=" + this.id, hideLoading);
 	});
 	$(".ders div a").live("mouseover",function() {
 		showLoading();
+		$(".ders div a").removeClass("active");
+		$(this).toggleClass("active");
+
 		konu.load("dataFill.php?ders=" + this.id, hideLoading);
 	});
 	
