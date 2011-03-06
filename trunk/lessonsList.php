@@ -75,7 +75,7 @@ div.menu {
 	list-style:none;
 	list-style-image:none;
 	margin: 0px;
-	width: 150px;
+	width: 170px;
 	height: 300px;
 	-moz-border-radius-topleft: 15px;
 	border-top-left-radius: 15px;
@@ -86,10 +86,18 @@ div.menu {
 	margin-left:-5px;
 }
 .menu ul > li > div > a {
-	width:180px;
+	width:140px;
 	display:block;
 	padding:5px;
 	color:#00F;
+}
+.menu ul > li > div > a:hover {
+	color:#000;
+	background-color:#ccc;
+}
+.menu ul > li > div > a:active {
+	color:#000;
+	background-color:#aaa;
 }
 .menu ul li.okul {
 	background-color:#FDD017;
@@ -120,7 +128,7 @@ div.menu {
 	background-color:#FDD017;
 	-moz-border-radius: 15px 0px;
 	border-radius: 15px 0px;
-	width: 220px;
+	width: 170px;
 	opacity:0.7;
 	filter:alpha(opacity=70);
 	overflow-y: auto;
@@ -132,12 +140,20 @@ div.menu {
 	text-align: center;
 	visibility: hidden;
 }
+.scroll-pane {
+	width: 200px;
+	height: 200px;
+	overflow: auto;
+	background: #ccc;
+	float: left;
+}
+
 </style>
 <link type="text/css" href="lib/jquery.jscrollpane.css" rel="stylesheet" media="all" />
 <script type="text/javascript" src="lib/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="lib/jquery.jscrollpane.min.js"></script>
 <script language="javascript">
-
+jQuery.noConflict();
 jQuery(document).ready(function() {
     /**
      * jQuery Accordion
@@ -215,10 +231,17 @@ var loading = $("#loading");
             });
         }
     });
-//$('.konu').jScrollPane();
 	
 });
 </script>
+
+	<script type="text/javascript">
+		/*var $jq = jQuery.noConflict();			
+			$jq(function(){
+				$jq('.menu ul li.konu div').jScrollPane({showArrows:true});
+			});	*/	
+	</script>
+
 </head>
 <body>
 <div class="PageBackgroundGradient"></div>
@@ -329,7 +352,7 @@ var loading = $("#loading");
                           </li>
                         </ul>
                       </div>
-                      <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
+                      <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>                      
                     </div>
                   </div>
                 </div>
