@@ -75,7 +75,7 @@ var giRedraw = false;
 					"bProcessing": true,
 					"bServerSide": true,
 					"sAjaxSource": "data_dosyalar.php",
-					"bAutoWidth": true,
+					"bAutoWidth": true,					
 					"aaSorting": [[0,'desc']],
 					"sPaginationType": "full_numbers",
 					"bStateSave": true,

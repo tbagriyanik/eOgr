@@ -172,7 +172,7 @@ return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShar
                   <?php	
 }
 ?>
-<iframe src="data_dosyalar2.php" frameborder="0" scrolling="auto" width="850" height="450" align="middle" marginheight="45" allowtransparency="false" style="background-color: transparent"></iframe>
+<iframe src="data_dosyalar2.php" frameborder="0" scrolling="auto" width="870" height="465" align="middle" marginheight="45" allowtransparency="false" style="background-color: transparent"></iframe>
                   <?php  
 
 if ($tur=="2") {
