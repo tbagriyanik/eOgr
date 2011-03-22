@@ -115,8 +115,8 @@ Lesser General Public License for more details.
 		$metin[84]="Son g&uuml;ncellenen konular";    
 		
 		$metin[85]=". <img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> Pasifsiniz. Herhangi bir i&#351;lem yapamazs&#305;n&#305;z.";    
-		$metin[86]=". <img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> &Ouml;&#287;rencisiniz. <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Derslere</a> kat&#305;labilirsiniz.";    
-		$metin[87]=". <img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> &Ouml;&#287;retmensiniz. <a href=\"lessonsEdit.php\">Ders</a> d&uuml;zenleyebilirsiniz veya <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> derslere</a> kat&#305;labilirsiniz.";    
+		$metin[86]=". <img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> &Ouml;&#287;rencisiniz. <a href=\"lessonsList.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> Derslere</a> kat&#305;labilirsiniz.";    
+		$metin[87]=". <img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> &Ouml;&#287;retmensiniz. <a href=\"lessonsEdit.php\">Ders</a> d&uuml;zenleyebilirsiniz veya <a href=\"lessonsList.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> derslere</a> kat&#305;labilirsiniz.";    
 		$metin[88]=". <img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Y&ouml;neticisiniz. <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> Site y&ouml;netimini</a> yapabilirsiniz.";    
 		$metin[89]=". T&uuml;r&uuml;n&uuml;z belli de&#287;ildir.";    
 		$metin[90]="Dikkat!";    
@@ -135,7 +135,7 @@ Lesser General Public License for more details.
 		
 		$metin[102]="Sil";    
 		$metin[103]="D&uuml;zenle";    
-		$metin[104]="Kay&#305;t silinmesini onayl&#305;yor musunuz?";  
+		$metin[104]="Kayýt silinmesini onaylýyor musunuz?";  
 		
 		$metin[105]="&Uuml;ye G&uuml;ncelleme Formu";    
 		$metin[106]="Se&ccedil;iniz";    
@@ -685,7 +685,8 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[514] = "<li>Dosya adý <strong>50 karakteri</strong> geçmemelidir. </li>
       <li>Dosya adýnda Türkçe karakter ve boþluk <strong>olmamalýdýr</strong>.</li>
       <li>Dosya boyutu en fazla <strong>%d MB</strong> olabilir.</li>
-      <li>Var olan bir dosya <strong>tekrar gönderilemez</strong>.</li>";
+      <li>Varolan bir dosya <strong>tekrar gönderilemez</strong>.</li><br/>
+	  <font color='red'><strong>Öðrenciler sadece RAR uzantýlý dosya gönderebilir.</strong></font>";
 		$metin[515] = "Dosya Yükleme";
 		$metin[516] = "Dosya";
 		$metin[517] = "Yükle";

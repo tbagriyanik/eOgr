@@ -64,6 +64,10 @@ if((!empty($_FILES["myfile"])) && ($_FILES['myfile']['error'] == 0))
    $result = -1; 
 	trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);
   }   
+ else if(getUserType($_SESSION["usern"])==0 and file_ext($_FILES['myfile']['name'])!='rar'){
+	   	$result = -8; //öðrencilere sadece RAR uzantýsý
+		trackUser($currentFile,"fail,FileUp",$_SESSION["usern"]);	 
+	 } 
  else if ($dBoyu>$maxBoy or $dBoyu<0 ){
 	 //maksimum dosya gönderim sýnýrý
    $result = -3; 

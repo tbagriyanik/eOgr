@@ -1551,7 +1551,7 @@ function dosyaGoster($filename){
 	return $sData;
 }
 /*
-findexts:
+file_ext:
 dosya uzantýsýný bulur
 */
 function file_ext($filename) 
