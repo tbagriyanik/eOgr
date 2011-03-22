@@ -114,8 +114,8 @@ Lesser General Public License for more details.
 		$metin[84]="Last updated topics";    
 		
 		$metin[85]=". You are <img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"pasif\"/> passive. You can not do anything.";    
-		$metin[86]=". You are <img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> student. You can join the <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
-		$metin[87]=". You are <img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> teacher. You can edit the <a href=\"lessonsEdit.php\">lessons</a> or join the <a href=\"lessons.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
+		$metin[86]=". You are <img src=\"img/ogr_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogrenci\"/> student. You can join the <a href=\"lessonsList.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
+		$metin[87]=". You are <img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> teacher. You can edit the <a href=\"lessonsEdit.php\">lessons</a> or join the <a href=\"lessonsList.php\"><img src=\"img/lessons.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"lessons\"/> lessons</a>.";    
 		$metin[88]=". You are <img src=\"img/admin_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> administrator. You can administer the <a href=\"siteNotices.php\"><img src=\"img/admin.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"admin\"/> site</a>.";    
 		$metin[89]=". You are unknown type.";    
 		$metin[90]="Attention!";    

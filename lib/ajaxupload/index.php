@@ -62,6 +62,9 @@ function stopUpload(success){
 			 case -7:
 			    result += "<strong><?php echo $metin[524]."...";?></strong><br/><br/>";					
 			 	break;
+			 case -8:
+			    result += "<strong><?php echo $metin[520]?></strong><br/><br/>";					
+			 	break;
 			 default:
 			    result += "<strong><?php echo  $metin[526]?></strong><br/><br/>";					
 		 }
@@ -110,7 +113,7 @@ body {
     </form>
     <ul>
       <?php
-	printf($metin[514],$_fileMaxUploadSize); 
+	printf($metin[514],$_fileMaxUploadSize);
 ?>
     </ul>
 <?php
