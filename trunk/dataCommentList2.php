@@ -308,7 +308,7 @@ if ($totalRows_eoUsers>0)
 						?>
                         </a></td>
                       <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
-                      <td align="left" <?php echo "style=\"background-color: $row_color;\""?>><?php echo smileAdd($row_eoUsers['comment']);   ?></td>
+                      <td align="left" <?php echo "style=\"background-color: $row_color;\""?> title="<?php echo temizle($row_eoUsers['comment']);?>"><?php echo araKalin(smileAdd(temizle(smartShort($row_eoUsers['comment'],45)))); ?></td>
                       <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
                     </tr>
                     <?php } while ($row_eoUsers = mysql_fetch_assoc($eoUsers)); ?>
