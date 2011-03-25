@@ -672,7 +672,9 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[514] = "<li>File name can be less than <strong>50 characters</strong>.</li>
       <li>File name must contain only <strong>English letters</strong> without space.</li>
       <li>The maximum file size<strong>%d MB</strong>.</li>
-      <li>A file can not be sent <strong>again</strong>.</li>";
+      <li>A file can not be sent <strong>again</strong>.</li><br/>
+	  <font color='red'><strong>Students can only send RAR file type.</strong></font> 
+	  ";
 		$metin[515] = "File Upload";
 		$metin[516] = "File";
 		$metin[517] = "Upload";
