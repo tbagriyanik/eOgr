@@ -419,7 +419,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 
 		$metin[301]="Konu Bilgisi";
 
-		$metin[302]="Son çalýþmalar (kayýtlý olmayan kullanýcýlar)";
+		$metin[302]="En Fazla Çalýþmalar";
 		
 		$metin[303]="<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Ana sayfa</a> için diðer genel seçenekler ";		
 		$metin[304]="Sohbet";

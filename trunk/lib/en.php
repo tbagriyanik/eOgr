@@ -408,7 +408,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[300]="If this doesn't work, use Ctrl+D shortcut";
 		
 		$metin[301]="Topic Information";
-		$metin[302]="Last unregistered user works";
+		$metin[302]="Last User Works";
 		
 		$metin[303]="Other General Options for <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Main Page</a>";		
 		$metin[304]="Enable Chat";

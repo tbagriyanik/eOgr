@@ -422,7 +422,7 @@ function listeGetir($userID, $durum){
 							   " count(*) as toplam ".
 							   "from eo_userworks, eo_4konu ".
 							   "where eo_userworks.konuID=eo_4konu.id ".
-							   " and eo_userworks.userID=-1 ".
+							  // " and eo_userworks.userID=-1 ".
 							   "GROUP BY kadi ".
 							   "order by toplam desc,kadi";	
 						$result = mysql_query($sql, $yol1);
