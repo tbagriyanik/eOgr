@@ -3381,20 +3381,22 @@ konuAdlari:
 konu adlarý getirilir
 */
 function konuAdlari($id,$nereden=""){
-	global $yol1;
+	global $yol1,$metin;
 	
 	if($id=="all")
-		$sql1	= 	"select id,konuAdi from eo_4konu order by konuAdi";
+		$sql1	= 	"select id,konuAdi,sadeceKayitlilarGorebilir from eo_4konu order by konuAdi";
 	else if($nereden=="0")
-		$sql1	= 	"select id,konuAdi from eo_4konu where dersID='".RemoveXSS($id)."' order by konuAdi";
+		$sql1	= 	"select id,konuAdi,sadeceKayitlilarGorebilir from eo_4konu where dersID='".RemoveXSS($id)."' order by konuAdi";
 	else if($nereden=="1")
-		$sql1	= 	"select eo_4konu.id,eo_4konu.konuAdi from eo_4konu, eo_3ders 
+		$sql1	= 	"select eo_4konu.id,eo_4konu.konuAdi,eo_4konu.sadeceKayitlilarGorebilir 
+				from eo_4konu, eo_3ders 
 				where 
 					eo_4konu.dersID = eo_3ders.id and
 					eo_3ders.sinifID='".RemoveXSS($id)."' 
 				order by eo_4konu.konuAdi";
 	else if($nereden=="2")
-		$sql1	= 	"select eo_4konu.id,eo_4konu.konuAdi from eo_4konu, eo_3ders, eo_2sinif
+		$sql1	= 	"select eo_4konu.id,eo_4konu.konuAdi,eo_4konu.sadeceKayitlilarGorebilir  
+				from eo_4konu, eo_3ders, eo_2sinif
 				where 
 					eo_4konu.dersID = eo_3ders.id and
 					eo_3ders.sinifID = eo_2sinif.id and
@@ -3407,7 +3409,11 @@ function konuAdlari($id,$nereden=""){
 	$sonuc="";
 	while($i<@mysql_num_rows($result1)) 
 	{
-		$sonuc .= "<a href='lessons.php?konu=".@mysql_result($result1,$i,"id")."'>".@mysql_result($result1,$i,"konuAdi")."</a>";
+		if(@mysql_result($result1,$i,"sadeceKayitlilarGorebilir")==1)
+		 	$kayitliSimgesi = "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";
+		 else
+		 	$kayitliSimgesi = "";	
+		$sonuc .= "<a href='lessons.php?konu=".@mysql_result($result1,$i,"id")."'>$kayitliSimgesi ".@mysql_result($result1,$i,"konuAdi")."</a>";
 		$i++;
 	}
 	@mysql_free_result($result1);

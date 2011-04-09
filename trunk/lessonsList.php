@@ -104,42 +104,30 @@ div.menu {
 	border-bottom:dotted 1px #D40000;
 	border-left:dotted 1px #D40000;
 }
-.menu ul li.okul {
+.menu ul li {
 	background-color:#FDD017;
 	background-image:none;
 	overflow-y:auto;
 	overflow-x:hidden;
 	opacity:0.7;
 	filter:alpha(opacity=70);
+	text-align: left;
+	display: block;
 }
-.menu ul li.sinif {
-	background-image:none;
+.okul {
 	background-color:#FDD017;
-	opacity:0.7;
-	filter:alpha(opacity=70);
-	overflow-y: auto;
-	overflow-x:hidden;
 }
-.menu ul li.ders {
-	background-image:none;
-	opacity:0.7;
-	filter:alpha(opacity=70);
+sinif {
 	background-color:#FDD017;
-	overflow-y: auto;
-	overflow-x:hidden;
+}
+.ders {
+	background-color:#FDD017;
 }
 .menu ul li.konu {
-	background-image:none;
 	background-color:#FDD017;
 	-moz-border-radius: 15px 0px;
 	border-radius: 15px 0px;
 	width: 170px;
-	opacity:0.7;
-	filter:alpha(opacity=70);
-	overflow-y: auto;
-	overflow-x:hidden;
-	position:relative;
-	top:0;
 }
 #loading {
 	text-align: center;
