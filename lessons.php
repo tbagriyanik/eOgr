@@ -135,55 +135,7 @@ function degerYaz(isim, deger, expiredays) {
 			$(this).next(".msg_body2").slideToggle(200);
 		});
 		
-			$("#ileriDugmesi, #geriDugmesi, #oncekiKonu, #sonrakiKonu").hover(function() {
-			$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
-			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
-				.animate({
-					marginTop: '-8px', /* The next 4 lines will vertically align this image */ 
-					marginLeft: '-6px',
-					top: '50%',
-					left: '50%',
-					width: '40px', /* Set new width */
-					height: '40px' /* Set new height */
-				}, 100); /* this value of "200" is the speed of how fast/slow this hover animates */
-		
-			} , function() {
-			$(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
-			$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
-				.animate({
-					marginTop: '0', /* The next 4 lines will vertically align this image */ 
-					marginLeft: '0',
-					top: '0',
-					left: '0',
-					width: '25px', /* Set width back to default */
-					height: '25px' /* Set height back to default */
-				}, 150);
-		});			
-		
-		$("#oncekiKonu, #sonrakiKonu").hover(function() {
-			$(this).css({'z-index' : '1000'}); /*Add a higher z-index value so this image stays on top*/ 
-			$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
-				.animate({
-					marginTop: '-9px', /* The next 4 lines will vertically align this image */ 
-					marginLeft: '-9px',
-					top: '20%',
-					left: '20%',
-					width: '32px', /* Set new width */
-					height: '32px' /* Set new height */
-				}, 100); /* this value of "200" is the speed of how fast/slow this hover animates */
-		
-			} , function() {
-			$(this).css({'z-index' : '1000'}); /* Set z-index back to 0 */
-			$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
-				.animate({
-					marginTop: '0', /* The next 4 lines will vertically align this image */ 
-					marginLeft: '0',
-					top: '0px',
-					left: '0',
-					width: '16px', /* Set width back to default */
-					height: '16px' /* Set height back to default */
-				}, 150);
-		});
+
 	});
 
 </script>
@@ -293,11 +245,11 @@ function cleanup() {
 		else
 			echo $metin[557];
 		?>
-          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a> 
-		  <?php
+          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
+          <?php
 		  if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 		  ?>
-		  </div>
+        </div>
         <div class="l"> </div>
         <div class="r">
           <div>&nbsp;</div>
@@ -354,7 +306,8 @@ function cleanup() {
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
                   <div id="resizeMe">
-                    <div id="kapsayici"><span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span><div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
+                    <div id="kapsayici"><span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span>
+                      <div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
                     </div>
                   </div>
                   <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
@@ -378,7 +331,7 @@ function cleanup() {
                     "/>
                     </form>
                   </div>
-                  <div id="ileriGeri"> <span id="geriDugmesi"><img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/></span> <span id="ileriDugmesi"><img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/></span> <span id="hint"><?php echo $metin[486];?><span class="hint-pointer">&nbsp;</span></span></div>
+                  <div id="ileriGeri"> <span id="geriDugmesi"></span> <span id="ileriDugmesi"></span> <span id="hint"><?php echo $metin[486];?><span class="hint-pointer">&nbsp;</span></span></div>
                   <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
                   <input type="hidden" id="konu_id" name="konu_id" />
                   <input type="hidden" id="sayfa_id" name="sayfa_id" />
@@ -764,14 +717,14 @@ fix_flash();
 					$("#cevapLink").focus();
 				break;
 			case 37: 
-				if(document.getElementById('geriDugmesi').innerHTML.indexOf("img/2leftarrow.png")>0)
+				if(document.getElementById('geriDugmesi').innerHTML.indexOf("img/sayfa_l.png")>0)
 				 if(document.getElementById('ileriGeri').style.visibility == 'visible')
 				   if(document.getElementById("facebox_overlay")==null)
 					  if(sayNosu>0)
 						konuSec2(sayNosu-1,1);
 				break;
 			case 39: 
-				if(document.getElementById('ileriDugmesi').innerHTML.indexOf("img/2rightarrow.png")>0)
+				if(document.getElementById('ileriDugmesi').innerHTML.indexOf("img/sayfa_r.png")>0)
 				 if(document.getElementById('ileriGeri').style.visibility == 'visible')
 				   if(document.getElementById("facebox_overlay")==null)
 					  if(sayNosu>0)
