@@ -77,9 +77,11 @@ td {
 	display: block;
 	margin-top: 5px;
 }
+#ileriGeri {
+}
 #oncekiKonu {
 	position:absolute;
-	left:463px;
+	left:464px;
 	top:0px;
 	overflow: hidden;
 	padding: 5px;
@@ -89,7 +91,7 @@ td {
 }
 #sonrakiKonu {
 	position:absolute;
-	left:559px;
+	left:555px;
 	top:0px;
 	overflow: hidden;
 	padding: 5px;
@@ -98,23 +100,23 @@ td {
 	z-index: 1000;
 }
 #geriDugmesi {
-	width: 24px;
-	height: 24px;
+	width: 32px;
+	height: 32px;
 	left:490px;
 	top:1px;
 	z-index:1000;
 	position:absolute;
 }
 #ileriDugmesi {
-	width: 24px;
-	height: 24px;
-	left:530px;
+	width: 32px;
+	height: 32px;
+	left:525px;
 	top:1px;
 	z-index:1000;
 	position:absolute;
 }
 #hint {
-	left:564px;
+	left:570px;
 	top:1px;
 	z-index:1000;
 	position:absolute;

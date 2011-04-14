@@ -63,8 +63,8 @@ function sureDolduTemizle(){
 		document.getElementById('sayfaNo').innerHTML =  "-";
 		document.getElementById('calismaSuresi').innerHTML =  "-";
 		document.getElementById('bitirmeYuzdesi').innerHTML =  "";
-		document.getElementById('geriDugmesi').innerHTML  ='<img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/>';
-		document.getElementById('ileriDugmesi').innerHTML ='<img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/>';
+		document.getElementById('geriDugmesi').innerHTML  ='';
+		document.getElementById('ileriDugmesi').innerHTML ='';
 		document.getElementById('konuAdi').innerHTML =   "-";
 		document.getElementById('konu_id').value =   "";
 		document.getElementById('cevapVer').style.visibility = 'hidden' ;
@@ -141,11 +141,11 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		if(items[7]=="-" || items[6]=="-" || items[7]=="" || items[6]=="0")
 			document.getElementById('oncekiKonu').innerHTML =   "";		
 			else
-			document.getElementById('oncekiKonu').innerHTML =   "<a href='lessons.php?konu="+ items[6] +"&amp;mode="+gup("mode")+"'><img src=\"img/page-prev.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"prev\" title=\"" + items[7] + "\"/></a>";		
+			document.getElementById('oncekiKonu').innerHTML =   "<a href='lessons.php?konu="+ items[6] +"&amp;mode="+gup("mode")+"'><img src=\"img/sayfa_ls.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"prev\" title=\"" + items[7] + "\"/></a>";		
 		if(items[8]=="-" || items[9]=="-" || items[8]=="" || items[9]=="")
 			document.getElementById('sonrakiKonu').innerHTML =   "";		
 			else
-			document.getElementById('sonrakiKonu').innerHTML =   "<a href='lessons.php?konu="+ items[8] +"&amp;mode="+gup("mode")+"'><img src=\"img/page-next.gif\" border=\"0\" style=\"vertical-align:middle\" alt=\"next\" title=\"" + items[9] + "\"/></a>";		
+			document.getElementById('sonrakiKonu').innerHTML =   "<a href='lessons.php?konu="+ items[8] +"&amp;mode="+gup("mode")+"'><img src=\"img/sayfa_rs.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"next\" title=\"" + items[9] + "\"/></a>";		
 
 		document.getElementById('konu_id').value = konu;		
 		
@@ -197,16 +197,16 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		
 		if (kayitSayisi>0) {
 			if (sayfaNo<=1) {
-				document.getElementById('geriDugmesi').innerHTML  ='<img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/>';
+				document.getElementById('geriDugmesi').innerHTML  ='';
 			}else {
 				birSayi = sayfaNo - 1;
-				document.getElementById('geriDugmesi').innerHTML  ='<a href="#" onclick="konuSec2('+birSayi+',1);return false;"><img src="img/2leftarrow.png" border="0" style="vertical-align:middle" alt="left" title="Shortcut: Left Arrow (Klavye Kýsayolu: Sol Ok Tuþudur)"/></a>';
+				document.getElementById('geriDugmesi').innerHTML  ='<a href="#" onclick="konuSec2('+birSayi+',1);return false;"><img src="img/sayfa_l.png" border="0" style="vertical-align:middle" alt="left" title="Shortcut: Left Arrow (Klavye Kýsayolu: Sol Ok Tuþudur)"/></a>';
 			}
 			if (sayfaNo>=kayitSayisi) 	{
-				document.getElementById('ileriDugmesi').innerHTML ='<img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/>';
+				document.getElementById('ileriDugmesi').innerHTML ='';
 			}else {
 				birSayi = sayfaNo + 1;
-				document.getElementById('ileriDugmesi').innerHTML ='<a href="#" onclick="konuSec2('+birSayi+',1);return false;"><img src="img/2rightarrow.png" border="0" style="vertical-align:middle" alt="right" title="Shortcut: Right Arrow (Klavye Kýsayolu: Sað Ok Tuþudur)"/></a>';
+				document.getElementById('ileriDugmesi').innerHTML ='<a href="#" onclick="konuSec2('+birSayi+',1);return false;"><img src="img/sayfa_r.png" border="0" style="vertical-align:middle" alt="right" title="Shortcut: Right Arrow (Klavye Kýsayolu: Sað Ok Tuþudur)"/></a>';
 				//konu seçili ise hint gösterilebilir!
 					var timeoutHint = null;
 					var valTimeout = 10; 
@@ -237,8 +237,8 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		}
 		else {
 			document.getElementById('sayfaNo').innerHTML =  '-';
-			document.getElementById('geriDugmesi').innerHTML  ='<img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/>';
-			document.getElementById('ileriDugmesi').innerHTML ='<img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/>';
+			document.getElementById('geriDugmesi').innerHTML  ='';
+			document.getElementById('ileriDugmesi').innerHTML ='';
 		    document.getElementById('bitirmeYuzdesi').innerHTML =  "";
 //			document.getElementById('sonSayfaHidden').value=0;
 
@@ -310,9 +310,8 @@ function konuSec2(sayfaNo, noCount){
 	httpObject = getHTTPObject();
 	
     if (httpObject != null && sayfaNo != "") {
-		/*document.getElementById('geriDugmesi').innerHTML  ='<img src="img/2leftarrowP.png" border="0" style="vertical-align:middle" alt="left"/>';
-		document.getElementById('ileriDugmesi').innerHTML ='<img src="img/2rightarrowP.png" border="0" style="vertical-align:middle" alt="right"/>';	*/
-        httpObject.open("POST", "getSubOption.php", true);
+		
+		httpObject.open("POST", "getSubOption.php", true);
 		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
   		httpObject.send('sayfaNo=' + sayfaNo);
         httpObject.onreadystatechange = function() {
