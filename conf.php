@@ -3542,7 +3542,7 @@ function sayfaGetir($konuID, $sayfaNo)
 	if(@mysql_result($result1,0,"id")!="")
 		$msg = html_entity_decode(@mysql_result($result1,$sayfaNo,"anaMetin"));
 	}else	
-		$msg = "<font id='uyari'>Bir konu se&ccedil;iniz...</font>";			 
+		$msg = "<font id='uyari'>Bir konu se&ccedil;iniz&#8230;</font>";			 
    
    @mysql_free_result($result1);
 	return $msg;
@@ -3651,7 +3651,7 @@ smartShort:
 ... noktalarýnýn eklenmesi
 */
 function smartShort($gelen,$boyut=20){
-	return (strlen($gelen)>$boyut)?substr($gelen,0,$boyut-3)."...":$gelen;
+	return (strlen($gelen)>$boyut)?substr($gelen,0,$boyut-3)."&#8230;":$gelen;
 }
 /*
 getDersIDileSinif:
@@ -3802,7 +3802,7 @@ function dersAgaci($gelen=null){
 					while($i<@mysql_num_rows($okulAdlari)){
 				?>
 				
-				<li style="color:#C9F;" class="open">
+				<li style="color:#C0F;" class="open">
 				  <span><?php echo (@mysql_result($okulAdlari,$i,"okulAdi"))?> </span>
 				  
 					<?php
@@ -3812,7 +3812,7 @@ function dersAgaci($gelen=null){
 								if(@mysql_num_rows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_num_rows($sinifAdlari)){		   
 						   ?>
-					<li style="color:#C3F">
+					<li style="color:#C0F">
                     <span>
 					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> </span>
 						<?php
