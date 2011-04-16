@@ -202,11 +202,11 @@ Lesser General Public License for more details.
 		$metin[159]="Silver Modern";
 		$metin[160]="Dark Orange";
 		$metin[161]="Light Green";
-		$metin[162]="More...";
+		$metin[162]="More&#8230;";
 
 		$metin[163]="Passwords are not matched!";
 	
-		$metin[164]="<p><em>Free, easy and simple learning...</em></p>";
+		$metin[164]="<p><em>Free, easy and simple learning&#8230;</em></p>";
 
 		$metin[165]=" <p>As default, you can join as <strong>&quot;student&quot;</strong> type. Contact to an administrator to become a &quot;teacher&quot; or &quot;administrator&quot;.</p><ul>         <li>Users can be <strong>passive</strong> or active by an administrator later.</li>                  <li>If there are <strong>more than one</strong> registration, administrators can erase any registration.</li>                    <li>Don't use <strong>same</strong> username and password.</li>                    <li>Don't use 12345678 or <strong>repeating</strong> values for the password.</li><li>This is a <strong>one time</strong> usable form. On error, please go to the main page.</li>                  </ul>";
 
@@ -220,15 +220,15 @@ Lesser General Public License for more details.
 		$metin[173]="Edit Date";
 		$metin[174]="Editor";
 		$metin[175]="Topic Name";
-		$metin[176]="Choose a topic...";
+		$metin[176]="Choose a topic&#8230;";
 		$metin[177]="You can search by topic name";
 		$metin[178]="progress";
 		$metin[179]="Locked";
 		$metin[180]="Out of time";
 		$metin[181]="Visible for registered users";
-		$metin[182]="This topic is <u>under construction</u>...";
-		$metin[183]="This topic does not exist...";
-		$metin[184]="Unknown <u>error</u>...";
+		$metin[182]="This topic is <u>under construction</u>&#8230;";
+		$metin[183]="This topic does not exist&#8230;";
+		$metin[184]="Unknown <u>error</u>&#8230;";
 
 		$metin[185]="Data Actions";
 
@@ -261,7 +261,7 @@ Lesser General Public License for more details.
 		
 		$metin[207]="Preview All Pages";    	
 		
-		$metin[208]="you run out of your work limit count...";    	
+		$metin[208]="you run out of your work limit count&#8230;";    	
 		$metin[209]="Under Construction";    	
 				
 		$metin[210]="Your Classes"; 
@@ -678,7 +678,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[515] = "File Upload";
 		$metin[516] = "File";
 		$metin[517] = "Upload";
-		$metin[518] = "Your file is uploaded...";
+		$metin[518] = "Your file is uploaded&#8230;";
 		$metin[519] = "There is an error while uploading your file!";
 		$metin[520] = "Forbidden File";
 		$metin[521] = "Existing File";
@@ -691,7 +691,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[527] = "Please, visit later. Site is closed for now.";
 		$metin[528] = "Site maintenance is on";
 		$metin[529] = "Shared folder is writable";
-		$metin[530] = "File upload is disabled...";	
+		$metin[530] = "File upload is disabled&#8230;";	
 		$metin[531] = "Site is unlocked now!";								
 		$metin[532] = "folder is physically <strong>read-only</strong>.";
 		$metin[533] = "folder is physically <strong>writable</strong>.";
@@ -717,7 +717,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[551] = "General";
 		$metin[552] = "Simple";
 		$metin[553] = "Full Screen";
-		$metin[554] = "Customize...";
+		$metin[554] = "Customize&#8230;";
 		$metin[555] = "Activity Level";
 		
 		$metin[556] = "View as";
@@ -794,7 +794,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		
 		$metin[621]	= "day(s)";
 		$metin[622]	= "today";
-		$metin[623]	= "Parents, students and teachers can follow lesson works";		
+		$metin[623]	= "Parents, students and teachers can follow lesson works from here";		
 		
 		$metin[624]	= "Disapprove This Friendship!";
 		$metin[625]	= "Your invitation is sent.";	
@@ -835,7 +835,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[654] = "There are no answers yet.";
 		$metin[655] = "There are no votes yet.";
 		
-		$metin[656] = "Please wait...";
+		$metin[656] = "Please wait&#8230;";
 		$metin[657] = "Size";
 		$metin[658] = "Studentship";
 		$metin[659] = "Teacher";

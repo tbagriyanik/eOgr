@@ -83,19 +83,8 @@ ob_start (); // Buffer output
 <script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
-<link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
 <script src="lib/jquery.cookie.js" type="text/javascript"></script>
-<script src="lib/jquery-treeview/jquery.treeview.js" type="text/javascript"></script>
 <script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$("#lessonTree").treeview({
-				animated: "fast",
-				collapsed: true,
-				persist: "cookie",
-				control:"#sidetreecontrol"
-			});
-		});
-		
 function degerOku(isim) {
 	if (document.cookie.length > 0) {
 		c_start = document.cookie.indexOf(isim + "=");
@@ -573,39 +562,7 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
           <?php
 	}
 ?>
-          <?php
-if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1" and $eMode!="2" and $eMode!="1"){
-?>
-          <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <div>
-                      <div class="msg_list">
-                        <p class="msg_head"><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[443]?></p>
-                        <div class="msg_body">
-                          <div id="sidetreecontrol"><a href="?#"><?php echo $metin[458]?></a> | <a href="?#"><?php echo $metin[459]?></a> | <a  href="#"><?php echo $metin[460]?></a></div>
-                          <?php echo dersAgaci(1)?> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <?php
-}
-?>
+
           <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;

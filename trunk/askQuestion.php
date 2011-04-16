@@ -291,7 +291,7 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   </p>
                   <?php	
 				  if($tumKaySay>$limit)
-				 	 echo "<a href='askQuestion.php?devam=1&amp;ara=$arama'><font class=\"more\">Devamý...</font></a>";
+				 	 echo "<a href='askQuestion.php?devam=1&amp;ara=$arama'><font class=\"more\">Devamý&#8230;</font></a>";
 					 printf("<p>".$metin[648]."</p>",$tumKaySay);
 			}
 	}

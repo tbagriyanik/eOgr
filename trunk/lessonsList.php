@@ -28,25 +28,37 @@ Lesser General Public License for more details.
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="-1"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[443]?></title>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="-1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>eOgr -<?php echo $metin[443]?></title>
+	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+	<link rel="shortcut icon" href="img/favicon.ico"/>
+	<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
+	<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+	<script type="text/javascript" src="lib/script.js"></script>
+	<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+	<script src="lib/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
-<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script type="text/javascript" src="lib/script.js"></script>
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.5.1.min.js" type="text/javascript"></script>
-<style type="text/css">
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+        
+      }) 
+    })
+</script>
+    
+	<style type="text/css">
 div.containerStripe {
 	background-color: transparent;
 }
@@ -140,12 +152,11 @@ sinif {
 	background: #ccc;
 	float: left;
 }
-
 </style>
-<link type="text/css" href="lib/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-<script type="text/javascript" src="lib/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="lib/jquery.jscrollpane.min.js"></script>
-<script language="javascript">
+	<link type="text/css" href="lib/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+	<script type="text/javascript" src="lib/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="lib/jquery.jscrollpane.min.js"></script>
+	<script language="javascript">
 jQuery.noConflict();
 jQuery(document).ready(function() {
     /**
@@ -237,149 +248,188 @@ var loading = $("#loading");
 	
 });
 </script>
-
+	<script src="lib/jquery.cookie.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="lib/jquery-treeview/jquery.treeview.css" />
+	<script src="lib/jquery-treeview/jquery.treeview.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		/*var $jq = jQuery.noConflict();			
-			$jq(function(){
-				$jq('.menu ul li.konu div').jScrollPane({showArrows:true});
-			});	*/	
+		jQuery(document).ready(function($) {
+			$("#lessonTree").treeview({
+				animated: "fast",
+				collapsed: true,
+				persist: "cookie",
+				control:"#sidetreecontrol"
+			});
+		});
 	</script>
-
-</head>
-<body>
+	</head>
+	<body>
 <div class="PageBackgroundGradient"></div>
 <div class="Main">
-  <div class="Sheet">
+      <div class="Sheet">
     <div class="Sheet-tl"></div>
     <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
+          <div>&nbsp;</div>
+        </div>
     <div class="Sheet-cc"></div>
     <div class="Sheet-body">
-      <div class="Header">
+          <div class="Header">
         <div class="Header-png"></div>
         <div class="Header-jpeg"></div>
         <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
+              <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
+              <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
+            </div>
       </div>
-      <div class="nav">
+          <div class="nav">
         <?php
 				 require("menu.php");
                 ?>
         <div class="l"> </div>
         <div class="r">
-          <div>&nbsp;</div>
-        </div>
+              <div>&nbsp;</div>
+            </div>
       </div>
-      <div class="contentLayout">
+          <div class="contentLayout">
         <div class="content">
-          <div class="Post">
+              <div class="Post">
             <div class="Post-tl"></div>
             <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
+                  <div>&nbsp;</div>
+                </div>
             <div class="Post-cc"></div>
             <div class="Post-body">
-              <div class="Post-inner">
+                  <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[443]?> </span> </h2>
                 <div class="PostContent" style="overflow:hidden;"><br />
-                  <div class="containerStripe">
+                      <div class="containerStripe">
                     <div class="outerStripe">
-                      <div class="menu">
+                          <div class="menu">
                         <ul>
-                          <li class="okul">
+                              <li class="okul">
                             <div>
-                              <?php
+                                  <?php
 								echo okulAdlari();
 							?>
-                            </div>
+                                </div>
                           </li>
-                          <li class="sinif">
+                              <li class="sinif">
                             <div>
-                              <?php
+                                  <?php
 								echo sinifAdlari('all');
 							?>
-                            </div>
+                                </div>
                           </li>
-                          <li class="ders">
+                              <li class="ders">
                             <div>
-                              <?php
+                                  <?php
 								echo dersAdlari('all');
 							?>
-                            </div>
+                                </div>
                           </li>
-                          <li class="konu">
+                              <li class="konu">
                             <div>
-                              <?php
+                                  <?php
 								echo konuAdlari('all');
 							?>
-                            </div>
+                                </div>
                           </li>
-                        </ul>
+                            </ul>
                       </div>
-                      <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>                      
-                    </div>
+                          <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
+                        </div>
                   </div>
-                </div>
+                    </div>
                 <?php
 				?>
+                <?php
+$seceneklerimiz = explode("-",ayarGetir("ayar5char"));		  
+if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1")
+{
+?>
+                <div class="Post">
+                      <div class="Block">
+                    <div class="Block-tl"></div>
+                    <div class="Block-tr"></div>
+                    <div class="Block-bl"></div>
+                    <div class="Block-br"></div>
+                    <div class="Block-tc"></div>
+                    <div class="Block-bc"></div>
+                    <div class="Block-cl"></div>
+                    <div class="Block-cr"></div>
+                    <div class="Block-cc"></div>
+                    <div class="Block-body">
+                          <div class="BlockContent" style="background-color:#FFA">
+                        <div class="BlockContent-body">
+                              <div>
+                            <div class="msg_list">
+                                  <div class="msg_body">
+                                <div id="sidetreecontrol"><a href="?#"  style="color:#00F"><?php echo $metin[458]?></a> | <a href="?#"  style="color:#00F"><?php echo $metin[459]?></a> | <a  href="#"  style="color:#00F"><?php echo $metin[460]?></a></div>
+                                <?php echo dersAgaci(1)?> </div>
+                                </div>
+                          </div>
+                            </div>
+                      </div>
+                        </div>
+                  </div>
+                    </div>
+                <?php
+}
+?>
               </div>
-              <div class="cleared"></div>
-            </div>
+                  <div class="cleared"></div>
+                </div>
           </div>
-        </div>
+            </div>
         <div class="cleared"></div>
         <div class="Footer">
-          <div class="Footer-inner">
+              <div class="Footer-inner">
             <?php  						
 						 require "footer.php";
                         ?>
           </div>
-          <div class="Footer-background"></div>
-        </div>
+              <div class="Footer-background"></div>
+            </div>
       </div>
-    </div>
+        </div>
     <div class="cleared"></div>
   </div>
-</div>
+    </div>
 </div>
 <?php  						
  require "feedback.php"; 
