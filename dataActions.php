@@ -365,7 +365,7 @@ if ($totalRows_eoUsers>0)
 							echo "style=\"background-color: $row_color;\"";
 						?>><?php echo araKalin($row_eoUsers['otherInfo']); ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['dateTime']); ?></td>
-                        <td align="right" <?php echo "style=\"background-color: $row_color;\""?>><?php   echo $row_eoUsers['IP'];  ?></td>
+                        <td align="center" <?php echo "style=\"background-color: $row_color;\""?>><?php   echo "<a href='http://www.infosniper.net/index.php?map_source=1&two_maps=1&overview_map=1&lang=1&map_type=1&zoom_level=7&ip_address=".$row_eoUsers['IP']."' target='_blank'>".$row_eoUsers['IP']."</a>";  ?></td>
                         <td align="center" valign="middle" nowrap="nowrap"><a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>
                       </tr>

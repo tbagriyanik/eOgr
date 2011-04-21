@@ -121,8 +121,8 @@ div.menu {
 	background-image:none;
 	overflow-y:auto;
 	overflow-x:hidden;
-	opacity:0.7;
-	filter:alpha(opacity=70);
+	opacity:0.8;
+	filter:alpha(opacity=80);
 	text-align: left;
 	display: block;
 }
@@ -230,7 +230,7 @@ var loading = $("#loading");
         // on hovering out, ease the element out
         if ($(this).is(':animated')) {
             $(this).stop().animate({
-                opacity: 0.7
+                opacity: 0.8
             }, {
                 duration: hiz,
                 easing: "swing"
@@ -238,7 +238,7 @@ var loading = $("#loading");
         } else {
             // ease out slowly
             $(this).stop(':animated').animate({
-                opacity: 0.7
+                opacity: 0.8
             }, {
                 duration: hiz,
                 easing: "swing"

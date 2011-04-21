@@ -3812,7 +3812,7 @@ function dersAgaci($gelen=null){
 								if(@mysql_num_rows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_num_rows($sinifAdlari)){		   
 						   ?>
-					<li style="color:#C0F">
+					<li style="color:#C0F" class="open">
                     <span>
 					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> </span>
 						<?php
