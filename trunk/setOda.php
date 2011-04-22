@@ -19,7 +19,7 @@ Lesser General Public License for more details.
 if (md5($_SERVER['HTTP_USER_AGENT']) == $_SESSION['aThing']) {
 	$_SESSION["oda"]= $_POST['oda'];
 	if(isset($_POST['oda']))
-		echo iconv( "ISO-8859-9","UTF-8", "Oda degistirildi&#8230;");
+		echo iconv( "ISO-8859-9","UTF-8", "Oda degistirildi...");
 		else
 		echo "";
 }

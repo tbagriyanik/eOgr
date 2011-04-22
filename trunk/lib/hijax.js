@@ -131,7 +131,7 @@ function rateIt() {
 
  var displayLoading = function(element) {
   var image = document.createElement("img");
-  image.setAttribute("alt","loading&#8230;");
+  image.setAttribute("alt","loading...");
   image.setAttribute("src","img/loadingRect2.gif");
   image.className = "loading";
   element.appendChild(image);

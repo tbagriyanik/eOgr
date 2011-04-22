@@ -1595,7 +1595,7 @@ if($seciliSekme=="0") {
   ?>
                       <tr>
                         <td align="right"   <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
-                        <td  <?php echo "style=\"background-color: $row_color;\""?>><?php echo (strlen(strip_tags(html_entity_decode(mysql_result($result, $i, "anaMetin"))))>50)?substr(strip_tags(html_entity_decode(mysql_result($result, $i, "anaMetin"))),0,50)."&#8230;":strip_tags(html_entity_decode(mysql_result($result, $i, "anaMetin")));?></td>
+                        <td  <?php echo "style=\"background-color: $row_color;\""?>><?php echo (strlen(strip_tags(html_entity_decode(mysql_result($result, $i, "anaMetin"))))>50)?substr(strip_tags(html_entity_decode(mysql_result($result, $i, "anaMetin"))),0,50)."...":strip_tags(html_entity_decode(mysql_result($result, $i, "anaMetin")));?></td>
                         <td width="60" align="center" valign="middle" ><a href="<?php echo $currentPage;?>?tab=4&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=4&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
