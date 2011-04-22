@@ -3542,7 +3542,7 @@ function sayfaGetir($konuID, $sayfaNo)
 	if(@mysql_result($result1,0,"id")!="")
 		$msg = html_entity_decode(@mysql_result($result1,$sayfaNo,"anaMetin"));
 	}else	
-		$msg = "<font id='uyari'>Bir konu se&ccedil;iniz&#8230;</font>";			 
+		$msg = "<font id='uyari'>Bir konu se&ccedil;iniz...</font>";			 
    
    @mysql_free_result($result1);
 	return $msg;
@@ -3651,7 +3651,7 @@ smartShort:
 ... noktalarýnýn eklenmesi
 */
 function smartShort($gelen,$boyut=20){
-	return (strlen($gelen)>$boyut)?substr($gelen,0,$boyut-3)."&#8230;":$gelen;
+	return (strlen($gelen)>$boyut)?substr($gelen,0,$boyut-3)."...":$gelen;
 }
 /*
 getDersIDileSinif:

@@ -93,7 +93,7 @@ ob_start (); // Buffer output
     })
 	
 	$(document).ready(function(){
-		$(".msg_body").hide();
+		//$(".msg_body").hide();
 		$(".msg_head").click(function(){
 			$(this).next(".msg_body").slideToggle(200);
 		});

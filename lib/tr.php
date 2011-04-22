@@ -203,11 +203,11 @@ Lesser General Public License for more details.
 		$metin[159]="G&uuml;m&uuml;&#351; Modern";
 		$metin[160]="Koyu Turuncu";
 		$metin[161]="A&ccedil;&#305;k Ye&#351;il";
-		$metin[162]="Devam&#305;&#8230;";
+		$metin[162]="Devam&#305;...";
 
 		$metin[163]="Parola e&#351;le&#351;medi!";
 		
-		$metin[164]="<p><em>&Uuml;cretsiz, kolay ve basit öðrenme&#8230;</em></p>
+		$metin[164]="<p><em>&Uuml;cretsiz, kolay ve basit öðrenme...</em></p>
 ";
 				  
 		$metin[165]=" <p>Varsayýlan olarak <strong>&quot;&ouml;ðrenci&quot;</strong> t&uuml;r&uuml;nde baþvurabilirsiniz. Bir y&ouml;netici ile iletiþime ge&ccedil;erek &quot;&ouml;ðretmen&quot; veya &quot;y&ouml;netici&quot; olabilirsiniz.</p><ul>         <li>&Uuml;ye olarak <strong>istenmeyen</strong> kullanýcýlar, y&ouml;netici tarafýndan pasif hale getirilebilirler veya tekrar aktif kullanýma a&ccedil;ýlabilir.</li>                  <li><strong>Birden fazla</strong> &uuml;yelik baþvurularýnda, y&ouml;neticiler fazla olan &uuml;yelikleri silebilir.</li>                    <li>Kullanýcý adý ve parola <strong>ayný</strong> olamaz.</li>                    <li>Parola 12345678 gibi sýralý veya <strong>tekrarlanan</strong> deðerler olamaz.</li><li>Bu form sadece <strong>bir kere</strong> doldurulabilir. Hata oluþtuðunda ana sayfaya dönünüz.</li>                  </ul>";
@@ -222,15 +222,15 @@ Lesser General Public License for more details.
 		$metin[173]="D&uuml;zenlenme Tarihi";
 		$metin[174]="D&uuml;zenleyen";
 		$metin[175]="Konu Adý";
-		$metin[176]="Bir konu se&ccedil;iniz&#8230;";
+		$metin[176]="Bir konu se&ccedil;iniz...";
 		$metin[177]="Konu adý ile arama yapabilirsiniz";
 		$metin[178]="ilerlediniz";
 		$metin[179]="Kilitlidir";
 		$metin[180]="&Ccedil;alýþma zamaný ge&ccedil;miþtir";
 		$metin[181]="Kayýtlý kullanýcýlar g&ouml;rebilir";
-		$metin[182]="Se&ccedil;tiðiniz konu <u>yapým aþamasý</u>ndadýr&#8230;";
-		$metin[183]="Se&ccedil;tiðiniz konu bulunamadý&#8230;";
-		$metin[184]="Bilinmeyen bir <u>hata</u> oluþtu&#8230;";
+		$metin[182]="Se&ccedil;tiðiniz konu <u>yapým aþamasý</u>ndadýr...";
+		$metin[183]="Se&ccedil;tiðiniz konu bulunamadý...";
+		$metin[184]="Bilinmeyen bir <u>hata</u> oluþtu...";
 
 		$metin[185]="Hareketler";
 		
@@ -263,7 +263,7 @@ Lesser General Public License for more details.
 		
 		$metin[207]="Sayfalarý &Ouml;nizleme";    	
 		
-		$metin[208]="konusunda &ccedil;alýþma hakkýnýzý bitirdiniz&#8230;"; 
+		$metin[208]="konusunda &ccedil;alýþma hakkýnýzý bitirdiniz..."; 
 		$metin[209]="Yapým Aþamasýnda";    	
 		
 		$metin[210]="Dahil Olduðunuz Sýnýflar"; 
@@ -690,7 +690,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[515] = "Dosya Yükleme";
 		$metin[516] = "Dosya";
 		$metin[517] = "Yükle";
-		$metin[518] = "Dosyanýz Yüklendi&#8230;";
+		$metin[518] = "Dosyanýz Yüklendi...";
 		$metin[519] = "Dosyanýz Yüklenirken Hata Oluþtu!";
 		$metin[520] = "Ýstenmeyen Dosya Gönderimi";
 		$metin[521] = "Varolan Bir Dosya Gönderimi";
@@ -703,7 +703,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[527] = "Site kapalýdýr, lütfen daha sonra tekrar deneyiniz!";
 		$metin[528] = "Site bakýmda";
 		$metin[529] = "Paylaþým klasörü yazýlabilir";
-		$metin[530] = "Dosya paylaþýmý kapalýdýr&#8230;";	
+		$metin[530] = "Dosya paylaþýmý kapalýdýr...";	
 		$metin[531] = "Site artýk açýk!";								
 		$metin[532] = "dizini fiziksel olarak <strong>okunabilirdir</strong>.";
 		$metin[533] = "dizini fiziksel olarak <strong>yazýlabilirdir</strong>.";
@@ -729,7 +729,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[551] = "Genel";
 		$metin[552] = "Basit";
 		$metin[553] = "Tam Ekran";
-		$metin[554] = "Özelleþtir&#8230;";
+		$metin[554] = "Özelleþtir...";
 		$metin[555] = "Aktivite Durumu";
 		
 		$metin[556] = "Görüntüle";
