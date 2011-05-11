@@ -4027,6 +4027,47 @@ function getKursTablo($dersID,$uID){
 	return "-";
 }
 /*
+lessonPageFix:
+&amp; &gt; simgeleri & ve < yapýlýr
+*/
+function lessonPageFix(){
+	global $yol1;	
+	$say=0;
+		
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&amp;','&')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&lt;','<')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&gt;','>')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&quot;','\"')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&apos;','`')"; 
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&#65533;','`')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&#8220;','\"')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&#8221;','\"')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&#8216;','`')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+    $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'&#8217','`')"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+	
+	return $say;
+}
+/*
 odaCevir:
 gelen numaraya göre oda ismini getirir
 */

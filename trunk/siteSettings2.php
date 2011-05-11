@@ -151,8 +151,10 @@ Lesser General Public License for more details.
                 <div class="Post-body">
                   <div class="Post-inner">
                     <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[156]?> </span> </h2>
-                    <div class="PostContent"> <span title="<?php echo $metin[111]?>"> <?php echo $metin[48]?> </span><br />
+                    <div class="PostContent"> 
+                      <span title="<?php echo $metin[111]?>"> <?php echo $metin[48]?> </span><br />
                       <span> <?php echo $metin[215]?> </span><br />
+                      <span> <?php echo $metin[666]?> </span><br />
                       <?php
 	if ($tur=="2")	{
 	 //yönetici ise
@@ -203,8 +205,10 @@ Lesser General Public License for more details.
 						 
 			  }
 			
-			 if(isset($_GET["optim"]) && $_GET["optim"]=="1")
-			  {
+			 if(isset($_GET["fixLesson"]) && $_GET["fixLesson"]=="1")			  {
+				 printf("<font id='tamam'>$metin[667]</font>",lessonPageFix());				 
+			  }
+			 if(isset($_GET["optim"]) && $_GET["optim"]=="1")			  {
 						require("lib/SQL_Import.php");
 			
 						$host =  $_host;
@@ -248,7 +252,7 @@ Lesser General Public License for more details.
                       <br />
                       <form id="sqlimp" name="sqlimp" method="post" action="siteSettings2.php">
                         <label title="<?php echo "SQL Import"?>"> <?php echo $metin[157]?> :
-                          <textarea name="sqlAl" id="sqlAl"cols="85" rows="10"><?php echo (isset($sqlFile))?$sqlFile:""?>
+                          <textarea name="sqlAl" id="sqlAl"cols="55" rows="5"><?php echo (isset($sqlFile))?$sqlFile:""?>
 </textarea>
                         </label>
                         <input type="hidden" name="sqlial" value="sqlimp" />

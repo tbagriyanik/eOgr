@@ -848,4 +848,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 
 		$metin[665]	= "Required field";
 		
+        $metin[666] = "<input type='button' onclick='location.href = &quot;siteSettings2.php?fixLesson=1&quot;;' value=\"Click\"/> to fix the lesson pages view corruption";   
+		$metin[667] = "You have fixed %s error(s) successfully";
+		
 ?>
