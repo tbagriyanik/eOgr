@@ -860,4 +860,8 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[664] = "Klavye Kýsayolu : Enter tuþu";
 		
 		$metin[665]	= "Boþ geçilemez";
+		
+        $metin[666] = "Dersler düzgün görüntülenemiyor ise <input type='button' onclick='location.href = &quot;siteSettings2.php?fixLesson=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";   
+		$metin[667] = "%s hata baþarý ile tamir edildi";
+		
 ?>
