@@ -146,8 +146,6 @@ function delWithCon(deletepage_url,field_value,messagetext) {
                   <?php  
 	$currentPage = $_SERVER["PHP_SELF"];	
 
-//temizleWordHTML("");
-
 	if ($tur<=-1 || $tur>2) { 
 	  sessionDestroy();
 	  die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
@@ -246,17 +244,35 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 							
 					 }else
 				 if($seciliSekme=="4") {
-				        $anaMetin	=	trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
-				        $anaMetin	=	temizleWordHTML(trim(str_replace("|", "¦", $anaMetin))); //temizle PROBLEM!
-					    $datem	=	date("Y-n-j H:i:s");
-						$userID =  getUserID2($adi);
-				        $cevap		=temizleCubuk($_POST["cevap"]);
-				        $secenek1	=temizleCubuk($_POST["secenek1"]);
-				        $secenek2	=temizleCubuk($_POST["secenek2"]);
-				        $secenek3	=temizleCubuk($_POST["secenek3"]);
-				        $secenek4	=temizleCubuk($_POST["secenek4"]);
-				        $secenek5	=temizleCubuk($_POST["secenek5"]);
-				        $secenek6	=temizleCubuk($_POST["secenek6"]);
+				        $anaMetin	= trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
+				        $anaMetin	= temizleWordHTML(trim(str_replace("|", "¦", $anaMetin))); //temizle PROBLEM!
+						$anaMetin	= str_replace("&amp;", "&",$anaMetin);
+						$anaMetin	= str_replace("&lt;", "<",$anaMetin);
+						$anaMetin	= str_replace("&gt;", ">",$anaMetin);
+						$anaMetin	= str_replace("&quot;", "\"",$anaMetin);
+						$anaMetin	= str_replace("&apos;", "`",$anaMetin);
+						$anaMetin	= str_replace("&#65533;", "`",$anaMetin);
+						$anaMetin	= str_replace("&#8220;", "\"",$anaMetin);
+						$anaMetin	= str_replace("&#8221;", "\"",$anaMetin);
+						$anaMetin	= str_replace("&#8216;", "`",$anaMetin);
+						$anaMetin	= str_replace("—", "-",$anaMetin);
+						$anaMetin	= str_replace("–", "-",$anaMetin);
+						$anaMetin	= str_replace("‘", "`",$anaMetin);
+						$anaMetin	= str_replace("’", "`",$anaMetin);
+						$anaMetin	= str_replace("”", "\"",$anaMetin);
+						$anaMetin	= str_replace("“", "\"",$anaMetin);
+						$anaMetin	= str_replace("…", "...",$anaMetin);
+						$anaMetin	= str_replace("&#8230;", "...",$anaMetin);
+						$anaMetin	= str_replace("&#8217;", "`",$anaMetin);
+					    $datem		= date("Y-n-j H:i:s");
+						$userID 	= getUserID2($adi);
+				        $cevap		= temizleCubuk($_POST["cevap"]);
+				        $secenek1	= temizleCubuk($_POST["secenek1"]);
+				        $secenek2	= temizleCubuk($_POST["secenek2"]);
+				        $secenek3	= temizleCubuk($_POST["secenek3"]);
+				        $secenek4	= temizleCubuk($_POST["secenek4"]);
+				        $secenek5	= temizleCubuk($_POST["secenek5"]);
+				        $secenek6	= temizleCubuk($_POST["secenek6"]);
 				        $slideGecisSuresi	=temizleCubuk($_POST["slideGecisSuresi"]);
 				        $cevapSuresi		=temizleCubuk($_POST["cevapSuresi"]);
 				        $konuID		=temizleCubuk($_POST["konuID"]);
@@ -329,6 +345,24 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 						
 				        $anaMetin   = trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
 				        $anaMetin	= temizleWordHTML(trim(str_replace("|", "¦", $anaMetin))); //temizle PROBLEM!
+						$anaMetin	= str_replace("&amp;", "&",$anaMetin);
+						$anaMetin	= str_replace("&lt;", "<",$anaMetin);
+						$anaMetin	= str_replace("&gt;", ">",$anaMetin);
+						$anaMetin	= str_replace("&quot;", "\"",$anaMetin);
+						$anaMetin	= str_replace("&apos;", "`",$anaMetin);
+						$anaMetin	= str_replace("&#65533;", "`",$anaMetin);
+						$anaMetin	= str_replace("&#8220;", "\"",$anaMetin);
+						$anaMetin	= str_replace("&#8221;", "\"",$anaMetin);
+						$anaMetin	= str_replace("&#8216;", "`",$anaMetin);
+						$anaMetin	= str_replace("—", "-",$anaMetin);
+						$anaMetin	= str_replace("–", "-",$anaMetin);
+						$anaMetin	= str_replace("‘", "`",$anaMetin);
+						$anaMetin	= str_replace("’", "`",$anaMetin);
+						$anaMetin	= str_replace("”", "\"",$anaMetin);
+						$anaMetin	= str_replace("“", "\"",$anaMetin);
+						$anaMetin	= str_replace("…", "...",$anaMetin);
+						$anaMetin	= str_replace("&#8230;", "...",$anaMetin);
+						$anaMetin	= str_replace("&#8217;", "`",$anaMetin);						
 						if (!empty($anaMetin) && !empty($konuID))
 						   $sql="Insert into $tabloAdi 
 						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,secenek6,slideGecisSuresi,cevapSuresi)
