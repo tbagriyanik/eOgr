@@ -39,7 +39,8 @@ function badBrowser() {
 	var chrome = userAgent.indexOf('chrome');
 	if (chrome > -1) {
 		var snip1 = chrome+7;
-		var version = userAgent.substring(snip1, (snip1+1));
+		var version = userAgent.substring(snip1, (snip1+2));
+
 		if (version < 3) {
 			return true;
 			}

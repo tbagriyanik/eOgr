@@ -93,6 +93,31 @@ function temizle($metin)
     return $metin;
 }
 /*
+temizleOzel: metin giriþi, 
+özel temizlik (ders kaydetmede)
+*/
+function temizleOzel($metin)
+{
+	$metin	= str_replace("&amp;", "&",$metin);
+	$metin	= str_replace("&lt;", "<",$metin);
+	$metin	= str_replace("&gt;", ">",$metin);
+	$metin	= str_replace("&quot;", "\"",$metin);
+	$metin	= str_replace("&apos;", "`",$metin);
+	$metin	= str_replace("&#65533;", "`",$metin);
+	$metin	= str_replace("&#8220;", "\"",$metin);
+	$metin	= str_replace("&#8221;", "\"",$metin);
+	$metin	= str_replace("&#8216;", "`",$metin);
+	$metin	= str_replace("—", "-",$metin);
+	$metin	= str_replace("–", "-",$metin);
+	$metin	= str_replace("‘", "`",$metin);
+	$metin	= str_replace("’", "`",$metin);
+	$metin	= str_replace("”", "\"",$metin);
+	$metin	= str_replace("“", "\"",$metin);
+	$metin	= str_replace("…", "...",$metin);
+	$metin	= str_replace("&#8230;", "...",$metin);
+    return $metin;
+}
+/*
 browserdili: parametresiz, 
 aktif tarayýcýnýn dil ayarýný bulma
 */
@@ -221,10 +246,12 @@ function checkLoginLang($lgn,$lng,$src){
 	global $metin;
 	global $adi;
 	global $taraDili;
+	global $_defaultLang;
+
 	
 	if($lng){
   		   $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
-		   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
+		   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili=$_defaultLang;
 		   dilCevir($taraDili);		
 		}
 		
