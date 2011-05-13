@@ -27,8 +27,11 @@ $_uploadFolder	= "uploads";
 $_siteUnlockPwd	= "11111";							
 //when the site maintenance is engaged, this password is needed to REOPEN the site
 
-$_defaultTheme 	= "Simple";
-//what will be the default THEME...
+$_defaultTheme 	= "silverModern";
+//what will be the default THEME... simple, silverModern, darkOrange, lightGreen
+
+$_defaultLang 	= "TR";
+//what will be the default LANGUAGE... TR:turkish, EN:english
 
 $_filesToPlay	= array("flv","swf","mp3","avi","mp4","wmv","mov","rm","ra","rpm","ram","asf","mpg","mpeg","mkv","ogg","qt","wav","mid","pdf");
 //what FILE TYPES suitable to be played 
