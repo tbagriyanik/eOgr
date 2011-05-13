@@ -45,7 +45,7 @@ Lesser General Public License for more details.
 <script language="JavaScript" type="text/javascript" src="lib/dataFill.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" type="text/javascript" src="lib/jquery-1.5.1.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="lib/jquery.autocomplete.js"></script>
 <script language="JavaScript" type="text/javascript" >
   $(document).ready(function(){

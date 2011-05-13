@@ -36,7 +36,7 @@ $bilgi2 = "";$bilgi6 = "";$bilgi10 = "";
 $bilgi3 = "";$bilgi7 = "";$bilgi11 = "";
 $bilgi4 = "";$bilgi8 = "";$bilgi12 = "";
 ?>
-<script type="text/javascript" src="lib/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
