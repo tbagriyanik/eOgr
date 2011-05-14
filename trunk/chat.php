@@ -129,6 +129,7 @@ body, td, th {
     </div>
   </div>
 </div>
-<div style="margin-left:5px;"> <?php echo $metin[101]?> </div>
+<iframe id="basicEmbed" src="https://api.opentok.com/hl/embed/2emb0af315ea588d9bab3f43b69533e1bcb82713" width="350" height="340" style="border:none"></iframe>
+<div style="margin-left:5px;clear:both;"> <?php echo $metin[101]?> </div>
 </body>
 </html>

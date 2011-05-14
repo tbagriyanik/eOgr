@@ -28,7 +28,7 @@ if you wish to redesign the layout.
 */
 #box {
 width: 294px;
-height: 239px;
+height: 339px;
 background-color: transparent;
 background-image: url('../img/rounded_ie.gif');
 
@@ -38,7 +38,7 @@ background-image: url('../img/rounded_ie.gif');
 containing all other divs of the shoutbox layout */
 #chat {
 width: 282px;
-height: 227px;
+height: 327px;
 }
 
 /* Messages area div */
@@ -53,7 +53,7 @@ border-right:none;
 
 /* Scroll bar */
 #scrollArea {
-height: 153px;
+height: 253px;
 }
 
 /* Form div */
@@ -72,9 +72,20 @@ input#url {
 height:18px;
 }
 
+#form {
+	position: relative;
+	top: 264px;
+	left: 0px;
+	width: 280px;
+	height: 41px;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+}
+
+
 /*------ Start of the the shoutbox menu --------------------------------------*/
 #chat_menu {
-top:205px;
+top:305px;
 }
 
 /* Smileys panel */
