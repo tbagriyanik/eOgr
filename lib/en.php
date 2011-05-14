@@ -75,12 +75,12 @@ Lesser General Public License for more details.
 		
         $metin[50]="Message";         
         $metin[51]="Room";         
-        $metin[52]="Chat";         
+        $metin[52]="Live Lesson";         
         $metin[53]="";         
 		
         $metin[54]=" Main Page";         
         $metin[55]=" Lessons";         
-        $metin[56]=" Chat";         
+        $metin[56]=" Live Lesson";         
         $metin[57]=" My Profile";         
         $metin[58]=" Management";         
         $metin[59]=" Logout";         

@@ -75,12 +75,12 @@ Lesser General Public License for more details.
 		
         $metin[50]="Mesaj";         
         $metin[51]="Oda";         
-        $metin[52]="Sohbet";         
+        $metin[52]="Canlý Ders";         
         $metin[53]="";         
 		
         $metin[54]=" Ana Sayfa";         
         $metin[55]=" Dersler";         
-        $metin[56]=" Sohbet";         
+        $metin[56]=" Canlý Ders";         
         $metin[57]=" Bilgilerim";         
         $metin[58]=" Y&ouml;netim";         
         $metin[59]=" Çýkýþ";         
@@ -422,7 +422,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[302]="En Fazla Çalýþmalar";
 		
 		$metin[303]="<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Ana sayfa</a> için diðer genel seçenekler ";		
-		$metin[304]="Sohbet";
+		$metin[304]="Canlý Ders";
 		$metin[305]="Haberler";
 		$metin[306]="Son kullanýcý çalýþmalarý, son güncellenen konular";
 		$metin[307]="Ping Resmi";
