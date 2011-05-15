@@ -130,7 +130,7 @@ Lesser General Public License for more details.
 		$metin[98]="Classroom ";    
 		$metin[99]="Refresh";    
 		$metin[100]="Send";    
-		$metin[101]="<p>Users are <strong>responsible</strong> for their conversation.</p><p><strong>Administrator</strong> can delete or edit some words.</p>";    
+		$metin[101]="<p>Users are <strong>responsible</strong> for their conversation.</p>";    
 		
 		$metin[102]="Delete";    
 		$metin[103]="Edit";    

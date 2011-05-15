@@ -264,7 +264,7 @@ $().ready(function() {
                         ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php // echo dersAgaci()?> </li>
   <?php
   if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
-	echo ("<li><a href=\"#\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=915,height=435,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=no,scrollbars=0,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");
+	echo ("<li><a href=\"#\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=1000,height=450,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=yes,scrollbars=yes,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");
   }
 ?>
   <li><a href="userSettings.php"
