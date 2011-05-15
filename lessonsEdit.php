@@ -37,8 +37,6 @@ Lesser General Public License for more details.
 <script type="text/javascript" src="lib/flashMode.js"></script>
 <script language="JavaScript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -165,13 +163,14 @@ function temizleCubuk($gelen){
 
 if ($seciliSekme=="") $seciliSekme=3; //varsayýlan konudur
 
-if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_array($seciliSekme ,array("0","1","2","3","4")))
+if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_array($seciliSekme ,array("0","1","2","3","4","5")))
  {
 	 if($seciliSekme=="0") $tabloAdi="eo_1okul"; 	else
 	 if($seciliSekme=="1") $tabloAdi="eo_2sinif"; 	else
 	 if($seciliSekme=="2") $tabloAdi="eo_3ders"; 	else
 	 if($seciliSekme=="3") $tabloAdi="eo_4konu"; 	else 	 
-	 if($seciliSekme=="4") $tabloAdi="eo_5sayfa";  	 
+	 if($seciliSekme=="4") $tabloAdi="eo_5sayfa";   else	 
+	 if($seciliSekme=="5") $tabloAdi="eo_livelesson";  	 
 	 
 	 if(isset($_GET["id"])) $seciliKayit=temizle($_GET["id"]); else $seciliKayit=-1;
 	 if(isset($_POST["id"])) $seciliKayit= temizle($_POST["id"]);
@@ -187,6 +186,8 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 	   $islemi = "konu";
 	elseif($seciliSekme=="4")  
 	   $islemi = "sayfa";
+	elseif($seciliSekme=="5")  
+	   $islemi = "canliders";
 	
 	if($_GET["islem"]=="S") 
 	   $islemi .= ", Delete";
@@ -269,8 +270,21 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 									eklenmeTarihi='$datem', ekleyenID='$userID',
  								    slideGecisSuresi='$slideGecisSuresi', cevapSuresi='$cevapSuresi'
 									where id=$seciliKayit";
-					 } 	 
-					 
+					 }else
+				 if($seciliSekme=="5") {
+				        $dersID		= temizleCubuk($_POST["dersAdlari"]);
+				        $userID		= temizleCubuk($_POST["kullaniciAdlari"]);
+				        $sure		= temizleCubuk($_POST["dersSuresi"]);
+				        $etkinlikT	= date("Y-m-d H:i",strtotime(temizleCubuk($_POST["tarihEtkinlik"])));
+				        $notlar		= temizleCubuk($_POST["notlar"]);
+						if (!empty($dersID) && !empty($userID) && !empty($sure) && !empty($etkinlikT))
+   							$sql="Update $tabloAdi set 
+									dersID='$dersID', userID = '$userID',
+									length='$sure', dateWhen = '$etkinlikT',
+									yontem='$notlar' 								    
+									where id=$seciliKayit";
+				 }
+					
 	            $result = mysql_query($sql, $yol);
 				if($result) 
 				   echo "<font id='tamam'>$metin[536]</font>";
@@ -337,6 +351,18 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 									,'$secenek4','$secenek5','$secenek6'
 									,'$slideGecisSuresi','$cevapSuresi'							  
 									)";
+					 }else
+				 if($seciliSekme=="5") {
+				        $dersID		= temizleCubuk($_POST["dersAdlari"]);
+				        $userID		= temizleCubuk($_POST["kullaniciAdlari"]);
+				        $sure		= temizleCubuk($_POST["dersSuresi"]);
+				        $etkinlikT	= date("Y-m-d H:i",strtotime(temizleCubuk($_POST["tarihEtkinlik"])));
+				        $notlar		= temizleCubuk($_POST["notlar"]);
+						if (!empty($dersID) && !empty($userID) && !empty($sure) && !empty($etkinlikT))
+   							$sql="INSERT INTO $tabloAdi 
+									(dersID, userID, length, dateWhen, yontem) 								    
+									VALUES
+									('$dersID', '$userID', '$sure', '$etkinlikT','$notlar')";
 					 } 	 
 	            $result = mysql_query($sql, $yol);
 				if($result) 
@@ -380,6 +406,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
                     <li class="LinkYan<?php echo ($seciliSekme=="1")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=1" title="<?php echo $metin[353];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit" /> <?php echo $metin[297];?></a></li>
                     <li class="LinkYan<?php echo ($seciliSekme=="2")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=2" title="<?php echo $metin[354];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit" /> <?php echo $metin[298];?></a></li>
                     <li class="LinkYan<?php echo ($seciliSekme=="3" or $seciliSekme=="4")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=3"  title="<?php echo $metin[355];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit"/> <?php echo $metin[299];?></a></li>
+                    <li class="LinkYan<?php echo ($seciliSekme=="5" or $seciliSekme=="5")?"Aktif":"";?>"><a href="lessonsEdit.php?tab=5"  title="<?php echo $metin[52];?>"><img src="img/bullet.png" border="0" style="vertical-align: text-bottom;" alt="edit"/> <?php echo $metin[52];?></a></li>
                   </ol>
                   <div style="clear:both"></div>
                   <?php
@@ -1816,16 +1843,327 @@ bkLib.onDomLoaded(function() {
 	  }
 ?>
                   </div>
-                  <?php	 
+                  <!-- ***********************************SAYFA bitti CANLI DERS ba&#351;lad&#305;**************-->
+                  <?php
+		} else
+	 if($seciliSekme=="5") 	{	
+?>
+                  <div id="TabbedPanelsContent">
+                    <?php
+   if($_GET["upd"]!=1) {
+
+	   $sirAlan=temizle($_GET["sirAlan"]);
+	   if($sirAlan=="") $sirAlan="dateWhen";
+	   
+	   $siraYap=temizle($_GET["siraYap"]);
+
+	   $filtreleme2=temizle((isset($_POST["filtreleme2"]))?$_POST["filtreleme2"]:"");
+	   if(isset($_POST["filtreleme2"]) and empty($_POST["filtreleme2"]))
+	     $filtreleme2 = "_";
+		 
+	   if($filtreleme2!="") 
+	     $_SESSION["filtreleme2"]=$filtreleme2;
+		 else
+		 $filtreleme2=temizle((isset($_SESSION["filtreleme2"]))?$_SESSION["filtreleme2"]:"");
+		 
+		if($filtreleme2!="") 
+		  $araFilter = " dersAdi like '%$filtreleme2%' ";
+		  else
+		  $araFilter = " 1=1 ";
+	   
+		$siraYonu="ASC";
+		if (empty($_SESSION["siraYonu5"])) {  
+				$_SESSION["siraYonu5"]=$siraYonu;
+			} else {
+				if ($_GET['siraYap']=="OK"){
+					$siraYonu=($_SESSION["siraYonu6"]=="desc")?"asc":"desc";
+					$_SESSION["siraYonu6"]=$siraYonu;
+					}
+					else
+					$siraYonu=(isset($_SESSION["siraYonu6"]))?$_SESSION["siraYonu6"]:"";
+			}
+			
+		if ($sirAlan != "" && in_array($sirAlan, array("id","dersAdi","userAdi","dateWhen")))
+			   $filtr=" $araFilter order by $sirAlan $siraYonu";
+		   else {
+			   $sirAlan="sinifAdi";
+			   $filtr=" $araFilter order by dateWhen";
+		   }
+		   
+	$sayfaNo = 0;
+	if (isset($_GET['sayfaNo'])) {
+	  $sayfaNo = $_GET['sayfaNo'];
+	}
+	$startRow1 = $sayfaNo * $blokBuyuklugu;
+
+?>
+                    <table border="0" cellpadding="3" cellspacing="0" align="center">
+                      <tr>
+                        <th width="60" nowrap="nowrap"><?php if ($sirAlan=="id") {?>
+                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="id")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
+                          <?php } ?>
+                          <a href="lessonsEdit.php?sirAlan=id&amp;tab=5&amp;siraYap=OK"><?php echo $metin[26]?></a></th>
+                        <th nowrap="nowrap"><?php if ($sirAlan=="dersAdi") {?>
+                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="dersAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
+                          <?php } ?>
+                          <a href="lessonsEdit.php?sirAlan=dersAdi&amp;tab=5&amp;siraYap=OK"><?php echo $metin[363] ?></a></th>
+                        <th  nowrap="nowrap"><?php if ($sirAlan=="userAdi") {?>
+                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="userAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
+                          <?php } ?>
+                          <a href="lessonsEdit.php?sirAlan=userAdi&amp;tab=5&amp;siraYap=OK"><?php echo $metin[17] ?></a></th>
+                        <th  nowrap="nowrap"><?php if ($sirAlan=="dateWhen") {?>
+                          <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="dateWhen")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
+                          <?php } ?>
+                          <a href="lessonsEdit.php?sirAlan=dateWhen&amp;tab=5&amp;siraYap=OK"><?php echo $metin[129] ?></a></th>
+                      </tr>
+                      <?php
+			$limitleme = sprintf("LIMIT %d, %d", $startRow1, $blokBuyuklugu);				 
+     		$sql = "SELECT eo_livelesson.id as id, eo_users.id as userID, eo_3ders.dersAdi as dersAdi, eo_users.userName as userAdi, dateWhen 
+			FROM eo_livelesson 
+			left outer join eo_3ders on eo_3ders.id=eo_livelesson.dersID
+			left outer join eo_users on eo_users.id=eo_livelesson.userID 
+			where $filtr $limitleme";
+
+			$result = mysql_query($sql, $yol);		
+			if($result){
+				$caDerSor = mysql_query("SELECT eo_livelesson.id as id, eo_3ders.dersAdi as dersAdi
+			FROM eo_livelesson 
+			left outer join eo_3ders on eo_3ders.id=eo_livelesson.dersID
+			left outer join eo_users on eo_users.id=eo_livelesson.userID 
+			where $araFilter", $yol);				
+				$kayitSayisi = mysql_num_rows($caDerSor);			
+				$sayfaSayisi = ceil($kayitSayisi/$blokBuyuklugu)-1;
+			}else{
+				$kayitSayisi = 0;$sayfaSayisi = 0;
+			}
+			
+	if (@mysql_num_rows($result)==0)
+	 {
+		 echo "<tr><td colspan='4'><font id='hata'>Kay&#305;t yok veya arama sonu&ccedil;suz kald&#305;!</font></td></tr>";
 	 }
-	 else 
+	 else {
+            $i = 0; $satirRenk=0;
+            while ($i < @mysql_numrows($result))
+            {
+ 
+    	$satirRenk++;
+        if ($satirRenk & 1) { 
+            $row_color = "#CCC"; 
+        } else { 
+            $row_color = "#ddd"; 
+        }
+  
+  ?>
+                      <tr>
+                        <td align="right"  <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "id")?></td>
+                        <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo mysql_result($result, $i, "dersAdi")?></td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?>><a href="profil.php?kim=<?php echo mysql_result($result, $i, "userID")?>" rel="facebox"><?php echo (mysql_result($result, $i, "userAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "userAdi"))?></a></td>
+                        <td <?php echo "style=\"background-color: $row_color;\""?>><?php echo date("d-m-Y H:i",strtotime(mysql_result($result, $i, "dateWhen")))?></td>
+                        <td width="60" align="center" valign="middle"><a href="<?php echo $currentPage;?>?tab=5&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=5&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
+                      </tr>
+                      <?php
+  				 $i++;
+			}
+	 }
+  ?>
+                    </table>
+                    <?php
+	if($kayitSayisi>$blokBuyuklugu){
+?>
+                    <table  width="100" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCCCC">
+                      <tr>
+                        <td align="center"><a href="<?php printf("lessonsEdit.php?sayfaNo=%d&amp;tab=5&amp;sirAlan=$sirAlan", 0); ?>"><img src="img/page-first.gif" border="0" alt="first" /></a></td>
+                        <td align="center"><a href="<?php printf("lessonsEdit.php?sayfaNo=%d&amp;tab=5&amp;sirAlan=$sirAlan", max(0, $sayfaNo - 1)); ?>"><img src="img/page-prev.gif" border="0" alt="prev" /></a></td>
+                        <td align="center"><a href="<?php printf("lessonsEdit.php?sayfaNo=%d&amp;tab=5&amp;sirAlan=$sirAlan", min($sayfaSayisi, $sayfaNo + 1)); ?>"> <img src="img/page-next.gif" border="0"  alt="next"/></a></td>
+                        <td align="center"><a href="<?php printf("lessonsEdit.php?sayfaNo=%d&amp;tab=5&amp;sirAlan=$sirAlan", $sayfaSayisi); ?>"><img src="img/page-last.gif" border="0"  alt="last"/></a></td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" align="center"><?php echo min($startRow1 + $blokBuyuklugu, $kayitSayisi) ?> / <?php echo $kayitSayisi ?></td>
+                      </tr>
+                    </table>
+                    <form action="lessonsEdit.php?tab=5" method="post" name="sayfalamaAdeti" id="sayfalamaAdeti">
+                      <?php echo $metin[110];?> : &nbsp;
+                      <select name="blokSayi">
+                        <option value="5" <?php echo ($blokBuyuklugu=="5")?"selected=\"selected\"":""?>>5</option>
+                        <option value="10" <?php echo ($blokBuyuklugu=="10")?"selected=\"selected\"":""?>>10</option>
+                        <option value="15" <?php echo ($blokBuyuklugu=="15")?"selected=\"selected\"":""?>>15</option>
+                        <option value="20" <?php echo ($blokBuyuklugu=="20")?"selected=\"selected\"":""?>>20</option>
+                      </select>
+                      &nbsp;
+                      <input name="Tamam" type="submit" value="<?php echo $metin[30]?>" />
+                    </form>
+                    <?php
+   }
+?>
+                    <br />
+                    <form action="lessonsEdit.php?tab=5" method="post" name="araFiltrele2" id="araFiltrele2">
+                      <?php echo $metin[29] ?> :
+                      <input type="text" maxlength="50" size="32" name="filtreleme2" value="<?php echo ($filtreleme2!="_")?$filtreleme2:""?>" title="<?php echo $metin[358] ?>" />
+                      <input name="ara" type="image" id="ara" src="img/view.png" alt="Ara"  style="vertical-align: middle;"/>
+                    </form>
+                    <br />
+                    <form action="lessonsEdit.php?tab=5&amp;islem=E" method="post" name="canlidersEkle" id="canlidersEkle">
+                      <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
+                        <tr>
+                          <th colspan="2"><?php echo "$metin[52] $metin[360]"?></th>
+                        </tr>
+                        <tr>
+                          <td align="right"><label for="dersAdlari"><?php echo $metin[363] ?> : </label></td>
+                          <td><div>
+                              <select name="dersAdlari" id="dersAdlari">
+                                <option value=""><?php echo $metin[106] ?></option>
+                                <?php
+	   $sqlSinif1 = "select id,dersAdi from eo_3ders order by dersAdi " ;
+	   $resultSinif1 = mysql_query($sqlSinif1, $yol);
+            $i = 0;
+            while ($i < @mysql_numrows($resultSinif1))
+            {
+	?>
+                                <option value="<?php echo mysql_result($resultSinif1, $i, "id")?>"> <?php echo (mysql_result($resultSinif1, $i, "dersAdi"))?></option>
+                                <?php			
+	 			$i++;
+			}
+     ?>
+                              </select>
+                            </div></td>
+                        </tr>
+                        <tr>
+                          <td align="right"><label for="kullaniciAdlari"><?php echo $metin[17]; ?> : </label></td>
+                          <td><div>
+                              <select name="kullaniciAdlari" id="kullaniciAdlari">
+                                <option value=""><?php echo $metin[106] ?></option>
+                                <?php
+	   $sqlSinif1 = "select id, userName from eo_users where userType in ('1','2') order by userName " ;
+	   $resultSinif1 = mysql_query($sqlSinif1, $yol);
+	   
+            $i = 0;
+            while ($i < @mysql_numrows($resultSinif1))
+            {
+	?>
+                                <option value="<?php echo mysql_result($resultSinif1, $i, "id")?>" <?php echo (mysql_result($resultSinif1, $i, "id")==getUserID($_SESSION["usern"],$_SESSION["userp"]))?"selected='selected'":""?>> <?php echo mysql_result($resultSinif1, $i, "userName")?> </option>
+                                <?php			
+	 			$i++;
+			}
+     ?>
+                              </select>
+                            </div></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="dersSuresi"><?php echo $metin[668] ?> : </label></td>
+                          <td width="293"><input name="dersSuresi" type="text" id="dersSuresi" size="32" maxlength="50" value="40"/></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="tarihEtkinlik"><?php echo $metin[669] ?> : </label></td>
+                          <td width="293"><span id="tarihEtkinliki"><input name="tarihEtkinlik" type="text" id="tarihEtkinlik" size="32" maxlength="50" value="<?php echo date("d-m-Y H:i");?>" /><span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
+                            <tt><?php echo $metin[671]?></tt></span></span></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="notlar"><?php echo $metin[670] ?> : </label></td>
+                          <td width="293"><span id="notlari">
+                            <input name="notlar" type="text" id="notlar" size="32" maxlength="100" />
+                            <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
+                            <tt><?php echo $metin[120]?></tt></span></span></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center" class="tabloAlt"><label>
+                              <input type="submit" name="gonder6" id="gonder6" value="<?php echo $metin[360]?>" />
+                            </label></td>
+                        </tr>
+                      </table>
+                    </form>
+                    <?php		}else		//update mode
+        {
+
+		if(isset($_GET["id"])) $seciliKayit=temizle($_GET["id"]); else $seciliKayit=-1;
+	 	if (!is_numeric($seciliKayit))	$seciliKayit=-1;
+	 
+		  $sql2= "select * from eo_livelesson where id=$seciliKayit";
+		  $result2 = mysql_query($sql2, $yol);
+?>
+                    <form action="lessonsEdit.php?tab=5&amp;islem=G" method="post" name="dersGuncelle" id="dersGuncelle">
+                     <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
+                        <tr>
+                          <th colspan="2"><?php echo "$metin[672] ($seciliKayit $metin[356])"?></th>
+                        </tr>
+                        <tr>
+                          <td align="right"><label for="dersAdlari"><?php echo $metin[363] ?> : </label></td>
+                          <td><div>
+                              <select name="dersAdlari" id="dersAdlari">
+                                <option value=""><?php echo $metin[106] ?></option>
+                                <?php
+	   $sqlSinif1 = "select id,dersAdi from eo_3ders order by dersAdi " ;
+	   $resultSinif1 = mysql_query($sqlSinif1, $yol);
+            $i = 0;
+            while ($i < @mysql_numrows($resultSinif1))
+            {
+	?>
+                                <option value="<?php echo mysql_result($resultSinif1, $i, "id")?>" <?php echo (mysql_result($resultSinif1, $i, "id")==mysql_result($result2, 0, "dersID"))?"selected='selected'":"";?> > <?php echo (mysql_result($resultSinif1, $i, "dersAdi"))?></option>
+                                <?php			
+	 			$i++;
+			}
+     ?>
+                              </select>
+                            </div></td>
+                        </tr>
+                        <tr>
+                          <td align="right"><label for="kullaniciAdlari"><?php echo $metin[17]; ?> : </label></td>
+                          <td><div>
+                              <select name="kullaniciAdlari" id="kullaniciAdlari">
+                                <option value=""><?php echo $metin[106] ?></option>
+                                <?php
+	   $sqlSinif1 = "select id, userName from eo_users where userType in ('1','2') order by userName " ;
+	   $resultSinif1 = mysql_query($sqlSinif1, $yol);
+	   
+            $i = 0;
+            while ($i < @mysql_numrows($resultSinif1))
+            {
+	?>
+                                <option value="<?php echo mysql_result($resultSinif1, $i, "id")?>" <?php echo (mysql_result($resultSinif1, $i, "id")==mysql_result($result2, 0, "userID"))?"selected='selected'":""?>> <?php echo mysql_result($resultSinif1, $i, "userName")?> </option>
+                                <?php			
+	 			$i++;
+			}
+     ?>
+                              </select>
+                            </div></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="dersSuresi"><?php echo $metin[668] ?> : </label></td>
+                          <td width="293"><input name="dersSuresi" type="text" id="dersSuresi" size="32" maxlength="50" value="<?php echo mysql_result($result2, 0, "length")?>" /></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="tarihEtkinlik"><?php echo $metin[669] ?> : </label></td>
+                          <td width="293"><span id="tarihEtkinliki"><input name="tarihEtkinlik" type="text" id="tarihEtkinlik" size="32" maxlength="50" value="<?php echo date("d-m-Y H:i",strtotime(mysql_result($result2, 0, "dateWhen")))?>"  /><span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
+                            <tt><?php echo $metin[671]?></tt></span></span></td>
+                        </tr>
+                        <tr>
+                          <td width="87" align="right"><label for="notlar"><?php echo $metin[670] ?> : </label></td>
+                          <td width="293"><span id="notlari">
+                            <input name="notlar" type="text" id="notlar" size="32" maxlength="100" value="<?php echo mysql_result($result2, 0, "yontem")?>"  />
+                            <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
+                            <tt><?php echo $metin[120]?></tt></span></span></td>
+                        </tr>
+                       <tr>
+                          <td colspan="2" align="center" class="tabloAlt"><label>
+                              <input name="id" type="hidden" value="<?php echo mysql_result($result2, 0, "id")?>" />
+                              <input type="submit" name="gonder22" id="gonder22" value="<?php echo $metin[361]?>" />
+                              &nbsp;
+                              <input type="button" name="gonderme2" id="gonderme2"  onclick="location.href = &quot;lessonsEdit.php?tab=5&quot;;" value="<?php echo $metin[28]?>" />
+                            </label></td>
+                        </tr>
+                      </table> 
+                    </form>
+                    <?php	
+		}
+	  }else 
 	 echo "<font id='uyari'>Düzenlenecek i&#351;lemi <?php echo $metin[106] ?>.<br/> Sayfa düzenlemek i&ccedil;in &ouml;nce bir konu (kimlik s&uuml;tununa t&#305;klatarak) <?php echo $metin[106] ?>. </font> ";
 ?>
-                  <!-- ************************************************bitti!*********************************************************************--> 
+                  </div>
+                  
+                  <!-- ************************************************hepsi bitti!********************************--> 
                 </div>
                 <div class="cleared"></div>
               </div>
-             </div>
+            </div>
           </div>
           <?php
 	if ($seciliSekme==4 && $seciliKonu>0){
