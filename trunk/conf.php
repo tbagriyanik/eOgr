@@ -5088,6 +5088,90 @@ function is_ajax()
 	strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
 }
 /*
+suAndaDersVarMi:
+canli ders için kontrol
+*/
+function suAndaDersVarMi(){
+	global $yol1;
+	$lmt=1;//þimdiki 1 etkinlik
+	
+		$sql = "SELECT *,  TIMESTAMPDIFF(MINUTE, now(), DATE_ADD(dateWhen, INTERVAL length MINUTE)) as kalanlength FROM eo_livelesson
+		 WHERE 
+		 now() between dateWhen and
+		 DATE_ADD(dateWhen, INTERVAL length MINUTE)  		  
+		 order by dateWhen ASC
+		 LIMIT 0,$lmt";
+		$result = mysql_query($sql, $yol1);
+		$data = 0;
+		while($row = mysql_fetch_array($result)) {			
+			$data++;
+			$dersAdi = getUserName($row['userID']).", ".
+			getKonuAdi($row['dersID']). ", <font size=+1>".
+			$row["kalanlength"]."</font> dakikanýz kaldý. <strong>".$row["yontem"]."</strong>";
+		}
+		if($data==0)
+			return false;
+		else
+			return $dersAdi;		
+}
+/*
+yaklasanEtkinlikListesi:
+Gelecekteki canlý ders listesi
+*/
+function yaklasanEtkinlikListesi(){
+	global $yol1;
+	$lmt=3;//gelecek 3 etkinlik
+	
+		$sql = "SELECT *,DATE_FORMAT(dateWhen, '%d-%m-%Y %H:%i') as dt FROM eo_livelesson
+		 WHERE 
+		 (unix_timestamp(now()) - unix_timestamp(dateWhen) )/3600/24 <= 0 
+		 order by dateWhen ASC
+		 LIMIT 0,$lmt";
+		$result = mysql_query($sql, $yol1);
+		$data = "";
+		while($row = mysql_fetch_assoc($result)) {			
+			$humanRelativeDate = new HumanRelativeDate();
+			$tarihi = $humanRelativeDate->getTextForSQLDate($row['dateWhen']);
+ 	      	$data .= "<li>".getUserName($row['userID']).", ".
+			getKonuAdi($row['dersID']). ", ".
+			$row["length"]." dakika <strong>".$row["yontem"]."</strong>".
+			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
+		}
+		if($data=="")
+			return "<li>Etkinlik yoktur...</li>";
+		else
+			return $data;		
+}
+/*
+tamamlanmisEtkinlikListesi:
+Geçmiþ canlý ders listesi
+*/
+function tamamlanmisEtkinlikListesi(){
+	global $yol1;
+	$lmt=3;//geçmiþ 3 etkinlik
+	
+		$sql = "SELECT *,DATE_FORMAT(dateWhen, '%d-%m-%Y %H:%i') as dt FROM eo_livelesson
+		 WHERE 
+		 (unix_timestamp(now()) - unix_timestamp(dateWhen) )/3600/24 > 0 
+		 order by dateWhen DESC
+		 LIMIT 0,$lmt";
+		$result = mysql_query($sql, $yol1);
+		$data = "";
+		while($row = mysql_fetch_assoc($result)) {			
+			$humanRelativeDate = new HumanRelativeDate();
+			$tarihi = $humanRelativeDate->getTextForSQLDate($row['dateWhen']);
+ 	      	$data .= "<li>".getUserName($row['userID']).", ".
+			getKonuAdi($row['dersID']). ", ".
+			$row["length"]." dakika <strong>".$row["yontem"]."</strong>".
+			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
+		}
+		if($data=="")
+			return "<li>Etkinlik yoktur...</li>";
+		else
+			return $data;		
+}
+
+/*
 Genel olarak session kontrol edilmesi
 */
 //if (md5($_SERVER['HTTP_USER_AGENT']) != $_SESSION['aThing']) {   

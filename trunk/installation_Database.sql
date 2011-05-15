@@ -374,3 +374,12 @@ CREATE TABLE `eo_askanswerrate` (
 `cevapID` INT NOT NULL ,
 `degeri` INT NOT NULL 
 ) ENGINE = MYISAM ;
+
+CREATE TABLE  `eo_livelesson` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`dersID` INT NOT NULL ,
+`userID` INT NOT NULL ,
+`length` INT NOT NULL ,
+`dateWhen` DATETIME NOT NULL ,
+`yontem` VARCHAR( 100 ) NOT NULL
+) ENGINE = MYISAM ;

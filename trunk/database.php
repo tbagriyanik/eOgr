@@ -38,4 +38,7 @@ $_filesToPlay	= array("flv","swf","mp3","avi","mp4","wmv","mov","rm","ra","rpm",
 
 $_fileMaxUploadSize = 10;
 //if upload is enabled, the file size LIMIT in Mega Bytes
+
+$_videoChatURL = "https://api.opentok.com/hl/embed/2emb0af315ea588d9bab3f43b69533e1bcb82713";
+//get your free URL and moderator Password from http://www.tokbox.com/opentok/api
 ?>

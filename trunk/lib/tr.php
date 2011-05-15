@@ -131,7 +131,7 @@ Lesser General Public License for more details.
 		$metin[98]="S&#305;n&#305;f ";    
 		$metin[99]="Tazele";    
 		$metin[100]="G&ouml;nder";    
-		$metin[101]="<p>Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar <strong>sorumludurlar</strong>.</p><p><strong>Yönetici</strong> bazý kelimeleri silebilir veya düzenleyebilir.</p>";  
+		$metin[101]="<p>Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar <strong>sorumludurlar</strong>.</p>";  
 		
 		$metin[102]="Sil";    
 		$metin[103]="D&uuml;zenle";    
