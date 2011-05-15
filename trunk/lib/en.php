@@ -850,5 +850,11 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		
         $metin[666] = "<input type='button' onclick='location.href = &quot;siteSettings2.php?fixLesson=1&quot;;' value=\"Click\"/> to fix the lesson pages view corruption";   
 		$metin[667] = "You have fixed %s error(s) successfully";
+
+		$metin[668] = "Length (in minutes)";
+		$metin[669] = "Activity Date and Time";
+		$metin[670] = "Notes (obligations)";
+		$metin[671] = "Like 31-12-1970 14:00";
+		$metin[672] = "Live Lesson Update";
 		
 ?>

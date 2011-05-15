@@ -5106,7 +5106,7 @@ function suAndaDersVarMi(){
 		while($row = mysql_fetch_array($result)) {			
 			$data++;
 			$dersAdi = getUserName($row['userID']).", ".
-			getKonuAdi($row['dersID']). ", <font size=+1>".
+			getDersAdi($row['dersID']). ", <font size=+1>".
 			$row["kalanlength"]."</font> dakikanýz kaldý. <strong>".$row["yontem"]."</strong>";
 		}
 		if($data==0)
@@ -5133,7 +5133,7 @@ function yaklasanEtkinlikListesi(){
 			$humanRelativeDate = new HumanRelativeDate();
 			$tarihi = $humanRelativeDate->getTextForSQLDate($row['dateWhen']);
  	      	$data .= "<li>".getUserName($row['userID']).", ".
-			getKonuAdi($row['dersID']). ", ".
+			getDersAdi($row['dersID']). ", ".
 			$row["length"]." dakika <strong>".$row["yontem"]."</strong>".
 			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
 		}
@@ -5161,7 +5161,7 @@ function tamamlanmisEtkinlikListesi(){
 			$humanRelativeDate = new HumanRelativeDate();
 			$tarihi = $humanRelativeDate->getTextForSQLDate($row['dateWhen']);
  	      	$data .= "<li>".getUserName($row['userID']).", ".
-			getKonuAdi($row['dersID']). ", ".
+			getDersAdi($row['dersID']). ", ".
 			$row["length"]." dakika <strong>".$row["yontem"]."</strong>".
 			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
 		}
