@@ -164,7 +164,7 @@ echo $_videoChatURL;
 ?>
 </ol>
 <h3 style="color:#808080;">Tamamlanmýþ 3 Etkinlik : </h3>
-<font style="text-decoration:line-through; color:#808080;">
+<font style="color:#808080;">
 <ol class="ozelli">
 <?php
 	echo tamamlanmisEtkinlikListesi();

@@ -1009,7 +1009,52 @@ function yetimKayitNolar($tablo){
 				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[639]</label>";
 				}	
 								
-		break;								
+		break;	
+		 case "eo_livelesson":
+		 
+				$sql1 =    "SELECT eo_livelesson.id 
+							FROM eo_livelesson
+							LEFT OUTER JOIN eo_users ON eo_users.id  = eo_livelesson.userID
+							WHERE eo_users.userName is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{
+				   $sonuc2 = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_livelesson WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc = "<img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[230]"; 
+				   else 					 
+				   $sonuc = "<label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[235]</label>";
+				}	
+								
+				$sql1 =    "SELECT eo_livelesson.id 
+							FROM eo_livelesson
+							LEFT OUTER JOIN eo_3ders ON eo_3ders.id  = eo_livelesson.dersID
+							WHERE eo_3ders.id is NULL";
+				
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)	{
+				   $sonuc2 = "";	 
+				   while($row_gelen = mysql_fetch_assoc($result1))
+				    $sonuc2 .= $row_gelen['id'].", ";
+					
+	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
+				   	
+				   $silinecekler = "DELETE FROM eo_livelesson WHERE id IN ($sonuc2);"; 
+		
+				   if (empty($sonuc2)) 
+				   $sonuc .= " - <img src='img/tick_circle.png' border='0' style=\"vertical-align: middle;\" alt=\"ok\" /> $metin[220]"; 
+				   else 					 
+				   $sonuc .= " - <label onclick=\"document.sqlimp.sqlAl.value = '$silinecekler';\" ><img src='img/error.png' border='0' style=\"vertical-align: middle;\" alt=\"error\" /> $metin[233]</label>";
+				}					
+		   
+		 break;									
 	 }
 	@mysql_free_result($result1); 
 	return $sonuc;
