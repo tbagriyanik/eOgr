@@ -214,8 +214,8 @@ Lesser General Public License for more details.
 						$host =  $_host;
 						$dbUser =  $_username;
 						$dbPassword =  $_password;
-						$sqlFile = "REPAIR  TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files, eo_friends, eo_askanswer, eo_askanswerrate, eo_askquestion; 
-		OPTIMIZE TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files, eo_friends, eo_askanswer, eo_askanswerrate, eo_askquestion;";
+						$sqlFile = "REPAIR  TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files, eo_friends, eo_askanswer, eo_askanswerrate, eo_askquestion, eo_livelesson; 
+		OPTIMIZE TABLE eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_5sayfa, eo_floodprotection, eo_shoutbox, eo_sitesettings, eo_users, eo_sinifogre, eo_usertrack, eo_userworks, eo_webref_rss_details, eo_webref_rss_items,eo_comments,eo_rating, eo_files, eo_friends, eo_askanswer, eo_askanswerrate, eo_askquestion, eo_livelesson;";
 						
 						$baglan2=mysql_connect($host, $dbUser, $dbPassword);
 						
@@ -274,6 +274,7 @@ Lesser General Public License for more details.
                       <strong>eo_askquestion	<?php echo getTableSize("eo_askquestion"); ?> :</strong> <?php echo yetimKayitNolar("eo_askquestion")?><br />
                       <strong>eo_askanswer	<?php echo getTableSize("eo_askanswer"); ?> :</strong> <?php echo yetimKayitNolar("eo_askanswer")?><br />
                       <strong>eo_askanswerrate	<?php echo getTableSize("eo_askanswerrate"); ?> :</strong> <?php echo yetimKayitNolar("eo_askanswerrate")?><br />
+                      <strong>eo_livelesson	<?php echo getTableSize("eo_livelesson"); ?> :</strong> <?php echo yetimKayitNolar("eo_livelesson")?><br />
                       eo_users			<?php echo getTableSize("eo_users"); ?> - (<?php echo $metin[212]?>)<br />
                       eo_shoutbox		<?php echo getTableSize("eo_shoutbox"); ?> - (<?php echo $metin[212].", ".$metin[238]; ?>)<br />
                       eo_usertrack		<?php echo getTableSize("eo_usertrack"); ?> - (<?php echo $metin[212].", ".$metin[238];?>)<br />
