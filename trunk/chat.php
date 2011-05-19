@@ -45,15 +45,16 @@ Lesser General Public License for more details.
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/conf.js"></script>
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/ajax.js"></script>
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/drop_down.js"></script>
+
 <!-- 2. End Meta and links -->
 <style type="text/css">
 <!--
 body {
-	margin-left: 2px;
+	margin-left: 10px;
 	margin-top: 2px;
 	margin-right: 2px;
 	margin-bottom: 2px;
-	background-color: #FFF;
+	background-color: #FFC;
 }
 body, td, th {
 	font-family: Lucida Console, Monaco, monospace;
@@ -75,6 +76,15 @@ a {
 a:hover {
 	text-decoration:underline;
 }
+#whiteBoard {
+	float:right;
+	height: 340px;
+	width: 300px;
+	border: thin solid #CCC;
+}
+#defaultCountdown {
+	float:right;
+}
 -->
 </style>
 </head>
@@ -84,6 +94,19 @@ a:hover {
  if($dersVarMi!=false){
 	 echo "<h4>$dersVarMi</h4>";
 ?>
+<script language="javascript"  type="text/javascript" src="lib/jquery-1.6.1.min.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/jquery.countdown.js"></script> 
+<script type="text/javascript"> 
+$(function () {
+	var austDay;
+	austDay = (parseInt($('#zaman').text())+1)*60;
+	$('#defaultCountdown').countdown({until:austDay, compact: true, 
+    layout: '{hnn}{sep}{mnn}{sep}{snn}',
+	expiryUrl: 'chat.php'});
+});
+</script>
+
+<div id="zaman" style="display:none"><?php echo suAndaDersDakika();?></div>
 <div id="box">
   <div id="chat">
     <div id="scrollArea">
@@ -152,21 +175,22 @@ a:hover {
 </div>
 <iframe id="basicEmbed" src="<?php 
 echo $_videoChatURL;
-?>" width="350" height="340" style="border:none"></iframe>
+?>" width="350" height="340" style="border:1px solid #ccc;margin-left:5px;"></iframe>
+<div id="whiteBoard"></div>
 <div style="margin-left:5px;clear:both;"> <?php echo $metin[101]?> </div>
 <?php
  }else{
 ?>
 <h3>Yaklaþan Son 3 Etkinlik : </h3>
 <ol class="ozelli">
-<?php
+  <?php
 	echo yaklasanEtkinlikListesi();
 ?>
 </ol>
 <h3 style="color:#808080;">Tamamlanmýþ 3 Etkinlik : </h3>
 <font style="color:#808080;">
 <ol class="ozelli">
-<?php
+  <?php
 	echo tamamlanmisEtkinlikListesi();
 ?>
 </ol>

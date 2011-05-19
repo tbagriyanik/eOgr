@@ -856,5 +856,6 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[670] = "Notes (obligations)";
 		$metin[671] = "Like 31-12-1970 14:00";
 		$metin[672] = "Live Lesson Update";
+		$metin[673] = "Live Lesson Name";		
 		
 ?>
