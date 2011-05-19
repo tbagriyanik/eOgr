@@ -240,11 +240,6 @@ if(getGrafikRecordCount2()>5) {
 	echo "</div>";
 }
 ?>
-<br />
-                  <div class='tekKolon'>
-                  <h2><?php echo $metin[542]?></h2>
-                  <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="750" height="575" align="middle" marginheight="45" allowtransparency="false" style="background-color: white"></iframe>
-                  </div>
                 </div>
                 <div class="cleared"></div>
               </div>

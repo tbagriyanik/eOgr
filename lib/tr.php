@@ -869,4 +869,6 @@ Detaylar için <a href=\"INSTALL.html\">tıklatınız</a>.
 		$metin[670] = "Notlar (gereksinimler)";
 		$metin[671] = "31-12-1970 14:00 gibi";
 		$metin[672] = "Canlı Ders Güncelle";
+		$metin[673] = "Canlı Ders Adı";
+		
 ?>

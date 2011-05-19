@@ -370,7 +370,7 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
           </div>
         </div>
       </div>
-     
+     <div class="cleared"></div>
         <div class="Block">
           <div class="Block-tl"></div>
           <div class="Block-tr"></div>
@@ -437,7 +437,17 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
               </div>
             </div>
           </div>
-      
+          <?php
+		  if($tur!=-2){
+		  ?>
+<br />
+                  <div class='tekKolon'>
+                  <h2><?php echo $metin[542]?></h2>
+                  <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="750" height="575" align="middle" marginheight="45" allowtransparency="false" style="background-color: white"></iframe>
+                  </div>
+      <?php
+	  }
+	  ?>
         <div class="cleared"></div>
       </div>
     </div>

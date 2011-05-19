@@ -3325,6 +3325,17 @@ function buTarihtekiOlayListesi($gun,$ay,$yil){
 			$dersler .= "<a href='../../lessons.php?konu=".$say3[$i+1]."' target='_parent'>$say3[$i]</a> ";		
 		$sonuc .= "$liste $dersler</span>";		
 	}
+	
+	$say4 = buTarihtekiCanliDers($tarih2);
+	if($say4!=""){
+		$say4 = explode("|",$say4);
+		$liste = "<span class=\"desc\">$metin[673] : ";
+		$dersler = "";
+		for($i=0;$i<count($say4)-1;$i++)
+			$dersler .= $say4[$i]." ";		
+		$sonuc .= "$liste $dersler</span>";		
+	}
+	
 		
 	if ($sonuc=="") 
 	  return "";
@@ -3370,6 +3381,29 @@ function sonDersCalisma($tarih){
 		$ekle = "";
 		while($gelen = @mysql_fetch_array($result1)) {
 			$ekle .= $gelen["konuAdi"]."|".$gelen["id"]."|";
+			}
+		return $ekle;
+	}
+	return 0;
+}
+/*
+buTarihtekiCanliDers:
+takvime canlý ders ekleme
+*/
+function buTarihtekiCanliDers($tarih){	
+	global $yol1;
+	
+	$sql1	= 	"select eo_3ders.dersAdi 
+			from eo_3ders,eo_livelesson			 
+			where DATE_FORMAT(dateWhen, '%Y-%m-%d') = '$tarih'
+				and 
+				  eo_3ders.id=eo_livelesson.dersID	
+			";
+	$result1= 	@mysql_query($sql1,$yol1);
+	if($result1){
+		$ekle = "";
+		while($gelen = @mysql_fetch_array($result1)) {
+			$ekle .= $gelen["dersAdi"]."|";
 			}
 		return $ekle;
 	}
@@ -5151,11 +5185,35 @@ function suAndaDersVarMi(){
 		while($row = mysql_fetch_array($result)) {			
 			$data++;
 			$dersAdi = getUserName($row['userID']).", ".
-			getDersAdi($row['dersID']). ", <font size=+1>".
-			$row["kalanlength"]."</font> dakikanýz kaldý. <strong>".$row["yontem"]."</strong>";
+			getDersAdi($row['dersID']). ", <strong>".$row["yontem"]."</strong>";
 		}
 		if($data==0)
 			return false;
+		else
+			return $dersAdi." <div id=\"defaultCountdown\"></div>";		
+}
+/*
+suAndaDersDakika:
+canli ders için kontrol
+*/
+function suAndaDersDakika(){
+	global $yol1;
+	$lmt=1;//þimdiki 1 etkinlik
+	
+		$sql = "SELECT *,  TIMESTAMPDIFF(MINUTE, now(), DATE_ADD(dateWhen, INTERVAL length MINUTE)) as kalanlength FROM eo_livelesson
+		 WHERE 
+		 now() between dateWhen and
+		 DATE_ADD(dateWhen, INTERVAL length MINUTE)  		  
+		 order by dateWhen ASC
+		 LIMIT 0,$lmt";
+		$result = mysql_query($sql, $yol1);
+		$data = 0;
+		while($row = mysql_fetch_array($result)) {			
+			$data++;
+			$dersAdi = 	$row["kalanlength"];
+		}
+		if($data==0)
+			return 0;
 		else
 			return $dersAdi;		
 }
