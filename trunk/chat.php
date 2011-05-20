@@ -60,9 +60,10 @@ body, td, th {
 	font-family: Lucida Console, Monaco, monospace;
 	font-size: 11px;
 }
-h3 {
+h4 {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 14px;
+	margin:5px;
 }
 .ozelli {
 	font-family: Tahoma, Geneva, sans-serif;
@@ -77,13 +78,23 @@ a:hover {
 	text-decoration:underline;
 }
 #whiteBoard {
-	float:right;
+	float:left;
 	height: 340px;
 	width: 300px;
-	border: thin solid #CCC;
+	margin-left:5px;
+	padding:0;
+}
+#videoChat{
+	float:left;
+	height: 340px;
+	width: 300px;
+	margin-left:5px;
+	padding:0;
 }
 #defaultCountdown {
 	float:right;
+	font-family:"Courier New", Courier, monospace;
+	font-size:16px;
 }
 -->
 </style>
@@ -105,7 +116,6 @@ $(function () {
 	expiryUrl: 'chat.php'});
 });
 </script>
-
 <div id="zaman" style="display:none"><?php echo suAndaDersDakika();?></div>
 <div id="box">
   <div id="chat">
@@ -173,11 +183,15 @@ $(function () {
     </div>
   </div>
 </div>
-<iframe id="basicEmbed" src="<?php 
+<div id="videoChat">
+  <iframe id="basicEmbed" src="https://api.opentok.com/hl/embed/<?php 
 echo $_videoChatURL;
-?>" width="350" height="340" style="border:1px solid #ccc;margin-left:5px;"></iframe>
-<div id="whiteBoard"></div>
-<div style="margin-left:5px;clear:both;"> <?php echo $metin[101]?> </div>
+?>" width="300" height="340" frameborder="0"></iframe>
+</div>
+<div id="whiteBoard">
+  <object width="300" height="340"><param name="allowFullscreen" value="true" /><param name="wmode" value="transparent" /><param name="flashvars" value="room=<?php echo $_whiteBoardURL;?>" /><param name="movie" value="http://flockdraw.com/whiteboard.swf?18" /><embed src="http://flockdraw.com/whiteboard.swf?15" flashvars="room=<?php echo $_whiteBoardURL;?>" width="350" height="340" allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" /></object>
+</div>
+<div style="margin:5px;clear:both;"><?php echo $metin[101]?></div>
 <?php
  }else{
 ?>
@@ -197,12 +211,7 @@ echo $_videoChatURL;
 </font>
 <?php
  }
+ echo $metin[674];
 ?>
-<h3>Destek Programlarý : </h3>
-<ul class="ozelli">
-  <li><a href="http://explore.live.com/windows-live-messenger?os=other" target="_blank">Windows Live Messenger</a>, <a href="http://www.google.com/talk/" target="_blank">GTalk</a>, <a href="http://wwww.skype.com/" target="_blank">Skype</a> : Yazý, video ve ses baðlantý kurulmasý</li>
-  <li><a href="http://www.teamviewer.com/" target="_blank">Teamviewer</a>, <a href="http://www.oovoo.com" target="_blank">oovoo (6 katýlýmcý)</a>, <a href="http://www.mikogo.com/" target="_blank">Mikogo (10 katýlýmcý)</a> : Masa&uuml;st&uuml; paylaþýmý</li>
-  <li><a href="http://www.twiddla.com/" target="_blank">Twiddla</a>, <a href="http://www.scriblink.com/" target="_blank">scriblink (6 katýlýmcý)</a>, <a href="http://vyew.com" target="_blank">vyew (10 katýlýmcý)</a> : Beyaz tahta ve proje yönetimi</li>
-</ul>
 </body>
 </html>

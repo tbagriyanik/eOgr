@@ -131,7 +131,7 @@ Lesser General Public License for more details.
 		$metin[98]="S&#305;n&#305;f ";    
 		$metin[99]="Tazele";    
 		$metin[100]="G&ouml;nder";    
-		$metin[101]="<p>Sohbet i&ccedil;inde ge&ccedil;en istenmeyen c&uuml;mlelerden kullan&#305;c&#305;lar <strong>sorumludurlar</strong>.</p>";  
+		$metin[101]="<ul><li>Beyaz tahtanýn 'tam ekran' olarak çalýþmasý için sað üst köþedeki ok simgesine týklatýnýz.</li><li>Video sohbet ve beyaz tahtada isminizi belirleyip kullanabilirsiniz.</li><li>Geçici olarak video sohbet kapatýlmýþ olabilir.</li><li>Süre dolunca canlý ders otomatik olarak sona erer.</li></ul>";  
 		
 		$metin[102]="Sil";    
 		$metin[103]="D&uuml;zenle";    
@@ -870,5 +870,6 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[671] = "31-12-1970 14:00 gibi";
 		$metin[672] = "Canlý Ders Güncelle";
 		$metin[673] = "Canlý Ders Adý";
-		
+		$metin[674] = '<h4>Destek Programlarý : </h4><ul class="ozelli">  <li><a href="http://explore.live.com/windows-live-messenger?os=other" target="_blank">Windows Live Messenger</a>, <a href="http://www.google.com/talk/" target="_blank">GTalk</a>, <a href="http://wwww.skype.com/" target="_blank">Skype</a> : Yazý, video ve ses baðlantý kurulmasý</li>  <li><a href="http://www.teamviewer.com/" target="_blank">Teamviewer</a>, <a href="http://www.oovoo.com" target="_blank">oovoo (6 katýlýmcý)</a>, <a href="http://www.mikogo.com/" target="_blank">Mikogo (10 katýlýmcý)</a> : Masa&uuml;st&uuml; paylaþýmý</li>  <li><a href="http://www.twiddla.com/" target="_blank">Twiddla</a>, <a href="http://www.scriblink.com/" target="_blank">scriblink (6 katýlýmcý)</a>, <a href="http://vyew.com" target="_blank">vyew (10 katýlýmcý)</a> : Beyaz tahta ve proje yönetimi</li></ul>';	
+
 ?>

@@ -130,7 +130,7 @@ Lesser General Public License for more details.
 		$metin[98]="Classroom ";    
 		$metin[99]="Refresh";    
 		$metin[100]="Send";    
-		$metin[101]="<p>Users are <strong>responsible</strong> for their conversation.</p>";    
+		$metin[101]="<ul><li>Click the arrow at right corner of the white board for 'full screen'.</li><li>You can decide your name for the video chat and white board.</li><li>Video chat can be shut down temporarily.</li><li>Whenever the time is up, live lesson is closed automatically.</li></ul>";    
 		
 		$metin[102]="Delete";    
 		$metin[103]="Edit";    
@@ -857,5 +857,6 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[671] = "Like 31-12-1970 14:00";
 		$metin[672] = "Live Lesson Update";
 		$metin[673] = "Live Lesson Name";		
+		$metin[674] = '<h4>Supportive Softwares : </h4><ul class="ozelli"><li><a href="http://explore.live.com/windows-live-messenger?os=other" target="_blank">Windows Live Messenger</a>, <a href="http://www.google.com/talk/" target="_blank">GTalk</a>, <a href="http://wwww.skype.com/" target="_blank">Skype</a> : Chat, video and sound connection</li>  <li><a href="http://www.teamviewer.com/" target="_blank">Teamviewer</a>, <a href="http://www.oovoo.com" target="_blank">oovoo (6 participants)</a>, <a href="http://www.mikogo.com/" target="_blank">Mikogo (10 participants)</a> : Desktop sharing</li>  <li><a href="http://www.twiddla.com/" target="_blank">Twiddla</a>, <a href="http://www.scriblink.com/" target="_blank">scriblink (6 participants)</a>, <a href="http://vyew.com" target="_blank">vyew (10 participants)</a> : White board and project management</li></ul>';	
 		
 ?>
