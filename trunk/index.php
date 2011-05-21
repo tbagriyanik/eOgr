@@ -285,8 +285,8 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 }
 ?>
         <div class="ikiKolon">
-          <div class="BlockHeader-text"><?php echo $metin[302]?></div>
-          <?php echo getStats(16);?> </div>
+          <div class="BlockHeader-text"><?php echo $metin[675]?></div>
+          <?php echo getStats(20);?> </div>
 <div class="cleared"></div>          
         <?php
 }

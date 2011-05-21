@@ -27,13 +27,14 @@ Lesser General Public License for more details.
 
 	$physicalFileName = $_uploadFolder.'/'.$dosya;
 	// security check
+	
 	if (file_exists($physicalFileName)) {
  		if(isset($_GET["islem"]) and $_GET["islem"]=="goster"){			
 			if(in_array(file_ext($dosya),$_filesToPlay)){
 				
 				$oyna = "<iframe src=\"$_source1/player.php?id=".RemoveXSS($_GET["id"])."\" frameborder=\"0\" scrolling=\"no\" width=\"470\" height=\"320\" align=\"middle\" marginheight=\"0\" allowtransparency=\"false\" style=\"background-color: white\"></iframe>";
 				echo $oyna;
-				echo "<p>Bu Kodu Kopyalayýnýz: <br/><textarea cols=80 rows=8>$oyna</textarea></p>";															
+				echo "<p style='font-family:tahoma; font-size:12px;color:#f00;'>$metin[676] <br/><textarea cols=80 rows=4  style='font-family:tahoma; font-size:12px;color:#222;border:1px solid #555;'>$oyna</textarea></p>";															
 				die();
 			}							
 							
@@ -53,14 +54,28 @@ Lesser General Public License for more details.
 					header('Content-Type: application/octet-stream');
 					//header('Content-type: application/force-download');
 					
-					header('Content-Disposition: attachment; filename="'.$_GET['file'].'"');
+					header('Content-Disposition: attachment; filename="'.$dosya.'"');
 					header('Content-Length: '.(string)filesize($physicalFileName));
 					header('Cache-Control: no-store, no-cache, must-revalidate');
 					header('Pragma: no-cache');
 					header('Expires: 0');
 					downloadSayac(RemoveXSS($_GET["id"]));
-					readfile($physicalFileName);
+					//readfile($physicalFileName);
+	   
+					flush();
+					$download_rate = 20.5;// set the download rate limit (=> 20,5 kb/s)
+					$file = fopen($physicalFileName, "r");
+					while (!feof($file)) {
+						print fread($file, round($download_rate * 1024));
+						flush();
+						sleep(1);
+					}
+				 
+					// close file stream
+					fclose($file);					
+					
 					die("");
 		}
-	}
+	}else
+	echo "$physicalFileName :  no such file ! ";
 ?>
