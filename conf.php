@@ -1614,7 +1614,8 @@ gelen dosya içeriðini gösterir
 function dosyaGoster($filename){
 	global $_uploadFolder;
 	if (!file_exists($_uploadFolder."/$filename")) 
-	   return "dosya yok";
+	   return "dosya yok";	   
+	   
 	$handle = fopen($_uploadFolder."/$filename", "r");
         $sData = '';
         while(!feof($handle))
@@ -2407,6 +2408,42 @@ function getStats($num,$uID="")
 				
 				break;
 		
+		case 20:
+		//son çalýþýlan konular
+					
+				$sql1 = "SELECT eo_4konu.id as idsi, eo_4konu.konuAdi as kadi,
+					    	MAX(eo_userworks.calismaTarihi) as tarih 
+					   from eo_userworks, eo_4konu 
+					   where eo_userworks.konuID=eo_4konu.id 
+					   GROUP BY kadi 
+					   order by tarih desc,konuAdi";
+				
+				$yol1 = baglan();
+				$result1 = mysql_query($sql1, $yol1);
+				if ($result1)
+				{
+				   if(mysql_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
+				   $sayGelen = 1;
+				   while($row_gelen = mysql_fetch_row($result1)){
+   				     	$humanRelativeDate = new HumanRelativeDate();
+						$insansi = $humanRelativeDate->getTextForSQLDate($row_gelen[2]);							
+
+				    $ekle .= "<li style='list-style-type:none;'><a href='lessons.php?konu=".$row_gelen[0]."'>".$row_gelen[1]."</a> <font size='-3'>".$insansi."</font></li>";
+					$sayGelen++;
+					if ($sayGelen > ayarGetir("ayar2int")) break 1;
+				}
+					
+				   $ekle .= "</ul>";
+				   
+				   if (@mysql_num_rows($result1) > ayarGetir("ayar2int"))	
+					   $ekle .="<div><a href='getFullList.php?case=20'  rel=\"shadowbox;height=400;width=800\" title='$metin[675]' class='more'>$metin[162]</a></div>"; 
+					@mysql_free_result($result1);
+				   return ($ekle);
+				}else {
+				   return ("");
+				}
+				
+				break;
 	} //switch	
 
 return "";

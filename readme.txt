@@ -1,8 +1,8 @@
 eOgr 
 
-Version: 		134c
-Last update: 	20-05-2011 
-(715 hours programming, 21.000 lines PHP, 29.000 lines Javascript and CSS)
+Version: 		134d
+Last update: 	21-05-2011 
+(720 hours programming, 21.000 lines PHP, 29.000 lines Javascript and CSS)
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
 

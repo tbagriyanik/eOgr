@@ -459,7 +459,7 @@ function listeGetir($userID, $durum){
 							
 					case 19:
 					//þu anki kullanýcýnýn bitirdiði dersler
-					if($_SESSION["kursUser2"]!="")
+					if(isset($_SESSION["kursUser2"]))
 					//eðer baþka kullanýcý inceleniyor ise
 					  $userID = temizle($_SESSION["kursUser2"]);
 					  
@@ -502,6 +502,50 @@ function listeGetir($userID, $durum){
 							}
 							
 							break;
+		case 20:
+		//son çalýþýlan konular
+					
+				$sql1 =    "SELECT eo_4konu.id as idsi, eo_4konu.konuAdi as kadi,
+					    	MAX(eo_userworks.calismaTarihi) as tarih 
+					   from eo_userworks, eo_4konu 
+					   where eo_userworks.konuID=eo_4konu.id 
+					   GROUP BY kadi 
+					   order by tarih desc,konuAdi";
+				
+				$yol1 = baglan();
+				$result = mysql_query($sql1, $yol1);
+						if($result)
+						 {
+							 if (@mysql_numrows($result) > 0) {
+								
+								$donguSon = @mysql_numrows($result);
+								
+									  	$ekle .= "<ul id='anythingSlider'>";
+										$ekle .=  "<li>";
+										
+								for($i=0; $i<$donguSon ;$i++){
+									$data = mysql_fetch_assoc($result);
+									if($i % 15 == 0 and $i>0){
+											$ekle .=  "</li><li>";
+										}
+									
+				     	$humanRelativeDate = new HumanRelativeDate();
+						$insansi = $humanRelativeDate->getTextForSQLDate($data["tarih"]);							
+									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\"  target='_parent'>".$data["kadi"]." </a> <font size='-3'>".$insansi."</font><br/>";										
+									
+									}
+										$ekle .=  "</li>";
+									  	$ekle .= "</ul>";
+									
+							 }		
+							 @mysql_free_result($result);
+							 echo $ekle;
+							return $ekle; 
+						}else {
+						   return ("");
+						}
+				
+				break;
 					
 					default:
 						die("");	
@@ -528,6 +572,9 @@ if (isset($_GET['case'])){
 			echo "Error!";
 	} elseif (in_array($_GET['case'],array("19"))) {
 		if ( !listeGetir($_SESSION["kursUser2"], temizle2($_GET['case'])) )		
+			echo "Error!";
+	} elseif (in_array($_GET['case'],array("20"))) {
+		if ( !listeGetir("-1", temizle2($_GET['case'])) )		
 			echo "Error!";
 	}
 }
