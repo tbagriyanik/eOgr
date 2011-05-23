@@ -33,18 +33,12 @@ Lesser General Public License for more details.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
 <title>eOgr -<?php echo $metin[56]?></title>
-<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/main.css" />
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/main-style.css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/ie-style.css" />
 <![endif]-->
-<script language="javascript"  type="text/javascript" src="lib/wtag/js/dom-drag.js"></script>
-<script language="javascript"  type="text/javascript" src="lib/wtag/js/scroll.js"></script>
-<script language="javascript"  type="text/javascript" src="lib/wtag/js/conf.js"></script>
-<script language="javascript"  type="text/javascript" src="lib/wtag/js/ajax.js"></script>
-<script language="javascript"  type="text/javascript" src="lib/wtag/js/drop_down.js"></script>
 
 <!-- 2. End Meta and links -->
 <style type="text/css">
@@ -78,13 +72,14 @@ a:hover {
 	text-decoration:underline;
 }
 #whiteBoard {
-	float:left;
+	float:right;
 	height: 340px;
 	width: 300px;
 	margin-left:5px;
 	padding:0;
+	bor_der:thick #F00 solid;
 }
-#videoChat{
+#videoChat {
 	float:left;
 	height: 340px;
 	width: 300px;
@@ -96,6 +91,23 @@ a:hover {
 	font-family:"Courier New", Courier, monospace;
 	font-size:16px;
 }
+#lgout {
+	position:absolute;
+	top:20px;
+	width:auto;
+	height:auto;
+	z-index:1;
+	left: auto;
+	right: 12px;
+	background-image: url(img/close.gif);
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 24px;
+	color: #000;
+}
 -->
 </style>
 </head>
@@ -103,10 +115,47 @@ a:hover {
 <?php
   $dersVarMi = suAndaDersVarMi();
  if($dersVarMi!=false){
-	 echo "<h4>$dersVarMi</h4>";
+	 echo "<h4>$dersVarMi &nbsp;<div id=\"defaultCountdown\"></div> <a href='#' onclick='window.close();' id=\"lgout\">".$metin[34]."</a>&nbsp;</h4>";
 ?>
+<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/wtag/js/dom-drag.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/wtag/js/scroll.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/wtag/js/conf.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/wtag/js/ajax.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/wtag/js/drop_down.js"></script> 
 <script language="javascript"  type="text/javascript" src="lib/jquery-1.6.1.min.js"></script> 
 <script language="javascript"  type="text/javascript" src="lib/jquery.countdown.js"></script> 
+<script type="text/javascript">
+    window.onload = maxWindow;
+
+    function maxWindow() {
+        window.moveTo(0, 0);
+
+		var screenW = 990, screenH = 550;
+		if (parseInt(navigator.appVersion)>3) {
+		 screenW = screen.width;
+		 screenH = screen.height;
+		}
+		else if (navigator.appName == "Netscape" 
+			&& parseInt(navigator.appVersion)==3
+			&& navigator.javaEnabled()
+		   ) 
+		{
+		 var jToolkit = java.awt.Toolkit.getDefaultToolkit();
+		 var jScreenSize = jToolkit.getScreenSize();
+		 screenW = jScreenSize.width;
+		 screenH = jScreenSize.height;
+		}
+		
+		window.resizeTo(screenW,screenH);
+		if (document.getElementById("whiteBoard")!=null){
+			document.getElementById("whiteBoard").style.height=(screenH - 330) +"px";
+			document.getElementById("whiteBoard").style.width=(screenW - 650)+"px";
+		}
+		startChat();
+}
+
+</script> 
 <script type="text/javascript"> 
 $(function () {
 	var austDay;
@@ -189,9 +238,15 @@ echo $_videoChatURL;
 ?>" width="300" height="340" frameborder="0"></iframe>
 </div>
 <div id="whiteBoard">
-  <object width="300" height="340"><param name="allowFullscreen" value="true" /><param name="wmode" value="transparent" /><param name="flashvars" value="room=<?php echo $_whiteBoardURL;?>" /><param name="movie" value="http://flockdraw.com/whiteboard.swf?18" /><embed src="http://flockdraw.com/whiteboard.swf?15" flashvars="room=<?php echo $_whiteBoardURL;?>" width="350" height="340" allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" /></object>
+  <object width="100%" height="100%">
+    <param name="allowFullscreen" value="true" />
+    <param name="wmode" value="transparent" />
+    <param name="flashvars" value="room=<?php echo $_whiteBoardURL;?>" />
+    <param name="movie" value="http://flockdraw.com/whiteboard.swf?18" />
+    <embed src="http://flockdraw.com/whiteboard.swf?15" flashvars="room=<?php echo $_whiteBoardURL;?>" width="100%" height="100%" allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+  </object>
 </div>
-<div style="margin:5px;clear:both;"><?php echo $metin[101]?></div>
+<div style="margin:5px;clear:both;"><?php echo $metin[101];?></div>
 <?php
  }else{
 ?>

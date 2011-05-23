@@ -5227,7 +5227,7 @@ function suAndaDersVarMi(){
 		if($data==0)
 			return false;
 		else
-			return $dersAdi." <div id=\"defaultCountdown\"></div>";		
+			return $dersAdi;		
 }
 /*
 suAndaDersDakika:
