@@ -63,14 +63,14 @@ Lesser General Public License for more details.
 					//readfile($physicalFileName);
 	   
 					flush();
-					$download_rate = 20.5;// set the download rate limit (=> 20,5 kb/s)
+					$download_rate = 1;// set the download rate limit (=> 1024 kb/s)
 					$file = fopen($physicalFileName, "r");
 					while (!feof($file)) {
 						print fread($file, round($download_rate * 1024));
-						flush();
-						sleep(1);
+						//flush();
+						//sleep(1);
 					}
-				 
+				 	flush();
 					// close file stream
 					fclose($file);					
 					
