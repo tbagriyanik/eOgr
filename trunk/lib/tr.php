@@ -546,7 +546,7 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[401]="&#220;zg&#252;n&#252;z, iste&#287;inize &#351;u anda cevap veremiyoruz.<br/>L&#252;ften bir s&#252;re sonra tekrar deneyiniz!";
 		$metin[402]="Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";
 		$metin[403]="Kullanýcý adý veya parola boþ olamaz.";
-		$metin[404]="Kullanýcý adý veya parolanýz hatalýdýr. Hesabýnýz pasif halde olabilir.";
+		$metin[404]="<ul><li>Kullanýcý adý veya parolanýz hatalý olabilir.</li><li>Hesabýnýz pasif olabilir.</li><li>Tekrar giriþ yapabilmek için yaklaþýk 5 dakika beklemelisiniz!</li></ul>";
 		$metin[405]="Þimdilik bir haber bulunmuyor veya haberler kapatýlmýþ.";
 		$metin[406]="Kod boþ veya hatalý girildi! Tekrar denemek i&ccedil;in <a href=# onclick=history.go(-1);>týklatýnýz</a>.";
 		$metin[407]="<font id='hata'> Hatalý form bilgileri bulunuyor.</font> <ul ><li>Kullanýcý adý ve parola ayný olamaz!<li>Parola i&ccedil;inde ayný karakter tekrar edemez.<li>Parola olarak 12345678 kullanýlamaz.</ul>Ana sayfaya d&ouml;nmek i&ccedil;in <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> týklatýnýz</a>";

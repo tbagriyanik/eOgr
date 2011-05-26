@@ -269,7 +269,7 @@ function checkLoginLang($lgn,$lng,$src){
 			if ($tur<=-1 || $tur>2) { 
 			   sessionDestroy();
 			   @header("Location: error.php?error=7");
-			   die ("<font id='hata'> ".$metin[404]."</font><br/>".$metin[402]);
+			   die ("<font id='hata'> ".$metin[404]." (0)</font><br/>".$metin[402]);
 			  }
 			  else 
 			  {
@@ -2647,6 +2647,28 @@ function getpasifYorumlar(){
 	$result1 = mysql_query($sql1, $yol1);
 		if ($result1 && @mysql_num_rows($result1) > 0)
 				{  $sonuc = @mysql_result($result1, 0, "sayac")	;
+				   @mysql_free_result($result1);		     
+				   return ($sonuc);
+				}else {
+				   return 0;
+				}	
+}
+/*
+sonLoginDakikasi:
+kullanýcýnýn son giriþ zamaný dakika olarak alýnýr
+*/
+function sonLoginDakikasi($adi){
+	//son baþarýlý giriþ zamanýndan dakika olarak fark getir
+    $sql1 = "SELECT TIME_TO_SEC(TIMEDIFF(now(),dateTime))/60 AS DiffMinute
+			FROM eo_usertrack 
+			where 
+				userName = '$adi' and
+				otherInfo = 'success,Login'
+			order by dateTime DESC Limit 0,1 ";
+    $yol1 = baglan();
+	$result1 = mysql_query($sql1, $yol1);
+		if ($result1 && @mysql_num_rows($result1) > 0)
+				{  $sonuc = @mysql_result($result1, 0, "DiffMinute")	;
 				   @mysql_free_result($result1);		     
 				   return ($sonuc);
 				}else {

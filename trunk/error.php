@@ -63,7 +63,7 @@ body {
 		  echo "<font id='hata'> $metin[401]</font>"; //flood
 		  break;		 
 		 case "7":			//bad login
-		  echo "<font id='hata'> ".$metin[404]."</font><br/>".$metin[402];
+		  echo "<font id='hata'> ".$metin[404]."</font>";
 		  break;		  
  		 case "8":			//file name error
 		  echo "<font id='hata'>$metin[449]</font>";
