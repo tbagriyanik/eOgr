@@ -874,5 +874,7 @@ Detaylar için <a href=\"INSTALL.html\">tıklatınız</a>.
 
 		$metin[675] = "Son çalışılan konular";
 		$metin[676] = "Eklemek için bu kodu kopyalayınız";
-
+		$metin[677] = "Yaklaşan Son Canlı Dersler";
+		$metin[678] = "Tamamlanmış Olan Canlı Dersler";
+		
 ?>

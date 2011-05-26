@@ -187,8 +187,10 @@ function kullaniciTema($kadi=""){
 	if(empty($kadi)) return $result; //kullanýcý girmemiþse varsayýlan tema olur
 	
 	$secenekler = explode("-",ayarGetir3($kadi));	
-	if(!empty($secenekler[15]))
+
+	if($secenekler[15]<>""){
 	    return numToTheme($secenekler[15]);//16.deðer kayýtlý tema sayýsý
+	}
 	else
 		return $result;
 }
@@ -203,7 +205,11 @@ function temaBilgisi(){
 	$siteSecenekleri = explode("-",ayarGetir("ayar5char"));	
 	
 	if ($siteSecenekleri[1]=="1"){
-		$result = kullaniciTema();
+			if(isset($_SESSION["usern"]))
+				$result = kullaniciTema($_SESSION["usern"]); 
+			else
+				$result = kullaniciTema(); 	
+
 		if(isset($_GET["theme"]))
 			$adresten = RemoveXSS($_GET["theme"]);
 			else
@@ -5281,7 +5287,7 @@ yaklasanEtkinlikListesi:
 Gelecekteki canlý ders listesi
 */
 function yaklasanEtkinlikListesi(){
-	global $yol1;
+	global $yol1,$metin;
 	$lmt=3;//gelecek 3 etkinlik
 	
 		$sql = "SELECT *,DATE_FORMAT(dateWhen, '%d-%m-%Y %H:%i') as dt FROM eo_livelesson
@@ -5300,7 +5306,7 @@ function yaklasanEtkinlikListesi(){
 			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
 		}
 		if($data=="")
-			return "<li>Etkinlik yoktur...</li>";
+			return "<li>$metin[586]</li>";
 		else
 			return $data;		
 }

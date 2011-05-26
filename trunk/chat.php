@@ -250,13 +250,13 @@ echo $_videoChatURL;
 <?php
  }else{
 ?>
-<h3>Yaklaþan Son 3 Etkinlik : </h3>
+<h3><?php echo $metin[677];?> : </h3>
 <ol class="ozelli">
   <?php
 	echo yaklasanEtkinlikListesi();
 ?>
 </ol>
-<h3 style="color:#808080;">Tamamlanmýþ 3 Etkinlik : </h3>
+<h3 style="color:#808080;"><?php echo $metin[678];?> : </h3>
 <font style="color:#808080;">
 <ol class="ozelli">
   <?php
