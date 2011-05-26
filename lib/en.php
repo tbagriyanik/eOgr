@@ -861,6 +861,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 
 		$metin[675] = "Last worked topics";
 		$metin[676] = "Copy this code to use";
-
+		$metin[677] = "Upcoming live lessons";
+		$metin[678] = "Completed live lessons";		
 		
 ?>

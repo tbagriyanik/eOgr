@@ -341,11 +341,11 @@ $().ready(function() {
                         <tt><?php echo $metin[91]?></tt>
                         <input type="hidden" name="MM_update" value="form3" />
                         <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
-                        <p style="border-top:thin #666 groove;padding-top:5px;">
+                        <p style="padding-top:15px;">
                         <?php echo $metin[661]?> : 
-                        <button onclick="location.href='userSettings.php?istek=1';return false;" value="<?php echo $metin[658]?>"><?php echo $metin[658]?></button>&nbsp;
-                        <button onclick="location.href='userSettings.php?istek=2';return false;" value="<?php echo $metin[659]?>"><?php echo $metin[659]?></button>&nbsp;
-                        <button onclick="location.href='userSettings.php?istek=3';return false;" value="<?php echo $metin[660]?>"><?php echo $metin[660]?></button>
+                        <?php if($tur!=0){ ?><button onclick="location.href='userSettings.php?istek=1';return false;" value="<?php echo $metin[658]?>"><?php echo $metin[658]?></button>&nbsp;<?php }?>
+                        <?php if($tur!=1){ ?><button onclick="location.href='userSettings.php?istek=2';return false;" value="<?php echo $metin[659]?>"><?php echo $metin[659]?></button>&nbsp;<?php }?>
+                        <?php if($tur!=2){ ?><button onclick="location.href='userSettings.php?istek=3';return false;" value="<?php echo $metin[660]?>"><?php echo $metin[660]?></button><?php }?>
                         <?php 
 						$istekler = istekListesi();
 						if(strlen($istekler)>0)
