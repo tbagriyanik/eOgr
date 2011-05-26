@@ -534,7 +534,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[401]="Sorry, unable to respond so quickly! <br/> Please, retry soon.";
 		$metin[402]="To go to the main page, <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a>";
 		$metin[403]="Your user name or password was empty.";
-		$metin[404]="Your user name or password was wrong. Your account may be passive.";
+		$metin[404]="<ul><li>Your user name or password might be wrong.</li><li>Your account may be passive.</li><li>You need to wait for a least 5 minutes to relogin!</li></ul>";
 		$metin[405]="There are no news or this section is disabled.";
 		$metin[406]="Code error! <a href=# onclick=history.go(-1);>Click here</a> to retry.";
 		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a> to go to the main page.";

@@ -49,6 +49,32 @@ Lesser General Public License for more details.
   $adi	=substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15);
   $par	=sha1(substr(temizle((isset($_POST["userP"]))?$_POST["userP"]:""),0,15));
   
+	if(isset($_POST['form'])){
+		switch ($_POST['form']){
+			case 'login':
+				$allowed = array();
+				$allowed[] = 'form';
+				$allowed[] = 'userN';
+				$allowed[] = 'userP';
+				$allowed[] = 'sumb';
+				$allowed[] = 'remUser';
+				$sent = array_keys($_POST);
+				if ($allowed != $sent){
+					die("<font id='hata'> ".$metin[400]." (1)</font><br/>".$metin[402]); //form data?
+					exit;
+				}
+				break;
+		} 
+	} 	
+	
+		//eðer 5 dakika içinde zaten girmiþ ise (flood gibi)
+ 	 if(isset($_POST["userN"]))
+		if (sonLoginDakikasi($adi)<5) { 
+			sessionDestroy();
+			header("Location: error.php?error=7");
+	   		die ("<font id='hata'> ".$metin[404]." (1)</font><p>".$metin[402]."</p>");			
+		}	    
+
    if ($adi=="") {
 	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
     	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
@@ -194,29 +220,12 @@ Shadowbox.init({
                 <div class="PostContent">
                   <?php
 	
-	if(isset($_POST['form']))
-		switch ($_POST['form']){
-			case 'login':
-				$allowed = array();
-				$allowed[] = 'form';
-				$allowed[] = 'userN';
-				$allowed[] = 'userP';
-				$allowed[] = 'sumb';
-				$allowed[] = 'remUser';
-				$sent = array_keys($_POST);
-				if ($allowed != $sent){
-					die("<font id='hata'> ".$metin[400]." (1)</font><br/>".$metin[402]); //form data?
-					exit;
-				}
-				break;
-		}     
-
- 
     $tur=checkRealUser($adi,$par);
 	$pass = false;
+	//eðer pasif ise 
 	if ($tur<=-1 || $tur>2) { 
 	   sessionDestroy();
-	   echo ("<font id='hata'> ".$metin[404]."</font><p>".$metin[402]."</p>");
+	   echo ("<font id='hata'> ".$metin[404]." (2)</font><p>".$metin[402]."</p>");
 	   $pass = true;
 	   $_SESSION["tur"] 	= "-1";
 	  }
