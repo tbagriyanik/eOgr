@@ -46,15 +46,12 @@ Lesser General Public License for more details.
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>eOgr -<?php echo $metin[464]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-
 <script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
-
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/file.css" rel="stylesheet" type="text/css" />
@@ -167,12 +164,21 @@ if($seceneklerimiz[16]=="1")
  if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
   or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
 ?>
-                  <blockquote style="width:400px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
-return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a> </blockquote>
+                  <blockquote style="width:500px;"> <a href="lib/ajaxupload" onclick="window.open('lib/ajaxupload','upload','height=330,width=450,top=100,left=100,toolbar=no, location=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes');
+return false;" class="external"><?php echo $metin[494]?></a> | <a href="fileShare.php"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a>
                   <?php	
 }
+if($tur>0){
 ?>
-<iframe src="data_dosyalar2.php" frameborder="0" scrolling="auto" width="870" height="465" align="middle" marginheight="45" allowtransparency="false" style="background-color: transparent"></iframe>
+                 &nbsp;|&nbsp;<a href="fileShare.php?tumDosyalar=1" title="Ders içinde kullanýlan dosyalarý da görüntüler">Ders Dosyalarý</a>
+                  <?php	
+}
+if($tur>0 and isset($_GET["tumDosyalar"]))//tüm dosyalarý öðrenciler göremez
+	$_SESSION["tumDosyalar"]="olsun";
+ else
+    unset($_SESSION["tumDosyalar"]);	
+?>
+           </blockquote>        <iframe src="data_dosyalar2.php" frameborder="0" scrolling="auto" width="870" height="485" align="middle" marginheight="45" allowtransparency="false" style="background-color: transparent"></iframe>
                   <?php  
 
 if ($tur=="2") {

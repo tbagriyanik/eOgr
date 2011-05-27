@@ -459,7 +459,7 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 	if (arkadasMi($geceliKullID,$seciliKisi)) {
 		echo "<p>$metin[620] : ".getArkadaslikKabulTarihi($geceliKullID,$seciliKisi)."</p>";	
 		echo "<p><a href='friends.php?reddet=$seciliKisi'><img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[624]\"/> $metin[624]</a></p>";	
-		echo "<p><strong>$metin[617] :</strong> <br>";
+		echo "<p><strong>$metin[617] :</strong> <br/>";
 ?>
 <script language="javascript" type="text/javascript">
 /*

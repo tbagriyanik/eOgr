@@ -32,6 +32,7 @@ if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 <style media="all" type="text/css">
 body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:14px;
 }
 </style>
 <script language="JavaScript" type="text/javascript">

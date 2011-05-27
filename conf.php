@@ -5303,7 +5303,7 @@ function yaklasanEtkinlikListesi(){
  	      	$data .= "<li>".getUserName($row['userID']).", ".
 			getDersAdi($row['dersID']). ", ".
 			$row["length"]." dakika <strong>".$row["yontem"]."</strong>".
-			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
+			"<br/><span style='font-size:13px;font-style:italic'>".$row['dt']." (".$tarihi.")</span></li>";
 		}
 		if($data=="")
 			return "<li>$metin[586]</li>";
@@ -5331,7 +5331,7 @@ function tamamlanmisEtkinlikListesi(){
  	      	$data .= "<li>".getUserName($row['userID']).", ".
 			getDersAdi($row['dersID']). ", ".
 			$row["length"]." dakika <strong>".$row["yontem"]."</strong>".
-			"<br><i style='font-size:13px;'>".$row['dt']." (".$tarihi.")</i></li>";
+			"<br/><span style='font-size:13px;font-style:italic;'>".$row['dt']." (".$tarihi.")</span></li>";
 		}
 		if($data=="")
 			return "<li>Etkinlik yoktur...</li>";

@@ -422,7 +422,7 @@
           $graph .= '<tr align=center valign=bottom>';
 
           if($titleBar != '') {
-            $titleBar = str_replace('-', '-<br>', $titleBar);
+            $titleBar = str_replace('-', '-<br/>', $titleBar);
             $graph .= '<td style="' . $this->cssTITLE . '" valign=middle>' . $titleBar . '</td>';
           }
           for($i = 0; $i < count($val[$chart]); $i++) {
@@ -513,7 +513,7 @@
       }
 
       if($this->debug) {
-        $graph .= "<br>sum=$sum max=$max max_neg=$max_neg max_dec=$max_dec ";
+        $graph .= "<br/>sum=$sum max=$max max_neg=$max_neg max_dec=$max_dec ";
         $graph .= "mPerc=$mPerc mPerc_neg=$mPerc_neg mul=$mul valSpace=$valSpace ";
         $graph .= "spacer=$spacer spacer_neg=$spacer_neg";
       }
