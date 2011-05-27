@@ -309,7 +309,7 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 } 
 
 ?>
-                 <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut." "?>
+                 <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."".$ktut." "?>
                    <?php echo $metin[5]?> </p>
                   <?php
 				  if($_SESSION["tur"]=='0') {
@@ -354,7 +354,7 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 <?php
 					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
 					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
-					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10)); 				
+					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10))."<br/>"; 				
 	
 						 if (totalGet(0)>0){
 							 echo "<strong>".$metin[8]." </strong> ";
