@@ -102,15 +102,20 @@ require("conf.php");
 	 * word by word on any field. It's possible to do here, but concerned about efficiency
 	 * on very large tables, and MySQL's regex functionality is very limited
 	 */
+	$tumDosyalar = ((isset($_SESSION["tumDosyalar"]))?"1":"0"); 
+	 
 	$sWhere = "";
 	if (!empty($_GET['sSearch']) and  $_GET['sSearch'] != "" )
 	{
-		$sWhere = "WHERE (";
+		if($tumDosyalar!="1")
+			$sWhere = "WHERE ((";
+		 else
+			$sWhere = "WHERE (";
+		 		
 		for ( $i=0 ; $i<count($aColumns)-1 ; $i++ )
 		{
 			$sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string( $_GET['sSearch'] )."%' OR ";
 		}
-		//$sWhere .= " userName LIKE '%".mysql_real_escape_string( $_GET['sSearch'] )."%'  ";
 		$sWhere = substr_replace( $sWhere, "", -3 );
 		$sWhere .= ')';		
 	}
@@ -122,7 +127,7 @@ require("conf.php");
 		{
 			if ( $sWhere == "" )
 			{
-				$sWhere = "WHERE ";
+				$sWhere = "WHERE (";
 			}
 			else
 			{
@@ -132,8 +137,23 @@ require("conf.php");
 		}
 	}
 	
-	if(!empty($_GET['sSearch']))
-			$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysql_real_escape_string($_GET['sSearch'])."%' ";
+		if($tumDosyalar!="1"){
+			if(!empty($_GET['sSearch']))
+					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysql_real_escape_string($_GET['sSearch'])."%') AND fileName not REGEXP '^[0-9]{10,15}' ";		
+				else
+					$sWhere .= " WHERE fileName not REGEXP '^[0-9]{10,15}' ";
+			}
+		 else{
+			if(!empty($_GET['sSearch']))
+					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysql_real_escape_string($_GET['sSearch'])."%' ";	
+				else 
+					$sWhere .= "";
+		 }
+		 		
+
+	
+
+	
 	
 	/*
 	 * SQL queries
