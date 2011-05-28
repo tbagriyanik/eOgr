@@ -234,16 +234,16 @@ $(function () {
 </div>
 <div id="videoChat">
   <iframe id="basicEmbed" src="https://api.opentok.com/hl/embed/<?php 
-echo $_videoChatURL;
+echo $_videoChatSession;
 ?>" width="300" height="340" frameborder="0"></iframe>
 </div>
 <div id="whiteBoard">
   <object width="100%" height="100%">
     <param name="allowFullscreen" value="true" />
     <param name="wmode" value="transparent" />
-    <param name="flashvars" value="room=<?php echo $_whiteBoardURL;?>" />
+    <param name="flashvars" value="room=<?php echo $_whiteBoardSession;?>" />
     <param name="movie" value="http://flockdraw.com/whiteboard.swf?18" />
-    <embed src="http://flockdraw.com/whiteboard.swf?15" flashvars="room=<?php echo $_whiteBoardURL;?>" width="100%" height="100%" allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+    <embed src="http://flockdraw.com/whiteboard.swf?15" flashvars="room=<?php echo $_whiteBoardSession;?>" width="100%" height="100%" allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
   </object>
 </div>
 <div style="margin:5px;clear:both;"><?php echo $metin[101];?></div>

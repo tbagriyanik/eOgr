@@ -20,28 +20,4 @@ $_db 			= 'eogr';
 
 $_source1		= "http://localhost/eogr";		//for check_source()
 $_source2		= "http://127.0.0.1/eogr";		//MUST set to the exact values!
-
-$_uploadFolder	= "uploads";						
-//766 or 777 permission needs this folder, NOT obligatory!
-
-$_siteUnlockPwd	= "11111";							
-//when the site maintenance is engaged, this password is needed to REOPEN the site
-
-$_defaultTheme 	= "silverModern";
-//what will be the default THEME... simple, silverModern, darkOrange, lightGreen
-
-$_defaultLang 	= "TR";
-//what will be the default LANGUAGE... TR:turkish, EN:english
-
-$_filesToPlay	= array("flv","swf","mp3","avi","mp4","wmv","mov","rm","ra","rpm","ram","asf","mpg","mpeg","mkv","ogg","qt","wav","mid","pdf");
-//what FILE TYPES suitable to be played 
-
-$_fileMaxUploadSize = 10;
-//if upload is enabled, the file size LIMIT in Mega Bytes
-
-$_videoChatURL = "2emb0af315ea588d9bab3f43b69533e1bcb82713";
-//get your free session and moderator Password from http://www.tokbox.com/opentok/api
-
-$_whiteBoardURL = "qxm8c";
-//get your free session number URL from http://flockdraw.com
 ?>

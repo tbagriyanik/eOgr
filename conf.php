@@ -73,6 +73,17 @@ $yol1	=	baglan();
 		}
 		@mysql_free_result($result); 	
 	}
+
+//global deðerler
+$_uploadFolder = ayarGetir("uploadFolder");	
+$_siteUnlockPwd = ayarGetir("siteUnlockPwd");	
+$_defaultTheme = ayarGetir("defaultTheme");	
+$_defaultLang = ayarGetir("defaultLang");	
+$_filesToPlay = explode(",",ayarGetir("filesToPlay"));	
+$_fileMaxUploadSize = ayarGetir("fileMaxUploadSize");	
+$_videoChatSession = ayarGetir("videoChatSession");	
+$_whiteBoardSession = ayarGetir("whiteBoardSession");	
+
 /*
 temizle: metin giriþi, 
 XSS temizliði
