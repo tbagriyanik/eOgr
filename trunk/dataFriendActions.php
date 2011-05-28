@@ -182,7 +182,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form3")) {
 			}
 }
 
-if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1")) {
+if ((isset($_GET['id'])) && ($_GET['id'] != "") && !empty($_GET['delCon']) and ($_GET['delCon'] == "1")) {
   $deleteSQL = sprintf("DELETE FROM eo_friends WHERE id=%s",
                        GetSQLValueString($_GET['id'], "int"));
 

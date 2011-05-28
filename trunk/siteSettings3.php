@@ -39,8 +39,6 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 </head>
 <body>
@@ -137,6 +135,14 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
      temizle($_POST['ayar1int'])=="" || 
      temizle($_POST['ayar2int'])=="" || 
      temizle($_POST['ayar3int'])=="" || 
+     temizle($_POST['uploadFolder'])=="" || 
+     temizle($_POST['siteUnlockPwd'])=="" || 
+     temizle($_POST['defaultTheme'])=="" || 
+     temizle($_POST['defaultLang'])=="" || 
+     temizle($_POST['filesToPlay'])=="" || 
+     temizle($_POST['fileMaxUploadSize'])=="" || 
+     temizle($_POST['videoChatSession'])=="" || 
+     temizle($_POST['whiteBoardSession'])=="" || 
      temizle($_POST['veriHareketleriSayisi'])==""
       )
 	   echo "<font id='hata'>Site bilgilerinde eksik alanlar vardýr.</font>";
@@ -184,7 +190,22 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 								 $_POST['ayar5char13']."-".$_POST['ayar5char14']."-".$_POST['ayar5char15']."-".
 								 $_POST['ayar5char16']."-".$_POST['ayar5char17']);
 
-			$updateSQL = sprintf("UPDATE eo_sitesettings SET okulGenelAdi=%s, versiyon=%s, sayfaBlokSayisi=%s, sayfaKullaniciSayisi=%s, veriHareketleriSayisi=%s, ayar4char=%s, ayar1int=%s, ayar2int=%s, ayar3int=%s, ayar5char='%s' WHERE id=1",
+			$updateSQL = sprintf("
+			UPDATE eo_sitesettings 
+			SET okulGenelAdi=%s, versiyon=%s, sayfaBlokSayisi=%s, 
+			sayfaKullaniciSayisi=%s, veriHareketleriSayisi=%s, 
+			ayar4char=%s, ayar1int=%s, ayar2int=%s, ayar3int=%s, 
+			ayar5char='%s',
+			uploadFolder = %s,
+			siteUnlockPwd = %s,
+			defaultTheme = %s,
+			defaultLang = %s,
+			filesToPlay = %s,
+			fileMaxUploadSize = %s,
+			videoChatSession = %s,
+			whiteBoardSession = %s
+			
+			WHERE id='1'",
 							   temizle(GetSQLValueString($_POST['okulGenelAdi'], "text")),
 							   temizle(GetSQLValueString($_POST['versiyon'], "text")),
 							   temizle(GetSQLValueString($_POST['sayfaBlokSayisi'], "int")),
@@ -194,7 +215,15 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
 							   temizle(GetSQLValueString($_POST['ayar1int'], "int")),
 							   temizle(GetSQLValueString($_POST['ayar2int'], "int")),
 							   temizle(GetSQLValueString($_POST['ayar3int'], "int")),
-							   $ayar5char
+							   $ayar5char,
+							   temizle(GetSQLValueString($_POST['uploadFolder'], "text")),
+							   temizle(GetSQLValueString($_POST['siteUnlockPwd'], "text")),
+							   temizle(GetSQLValueString($_POST['defaultTheme'], "text")),
+							   temizle(GetSQLValueString($_POST['defaultLang'], "text")),
+							   temizle(GetSQLValueString($_POST['filesToPlay'], "text")),
+							   temizle(GetSQLValueString($_POST['fileMaxUploadSize'], "int")),
+							   temizle(GetSQLValueString($_POST['videoChatSession'], "text")),
+							   temizle(GetSQLValueString($_POST['whiteBoardSession'], "text"))
 							   );
 		  mysql_select_db($_db, $yol);
 		  $Result1 = mysql_query($updateSQL, $yol);
@@ -229,47 +258,116 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
                               <tr>
                                 <td width="400" align="right"><label for="okulGenelAdi"> <?php echo $metin[114]?> :</label></td>
                                 <td><input type="text" maxlength="15" size="15" name="okulGenelAdi" id="okulGenelAdi" value="<?php echo ayarGetir("okulGenelAdi")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="versiyon"> <?php echo $metin[115]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="versiyon" id="versiyon" value="<?php echo ayarGetir("versiyon")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="sayfaBlokSayisi"> <?php echo $metin[116]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="sayfaBlokSayisi" id="sayfaBlokSayisi" value="<?php echo ayarGetir("sayfaBlokSayisi")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="sayfaKullaniciSayisi"> <?php echo $metin[117]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="sayfaKullaniciSayisi" id="sayfaKullaniciSayisi" value="<?php echo ayarGetir("sayfaKullaniciSayisi")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="veriHareketleriSayisi"> <?php echo $metin[118]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="veriHareketleriSayisi" id="veriHareketleriSayisi" value="<?php echo ayarGetir("veriHareketleriSayisi")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="ayar1int"> <?php echo $metin[150]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="ayar1int" id="ayar1int" value="<?php echo ayarGetir("ayar1int")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="ayar2int"> <?php echo $metin[151]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="ayar2int" id="ayar2int" value="<?php echo ayarGetir("ayar2int")?>"/>
-                                  *</td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="ayar3int"> <?php echo $metin[245]?> :</label></td>
                                 <td><input type="text" maxlength="10" size="10" name="ayar3int" id="ayar3int" value="<?php echo ayarGetir("ayar3int")?>"/>
-                                  * </td>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><label for="ayar4char"> <?php echo $metin[119]?> :</label></td>
                                 <td><input type="text" maxlength="50" size="30" name="ayar4char" id="ayar4char" value="<?php echo ayarGetir("ayar4char")?>"/>
-                                  <font size="-1"><?php echo $metin[120]?></font></td>
+                                  <tt><?php echo $metin[120]?></tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><label for="uploadFolder"> <?php echo "uploadFolder"?> :</label></td>
+                                <td><input type="text" maxlength="50" size="30" name="uploadFolder" id="uploadFolder" value="<?php echo ayarGetir("uploadFolder")?>"/><br />
+                                  <tt><?php
+	if(substr(sprintf('%o', @fileperms($_uploadFolder)), -4)=="0755"){
+		echo "<strong>$_uploadFolder</strong> $metin[532]";
+	}else{
+		echo "<strong>$_uploadFolder</strong> $metin[533]";
+	}
+                                  ?></tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><label for="siteUnlockPwd"> <?php echo "siteUnlockPwd"?> :</label></td>
+                                <td><label id="gg">#</label> <input type="text" maxlength="50" size="15" name="siteUnlockPwd" id="siteUnlockPwd" value="<?php echo ayarGetir("siteUnlockPwd")?>" style="display: none;"/>                                
+                                 <script language="javascript">
+
+$("#gg").click(function () {
+$("#siteUnlockPwd").toggle();
+return false;
+});
+</script> 
+                                 </td>
+                              </tr>
+                              <tr>
+                                <td align="right"><label for="defaultTheme"> <?php echo "defaultTheme"?> :</label></td>
+                                <td><select name="defaultTheme" id="defaultTheme">
+                                    <?php	
+	$themeArray=glob('theme/*', GLOB_ONLYDIR);
+	$i=0;
+	foreach($themeArray as $thme){
+?>
+                                    <option value="<?php $temaGel = explode("/",$thme);
+	  echo $temaGel[1];?>" <?php if (ayarGetir("defaultTheme")==$temaGel[1]) {echo "selected=\"selected\"";} ?>>
+                                    <?php 	  
+	  echo $temaGel[1];
+	  ?>
+                                    </option>
+                                    <?php
+	  $i++;
+	}
+?>
+                                  </select>
+                                  <tt>*</tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><label for="defaultLang"> <?php echo "defaultLang"?> :</label></td>
+                                <td><input type="text" maxlength="50" size="5" name="defaultLang" id="defaultLang" value="<?php echo ayarGetir("defaultLang")?>"/>
+                                  <tt>TR EN</tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><label for="filesToPlay"> <?php echo "filesToPlay"?> :</label></td>
+                                <td><input type="text" maxlength="100" size="50" name="filesToPlay" id="filesToPlay" value="<?php echo ayarGetir("filesToPlay")?>"/>
+                                  <tt>*</tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><label for="fileMaxUploadSize"> <?php echo "fileMaxUploadSize"?> :</label></td>
+                                <td><input type="text" maxlength="50" size="5" name="fileMaxUploadSize" id="fileMaxUploadSize" value="<?php echo ayarGetir("fileMaxUploadSize")?>"/>
+                                  <tt>MB</tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><a href="http://www.tokbox.com"><?php echo "http://www.tokbox.com"?></a></td>
+                                <td><input type="text" maxlength="50" size="50" name="videoChatSession" id="videoChatSession" value="<?php echo ayarGetir("videoChatSession")?>"/>
+                                  <tt>*</tt></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><a href="http://flockdraw.com"><?php echo "http://flockdraw.com"?></a></td>
+                                <td><input type="text" maxlength="50" size="10" name="whiteBoardSession" id="whiteBoardSession" value="<?php echo ayarGetir("whiteBoardSession")?>"/>
+                                  <tt>*</tt></td>
                               </tr>
                               <tr>
                                 <td align="right"><?php echo $metin[216]?> :</td>
@@ -382,11 +480,7 @@ if ((isset($_POST["MM_settings"])) && ($_POST["MM_settings"] == "form5")) {
             id="ayar5char17" value="1" <?php if($secenekler[16]=="1") 
 			echo " checked='checked'"; else echo ""; ?>/>
                                     <img src="img/lessons.gif" alt="imp" border="0" style="vertical-align: middle;" /> <?php echo $metin[529];
-	if(substr(sprintf('%o', @fileperms($_uploadFolder)), -4)=="0755"){
-		echo "</td></tr><tr><td colspan='2'><p><strong>$_uploadFolder</strong> $metin[532]</p>";
-	}else{
-		echo "</td></tr><tr><td colspan='2'><p><strong>$_uploadFolder</strong> $metin[533]</p>";
-	}
+	echo "</td></tr><tr><td colspan='2'>";
 	printf($metin[534],smartShort($_siteUnlockPwd,0));
 	?></label></td>
                               </tr>

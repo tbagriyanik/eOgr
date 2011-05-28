@@ -227,6 +227,16 @@ CREATE TABLE IF NOT EXISTS `eo_sitesettings` (
   `ayar3int` int(11) NOT NULL,
   `ayar4char` varchar(50) DEFAULT NULL,
   `ayar5char` varchar(50) DEFAULT NULL,
+  `uploadFolder` VARCHAR(50) NOT NULL, 
+  `siteUnlockPwd` VARCHAR(50) NOT NULL,  
+  `defaultTheme` VARCHAR(50) NOT NULL,  
+  `defaultLang` VARCHAR(50) NOT NULL,  
+  `filesToPlay` VARCHAR(100) NOT NULL,  
+  `fileMaxUploadSize` INT NOT NULL, 
+  `videoChatSession` VARCHAR(50) NOT NULL,  
+  `whiteBoardSession` VARCHAR(50) NOT NULL,  
+  `ayar7char` VARCHAR(50) NOT NULL,  
+  `ayar8char` VARCHAR(50) NOT NULL,  
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -237,6 +247,14 @@ CREATE TABLE IF NOT EXISTS `eo_sitesettings` (
 INSERT INTO `eo_sitesettings` (`id`, `okulGenelAdi`, `versiyon`, `sayfaBlokSayisi`, `sayfaKullaniciSayisi`, `veriHareketleriSayisi`, `ayar1int`, `ayar2int`, `ayar3int`, `ayar4char`, `ayar5char`) VALUES
 (1, 'Net Course', 'version', 15, 10, 15, 10, 10, 60, 'email@eogr.com', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-0-1');
 
+UPDATE `eo_sitesettings` SET `uploadFolder` = 'uploads',
+`siteUnlockPwd` = '11111',
+`defaultTheme` = 'silverModern',
+`defaultLang` = 'TR',
+`filesToPlay` = 'flv,swf,mp3,avi,mp4,wmv,mov,rm,ra,rpm,ram,asf,mpg,mpeg,mkv,ogg,qt,wav,mid,pdf',
+`fileMaxUploadSize` = '10',
+`videoChatSession` = '2emb0af315ea588d9bab3f43b69533e1bcb8271q',
+`whiteBoardSession` = 'qxm8q' WHERE `eo_sitesettings`.`id` =1;
 -- --------------------------------------------------------
 
 --
