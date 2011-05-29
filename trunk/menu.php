@@ -34,7 +34,7 @@ if (isset($_COOKIE["remUser"]))
 $bilgi1 = "";$bilgi5 = "";$bilgi9 = "";
 $bilgi2 = "";$bilgi6 = "";$bilgi10 = "";
 $bilgi3 = "";$bilgi7 = "";$bilgi11 = "";
-$bilgi4 = "";$bilgi8 = "";$bilgi12 = "";
+$bilgi4 = "";$bilgi8 = "";
 ?>
 <script type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
@@ -42,29 +42,108 @@ $bilgi4 = "";$bilgi8 = "";$bilgi12 = "";
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
 <?php
 if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
-	$imge =  ' <img src="img/imp.gif" border="0" style="vertical-align: baseline;" alt="new" />';
-	$bilgi1 = sonTarihGetir("sohbet");
-	$bilgi1 = ($bilgi1)?$imge:'';
-	$bilgi2 = sonTarihGetir("yorum");
-	$bilgi2 = ($bilgi2)?$imge:'';
-	$bilgi3 = sonTarihGetir("oy");
-	$bilgi3 = ($bilgi3)?$imge:'';
-	$bilgi4 = sonTarihGetir("ders");
-	$bilgi4 = ($bilgi4)?$imge:'';
-	$bilgi5 = sonTarihGetir("uye");
-	$bilgi5 = ($bilgi5)?$imge:'';
-	$bilgi6 = sonTarihGetir("dosya");
-	$bilgi6 = ($bilgi6)?$imge:'';
-	$bilgi7 = sonTarihGetir("haber");
-	$bilgi7 = ($bilgi7)?$imge:'';
-	$bilgi8 = sonTarihGetir("islem");
-	$bilgi8 = ($bilgi8)?$imge:'';
-	$bilgi9 = sonTarihGetir("calis");
-	$bilgi9 = ($bilgi9)?$imge:'';
-	$bilgi10 = sonTarihGetir("arkadas");
-	$bilgi10 = ($bilgi10)?$imge:'';
-	$bilgi11 = sonTarihGetir("soru");
-	$bilgi11 = ($bilgi11)?$imge:'';
+	$imge1 =  ' <img src="img/imp_1.gif" border="0" style="vertical-align: baseline;" alt="new" />';
+	$imge2 =  ' <img src="img/imp_2.gif" border="0" style="vertical-align: baseline;" alt="newish" />';
+	$imge3 =  ' <img src="img/imp_3.gif" border="0" style="vertical-align: baseline;" alt="not so new" />';
+
+		if(sonTarihGetir("sohbet",0))
+		  	$bilgi1 = $imge1;
+		elseif(sonTarihGetir("sohbet",1))
+			$bilgi1 = $imge2;  
+		elseif(sonTarihGetir("sohbet",2))
+			$bilgi1 = $imge3;  
+		else
+			$bilgi1 = "";
+
+		if(sonTarihGetir("yorum",0))
+		  	$bilgi2 = $imge1;
+		elseif(sonTarihGetir("yorum",1))
+			$bilgi2 = $imge2;  
+		elseif(sonTarihGetir("yorum",2))
+			$bilgi2 = $imge3;  
+		else
+			$bilgi2 = "";
+
+		if(sonTarihGetir("oy",0))
+		  	$bilgi3 = $imge1;
+		elseif(sonTarihGetir("oy",1))
+			$bilgi3 = $imge2;  
+		elseif(sonTarihGetir("oy",2))
+			$bilgi3 = $imge3;  
+		else
+			$bilgi3 = "";
+
+		if(sonTarihGetir("ders",0))
+		  	$bilgi4 = $imge1;
+		elseif(sonTarihGetir("ders",1))
+			$bilgi4 = $imge2;  
+		elseif(sonTarihGetir("ders",2))
+			$bilgi4 = $imge3;  
+		else
+			$bilgi4 = "";
+
+		if(sonTarihGetir("uye",0))
+		  	$bilgi5 = $imge1;
+		elseif(sonTarihGetir("uye",1))
+			$bilgi5 = $imge2;  
+		elseif(sonTarihGetir("uye",2))
+			$bilgi5 = $imge3;  
+		else
+			$bilgi5 = "";
+
+		if(sonTarihGetir("dosya",0))
+		  	$bilgi6 = $imge1;
+		elseif(sonTarihGetir("dosya",1))
+			$bilgi6 = $imge2;  
+		elseif(sonTarihGetir("dosya",2))
+			$bilgi6 = $imge3;  
+		else
+			$bilgi6 = "";
+
+		if(sonTarihGetir("haber",0))
+		  	$bilgi7 = $imge1;
+		elseif(sonTarihGetir("haber",1))
+			$bilgi7 = $imge2;  
+		elseif(sonTarihGetir("haber",2))
+			$bilgi7 = $imge3;  
+		else
+			$bilgi7 = "";
+
+		if(sonTarihGetir("islem",0))
+		  	$bilgi8 = $imge1;
+		elseif(sonTarihGetir("islem",1))
+			$bilgi8 = $imge2;  
+		elseif(sonTarihGetir("islem",2))
+			$bilgi8 = $imge3;  
+		else
+			$bilgi8 = "";
+
+		if(sonTarihGetir("calis",0))
+		  	$bilgi9 = $imge1;
+		elseif(sonTarihGetir("calis",1))
+			$bilgi9 = $imge2;  
+		elseif(sonTarihGetir("calis",2))
+			$bilgi9 = $imge3;  
+		else
+			$bilgi9 = "";
+
+		if(sonTarihGetir("arkadas",0))
+		  	$bilgi10 = $imge1;
+		elseif(sonTarihGetir("arkadas",1))
+			$bilgi10 = $imge2;  
+		elseif(sonTarihGetir("arkadas",2))
+			$bilgi10 = $imge3;  
+		else
+			$bilgi10 = "";
+
+		if(sonTarihGetir("soru",0))
+		  	$bilgi11 = $imge1;
+		elseif(sonTarihGetir("soru",1))
+			$bilgi11 = $imge2;  
+		elseif(sonTarihGetir("soru",2))
+			$bilgi11 = $imge3;  
+		else
+			$bilgi11 = "";
 ?>
 
 <div class="aramaDiv"> <a href="index.php" target="_parent"><img src="img/home.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[54]?>" title="<?php echo $metin[54]?>" /></a>&nbsp;&nbsp;<a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /></a>&nbsp;&nbsp;<a href="siteMap.php" target="_parent"><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /></a>&nbsp;&nbsp;
