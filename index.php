@@ -450,11 +450,11 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 <br />
                   <div class='ikiKolon'>
                   <h2><?php echo $metin[542]?></h2>
-                  <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" allowtransparency="allowtransparency" style="background-color: white"></iframe>
+                  <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" style="background-color: transparent"></iframe>
                   </div>
                   <div class='ikiKolon'>
                   <h2><?php echo $metin[585]?></h2>
-                  <iframe src="lib/iCal/calendar.php?my=1" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" allowtransparency="allowtransparency" style="background-color: white"></iframe>
+                  <iframe src="lib/iCal/calendar.php?my=1" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45"  style="background-color: transparent"></iframe>
                   </div>
       <?php
 	  }

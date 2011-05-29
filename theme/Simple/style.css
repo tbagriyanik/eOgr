@@ -4,7 +4,7 @@
 body {
 	margin: 2px;
 	padding: 0;
-	background:url(images/bg.png) repeat-x  top left fixed ;
+	background:url(images/bg.png) repeat-x top left fixed;
 	background-color: #C1C3CC;
 }
 .Main {
@@ -196,9 +196,14 @@ div.Header-png {
 	z-index:-2;
 	top: 0;
 	left: 0;
-	width: 973px;
+	width: 970px;
 	height: 50px;
 	background-color:#666;
+	-moz-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-border-radius: 15px;
+	border-radius:15px 15px 0px 0px;
 }
 div.Header-jpeg {
 	position: absolute;
@@ -1182,7 +1187,7 @@ input, select {
 	font-style:normal;
 	font-weight:normal;
 	text-decoration:underline;
-	color:#6B7E4E;
+	color:#6B7E4E;	
 }
 .page-footer {
 	margin:1em;

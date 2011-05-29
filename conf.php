@@ -3385,11 +3385,11 @@ function buTarihtekiOlayListesi($gun,$ay,$yil,$my){
 	$sonuc = "";
 	$say = olayIslemSayisi($tarih2,$my);
 	if($say>0)
-		$sonuc .= "<span class=\"desc\"><a href='../../dataActions.php' target='_parent'>$metin[544]</a> : $say</span>";
+		$sonuc .= "<span class=\"desc\">$metin[544] : $say</span>";
 									
 	$say2 = dersIslemSayisi($tarih2,$my);
 	if($say2>0)
-		$sonuc .= "<span class=\"desc\"><a href='../../dataWorkList.php' target='_parent'>$metin[545]</a> : $say2</span>";
+		$sonuc .= "<span class=\"desc\">$metin[545] : $say2</span>";
 		
 	$say3 = sonDersCalisma($tarih2);
 	if($say3!=""){
@@ -4431,7 +4431,7 @@ function sonDosyaTarihi($dir) {
 if (substr($dir, strlen($dir)-1, 1)!= '/')
 $dir .= '/';
 
-if ($handle = opendir($dir)) {
+if ($handle = @opendir($dir)) {
 	$i = 0;
 	while ($obj = readdir($handle)) {
 		if ($obj!= '.' and $obj!= '..')
@@ -5332,7 +5332,7 @@ tamamlanmisEtkinlikListesi:
 Geçmiþ canlý ders listesi
 */
 function tamamlanmisEtkinlikListesi(){
-	global $yol1;
+	global $yol1,$metin;
 	$lmt=3;//geçmiþ 3 etkinlik
 	
 		$sql = "SELECT *,DATE_FORMAT(dateWhen, '%d-%m-%Y %H:%i') as dt FROM eo_livelesson
@@ -5351,7 +5351,7 @@ function tamamlanmisEtkinlikListesi(){
 			"<br/><span style='font-size:13px;font-style:italic;'>".$row['dt']." (".$tarihi.")</span></li>";
 		}
 		if($data=="")
-			return "<li>Etkinlik yoktur...</li>";
+			return "<li>$metin[586]</li>";
 		else
 			return $data;		
 }
