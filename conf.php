@@ -4300,10 +4300,11 @@ function odaGetir($gelen){
 sonTarihGetir:
 bir tablodan bugünün tarihine göre iþlem var ise TRUE döner
 */
-function sonTarihGetir($tablo){
+function sonTarihGetir($tablo,$gun){
 	global $yol1,$_uploadFolder;	
 	$sonuc = false;
-	$bugun = date("d-m-Y");
+//	$bugun = date("d-m-Y");
+	$bugun = date('d-m-Y', time()-($gun*86400));
 		
 	switch($tablo){
 		case "oy":
@@ -4436,12 +4437,10 @@ if ($handle = opendir($dir)) {
 		if ($obj!= '.' and $obj!= '..')
 				if (is_file($dir.$obj) and !($obj== 'index.php' or $obj== '.htaccess')) {
 					$i++;
-					if ($i>100) 
-					 return false; //zaman aþýmý gibi, çok dosya var
+					//if ($i>1000) return false; //zaman aþýmý gibi, çok dosya oldu bile
 						$dTarih = date ("d-m-Y", filemtime($dir.$obj));
 						$sTarih = date("d-m-Y");
-						if($dTarih==$sTarih)
-						  return true;
+						if($dTarih==$sTarih) return true;
 					}			
 	}
 		closedir($handle);
@@ -4985,6 +4984,7 @@ Sec2Time2:
 saniyeyi üst zaman birimlerine çevirir
 */
 function Sec2Time2($time){
+  global $metin;
   if(is_numeric($time)){
     $value = "";
     if($time >= 31556926){
@@ -4992,7 +4992,7 @@ function Sec2Time2($time){
       $time = ($time%31556926);
     }
     if($time >= 86400){
-      $value .= floor($time/86400)."d ";
+      $value .= floor($time/86400)." $metin[621] ";
       $time = ($time%86400);
     }
     if($time >= 3600){
