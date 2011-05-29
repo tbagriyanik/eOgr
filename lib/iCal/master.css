@@ -22,8 +22,8 @@ table {
 	font-size: 20px;
 }
 td, th {
-	width: 81px;
-	height: 81px;
+	width: 41px;
+	height: 41px;
 	text-align: center;
 	vertical-align: middle;
 	background: url(cells.png);
@@ -32,15 +32,16 @@ td, th {
 }
 th {
 	height: 30px;
-	font-weight: bold;
-	font-size: 14px;
+	font-weight: lighter;
+	font-size: 12px;
 }
-td:hover, th:hover {
+td:hover {
 	background-position: 0px -81px;
 	color: #222;
 }
 td.date_has_event {
 	background-position: 162px 0px;
+	font-weight:bold;
 	color: white;
 }
 td.date_has_event:hover {

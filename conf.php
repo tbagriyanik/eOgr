@@ -3377,17 +3377,17 @@ function gunTr($gelen){
 buTarihtekiOlayListesi:
 gelen tarihteki olay özeti
 */
-function buTarihtekiOlayListesi($gun,$ay,$yil){
+function buTarihtekiOlayListesi($gun,$ay,$yil,$my){
 	global $metin;
 	$tarih = date("d-m-Y",mktime(0, 0, 0, $ay, $gun, $yil)); 
 	$tarih2 = date("Y-m-d",mktime(0, 0, 0, $ay, $gun, $yil)); 
 	
 	$sonuc = "";
-	$say = olayIslemSayisi($tarih2);
+	$say = olayIslemSayisi($tarih2,$my);
 	if($say>0)
 		$sonuc .= "<span class=\"desc\"><a href='../../dataActions.php' target='_parent'>$metin[544]</a> : $say</span>";
 									
-	$say2 = dersIslemSayisi($tarih2);
+	$say2 = dersIslemSayisi($tarih2,$my);
 	if($say2>0)
 		$sonuc .= "<span class=\"desc\"><a href='../../dataWorkList.php' target='_parent'>$metin[545]</a> : $say2</span>";
 		
@@ -3422,10 +3422,13 @@ function buTarihtekiOlayListesi($gun,$ay,$yil){
 olayIslemSayisi:
 bir tarihteki iþlem sayýsý
 */
-function olayIslemSayisi($tarih){
+function olayIslemSayisi($tarih,$my){
 	global $yol1;
-	
-	$sql1	= 	"select count(id) as say from eo_usertrack where DATE_FORMAT(dateTime, '%Y-%m-%d') = '$tarih'";
+	if($my=="&my=0")
+		$sql1	= 	"select count(id) as say from eo_usertrack where DATE_FORMAT(dateTime, '%Y-%m-%d') = '$tarih'";
+		else
+		$sql1	= 	"select count(id) as say from eo_usertrack where DATE_FORMAT(dateTime, '%Y-%m-%d') = '$tarih' and userName='".$_SESSION["usern"]."'";
+		
 	$result1= 	@mysql_query($sql1,$yol1);
 	if($result1)
 		return @mysql_result($result1,0,"say");
@@ -3435,10 +3438,13 @@ function olayIslemSayisi($tarih){
 dersIslemSayisi:
 bir tarihteki ders iþlem sayýsý
 */
-function dersIslemSayisi($tarih){
+function dersIslemSayisi($tarih,$my){
 	global $yol1;
 	
-	$sql1	= 	"select count(id) as say from eo_userworks where DATE_FORMAT(calismaTarihi, '%Y-%m-%d') = '$tarih'";
+	if($my=="&my=0")
+		$sql1	= 	"select count(id) as say from eo_userworks where DATE_FORMAT(calismaTarihi, '%Y-%m-%d') = '$tarih'";
+		else
+		$sql1	= 	"select count(id) as say from eo_userworks where DATE_FORMAT(calismaTarihi, '%Y-%m-%d') = '$tarih' and userID='".getUserID2($_SESSION["usern"])."'";
 	$result1= 	@mysql_query($sql1,$yol1);
 	if($result1)
 		return @mysql_result($result1,0,"say");

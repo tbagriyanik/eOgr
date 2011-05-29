@@ -27,25 +27,31 @@ $prev_month	=mktime(0, 0, 0, $month-1, 1, $year );
 
 $next_m=date('m', $next_month);
 $next_y=date('Y', $next_month);
+
+$myEkle="&my=0";
+if(isset($_GET["my"]))
+ if($_GET["my"]=="1")
+  $myEkle="&my=1";
+  
 if($taraDili=="EN")
-	$next_month="<a href=\"calendar.php?month=$next_m&year=$next_y\" class=\"date_selector\" target=\"_self\">". date('F', $next_month) . " &raquo;</a>";
+	$next_month="<a href=\"calendar.php?month=$next_m&year=$next_y$myEkle\" class=\"date_selector\" target=\"_self\">". date('F', $next_month) . " &raquo;</a>";
  else
-	$next_month="<a href=\"calendar.php?month=$next_m&year=$next_y\" class=\"date_selector\" target=\"_self\">". ayTr(date('m', $next_month)) . " &raquo;</a>";
+	$next_month="<a href=\"calendar.php?month=$next_m&year=$next_y$myEkle\" class=\"date_selector\" target=\"_self\">". ayTr(date('m', $next_month)) . " &raquo;</a>";
 	
 
 $prev_m=date('m', $prev_month);
 $prev_y=date('Y', $prev_month);
 if($taraDili=="EN")
-	$prev_month="<a href=\"calendar.php?month=$prev_m&year=$prev_y\" class=\"date_selector\" target=\"_self\">&laquo; ". date('F', $prev_month) . "</a>";
+	$prev_month="<a href=\"calendar.php?month=$prev_m&year=$prev_y$myEkle\" class=\"date_selector\" target=\"_self\">&laquo; ". date('F', $prev_month) . "</a>";
 	else
-	$prev_month="<a href=\"calendar.php?month=$prev_m&year=$prev_y\" class=\"date_selector\" target=\"_self\">&laquo; ". ayTr(date('m', $prev_month)) . "</a>";
+	$prev_month="<a href=\"calendar.php?month=$prev_m&year=$prev_y$myEkle\" class=\"date_selector\" target=\"_self\">&laquo; ". ayTr(date('m', $prev_month)) . "</a>";
 	
 function last_day( $month, $year ) {
 return mktime( 23, 59, 59, $month + 1, 0, $year );
 }
 
 function print_calendar( $month, $year, $weekdaytostart = 0 ) {
-	global $taraDili,$get_date;
+	global $taraDili,$get_date,$myEkle;
 	$last = idate( 'd', last_day( $month, $year ) );
 	$firstdaystamp = mktime( 0, 0, 0, $month, 1, $year );
 	$firstwday = idate( 'w', $firstdaystamp );
@@ -96,7 +102,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 			if ( ( $onday == 0 ) || ( $onday > $last ) ) {
 				echo "<td class=\"padding\">&nbsp;</td>";
 			} else {
-				$olayVar = buTarihtekiOlayListesi($onday,$month,$year);
+				$olayVar = buTarihtekiOlayListesi($onday,$month,$year,$myEkle);
 				if ($onday==date('d') && $month==date('m') && empty($olayVar) ) {
 					//bugünü iþaretle
 					echo "<td class=\"today\">{$onday}</td>";
@@ -154,7 +160,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
         </head>
         <body>
-<div style="width:550px;margin:0 auto;">
+<div style="margin:0 auto;">
           <div align="center"> <?php echo $prev_month; ?> <strong><?php 
 		  if($taraDili=="EN")
 			  echo (date("F",$get_date))." ".date('Y', $get_date); 
