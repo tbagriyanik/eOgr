@@ -467,7 +467,7 @@ function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 	   if($grafikli) 
 	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
 	   
-	   if($sadeYuzde)		
+	   if($sadeYuzde and @mysql_numrows($result1)>0)		
 	      return 100-round($rank*100/@mysql_numrows($result1));
 		  
        return ("$rank /".@mysql_numrows($result1));
