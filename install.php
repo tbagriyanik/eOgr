@@ -79,14 +79,30 @@ function temizle($metin)
     $metin = str_replace(">", ">", $metin);
     $metin = trim(htmlspecialchars($metin));
     return $metin;
-}  
+} 
+/*
+numToTheme:
+sayýsaldan tema klasör adý getirir
+*/
+function numToTheme($gelen){
+	$result = "";
+    $themeArray=glob('theme/*', GLOB_ONLYDIR);
+	$i=0;
+    foreach($themeArray as $thme){
+	   $temaGel = explode("/",$thme);	
+	   if($gelen==$i){		   
+	    return $temaGel[1];
+	   }
+	   $i++;
+	}
+	return $result;		 
+} 
 /*
 temaBilgisi:
 temanýn deðiþtirilmesi
 */
-function temaBilgisi(){
-	global $_defaultTheme;
-	$result = $_defaultTheme;
+function temaBilgisi(){	
+	$result = numToTheme(0);//ilk tema
 	$cerezden = temizle((isset($_COOKIE["theme"]))?$_COOKIE["theme"]:"");
 
 	 if($cerezden!="" and is_dir('theme/'.$cerezden)){
@@ -126,7 +142,7 @@ require 'lib/flood-protection.php'; // include the class
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[71]?></title>
+<title>eOgr -<?php echo " ".$metin[71]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 
 <script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>

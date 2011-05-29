@@ -65,16 +65,16 @@ Lesser General Public License for more details.
 				}
 				break;
 		} 
-	} 	
-	
-		//eðer 5 dakika içinde zaten girmiþ ise (flood gibi)
- 	 if(isset($_POST["userN"]))
-		if (sonLoginDakikasi($adi)<5) { 
+	} 	   
+
+	//eðer 5 dakika içinde zaten girmiþ ise (flood gibi)
+	if(isset($_POST["userN"]))
+	  if (sonLoginDakikasi(substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15))<5) { 
 			sessionDestroy();
 			header("Location: error.php?error=7");
 	   		die ("<font id='hata'> ".$metin[404]." (1)</font><p>".$metin[402]."</p>");			
-		}	    
-
+	}
+	
    if ($adi=="") {
 	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
     	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
@@ -83,7 +83,7 @@ Lesser General Public License for more details.
 	  {
 	   if(checkRealUser($adi,$par)=="-2")	   
 		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
-	   else {
+	   else {	   
 		    setcookie("theme",kullaniciTema($adi),time()+60*60*24*30);	
 	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
 			header("Location: index.php");
@@ -93,10 +93,9 @@ Lesser General Public License for more details.
 	if($adi=="" || $par=="") {
 		header("Location: error.php?error=2");
 		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
-	}
+	}    
 	
-    currentFileCheck("login.php");	
-	
+	currentFileCheck("login.php");	
 	
 	$seciliTema=temaBilgisi();	
 
