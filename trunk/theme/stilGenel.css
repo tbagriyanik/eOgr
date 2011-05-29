@@ -58,6 +58,11 @@ td {
 	vertical-align: text-top;
 	border: 1px outset #CCC;
 	font-weight: bold;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }
 #oda {
 	background-color: #FFF;
@@ -292,12 +297,22 @@ input[type=button], input[type=submit], button {
 	padding-right: 5px;
 	padding-bottom: 2px;
 	padding-left: 5px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }
 input[type=text], input[type=password], select, textarea {
 	border:1px inset #666;
 	color:#444;
 	background-color: #d6e7ef;
 	padding: 2px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }
 input[type=checkbox] {
 	cursor:pointer;
@@ -305,7 +320,7 @@ input[type=checkbox] {
 input[type=radio] {
 	cursor:pointer;
 }
-#searchterm,#searchterm2 {
+#searchterm, #searchterm2 {
 	border-color:#B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
 	border-style:solid;
 	border-width:1px;
@@ -313,6 +328,11 @@ input[type=radio] {
 	font-size:11px;
 	padding-right:18px;
 	background:url(../img/view.png) no-repeat right #D6E7EF;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }
 label {
 	cursor: pointer;
@@ -330,6 +350,11 @@ label {
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 5px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }
 .ikiKolon ul li {
 	color:	#000;
@@ -364,6 +389,11 @@ tr a {
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 5px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }
 .aramaDiv {
 	float: right;
@@ -554,8 +584,12 @@ h1, h2, h3 {
 	margin-top:-25px;
 	margin-left:150px;
 	padding: 5px;
-	background: #EAEBD8;
-	opacity:0.8;
+	background: #D6E7EF;
 	border: 1px solid #5970B2;
 	z-index:999;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 }

@@ -32,6 +32,7 @@ skyrocketlabs@gmail.com
 	border: 1px solid #88bbd4;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
+	border-radius: 3px 3px 3px 3px;
 	outline: none;
 }
 #loginButton a:hover {
@@ -52,7 +53,7 @@ skyrocketlabs@gmail.com
 /* THIS IS THE HIDDEN FORM */
 
 #loginForm {
-	position:fixed ;
+	position:fixed;
 	width: 185px;
 	font-size: 0.8em;
 	color: #477;
@@ -65,6 +66,7 @@ skyrocketlabs@gmail.com
 	-webkit-border-bottom-left-radius: 3px;
 	-moz-border-radius-bottomright: 3px;
 	-webkit-border-bottom-right-radius: 3px;
+	border-radius:3px 3px 3px 3px;
 	display: none;
 }
 #loginForm ul {
