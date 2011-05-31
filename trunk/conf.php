@@ -2541,7 +2541,41 @@ function yorumlariGetir($konu){
 				}
 	return ""; 
 }
+/*
+sayfaKonuDersArama:
+ders listeleme sayfasý
+*/
+function sayfaKonuDersArama($gelen){
+	global $metin;
+	$yol1 = baglan();
+	$gelen = temizle(RemoveXSS($gelen));
+	$giden = "";
+	$sorgu = "SELECT *   
+				FROM eo_5sayfa, eo_1okul, eo_2sinif, eo_3ders, eo_4konu 
+				WHERE 
+				  eo_3ders.id = eo_4konu.dersID and
+				  eo_2sinif.id = eo_3ders.sinifID and
+				  eo_1okul.id = eo_2sinif.okulID AND
+				  eo_5sayfa.konuID = eo_4konu.id AND
+				eo_5sayfa.anaMetin like '%$gelen%' AND
+				eo_5sayfa.cevap=''
+				ORDER BY eo_5sayfa.konuID DESC, eo_5sayfa.eklenmeTarihi DESC";
 
+	$sonuc = mysql_query($sorgu,$yol1);
+	if($sonuc){
+		$giden = "";
+		 while($satir = mysql_fetch_array($sonuc)) {
+			 $calis = "<a href='lessons.php?konu=$satir[2]' ><img src='img/lessons.gif' alt='calis' border='0' style=\"vertical-align: middle;\">";
+			 $digerSimgeler = " ".($satir["konuyuKilitle"]?"<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[179]."\" title=\"".$metin[179]."\" />":"")
+			 	." ".($satir["sadeceKayitlilarGorebilir"]?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[181]."\" title=\"".$metin[181]."\" />":"")
+				." ".($satir["calismaSuresiDakika"]?"<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[169]."\" title=\"".$metin[169]."\" />":"");
+			 $bilgi = ' <a href="dersBilgisi.php?ders='.$satir["konuID"].'" rel="facebox"><img src="img/info.png" border="0" style="vertical-align:middle" alt='.$metin[301].' /></a>';	
+			$giden .= "<tr><td nowrap='nowrap'>$calis ".smartShort(strip_tags($satir[1]),25)."</a></td><td>".$satir["konuAdi"]." ".$satir["dersAdi"]." (".$satir["okulAdi"]."-".$satir["sinifAdi"].")</td><td align='right' nowrap='nowrap'>$digerSimgeler $bilgi</td></tr>";
+		 }
+		 $giden .= "";
+		}
+	return $giden;		
+}
 /*
 isKonu:
 kimlik numarasýna sahip bir konu var mý?

@@ -47,8 +47,8 @@ Lesser General Public License for more details.
 <style type="text/css">
 .underShadow1 {
 	background:#fff;
-	opacity:0.5;
-	filter:alpha(opacity=50);
+	opacity:0.1;
+	filter:alpha(opacity=10);
 	position:absolute;
 	top:20px;
 	left:220px;
@@ -58,8 +58,8 @@ Lesser General Public License for more details.
 }
 .underShadow2 {
 	background:#fff;
-	opacity:0.5;
-	filter:alpha(opacity=50);
+	opacity:0.1;
+	filter:alpha(opacity=10);
 	position:absolute;
 	top:20px;
 	left:420px;
@@ -69,8 +69,8 @@ Lesser General Public License for more details.
 }
 .underShadow3 {
 	background:#fff;
-	opacity:0.5;
-	filter:alpha(opacity=50);
+	opacity:0.1;
+	filter:alpha(opacity=10);
 	position:absolute;
 	top:20px;
 	left:620px;
