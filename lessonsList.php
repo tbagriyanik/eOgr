@@ -46,21 +46,20 @@ Lesser General Public License for more details.
 	<script type="text/javascript" src="lib/script.js"></script>
 	<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 	<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="lib/facebox/facebox.js"></script>
-<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript">
+	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
         
       }) 
     })
 </script>
-    
 	<style type="text/css">
 div.containerStripe {
 	background-color: transparent;
+	margin-top:15px;
 }
 div.outerStripe {
 	margin: 0 auto;
@@ -68,14 +67,14 @@ div.outerStripe {
 }
 div.menu {
 	width: 750px;
-	height: 300px;
+	height: 200px;
 	overflow: hidden;
 	margin:5px;
 }
 .menu ul {
 	margin: 0;
 	padding: 0;
-	height: 300px;
+	height: 200px;
 	width: 750px;
 	display: block;
 	list-style: none;
@@ -88,7 +87,7 @@ div.menu {
 	list-style-image:none;
 	margin: 0px;
 	width: 170px;
-	height: 300px;
+	height: 200px;
 	-moz-border-radius-topleft: 15px;
 	border-top-left-radius: 15px;
 }
@@ -337,6 +336,49 @@ var loading = $("#loading");
                   <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[443]?> </span> </h2>
                 <div class="PostContent" style="overflow:hidden;"><br />
+                      <form name="arama" method="get" action="lessonsList.php">
+                    Ders Arama :
+                    <input type="text" name="ara" id="ara" maxlength="50" size="30" value="<?php
+					if (isset($_GET["ara"]))
+						echo RemoveXSS($_GET["ara"]);
+                    ?>" autofocus="true" title="Arama için en az 3 harf girilmelidir."/>
+                    <input type="image" name="araImg" src="img/view.png" />
+                  </form><br />
+                      <?php
+if(!empty($_GET["ara"]) and strlen($_GET["ara"])>2 and strlen($_GET["ara"])<51):
+$arananlar = sayfaKonuDersArama($_GET["ara"]);
+
+ if(!empty($arananlar)){
+?>
+                      <link href="lib/pager.css" rel="stylesheet" type="text/css" />
+                      <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
+                      <script type="text/javascript">
+/* <![CDATA[ */
+
+$(document).ready(function() {
+	$(".pageme tbody").quickPager( {
+		pageSize: 10,
+		currentPage: 1,
+		pagerLocation: "after"
+	});
+});
+
+/* ]]> */
+</script>
+
+                      <table border="0" width="100%" cellpadding="5" cellspacing="0" class="pageme">
+                    <tbody>
+                          <?php
+	  echo $arananlar;
+?>
+                        </tbody>
+                  </table>
+                      <div class="pager"></div>
+                      <?php
+ }else
+  echo "<font id='uyari'>$metin[497]</font>";
+endif;
+?>
                       <div class="containerStripe">
                     <div class="outerStripe">
                           <div class="menu">
