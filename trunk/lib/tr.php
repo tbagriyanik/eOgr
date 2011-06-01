@@ -248,7 +248,7 @@ Lesser General Public License for more details.
 		$metin[194]="Toplam Ýz Sayýsý";    	
 		$metin[195]="hata sayýsý";    	
 		
-		$metin[196]="Kullanýcý Adýmý Unut";    	
+		$metin[196]="Beni Unut";    	
 		
 		$metin[197]=" Ýstatistikler";    	
 		$metin[198]="En fazla &ccedil;alýþan &ouml;ðrenci(ler)";    	

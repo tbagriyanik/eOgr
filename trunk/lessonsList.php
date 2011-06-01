@@ -59,7 +59,6 @@ Lesser General Public License for more details.
 	<style type="text/css">
 div.containerStripe {
 	background-color: transparent;
-	margin-top:15px;
 }
 div.outerStripe {
 	margin: 0 auto;
@@ -100,7 +99,7 @@ div.menu {
 	width:140px;
 	display:block;
 	padding:5px;
-	color:#00F;
+	color:#00F !important; 
 }
 .menu ul > li > div > a:hover {
 	color:#000;
@@ -343,7 +342,8 @@ var loading = $("#loading");
 						echo RemoveXSS($_GET["ara"]);
                     ?>" autofocus="true" title="Arama için en az 3 harf girilmelidir."/>
                     <input type="image" name="araImg" src="img/view.png" />
-                  </form><br />
+                  </form>
+                      <br />
                       <?php
 if(!empty($_GET["ara"]) and strlen($_GET["ara"])>2 and strlen($_GET["ara"])<51):
 $arananlar = sayfaKonuDersArama($_GET["ara"]);
@@ -365,9 +365,8 @@ $(document).ready(function() {
 
 /* ]]> */
 </script>
-
                       <table border="0" width="100%" cellpadding="5" cellspacing="0" class="pageme">
-                    <tbody>
+                    <tbody style="background-color:#eee;font-size:11px;">
                           <?php
 	  echo $arananlar;
 ?>
@@ -379,43 +378,6 @@ $(document).ready(function() {
   echo "<font id='uyari'>$metin[497]</font>";
 endif;
 ?>
-                      <div class="containerStripe">
-                    <div class="outerStripe">
-                          <div class="menu">
-                        <ul>
-                              <li class="okul">
-                            <div>
-                                  <?php
-								echo okulAdlari();
-							?>
-                                </div>
-                          </li>
-                              <li class="sinif">
-                            <div>
-                                  <?php
-								echo sinifAdlari('all');
-							?>
-                                </div>
-                          </li>
-                              <li class="ders">
-                            <div>
-                                  <?php
-								echo dersAdlari('all');
-							?>
-                                </div>
-                          </li>
-                              <li class="konu">
-                            <div>
-                                  <?php
-								echo konuAdlari('all');
-							?>
-                                </div>
-                          </li>
-                            </ul>
-                      </div>
-                          <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
-                        </div>
-                  </div>
                     </div>
                 <?php
 				?>
@@ -443,6 +405,43 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1")
                                   <div class="msg_body">
                                 <div id="sidetreecontrol"><a href="?#"  style="color:#00F"><?php echo $metin[458]?></a> | <a href="?#"  style="color:#00F"><?php echo $metin[459]?></a> | <a  href="#"  style="color:#00F"><?php echo $metin[460]?></a></div>
                                 <?php echo dersAgaci(1)?> </div>
+                                  <div class="containerStripe">
+                                <div class="outerStripe">
+                                      <div class="menu">
+                                    <ul>
+                                          <li class="okul">
+                                        <div>
+                                              <?php
+								echo okulAdlari();
+							?>
+                                            </div>
+                                      </li>
+                                          <li class="sinif">
+                                        <div>
+                                              <?php
+								echo sinifAdlari('all');
+							?>
+                                            </div>
+                                      </li>
+                                          <li class="ders">
+                                        <div>
+                                              <?php
+								echo dersAdlari('all');
+							?>
+                                            </div>
+                                      </li>
+                                          <li class="konu">
+                                        <div>
+                                              <?php
+								echo konuAdlari('all');
+							?>
+                                            </div>
+                                      </li>
+                                        </ul>
+                                  </div>
+                                      <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
+                                    </div>
+                              </div>
                                 </div>
                           </div>
                             </div>
