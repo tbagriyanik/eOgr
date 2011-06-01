@@ -41,7 +41,6 @@ ol.pageNav li.currentPage a {
 }
 table.pageme {
 	border-collapse: collapse;
-	border:#aaa thin solid;
 	padding:5px;
 }
 table.pageme td {

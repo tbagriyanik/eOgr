@@ -246,7 +246,7 @@ Lesser General Public License for more details.
 		$metin[194]="Total Track Count";    	
 		$metin[195]="error count is";    	
 		
-		$metin[196]="Forget my user name";    	
+		$metin[196]="Forget me";    	
 		
 		$metin[197]=" Statistics";    	
 		$metin[198]="Most working student(s)";    	

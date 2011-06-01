@@ -2551,13 +2551,29 @@ function sayfaKonuDersArama($gelen){
 	$gelen = temizle(RemoveXSS($gelen));
 	$giden = "";
 	$sorgu = "SELECT *   
-				FROM eo_5sayfa, eo_1okul, eo_2sinif, eo_3ders, eo_4konu 
+				FROM eo_5sayfa, eo_1okul, eo_2sinif, eo_3ders, eo_4konu, eo_users 
 				WHERE 
 				  eo_3ders.id = eo_4konu.dersID and
 				  eo_2sinif.id = eo_3ders.sinifID and
 				  eo_1okul.id = eo_2sinif.okulID AND
 				  eo_5sayfa.konuID = eo_4konu.id AND
-				eo_5sayfa.anaMetin like '%$gelen%' AND
+				  eo_5sayfa.ekleyenID = eo_users.id AND
+					(eo_5sayfa.anaMetin like '%$gelen%'
+					 or
+					 eo_4konu.konuAdi like '%$gelen%'
+					 or
+					 eo_3ders.dersAdi like '%$gelen%'
+					 or
+					 eo_2sinif.sinifAdi like '%$gelen%'
+					 or
+					 eo_1okul.okulAdi like '%$gelen%'
+					 or
+					 eo_users.userName like '%$gelen%'
+					 or
+					 eo_users.realName like '%$gelen%'
+					 
+					)
+				 AND
 				eo_5sayfa.cevap=''
 				ORDER BY eo_5sayfa.konuID DESC, eo_5sayfa.eklenmeTarihi DESC";
 
