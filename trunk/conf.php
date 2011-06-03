@@ -1772,9 +1772,9 @@ function isimleriAyniUyeler(){
 			ORDER BY realName";	
 	$yol1 = baglan();
 	$result1 = @mysql_query($sql1, $yol1);
-
+	$liste ="";
 	if(@mysql_num_rows($result1)>0){
-		$liste ="";
+		
  	 while($gelen=@mysql_fetch_array($result1)){
 			$liste .= "<a href='siteSettings.php?arama=".$gelen['realName']."'>'".$gelen['realName']."'</a> ";
 	 }//while
@@ -2735,11 +2735,11 @@ function sonLoginDakikasi($adi){
     $yol1 = baglan();
 	$result1 = mysql_query($sql1, $yol1);
 		if ($result1 && @mysql_num_rows($result1) > 0)
-				{  $sonuc = @mysql_result($result1, 0, "DiffMinute")	;
+				{  $sonuc = @mysql_result($result1, 0, "DiffMinute");
 				   @mysql_free_result($result1);		     
 				   return ($sonuc);
 				}else {
-				   return 0;
+				   return -1;
 				}	
 }
 /*
@@ -3129,7 +3129,7 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 	$email		=trim(substr(temizle($email),0,50));
   	$birth		=tarihYap(trim(substr(temizle($birth),0,10)));
 	
-	$sql1	= 	"Insert into eo_users VALUES (NULL , '$userName', '".sha1($password)."' , '$realName', '$email', '$birth', '0', '$datem','1-1-1-1-1-1-1-1-1-1-1-1-1-1-1')";
+	$sql1	= 	"Insert into eo_users VALUES (NULL , '$userName', '".sha1($password)."' , '$realName', '$email', '$birth', '0', '$datem','1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1')";
 
 	$result1= 	@mysql_query($sql1,$yol1);
 	@mysql_free_result($result1);
@@ -3864,9 +3864,9 @@ function ayarGetir3($adi)
 	if(mysql_result($result1,0,"ayarlar")!="")
 		$sonuc = @mysql_result($result1,0,"ayarlar");
 		else	
-		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";
+		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";
 	}else	
-		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";			 
+		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";			 
 
    @mysql_free_result($result1);
 	return $sonuc;
@@ -4263,6 +4263,18 @@ function getKursTablo($dersID,$uID){
 	}
 	
 	return "-";
+}
+/*
+eraseOlderTracks:
+geçen yýllara ait kullanýcý veri hareketleri silinir
+*/
+function eraseOlderTracks(){
+	global $yol1;	
+	$say=0;		
+    $sql1 = "DELETE FROM eo_usertrack WHERE DATE_FORMAT(NOW(),'%Y')-DATE_FORMAT(dateTime, '%Y')>0"; 	
+    $result1 = mysql_query($sql1, $yol1); 
+    if ($result1) $say+=mysql_affected_rows();
+	return $say;
 }
 /*
 lessonPageFix:

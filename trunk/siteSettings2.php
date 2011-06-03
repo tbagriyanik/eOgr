@@ -155,6 +155,7 @@ Lesser General Public License for more details.
                       <span title="<?php echo $metin[111]?>"> <?php echo $metin[48]?> </span><br />
                       <span> <?php echo $metin[215]?> </span><br />
                       <span> <?php echo $metin[666]?> </span><br />
+                      <span> <?php echo $metin[680]?> </span><br />
                       <?php
 	if ($tur=="2")	{
 	 //yönetici ise
@@ -207,6 +208,9 @@ Lesser General Public License for more details.
 			
 			 if(isset($_GET["fixLesson"]) && $_GET["fixLesson"]=="1")			  {
 				 printf("<font id='tamam'>$metin[667]</font>",lessonPageFix());				 
+			  }
+			 if(isset($_GET["eraseOld"]) && $_GET["eraseOld"]=="1")			  {
+				 printf("<font id='tamam'>$metin[679]</font>",eraseOlderTracks());				 
 			  }
 			 if(isset($_GET["optim"]) && $_GET["optim"]=="1")			  {
 						require("lib/SQL_Import.php");

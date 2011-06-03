@@ -877,4 +877,8 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[677] = "Yaklaþan Son Canlý Dersler";
 		$metin[678] = "Tamamlanmýþ Olan Canlý Dersler";
 		
+		$metin[679] = "%s kayýt baþarý ile silindi";		
+		$metin[680] = "Önceki yýllara ait genel veri izlerini silmek için <input type='button' onclick='location.href = &quot;siteSettings2.php?eraseOld=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";		
+		$metin[681] = "<font id='uyari'>Tablolar oluþturuldu!</font><p>Varsayýlan yönetici kullanýcý adý ve parolasý: <strong>admin 11111</strong><ul><li>Sitenin ayarlarýný deðiþtirmek için <a href='siteSettings3.php'>týklatýnýz</a>.</li><li>Yönetici parolanýzý <a href='userSettings.php'>deðiþtimeyi</a> unutmayýnýz.</li><li>$metin[47]</li></ul>";
+		
 ?>

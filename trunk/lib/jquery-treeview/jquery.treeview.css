@@ -65,6 +65,8 @@
 	background-image: url(images/treeview-famfamfam.gif);
 }
 .noktasiz {
-	list-style:none;
+	list-style:none !important;
+	list-style-image:none !important;
+	b_ackground-image:none !important;
 	background-position: 0 -1766px;
 }
