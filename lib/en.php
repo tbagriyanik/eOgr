@@ -867,5 +867,5 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[679] = "You have erased %s record(s) successfully";		
 		$metin[680] = "<input type='button' onclick='location.href = &quot;siteSettings2.php?eraseOld=1&quot;;' value=\"Click\"/> to erase previous years general data tracks";		
 		$metin[681] = "<font id='uyari'>Tables are created!</font><p>Default administrator user name and password : <strong>admin 11111</strong><ul><li>You can go to change <a href='siteSettings3.php'>site settings</a>.</li><li>Do not forget to change your administrator password from <a href='userSettings.php'>here</a>.</li><li>$metin[47]</li></ul>";
-		
+		$metin[682] = "We're sorry, we currently can not send e-mail! Receive a new password by contacting an administrator.";
 ?>

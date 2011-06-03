@@ -881,4 +881,6 @@ Detaylar için <a href=\"INSTALL.html\">týklatýnýz</a>.
 		$metin[680] = "Önceki yýllara ait genel veri izlerini silmek için <input type='button' onclick='location.href = &quot;siteSettings2.php?eraseOld=1&quot;;' value=\"t&#305;klat&#305;n&#305;z\"/>";		
 		$metin[681] = "<font id='uyari'>Tablolar oluþturuldu!</font><p>Varsayýlan yönetici kullanýcý adý ve parolasý: <strong>admin 11111</strong><ul><li>Sitenin ayarlarýný deðiþtirmek için <a href='siteSettings3.php'>týklatýnýz</a>.</li><li>Yönetici parolanýzý <a href='userSettings.php'>deðiþtimeyi</a> unutmayýnýz.</li><li>$metin[47]</li></ul>";
 		
+		$metin[682] = "Özür dileriz, þu anda eposta gönderemiyoruz! Bir yönetici ile iletiþime geçerek yeni parola alabilirsiniz.";
+		
 ?>
