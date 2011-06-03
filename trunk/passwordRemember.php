@@ -122,9 +122,15 @@ Lesser General Public License for more details.
             <div class="Post-body">
               <div class="Post-inner">
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[65]?> </span> </h2>
-                <div class="PostContent"> <?php echo $metin[83]?>
+                <div class="PostContent">
                   <?php
+				  
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
+if (@mail(ayarGetir("ayar4char"), "eOgr test", "just eOgr",$headers)) {         
 
+//no problem with EMAIL
+ echo $metin[83];
  if(isset($_POST['form']) && $_SESSION["passRem"]!="yes"){          
 	
 			switch ($_POST['form'])
@@ -227,6 +233,9 @@ if(!empty($_SESSION["passRem"]) and $_SESSION["passRem"]=="yes") echo($metin[410
                   </div>
                   <?php
 	}
+}	
+else 
+ 	echo "<font id='hata'>$metin[682]</font>";	
 ?>
                 </div>
                 <div class="cleared"></div>

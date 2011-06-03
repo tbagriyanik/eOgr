@@ -106,6 +106,48 @@ ob_start (); // Buffer output
 	});
 
 </script>
+<?php if ($eMode==1){?>
+<link rel="stylesheet" href="lib/zoomoz/zoomooz.css" type="text/css" />
+<script type="text/javascript" src="lib/zoomoz/sylvester.js"></script>
+<script type="text/javascript" src="lib/zoomoz/purecssmatrix.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.animtrans.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+			settings = {
+				// zoomed size relative to screen
+				// 0.0-1.0
+				targetsize: 1,
+				// scale content to screen based on their size
+				// "width"|"height"|"both"
+				scalemode: "both",
+				// animation duration
+				duration: 1000,
+				// easing of animation, similar to css transition params
+				// "linear"|"ease"|"ease-in"|"ease-out"|
+				// "ease-in-out"|[p1,p2,p3,p4]
+				// [p1, p2, p3, p4] refer to cubic-bezier curve params
+				easing: "ease",
+				// use browser native animation in webkit
+				// true|false
+				nativeanimation: true
+			}	
+		$(".zoom").click(function(evt) {
+			evt.stopPropagation();
+			$(this).zoomTo(settings);
+		});
+		$(window).click(function(evt) {
+			evt.stopPropagation();
+			$("body").zoomTo();
+		});
+		 $("body").click(function(evt) {
+		  $(this).zoomTo({targetsize:1.0});
+		  evt.stopPropagation();
+		});
+		$("body").zoomTo();
+	});
+</script>
+<?php } ?>
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" language="javascript">
 var ns = (document.layers)? true:false;
@@ -191,7 +233,8 @@ function cleanup() {
 			  if(isset($_GET["konu"]))				
                 if(isKonu($_GET["konu"])){
 				?>
-          <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external"><?php 	echo $metin[553];?>
+          <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external">
+            <?php 	echo $metin[553];?>
           </label>
           &nbsp; |
           <?php
@@ -203,13 +246,15 @@ function cleanup() {
 			echo "<strong>$metin[552]</strong>";
 		else
 			echo $metin[552];
-		?></a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
+		?>
+          </a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
           <?php  		
 		if($eMode=="3") 
 			echo "<strong>$metin[557]</strong>";
 		else
 			echo $metin[557];
-		?></a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
+		?>
+          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
           <?php
 		  if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 		  ?>
@@ -269,7 +314,7 @@ function cleanup() {
 ?>
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
-                  <div id="resizeMe">
+                  <div id="resizeMe" class="zoom level0">
                     <div id="kapsayici"><span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span>
                       <div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
                     </div>
@@ -537,7 +582,6 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
           <?php
 	}
 ?>
-
           <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
