@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `eo_users` (
 --
 
 INSERT INTO `eo_users` (`id`, `userName`, `userPassword`, `realName`, `userEmail`, `userBirthDate`, `userType`, `requestDate`, `ayarlar`) VALUES
-(1, 'admin', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 'Super Kullanici', 'admin@eogr.com', '2008-11-15', 2, '2008-11-15 00:00:00', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
+(1, 'admin', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 'Super Kullanici', 'admin@eogr.com', '2008-11-15', 2, '2008-11-15 00:00:00', '1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1');
 
 -- --------------------------------------------------------
 

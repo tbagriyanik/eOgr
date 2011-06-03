@@ -1,7 +1,7 @@
 eOgr 
 
 Version: 		135b
-Last update: 	1-6-2011 
+Last update: 	3-6-2011 
 (730 hours programming, 22.000 lines PHP, 32.000 lines Javascript and CSS)
 
 eOgr (e-ogrenme) is an "Open Source" e-learning project.
@@ -12,11 +12,11 @@ Simply you can get "online education". You can learn any subject better with ani
 
 Students can register for online education resources. Each topic has rich text formatted reading pages,  quizes (multiple choice, classic, test) and more activities like presentation and simulation. 
 
-Every member can interact with teachers or other students at real time or become friends. Every member can share their files and homeworks. They can ask questions or read the others answers. 
+Every member can become friends, share their files and homeworks. They can ask questions or read the others answers. 
 
 Teachers and parents can follow the students works. Teachers can add and modify lesson topics, and they can prepare live lessons. 
 
-Administrator users manage the site maintenance like editing users, database backup, database optimization and site settings.
+Administrators manage the site maintenance like editing users, database backup, database optimization and site settings.
 
 INSTALLATION (more details in the INSTALL.html)
 ----------------------------------------------

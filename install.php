@@ -279,7 +279,7 @@ require 'lib/flood-protection.php'; // include the class
 						
 						if ($import["exito"] != 1)
 						{
-							echo "<font id='uyari'>Tablolar oluþturuldu!</font><p>$metin[47] Varsayýlan yönetici kullanýcý adý ve parolasý: <strong>admin 11111</strong></p>";
+							echo "$metin[681]</p>";//baþarýlý kurulum
 						} else {
 							if(isset($import ["errorCode"]) or isset($import ["errorText"]) )
 								echo $import ["errorCode"]." ".$import ["errorText"];

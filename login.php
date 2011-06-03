@@ -68,13 +68,14 @@ Lesser General Public License for more details.
 	} 	   
 
 	//eðer 5 dakika içinde zaten girmiþ ise (flood gibi)
-	if(isset($_POST["userN"]))
-	  if (sonLoginDakikasi(substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15))<5) { 
+	if(isset($_POST["userN"])){
+	  $sonGirisDakikasi=sonLoginDakikasi(substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15));
+	  if ($sonGirisDakikasi>=0 and $sonGirisDakikasi<5) { 
 			sessionDestroy();
 			header("Location: error.php?error=7");
 	   		die ("<font id='hata'> ".$metin[404]." (1)</font><p>".$metin[402]."</p>");			
 	}
-	
+	}
    if ($adi=="") {
 	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
     	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
