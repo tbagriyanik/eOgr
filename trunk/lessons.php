@@ -117,7 +117,7 @@ ob_start (); // Buffer output
 			settings = {
 				// zoomed size relative to screen
 				// 0.0-1.0
-				targetsize: 1,
+				targetsize: 0.9,
 				// scale content to screen based on their size
 				// "width"|"height"|"both"
 				scalemode: "both",

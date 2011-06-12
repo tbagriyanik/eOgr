@@ -114,8 +114,9 @@ a:hover {
 <body>
 <?php
   $dersVarMi = suAndaDersVarMi();
+  echo " <a href='#' onclick='window.close();' id=\"lgout\">".$metin[34]."</a>";
  if($dersVarMi!=false){
-	 echo "<h4>$dersVarMi &nbsp;<div id=\"defaultCountdown\"></div> <a href='#' onclick='window.close();' id=\"lgout\">".$metin[34]."</a>&nbsp;</h4>";
+	 echo "<h4>$dersVarMi &nbsp;<div id=\"defaultCountdown\"></div>&nbsp;</h4>";
 ?>
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script> 
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/dom-drag.js"></script> 

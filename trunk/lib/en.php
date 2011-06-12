@@ -70,7 +70,7 @@ Lesser General Public License for more details.
         $metin[46]="Automatic Install";   
         $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
   	
-		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"Click\"/> for the tables' backup";   
+		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"Click\"/> for the tables' <strong>backup</strong>";   
         $metin[49]="Topic count is";   
 		
         $metin[50]="Message";         
@@ -270,7 +270,7 @@ Lesser General Public License for more details.
 		$metin[213]="Your last works";
 		
 		$metin[214]="There is a class restriction.";
-        $metin[215]="<input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"Click\"/> for the tables' optimization and repair";   
+        $metin[215]="<input type='button' onclick='location.href = &quot;siteSettings2.php?optim=1&quot;;' value=\"Click\"/> for the tables' <strong>optimization and repair</strong>";   
 		$metin[216]="Show These in Footer";
 		
 		$metin[217]="Last update";
