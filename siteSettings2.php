@@ -63,7 +63,6 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -151,11 +150,17 @@ Lesser General Public License for more details.
                 <div class="Post-body">
                   <div class="Post-inner">
                     <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"> <img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[156]?> </span> </h2>
-                    <div class="PostContent"> 
-                      <span title="<?php echo $metin[111]?>"> <?php echo $metin[48]?> </span><br />
-                      <span> <?php echo $metin[215]?> </span><br />
-                      <span> <?php echo $metin[666]?> </span><br />
-                      <span> <?php echo $metin[680]?> </span><br />
+                    <div class="PostContent">
+                      <table border="0" cellpadding="5" cellspacing="5" align="center">
+                        <tr>
+                          <td align="right"><span title="<?php echo $metin[111]?>"> <?php echo $metin[48]?> </span></td>
+                          <td align="right"><?php echo $metin[215]?> </span><br /></td>
+                        </tr>
+                        <tr>
+                          <td align="right"><?php echo $metin[666]?></td>
+                          <td align="right"><?php echo $metin[680]?></td>
+                        </tr>
+                      </table>
                       <?php
 	if ($tur=="2")	{
 	 //yönetici ise
