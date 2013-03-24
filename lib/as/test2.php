@@ -10,6 +10,9 @@ the returned xml has the following structure
 
 include ("../../conf.php");
 
+checkLoginLang(true,true,"test2.php");
+if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
+
   		   $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
 		   if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
 		   dilCevir($taraDili);		

@@ -102,7 +102,7 @@ Lesser General Public License for more details.
 		$metin[72]="Veritaban&#305; Yama Kurulumu";    
 		$metin[73]="'database.php' dosyas&#305;ndaki MySQL ayarlar&#305;n&#305;z&#305; yapt&#305;&#287;&#305;n&#305;zdan emin olunuz!";    
 		$metin[74]="";    
-		$metin[75]="<p><strong>Geli&#351;tirici : </strong>Tar&#305;k Ba&#287;r&#305;yan&#305;k<br /><strong>Ana sayfa : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Ba&#351;lang&#305;&ccedil; Tarihi :</strong> Kas&#305;m 2008<br /><br />Türkçe öðretici videolar için <a href='http://www.tuzlaatl.k12.tr/eogr/Video' target='_blank'>burayý</a> týklatýnýz.</p>";    
+		$metin[75]="<p><strong>Geli&#351;tirici : </strong>Tar&#305;k Ba&#287;r&#305;yan&#305;k<br /><strong>Ana sayfa : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Ba&#351;lang&#305;&ccedil; Tarihi :</strong> Kas&#305;m 2008<br /><br />Türkçe öðretici videolar için <a href='Video/index.html' target='_blank'>burayý</a> týklatýnýz.</p>";    
 		$metin[76]="<p><strong>eOgr </strong> projesine Ho&#351; Geldiniz!</p>";    
 		$metin[77]="eOgr Nedir?";    
 

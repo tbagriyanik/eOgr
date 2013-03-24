@@ -180,7 +180,7 @@ class HumanRelativeDate{
 					$this->string = 'last month';
 				} else {
 					if($month_diff > 12){
-						$this->string = 'over a year ago';
+						$this->string = (round($month_diff/12,1)).' year(s) ago';
 					} else {
 						$this->string = $month_diff . ' months ago';
 					}
