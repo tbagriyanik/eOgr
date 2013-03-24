@@ -35,13 +35,13 @@ Lesser General Public License for more details.
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <script type="text/javascript" src="lib/flashMode.js"></script>
-<script language="JavaScript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -277,6 +277,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $sure		= temizleCubuk($_POST["dersSuresi"]);
 				        $etkinlikT	= date("Y-m-d H:i",strtotime(temizleCubuk($_POST["tarihEtkinlik"])));
 				        $notlar		= temizleCubuk($_POST["notlar"]);
+
 						if (!empty($dersID) && !empty($userID) && !empty($sure) && !empty($etkinlikT))
    							$sql="Update $tabloAdi set 
 									dersID='$dersID', userID = '$userID',
@@ -284,7 +285,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 									yontem='$notlar' 								    
 									where id=$seciliKayit";
 				 }
-					
+
 	            $result = mysql_query($sql, $yol);
 				if($result) 
 				   echo "<font id='tamam'>$metin[536]</font>";
@@ -1777,7 +1778,7 @@ bkLib.onDomLoaded(function() {
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="anaMetin"><?php echo $metin[390]?> : </label></td>
-                          <td style="background-color:#FFF;" ><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"><?php echo htmlspecialchars_decode( mysql_result($result2, 0, "anaMetin"))?>
+                          <td style="background-color:#FFF;" ><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"><?php echo ( mysql_result($result2, 0, "anaMetin"))?>
               </textarea></td>
                         </tr>
                         <tr>
@@ -2224,7 +2225,7 @@ bkLib.onDomLoaded(function() {
 	 }
  
 ?>
-                    <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.8.12.custom.min.js"></script> 
+                    <script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.10.2.custom.min.js"></script> 
                     <script language="JavaScript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script> 
                     <script type="text/javascript">
 $(document).ready(function(){ 

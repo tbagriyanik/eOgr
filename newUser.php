@@ -37,7 +37,7 @@ Lesser General Public License for more details.
 
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <script type="text/javascript">  
 /*

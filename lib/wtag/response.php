@@ -9,9 +9,9 @@ $name = $row['name'];
 $url = $row['url'];
 $message = $row['message'];
 
-$name = htmlspecialchars(iconv( "ISO-8859-9","UTF-8", $name));
-$url = htmlspecialchars($url);
-$message = htmlspecialchars( iconv( "ISO-8859-9","UTF-8", $message));
+$name = htmlentities(iconv( "ISO-8859-9","UTF-8", $name));
+$url = htmlentities($url);
+$message = htmlentities( iconv( "ISO-8859-9","UTF-8", $message));
 if(empty($message)) continue;
 $xml .= '<msg>';
 $xml .= '<date>' . $date . '</date>';

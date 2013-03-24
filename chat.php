@@ -124,7 +124,7 @@ a:hover {
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/conf.js"></script> 
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/ajax.js"></script> 
 <script language="javascript"  type="text/javascript" src="lib/wtag/js/drop_down.js"></script> 
-<script language="javascript"  type="text/javascript" src="lib/jquery-1.6.1.min.js"></script> 
+<script language="javascript"  type="text/javascript" src="lib/jquery-1.9.1.min.js"></script> 
 <script language="javascript"  type="text/javascript" src="lib/jquery.countdown.js"></script> 
 <script type="text/javascript">
     window.onload = maxWindow;

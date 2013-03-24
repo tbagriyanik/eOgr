@@ -45,7 +45,7 @@ Lesser General Public License for more details.
 	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 	<script type="text/javascript" src="lib/script.js"></script>
 	<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-	<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+	<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
 	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
@@ -68,7 +68,7 @@ div.menu {
 	width: 750px;
 	height: 200px;
 	overflow: hidden;
-	margin:5px;
+	margin: 5px;
 }
 .menu ul {
 	margin: 0;
@@ -78,12 +78,12 @@ div.menu {
 	display: block;
 	list-style: none;
 	overflow: hidden;
-	list-style-image:none;
+	list-style-image: none;
 }
 .menu ul > li {
 	float: left;
-	list-style:none;
-	list-style-image:none;
+	list-style: none;
+	list-style-image: none;
 	margin: 0px;
 	width: 170px;
 	height: 200px;
@@ -92,49 +92,49 @@ div.menu {
 }
 .menu ul > li > div {
 	position: relative;
-	padding-top:5px;
-	margin-left:-5px;
+	padding-top: 5px;
+	margin-left: -5px;
 }
 .menu ul > li > div > a {
-	width:140px;
-	display:block;
-	padding:5px;
-	color:#00F !important; 
+	width: 140px;
+	display: block;
+	padding: 5px;
+	color: #00F !important;
 }
 .menu ul > li > div > a:hover {
-	color:#000;
-	background-color:#ccc;
+	color: #000;
+	background-color: #ccc;
 }
 .menu ul > li > div > a:active {
-	color:#000;
-	background-color:#aaa;
+	color: #000;
+	background-color: #aaa;
 }
 .menu ul > li > div > a.active {
-	color:#d00;
-	border-bottom:dotted 1px #D40000;
-	border-left:dotted 1px #D40000;
+	color: #d00;
+	border-bottom: dotted 1px #D40000;
+	border-left: dotted 1px #D40000;
 }
 .menu ul li {
-	background-color:#FDD017;
-	background-image:none;
-	overflow-y:auto;
-	overflow-x:hidden;
-	opacity:0.8;
-	filter:alpha(opacity=80);
+	background-color: #FDD017;
+	background-image: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
 	text-align: left;
 	display: block;
 }
 .okul {
-	background-color:#FDD017;
+	background-color: #FDD017;
 }
 sinif {
-	background-color:#FDD017;
+	background-color: #FDD017;
 }
 .ders {
-	background-color:#FDD017;
+	background-color: #FDD017;
 }
 .menu ul li.konu {
-	background-color:#FDD017;
+	background-color: #FDD017;
 	-moz-border-radius: 15px 0px;
 	border-radius: 15px 0px;
 	width: 170px;
@@ -142,6 +142,9 @@ sinif {
 #loading {
 	text-align: center;
 	visibility: hidden;
+}
+#loading2 {
+	display: block;
 }
 .scroll-pane {
 	width: 200px;
@@ -160,14 +163,15 @@ jQuery(document).ready(function() {
     /**
      * jQuery Accordion
      */
-
+$("#dersAgacimiz").attr("style", "height:auto");
+$("#loading2").hide("slow");
 var hiz = 250;
 var sinif = $(".sinif div");
 var ders = $(".ders div");
 var konu = $(".konu div");
 var loading = $("#loading");
 
-	$(".okul div a").live("mouseover",function() {
+	$(".okul div a").bind("mouseover",function() {
 		showLoading();
 		
 		$(".okul div a").removeClass("active");
@@ -177,7 +181,7 @@ var loading = $("#loading");
 		ders.load("dataFill.php?okuldan=1&sinif=" + this.id);
 		konu.load("dataFill.php?okuldan=2&ders=" + this.id, hideLoading);
 	});
-	$(".sinif div a").live("mouseover",function() {
+	$(".sinif div a").bind("mouseover",function() {
 		showLoading();
 		$(".sinif div a").removeClass("active");
 		$(this).toggleClass("active");
@@ -185,7 +189,7 @@ var loading = $("#loading");
 		ders.load("dataFill.php?sinif=" + this.id);
 		konu.load("dataFill.php?siniftan=1&ders=" + this.id, hideLoading);
 	});
-	$(".ders div a").live("mouseover",function() {
+	$(".ders div a").bind("mouseover",function() {
 		showLoading();
 		$(".ders div a").removeClass("active");
 		$(this).toggleClass("active");
@@ -360,7 +364,7 @@ $(document).ready(function() {
 		pageSize: 10,
 		currentPage: 1,
 		pagerLocation: "after"
-	});
+	});	
 });
 
 /* ]]> */
@@ -398,42 +402,50 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1")
                     <div class="Block-cr"></div>
                     <div class="Block-cc"></div>
                     <div class="Block-body">
-                          <div class="BlockContent" style="background-color:#FFA">
+                          <div id="loading2" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
+                          <?php 
+								if(empty($_GET["ara"]))	{
+						  ?>
+                          <div class="BlockContent" id="dersAgacimiz" style="background-color:#FFA;height:1px;">
                         <div class="BlockContent-body">
                               <div>
                             <div class="msg_list">
                                   <div class="msg_body">
                                 <div id="sidetreecontrol"><a href="?#"  style="color:#00F"><?php echo $metin[458]?></a> | <a href="?#"  style="color:#00F"><?php echo $metin[459]?></a> | <a  href="#"  style="color:#00F"><?php echo $metin[460]?></a></div>
-                                <?php echo dersAgaci(1)?> </div>
-                                  <div class="containerStripe">
+                                <?php 
+								  echo dersAgaci(1);
+								?>
+                              </div>
+                                </div>
+                            <!--<div class="containerStripe">
                                 <div class="outerStripe">
                                       <div class="menu">
                                     <ul>
                                           <li class="okul">
                                         <div>
                                               <?php
-								echo okulAdlari();
+								//echo okulAdlari();
 							?>
                                             </div>
                                       </li>
                                           <li class="sinif">
                                         <div>
                                               <?php
-								echo sinifAdlari('all');
+								//echo sinifAdlari('all');
 							?>
                                             </div>
                                       </li>
                                           <li class="ders">
                                         <div>
                                               <?php
-								echo dersAdlari('all');
+								//echo dersAdlari('all');
 							?>
                                             </div>
                                       </li>
                                           <li class="konu">
                                         <div>
                                               <?php
-								echo konuAdlari('all');
+								//echo konuAdlari('all');
 							?>
                                             </div>
                                       </li>
@@ -441,36 +453,39 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1")
                                   </div>
                                       <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
                                     </div>
-                              </div>
-                                </div>
+                              </div>--> 
                           </div>
                             </div>
                       </div>
                         </div>
+                        <?php
+								}
+                        ?>
                   </div>
                     </div>
-                <?php
+              </div>
+                  <?php
 }
 ?>
-              </div>
-                  <div class="cleared"></div>
                 </div>
+            <div class="cleared"></div>
           </div>
-            </div>
-        <div class="cleared"></div>
-        <div class="Footer">
-              <div class="Footer-inner">
-            <?php  						
-						 require "footer.php";
-                        ?>
-          </div>
-              <div class="Footer-background"></div>
             </div>
       </div>
+          <div class="cleared"></div>
+          <div class="Footer">
+        <div class="Footer-inner">
+              <?php  						
+						 require "footer.php";
+                        ?>
+            </div>
+        <div class="Footer-background"></div>
+      </div>
         </div>
-    <div class="cleared"></div>
   </div>
+      <div class="cleared"></div>
     </div>
+</div>
 </div>
 <?php  						
  require "feedback.php"; 

@@ -16,20 +16,22 @@ skyrocketlabs@gmail.com
 	float: right;
 	width: 80px;
 	height: 30px;
+	margin-right:6px;
 }
 #loginButton a {
 	display: block;
 	font-size: 0.9em;
 	font-weight: bold;
-	line-height: 30px;
+	line-height: 20px;
 	text-align: center;
-	color: #fff;
+	color: orange;
 	text-decoration: none;
 	margin: 0;
-	padding: 0 22px 0 0;
-	background: #88bbd4 url(loginSprite.png) 0px 0px no-repeat;
+	padding: 0;
+	margin-top:3px;
+	back_ground: #88bbd4 url(loginSprite.png) 0px 0px no-repeat;
 	cursor: pointer;
-	border: 1px solid #88bbd4;
+	border: 2px solid #88bbd4;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px 3px 3px 3px;
@@ -37,18 +39,11 @@ skyrocketlabs@gmail.com
 }
 #loginButton a:hover {
 	color: #fff;
-	background: #5599bb url(loginSprite.png) 0px -30px no-repeat;
+	backgro_und: #5599bb url(loginSprite.png) 0px -30px no-repeat;
 }
 #loginButton a.active {
-	color: #477;
-	border: 1px solid #ddeef6;
-	background: #ddeef6 url(loginSprite.png) 0px -60px no-repeat;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius-bottomright: 0px;
-	-webkit-border-bottom-right-radius: 0px;
-	-moz-border-radius-bottomleft: 0px;
-	-webkit-border-bottom-left-radius: 0px;
+	border: 2px solid #ddeef6;
+	backgr_ound: #ddeef6 url(loginSprite.png) 0px -60px no-repeat;
 }
 /* THIS IS THE HIDDEN FORM */
 

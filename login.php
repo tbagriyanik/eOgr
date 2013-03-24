@@ -21,8 +21,8 @@ Lesser General Public License for more details.
 	
     session_start (); 
 	ob_start (); // Buffer output
-	require("conf.php");	
-	
+	require("conf.php");		
+
 	$time = getmicrotime();
 	   $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) 
@@ -46,8 +46,6 @@ Lesser General Public License for more details.
 	  die('<br/><img src="img/warning.png" border="0" style="vertical-align: middle;"/> '. $metin[401]."<br/>".$metin[402]); // die there flooding
 		}
 
-  $adi	=substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15);
-  $par	=sha1(substr(temizle((isset($_POST["userP"]))?$_POST["userP"]:""),0,15));
   
 	if(isset($_POST['form'])){
 		switch ($_POST['form']){
@@ -66,35 +64,6 @@ Lesser General Public License for more details.
 				break;
 		} 
 	} 	   
-
-	//eðer 5 dakika içinde zaten girmiþ ise (flood gibi)
-	if(isset($_POST["userN"])){
-	  $sonGirisDakikasi=sonLoginDakikasi(substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15));
-	  if ($sonGirisDakikasi>=0 and $sonGirisDakikasi<5) { 
-			sessionDestroy();
-			header("Location: error.php?error=7");
-	   		die ("<font id='hata'> ".$metin[404]." (1)</font><p>".$metin[402]."</p>");			
-	}
-	}
-   if ($adi=="") {
-	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
-    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
-	  }
-	  else
-	  {
-	   if(checkRealUser($adi,$par)=="-2")	   
-		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
-	   else {	   
-		    setcookie("theme",kullaniciTema($adi),time()+60*60*24*30);	
-	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
-			header("Location: index.php");
-	     }
-	  }
-  
-	if($adi=="" || $par=="") {
-		header("Location: error.php?error=2");
-		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
-	}    
 	
 	currentFileCheck("login.php");	
 	
@@ -117,7 +86,7 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
 <script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
@@ -131,8 +100,47 @@ Shadowbox.init({
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+	
+	/*$(function(){
+    $('#userN, #userP').keydown(function(e){
+        if (e.keyCode == 13) {
+            $('#formLogin').submit();
+            return false;
+        	}
+    	});
+	});*/
 
-<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+
+	$("#formLogin").validate({
+		rules: {
+			userN: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			},
+			userP: {
+				required: true,
+				minlength: 5,
+				maxlength: 15
+			}
+		},
+		messages: {
+			userN: {
+				required: "<?php echo $metin[607]?>",
+				minlength: "<?php echo $metin[608]?>"
+			},
+			userP: {
+				required: "<?php echo $metin[610]?>",
+				minlength: "<?php echo $metin[609]?>"
+			}
+		}
+	});	
+});
+</script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -219,31 +227,73 @@ Shadowbox.init({
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[60]?> </span> </h2>
                 <div class="PostContent">
                   <?php
+	$adi	=substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15);
+	$par	=sha1(substr(temizle((isset($_POST["userP"]))?$_POST["userP"]:""),0,15));
+	//$adi	=substr(@temizle($_POST["userN"]),0,15);
+	//$par	=sha1(substr(@temizle($_POST["userP"]),0,15));
 	
-    $tur=checkRealUser($adi,$par);
-	$pass = false;
-	//eðer pasif ise 
-	if ($tur<=-1 || $tur>2) { 
-	   sessionDestroy();
-	   echo ("<font id='hata'> ".$metin[404]." (2)</font><p>".$metin[402]."</p>");
-	   $pass = true;
-	   $_SESSION["tur"] 	= "-1";
+/*   if ($adi=="" && isset($_SESSION["usern"])) {
+	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
+	  }	*/
+	
+   if ($adi=="") {
+	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
+    	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
 	  }
-	  else 
+	  else
 	  {
-		$_SESSION["tur"] 	= $tur;
-	    $_SESSION["usern"] 	= ($adi);
-    	$_SESSION["userp"] 	= ($par);
-	  }	
-
-	 switch($_SESSION["tur"]){
-	  case '-1':$ktut=$metin[85];break;	  
-	  case '0':$ktut=$metin[86];break;	  
-	  case '1':$ktut=$metin[87];break;	  
-	  case '2':$ktut=$metin[88];break;	  
-	  default:$ktut=$metin[89];
-	 } 
-if(!$pass){
+	   if(checkRealUser($adi,$par)=="-2")	   
+		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
+	   else {	
+	   
+			//eðer 5 dakika içinde zaten girmiþ ise (flood gibi)			
+			  $sonGirisDakikasi=sonLoginDakikasi($adi);			  
+				if ($sonGirisDakikasi>=0 and $sonGirisDakikasi<5) { 
+					sessionDestroy();
+					header("Location: error.php?error=7");
+					die ("<font id='hata'> ".$metin[404]." (1)</font><p>".$metin[402]."</p>");			
+				}				   
+			
+		    setcookie("theme",kullaniciTema($adi),time()+60*60*24*30);	
+	   		trackUser($currentFile,"success,Login",$adi);	//first time good login
+			header("Location: index.php");
+	     }
+	  }
+  
+/*	if($adi=="" || $par=="") {
+		header("Location: error.php?error=2");
+		die("<font id='hata'> ".$metin[403]."</font><br/>".$metin[402]); //EMPTY?
+	}    
+*/	
+	$pass = false;
+	
+    if($adi!="" && $par!="") {
+		$tur=checkRealUser($adi,$par);
+	
+			//eðer pasif ise 
+			if ($tur<=-1 || $tur>2) { 
+			   sessionDestroy();
+			   echo ("<font id='hata'> ".$metin[404]." </font><p>".$metin[402]."</p>");
+			   $_SESSION["tur"] 	= "-1";
+			  }
+			  else 
+			  {
+				$_SESSION["tur"] 	= $tur;
+				$_SESSION["usern"] 	= ($adi);
+				$_SESSION["userp"] 	= ($par);
+ 			    $pass = true;
+			  }	
+		
+			 switch($_SESSION["tur"]){
+			  case '-1':$ktut=$metin[85];break;	  
+			  case '0':$ktut=$metin[86];break;	  
+			  case '1':$ktut=$metin[87];break;	  
+			  case '2':$ktut=$metin[88];break;	  
+			  default:$ktut=$metin[89];
+			 } 
+	}
+if($pass){
 ?>
                   <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
                   <?php
@@ -312,8 +362,49 @@ if(!$pass){
             </div>
           </div>
           <?php
-		  	}
+		  	}else{
           ?>
+          <form id="formLogin" method="post" action="login.php">
+            <label for="userN"> <?php echo $metin[0]?> : </label>
+            <input type="hidden" name="form" value="login" />
+            <div>
+              <input name="userN" type="text" id="userN" size="18" maxlength="15" class="required"  style="width:150px" 
+                     value="<?php echo ($remUser)?temizle($_COOKIE["remUser"]):""?>" />
+            </div>
+            <label for="userP"> <?php echo $metin[1]?> : </label>
+            <div>
+              <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
+            </div>
+            <br />
+            <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
+            &nbsp;
+            <?php
+	 if ($remUser){
+    ?>
+            <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
+            <input type="hidden" name="remUser" id="remUser" value="1" />
+            <?php
+	} else {
+    ?>
+            <p>
+              <label>
+                <input type="checkbox" name="remUser" id="remUser" value="1" <?php
+	 if ($remUser){
+    ?>checked="checked"<?php }?>/>
+                <?php echo $metin[193]?> </label>
+            </p>
+            <?php
+	}
+    ?>
+          </form>
+          <script type="text/javascript">
+  $(document).ready(function(){
+    $("#formLogin").validate();
+  });
+</script>
+          <?php 
+			}
+		  ?>
         </div>
         <div class="cleared"></div>
         <div class="Footer">

@@ -42,7 +42,7 @@ Lesser General Public License for more details.
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -399,7 +399,7 @@ else if ($totalRows_eoUsers>0)
 						?>
                           </a></td>
                         <td align="center" nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><a href="?arama=<?php echo $a1?>&amp;ord=<?php echo $s1?>&amp;id=<?php echo $row_eoUsers['id']; ?>&amp;siraYap=OK&amp;value=<?php echo ($row_eoUsers['active'])?>&amp;pageNum_eoUsers=<?php echo $aa1?>"> <?php echo ($row_eoUsers['active']=="0")?"<img src='img/unchecked.gif' border='0'/>":"<img src='img/checked.gif' border='0' />"?> </a></td>
-                        <td align="left" title="<?php echo temizle($row_eoUsers['comment'])?>" <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin(smileAdd(temizle(smartShort($row_eoUsers['comment'],45))));   ?></td>
+                        <td align="left" title="<?php echo ($row_eoUsers['comment'])?>" <?php echo "style=\"background-color: $row_color;\""?>><?php echo araKalin(smileAdd((smartShort($row_eoUsers['comment'],45))));   ?></td>
                         <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo tarihOku2($row_eoUsers['commentDate']); ?></td>
                         <td align="center" nowrap="nowrap" valign="middle" ><a href="<?php echo $currentPage;?>?id=<?php echo $row_eoUsers['id'];?>&amp;upd=1&amp;pageNum_eoUsers=<?php echo $pageNum_eoUsers?>"><img src="img/edit.png" alt="edit" width="16" height="16" border="0" style="vertical-align: middle;" title="<?php echo $metin[103]?>"/></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>',<?php echo $row_eoUsers['id']; ?>,'<?php echo $metin[104]?>');"><img src="img/cross.png" alt="delete" width="16" height="16" border="0" style="vertical-align: middle;"  title="<?php echo $metin[102]?>"/></a> |
                           <input type="checkbox" name="sil[]" id="kayitSecici<?php echo $row_eoUsers['id']; ?>" value="<?php echo $row_eoUsers['id']; ?>" /></td>

@@ -66,7 +66,7 @@ function temizle2($metin)
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "‹", $metin);
     $metin = str_replace(">", "›", $metin);
-    $metin = trim(htmlspecialchars($metin));
+    $metin = trim(htmlentities($metin));
     return $metin;
 }
 /*
@@ -174,7 +174,7 @@ function oyOrtalama($konuID){
 }
 
 
-if(getUserIDrate($_SESSION["usern"],$_SESSION["userp"])=="") die ("");
+if(isset($_SESSION["usern"]) && getUserIDrate($_SESSION["usern"],$_SESSION["userp"])=="") die ("");
 
 $id = $_SESSION["aktifDers"];
 
@@ -182,13 +182,13 @@ if (!empty($id)) {
 	//eðer ders sayfasýndan gelen bir DEÐER var ise 
 	//yoksa adresten gelindi ise olmaz
 		if (isset($_GET['konu2']) && $_GET['konu2'] == $id && !empty($_GET['konu2'])) {
-		 if (isset($_GET['rating']) && is_numeric($_GET['rating']) && $_GET['rating']>0 && $_GET['rating']<6 ) {
+		 if (isset($_SESSION["usern"]) && isset($_GET['rating']) && is_numeric($_GET['rating']) && $_GET['rating']>0 && $_GET['rating']<6 ) {
 				oyGonder(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ),temizle2($_GET['rating']));
 				echo $metin[275];
 		 } else
 		  die("Oy hatalý");
 		}
-		if (oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))>0) {
+		if (isset($_SESSION["usern"]) && oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))>0) {
 		 echo "
 		 <p>".$metin[249]." :</p>
 		  <ul class=\"rate".oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))."\">";

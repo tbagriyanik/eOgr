@@ -71,7 +71,7 @@ function temizle2($metin)
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "‹", $metin);
     $metin = str_replace(">", "›", $metin);
-    $metin = iconv( "ISO-8859-9","ISO-8859-9",trim(htmlspecialchars($metin)));
+    $metin = iconv( "ISO-8859-9","ISO-8859-9",trim(htmlentities($metin)));
     return $metin;
 }
 /*

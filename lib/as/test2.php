@@ -21,19 +21,19 @@ $aInfo	=array();
 	$result = mysql_query("select realName from eo_users order by id");
 	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
 	{
-		$aUsers[$i] =iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["realName"]))); 
+		$aUsers[$i] =iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["realName"]))); 
 	};
 	
 	$result = mysql_query("select id from eo_users order by id");
 	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
 	{
-		$aID[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["id"])));
+		$aID[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["id"])));
 	};
 
 	$result = mysql_query("select userName from eo_users order by id");
 	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
 	{
-			$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["userName"])));
+			$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["userName"])));
 		
 	};
 	

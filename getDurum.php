@@ -42,8 +42,11 @@ function getKonuKayitliKullanici($gelenID){
 	  else
 		$tur =checkRealUser($adi,$par);	 
 	 
+  if(isset($_GET['konu'])){
 	if($tur=="-2" and getKonuKayitliKullanici(temizle($_GET['konu']))=="1") 
 			echo "0";
 		else
 			echo "1";
+  }else
+		echo "0";
 ?>

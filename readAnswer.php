@@ -37,7 +37,7 @@ Lesser General Public License for more details.
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link href="theme/cevap.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">

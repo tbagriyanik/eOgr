@@ -73,7 +73,6 @@ Lesser General Public License for more details.
 					"fileShare.php",
 					"help.php",
 					"kursDetay.php",
-					"kursDetay2.php",
 					"lessonsEdit.php",
 					"login.php",
 					"newUser.php",
@@ -141,11 +140,10 @@ Lesser General Public License for more details.
 <title>eOgr</title>
 <link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
-<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -272,26 +270,26 @@ Shadowbox.init({
             <div class="Post-body">
               <div class="Post-inner">
                 <div class="PostContent">
-        <?php
+                  <?php
 	
 if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") {
 
 if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 ?>
-        <div class="ikiKolon">
-          <div class="BlockHeader-text"><?php echo $metin[84]?></div>
-          <?php echo getStats(13);?> </div>
-        <?php
+                  <div class="ikiKolon">
+                    <div class="BlockHeader-text"><?php echo $metin[84]?></div>
+                    <?php echo getStats(13);?> </div>
+                  <?php
 }
 ?>
-        <div class="ikiKolon">
-          <div class="BlockHeader-text"><?php echo $metin[675]?></div>
-          <?php echo getStats(20);?> </div>
-<div class="cleared"></div>          
-        <?php
+                  <div class="ikiKolon">
+                    <div class="BlockHeader-text"><?php echo $metin[675]?></div>
+                    <?php echo getStats(20);?> </div>
+                  <div class="cleared"></div>
+                  <?php
 }
 ?>
- <?php 				  
+                  <?php 				  
 					
  if(isset($_SESSION["usern"]))						 
   if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){
@@ -309,8 +307,7 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 } 
 
 ?>
-                 <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."".$ktut." "?>
-                   <?php echo $metin[5]?> </p>
+                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."".$ktut." "?> <?php echo $metin[5]?> </p>
                   <?php
 				  if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
@@ -345,13 +342,11 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
 */	
 				 ?>
-<h4><?php echo $metin[677];?> : </h4>
-<ul>
-  <?php
+                  <?php
 	echo yaklasanEtkinlikListesi();
 ?>
-</ul><br />
-<?php
+                  <br />
+                  <?php
 					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
 					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
 					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10))."<br/>"; 				
@@ -368,8 +363,6 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 						 }
 					 
 						 ?>
-                  <p><?php echo $metin[623]?> <img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <a href="kursDetay2.php"><span><span> <?php echo $metin[461]?> </span></span></a> </p>               
-                  
                 </div>
                 <div class="cleared"></div>
               </div>
@@ -377,30 +370,30 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
           </div>
         </div>
       </div>
-     <div class="cleared"></div>
-        <div class="Block">
-          <div class="Block-tl"></div>
-          <div class="Block-tr"></div>
-          <div class="Block-bl"></div>
-          <div class="Block-br"></div>
-          <div class="Block-tc"></div>
-          <div class="Block-bc"></div>
-          <div class="Block-cl"></div>
-          <div class="Block-cr"></div>
-          <div class="Block-cc"></div>
-          <div class="Block-body">
-            <div class="BlockContent">
-              <div class="BlockContent-body">
-                <div>
- <?php		
+      <div class="cleared"></div>
+      <div class="Block">
+        <div class="Block-tl"></div>
+        <div class="Block-tr"></div>
+        <div class="Block-bl"></div>
+        <div class="Block-br"></div>
+        <div class="Block-tc"></div>
+        <div class="Block-bc"></div>
+        <div class="Block-cl"></div>
+        <div class="Block-cr"></div>
+        <div class="Block-cc"></div>
+        <div class="Block-body">
+          <div class="BlockContent">
+            <div class="BlockContent-body">
+              <div>
+                <?php		
 
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	if(isset($_SESSION["usern"]))
 		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
-                  <div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div>
-                  <ul>
-                    <?php									
+                <div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div>
+                <ul>
+                  <?php									
 						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
 										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");										
 										$result1= 	@mysql_query($sql1,$yol1);										
@@ -408,17 +401,17 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 										if(@mysql_numrows($result1)>0){
 										while($i<@mysql_numrows($result1)) {	 
                                         ?>
-                    <li>
-                      <?php
+                  <li>
+                    <?php
 												echo "<strong>",haberGetir($i,"title"),"</strong>&nbsp;";
 															  						     
 												$humanRelativeDate = new HumanRelativeDate();
 												$insansi = $humanRelativeDate->getTextForSQLDate(haberGetir($i,"pubDate"));
 
 												echo "<font size='-2'>$insansi</font>";                       ?>
-                      <br />
-                      <p> <?php echo smileAdd(haberGetir($i,"description"))?>
-                        <?php
+                    <br />
+                    <p> <?php echo smileAdd(haberGetir($i,"description"))?>
+                      <?php
                                                               if (trim(haberGetir($i,"link"))!="")
 																{
 															   echo "<strong><a href='".haberGetir($i,"link")."' class='more'>";
@@ -426,9 +419,9 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 															   echo "</a></strong>";
 															   }
                                                               ?>
-                      </p>
-                    </li>
-                    <?php
+                    </p>
+                  </li>
+                  <?php
 												$i++;
 												}
 												
@@ -439,24 +432,24 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 						else
 						  echo "<li>$metin[405]</li>";
                                         ?>
-                  </ul>                 
-                </div>
+                </ul>
               </div>
             </div>
           </div>
-          <?php
+        </div>
+        <?php
 		  if($tur!=-2){
 		  ?>
-<br />
-                  <div class='ikiKolon'>
-                  <h2><?php echo $metin[542]?></h2>
-                  <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" style="background-color: transparent"></iframe>
-                  </div>
-                  <div class='ikiKolon'>
-                  <h2><?php echo $metin[585]?></h2>
-                  <iframe src="lib/iCal/calendar.php?my=1" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45"  style="background-color: transparent"></iframe>
-                  </div>
-      <?php
+        <br />
+        <div class='ikiKolon'>
+          <h2><?php echo $metin[542]?></h2>
+          <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" style="background-color: transparent"></iframe>
+        </div>
+        <div class='ikiKolon'>
+          <h2><?php echo $metin[585]?></h2>
+          <iframe src="lib/iCal/calendar.php?my=1" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45"  style="background-color: transparent"></iframe>
+        </div>
+        <?php
 	  }
 	  ?>
         <div class="cleared"></div>
@@ -468,7 +461,7 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
         <?php  						
 						 require "footer.php";
                         ?>
-        <div id='browserWarning'><?php echo $metin[541]?>
+        <div id='browserWarning'>"<script>document.write(BrowserDetect.browser+ " " + BrowserDetect.version);</script>" <?php echo $metin[541]?> 
           <p><a href='http://getfirefox.com'><img src="img/firefox.gif" border="0" style="vertical-align: middle;" alt="FireFox" title="FireFox"/> FireFox</a> <a href='http://www.google.com/chrome'><img src="img/chrome.gif" border="0" style="vertical-align: middle;" alt="Chrome" title="Chrome"/> Chrome</a> <a href='http://www.apple.com/safari/'><img src="img/safari.gif" border="0" style="vertical-align: middle;" alt="Safari" title="Safari"/> Safari</a> <a href='http://www.microsoft.com/windows/downloads/ie/getitnow.mspx'><img src="img/ie.gif" border="0" style="vertical-align: middle;" alt="IE" title="IE"/> Internet Explorer</a></p>
           <p style="text-align:right !important"><a href='#' id='warningClose'><?php echo $metin[34]?></a></p>
         </div>

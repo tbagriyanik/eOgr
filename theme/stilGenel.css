@@ -102,6 +102,9 @@ td {
 	border-bottom-color: #900;
 	border-left-color: #900;
 }
+#hata li, ul {
+	list-style-type:none;
+}
 #tamam {
 	color: #333;
 	background-color: #FFF;

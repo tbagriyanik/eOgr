@@ -77,7 +77,7 @@ function temizle($metin)
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "<", $metin);
     $metin = str_replace(">", ">", $metin);
-    $metin = trim(htmlspecialchars($metin));
+    $metin = trim(htmlentities($metin));
     return $metin;
 } 
 /*
@@ -145,7 +145,7 @@ require 'lib/flood-protection.php'; // include the class
 <title>eOgr -<?php echo " ".$metin[71]?></title>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 
-<script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
 		$("#msg_body2").hide();

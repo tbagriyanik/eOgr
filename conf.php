@@ -100,7 +100,8 @@ function temizle($metin)
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "‹", $metin);
     $metin = str_replace(">", "›", $metin);
-    $metin = trim(htmlspecialchars($metin));
+    $metin = trim(strip_tags($metin));
+	//htmlentities ve htmlspecialchars TR problemi var artýk
     return $metin;
 }
 /*
@@ -1110,7 +1111,7 @@ function temizleWordHTML($word){
 						$cleaner->html=$word;
 						$cleanHTML=$cleaner->cleanUp('latin1');						
 						
-						$sql2 = "UPDATE eo_5sayfa SET anaMetin='".htmlspecialchars($cleanHTML,ENT_COMPAT,"ISO-8859-1")."' where id='".$row_gelen['id']."'";
+						$sql2 = "UPDATE eo_5sayfa SET anaMetin='".htmlentities($cleanHTML,ENT_COMPAT,"ISO-8859-1")."' where id='".$row_gelen['id']."'";
 						$guncel = mysql_query($sql2,$yol1);
 						//echo " <pre>".$cleanHTML."</pre>";
 						if($guncel) 
@@ -2162,13 +2163,21 @@ function getStats($num,$uID="")
 		
 		case 13:
 		//son g&uuml;ncellenen konular
-				$sql = "SELECT eo_5sayfa.konuID as idsi, eo_4konu.konuAdi as kadi,".
-					   "eo_3ders.dersAdi as dersAdi, max(eo_5sayfa.eklenmeTarihi) as tarih ".
-					   "from eo_5sayfa, eo_4konu, eo_3ders ".
-					   "where eo_5sayfa.konuID=eo_4konu.id ".
-					   "and eo_4konu.dersID=eo_3ders.id ".
-					   "GROUP BY kadi ".
-					   "order by tarih desc,kadi ";	
+							$sql = "SELECT eo_5sayfa.konuID as idsi, eo_4konu.konuAdi as kadi,".
+								   "eo_3ders.dersAdi as dersAdi, max(eo_5sayfa.eklenmeTarihi) as tarih ".
+								   "from eo_5sayfa, eo_4konu, eo_3ders ".
+								   "where eo_5sayfa.konuID=eo_4konu.id ".
+								   "and eo_4konu.dersID=eo_3ders.id ".
+								   "GROUP BY kadi ".
+								   "order by tarih desc,kadi";	
+		
+				// $sql = "SELECT eo_5sayfa.konuID AS idsi, eo_4konu.konuAdi AS kadi,
+					// (select dersAdi from eo_3ders where eo_3ders.id=eo_4konu.dersID) as dersAdi , 
+					// ( eo_5sayfa.eklenmeTarihi )AS tarih
+					// FROM eo_5sayfa, eo_4konu
+					// WHERE eo_5sayfa.konuID = eo_4konu.id
+					// group by idsi 
+					// ORDER BY tarih DESC , kadi";	   
 				$yol = baglan();
 				$result = mysql_query($sql, $yol);
 				if($result)
@@ -2737,10 +2746,10 @@ function sonLoginDakikasi($adi){
 		if ($result1 && @mysql_num_rows($result1) > 0)
 				{  $sonuc = @mysql_result($result1, 0, "DiffMinute");
 				   @mysql_free_result($result1);		     
-				   return ($sonuc);
+				   return ((int)$sonuc);
 				}else {
 				   return -1;
-				}	
+				}
 }
 /*
 checkRealUser:
@@ -2949,7 +2958,7 @@ function GetVar($name,$default) {
     else {
     	$ret = $default;
     }
-    return trim(htmlspecialchars(stripslashes($ret))); 
+    return trim(htmlentities(stripslashes($ret))); 
 }
 /*
 trackUser:
@@ -2960,13 +2969,13 @@ function trackUser($processName, $otherInfo, $userName)
 	global $yol1;
 	
 	$CurrentRemoteAddr=GetVar("REMOTE_ADDR", NULL);	
-	$datem	=	date("Y-n-j H:i:s");
+	$datem	=	date("Y-m-d H:i:s"); // CURRENT_TIMESTAMP ??
 	
 	$processName	=temizle($processName);
 	$otherInfo		=temizle($otherInfo);
 	$userName		=temizle($userName);
 	
-	$sql1	= 	"Insert into eo_usertrack VALUES (NULL , '$CurrentRemoteAddr', '$datem' , '$processName', '$userName', '$otherInfo')";
+	$sql1	= 	"Insert into eo_usertrack VALUES (NULL , '$CurrentRemoteAddr',  CURRENT_TIMESTAMP , '$processName', '$userName', '$otherInfo')";
 	$result1= 	@mysql_query($sql1,$yol1);
 	$sonuc =$result1; 
 	@mysql_free_result($result1);
@@ -3036,8 +3045,8 @@ function newParola($userName, $email)
 	$result2	= @mysql_query($sql2,$yol1);
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
-//	$headers .= 'From: tbagriyanik@gmail.com' . "\r\n" .'Reply-To: tbagriyanik@gmail.com' . "\r\n" .
-//							   'X-Mailer: PHP/' . phpversion();
+	$headers .= "From:".ayarGetir("ayar4char"). "\r\nReply-To:".ayarGetir("ayar4char"). "\r\n" .
+							   'X-Mailer: PHP/' . phpversion();
 	
    if ($result2 && @mysql_num_rows($result2) == 1){
 	if (@mail($email, "eOgr Parola", "Merhaba, eOgr projesindeki:\nKullanici Adiniz = $userName \nYeni Parolaniz= $yeni \n Iyi gunler dileriz.", $headers))
@@ -3069,11 +3078,12 @@ function newUserMail($userName, $email)
 	$email		=trim(substr(temizle($email),0,50));
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
-//	$headers .= 'From: tbagriyanik@gmail.com' . "\r\n" .'Reply-To: tbagriyanik@gmail.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+	$headers .= "From:".ayarGetir("ayar4char"). "\r\nReply-To:".ayarGetir("ayar4char"). "\r\n" .
+							   'X-Mailer: PHP/' . phpversion();
 	
 	if ($userName=="" || $email=="") return "emptyData";
 	
-	if (@mail(ayarGetir("ayar4char"), "eOgr Yeni Uye/New User", "eOgr Yeni Uye/New User:\nKullanici Adi = $userName \nEposta Adresi= $email \n Iyi gunler dileriz.",$headers))
+	if (@mail(ayarGetir("ayar4char"), "eOgr Yeni Uye/New User", "eOgr Yeni Uye/New User:\nKullanici Adi = $userName \nEposta Adresi= $email \n Iyi gunler dileriz. ",$headers))
 	    {         
 			  $result1 = "allOK";
 		}	
@@ -4050,7 +4060,7 @@ function dersAgaci($gelen=null){
 								if(@mysql_num_rows($sinifAdlari)>0) echo "<ul>";
 								while($j<@mysql_num_rows($sinifAdlari)){		   
 						   ?>
-					<li style="color:#C0F" class="open">
+					<li style="color:#C0F" >
                     <span>
 					  <?php echo (@mysql_result($sinifAdlari,$j,"sinifAdi"))?> </span>
 						<?php
@@ -4337,8 +4347,7 @@ function lessonPageFix(){
     if ($result1) $say+=mysql_affected_rows();
     $sql1 = "UPDATE eo_5sayfa SET anaMetin=REPLACE(anaMetin,'—','-')"; 	
     $result1 = mysql_query($sql1, $yol1); 
-    if ($result1) $say+=mysql_affected_rows();
-	
+    if ($result1) $say+=mysql_affected_rows();	
 	return $say;
 }
 /*
@@ -5183,7 +5192,7 @@ function dersAdlariOption(){
 	global $yol1;	
 	$sql = "SELECT id, dersAdi FROM eo_3ders ORDER BY dersAdi";		
 	$result = mysql_query($sql, $yol1);	
-	
+	$sonuc = "";
 	while($satir=@mysql_fetch_array($result)){
 		$sonuc .= "<option value='$satir[0]'>$satir[1]</option>\n";
 	}
@@ -5367,8 +5376,8 @@ Gelecekteki canlý ders listesi
 */
 function yaklasanEtkinlikListesi(){
 	global $yol1,$metin;
-	$lmt=3;//gelecek 3 etkinlik
-	
+	$lmt=3;//gelecek 3 etkinlik	
+
 		$sql = "SELECT *,DATE_FORMAT(dateWhen, '%d-%m-%Y %H:%i') as dt FROM eo_livelesson
 		 WHERE 
 		 (unix_timestamp(now()) - unix_timestamp(dateWhen) )/3600/24 <= 0 
@@ -5385,9 +5394,9 @@ function yaklasanEtkinlikListesi(){
 			"<br/><span style='font-size:13px;font-style:italic'>".$row['dt']." (".$tarihi.")</span></li>";
 		}
 		if($data=="")
-			return "<li>$metin[586]</li>";
+			return "";
 		else
-			return $data;		
+			return "<h4>".$metin[677]." : </h4><ul>".$data."</ul>";		
 }
 /*
 tamamlanmisEtkinlikListesi:
