@@ -206,7 +206,7 @@ class HumanRelativeDate{
 					$this->string = 'geçen ay';
 				} else {
 					if($month_diff > 12){
-						$this->string = 'bir yýldan önce';
+						$this->string = (round($month_diff/12,1)).' yýl önce';
 					} else {
 						$this->string = $month_diff . ' ay önce';
 					}
