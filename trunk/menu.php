@@ -36,7 +36,7 @@ $bilgi2 = "";$bilgi6 = "";$bilgi10 = "";
 $bilgi3 = "";$bilgi7 = "";$bilgi11 = "";
 $bilgi4 = "";$bilgi8 = "";
 ?>
-<script type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
 <script type="text/javascript" src="lib/as/js/bsn.AutoSuggest_2.1.3.js" charset="utf-8"></script>
@@ -170,103 +170,7 @@ if($seceneklerimiz[5]=="1" and $kullaniciSecen[5]=="1"){
 	if($tur=="-2") 
 	{
 ?>
-<script type="text/javascript" src="lib/tlogin/twitterLogin.js"></script> 
-<script type="text/javascript" src="lib/jquery.validate.min.js"></script> 
-<script type="text/javascript">
-$().ready(function() {
-	
-	/*$(function(){
-    $('#userN, #userP').keydown(function(e){
-        if (e.keyCode == 13) {
-            $('#formLogin').submit();
-            return false;
-        	}
-    	});
-	});*/
-
-			$(window).scroll(function() {
-				$("#loginForm").fadeOut(100);
-				$("#loginButton a").removeClass("active");
-			});
-
-	$("#formLogin").validate({
-		rules: {
-			userN: {
-				required: true,
-				minlength: 5,
-				maxlength: 15
-			},
-			userP: {
-				required: true,
-				minlength: 5,
-				maxlength: 15
-			}
-		},
-		messages: {
-			userN: {
-				required: "<?php echo $metin[607]?>",
-				minlength: "<?php echo $metin[608]?>"
-			},
-			userP: {
-				required: "<?php echo $metin[610]?>",
-				minlength: "<?php echo $metin[609]?>"
-			}
-		}
-	});	
-});
-  </script> 
-<!-- BEGIN DEMO -->
-<div id="loginWrapper"> 
-  <!-- BEGIN LOGIN BUTTON -->
-  <div id="loginButton"> <a href="#"><?php echo $metin[2];?></a> </div>
-  <!-- END LOGIN BUTTON --> 
-  
-  <!-- BEGIN HIDDEN FORM -->
-  <div id="loginForm">
-    <fieldset>
-      <form id="formLogin" method="post" action="login.php">
-        <label for="userN"> <?php echo $metin[0]?> : </label>
-        <input type="hidden" name="form" value="login" />
-        <div>
-          <input name="userN" type="text" id="userN" size="18" maxlength="15" class="required"  style="width:150px" 
-                     value="<?php echo ($remUser)?temizle($_COOKIE["remUser"]):""?>" />
-        </div>
-        <label for="userP"> <?php echo $metin[1]?> : </label>
-        <div>
-          <input name="userP" type="password" id="userP" size="18" maxlength="15" class="required"  style="width:150px" />
-        </div>
-        <br />
-        <input type="submit" name="sumb" id="sumb" value="<?php echo $metin[2]?>"  />
-        &nbsp;
-        <?php
-	 if ($remUser){
-    ?>
-        <a href="index.php?forgetMe=1"><span><span><?php echo $metin[196]?></span></span></a>
-        <input type="hidden" name="remUser" id="remUser" value="1" />
-        <?php
-	} else {
-    ?>
-        <p>
-          <label>
-            <input type="checkbox" name="remUser" id="remUser" value="1" <?php
-	 if ($remUser){
-    ?>checked="checked"<?php }?>/>
-            <?php echo $metin[193]?> </label>
-        </p>
-        <?php
-	}
-    ?>
-      </form>
-    </fieldset>
-  </div>
-  <!-- END HIDDEN FORM --> 
-</div>
-<!-- END MENU DEMO --> 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#formLogin").validate();
-  });
-  </script>
+<div id="loginButton"> <a href="login.php"><?php echo $metin[2];?></a> </div>
 <ul class="artmenu"  style="list-style-type:none">
   <li><a href="index.php" <?php
 						 if ($currentFile=="index.php") echo "class=\" active\"";
@@ -342,7 +246,7 @@ $().ready(function() {
                         ?>                       
                         ><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> <?php // echo dersAgaci()?> </li>
   <?php
-  if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1"){
+  if($seceneklerimiz[10]=="1" and $kullaniciSecen[10]=="1" and yaklasanEtkinlikListesi()!=""){
 	echo ("<li><a href=\"#\" target='_blank' onclick=\"window.open(&quot;chat.php&quot;,&quot;chat&quot;,&quot;width=590,height=400,top=100,left=100,toolbar=0,location=0,menubar=0,copyhistory=0,status=0,resizable=yes,scrollbars=yes,directories=0&quot;);return false;\"><span><span><img src=\"img/comment.gif\" border=\"0\" style=\"vertical-align: middle;\" alt=\"chat\"/> ".$metin[56].$bilgi1."</span></span></a></li>");
   }
 ?>

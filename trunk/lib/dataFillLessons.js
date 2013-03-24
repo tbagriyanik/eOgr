@@ -96,6 +96,14 @@ içi boþ fonksiyon
 function setOutputOda(){
 }
 /*
+replaceNbsps:
+konudaki nbsp karakteri problemi Â 
+*/
+function replaceNbsps(str) {
+  //var re = new RegExp(String.fromCharCode(160), "g");
+  return str.replace(/Â/g, " ");  
+}
+/*
 setOutputKonu:
 konudaki bilgilerin ekrana getirilmesi
 */
@@ -120,9 +128,10 @@ function setOutputKonu(sayfaNo, konu, noCount){
 		document.getElementById('cevapSuresi').style.visibility = 'hidden' ;
 		document.getElementById('sunuDurdur').style.visibility = 'hidden';
 		
-		document.getElementById('anaMetin').innerHTML =   items[0];                 
+		var dersAnaMetni = items[0];
+		document.getElementById('anaMetin').innerHTML = replaceNbsps(dersAnaMetni);                 
 
-//		$("#anaMetin").animate( {  "opacity": "show" }, { queue:true, duration:500 } );
+		$("#anaMetin").animate( {  "opacity": "show" }, { queue:true, duration:200 } );
 
 		document.getElementById('anaMetin').tabindex = -1;
 		document.getElementById('anaMetin').focus();
@@ -225,12 +234,12 @@ function setOutputKonu(sayfaNo, konu, noCount){
 						 }, valTimeout);
 					timeoutHint2 = window.setTimeout(function() { 
 						//document.getElementById("hint").style.display = "none";	
-						$('#hint').fadeOut(750,null);	 
+						$('#hint').fadeOut(550,null);	 
 						 }, valTimeout2);
 				}else{
 					window.clearTimeout(timeoutHint);
 					window.clearTimeout(timeoutHint2);
-					$('#hint').fadeOut(750,null);
+					$('#hint').fadeOut(550,null);
 				}
 
 			}
@@ -294,7 +303,7 @@ alt seçeneklerin oturumdan istenmesi
 */
 function konuSec2(sayfaNo, noCount){    
 
-	$('#hint').fadeOut(750,null);
+	$('#hint').fadeOut(550,null);
 //$("#anaMetin").delay(500).animate( { "opacity": "hide" }, { queue:true, duration:200 } );	
 	if(noCount === undefined) noCount=0;	
 	if(sayfaNo == "" || parseInt(sayfaNo)==0) {
@@ -490,18 +499,6 @@ function printIt()		{
     }
 }
 /*
-durumGuncelle:
-sayfa durumunun güncellenmesi
-*/
-function durumGuncelle(){
-    if(httpObject.readyState == 4)
-	 if(httpObject.status == 200 || httpObject.status == 304){
-		if(httpObject.responseText=="0") {
-			sureDolduTemizle();							  							
-		  }
-	}
-}
-/*
 loginDurumu:
 kayýtlý kullanýcýlar için oturum açýk olduðunun kontrol edilmesi
 */
@@ -511,7 +508,14 @@ function loginDurumu(){
 		konu = document.getElementById('konu_id').value;
         httpObject7.open("GET", "getDurum.php?konu="+encodeURIComponent(konu), true);
   		httpObject7.send(null);	
-        httpObject7.onreadystatechange = durumGuncelle;		
+        httpObject7.onreadystatechange = function(){
+			if(httpObject7.readyState == 4 && (httpObject7.status == 200 || httpObject7.status == 304)){
+				if(httpObject7.responseText=="0"){					
+					sureDolduTemizle();	 //oturum kapanmýþ ise
+					$("#calismaSuresi").stopTime();
+					}
+			}
+		}			
     }
 }
 

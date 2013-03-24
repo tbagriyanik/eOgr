@@ -25,7 +25,7 @@ if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
 <title>eOgr - File List</title>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="lib/datatables/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="lib/datatables/table.css" type="text/css" media="screen" charset="utf-8" />
 <link href="theme/file.css" rel="stylesheet" type="text/css" />

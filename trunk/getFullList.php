@@ -35,7 +35,7 @@ Lesser General Public License for more details.
     <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
     <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
     <script src="lib/jquery.anythingslider.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
@@ -146,7 +146,7 @@ function temizle2($metin)
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "<", $metin);
     $metin = str_replace(">", ">", $metin);
-    $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlspecialchars($metin)));
+    $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlentities($metin)));
     return $metin;
 }
 /*
@@ -319,7 +319,7 @@ function listeGetir($userID, $durum){
 									$donguSon = mysql_num_rows($result);
 							   		for($i=0; $i<$donguSon ;$i++){
 										$data = mysql_fetch_assoc($result);
-										if($i % 15 == 0 and $i>0){
+										if($i % 19 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 										
@@ -327,9 +327,9 @@ function listeGetir($userID, $durum){
 						$insansi = $humanRelativeDate->getTextForSQLDate($data["tarih"]);							
 										
 										if ($data["tarih"]=="0000-00-00 00:00:00")
-											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a><br/>";
+											$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a><br/>";
 											else
-											$ekle .=  ($i+1)." "."<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".$insansi."</font><br/>";	
+											$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\" target='_parent'>".$data["kadi"]." - ".$data["dersAdi"]."</a>"." <font size='-3'>".$insansi."</font><br/>";	
 									}
 										$ekle .=  "</li>";
 									  	$ekle .= "</ul>";
@@ -525,13 +525,13 @@ function listeGetir($userID, $durum){
 										
 								for($i=0; $i<$donguSon ;$i++){
 									$data = mysql_fetch_assoc($result);
-									if($i % 15 == 0 and $i>0){
+									if($i % 19 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
 									
 				     	$humanRelativeDate = new HumanRelativeDate();
 						$insansi = $humanRelativeDate->getTextForSQLDate($data["tarih"]);							
-									$ekle .=  ($i+1)." <a href=\"lessons.php?konu=".$data["idsi"]."\"  target='_parent'>".$data["kadi"]." </a> <font size='-3'>".$insansi."</font><br/>";										
+									$ekle .=  "<a href=\"lessons.php?konu=".$data["idsi"]."\"  target='_parent'>".$data["kadi"]." </a> <font size='-3'>".$insansi."</font><br/>";										
 									
 									}
 										$ekle .=  "</li>";

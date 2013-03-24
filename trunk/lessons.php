@@ -41,7 +41,7 @@ ob_start (); // Buffer output
 		  	$eMode = $_SESSION["mode"];
 		}
 		else
-		  	$eMode = "3"; //genel varsayýlan
+		  	$eMode = "3"; //genel varsayÄ±lan
   }  
   
   if(!isset($_GET["konu"]))				
@@ -78,7 +78,7 @@ ob_start (); // Buffer output
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
@@ -108,21 +108,25 @@ ob_start (); // Buffer output
 </script>
 <?php if ($eMode==1){?>
 <link rel="stylesheet" href="lib/zoomoz/zoomooz.css" type="text/css" />
-<script type="text/javascript" src="lib/zoomoz/sylvester.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-helpers.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-anim.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-core.js"></script>
 <script type="text/javascript" src="lib/zoomoz/purecssmatrix.js"></script>
-<script type="text/javascript" src="lib/zoomoz/jquery.animtrans.js"></script>
-<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz.js"></script>
+<script type="text/javascript" src="lib/zoomoz/sylvester.src.stripped.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-zoomTarget.js"></script>
+<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-zoomContainer.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 			settings = {
 				// zoomed size relative to screen
 				// 0.0-1.0
-				targetsize: 0.9,
+				targetsize: 0.95,
 				// scale content to screen based on their size
 				// "width"|"height"|"both"
 				scalemode: "both",
 				// animation duration
-				duration: 1000,
+				duration: 500,
 				// easing of animation, similar to css transition params
 				// "linear"|"ease"|"ease-in"|"ease-out"|
 				// "ease-in-out"|[p1,p2,p3,p4]
@@ -305,11 +309,11 @@ function cleanup() {
 	$_SESSION["hataSay"] = ""; 
 	//eskiler silinir
 	$_SESSION["cevaplar"][0] = ""; 
-	//dizi oluþturuldu
+	//dizi oluÅYturuldu
 	$_SESSION["hataSay"][0] = ""; 
-	//dizi oluþturuldu
+	//dizi oluÅYturuldu
 	$_SESSION['cevapSuresi'] = ""; 
-	//eski deðeri yok edelim 
+	//eski deÄYeri yok edelim 
 
 ?>
                   <div id="oncekiKonu"></div>
@@ -589,7 +593,7 @@ document.getElementById('sunuDurdur').style.visibility = 'hidden';
 
 /*
 konuDuzenle:
-konu düzenleme baðýnýn çalýþmasý
+konu dÃ¼zenleme baÄYÄ±nÄ±n Ã§alÄ±ÅYmasÄ±
 */
 function konuDuzenle(){
 	if(document.getElementById('konu_id').value>0)
@@ -608,7 +612,7 @@ window.onunload = function () {
 }
 /*
 cevapSureBasla:
-cevaplama için süre baþlangýcý
+cevaplama iÃ§in sÃ¼re baÅYlangÄ±cÄ±
 */
 function cevapSureBasla(){
 
@@ -681,7 +685,7 @@ fix_flash();
 ?>
 <script type="text/javascript">
 
-//ileri ve geri dolaþma klavye tuþlarý: sað ok ve sol ok, Enter: Cevap ver.
+//ileri ve geri dolaÅYma klavye tuÅYlarÄ±: saÄY ok ve sol ok, Enter: Cevap ver.
 	$(document).keydown(function(event) {
 		var sayNosu;
 		sayNosu = parseInt(document.getElementById('sayfaNo').innerHTML);

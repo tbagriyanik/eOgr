@@ -51,7 +51,7 @@ Lesser General Public License for more details.
 
 
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -144,9 +144,12 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 				   $address=temizle($_POST["address"]);
 				   $address = getMailAddress($address);
 				   $bodisi=temizle($_POST["icerik"]);
+				   $gonderenMail = getMailAddress(getUserID2($_SESSION["usern"]));
+				   if($gonderenMail=="")
+				     $gonderenMail=ayarGetir("ayar4char");
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
-//	$headers .= 'From: tbagriyanik@gmail.com' . "\r\n" .'Reply-To: tbagriyanik@gmail.com' . "\r\n" .
+	$headers .= "From:".$gonderenMail. "\r\nReply-To:".$gonderenMail. "\r\n" .
 							   'X-Mailer: PHP/' . phpversion();
 					if(email_valid($address)){
 						if (@mail("$address", "eOgr - $subject", "$bodisi",$headers)){

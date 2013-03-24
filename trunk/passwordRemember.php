@@ -42,7 +42,7 @@ Lesser General Public License for more details.
 
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -124,12 +124,20 @@ Lesser General Public License for more details.
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[65]?> </span> </h2>
                 <div class="PostContent">
                   <?php
-				  
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
-if (@mail(ayarGetir("ayar4char"), "eOgr test", "just eOgr",$headers)) {         
+function passwordMailTest(){				  
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
+	$headers .= "From:".ayarGetir("ayar4char"). "\r\nReply-To:".ayarGetir("ayar4char"). "\r\n" .
+								   'X-Mailer: PHP/' . phpversion();
+	if (@mail(ayarGetir("ayar4char"), "eOgr test", "just eOgr - delete me!",$headers))          
+		return true;						   
+	
+	return false;  
+}			
+				   
+if (isset($_POST['form']) || passwordMailTest()) {         
 
-//no problem with EMAIL
+//no problem for sending EMAIL
  echo $metin[83];
  if(isset($_POST['form']) && $_SESSION["passRem"]!="yes"){          
 	
@@ -183,7 +191,7 @@ if (@mail(ayarGetir("ayar4char"), "eOgr test", "just eOgr",$headers)) {
 		
 	}else{		
 
-if(!empty($_SESSION["passRem"]) and $_SESSION["passRem"]=="yes") echo($metin[410]); //form data?
+if(!empty($_SESSION["passRem"]) and $_SESSION["passRem"]=="yes") die($metin[410]); //form data?
 ?>
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <script type="text/javascript">

@@ -17,19 +17,19 @@ $aInfo	=array();
 	$result = mysql_query("select konuAdi from eo_4konu order by id");
 	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
 	{
-		$aUsers[$i] =iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["konuAdi"]))); 
+		$aUsers[$i] =iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["konuAdi"]))); 
 	};
 	
 	$result = mysql_query("select id from eo_4konu order by id");
 	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
 	{
-		$aID[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["id"])));
+		$aID[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["id"])));
 	};
 
 	$result = mysql_query("select eo_3ders.dersAdi as dersAdi from eo_3ders,eo_4konu where eo_4konu.dersID=eo_3ders.id order by eo_4konu.id");
 	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
 	{
-		$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlspecialchars($sonuc ["dersAdi"])));
+		$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["dersAdi"])));
 	};
 	
 	if(!empty($_GET['input']))

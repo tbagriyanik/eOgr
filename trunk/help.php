@@ -45,27 +45,27 @@ Lesser General Public License for more details.
 <script language="JavaScript" type="text/javascript" src="lib/dataFill.js"></script>
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <link href="lib/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" type="text/javascript" src="lib/jquery-1.6.1.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="lib/jquery.autocomplete.js"></script>
 <script language="JavaScript" type="text/javascript" >
   $(document).ready(function(){
 	  var verilerDizisi = [
-			{ name: "<?php echo htmlspecialchars_decode($metin[261])?>", to: "<?php echo temizle($metin[266])?>", num: "1" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[262])?>", to: "<?php echo temizle($metin[267])?>", num: "2" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[263])?>", to: "<?php echo temizle($metin[268])?>", num: "3" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[264])?>", to: "<?php echo temizle($metin[269])?>", num: "4" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[265])?>", to: "<?php echo temizle($metin[270])?>", num: "5" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[421])?>", to: "<?php echo temizle($metin[432])?>", num: "6" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[422])?>", to: "<?php echo temizle($metin[432])?>", num: "7" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[423])?>", to: "<?php echo temizle($metin[433])?>", num: "8" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[424])?>", to: "<?php echo temizle($metin[434])?>", num: "9" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[425])?>", to: "<?php echo temizle($metin[435])?>", num: "10" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[426])?>", to: "<?php echo temizle($metin[436])?>", num: "11" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[427])?>", to: "<?php echo temizle($metin[437])?>", num: "12" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[428])?>", to: "<?php echo temizle($metin[438])?>", num: "13" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[429])?>", to: "<?php echo temizle($metin[439])?>", num: "14" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[430])?>", to: "<?php echo temizle($metin[440])?>", num: "15" },
-			{ name: "<?php echo htmlspecialchars_decode($metin[431])?>", to: "<?php echo temizle($metin[441])?>", num: "16" }
+			{ name: "<?php echo ($metin[261])?>", to: "<?php echo temizle($metin[266])?>", num: "1" },
+			{ name: "<?php echo ($metin[262])?>", to: "<?php echo temizle($metin[267])?>", num: "2" },
+			{ name: "<?php echo ($metin[263])?>", to: "<?php echo temizle($metin[268])?>", num: "3" },
+			{ name: "<?php echo ($metin[264])?>", to: "<?php echo temizle($metin[269])?>", num: "4" },
+			{ name: "<?php echo ($metin[265])?>", to: "<?php echo temizle($metin[270])?>", num: "5" },
+			{ name: "<?php echo ($metin[421])?>", to: "<?php echo temizle($metin[432])?>", num: "6" },
+			{ name: "<?php echo ($metin[422])?>", to: "<?php echo temizle($metin[432])?>", num: "7" },
+			{ name: "<?php echo ($metin[423])?>", to: "<?php echo temizle($metin[433])?>", num: "8" },
+			{ name: "<?php echo ($metin[424])?>", to: "<?php echo temizle($metin[434])?>", num: "9" },
+			{ name: "<?php echo ($metin[425])?>", to: "<?php echo temizle($metin[435])?>", num: "10" },
+			{ name: "<?php echo ($metin[426])?>", to: "<?php echo temizle($metin[436])?>", num: "11" },
+			{ name: "<?php echo ($metin[427])?>", to: "<?php echo temizle($metin[437])?>", num: "12" },
+			{ name: "<?php echo ($metin[428])?>", to: "<?php echo temizle($metin[438])?>", num: "13" },
+			{ name: "<?php echo ($metin[429])?>", to: "<?php echo temizle($metin[439])?>", num: "14" },
+			{ name: "<?php echo ($metin[430])?>", to: "<?php echo temizle($metin[440])?>", num: "15" },
+			{ name: "<?php echo ($metin[431])?>", to: "<?php echo temizle($metin[441])?>", num: "16" }
 		];
 
 	function findValueCallback(event, data, formatted) {

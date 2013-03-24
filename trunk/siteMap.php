@@ -38,7 +38,7 @@ Lesser General Public License for more details.
 
 <script type="text/javascript" src="lib/script.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
@@ -271,7 +271,6 @@ Lesser General Public License for more details.
                                 <li><a href="lessonsList.php"><span><span><img src="img/lessons.gif" border="0" style="vertical-align: middle;" alt="lessons"/> <?php echo $metin[55].$bilgi4?> </span></span></a> </li>
                                 <li><a href="newUser.php"><span><span><img src="img/user_add.gif" border="0" style="vertical-align: middle;" alt="userman"/> <?php echo $metin[64]?> </span></span></a></li>
                                 <li><a href="passwordRemember.php"><span><span> <?php echo $metin[65]?> </span></span></a></li>
-                                <li><a href="kursDetay2.php"><img src="img/course.gif" border="0" style="vertical-align:middle;" alt="kurs" /> <span><span> <?php echo $metin[461]?> </span></span></a></li>
                                 <li><a href="rss.php"><span><span> <?php echo $metin[153].$bilgi7?></span></span></a></li>
                                 <li> <a href="help.php" target="_blank" onclick="window.open('help.php');return false;" ><img src="img/help.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[243]?>" title="<?php echo $metin[243]?>" /> <?php echo $metin[243]?></a></li>
                                 <li><a href="siteMap.php"><span><span><img src="img/sitemap.png" border="0" style="vertical-align:middle;" alt="<?php echo $metin[547]?>" title="<?php echo $metin[547]?>" /> <?php echo $metin[547]?></span></span></a></li>
