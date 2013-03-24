@@ -52,6 +52,14 @@ Lesser General Public License for more details.
     })
 </script>
 <script language="JavaScript" type="text/javascript" src="lib/fade.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+		$("#soruEkleme").hide();
+		$("#soruEklemeHead").click(function(){
+			$(this).next("#soruEkleme").slideToggle(200);
+		});
+      }) 
+</script>
 <script language="JavaScript" type="text/javascript">
 <!--
 /*
@@ -1547,13 +1555,14 @@ if($seciliSekme=="0") {
                   <div id="TabbedPanelsContent"> 
                     <!-- *************************************SAYFA ba&#351;lad&#305; *************************************************-->
                     <?php
-   if($_GET["upd"]!=1) {
-
 	   $seciliKonu = temizle((isset($_GET["seciliKonu"]))?$_GET["seciliKonu"]:"");
 	   if(empty($seciliKonu)) 
 	      $seciliKonu= temizle($_SESSION["seciliKonu"]);
 		 else
 		  $_SESSION["seciliKonu"]=$seciliKonu;	
+		  
+   if($_GET["upd"]!=1) {
+
 	   
 	   $sirAlan=temizle($_GET["sirAlan"]);
 	   if($sirAlan=="") $sirAlan="id";
@@ -1677,6 +1686,10 @@ if($seciliSekme=="0") {
                           <td width="100" align="right"><label for="anaMetin"><?php echo $metin[390]?> : </label></td>
                           <td  style="background-color:#FFF;"><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"></textarea></td>
                         </tr>
+                      </table>
+                      <h4 id='soruEklemeHead' style="cursor:pointer;"><img src="img/page-next.gif" alt='next' border='0' style="vertical-align: middle;"/>Soru Olarak Düzenle</h4>
+                      <div id="soruEkleme">
+                      <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
                           <td width="100" align="right"><label for="cevap"><?php echo $metin[391]?> : </label></td>
                           <td  style="background-color:#FFF;"><input type="text" name="cevap" id="cevap" size="50" maxlength="50" value=""/>
@@ -1727,6 +1740,8 @@ if($seciliSekme=="0") {
                             &nbsp;
                             <input type="button" name="gonderme2" id="gonderme2"  onclick="location.href = &quot;lessonsEdit.php?tab=3&quot;;" value="<?php echo $metin[28]?>" /></td>
                         </tr>
+                          </div>
+                        
                       </table>
                     </form>
                     <script language="JavaScript" type="text/javascript" src="lib/nicEdit.js"></script> 
@@ -1781,6 +1796,10 @@ bkLib.onDomLoaded(function() {
                           <td style="background-color:#FFF;" ><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"><?php echo ( mysql_result($result2, 0, "anaMetin"))?>
               </textarea></td>
                         </tr>
+                      </table>
+                      <h4 id='soruEklemeHead' style="cursor:pointer;"><img src="img/page-next.gif" alt='next' border='0' style="vertical-align: middle;"/>Soru Olarak Düzenle</h4>
+                      <div id="soruEkleme">
+                      <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
                           <td width="87" align="right"><label for="cevap"><?php echo $metin[391]?> : </label></td>
                           <td  style="background-color:#FFF;"><input type="text" name="cevap" id="cevap" size="50" maxlength="50" value="<?php echo mysql_result($result2, 0, "cevap");?>"/>
@@ -2055,7 +2074,9 @@ bkLib.onDomLoaded(function() {
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="tarihEtkinlik"><?php echo $metin[669] ?> : </label></td>
-                          <td width="293"><span id="tarihEtkinliki"><input name="tarihEtkinlik" type="text" id="tarihEtkinlik" size="32" maxlength="50" value="<?php echo date("d-m-Y H:i");?>" /><span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
+                          <td width="293"><span id="tarihEtkinliki">
+                            <input name="tarihEtkinlik" type="text" id="tarihEtkinlik" size="32" maxlength="50" value="<?php echo date("d-m-Y H:i");?>" />
+                            <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
                             <tt><?php echo $metin[671]?></tt></span></span></td>
                         </tr>
                         <tr>
@@ -2082,7 +2103,7 @@ bkLib.onDomLoaded(function() {
 		  $result2 = mysql_query($sql2, $yol);
 ?>
                     <form action="lessonsEdit.php?tab=5&amp;islem=G" method="post" name="dersGuncelle" id="dersGuncelle">
-                     <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
+                      <table width="530" border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>
                           <th colspan="2"><?php echo "$metin[672] ($seciliKayit $metin[356])"?></th>
                         </tr>
@@ -2133,7 +2154,9 @@ bkLib.onDomLoaded(function() {
                         </tr>
                         <tr>
                           <td width="87" align="right"><label for="tarihEtkinlik"><?php echo $metin[669] ?> : </label></td>
-                          <td width="293"><span id="tarihEtkinliki"><input name="tarihEtkinlik" type="text" id="tarihEtkinlik" size="32" maxlength="50" value="<?php echo date("d-m-Y H:i",strtotime(mysql_result($result2, 0, "dateWhen")))?>"  /><span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
+                          <td width="293"><span id="tarihEtkinliki">
+                            <input name="tarihEtkinlik" type="text" id="tarihEtkinlik" size="32" maxlength="50" value="<?php echo date("d-m-Y H:i",strtotime(mysql_result($result2, 0, "dateWhen")))?>"  />
+                            <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
                             <tt><?php echo $metin[671]?></tt></span></span></td>
                         </tr>
                         <tr>
@@ -2143,7 +2166,7 @@ bkLib.onDomLoaded(function() {
                             <span class="textfieldRequiredMsg">&nbsp;</span><span class="textfieldMaxCharsMsg"><br/>
                             <tt><?php echo $metin[120]?></tt></span></span></td>
                         </tr>
-                       <tr>
+                        <tr>
                           <td colspan="2" align="center" class="tabloAlt"><label>
                               <input name="id" type="hidden" value="<?php echo mysql_result($result2, 0, "id")?>" />
                               <input type="submit" name="gonder22" id="gonder22" value="<?php echo $metin[361]?>" />
@@ -2151,7 +2174,7 @@ bkLib.onDomLoaded(function() {
                               <input type="button" name="gonderme2" id="gonderme2"  onclick="location.href = &quot;lessonsEdit.php?tab=5&quot;;" value="<?php echo $metin[28]?>" />
                             </label></td>
                         </tr>
-                      </table> 
+                      </table>
                     </form>
                     <?php	
 		}
