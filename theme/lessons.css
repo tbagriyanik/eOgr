@@ -3,9 +3,9 @@ td {
 	color: #000;
 }
 #kapsayici {
-	position:absolute;
-	top:15px;
-	z-index:auto;
+	position: absolute;
+	top: 15px;
+	z-index: auto;
 	float: left;
 	height: 433px;
 	width: 630px;
@@ -13,7 +13,8 @@ td {
 	background: #fff;
 	border: 1px solid #CCC;
 	padding: 8px;
-	overflow:auto;
+	overflow: auto;
+	overflow-x: hidden;
 }
 #anaMetin {
 	height: 290px;
