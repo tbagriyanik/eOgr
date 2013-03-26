@@ -41,7 +41,7 @@ ob_start (); // Buffer output
 		  	$eMode = $_SESSION["mode"];
 		}
 		else
-		  	$eMode = "3"; //genel varsayÄ±lan
+		  	$eMode = "3"; //genel varsayılan
   }  
   
   if(!isset($_GET["konu"]))				
@@ -52,8 +52,8 @@ ob_start (); // Buffer output
 	else
 	 	$kullaniciSecen = array("","","","","","","","","","","","","","","");
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
@@ -78,7 +78,9 @@ ob_start (); // Buffer output
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<link href="lib/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.10.2.custom.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
 <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
@@ -87,12 +89,18 @@ ob_start (); // Buffer output
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-        
-      }) 
-    })
-	
-	$(document).ready(function(){
+		  $('a[rel*=facebox]').facebox({        
+		  }) ;
+		  $( "#kapsayici" ).resizable({
+			  maxHeight: 510,
+			  maxWidth: 630,
+			  minHeight: 350,
+			  minWidth: 630
+		   }); 
+		  $( "#kapsayici" ).resize(function(){
+			 //$('#kapsayici', this).css('height', size.height - 1 + 'px');
+			 degerYaz('dersYukseklik', $( "#kapsayici" ).height(), 7);					
+		  })  
 		//$(".msg_body").hide();
 		$(".msg_head").click(function(){
 			$(this).next(".msg_body").slideToggle(200);
@@ -106,52 +114,6 @@ ob_start (); // Buffer output
 	});
 
 </script>
-<?php if ($eMode==1){?>
-<link rel="stylesheet" href="lib/zoomoz/zoomooz.css" type="text/css" />
-<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-helpers.js"></script>
-<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-anim.js"></script>
-<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-core.js"></script>
-<script type="text/javascript" src="lib/zoomoz/purecssmatrix.js"></script>
-<script type="text/javascript" src="lib/zoomoz/sylvester.src.stripped.js"></script>
-<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-zoomTarget.js"></script>
-<script type="text/javascript" src="lib/zoomoz/jquery.zoomooz-zoomContainer.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-			settings = {
-				// zoomed size relative to screen
-				// 0.0-1.0
-				targetsize: 0.95,
-				// scale content to screen based on their size
-				// "width"|"height"|"both"
-				scalemode: "both",
-				// animation duration
-				duration: 500,
-				// easing of animation, similar to css transition params
-				// "linear"|"ease"|"ease-in"|"ease-out"|
-				// "ease-in-out"|[p1,p2,p3,p4]
-				// [p1, p2, p3, p4] refer to cubic-bezier curve params
-				easing: "ease",
-				// use browser native animation in webkit
-				// true|false
-				nativeanimation: true
-			}	
-		$(".zoom").click(function(evt) {
-			evt.stopPropagation();
-			$(this).zoomTo(settings);
-		});
-		$(window).click(function(evt) {
-			evt.stopPropagation();
-			$("body").zoomTo();
-		});
-		 $("body").click(function(evt) {
-		  $(this).zoomTo({targetsize:1.0});
-		  evt.stopPropagation();
-		});
-		$("body").zoomTo();
-	});
-</script>
-<?php } ?>
 <link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" language="javascript">
 var ns = (document.layers)? true:false;
@@ -309,20 +271,16 @@ function cleanup() {
 	$_SESSION["hataSay"] = ""; 
 	//eskiler silinir
 	$_SESSION["cevaplar"][0] = ""; 
-	//dizi oluÅYturuldu
+	//dizi oluşturuldu
 	$_SESSION["hataSay"][0] = ""; 
-	//dizi oluÅYturuldu
+	//dizi oluşturuldu
 	$_SESSION['cevapSuresi'] = ""; 
 	//eski deÄYeri yok edelim 
 
 ?>
                   <div id="oncekiKonu"></div>
                   <div id="sonrakiKonu"></div>
-                  <div id="resizeMe" class="zoom level0">
-                    <div id="kapsayici"><span id="anaMetin" ><font id='uyari'><?php echo $metin[176]?></font></span>
-                      <div id="resizeS"><img src="img/angle-nxs.gif" alt="slider" /></div>
-                    </div>
-                  </div>
+                  <div id="kapsayici" class="ui-widget-content"><span id="anaMetin"><font id='uyari'><?php echo $metin[176]?></font></span> </div>
                   <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
                     <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
                     (<span id="eklenmeTarihi">-</span>)<br />
@@ -593,7 +551,7 @@ document.getElementById('sunuDurdur').style.visibility = 'hidden';
 
 /*
 konuDuzenle:
-konu dÃ¼zenleme baÄYÄ±nÄ±n Ã§alÄ±ÅYmasÄ±
+konu düzenleme baÄYının çalışması
 */
 function konuDuzenle(){
 	if(document.getElementById('konu_id').value>0)
@@ -612,7 +570,7 @@ window.onunload = function () {
 }
 /*
 cevapSureBasla:
-cevaplama iÃ§in sÃ¼re baÅYlangÄ±cÄ±
+cevaplama için süre başlangıcı
 */
 function cevapSureBasla(){
 
@@ -685,7 +643,7 @@ fix_flash();
 ?>
 <script type="text/javascript">
 
-//ileri ve geri dolaÅYma klavye tuÅYlarÄ±: saÄY ok ve sol ok, Enter: Cevap ver.
+//ileri ve geri dolaşma klavye tuşları: saÄY ok ve sol ok, Enter: Cevap ver.
 	$(document).keydown(function(event) {
 		var sayNosu;
 		sayNosu = parseInt(document.getElementById('sayfaNo').innerHTML);
@@ -721,24 +679,9 @@ $(document).ready(
 		if(deger>300){
 			$('#kapsayici').height (deger);
 		}
-			
-		$('#resizeMe').Resizable(
-			{
-				minHeight: 350,
-				maxHeight: 500,
-				handlers: {
-					s: '#resizeS'
-				},
-				onResize: function(size)
-				{
-					$('#kapsayici', this).css('height', size.height - 1 + 'px');
-					degerYaz('dersYukseklik', size.height - 6, 7);					
-				}
-			}
-		);
+		
 	}
 );
-</script> 
-<script type="text/javascript" src="lib/resize.js"></script>
+</script>
 </body>
 </html>
