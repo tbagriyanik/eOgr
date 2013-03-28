@@ -220,19 +220,19 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				 if($seciliSekme=="0") {
 						$okulAdi=temizle($_POST["okulAdi"]);
 						if (!empty($okulAdi))
-							$sql="Update $tabloAdi set okulAdi='$okulAdi' where id=$seciliKayit";
+							$sql="Update eo_1okul set okulAdi='$okulAdi' where id=$seciliKayit";
 					 }else
 				 if($seciliSekme=="1") {
 				        $sinifAdi=temizle($_POST["sinifAdi"]);
 				        $okulID=temizle($_POST["okulAdlari"]);
 						if (!empty($okulID) && !empty($sinifAdi))
-   							$sql="Update $tabloAdi set sinifAdi='$sinifAdi',okulID='$okulID' where id=$seciliKayit";
+   							$sql="Update eo_2sinif set sinifAdi='$sinifAdi',okulID='$okulID' where id=$seciliKayit";
 					 }else
 				 if($seciliSekme=="2") {
 				        $dersAdi=temizle($_POST["dersAdi"]);
 				        $sinifID=temizle($_POST["sinifAdlari"]);
 						if (!empty($sinifID) && !empty($dersAdi))
-   							$sql="Update $tabloAdi set dersAdi='$dersAdi',sinifID='$sinifID' where id=$seciliKayit";
+   							$sql="Update eo_3ders set dersAdi='$dersAdi',sinifID='$sinifID' where id=$seciliKayit";
 					 }else
 				 if($seciliSekme=="3") {
 				        $konuAdi=temizleCubuk($_POST["konuAdi"]);
@@ -249,7 +249,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $sinifaDahilKullaniciGorebilir=temizleCubuk((isset($_POST["sinifaDahilKullaniciGorebilir"]))?$_POST["sinifaDahilKullaniciGorebilir"]:"");
 						
 						if (!empty($dersID) && !empty($konuAdi))
-   							$sql="Update $tabloAdi set konuAdi='$konuAdi', dersID='$dersID', bitisTarihi='$bitisTarihi', oncekiKonuID='$oncekiKonuID', calismaSuresiDakika='$calismaSuresiDakika', calismaHakSayisi='$calismaHakSayisi', konuyuKilitle='$konuyuKilitle', sadeceKayitlilarGorebilir='$sadeceKayitlilarGorebilir', sinifaDahilKullaniciGorebilir='$sinifaDahilKullaniciGorebilir'  where id=$seciliKayit";
+   							$sql="Update eo_4konu set konuAdi='$konuAdi', dersID='$dersID', bitisTarihi='$bitisTarihi', oncekiKonuID='$oncekiKonuID', calismaSuresiDakika='$calismaSuresiDakika', calismaHakSayisi='$calismaHakSayisi', konuyuKilitle='$konuyuKilitle', sadeceKayitlilarGorebilir='$sadeceKayitlilarGorebilir', sinifaDahilKullaniciGorebilir='$sinifaDahilKullaniciGorebilir'  where id=$seciliKayit";
 							
 					 }else
 				 if($seciliSekme=="4") {
@@ -269,7 +269,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $cevapSuresi		=temizleCubuk($_POST["cevapSuresi"]);
 				        $konuID		=temizleCubuk($_POST["konuID"]);
 						if (!empty($anaMetin) && !empty($konuID))
-   							$sql="Update $tabloAdi set 
+   							$sql="Update eo_5sayfa set 
 									anaMetin='$anaMetin', cevap = '$cevap',
 									secenek1='$secenek1', secenek2 = '$secenek2',
 									secenek3='$secenek3', secenek4 = '$secenek4',
@@ -287,7 +287,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $notlar		= temizleCubuk($_POST["notlar"]);
 
 						if (!empty($dersID) && !empty($userID) && !empty($sure) && !empty($etkinlikT))
-   							$sql="Update $tabloAdi set 
+   							$sql="Update eo_livelesson set 
 									dersID='$dersID', userID = '$userID',
 									length='$sure', dateWhen = '$etkinlikT',
 									yontem='$notlar' 								    
@@ -303,19 +303,20 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 		  case "E": 
 				 if($seciliSekme=="0") {
 				        $okulAdi=temizle($_POST["okulAdi"]);
-						if (!empty($okulAdi))	$sql="Insert into $tabloAdi (okulAdi) values ('$okulAdi')";
+						if (!empty($okulAdi))	
+						$sql="Insert into eo_1okul (okulAdi) values ('$okulAdi')";
 					 }else
 				 if($seciliSekme=="1") {
 				        $sinifAdi=temizle($_POST["sinifAdi"]);
 				        $okulID=temizle($_POST["okulAdlari"]);
 						if (!empty($okulID) && !empty($sinifAdi))
-						   $sql="Insert into $tabloAdi (sinifAdi, okulID) values ('$sinifAdi','$okulID')";
+						   $sql="Insert into eo_2sinif (sinifAdi, okulID) values ('$sinifAdi','$okulID')";
 					 }else
 				 if($seciliSekme=="2") {
 				        $dersAdi=temizle($_POST["dersAdi"]);
 				        $sinifID=temizle($_POST["sinifAdlari"]);
 						if (!empty($sinifID) && !empty($dersAdi))
-						   $sql="Insert into $tabloAdi (dersAdi, sinifID) values ('$dersAdi','$sinifID')";
+						   $sql="Insert into eo_3ders (dersAdi, sinifID) values ('$dersAdi','$sinifID')";
 					 }else
 				 if($seciliSekme=="3") {
 				        $konuAdi		=temizleCubuk($_POST["konuAdi"]);
@@ -332,7 +333,7 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $sinifaDahilKullaniciGorebilir=temizleCubuk((isset($_POST["sinifaDahilKullaniciGorebilir"]))?$_POST["sinifaDahilKullaniciGorebilir"]:"");
 
 						if (!empty($dersID) && !empty($konuAdi))
-						   $sql="Insert into $tabloAdi (konuAdi, dersID, bitisTarihi, oncekiKonuID, konuyuKilitle, calismaHakSayisi, calismaSuresiDakika, sadeceKayitlilarGorebilir, sinifaDahilKullaniciGorebilir) values ('$konuAdi', '$dersID', '$bitisTarihi', '$oncekiKonuID', '$konuyuKilitle', '$calismaHakSayisi', '$calismaSuresiDakika', '$sadeceKayitlilarGorebilir', '$sinifaDahilKullaniciGorebilir')";
+						   $sql="Insert into eo_4konu (konuAdi, dersID, bitisTarihi, oncekiKonuID, konuyuKilitle, calismaHakSayisi, calismaSuresiDakika, sadeceKayitlilarGorebilir, sinifaDahilKullaniciGorebilir) values ('$konuAdi', '$dersID', '$bitisTarihi', '$oncekiKonuID', '$konuyuKilitle', '$calismaHakSayisi', '$calismaSuresiDakika', '$sadeceKayitlilarGorebilir', '$sinifaDahilKullaniciGorebilir')";
 					 }else
 				 if($seciliSekme=="4") {
 					    $datem	=	date("Y-n-j H:i:s");
@@ -349,11 +350,11 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $cevapSuresi		=temizleCubuk($_POST["cevapSuresi"]);
 						$konuID		=temizleCubuk($_SESSION["seciliKonu"]);
 						
-				        $anaMetin   = trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!
+				        $anaMetin   = trim(str_replace("'", "`", $_POST["anaMetin"])); //temizle PROBLEM!						
 				        $anaMetin	= temizleWordHTML(trim(str_replace("|", "¦", $anaMetin))); //temizle PROBLEM!
 						$anaMetin	= temizleOzel($anaMetin);
 						if (!empty($anaMetin) && !empty($konuID))
-						   $sql="Insert into $tabloAdi 
+						   $sql="Insert into eo_5sayfa 
 						   (anaMetin, konuID, eklenmeTarihi, ekleyenID, sayfaSirasi, cevap, secenek1,secenek2,secenek3,secenek4,secenek5,secenek6,slideGecisSuresi,cevapSuresi)
 						   	values ('$anaMetin', '".$konuID."', '$datem', '$userID', '$toplamSayfaSay','$cevap'
 									,'$secenek1','$secenek2','$secenek3'
@@ -368,11 +369,12 @@ if(isset($_GET["islem"]) && in_array($_GET["islem"] ,array("S","E","G")) && in_a
 				        $etkinlikT	= date("Y-m-d H:i",strtotime(temizleCubuk($_POST["tarihEtkinlik"])));
 				        $notlar		= temizleCubuk($_POST["notlar"]);
 						if (!empty($dersID) && !empty($userID) && !empty($sure) && !empty($etkinlikT))
-   							$sql="INSERT INTO $tabloAdi 
+   							$sql="INSERT INTO eo_livelesson 
 									(dersID, userID, length, dateWhen, yontem) 								    
 									VALUES
 									('$dersID', '$userID', '$sure', '$etkinlikT','$notlar')";
 					 } 	 
+
 	            $result = mysql_query($sql, $yol);
 				if($result) 
 				   echo "<font id='tamam'>$metin[537]</font>";
@@ -1207,10 +1209,10 @@ if($seciliSekme=="0") {
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="konuAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                           <?php } ?>
                           <a href="lessonsEdit.php?sirAlan=konuAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[364] ?> (<?php echo $metin[329] ?>)</a></th>
-                        <th width="396" nowrap="nowrap"><?php if ($sirAlan=="dersAdi") {?>
+                        <th nowrap="nowrap"><?php if ($sirAlan=="dersAdi") {?>
                           <img src="img/<?php echo ($siraYonu=="desc" && $sirAlan=="dersAdi")?"desc":"asc"?>.png" alt="S&#305;ralama Y&ouml;n&uuml;" border="0" style="vertical-align: middle;"/>
                           <?php } ?>
-                          <a href="lessonsEdit.php?sirAlan=dersAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[363] ?> (<?php echo $metin[296] ?> - <?php echo $metin[297] ?>)</a></th>
+                          <a href="lessonsEdit.php?sirAlan=dersAdi&amp;tab=3&amp;siraYap=OK"><?php echo $metin[363] ?> (<?php echo $metin[297] ?>)</a></th>
                       </tr>
                       <?php
 					  
@@ -1277,7 +1279,7 @@ if($seciliSekme=="0") {
 						     echo "<img src='img/empty.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[209]."\" title=\"".$metin[209]."\" />";
 						  ?>
                           <a href="dersBilgisi.php?ders=<?php echo mysql_result($result, $i, "id")?>" rel="facebox"> <img src="img/info.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[301]?>" /></a></td>
-                        <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo (mysql_result($result, $i, "dersAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "dersAdi"))?> ( <?php echo (mysql_result($result, $i, "okulAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "okulAdi"))?> - <?php echo (mysql_result($result, $i, "sinifAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "sinifAdi"))?> )</td>
+                        <td nowrap="nowrap" <?php echo "style=\"background-color: $row_color;\""?>><?php echo (mysql_result($result, $i, "dersAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "dersAdi"))?> ( <?php echo (mysql_result($result, $i, "sinifAdi")==""?"<font class=bosVeri title='Kay&#305;t yok veya bir hata meydana geldi!'>###</font>":mysql_result($result, $i, "sinifAdi"))?> )</td>
                         <td width="60" align="center" valign="middle" nowrap="nowrap"><a href="<?php echo $currentPage;?>?tab=3&amp;id=<?php echo mysql_result($result, $i, "id");?>&amp;upd=1" title="<?php echo $metin[103]?>"><img src="img/edit.png" alt="<?php echo $metin[103]?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a>&nbsp;|&nbsp;<a href="#" onclick="javascript:delWithCon('<?php echo $currentPage;?>?tab=3&amp;islem=S',<?php echo mysql_result($result, $i, "id")?>,'<?php echo $metin[420] ?>');" title="<?php echo $metin[102] ?>"><img src="img/cross.png" alt="<?php echo $metin[102] ?>" width="16" height="16" border="0" style="vertical-align: middle;" /></a></td>
                       </tr>
                       <?php
@@ -1687,7 +1689,7 @@ if($seciliSekme=="0") {
                           <td  style="background-color:#FFF;"><textarea name="anaMetin" cols="90" rows="10" id="anaMetin"></textarea></td>
                         </tr>
                       </table>
-                      <h4 id='soruEklemeHead' style="cursor:pointer;"><img src="img/page-next.gif" alt='next' border='0' style="vertical-align: middle;"/>Soru Olarak Düzenle</h4>
+                      <h4 id='soruEklemeHead' style="cursor:pointer;"><img src="img/page-next.gif" alt='next' border='0' style="vertical-align: middle;"/><?php echo $metin[683]?></h4>
                       <div id="soruEkleme">
                       <table border="0" cellspacing="0" cellpadding="3" align="center">
                         <tr>

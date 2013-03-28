@@ -883,4 +883,5 @@ Detaylar için <a href=\"INSTALL.html\">tıklatınız</a>.
 		
 		$metin[682] = "Özür dileriz, şu anda eposta gönderemiyoruz! Bir yönetici ile iletişime geçerek yeni parola alabilirsiniz.";
 		
+		$metin[683] = "Soru/sunum Olarak Düzenle";
 ?>
