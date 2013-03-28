@@ -310,14 +310,6 @@ $().ready(function() {
                         <br />
                         <?php echo $metin[23]?> : <?php echo tarihOku(GetSQLValueStringNo($row_eoUsers[7], "text")); ?><br />
                         <br />
-                        <label for="userPassword"> <?php echo $metin[18]?> :</label>
-                        <div style="width:500px;"> 
-                          <input name="userPassword" id="userPassword" type="password" value="" size="32" maxlength="40" style="width:150px"  />
-                          <font color="red"> <strong> <?php echo $metin[90]?> </strong></font> </div>
-                        <label for="userPassword2"> <?php echo $metin[152]?> :</label>
-                        <div style="width:500px;"> 
-                          <input name="userPassword2" id="userPassword2" type="password" value="" size="32" maxlength="40" style="width:150px" />
-                        </div>
                         <label for="realName"> <?php echo $metin[38]?> :</label>
                         <div style="width:500px;"> 
                           <input name="realName" id="realName" type="text" value="<?php echo GetSQLValueStringNo($row_eoUsers[3], "text"); ?>" size="32" maxlength="50" style="width:150px"  class="required" />
@@ -330,17 +322,28 @@ $().ready(function() {
                         <div style="width:500px;"> 
                           <input name="userBirthDate" id="userBirthDate" type="text" value="<?php echo tarihOku3(GetSQLValueStringNo($row_eoUsers[5], "text")); ?>" size="32" maxlength="50" class="required" style="width:150px" />
                         </div>
+						<fieldset style="width:300px;border-color:red;">
+                        <label for="userPassword"> <?php echo $metin[18]?> :</label>
+                        <div style="width:500px;"> 
+                          <input name="userPassword" id="userPassword" type="password" value="" size="32" maxlength="40" style="width:150px"  />
+                          <font color="red"> <strong> <?php echo $metin[90]?> </strong></font> </div>
+                        <label for="userPassword2"> <?php echo $metin[152]?> :</label>
+                        <div style="width:500px;"> 
+                          <input name="userPassword2" id="userPassword2" type="password" value="" size="32" maxlength="40" style="width:150px" />
+                        </div>
                         <label>
                           <input name="prldeg" type="checkbox" id="prldeg" checked="checked"  value="secili"/>
-                          <?php echo $metin[24]?> </label>
+                          <?php echo $metin[24]?> </label><br/>
+                        <tt><?php echo $metin[91]?></tt>
+                        <input type="hidden" name="MM_update" value="form3" />
+                        <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
+						</fieldset>
                         <p>
                         <label>
                           <input type="submit" value="<?php echo $metin[25]?>" />
                         </label>
                         </p>
-                        <tt><?php echo $metin[91]?></tt>
-                        <input type="hidden" name="MM_update" value="form3" />
-                        <input type="hidden" name="id" value="<?php echo $row_eoUsers[0]; ?>" />
+                      </fieldset>
                         <p style="padding-top:15px;">
                         <?php echo $metin[661]?> : 
                         <?php if($tur!=0){ ?><button onclick="location.href='userSettings.php?istek=1';return false;" value="<?php echo $metin[658]?>"><?php echo $metin[658]?></button>&nbsp;<?php }?>
@@ -352,7 +355,6 @@ $().ready(function() {
 							echo "<br/><br/>".$metin[662]. " : <br/>".$istekler; 
 						?>
                         </p>
-                      </fieldset>
                     </form>                    
                   </div>
                 </div>
