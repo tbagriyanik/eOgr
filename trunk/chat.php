@@ -234,9 +234,7 @@ $(function () {
   </div>
 </div>
 <div id="videoChat">
-  <iframe id="basicEmbed" src="https://api.opentok.com/hl/embed/<?php 
-echo $_videoChatSession;
-?>" width="300" height="340" frameborder="0"></iframe>
+<script id="TB_embed_js" src="http://api.opentok.com/hl/embed/<?php echo $_videoChatSession; ?>/embed.js?width=300&height=340" type="text/javascript" charset="utf-8"></script>
 </div>
 <div id="whiteBoard">
   <object width="100%" height="100%">
