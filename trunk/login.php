@@ -357,10 +357,6 @@ if($pass){
                         <a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a> </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <?php
 		  	}else{
           ?>
@@ -405,6 +401,10 @@ if($pass){
           <?php 
 			}
 		  ?>
+                </div>
+              </div>
+            </div>
+          </div>		  
         </div>
         <div class="cleared"></div>
         <div class="Footer">
