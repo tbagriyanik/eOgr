@@ -1,0 +1,32 @@
+Eclipse ortamında PHP geliştirme, Google Code'da yeni bir proje oluşturma ve bu projeye Aptana üzerinden erişme
+Eclipse ortamında PHP ile proje geliştirmek için birkaç farklı yol izlenebilir;
+
+1) Eclipse'in kendi desteklediği bir proje olan "PHP Development Tools" projesinin dahil olduğu Eclipse IDE'si kullanılarak(http://www.eclipse.org/pdt/)
+2) Aptana Studio kullanılarak. (Eclipse için ayrı plug-in şeklinde de kullanılabilir veya Eclipse üzerine geliştirilmiş olan Aptana Studio IDE'si de kullanılabilir)(http://aptana.com/)
+
+Ben 2. yoldan kısaca bahsedeceğim;
+
+http://aptana.com/studio/download adresinden Aptana Studio IDE'si indirilir. Eğer proxy ile webe açılan bir yerel ağa dahilseniz kurulumdan sonra Aptana açıldığında ilk başta Window->Preferences->"Install/Update" ve "Internet Proxy Settings" kısımlarından proxy ayarlarını giriyoruz.(Proxy yoksa bu adımları atlayınız)
+
+Daha sonra Help->Aptana Help->My Aptana sayfasından Plugins'e geliyoruz ve Aptana PHP yazan kısımdaki "Get it" linkine tıklıyoruz ve pluginin kurulmasını bekliyoruz.
+
+Eğer projenin internet ortamında saklanması, her yerden rahatlıkla erişilip takım çalışması yapılabilmesi gibi bir gereksinim varsa Aptana'nın içerisinde bulunan SVN bu ihtiyaçlarımıza karşılık verecektir. Aptana'nın proxy ayarlarını yapmış olmamıza rağmen SVN'nin internet ortamında bulunan bir projeye erişiminde sorun oluyor, bunun için de SVN'nin proxy ayarlarını ayrıca yapmak gerekiyor. Bunun için "C:\Documents and Settings\USER\Application Data\Subversion\servers" dosyasını açıp en alta şu satırları ekliyoruz;
+
+http-proxy-host = host
+http-proxy-port = port
+http-proxy-username = username
+http-proxy-password = password
+
+Google Code'ta yeni bir proje oluşturmak için;
+http://code.google.com/hosting/createProject
+adresinden gerekli bilgileri giriyoruz. Projeyi oluşturduktan sonra Source linkine tıklıyoruz. Burada SVN bağlantısı için gerekli bilgiler mevcut.
+Ör: https://sssssss.googlecode.com/svn/trunk/
+
+Aptana'da "New->Other->SVN->Check out projects from SVN" diyoruz. URL yerine yukarıdaki örnekteki repository URL'sini giriyoruz. Kullanıcı adı yerine gmail kullanıcı adımızı, şifre yerine de;
+
+http://code.google.com/hosting/settings
+
+sayfasında görünen şifremizi yazıyoruz ve bundan sonra Eclipse tabanlı, internet üzerinde saklanan ve takım çalışması yapabileceğimiz ortam hazır.
+
+
+Bu yazı http://www.coders2coders.com/articles.php?article_id=90 dan alıntıdır
