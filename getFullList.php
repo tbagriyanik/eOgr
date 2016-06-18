@@ -112,7 +112,10 @@ function baglan2()
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysqli_connect($_host, $_username, $_password);
+	global  $_db;
+	$result = @mysqli_connect($_host, $_username, $_password , $_db);
+	mysqli_set_charset($result, "utf8");
+    return 	$result;
 }
 
 if(!baglan2())   
@@ -156,7 +159,8 @@ function getUserIDcomment($usernam, $passwor)
 	
 	$usernam = substr(temizle2($usernam),0,15);
     $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle2($usernam)."' AND userPassword='".temizle2($passwor)."' limit 0,1"; 	
-
+	
+	$yol1 = baglan2();
     $result1 = mysqli_query($yol1, $sql1); 
 
     if ($result1 && mysqli_num_rows($result1) == 1)
@@ -171,7 +175,7 @@ listeGetir:
 belli bir tablodan istenen veri listesini alma (facebox için)
 */
 function listeGetir($userID, $durum){
-	global $yol1;							
+	global $yol1;$yol1 = baglan2();							
 	global $metin;	
 	$ekle = "";
 		if(!empty($durum) && !empty($userID)) {			  
@@ -563,20 +567,20 @@ if(!isset($_SESSION["usern"]) or !isset($_SESSION["userp"])){
 if (isset($_GET['case'])){
 	 if(!empty($_GET['case']) && getUserIDcomment($_SESSION["usern"],$_SESSION["userp"])!="" ) {
 		if ( !listeGetir(getUserIDcomment($_SESSION["usern"],$_SESSION["userp"]), temizle2($_GET['case'])) )		
-			echo "Error!";
+			echo "Error1!";
 	} elseif (in_array($_GET['case'],array("13","16","19"))) {
 		if ( !listeGetir("-1", temizle2($_GET['case'])) )		
-			echo "Error!";
+			echo "Error2!";
 	} elseif (in_array($_GET['case'],array("19"))) {
 		if ( !listeGetir($_SESSION["kursUser2"], temizle2($_GET['case'])) )		
-			echo "Error!";
+			echo "Error3!";
 	} elseif (in_array($_GET['case'],array("20"))) {
 		if ( !listeGetir("-1", temizle2($_GET['case'])) )		
-			echo "Error!";
+			echo "Error4!";
 	}
 }
 else
-   echo "?";
+   echo "Error5!";
    
 
 ?>

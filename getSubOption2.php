@@ -57,7 +57,7 @@ function anaMetniOku($konuID)
 		
 		$sonuc = "";
 		
-		while ($row = mysqli_fetch_array($result1, mysqli_ASSOC)) {	
+		while ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {	
 			
 					$tarih			= tarihOku($row["tarih"]);
 					$user			= $row["user"];

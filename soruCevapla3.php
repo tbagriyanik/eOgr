@@ -39,13 +39,14 @@ function baglan2()
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysqli_connect($_host, $_username, $_password);
+    global  $_db;
+    return 	@mysqli_connect($_host, $_username, $_password,$_db);
 }
 
 if(!baglan2())   
  die("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
  
-$yol1 = baglan2();
+$yol1 = baglan2();mysqli_set_charset($yol1, "utf8");
 
 	if (!$yol1)
 	{

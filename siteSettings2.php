@@ -138,15 +138,15 @@ Lesser General Public License for more details.
 							$sqlGelen = str_replace('Ã¶','&ouml;',  $sqlGelen);*/
 						$sqlFile = $sqlGelen;
 						
-						$baglan2=mysqli_connect($host, $dbUser, $dbPassword);
+						$baglan2=mysqli_connect($host, $dbUser, $dbPassword, $_db);
 						
 						if(!$baglan2)echo("<font id='hata'> L&#252;ften, 'veritaban&#305;' <a href=install.php>kurulumunu (installation)</a> yap&#305;n&#305;z!</font>");
 						
 						$yol22 = $baglan2;
 						
 						if ($yol22) {
-						
-								$newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);
+								mysqli_set_charset($yol22, 'utf8'); 
+								$newImport = new sqlImport ($host, $dbUser, $dbPassword, $_db, $sqlFile);
 									
 								$importumuz = $newImport -> importa ();
 								
@@ -186,7 +186,7 @@ Lesser General Public License for more details.
 						$yol22 = $baglan2;
 						
 						if ($yol22) {
-						
+								mysqli_set_charset($yol22, 'utf8'); 
 								$newImport = new sqlImport ($host, $dbUser, $dbPassword, $_db, $sqlFile);
 									
 								$importumuz = $newImport -> importa ();

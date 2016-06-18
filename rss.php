@@ -14,5 +14,6 @@ Lesser General Public License for more details.
 */	
 	include("lib/RSS.class.php");
 	$rss = new RSS();
+	//echo utf8_encode(htmlspecialchars($rss->GetFeed(), ENT_QUOTES, 'UTF-8'));
 	echo $rss->GetFeed();
 ?>

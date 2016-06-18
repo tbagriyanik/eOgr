@@ -6,15 +6,10 @@ class RSS
 	public function RSS()
 	{
 		require 'database.php';
-	DEFINE ('DB_USER', $_username);
-	DEFINE ('DB_PASSWORD', $_password);
-	DEFINE ('DB_HOST', $_host);
-	DEFINE ('DB_NAME', $_db);
-
-// Make the connnection and then select the database.
-$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to MySQL: ' . mysqli_error() );
-//mysqli_select_db (DB_NAME) OR die ('Could not select the database: ' . mysqli_error() );
-mysqli_set_charset('utf8'); //UNUTMUŞUM
+		DEFINE ('DB_USER', $_username);
+		DEFINE ('DB_PASSWORD', $_password);
+		DEFINE ('DB_HOST', $_host);
+		DEFINE ('DB_NAME', $_db);
 	}
 	
 	public function GetFeed()
@@ -22,12 +17,7 @@ mysqli_set_charset('utf8'); //UNUTMUŞUM
 		ob_clean();
 		header("Content-Type: application/rss+xml; charset=utf-8");
 		return $this->getDetails() . $this->getItems();
-	}
-	
-	private function dbConnect()
-	{
-		mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-	}
+	}	
 	
 	private function smileAdd($gelen){
 
@@ -60,7 +50,11 @@ mysqli_set_charset('utf8'); //UNUTMUŞUM
 		$detailsTable = "eo_webref_rss_details";
 
 		$query = "SELECT * FROM ". $detailsTable;
-		$result = mysqli_query (mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME),$query); 
+		
+		$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to MySQL: ' . mysqli_error() );
+		mysqli_set_charset($dbc, 'utf8'); 
+		
+		$result = mysqli_query ($dbc,$query); 
 		$details ="";
 		while($row = mysqli_fetch_array($result))
 		{
@@ -82,9 +76,12 @@ mysqli_set_charset('utf8'); //UNUTMUŞUM
 	{
 		global $siteLink;
 		$itemsTable = "eo_webref_rss_items";
+		// Make the connnection and then select the database.
+		$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to MySQL: ' . mysqli_error() );
+		mysqli_set_charset($dbc, 'utf8'); 
 		
 		$query = "SELECT * FROM ". $itemsTable;
-		$result = mysqli_query (mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) ,$query);
+		$result = mysqli_query ($dbc,$query); 
 		$items = '';
 		$i = 0;
 		while($row = mysqli_fetch_array($result))

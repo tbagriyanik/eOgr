@@ -45,7 +45,9 @@ function baglan()
 	global  $_username;
 	global  $_password;
 	global  $_db;
-    return 	mysqli_connect($_host, $_username, $_password , $_db);
+	$result = @mysqli_connect($_host, $_username, $_password , $_db);
+	mysqli_set_charset($result, "utf8");
+    return 	$result;
 }
 
 if(!baglan()) {  
@@ -54,7 +56,7 @@ if(!baglan()) {
 }
 
 $yol 	= 	baglan();
-$yol1	=	baglan();	
+$yol1	=	baglan();
 
 	if (!$yol)
 	{
@@ -66,13 +68,13 @@ $yol1	=	baglan();
 	}else{
 		mysqli_query($yol,"SET NAMES 'utf8'");
 		$sql = "SELECT * FROM eo_users";	
-		$yol = baglan();
-		$result = mysqli_query($yol, $sql);
+		$yol = baglan();mysqli_set_charset($yol, "utf8");
+		$result = @mysqli_query($yol, $sql);
 		if(!$result){
 		   @header("Location: error.php?error=6");
 			die("<font id='hata'> Tablo <a href=install.php>kurulumunu (installation)</a> yapmad&#305;n&#305;z!</font>");
 		}
-		mysqli_free_result($result); 	
+		@mysqli_free_result($result); 	
 	}
 
 //global değerler
@@ -481,7 +483,7 @@ function getTableSize($tableN){
 	  
 	$sonuc = "&nbsp;&nbsp;". number_format(mysqli_result($res, 0, "Data_length") + 
 							mysqli_result($res, 0, "Index_length"),0,",",".")." B $araDeger [".mysqli_result($res, 0, "Rows")."]" ;
- 	 mysqli_free_result($res); 			
+ 	 @mysqli_free_result($res); 			
 	  return  $sonuc ;
 	}
 	
@@ -584,10 +586,10 @@ function yetimKayitNolar($tablo){
 			
 							$resultici = mysqli_query($yol1,$sqlici);
 							if ($resultici){
-								if (mysqli_num_rows($resultici)==0)
+								if (@mysqli_num_rows($resultici)==0)
 							    	$sonuc2 .= $row_gelen['id'].", ";
 							}
-							mysqli_free_result($resultici); 	
+							@mysqli_free_result($resultici); 	
 
 					}
 	  			   $sonuc2 = substr($sonuc2,0,strlen($sonuc2)-2);	 //son , silindi					   
@@ -1076,7 +1078,7 @@ function yetimKayitNolar($tablo){
 		   
 		 break;									
 	 }
-	mysqli_free_result($result1); 
+	@mysqli_free_result($result1); 
 	return $sonuc;
 }
 /*
@@ -1341,8 +1343,8 @@ function arkadasTeklifVarMi($gonderenID,$id){
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-	return ($result1 && mysqli_num_rows($result1) == 1); 
+	$result1 = @mysqli_query($yol1,$sql1);
+	return ($result1 && @mysqli_num_rows($result1) == 1); 
 }
 /*
 arkadasTeklifVarMi2:
@@ -1358,8 +1360,8 @@ function arkadasTeklifVarMi2($gonderenID,$id){
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-	return ($result1 && mysqli_num_rows($result1) == 1); 
+	$result1 = @mysqli_query($yol1,$sql1);
+	return ($result1 && @mysqli_num_rows($result1) == 1); 
 }
 /*
 arkadasMi:
@@ -1376,8 +1378,8 @@ function arkadasMi($gonderenID,$id){
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-	return ($result1 && mysqli_num_rows($result1) == 1); 
+	$result1 = @mysqli_query($yol1,$sql1);
+	return ($result1 && @mysqli_num_rows($result1) == 1); 
 }
 /*
 getArkadaslikDavetTarihi:
@@ -1392,8 +1394,8 @@ function getArkadaslikDavetTarihi($kendi,$diger){
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-	$duvarYazisi = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+	$duvarYazisi = @mysqli_fetch_array($result1);
 	
 		$humanRelativeDate = new HumanRelativeDate();
 		$insansi = $humanRelativeDate->getTextForSQLDate($duvarYazisi[0]);
@@ -1413,8 +1415,8 @@ function getArkadaslikKabulTarihi($kendi,$diger){
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-	$duvarYazisi = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+	$duvarYazisi = @mysqli_fetch_array($result1);
 	
 		$humanRelativeDate = new HumanRelativeDate();
 		$insansi = $humanRelativeDate->getTextForSQLDate($duvarYazisi[0]);
@@ -1434,8 +1436,8 @@ function arkadasDuvarYazisi($kendi,$diger){
 			LIMIT 0,1";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-	$duvarYazisi = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+	$duvarYazisi = @mysqli_fetch_array($result1);
 	return RemoveXSS($duvarYazisi[0]); 
 }
 /*
@@ -1469,14 +1471,14 @@ function dosyaSil($id){
 	$sql1 = "select fileName from eo_files where id='$id'";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) == 1){
-		$sonuc = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) == 1){
+		$sonuc = @mysqli_fetch_array($result1);
 		if(file_exists($_uploadFolder."/".$sonuc[0]))
 			@unlink($_uploadFolder."/".$sonuc[0]);
 			//varsa artık silelim
 	  }
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 }
 /*
 dosyaSil2:
@@ -1486,7 +1488,7 @@ function dosyaSil2($id){
 	$yol1 = baglan();
 	$sql1 = "delete from eo_files where id='$id' limit 1";
 	$result1 = mysqli_query($yol1,$sql1);
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 }
 /*
 dosyaListele:
@@ -1516,9 +1518,9 @@ function dosya_uploads_uyumu(){
 	$sql1 = "select fileName from eo_files";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) > 0){
-		while ($gelen = mysqli_fetch_array($result1)){
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) > 0){
+		while ($gelen = @mysqli_fetch_array($result1)){
 			$dosyalarVTdeki[]=$gelen[0];
 			if(!file_exists($_uploadFolder."/".$gelen[0]))
 			 $sonuc .= "* ".$gelen[0]."<br/>"; 
@@ -1534,7 +1536,7 @@ function dosya_uploads_uyumu(){
 		 }
 	 
 	 return $sonuc;
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 }
 /*
 klasorSil:
@@ -1575,9 +1577,9 @@ function dosyaTemizle(){
 	$sql1 = "select fileName,id from eo_files";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) > 0){
-		while ($gelen = mysqli_fetch_array($result1)){
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) > 0){
+		while ($gelen = @mysqli_fetch_array($result1)){
 			$dosyalarVTdeki[]=$gelen[0];
 			if(!file_exists($_uploadFolder."/".$gelen[0])){
 			 $sonuc .= "* ".$gelen[0]." $metin[503]<br/>"; 
@@ -1599,7 +1601,7 @@ function dosyaTemizle(){
 		 }
 	 
 	 return $sonuc;
-   	mysqli_free_result($result1);
+   	@mysqli_free_result($result1);
 }
 /*
 dosyaGoster:
@@ -1639,11 +1641,11 @@ function idtoDosyaAdi($gelen){
 	
 	$yol1 = baglan();
 	
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) == 1){
-		$sonuc = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) == 1){
+		$sonuc = @mysqli_fetch_array($result1);
 	  }
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 	return $sonuc[0];	
 }
 /*
@@ -1673,11 +1675,11 @@ function getDownloadCount($id){
 	$sql1 = "select downloadCount from eo_files where id='$id'";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) == 1){
-		$sonuc = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) == 1){
+		$sonuc = @mysqli_fetch_array($result1);
 	  }
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 	return $sonuc[0]+1;
 }
 /*
@@ -1689,11 +1691,11 @@ function getDosyaID($ad){
 	$sql1 = "select id from eo_files where fileName='$ad'";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) == 1){
-		$sonuc = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) == 1){
+		$sonuc = @mysqli_fetch_array($result1);
 	  }
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 	return $sonuc[0];
 }
 /*
@@ -1705,8 +1707,8 @@ function downloadSayac ($id){
 	$sql1 = "UPDATE eo_files set downloadCount='".getDownloadCount($id)."' 
 			where id='$id'";	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-   	mysqli_free_result($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+   	@mysqli_free_result($result1);
 }
 /*
 dosyaKaydet:
@@ -1717,8 +1719,8 @@ function dosyaKaydet($dosya,$uID){
 	$dosya = temizle($dosya);
 	$sql1 = "INSERT into eo_files values(NULL, '$uID','$dosya','0')";	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
-   	mysqli_free_result($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+   	@mysqli_free_result($result1);
 }
 /*
 istekteBulunanSay:
@@ -1728,11 +1730,11 @@ function istekteBulunanSay(){
 	$sql1 = "select count(id) from eo_usertrack where otherInfo like 'request,%'";
 	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
- 	  if ($result1 && mysqli_num_rows($result1) == 1){
-		$sonuc = mysqli_fetch_array($result1);
+	$result1 = @mysqli_query($yol1,$sql1);
+ 	  if ($result1 && @mysqli_num_rows($result1) == 1){
+		$sonuc = @mysqli_fetch_array($result1);
 	  }
-   	mysqli_free_result($result1);	 
+   	@mysqli_free_result($result1);	 
 	return $sonuc[0];	
 }
 /*
@@ -1753,15 +1755,15 @@ function isimleriAyniUyeler(){
 				)
 			ORDER BY realName";	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
+	$result1 = @mysqli_query($yol1,$sql1);
 	$liste ="";
-	if(mysqli_num_rows($result1)>0){
+	if(@mysqli_num_rows($result1)>0){
 		
- 	 while($gelen=mysqli_fetch_array($result1)){
+ 	 while($gelen=@mysqli_fetch_array($result1)){
 			$liste .= "<a href='siteSettings.php?arama=".$gelen['realName']."'>'".$gelen['realName']."'</a> ";
 	 }//while
 	}//if
-   	mysqli_free_result($result1);
+   	@mysqli_free_result($result1);
 	
 	 return $liste; 	
 }
@@ -1784,13 +1786,13 @@ function sonCalisanKullanicilar($konuID){
 			ORDER BY calismaTarihi DESC,eo_users.userName
 			LIMIT 0,".ayarGetir("ayar2int");	
 	$yol1 = baglan();
-	$result1 = mysqli_query($yol1,$sql1);
+	$result1 = @mysqli_query($yol1,$sql1);
 	$liste = '<table cellpadding="5" cellspacing="0" class="table table-striped">';
 	$satirRenk = 0;
-	if(mysqli_num_rows($result1)>0){
+	if(@mysqli_num_rows($result1)>0){
   	 $liste .= "<tr><th>$metin[17]</th><th>$metin[481]</th><th>$metin[240]</th><th>$metin[187]</th>
 	 			<th>$metin[482]</th></tr>";
- 	 while($gelen=mysqli_fetch_array($result1)){
+ 	 while($gelen=@mysqli_fetch_array($result1)){
 		$simge = "";
 			$satirRenk++;
 				if ($satirRenk & 1) { 
@@ -1821,7 +1823,7 @@ function sonCalisanKullanicilar($konuID){
 	 }//while
 	}//if
 	$liste .="</table>";
-   	mysqli_free_result($result1);
+   	@mysqli_free_result($result1);
 	if($liste=="<table></table>")
 	 return "Çalışan yok!";
 	else
@@ -1859,7 +1861,7 @@ function getStats($num,$uID="")
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -1880,7 +1882,7 @@ function getStats($num,$uID="")
 				if ($result1)
 				{
 				   $ekle = "";
-				   if(mysqli_num_rows($result1)<ayarGetir("ayar2int")) return "";
+				   if(@mysqli_num_rows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysqli_fetch_assoc($result1))
 				   		if($_SESSION["userp"]=="")
 				    		$ekle .= $row_gelen['userName'].", ";
@@ -1889,7 +1891,7 @@ function getStats($num,$uID="")
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -1908,7 +1910,7 @@ function getStats($num,$uID="")
 				$result1 = mysqli_query($yol1,$sql1);
 				if ($result1)
 				{
-				   if(mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return "";
+				   if(@mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return "";
 				   $sayGelen=1;
 				   while($row_gelen = mysqli_fetch_assoc($result1)){
 				    $ekle .= "<li style=\"list-style-type:none;\"><a href='lessons.php?konu=".$row_gelen['id']."'>".$row_gelen['konuAdi']."</a> <font size='-3'>".$row_gelen['toplam']."</font></li>";
@@ -1916,10 +1918,10 @@ function getStats($num,$uID="")
 					if ($sayGelen > ayarGetir("ayar2int")) break 1;
 				   }
 					
-				   if(mysqli_num_rows($result1)>0) $ekle .= "</ul>";
-				  if (mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
+				   if(@mysqli_num_rows($result1)>0) $ekle .= "</ul>";
+				  if (@mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
 				    $ekle .="<div><a href='getFullList.php?case=2' rel=\"shadowbox;height=400;width=800\" title='$metin[200]'  class='more'>$metin[162]</a></div>";
-			   	   mysqli_free_result($result1);	
+			   	   @mysqli_free_result($result1);	
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -1948,7 +1950,7 @@ function getStats($num,$uID="")
 				    		$ekle .= "<a href='dersBilgisi.php?ders=".$row_gelen['id']."' rel='facebox'>".$row_gelen['konuAdi']."</a>, ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -1975,7 +1977,7 @@ function getStats($num,$uID="")
 						    $ekle .= "<a href='lessons.php?konu=".$row_gelen['id']."' >".$row_gelen['konuAdi']."</a>, " ;
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-				     mysqli_free_result($result1);
+				     @mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2006,7 +2008,7 @@ function getStats($num,$uID="")
 					         .$row_gelen['userName']."</a>, ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-				     mysqli_free_result($result1);
+				     @mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2024,7 +2026,7 @@ function getStats($num,$uID="")
 				{
 				   $row_gelen = mysqli_fetch_assoc($result1);
 				   $ekle = $row_gelen["toplam"];	 
-				   mysqli_free_result($result1);
+				   @mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2042,7 +2044,7 @@ function getStats($num,$uID="")
 				{
 				   $row_gelen = mysqli_fetch_assoc($result1);
 				   $ekle = $row_gelen["toplam"];	 	
-				   mysqli_free_result($result1);
+				   @mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2060,7 +2062,7 @@ function getStats($num,$uID="")
 				{
 				   $row_gelen = mysqli_fetch_assoc($result1);
 				   $ekle = $row_gelen["toplam"];	
-				   mysqli_free_result($result1);
+				   @mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2080,7 +2082,7 @@ function getStats($num,$uID="")
 				$result1 = mysqli_query($yol1,$sql1);
 				if ($result1)
 				{
-				   if(mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return "";	 
+				   if(@mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return "";	 
 				   
 				   $sayGelen = 1;
 				   while($row_gelen = mysqli_fetch_assoc($result1)){
@@ -2091,9 +2093,9 @@ function getStats($num,$uID="")
 					
 				   	$ekle .= "</ul>";
 					
-					if (mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
+					if (@mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
 					   $ekle .="<div><a href='getFullList.php?case=11' rel=\"shadowbox;height=400;width=800\" title='$metin[213]'  class='more'>$metin[162]</a></div>"; 
-					mysqli_free_result($result1);   
+					@mysqli_free_result($result1);   
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2125,7 +2127,7 @@ function getStats($num,$uID="")
 				$result1 = mysqli_query($yol1,$sql1);
 				if ($result1)
 				{
-				   if(mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
+				   if(@mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
 				   $sayGelen = 1;
 				   while($row_gelen = mysqli_fetch_assoc($result1)){
 				    $ekle .= "<li style='list-style-type:none;'>".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay.php?kurs=".$row_gelen['dersID']."&amp;user=$uID'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font></li>";
@@ -2135,9 +2137,9 @@ function getStats($num,$uID="")
 					
 				   $ekle .= "</ul>";
 				   
-				   if (mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
+				   if (@mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
 					   $ekle .="<div><a href='getFullList.php?case=12&amp;user=$uID'  rel=\"shadowbox;height=400;width=800\" title='$metin[239]' class='more'>$metin[162]</a></div>"; 
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2162,13 +2164,13 @@ function getStats($num,$uID="")
 					// WHERE eo_5sayfa.konuID = eo_4konu.id
 					// group by idsi 
 					// ORDER BY tarih DESC , kadi";	   
-				$yol = baglan();
+				$yol = baglan();mysqli_set_charset($yol, "utf8");
 				$result = mysqli_query($yol,$sql);
 				if($result)
 				 {
-					 if (mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
+					 if (@mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
 						
-						$donguSon = (mysqli_num_rows($result)<ayarGetir("ayar2int"))?mysqli_num_rows($result):ayarGetir("ayar2int");
+						$donguSon = (@mysqli_num_rows($result)<ayarGetir("ayar2int"))?@mysqli_num_rows($result):ayarGetir("ayar2int");
 						
 						$ekle =  "<ul>";
 						for($i=0; $i<$donguSon ;$i++){
@@ -2187,11 +2189,11 @@ function getStats($num,$uID="")
 							}
 							$ekle .=  "</ul>";
 				   
-					   if (mysqli_num_rows($result) > ayarGetir("ayar2int"))	
+					   if (@mysqli_num_rows($result) > ayarGetir("ayar2int"))	
 						   $ekle .="<div><a href='getFullList.php?case=13' rel=\"shadowbox;height=400;width=800\" title='$metin[84]'  class='more'>$metin[162]</a></div>"; 
 					   
 					 }		
-					 mysqli_free_result($result);
+					 @mysqli_free_result($result);
 				 if(isset($ekle))	 
 					return $ekle; 
 				}else {
@@ -2207,13 +2209,13 @@ function getStats($num,$uID="")
 					   "where eo_rating.konuID=eo_4konu.id ".
 					   "GROUP BY kadi ".
 					   "order by ortalama desc,toplam DESC,konuAdi";	
-				$yol = baglan();
+				$yol = baglan();mysqli_set_charset($yol, "utf8");
 				$result = mysqli_query($yol,$sql);
 				if($result)
 				 {
-					 if (mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
+					 if (@mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
 						
-						$donguSon = (mysqli_num_rows($result)<ayarGetir("ayar2int"))?mysqli_num_rows($result):ayarGetir("ayar2int");
+						$donguSon = (@mysqli_num_rows($result)<ayarGetir("ayar2int"))?@mysqli_num_rows($result):ayarGetir("ayar2int");
 						
 						$ekle =  "<ul>";
 						for($i=0; $i<$donguSon ;$i++){
@@ -2225,11 +2227,11 @@ function getStats($num,$uID="")
 							$ekle .=  "</li>";
 							}
 							$ekle .=  "</ul>";
-					 if (mysqli_num_rows($result) > ayarGetir("ayar2int"))	
+					 if (@mysqli_num_rows($result) > ayarGetir("ayar2int"))	
 						   $ekle .="<div><a href='getFullList.php?case=14'  rel=\"shadowbox;height=400;width=800\" title='$metin[276]' class='more'>$metin[162]</a></div>"; 
 					   
 					 }	
-					 mysqli_free_result($result);
+					 @mysqli_free_result($result);
 				 if(isset($ekle))	 
 					return $ekle; 
 				}else {
@@ -2246,13 +2248,13 @@ function getStats($num,$uID="")
 					   " and eo_comments.active=1 ".
 					   "GROUP BY kadi ".
 					   "order by toplam desc,kadi";	
-				$yol = baglan();
+				$yol = baglan();mysqli_set_charset($yol, "utf8");
 				$result = mysqli_query($yol,$sql);
 				if($result)
 				 {
-					 if (mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
+					 if (@mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
 						
-						$donguSon = (mysqli_num_rows($result)<ayarGetir("ayar2int"))?mysqli_num_rows($result):ayarGetir("ayar2int");
+						$donguSon = (@mysqli_num_rows($result)<ayarGetir("ayar2int"))?@mysqli_num_rows($result):ayarGetir("ayar2int");
 						
 						$ekle =  "<ul>";
 						for($i=0; $i<$donguSon ;$i++){
@@ -2263,10 +2265,10 @@ function getStats($num,$uID="")
 							$ekle .=  "</li>";
 							}
 							$ekle .=  "</ul>";
-							if (mysqli_num_rows($result) > ayarGetir("ayar2int"))	
+							if (@mysqli_num_rows($result) > ayarGetir("ayar2int"))	
 						   		$ekle .="<div><a href='getFullList.php?case=15'  rel=\"shadowbox;height=400;width=800\" title='$metin[277]' class='more'>$metin[162]</a></div>";
 					 }		
-					 mysqli_free_result($result);
+					 @mysqli_free_result($result);
 				 if(isset($ekle))	 
 					return $ekle; 
 				}else {
@@ -2283,13 +2285,13 @@ function getStats($num,$uID="")
 		//			   " and eo_userworks.userID=-1 ".
 					   "GROUP BY kadi ".
 					   "order by toplam desc,kadi";	
-				$yol = baglan();
+				$yol = baglan();mysqli_set_charset($yol, "utf8");
 				$result = mysqli_query($yol,$sql);
 				if($result)
 				 {
-					 if (mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
+					 if (@mysqli_num_rows($result) > 0 && ayarGetir("ayar2int")>0) {
 						
-						$donguSon = (mysqli_num_rows($result)<ayarGetir("ayar2int"))?mysqli_num_rows($result):ayarGetir("ayar2int");
+						$donguSon = (@mysqli_num_rows($result)<ayarGetir("ayar2int"))?@mysqli_num_rows($result):ayarGetir("ayar2int");
 						
 						$ekle =  "<ul>";
 						for($i=0; $i<$donguSon ;$i++){
@@ -2300,10 +2302,10 @@ function getStats($num,$uID="")
 							$ekle .=  "</li>";
 							}
 							$ekle .=  "</ul>";
-							if (mysqli_num_rows($result) > ayarGetir("ayar2int"))	
+							if (@mysqli_num_rows($result) > ayarGetir("ayar2int"))	
 						   		$ekle .="<div><a href='getFullList.php?case=16' rel=\"shadowbox;height=400;width=800\" title='$metin[302]' class='more'>$metin[162]</a></div>";
 					 }		
-					 mysqli_free_result($result);
+					 @mysqli_free_result($result);
 					if (!empty($ekle))	 return $ekle; 
 				}else {
 				   return ("");
@@ -2324,7 +2326,7 @@ function getStats($num,$uID="")
 				if ($result1)
 				{
 				   $ekle = "";
-				   if(mysqli_num_rows($result1)<ayarGetir("ayar2int")) return "";
+				   if(@mysqli_num_rows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysqli_fetch_assoc($result1))
 				   		if($_SESSION["userp"]=="")
 					    	$ekle .= $row_gelen['userName'].", ";
@@ -2333,7 +2335,7 @@ function getStats($num,$uID="")
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2357,7 +2359,7 @@ function getStats($num,$uID="")
 				if ($result1)
 				{
 				   $ekle = "";
-				   if(mysqli_num_rows($result1)<ayarGetir("ayar2int")) return "";
+				   if(@mysqli_num_rows($result1)<ayarGetir("ayar2int")) return "";
 				   while($row_gelen = mysqli_fetch_assoc($result1))
 				   		if($_SESSION["userp"]=="")
 					    	$ekle .= $row_gelen['userName'].", ";
@@ -2366,7 +2368,7 @@ function getStats($num,$uID="")
 					         .$row_gelen['userName']."</a>, ";
 				     
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2398,7 +2400,7 @@ function getStats($num,$uID="")
 				$result1 = mysqli_query($yol1,$sql1);
 				if ($result1)
 				{
-				   if(mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
+				   if(@mysqli_num_rows($result1)>0 && ayarGetir("ayar2int")>0) $ekle = "<ul>"; else return ""; 
 				   $sayGelen = 1;
 				   while($row_gelen = mysqli_fetch_assoc($result1)){
 				    $ekle .= "<li style='list-style-type:none;'>".$row_gelen['okulAdi']. " " .$row_gelen['sinifAdi']." - <a href='kursDetay2.php?kurs=".$row_gelen['dersID']."&amp;kisi=$uID'>".$row_gelen['dersAdi']."</a> <font size='-3'>".Sec2Time2($row_gelen['toplam'])."</font></li>";
@@ -2408,9 +2410,9 @@ function getStats($num,$uID="")
 					
 				   $ekle .= "</ul>";
 				   
-				   if (mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
+				   if (@mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
 					   $ekle .="<div><a href='getFullList.php?case=19'  rel=\"shadowbox;height=400;width=800\" title='$metin[239]' class='more'>$metin[162]</a></div>"; 
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2445,9 +2447,9 @@ function getStats($num,$uID="")
 					
 				   $ekle .= "</ul>";
 				   
-				   if (mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
+				   if (@mysqli_num_rows($result1) > ayarGetir("ayar2int"))	
 					   $ekle .="<div><a href='getFullList.php?case=20'  rel=\"shadowbox;height=400;width=800\" title='$metin[675]' class='more'>$metin[162]</a></div>"; 
-					mysqli_free_result($result1);
+					@mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2527,7 +2529,7 @@ function yorumlariGetir($konu){
 						$insansi = $humanRelativeDate->getTextForSQLDate($row_gelen['commentDate']);
 				    $ekle .= "<tr><td><div class='yorumItem'><p style='font-size:16px;padding-bottom:6px;'>".smileAdd($row_gelen['comment'])." </p><a href='profil.php?kim=".$row_gelen['id']."' rel='facebox'>".$row_gelen['userName']."</a> $insansi $yorumSil</div></td></tr>";					
 				   }
-				   mysqli_free_result($result1);  
+				   @mysqli_free_result($result1);  
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2596,10 +2598,10 @@ function isKonu($id){
 			$sql1 = "SELECT id FROM eo_4konu where id='".temizle($id)."' limit 0,1";
 			
 			$yol1 = baglan();
-			$result1 = mysqli_query($yol1,$sql1);
-			if ($result1 && mysqli_num_rows($result1) == 1)
+			$result1 = @mysqli_query($yol1,$sql1);
+			if ($result1 && @mysqli_num_rows($result1) == 1)
 			{   	
-			mysqli_free_result($result1);
+			@mysqli_free_result($result1);
 			   return true;
 			}else {
 			   return false;
@@ -2616,10 +2618,10 @@ function dersAdiGetir($id){
     $sql1 = "SELECT dersAdi FROM eo_3ders where id='".temizle($id)."' limit 0,1";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
-    {  $sonuc = mysqli_result($result1, 0, "dersAdi");
-	mysqli_free_result($result1); 	   
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
+    {  $sonuc = @mysqli_result($result1, 0, "dersAdi");
+	@mysqli_free_result($result1); 	   
        return $sonuc;
     }else {
 	   return "";
@@ -2637,10 +2639,10 @@ function konuAdiGetir($id){
     $sql1 = "SELECT konuAdi FROM eo_4konu where id='".temizle($id)."' limit 0,1";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
-    {  $sonuc = mysqli_result($result1, 0, "konuAdi");
-	mysqli_free_result($result1); 	   
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
+    {  $sonuc = @mysqli_result($result1, 0, "konuAdi");
+	@mysqli_free_result($result1); 	   
        return $sonuc;
     }else {
 	   return "";
@@ -2657,12 +2659,12 @@ function konuYorumSayisiGetir($id){
     $sql1 = "SELECT count(*) as toplam FROM eo_comments where konuID='".temizle($id)."' and active=1";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
     {  
-	    if(mysqli_result($result1, 0, "toplam")>0)
-			$sonuc = " - ". mysqli_result($result1, 0, "toplam");
-		mysqli_free_result($result1); 	   		
+	    if(@mysqli_result($result1, 0, "toplam")>0)
+			$sonuc = " - ". @mysqli_result($result1, 0, "toplam");
+		@mysqli_free_result($result1); 	   		
        	return (isset($sonuc))?$sonuc:"";
     }else {
 	   return "";
@@ -2690,7 +2692,7 @@ function getOgrenciSiniflari(){
 				    $ekle .= $row_gelen['sinifAdi']." (".$row_gelen['okulAdi']."), ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
-				     mysqli_free_result($result1);
+				     @mysqli_free_result($result1);
 				   return ($ekle);
 				}else {
 				   return ("");
@@ -2705,9 +2707,9 @@ function getpasifYorumlar(){
 	
     $yol1 = baglan();
 	$result1 = mysqli_query($yol1,$sql1);
-		if ($result1 && mysqli_num_rows($result1) > 0)
-				{  $sonuc = mysqli_result($result1, 0, "sayac")	;
-				   mysqli_free_result($result1);		     
+		if ($result1 && @mysqli_num_rows($result1) > 0)
+				{  $sonuc = @mysqli_result($result1, 0, "sayac")	;
+				   @mysqli_free_result($result1);		     
 				   return ($sonuc);
 				}else {
 				   return 0;
@@ -2727,10 +2729,10 @@ function sonLoginDakikasi($adi){
 			order by dateTime DESC Limit 0,1 ";
     $yol1 = baglan();
 	$result1 = mysqli_query($yol1,$sql1);
-		if ($result1 && mysqli_num_rows($result1) > 0)
-				{  //$sonuc = mysqli_result($result1, 0, "DiffMinute");
+		if ($result1 && @mysqli_num_rows($result1) > 0)
+				{  //$sonuc = @mysqli_result($result1, 0, "DiffMinute");
 					$sonuc = mysqli_fetch_assoc($result1)["DiffMinute"];		
-				   mysqli_free_result($result1);		     
+				   @mysqli_free_result($result1);		     
 				   return ((int)$sonuc);
 				}else {
 				   return -1;
@@ -2749,14 +2751,14 @@ function checkRealUser($usernam, $passwor)
     $sql1 = "SELECT realName, userName, userPassword, userType FROM eo_users where userName='".temizle($usernam)."' AND userPassword='".temizle($passwor)."' limit 0,1";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
     {
 		$row_gelen = mysqli_fetch_assoc($result1);
 		$rn = $row_gelen["realName"];
    	   $_SESSION["userr"] 	= temizle($rn);
 	   $sonuc = $row_gelen["userType"];
-	   mysqli_free_result($result1);
+	   @mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return (-2);
@@ -2773,10 +2775,10 @@ function kullaniciHakSayisi($gelen, $adi, $par){
     $sql1 = "SELECT count(*) as toplam FROM eo_userworks where userID='$kulID' and konuID='".temizle($gelen)."'";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
+    $result1 = @mysqli_query($yol1,$sql1);
     if ($result1)
-    {  $sonuc =mysqli_result($result1, 0, "toplam");
-	   mysqli_free_result($result1);
+    {  $sonuc =@mysqli_result($result1, 0, "toplam");
+	   @mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return (0);
@@ -2793,7 +2795,7 @@ function kullAdi($id)
     $sql1 = "SELECT userName FROM eo_users where id='".$id."' limit 0,1"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysqli_num_rows($result1) == 1){
+    if ($result1 && @mysqli_num_rows($result1) == 1){
        return (mysqli_result($result1, 0, "userName"));
     }else {
 	   return ("");
@@ -2809,10 +2811,10 @@ function getUserType($usernam)
     $sql1 = "SELECT userType FROM eo_users where userName='".temizle($usernam)."' limit 0,1";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
-    {	$sonuc = mysqli_result($result1, 0, "userType");
-	mysqli_free_result($result1);
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
+    {	$sonuc = @mysqli_result($result1, 0, "userType");
+	@mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return (-2);
@@ -2828,9 +2830,9 @@ function dosyaKimID($gelen){
 	
     $yol1 = baglan();
 	$result1 = mysqli_query($yol1,$sql1);
-		if ($result1 && mysqli_num_rows($result1)==1)
-				{  $sonuc = mysqli_result($result1, 0, "userID")	;
-				   mysqli_free_result($result1);		     
+		if ($result1 && @mysqli_num_rows($result1)==1)
+				{  $sonuc = @mysqli_result($result1, 0, "userID")	;
+				   @mysqli_free_result($result1);		     
 				   return ($sonuc);
 				}else {
 				   return 0;
@@ -2847,11 +2849,11 @@ function getUserID($usernam, $passwor)
     $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle($usernam)."' AND userPassword='".temizle($passwor)."' limit 0,1"; 
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
     { 
-	   $sonuc = mysqli_result($result1, 0, "id");	
-	   mysqli_free_result($result1);
+	   $sonuc = @mysqli_result($result1, 0, "id");	
+	   @mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return (-1);
@@ -2873,13 +2875,13 @@ function totalGet($numa)
    }
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
     { 
 		$row_gelen = mysqli_fetch_assoc($result1);
 		$sonuc = $row_gelen["total"];
-		//$sonuc = mysqli_result($result1, 0, "total");
-	mysqli_free_result($result1);
+		//$sonuc = @mysqli_result($result1, 0, "total");
+	@mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return (0);
@@ -2894,8 +2896,8 @@ function sonUyeAdiGetir($alan){
     $sql1 = "SELECT userName, requestDate FROM eo_users order by requestDate DESC limit 0,1"; 
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
     { 
 		$row = mysqli_fetch_assoc($result1);
 	  if($alan=="ad")
@@ -2904,7 +2906,7 @@ function sonUyeAdiGetir($alan){
 	   $sonuc = $row["requestDate"];	
 	  else 
 	   $sonuc = "";
-	   mysqli_free_result($result1);
+	   @mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return ("");
@@ -2922,10 +2924,10 @@ function getTrackCount($isBad){
 		$sql1 = "SELECT count(*) as total FROM eo_usertrack";
 	
     $yol1 = baglan();
-    $result1 = mysqli_query($yol1,$sql1);
-    if ($result1 && mysqli_num_rows($result1) == 1)
+    $result1 = @mysqli_query($yol1,$sql1);
+    if ($result1 && @mysqli_num_rows($result1) == 1)
     {	$sonuc = mysqli_fetch_assoc($result1)["total"];
-		mysqli_free_result($result1);
+		@mysqli_free_result($result1);
        return ($sonuc);
     }else {
 	   return (0);
@@ -2967,9 +2969,9 @@ function trackUser($processName, $otherInfo, $userName)
 	$userName		=temizle($userName);
 	
 	$sql1	= 	"Insert into eo_usertrack VALUES (NULL , '$CurrentRemoteAddr',  CURRENT_TIMESTAMP , '$processName', '$userName', '$otherInfo')";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	$sonuc =$result1; 
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $sonuc;
 }
 /*
@@ -2988,8 +2990,8 @@ function trackUserLesson($userID, $konuID, $zaman, $sonSayfa)
 	$sonSayfa	=temizle($sonSayfa);
 	
 	$sql1	= 	"Insert into eo_userworks VALUES (NULL , '$userID', '$konuID' , '$zaman', '$sonSayfa', '$datem')";
-	$result1= 	mysqli_query($yol1,$sql1);
-	mysqli_free_result($result1);
+	$result1= 	@mysqli_query($yol1,$sql1);
+	@mysqli_free_result($result1);
 	return $result1;
 }
 /*
@@ -3033,17 +3035,17 @@ function newParola($userName, $email)
 	$yeni	=	newPassw();
 	
 	$sql2 		= "select * from eo_users where userName='$userName' and userEmail='$email' limit 0,1";
-	$result2	= mysqli_query($yol1, $sql2);
+	$result2	= @mysqli_query($yol1, $sql2);
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 	$headers .= "From:".ayarGetir("ayar4char"). "\r\nReply-To:".ayarGetir("ayar4char"). "\r\n" .
 							   'X-Mailer: PHP/' . phpversion();
 	
-   if ($result2 && mysqli_num_rows($result2) == 1){
+   if ($result2 && @mysqli_num_rows($result2) == 1){
 	if (@mail($email, "eOgr Parola", "Merhaba, eOgr projesindeki:\nKullanici Adiniz = $userName \nYeni Parolaniz= $yeni \n Iyi gunler dileriz.", $headers))
 	    {         
 			$sql1	= 	"Update eo_users SET userPassword='".sha1($yeni)."' where userName='$userName' and userEmail='$email'";
-			$result1= 	mysqli_query($yol1,$sql1);
+			$result1= 	@mysqli_query($yol1,$sql1);
 			if($result1)
 			  $result1 = "allOK";
 			  else
@@ -3052,7 +3054,7 @@ function newParola($userName, $email)
 		 	$result1="mailErr";
     }   else
 	   $result1="noUser";
-   mysqli_free_result($result2);
+   @mysqli_free_result($result2);
 	return $result1;	
 }
 /*
@@ -3095,13 +3097,13 @@ function getMailAddress($id){
 	global $yol1;
 	
 	$sql1	= 	"select userEmail from eo_users where id='".$id."' limit 0,1";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
 	if ($result1)
 	    {         
-			$result1 = mysqli_result($result1,0,"userEmail");
+			$result1 = @mysqli_result($result1,0,"userEmail");
 		}	     
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $result1;	
   }
 }
@@ -3132,8 +3134,8 @@ function addnewUser($realName, $userName, $password, $email, $birth)
 	
 	$sql1	= 	"Insert into eo_users VALUES (NULL , '$userName', '".sha1($password)."' , '$realName', '$email', '$birth', '0', '$datem','1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1')";
 
-	$result1= 	mysqli_query($yol1,$sql1);
-	mysqli_free_result($result1);
+	$result1= 	@mysqli_query($yol1,$sql1);
+	@mysqli_free_result($result1);
 	return $result1;
 }
 /*
@@ -3285,7 +3287,10 @@ function getGrafikValues($lmt){
 		while($row = mysqli_fetch_assoc($result)) {
 		      $data['values'][] = $row['count'];
 		}
-		return $data['values'];
+		if(count($data)<1)
+			return 0;
+		else
+			return $data['values'];
 }
 /*
 getGrafikLabels:
@@ -3300,7 +3305,10 @@ function getGrafikLabels($lmt){
 		while($row = mysqli_fetch_assoc($result)) {
 		  $data['labels'][] = $row['date'];
 		}
-		return $data['labels'];
+		if(count($data)<1)
+			return 0;
+		else
+			return $data['labels'];
 }
 /*
 getGrafikRecordCount:
@@ -3327,7 +3335,10 @@ function getGrafikValues2($lmt){
 		while($row = mysqli_fetch_assoc($result)) {
 		      $data['values'][] = $row['count'];
 		}
-		return $data['values'];
+		if(count($data)<1)
+			return 0;
+		else
+			return $data['values'];
 }
 /*
 getGrafikLabels2:
@@ -3342,7 +3353,10 @@ function getGrafikLabels2($lmt){
 		while($row = mysqli_fetch_assoc($result)) {
 		  $data['labels'][] = $row['date'];
 		}
-		return $data['labels'];
+		if(count($data)<1)
+			return 0;
+		else
+			return $data['labels'];
 }
 /*
 getGrafikValues3:
@@ -3480,10 +3494,10 @@ function olayIslemSayisi($tarih,$my){
 		else
 		$sql1	= 	"select count(id) as say from eo_usertrack where DATE_FORMAT(dateTime, '%Y-%m-%d') = '$tarih' and userName='".$_SESSION["usern"]."'";
 		
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	if($result1)
 		return mysqli_fetch_assoc($result1)["say"];
-		//return mysqli_result($result1,0,"say");
+		//return @mysqli_result($result1,0,"say");
 	return 0;
 }
 /*
@@ -3497,10 +3511,10 @@ function dersIslemSayisi($tarih,$my){
 		$sql1	= 	"select count(id) as say from eo_userworks where DATE_FORMAT(calismaTarihi, '%Y-%m-%d') = '$tarih'";
 		else
 		$sql1	= 	"select count(id) as say from eo_userworks where DATE_FORMAT(calismaTarihi, '%Y-%m-%d') = '$tarih' and userID='".getUserID2($_SESSION["usern"])."'";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	if($result1)
 		return mysqli_fetch_assoc($result1)["say"];
-		//return mysqli_result($result1,0,"say");
+		//return @mysqli_result($result1,0,"say");
 	return 0;
 }
 /*
@@ -3511,10 +3525,10 @@ function sonDersCalisma($tarih){
 	global $yol1;
 	
 	$sql1	= 	"select id, konuAdi from eo_4konu where DATE_FORMAT(bitisTarihi, '%Y-%m-%d') = '$tarih'";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	if($result1){
 		$ekle = "";
-		while($gelen = mysqli_fetch_array($result1)) {
+		while($gelen = @mysqli_fetch_array($result1)) {
 			$ekle .= $gelen["konuAdi"]."|".$gelen["id"]."|";
 			}
 		return $ekle;
@@ -3534,10 +3548,10 @@ function buTarihtekiCanliDers($tarih){
 				and 
 				  eo_3ders.id=eo_livelesson.dersID	
 			";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	if($result1){
 		$ekle = "";
-		while($gelen = mysqli_fetch_array($result1)) {
+		while($gelen = @mysqli_fetch_array($result1)) {
 			$ekle .= $gelen["dersAdi"]."|";
 			}
 		return $ekle;
@@ -3552,16 +3566,16 @@ function okulAdlari(){
 	global $yol1;
 	
 	$sql1	= 	"select id,okulAdi from eo_1okul order by okulAdi";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
 	$i=0;
 	$sonuc="";
-	while($i<mysqli_num_rows($result1)) 
+	while($i<@mysqli_num_rows($result1)) 
 	{
-		$sonuc .= "<a href='#' id='".mysqli_result($result1,$i,"id")."'>".mysqli_result($result1,$i,"okulAdi")."</a>";
+		$sonuc .= "<a href='#' id='".@mysqli_result($result1,$i,"id")."'>".@mysqli_result($result1,$i,"okulAdi")."</a>";
 		$i++;
 	}
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $sonuc;	
 }
 /*
@@ -3575,16 +3589,16 @@ function sinifAdlari($id){
 	 else
 		$sql1	= 	"select id,sinifAdi from eo_2sinif where okulID='".RemoveXSS($id)."' order by sinifAdi";
 	 	
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
 	$i=0;
 	$sonuc="";
-	while($i<mysqli_num_rows($result1)) 
+	while($i<@mysqli_num_rows($result1)) 
 	{
-		$sonuc .= "<a href='#' id='".mysqli_result($result1,$i,"id")."'>".mysqli_result($result1,$i,"sinifAdi")."</a>";
+		$sonuc .= "<a href='#' id='".@mysqli_result($result1,$i,"id")."'>".@mysqli_result($result1,$i,"sinifAdi")."</a>";
 		$i++;
 	}
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $sonuc;	
 }
 /*
@@ -3605,16 +3619,16 @@ function dersAdlari($id,$nereden=""){
 					 eo_2sinif.okulID='".RemoveXSS($id)."' 
 					order by eo_3ders.dersAdi";
 		
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
 	$i=0;
 	$sonuc="";
-	while($i<mysqli_num_rows($result1)) 
+	while($i<@mysqli_num_rows($result1)) 
 	{
-		$sonuc .= "<a href='#' id='".mysqli_result($result1,$i,"id")."'>".mysqli_result($result1,$i,"dersAdi")."</a>";
+		$sonuc .= "<a href='#' id='".@mysqli_result($result1,$i,"id")."'>".@mysqli_result($result1,$i,"dersAdi")."</a>";
 		$i++;
 	}
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $sonuc;	
 }
 /*
@@ -3644,20 +3658,20 @@ function konuAdlari($id,$nereden=""){
 					eo_2sinif.okulID='".RemoveXSS($id)."' 
 				order by eo_4konu.konuAdi";
 		
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
 	$i=0;
 	$sonuc="";
-	while($i<mysqli_num_rows($result1)) 
+	while($i<@mysqli_num_rows($result1)) 
 	{
-		if(mysqli_result($result1,$i,"sadeceKayitlilarGorebilir")==1)
+		if(@mysqli_result($result1,$i,"sadeceKayitlilarGorebilir")==1)
 		 	$kayitliSimgesi = "<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />";
 		 else
 		 	$kayitliSimgesi = "";	
-		$sonuc .= "<a href='lessons.php?konu=".mysqli_result($result1,$i,"id")."'>$kayitliSimgesi ".mysqli_result($result1,$i,"konuAdi")."</a>";
+		$sonuc .= "<a href='lessons.php?konu=".@mysqli_result($result1,$i,"id")."'>$kayitliSimgesi ".@mysqli_result($result1,$i,"konuAdi")."</a>";
 		$i++;
 	}
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $sonuc;	
 }
 /*
@@ -3669,16 +3683,16 @@ function getSchoolNames()
 	global $yol1;
 	
 	$sql1	= 	"select id,okulAdi from eo_1okul order by okulAdi";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
 	$i=0;
 	$sonuc="";
-	while($i<mysqli_num_rows($result1)) 
+	while($i<@mysqli_num_rows($result1)) 
 	{
-		$sonuc .= "<option value='".mysqli_result($result1,$i,"id")."'>".mysqli_result($result1,$i,"okulAdi")."</option>";
+		$sonuc .= "<option value='".@mysqli_result($result1,$i,"id")."'>".@mysqli_result($result1,$i,"okulAdi")."</option>";
 		$i++;
 	}
-	mysqli_free_result($result1);
+	@mysqli_free_result($result1);
 	return $sonuc;
 }
 /*
@@ -3690,11 +3704,11 @@ function checkUserName($name)
 	global $yol1;
 	
 	$sql1	= 	"select count(*) as adet from eo_users where userName='".temizle($name)."'";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
-	if(mysqli_num_rows($result1)>0){
-  	 if(mysqli_result($result1,0,"adet")==0) {	
-	  mysqli_free_result($result1);
+	if(@mysqli_num_rows($result1)>0){
+  	 if(@mysqli_result($result1,0,"adet")==0) {	
+	  @mysqli_free_result($result1);
 	  return false;
 	 }
 	 else
@@ -3710,11 +3724,11 @@ function getUserID2($name){
 	global $yol1;
 	
 	$sql1	= 	"select id from eo_users where userName='".temizle($name)."'";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
-	if(mysqli_num_rows($result1)>0)
+	if(@mysqli_num_rows($result1)>0)
 		return mysqli_fetch_assoc($result1)["id"];
-	 	//return mysqli_result($result1,0,"id");
+	 	//return @mysqli_result($result1,0,"id");
 	 else
   		return "";	
 }
@@ -3726,10 +3740,10 @@ function getKonuAdi($id){
 	global $yol1;
 	
 	$sql1	= 	"select konuAdi from eo_4konu where id='".temizle($id)."'";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
-	if(mysqli_num_rows($result1)>0)
-	 	return mysqli_result($result1,0,"konuAdi");
+	if(@mysqli_num_rows($result1)>0)
+	 	return @mysqli_result($result1,0,"konuAdi");
 	 else
   		return "";	
 }
@@ -3742,10 +3756,10 @@ function checkEmail($name)
 	global $yol1;
 	
 	$sql1	= 	"select count(*) as adet from eo_users where userEmail='".temizle($name)."'";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	
-   if(mysqli_num_rows($result1)>0){
-		if(mysqli_result($result1,0,"adet")==0)	
+   if(@mysqli_num_rows($result1)>0){
+		if(@mysqli_result($result1,0,"adet")==0)	
 		 return false;
 		else
 		 return true;		
@@ -3762,10 +3776,10 @@ function checkKonu($name)
 	
 	$sql1	= 	"select id from eo_4konu where konuAdi='".temizle($name)."'";
 
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 
-   if(mysqli_num_rows($result1)>0)
-	return (mysqli_result($result1,0,"id")==""?"":mysqli_result($result1,0,"id"));
+   if(@mysqli_num_rows($result1)>0)
+	return (@mysqli_result($result1,0,"id")==""?"":@mysqli_result($result1,0,"id"));
 	else
 	return "";
 }
@@ -3778,15 +3792,15 @@ function sayfaGetir($konuID, $sayfaNo)
 	global $yol1;
 	
 	$sql1	= 	"select id,anaMetin from eo_5sayfa where konuID='".temizle($konuID)."' order by id";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 
-   if(mysqli_num_rows($result1)>0){
-	if(mysqli_result($result1,0,"id")!="")
-		$msg = html_entity_decode(mysqli_result($result1,$sayfaNo,"anaMetin"));
+   if(@mysqli_num_rows($result1)>0){
+	if(@mysqli_result($result1,0,"id")!="")
+		$msg = html_entity_decode(@mysqli_result($result1,$sayfaNo,"anaMetin"));
 	}else	
 		$msg = "<font id='uyari'>Bir konu se&ccedil;iniz...</font>";			 
    
-   mysqli_free_result($result1);
+   @mysqli_free_result($result1);
 	return $msg;
 }
 /*
@@ -3797,20 +3811,20 @@ function siteAc(){
 	global $yol1;
 	
 	$sql1	= 	"select ayar5char from eo_sitesettings where id=1"; 
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 
-   if(mysqli_num_rows($result1)>0){
-	if(mysqli_result($result1,0,"ayar5char")!="")
-		$sonuc = explode("-",mysqli_result($result1,0,"ayar5char"));
+   if(@mysqli_num_rows($result1)>0){
+	if(@mysqli_result($result1,0,"ayar5char")!="")
+		$sonuc = explode("-",@mysqli_result($result1,0,"ayar5char"));
 		$sonuc[15]="0"; //site açık ise 0
 		$sonuc = implode("-",$sonuc);
 		
 		$updateSQL = sprintf("UPDATE eo_sitesettings SET ayar5char='%s' WHERE id=1",$sonuc);
-		$result2= 	mysqli_query($yol1,$updateSQL);
+		$result2= 	@mysqli_query($yol1,$updateSQL);
 		return $result2;		
 	}			 
 
-   mysqli_free_result($result1);
+   @mysqli_free_result($result1);
    return false;	
 }
 /*
@@ -3832,7 +3846,7 @@ function ayarGetir($ayarAdi){
 	}else	
 		$sonuc = "";			 
    
-   mysqli_free_result($result1);
+   @mysqli_free_result($result1);
 	return $sonuc;
 }
 /*
@@ -3844,15 +3858,15 @@ function ayarGetir2($ayarAdi)
 	global $yol1;
 	
 	$sql1	= 	"select ".temizle($ayarAdi)." from eo_webref_rss_details where id=1";
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 
-   if(mysqli_num_rows($result1)>0){
-	if(mysqli_result($result1,0,"$ayarAdi")!="")
-		$sonuc = mysqli_result($result1,0,"$ayarAdi");
+   if(@mysqli_num_rows($result1)>0){
+	if(@mysqli_result($result1,0,"$ayarAdi")!="")
+		$sonuc = @mysqli_result($result1,0,"$ayarAdi");
 	}else	
 		$sonuc = "";			 
    
-   mysqli_free_result($result1);
+   @mysqli_free_result($result1);
 	return $sonuc;
 }
 /*
@@ -3867,7 +3881,7 @@ function ayarGetir3($adi)
 	 
 	$result1= 	mysqli_query($yol1,$sql1);
 
-   if(mysqli_num_rows($result1)>0){
+   if(@mysqli_num_rows($result1)>0){
 	   $row 	= mysqli_fetch_assoc($result1);
 	if($row["ayarlar"]!="")
 		$sonuc = $row["ayarlar"];
@@ -3876,7 +3890,7 @@ function ayarGetir3($adi)
 	}else	
 		$sonuc = "1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1";			 
 
-   mysqli_free_result($result1);
+   @mysqli_free_result($result1);
 	return $sonuc;
 }
 /*
@@ -3888,7 +3902,7 @@ function haberGetir($kayno, $alanAdi)
 	global $yol1;
 	
 	$sql1	= 	"select ".temizle($alanAdi)." FROM eo_webref_rss_items	ORDER BY pubDate DESC LIMIT 1 OFFSET ".temizle($kayno);
-	$result1= 	mysqli_query($yol1,$sql1);
+	$result1= 	@mysqli_query($yol1,$sql1);
 	$row 	= mysqli_fetch_assoc($result1);
 	return $row["$alanAdi"];
 }
@@ -3913,9 +3927,9 @@ function getDersIDileSinif($gelen){
     $yol1 = baglan();
 	$result1 = mysqli_query($yol1,$sql1);
 		if ($result1)
-		  if (mysqli_num_rows($result1)>0)
-		   return (mysqli_result($result1,0,"id"));
-mysqli_free_result($result1);
+		  if (@mysqli_num_rows($result1)>0)
+		   return (@mysqli_result($result1,0,"id"));
+@mysqli_free_result($result1);
 return "0";			
 }
 /*
@@ -3931,9 +3945,9 @@ function ogrenciSinifaDahil($adi, $par, $gelen){
     $yol1 = baglan();
 	$result1 = mysqli_query($yol1,$sql1);
 		if ($result1){
-		   return (mysqli_result($result1,0,"toplam"));
+		   return (@mysqli_result($result1,0,"toplam"));
 		}
-mysqli_free_result($result1);
+@mysqli_free_result($result1);
 return "0";
 }
 /*
@@ -3948,14 +3962,14 @@ function dersAgaci($gelen=null){
 					
 					$sqlOkul 	= "select * from eo_1okul order by okulAdi";
 					$okulAdlari = mysqli_query($yol1,$sqlOkul);
-					$i=0;if(mysqli_num_rows($okulAdlari)>0)echo "<ul>";
-					while($i<mysqli_num_rows($okulAdlari)){
+					$i=0;if(@mysqli_num_rows($okulAdlari)>0)echo "<ul>";
+					while($i<@mysqli_num_rows($okulAdlari)){
 				?>
 				
-				<li  style='list-style-type:none;' title='<?php echo mysqli_result($okulAdlari,$i,"okulAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace;margin-left:0px;padding-left:0px;">
+				<li  style='list-style-type:none;' title='<?php echo @mysqli_result($okulAdlari,$i,"okulAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace;margin-left:0px;padding-left:0px;">
 				  <?php 
-				    echo smartShort(mysqli_result($okulAdlari,$i,"okulAdi"));
-					$boyut=20-strlen(smartShort(mysqli_result($okulAdlari,$i,"okulAdi")));
+				    echo smartShort(@mysqli_result($okulAdlari,$i,"okulAdi"));
+					$boyut=20-strlen(smartShort(@mysqli_result($okulAdlari,$i,"okulAdi")));
 					for($boy=1;$boy<=$boyut;$boy++) echo "&nbsp;";
 				  ?> 
 				  &#8250;
@@ -3963,49 +3977,49 @@ function dersAgaci($gelen=null){
                   </a>
 				  
 					<?php
-								$sqlSinif 	= "select * from eo_2sinif where okulID = '".mysqli_result($okulAdlari,$i,"id")."' order by sinifAdi";
+								$sqlSinif 	= "select * from eo_2sinif where okulID = '".@mysqli_result($okulAdlari,$i,"id")."' order by sinifAdi";
 								$sinifAdlari = mysqli_query($yol1,$sqlSinif);
 								$j=0;
-								if(mysqli_num_rows($sinifAdlari)>0) echo "<ul>";
-								while($j<mysqli_num_rows($sinifAdlari)){		   
+								if(@mysqli_num_rows($sinifAdlari)>0) echo "<ul>";
+								while($j<@mysqli_num_rows($sinifAdlari)){		   
 						   ?>
-					<li title='<?php echo mysqli_result($sinifAdlari,$j,"sinifAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
+					<li title='<?php echo @mysqli_result($sinifAdlari,$j,"sinifAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
 					  <?php
-					 echo smartShort(mysqli_result($sinifAdlari,$j,"sinifAdi")); 
-					$boyut=20-strlen(smartShort(mysqli_result($sinifAdlari,$j,"sinifAdi")));
+					 echo smartShort(@mysqli_result($sinifAdlari,$j,"sinifAdi")); 
+					$boyut=20-strlen(smartShort(@mysqli_result($sinifAdlari,$j,"sinifAdi")));
 					for($boy=1;$boy<=$boyut;$boy++) echo "&nbsp;";
 				  ?> 
 				  &#8250;
 					  </span></span></a>
 					  
 						<?php
-										$sqlDers 	= "select * from eo_3ders where sinifID = '".mysqli_result($sinifAdlari,$j,"id")."' order by dersAdi";
+										$sqlDers 	= "select * from eo_3ders where sinifID = '".@mysqli_result($sinifAdlari,$j,"id")."' order by dersAdi";
 										$dersAdlari = mysqli_query($yol1,$sqlDers);
 										$k=0;
-										if(mysqli_num_rows($dersAdlari)>0) echo "<ul>";
-										while($k<mysqli_num_rows($dersAdlari)){		   
+										if(@mysqli_num_rows($dersAdlari)>0) echo "<ul>";
+										while($k<@mysqli_num_rows($dersAdlari)){		   
 									?>
-						<li title='<?php echo mysqli_result($dersAdlari,$k,"dersAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
+						<li title='<?php echo @mysqli_result($dersAdlari,$k,"dersAdi")?>'><a href="#"><span><span style="font-family:'Lucida Console', Monaco, monospace">
 					  <?php
-					 echo smartShort(mysqli_result($dersAdlari,$k,"dersAdi")); 
-					$boyut=20-strlen(smartShort(mysqli_result($dersAdlari,$k,"dersAdi")));
+					 echo smartShort(@mysqli_result($dersAdlari,$k,"dersAdi")); 
+					$boyut=20-strlen(smartShort(@mysqli_result($dersAdlari,$k,"dersAdi")));
 					for($boy=1;$boy<=$boyut;$boy++) echo "&nbsp;";
 				  ?> 
 				  &#8250;
 						  </span></span></a>
 						  
 						  <?php
-										$sqlKonu 	= "select * from eo_4konu where dersID = '".mysqli_result($dersAdlari,$k,"id")."' order by konuAdi";
+										$sqlKonu 	= "select * from eo_4konu where dersID = '".@mysqli_result($dersAdlari,$k,"id")."' order by konuAdi";
 										$konuAdlari = mysqli_query($yol1,$sqlKonu);
 										$l=0;
-										if(mysqli_num_rows($konuAdlari)>0) echo "<ul>";
-										while($l<mysqli_num_rows($konuAdlari)){		   
+										if(@mysqli_num_rows($konuAdlari)>0) echo "<ul>";
+										while($l<@mysqli_num_rows($konuAdlari)){		   
 												$sqlSayfa 	= "select count(*) as toplam from eo_5sayfa where konuID = '".
-														mysqli_result($konuAdlari,$l,"id")."'";
+														@mysqli_result($konuAdlari,$l,"id")."'";
 												$sayfaSayisi = mysqli_query($yol1,$sqlSayfa);
 												$s_sayisi = mysqli_result($sayfaSayisi,0,"toplam");													   						  ?>
-										<li title='<?php echo mysqli_result($konuAdlari,$l,"konuAdi")?>'><a href="lessons.php?konu=<?php echo mysqli_result($konuAdlari,$l,"id")?>" style=""><span><span style="font-family:'Lucida Console', Monaco, monospace">
-										  <?php echo smartShort(mysqli_result($konuAdlari,$l,"konuAdi"))?>
+										<li title='<?php echo @mysqli_result($konuAdlari,$l,"konuAdi")?>'><a href="lessons.php?konu=<?php echo @mysqli_result($konuAdlari,$l,"id")?>" style=""><span><span style="font-family:'Lucida Console', Monaco, monospace">
+										  <?php echo smartShort(@mysqli_result($konuAdlari,$l,"konuAdi"))?>
 						  <?php echo (mysqli_result($konuAdlari,$l,"konuyuKilitle")?"<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />":"")?>
                           <?php echo (mysqli_result($konuAdlari,$l,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />":"")?>
                           <?php echo (mysqli_result($konuAdlari,$l,"calismaSuresiDakika")?"<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[169]."\" title=\"".$metin[169]."\" />":"")?>
@@ -4018,72 +4032,72 @@ function dersAgaci($gelen=null){
 						  <?php
 											$l++;
 											}
-											if(mysqli_num_rows($konuAdlari)>0) echo "</ul>";
+											if(@mysqli_num_rows($konuAdlari)>0) echo "</ul>";
 						  ?>
 
 						</li>
 						<?php
 										$k++;
 										}
-										if(mysqli_num_rows($dersAdlari)>0) echo "</ul>";
+										if(@mysqli_num_rows($dersAdlari)>0) echo "</ul>";
 									?>
 					  
 					</li>
 					<?php
 								$j++;
 								}
-								if(mysqli_num_rows($sinifAdlari)>0) echo "</ul>";
+								if(@mysqli_num_rows($sinifAdlari)>0) echo "</ul>";
 							?>
 				</li>
 				<?php	
 						$i++;
 					}	
-					if(mysqli_num_rows($okulAdlari)>0) echo "</ul>";
+					if(@mysqli_num_rows($okulAdlari)>0) echo "</ul>";
 	}else
 	{//not in the menu Lesson List
 					
 					$sqlOkul 	= "select * from eo_1okul order by okulAdi";
 					$okulAdlari = mysqli_query($yol1, $sqlOkul);
-					$i=0;if(mysqli_num_rows($okulAdlari)>0) echo "<ul id='lessonTree' class='treeview-famfamfam'>";
-					while($i<mysqli_num_rows($okulAdlari)){
+					$i=0;if(@mysqli_num_rows($okulAdlari)>0) echo "<ul id='lessonTree' class='treeview-famfamfam'>";
+					while($i<@mysqli_num_rows($okulAdlari)){
 				?>
 				
 				<li style="color:#C0F;" class="open">
-				  <span><?php echo (mysqli_result($okulAdlari,$i,"okulAdi"))?> </span>
+				  <span><?php echo (@mysqli_result($okulAdlari,$i,"okulAdi"))?> </span>
 				  
 					<?php
-								$sqlSinif 	= "select * from eo_2sinif where okulID = '".mysqli_result($okulAdlari,$i,"id")."' order by sinifAdi";
+								$sqlSinif 	= "select * from eo_2sinif where okulID = '".@mysqli_result($okulAdlari,$i,"id")."' order by sinifAdi";
 								$sinifAdlari = mysqli_query($yol1, $sqlSinif);
 								$j=0;
-								if(mysqli_num_rows($sinifAdlari)>0) echo "<ul>";
-								while($j<mysqli_num_rows($sinifAdlari)){		   
+								if(@mysqli_num_rows($sinifAdlari)>0) echo "<ul>";
+								while($j<@mysqli_num_rows($sinifAdlari)){		   
 						   ?>
 					<li style="color:#C0F" >
                     <span>
-					  <?php echo (mysqli_result($sinifAdlari,$j,"sinifAdi"))?> </span>
+					  <?php echo (@mysqli_result($sinifAdlari,$j,"sinifAdi"))?> </span>
 						<?php
-										$sqlDers 	= "select * from eo_3ders where sinifID = '".mysqli_result($sinifAdlari,$j,"id")."' order by dersAdi";
+										$sqlDers 	= "select * from eo_3ders where sinifID = '".@mysqli_result($sinifAdlari,$j,"id")."' order by dersAdi";
 										$dersAdlari = mysqli_query($yol1,$sqlDers);
 										$k=0;
-										if(mysqli_num_rows($dersAdlari)>0) echo "<ul>";										
-										while($k<mysqli_num_rows($dersAdlari)){		   
+										if(@mysqli_num_rows($dersAdlari)>0) echo "<ul>";										
+										while($k<@mysqli_num_rows($dersAdlari)){		   
 									?>
 						<li style="color:#C0F">
-						  <span><?php echo (mysqli_result($dersAdlari,$k,"dersAdi"))?> </span>
+						  <span><?php echo (@mysqli_result($dersAdlari,$k,"dersAdi"))?> </span>
 						  
 						  <?php
-										$sqlKonu 	= "select * from eo_4konu where dersID = '".mysqli_result($dersAdlari,$k,"id")."' order by konuAdi";
+										$sqlKonu 	= "select * from eo_4konu where dersID = '".@mysqli_result($dersAdlari,$k,"id")."' order by konuAdi";
 										$konuAdlari = mysqli_query($yol1,$sqlKonu);
 										$l=0;
-							if(mysqli_num_rows($konuAdlari)>0) echo "<ul>";
-										while($l<mysqli_num_rows($konuAdlari)){		   
+							if(@mysqli_num_rows($konuAdlari)>0) echo "<ul>";
+										while($l<@mysqli_num_rows($konuAdlari)){		   
 												$sqlSayfa 	= "select count(*) as toplam from eo_5sayfa where konuID = '".
-														mysqli_result($konuAdlari,$l,"id")."'";
+														@mysqli_result($konuAdlari,$l,"id")."'";
 												$sayfaSayisi = mysqli_query($yol1,$sqlSayfa);
 												$s_sayisi = mysqli_result($sayfaSayisi,0,"toplam");												   
 						  ?>
-										<li class="noktasiz"><span><a href="lessons.php?konu=<?php echo mysqli_result($konuAdlari,$l,"id")?>" style="text-decoration:none;color:#00F;">
-										  <?php echo (mysqli_result($konuAdlari,$l,"konuAdi"))?></a>&nbsp;
+										<li class="noktasiz"><span><a href="lessons.php?konu=<?php echo @mysqli_result($konuAdlari,$l,"id")?>" style="text-decoration:none;color:#00F;">
+										  <?php echo (@mysqli_result($konuAdlari,$l,"konuAdi"))?></a>&nbsp;
                           <?php  if(mysqli_result($konuAdlari,$l,"konuyuKilitle")) echo "<img src='img/lock.png' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[179]."' title='".$metin[179]."' />";?>
                           <?php echo (mysqli_result($konuAdlari,$l,"sadeceKayitlilarGorebilir")?"<img src='img/user_manager.gif' border=\"0\" style=\"vertical-align: middle;\" alt='".$metin[181]."' title='".$metin[181]."' />":"")?>
                           <?php echo (mysqli_result($konuAdlari,$l,"calismaSuresiDakika")?"<img src='img/history.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[169]."\" title=\"".$metin[169]."\" />":"")?>
@@ -4091,31 +4105,31 @@ function dersAgaci($gelen=null){
 						  if($s_sayisi==0) 
 						     echo "<img src='img/empty.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"".$metin[209]."\" title=\"".$metin[209]."\" />";
 						  ?>
-                          <?php echo "<a href='dersBilgisi.php?ders=".mysqli_result($konuAdlari,$l,"id")."' rel='facebox'><img src='img/info.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"info\" title=\"info\" /></a>";?></span>
+                          <?php echo "<a href='dersBilgisi.php?ders=".@mysqli_result($konuAdlari,$l,"id")."' rel='facebox'><img src='img/info.png' border=\"0\" style=\"vertical-align: middle;\" alt=\"info\" title=\"info\" /></a>";?></span>
 										  
 										  </li>
 						  <?php
 											$l++;
 											}
-											if(mysqli_num_rows($konuAdlari)>0) echo "</ul>";
+											if(@mysqli_num_rows($konuAdlari)>0) echo "</ul>";
 						  ?>
 						</li>
 						<?php
 										$k++;
 										}
-										if(mysqli_num_rows($dersAdlari)>0) echo "</ul>";
+										if(@mysqli_num_rows($dersAdlari)>0) echo "</ul>";
 									?>
 					</li>
 					<?php
 								$j++;
 								}
-								if(mysqli_num_rows($sinifAdlari)>0) echo "</ul>";
+								if(@mysqli_num_rows($sinifAdlari)>0) echo "</ul>";
 							?>
 				</li>
 				<?php	
 						$i++;
 					}	
-					if(mysqli_num_rows($okulAdlari)>0) echo "</ul>";
+					if(@mysqli_num_rows($okulAdlari)>0) echo "</ul>";
 	}
 }
 /*
@@ -4128,8 +4142,8 @@ function getCevapSay($id){
     $sql1 = "SELECT cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 	
-    if ($result1 && mysqli_num_rows($result1) == 1){
-		$gelen = mysqli_fetch_array($result1);
+    if ($result1 && @mysqli_num_rows($result1) == 1){
+		$gelen = @mysqli_fetch_array($result1);
 		$say = explode(",",$gelen[0]);
 		return count($say);
 	}
@@ -4147,19 +4161,19 @@ function getKonuUserStat($konuID, $uID, $type){
 	case 1:
 	    $sql1 = "SELECT MAX(lastPage) FROM eo_userworks where userID='$uID' and konuID='$konuID'"; 	
     	$result1 = mysqli_query($yol1,$sql1); 
-		$gelen = mysqli_fetch_array($result1);
+		$gelen = @mysqli_fetch_array($result1);
 		return $gelen[0];	
 	 break;
 	case 2:
 	    $sql1 = "SELECT SUM(toplamZaman) FROM eo_userworks where userID='$uID' and konuID='$konuID'"; 	
     	$result1 = mysqli_query($yol1,$sql1); 
-		$gelen = mysqli_fetch_array($result1);
+		$gelen = @mysqli_fetch_array($result1);
 		return $gelen[0];	
 	 break;
 	case 3:
 	    $sql1 = "SELECT COUNT(*) FROM eo_userworks where userID='$uID' and konuID='$konuID'"; 	
     	$result1 = mysqli_query($yol1,$sql1); 
-		$gelen = mysqli_fetch_array($result1);
+		$gelen = @mysqli_fetch_array($result1);
 		return $gelen[0];	
 	 break;
 	default:
@@ -4196,7 +4210,7 @@ function getKursTablo($dersID,$uID){
     $sql1 = "SELECT id,konuAdi FROM eo_4konu where dersID='$dersID' order by konuAdi"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 	
-    if ($result1 && mysqli_num_rows($result1) > 0){
+    if ($result1 && @mysqli_num_rows($result1) > 0){
 		$sonuc = '<table width="%99" border="0" align="center" cellpadding="5" cellspacing="0">';
 		$sonuc .= "<tr>
 		         	<th width='%50'>$metin[364]</th>
@@ -4210,7 +4224,7 @@ function getKursTablo($dersID,$uID){
 		$tamamOlamayan = 0;
 		$toplamKonu = getDerstekiKonuSay($dersID);
 
-		while($gelen = mysqli_fetch_array($result1)){
+		while($gelen = @mysqli_fetch_array($result1)){
 			$satirRenk++;
 				if ($satirRenk & 1) { 
 					$row_color = "#CCC"; 
@@ -4382,8 +4396,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(rateDate, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4393,8 +4407,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(commentDate, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4404,8 +4418,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(date, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4415,8 +4429,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(requestDate, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4426,8 +4440,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(eklenmeTarihi, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4437,8 +4451,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(pubDate, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4448,8 +4462,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(dateTime, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4459,8 +4473,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(calismaTarihi, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4470,8 +4484,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(davetTarihi, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4481,8 +4495,8 @@ function sonTarihGetir($tablo,$gun){
 					 WHERE DATE_FORMAT(eklenmeTarihi, '%d-%m-%Y') = '$bugun'"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);						
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);						
 				$sonuc = $gelen['say']>0;				
 			}		
 		break;
@@ -4534,7 +4548,7 @@ function enFazlaIslemGetir($islem){
 			$result1 = mysqli_query($yol1,$sql1); 
 			
 			if ($result1){
-				while($gelen = mysqli_fetch_array($result1)){				
+				while($gelen = @mysqli_fetch_array($result1)){				
 					$sonuc .= "<a href='$gelen[0]'>".$gelen[0]."($gelen[1])</a> ";				
 				}
 			}							
@@ -4549,7 +4563,7 @@ function enFazlaIslemGetir($islem){
 			$result1 = mysqli_query($yol1,$sql1); 
 			
 			if ($result1){
-				while($gelen = mysqli_fetch_array($result1)){				
+				while($gelen = @mysqli_fetch_array($result1)){				
 					$sonuc .= "<a href='$gelen[0]'>".$gelen[0]."($gelen[1])</a> ";				
 				}
 			}	
@@ -4577,8 +4591,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_rating.rateDate DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){				
-				$gelen = mysqli_fetch_array($result1);			
+			if ($result1 && @mysqli_num_rows($result1) == 1){				
+				$gelen = @mysqli_fetch_array($result1);			
 					
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
 				
@@ -4598,8 +4612,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_comments.commentDate DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);		
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
@@ -4616,8 +4630,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_shoutbox.date DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);		
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[1]."</a>, "
@@ -4634,8 +4648,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_askquestion.eklenmeTarihi DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);		
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[3]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[6]' rel='facebox'>".$gelen[7]."</a>, "
@@ -4649,8 +4663,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY requestDate DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);		
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[7]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, <span style='text-transform: capitalize;'>"
@@ -4668,8 +4682,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_userworks.calismaTarihi DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);		
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[7]."</a>, ".
@@ -4687,8 +4701,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_friends.id DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);		
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);		
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[3]);
 				
 				$sonuc = "<a href='profil.php?kim=$gelen[1]' rel='facebox'>".$gelen[8]."</a>, ".
@@ -4705,8 +4719,8 @@ function sonSatirGetir($tablo){
 					 ORDER BY eo_files.id DESC limit 0,1"; 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) == 1){
-				$gelen = mysqli_fetch_array($result1);	
+			if ($result1 && @mysqli_num_rows($result1) == 1){
+				$gelen = @mysqli_fetch_array($result1);	
 				if(file_exists($_uploadFolder."/".$gelen[2])) {	
 					$insansi = $humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s", filemtime($_uploadFolder."/".$gelen[2])));
 					
@@ -4750,8 +4764,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 $kisiFiltre				 
 					 ORDER BY eo_rating.rateDate DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
-			if ($result1 && mysqli_num_rows($result1) >= 1){				
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){				
+				while($gelen = @mysqli_fetch_array($result1)){			
 					
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
 				if(empty($userID))	{
@@ -4782,8 +4796,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 ORDER BY eo_comments.commentDate DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) >= 1){
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){
+				while($gelen = @mysqli_fetch_array($result1)){			
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[4]);
 				
 				if(empty($userID))	{
@@ -4808,8 +4822,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 ORDER BY eo_shoutbox.date DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) >= 1){
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){
+				while($gelen = @mysqli_fetch_array($result1)){			
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
 				
 				if(empty($userID))	{
@@ -4832,8 +4846,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 ORDER BY requestDate DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) >= 1){
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){
+				while($gelen = @mysqli_fetch_array($result1)){			
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[7]);
 				
 				$sonuc .= "<a href='profil.php?kim=$gelen[0]' rel='facebox'>".$gelen[1]."</a>, <span style='text-transform: capitalize;'>"
@@ -4853,8 +4867,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 ORDER BY eo_userworks.calismaTarihi DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) >= 1){
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){
+				while($gelen = @mysqli_fetch_array($result1)){			
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[5]);
 				
 				if(empty($userID))	{
@@ -4882,8 +4896,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 ORDER BY eo_askquestion.eklenmeTarihi DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) >= 1){
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){
+				while($gelen = @mysqli_fetch_array($result1)){			
 				$insansi = $humanRelativeDate->getTextForSQLDate($gelen[3]);
 				
 				if(empty($userID))	{
@@ -4908,8 +4922,8 @@ function sonBilgileriGetir($tablo, $userID){
 					 ORDER BY eo_files.id DESC limit 0,".ayarGetir("ayar2int"); 	
 			$result1 = mysqli_query($yol1,$sql1); 
 			
-			if ($result1 && mysqli_num_rows($result1) >= 1){
-				while($gelen = mysqli_fetch_array($result1)){			
+			if ($result1 && @mysqli_num_rows($result1) >= 1){
+				while($gelen = @mysqli_fetch_array($result1)){			
 					if(file_exists($_uploadFolder."/".$gelen[2])) {	
 						$insansi = $humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s", filemtime($_uploadFolder."/".$gelen[2])));
 						
@@ -4940,7 +4954,7 @@ function kullGercekAdi($id)
     $sql1 = "SELECT realName FROM eo_users where id='".$id."' limit 0,1"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysqli_num_rows($result1) == 1){
+    if ($result1 && @mysqli_num_rows($result1) == 1){
        return (mysqli_result($result1, 0, "realName"));
     }else {
 	   return ("");
@@ -4956,8 +4970,8 @@ function getUserName($id){
     $sql1 = "SELECT userName, realName FROM eo_users where id='$id' limit 0,1"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 	
-    if ($result1 && mysqli_num_rows($result1) == 1){
-		$gelen = mysqli_fetch_array($result1);		
+    if ($result1 && @mysqli_num_rows($result1) == 1){
+		$gelen = @mysqli_fetch_array($result1);		
 		return $gelen[0].", <span style='text-transform: capitalize;'>".mb_strtolower($gelen[1])."</span>";
 	}
 	
@@ -4973,8 +4987,8 @@ function getDerstekiKonuSay($id){
     $sql1 = "SELECT count(*) as say FROM eo_4konu where dersID='$id'"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 	
-    if ($result1 && mysqli_num_rows($result1) == 1){
-		$gelen = mysqli_fetch_array($result1);		
+    if ($result1 && @mysqli_num_rows($result1) == 1){
+		$gelen = @mysqli_fetch_array($result1);		
 		return $gelen["say"];
 	}
 	
@@ -4990,8 +5004,8 @@ function getDersAdi($id){
     $sql1 = "SELECT dersAdi FROM eo_3ders where id='$id' limit 0,1"; 	
     $result1 = mysqli_query($yol1,$sql1); 
 	
-    if ($result1 && mysqli_num_rows($result1) == 1){
-		$gelen = mysqli_fetch_array($result1);		
+    if ($result1 && @mysqli_num_rows($result1) == 1){
+		$gelen = @mysqli_fetch_array($result1);		
 		return $gelen["dersAdi"];
 	}
 	
@@ -5191,7 +5205,7 @@ function dersAdlariOption(){
 	$sql = "SELECT id, dersAdi FROM eo_3ders ORDER BY dersAdi";		
 	$result = mysqli_query($yol1,$sql);	
 	$sonuc = "";
-	while($satir=mysqli_fetch_array($result)){
+	while($satir=@mysqli_fetch_array($result)){
 		$sonuc .= "<option value='$satir[0]'>$satir[1]</option>\n";
 	}
 	
@@ -5206,7 +5220,7 @@ function cevapSayisiGetir($id){
 	$sql = "SELECT count(id) FROM eo_askanswer WHERE soruID=$id";		
 	$result = mysqli_query($yol1,$sql);	
 	
-	$satir=mysqli_fetch_array($result);
+	$satir=@mysqli_fetch_array($result);
 	if($satir[0]>0) 
 		return "($satir[0])";	
 }
@@ -5222,7 +5236,7 @@ function soruSayisiGetir($arama){
 		$sql = "SELECT count(id) FROM eo_askquestion";		
 	$result = mysqli_query($yol1,$sql);	
 	
-	$satir=mysqli_fetch_array($result);
+	$satir=@mysqli_fetch_array($result);
 	return ($satir[0]);	
 }
 /*
@@ -5235,7 +5249,7 @@ function soruEkleyenID($soruID){
 	$sql = "SELECT userID FROM eo_askquestion WHERE id=$soruID";		
 	$result = mysqli_query($yol1,$sql);	
 	
-	$satir=mysqli_fetch_array($result);
+	$satir=@mysqli_fetch_array($result);
 	if($satir[0]!="") 
 		return ($satir[0]);		
 }
@@ -5255,7 +5269,7 @@ function son5oyVeren($id,$deger){
 	$result = mysqli_query($yol1, $sorgu);
 	if ($result){
 		$sonuc=" ";
-		while($gelen=mysqli_fetch_array($result))
+		while($gelen=@mysqli_fetch_array($result))
 		  $sonuc .= $gelen[0]." ";
 		return $sonuc;  
 	}else
@@ -5275,7 +5289,7 @@ function cevapOyToplami($cevapID){
 	$sql = "SELECT count(id) as say,cevapID FROM eo_askanswerrate 
 		WHERE cevapID='$cevapID' and degeri='1'";		
 	$result = mysqli_query($yol1,$sql);		
-	$satir=mysqli_fetch_array($result);
+	$satir=@mysqli_fetch_array($result);
 	if($satir[0]>0) 
 		$sonuc .= $satir[0]." <span class='dogruOy' title='".son5oyVeren($satir[1],"1")."'></span> ";	
 				
@@ -5283,7 +5297,7 @@ function cevapOyToplami($cevapID){
 	$sql = "SELECT count(id) as say,cevapID FROM eo_askanswerrate
 		 WHERE cevapID='$cevapID' and degeri='-1'";		
 	$result = mysqli_query($yol1,$sql);		
-	$satir=mysqli_fetch_array($result);
+	$satir=@mysqli_fetch_array($result);
 	if($satir[0]>0) 
 		$sonuc .= $satir[0]." <span class='yanlisOy' title='".son5oyVeren($satir[1],"-1")."'></span> ";
 	if($sonuc=="") $sonuc = $metin[655];
@@ -5424,16 +5438,25 @@ function tamamlanmisEtkinlikListesi(){
 		else
 			return $data;		
 }
+
 /*
 PHP 7'de mysqli_result yok 
-*/
-function mysqli_result($result, $row, $field = 0) {
-    // Adjust the result pointer to that specific row
-    $result->data_seek($row);
-    // Fetch result array
-    $data = $result->fetch_array();
- 
+
+function mysqli_result($result, $row, $field = 0) {    
+    $result->data_seek($row);    
+    $data = $result->fetch_array(); 
     return $data[$field];
+}*/
+function mysqli_result($res,$row=0,$col=0){
+    $numrows = mysqli_num_rows($res);
+    if ($numrows && $row <= ($numrows-1) && $row >=0){
+        mysqli_data_seek($res,$row);
+        $resrow = (is_numeric($col)) ? mysqli_fetch_row($res) : mysqli_fetch_assoc($res);
+        if (isset($resrow[$col])){
+            return $resrow[$col];
+        }
+    }
+    return false;
 }
 
 /*
@@ -5444,6 +5467,7 @@ Genel olarak session kontrol edilmesi
 //	echo("$metin[400]"); //session?
 	//exit;
 //} 
+
 /*
 Genel olarak üye pasif durumda ise hata verir
 */

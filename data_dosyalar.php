@@ -53,7 +53,7 @@ require("conf.php");
 	/* 
 	 * MySQL connection
 	 */
-	$gaSql['link'] =  mysqli_pconnect( $gaSql['server'], $gaSql['user'], $gaSql['password']  ) or
+	$gaSql['link'] =  mysqli_connect( $gaSql['server'], $gaSql['user'], $gaSql['password'], $gaSql['db']) or
 		die( 'Could not open connection to server' );
 	
 	//mysqli_select_db( $gaSql['db'], $gaSql['link'] ) or die( 'Could not select database '. $gaSql['db'] );
@@ -65,8 +65,8 @@ require("conf.php");
 	$sLimit = "";
 	if ( isset( $_GET['iDisplayStart'] ) and $_GET['iDisplayLength'] != '-1' )
 	{
-		$sLimit = "LIMIT ".mysqli_real_escape_string( $_GET['iDisplayStart'] ).", ".
-			mysqli_real_escape_string( $_GET['iDisplayLength'] );
+		$sLimit = "LIMIT ".mysqli_real_escape_string($gaSql['link'], $_GET['iDisplayStart'] ).", ".
+			mysqli_real_escape_string($gaSql['link'], $_GET['iDisplayLength'] );
 	}
 	
 	
@@ -82,7 +82,7 @@ require("conf.php");
 			if ( $_GET[ 'bSortable_'.intval($_GET['iSortCol_'.$i]) ] == "true" )
 			{
 				$sOrder .= $aColumns2[ intval( $_GET['iSortCol_'.$i] ) ]."
-				 	".mysqli_real_escape_string( $_GET['sSortDir_'.$i] ) .", ";
+				 	".mysqli_real_escape_string($gaSql['link'], $_GET['sSortDir_'.$i] ) .", ";
 			}
 		}
 		
@@ -112,7 +112,7 @@ require("conf.php");
 		 		
 		for ( $i=0 ; $i<count($aColumns)-1 ; $i++ )
 		{
-			$sWhere .= $aColumns[$i]." LIKE '%".mysqli_real_escape_string( $_GET['sSearch'] )."%' OR ";
+			$sWhere .= $aColumns[$i]." LIKE '%".mysqli_real_escape_string($gaSql['link'], $_GET['sSearch'] )."%' OR ";
 		}
 		$sWhere = substr_replace( $sWhere, "", -3 );
 		$sWhere .= ')';		
@@ -131,19 +131,19 @@ require("conf.php");
 			{
 				$sWhere .= " AND ";
 			}
-			$sWhere .= $aColumns[$i]." LIKE '%".mysqli_real_escape_string($_GET['sSearch_'.$i])."%' ";
+			$sWhere .= $aColumns[$i]." LIKE '%".mysqli_real_escape_string($gaSql['link'],$_GET['sSearch_'.$i])."%' ";
 		}
 	}
 	
 		if($tumDosyalar!="1"){
 			if(!empty($_GET['sSearch']))
-					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysqli_real_escape_string($_GET['sSearch'])."%') AND fileName not REGEXP '^[0-9]{10,15}' ";		
+					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysqli_real_escape_string($gaSql['link'],$_GET['sSearch'])."%') AND fileName not REGEXP '^[0-9]{10,15}' ";		
 				else
 					$sWhere .= " WHERE fileName not REGEXP '^[0-9]{10,15}' ";
 			}
 		 else{
 			if(!empty($_GET['sSearch']))
-					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysqli_real_escape_string($_GET['sSearch'])."%' ";	
+					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysqli_real_escape_string($gaSql['link'],$_GET['sSearch'])."%' ";	
 				else 
 					$sWhere .= "";
 		 }

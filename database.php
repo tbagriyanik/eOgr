@@ -18,5 +18,5 @@ $_username 		= 'root';
 $_db 			= 'eogr'; 
 
 $_source1		= "http://localhost/eogr";			//for check_source()
-$_source2		= "http://192.168.1.20/eogr";		//MUST set to the exact values!
+$_source2		= "http://192.168.1.1/eogr";		//MUST set to the exact values!
 ?>

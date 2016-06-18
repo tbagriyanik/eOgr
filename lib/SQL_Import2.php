@@ -19,7 +19,9 @@ class sqlImport {
     	$this -> con = mysqli_connect($this -> host, $this -> user, $this -> pass, $this -> db);
            if ($this -> con !== false) 
            {
-
+			   
+			mysqli_set_charset($this -> con, 'utf8'); 
+			
          $f = fopen($this -> ArchivoSql,"r");
          $sqlFile = fread($f, filesize($this -> ArchivoSql));
          $sqlArray = explode(';', $sqlFile);

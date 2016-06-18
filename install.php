@@ -225,7 +225,7 @@ require 'lib/flood-protection.php'; // include the class
 					
 					if(!$baglan2) echo("<font id='hata'>MySQL sunucuya bağlantı yapılamadı!<br/> L&#252;ften,'database.php' dosyasını d&uuml;zenleyiniz veya MySQL sunucunuzun açık olduğundan emin olunuz.</font>".mysqli_connect_error()."<br/>Tekrar denemek i&ccedil;in <a href=install.php>tıklatınız</a>!");
 					else{
-					$yol22 = $baglan2;
+					$yol22 = $baglan2;mysqli_set_charset($yol22, "utf8");
 					//$vtSec = @mysqli_select_db( $_db, $yol22);
 					if(!$baglan2){							 
 					  $vtYapsql = "CREATE DATABASE $db_name DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;";
@@ -239,6 +239,7 @@ require 'lib/flood-protection.php'; // include the class
 					mysqli_close($baglan2);					 	
 					$baglan2= @mysqli_connect($host, $dbUser, $dbPassword, $_db);
 					$yol22 = $baglan2;
+					mysqli_set_charset($yol22, 'utf8'); 
 					//$vtSec = @mysqli_select_db( $_db, $yol22);
 							
 					  $newImport = new sqlImport ($host, $dbUser, $dbPassword, $_db, $sqlFile);								
@@ -272,6 +273,7 @@ require 'lib/flood-protection.php'; // include the class
 				  $baglan3= @mysqli_connect($host, $dbUser, $dbPassword, $_db);
 				  
 				  try{
+					  mysqli_set_charset($baglan3, "utf8");
 					if($baglan3)
 					  echo "<li>MySQL <strong>sunucu</strong> sürümü : ".mysqli_get_server_info($baglan3)."</li>"; 	
 					  else

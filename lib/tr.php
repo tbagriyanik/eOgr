@@ -134,7 +134,7 @@ Lesser General Public License for more details.
 		
 		$metin[102]="Sil";    
 		$metin[103]="D&uuml;zenle";    
-		$metin[104]="Kay&#305;t silinmesini onayl&#305;yor musunuz?";  
+		$metin[104]="Kayıt silinmesini onaylıyor musunuz?";  //js
 		
 		$metin[105]="&Uuml;ye G&uuml;ncelleme Formu";    
 		$metin[106]="Se&ccedil;iniz";    

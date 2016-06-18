@@ -526,7 +526,8 @@
     function number_format($val, $dec) {
       $decimal_point = '.';
       $thousands_sep = '';
-      return number_format($val, $dec, $decimal_point, $thousands_sep);
+      return number_format((float)$val, $dec, 
+					$decimal_point, $thousands_sep);
     }
   }
 ?>
