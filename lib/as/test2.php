@@ -21,27 +21,27 @@ $aUsers =array();
 $aID 	=array();
 $aInfo	=array();
 
-	$result = mysql_query("select realName from eo_users order by id");
-	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
+	$result = mysqli_query($yol, "select realName from eo_users order by id");
+	for($i = 0; $sonuc = mysqli_fetch_assoc($result); $i++) 
 	{
-		$aUsers[$i] =iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["realName"]))); 
+		$aUsers[$i] =temizle(($sonuc ["realName"])); 
 	};
 	
-	$result = mysql_query("select id from eo_users order by id");
-	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
+	$result = mysqli_query($yol, "select id from eo_users order by id");
+	for($i = 0; $sonuc = mysqli_fetch_assoc($result); $i++) 
 	{
-		$aID[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["id"])));
+		$aID[$i] = temizle(($sonuc ["id"]));
 	};
 
-	$result = mysql_query("select userName from eo_users order by id");
-	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
+	$result = mysqli_query($yol, "select userName from eo_users order by id");
+	for($i = 0; $sonuc = mysqli_fetch_assoc($result); $i++) 
 	{
-			$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["userName"])));
+			$aInfo[$i] = temizle(($sonuc ["userName"]));//htmlentity silindi
 		
 	};
 	
 	if(!empty($_GET['input']))
-		$input = strtolower($_GET['input']);
+		$input = mb_strtolower($_GET['input']);
 	else	
 		$input = "";
 																					
@@ -60,7 +60,7 @@ $aInfo	=array();
 			// not necessary if the results are coming from mysql
 			//
 
-			if (strtolower(substr(utf8_decode($aUsers[$i]),0,$len)) == $input || strpos( strtolower($aUsers[$i]),$input) > 0 )
+			if (mb_strtolower(substr($aUsers[$i],0,$len)) == $input || strpos( mb_strtolower($aUsers[$i]),$input) > 0 )
 			{
 				$count++;
 				$aResults[] = array( "id"=> $aID[$i] ,"value"=>$aUsers[$i], "info"=>$aInfo[$i] );
@@ -76,7 +76,7 @@ $aInfo	=array();
 	header ("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 	header ("Pragma: no-cache"); // HTTP/1.0
 	
-		header("Content-Type: application/json");
+		header("Content-Type: application/json; charset=utf-8");
 	
 		echo "{\"results\": [";
 		$arr = array();

@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -22,7 +21,7 @@ Lesser General Public License for more details.
     checkLoginLang(true,true,"index.php");
 ?>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $metin[515]?></title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">

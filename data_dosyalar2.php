@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -23,7 +22,7 @@ if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>eOgr - File List</title>
 <script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="lib/datatables/jquery.dataTables.min.js"></script>
@@ -32,14 +31,14 @@ if (!check_source()) die ("<font id='hata'>$metin[295]</font>");
 <style media="all" type="text/css">
 body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-size:14px;
+	font-size: 14px;
 }
 </style>
 <script language="JavaScript" type="text/javascript">
 <!--
 /*
 delWithCon:
-onay ile silme işlemi
+onay ile silme iÅŸlemi
 */
 function delWithCon(field_value) { 
   if (confirm("<?php echo $metin[104]?>")==1){
@@ -108,8 +107,8 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "") && ($_GET['delCon'] == "1") &&
 		  dosyaSil(RemoveXSS($_GET['id'])); 			
 		  $deleteSQL = sprintf("DELETE FROM eo_files WHERE id=%s",
 							   GetSQLValueString($_GET['id'], "int"));		
-		  mysql_select_db($_db, $yol);
-		  $Result1 = mysql_query($deleteSQL, $yol) or die(mysql_error());
+		  //mysqli_select_db($_db, $yol);
+		  $Result1 = mysqli_query($yol,$deleteSQL) or die(mysqli_error());
 		  if ($Result1) echo "<font id='uyari'> $metin[501]</font>";  
 	}
 }  

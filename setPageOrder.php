@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -32,7 +31,7 @@ if ($action == "updateRecordsListings"){
 	foreach ($updateRecordsArray as $recordIDValue) {
 
 		$query = "update eo_5sayfa set sayfaSirasi='".$listingCounter."' where id='".$recordIDValue. "' and konuID='".$konusu."'";
-		mysql_query($query) or die('Error, insert query failed');
+		mysqli_query($yol, $query) or die('Error, insert query failed');
 		$listingCounter = $listingCounter + 1;
 	}
 }

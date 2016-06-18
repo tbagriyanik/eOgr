@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -15,7 +14,7 @@ Lesser General Public License for more details.
 */
 @session_start();
 ob_start (); // Buffer output
-@header("Content-Type: text/html; charset=iso-8859-9"); 
+@header("Content-Type: text/html; charset=utf-8"); 
 
   require("conf.php");  		
   $time = getmicrotime();
@@ -25,14 +24,16 @@ ob_start (); // Buffer output
 if (!check_source()) die ("<font id='hata'>$metin[295]</font>");	
 /*
 baglan2:
-veritabanýna baðlan
+veritabanÄ±na baÄŸlan
 */
 function baglan2()
 {
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysql_connect($_host, $_username, $_password);
+	global  $_db;
+	 
+    return 	@mysqli_connect($_host, $_username, $_password, $_db);
 }
 
 if(!baglan2())   
@@ -40,7 +41,7 @@ if(!baglan2())
  
 $yol1 = baglan2();
 
-	if (!@mysql_select_db($_db, $yol1))
+	if (!$yol1)
 	{
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href='install.php' target='_parent'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
@@ -60,16 +61,16 @@ function temizle2($metin)
     $metin = str_replace("\n", "", $metin);
     $metin = str_replace("\r", "", $metin);
     $metin = str_replace("'", "`", $metin);
-    //$metin = str_replace('"', '¨', $metin);
+    //$metin = str_replace('"', 'Â¨', $metin);
     $metin = str_replace("\\", "|", $metin);
-    $metin = str_replace("<", "‹", $metin);
-    $metin = str_replace(">", "›", $metin);
+    $metin = str_replace("<", "â€¹", $metin);
+    $metin = str_replace(">", "â€º", $metin);
     $metin = trim(htmlentities($metin));
     return $metin;
 }
 /*
 getUserIDrate:
-kullanýcýnýn kimlik bilgisi
+kullanÄ±cÄ±nÄ±n kimlik bilgisi
 */
 function getUserIDrate($usernam, $passwor)
 {
@@ -78,18 +79,18 @@ function getUserIDrate($usernam, $passwor)
 	$usernam = substr(temizle2($usernam),0,15);
     $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle2($usernam)."' AND userPassword='".temizle2($passwor)."' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-       return (mysql_result($result1, 0, "id"));
+       return (mysqli_result($result1, 0, "id"));
     }else {
 	   return ("");
 	}
 }
 /*
 Sec2Time22:
-saniyenin üst birime dönüþtürülmesi
+saniyenin Ã¼st birime dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lmesi
 */
 function Sec2Time22($time){
   if(is_numeric($time)){
@@ -118,7 +119,7 @@ function Sec2Time22($time){
 }
 /*
 kullTur:
-kullanýcýnýn türü
+kullanÄ±cÄ±nÄ±n tÃ¼rÃ¼
 */
 function kullTur($id)
 {
@@ -126,10 +127,10 @@ function kullTur($id)
 	global $metin;
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT userType FROM eo_users where id='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-		switch (mysql_result($result1, 0, "userType")){
+    if ($result1 && mysqli_num_rows($result1) == 1){
+		switch (mysqli_result($result1, 0, "userType")){
 			case -1:
 		       return "<img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[93]\"/> $metin[93]";  break;
 			case 0:
@@ -147,18 +148,18 @@ function kullTur($id)
 }
 /*
 uyeTarihi:
-kullanýcýnýn üyelik tarihi
+kullanÄ±cÄ±nÄ±n Ã¼yelik tarihi
 */
 function uyeTarihi($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT requestDate FROM eo_users where id='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
+    if ($result1 && mysqli_num_rows($result1) == 1){
 		$humanRelativeDate = new HumanRelativeDate();
-		$insansi = $humanRelativeDate->getTextForSQLDate(mysql_result($result1, 0, "requestDate"));		
+		$insansi = $humanRelativeDate->getTextForSQLDate(mysqli_result($result1, 0, "requestDate"));		
        return $insansi;
     }else {
 	   return ("");
@@ -166,18 +167,18 @@ function uyeTarihi($id)
 }
 /*
 sonGiris:
-kullanýcýnýn son giriþ tarihi
+kullanÄ±cÄ±nÄ±n son giriÅŸ tarihi
 */
 function sonGiris($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT dateTime FROM eo_usertrack where userName='".kullAdi($id)."' and processName='login.php' and otherInfo='success,Login' order by dateTime DESC limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
+    if ($result1 && mysqli_num_rows($result1) == 1){
 		$humanRelativeDate = new HumanRelativeDate();
-		$insansi = $humanRelativeDate->getTextForSQLDate(mysql_result($result1, 0, "dateTime"));		
+		$insansi = $humanRelativeDate->getTextForSQLDate(mysqli_result($result1, 0, "dateTime"));		
        return $insansi;
     }else {
 	   return ("");
@@ -185,24 +186,24 @@ function sonGiris($id)
 }
 /*
 girisSayisi:
-kullanýcýnýn giriþ sayýsý
+kullanÄ±cÄ±nÄ±n giriÅŸ sayÄ±sÄ±
 */
 function girisSayisi($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT count(*) as say FROM eo_usertrack where userName='".kullAdi($id)."' and processName='login.php' and otherInfo='success,Login' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 sayfaEklemeSay:
-öðretmenin sayfa ekleme sayýsý
+Ã¶ÄŸretmenin sayfa ekleme sayÄ±sÄ±
 */
 function sayfaEklemeSay($id){
 				global $yol1;	
@@ -215,153 +216,153 @@ function sayfaEklemeSay($id){
 							  and eo_users.id = ".$id."
 							GROUP BY userName";
 				
-				$result1 = mysql_query($sql1, $yol1);
-				if ($result1 && mysql_numrows($result1) == 1)
+				$result1 = mysqli_query($yol1,$sql1);
+				if ($result1 && mysqli_num_rows($result1) == 1)
 				{
-				   return (mysql_result($result1, 0, "say"));
+				   return (mysqli_result($result1, 0, "say"));
 				}else {
 				   return ("");
 				}
 }
 /*
 dersCalismaSay:
-kullanýcýnýn ders çalýþmas sayýsý
+kullanÄ±cÄ±nÄ±n ders Ã§alÄ±ÅŸmas sayÄ±sÄ±
 */
 function dersCalismaSay($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT count(*) as say FROM eo_userworks where userID='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 dersCalismaSure:
-kullanýcýnýn ders çalýþma süresi
+kullanÄ±cÄ±nÄ±n ders Ã§alÄ±ÅŸma sÃ¼resi
 */
 function dersCalismaSure($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT sum(toplamZaman) as say FROM eo_userworks where userID='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 dersCalismaOrt:
-kullanýcýnýn ders çalýþma ortalamasý
+kullanÄ±cÄ±nÄ±n ders Ã§alÄ±ÅŸma ortalamasÄ±
 */
 function dersCalismaOrt($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT avg(lastPage) as say FROM eo_userworks where userID='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 yorumSay:
-kullanýcýnýn yorum sayýsý
+kullanÄ±cÄ±nÄ±n yorum sayÄ±sÄ±
 */
 function yorumSay($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT count(*) as say FROM eo_comments where userID='".$id."' and active=1 limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 yorumSayPasif:
-kullanýcýnýn pasif yorum sayýsý
+kullanÄ±cÄ±nÄ±n pasif yorum sayÄ±sÄ±
 */
 function yorumSayPasif($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT count(*) as say FROM eo_comments where userID='".$id."' and active<>'1' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 oySay:
-kullanýcýnýn oy sayýsý
+kullanÄ±cÄ±nÄ±n oy sayÄ±sÄ±
 */
 function oySay($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT count(*) as say FROM eo_rating where userID='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 oyOrt:
-kullanýcýnýn oy ortalamasý 
+kullanÄ±cÄ±nÄ±n oy ortalamasÄ± 
 */
 function oyOrt($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT avg(value) as say FROM eo_rating where userID='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 dosyaSay:
-kullanýcýnýn paylaþtýðý dosya sayýsý 
+kullanÄ±cÄ±nÄ±n paylaÅŸtÄ±ÄŸÄ± dosya sayÄ±sÄ± 
 */
 function dosyaSay($id)
 {
 	global $yol1;	
 	$id = substr(temizle2($id),0,15);
     $sql1 = "SELECT count(fileName) as say FROM eo_files where userID='".$id."' limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 arkadasSay:
-kullanýcýnýn arkadaþ sayýsý 
+kullanÄ±cÄ±nÄ±n arkadaÅŸ sayÄ±sÄ± 
 */
 function arkadasSay($id)
 {
@@ -371,17 +372,17 @@ function arkadasSay($id)
 	        (davetEdenID='".$id."' or davetEdilenID='".$id."')
 			and kabul='1'
 			 limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 soruSay:
-kullanýcýnýn soru sayýsý 
+kullanÄ±cÄ±nÄ±n soru sayÄ±sÄ± 
 */
 function soruSay($id)
 {
@@ -390,17 +391,17 @@ function soruSay($id)
     $sql1 = "SELECT count(id) as say FROM eo_askquestion
 			Where userID = $id 
 			 limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 cevapSay:
-kullanýcýnýn cevap sayýsý 
+kullanÄ±cÄ±nÄ±n cevap sayÄ±sÄ± 
 */
 function cevapSay($id)
 {
@@ -409,17 +410,17 @@ function cevapSay($id)
     $sql1 = "SELECT count(id) as say FROM eo_askanswer
 			Where userID = $id 
 			limit 0,1"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1){
-       return (mysql_result($result1, 0, "say"));
+    if ($result1 && mysqli_num_rows($result1) == 1){
+       return (mysqli_result($result1, 0, "say"));
     }else {
 	   return ("");
 	}
 }
 /*
 getOgrenciSiniflari2:
-kullanýcýnýn sýnýf bilgileri
+kullanÄ±cÄ±nÄ±n sÄ±nÄ±f bilgileri
 */
 function getOgrenciSiniflari2($id){
 	global $yol1;
@@ -428,11 +429,11 @@ function getOgrenciSiniflari2($id){
 				$id."' and eo_sinifogre.sinifID = eo_2sinif.id and eo_1okul.id = eo_2sinif.okulID 
 				order by eo_2sinif.sinifAdi ";	
     
-	$result1 = mysql_query($sql1, $yol1);
+	$result1 = mysqli_query($yol1,$sql1);
 		if ($result1)
 				{
 				   $ekle = "";	 
-				   while($row_gelen = mysql_fetch_assoc($result1))
+				   while($row_gelen = mysqli_fetch_assoc($result1))
 				    $ekle .= $row_gelen['sinifAdi']." (".$row_gelen['okulAdi']."), ";
 					
 				   $ekle = substr($ekle,0,strlen($ekle)-2);	 //son , silindi
@@ -444,7 +445,7 @@ function getOgrenciSiniflari2($id){
 }
 /*
 girisSayisiRank:
-kullanýcýnýn giriþ sayýsý seviyesi
+kullanÄ±cÄ±nÄ±n giriÅŸ sayÄ±sÄ± seviyesi
 */
 function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 {
@@ -455,22 +456,22 @@ function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 		where processName='login.php' and otherInfo='success,Login' 
 		group by userName
 		order by say DESC, userName"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
     if ($result1){
 		$rank=0;
-		 for($i=0; $i<@mysql_numrows($result1);$i++){
+		 for($i=0; $i<@mysqli_num_rows($result1);$i++){
 			 $rank = $i + 1;
-			 if(mysql_result($result1, $i, "userName")==kullAdi($id)) break;
+			 if(mysqli_result($result1, $i, "userName")==kullAdi($id)) break;
 		 }	
 		 
 	   if($grafikli) 
-	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+	     rankGrafik(@mysqli_num_rows($result1)-$rank,@mysqli_num_rows($result1));
 	   
-	   if($sadeYuzde and @mysql_numrows($result1)>0)		
-	      return 100-round($rank*100/@mysql_numrows($result1));
+	   if($sadeYuzde and @mysqli_num_rows($result1)>0)		
+	      return 100-round($rank*100/@mysqli_num_rows($result1));
 		  
-       return ("$rank /".@mysql_numrows($result1));
+       return ("$rank /".@mysqli_num_rows($result1));
     }else {
 	   return (0);
 	}
@@ -478,7 +479,7 @@ function girisSayisiRank($id,$grafikli,$sadeYuzde=false)
 }
 /*
 dersCalismaOrtRank:
-kullanýcýnýn ders çalýþma düzeyi
+kullanÄ±cÄ±nÄ±n ders Ã§alÄ±ÅŸma dÃ¼zeyi
 */
 function dersCalismaRank($id,$grafikli,$sadeYuzde=false){
 	global $yol1;	
@@ -488,22 +489,22 @@ function dersCalismaRank($id,$grafikli,$sadeYuzde=false){
 		where userID>0 
 		group by userID
 		order by say DESC, userID"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
     if ($result1){
 		$rank=0;
-		 for($i=0; $i<@mysql_numrows($result1);$i++){
+		 for($i=0; $i<@mysqli_num_rows($result1);$i++){
 			 $rank = $i + 1;
-			 if(mysql_result($result1, $i, "userID")==$id ) break;
+			 if(mysqli_result($result1, $i, "userID")==$id ) break;
 		 }
 		 
 	   if($grafikli) 
-	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+	     rankGrafik(@mysqli_num_rows($result1)-$rank,@mysqli_num_rows($result1));
 	   
-	   if($sadeYuzde and @mysql_numrows($result1)>0)		
-	      return 100-round($rank*100/@mysql_numrows($result1));
+	   if($sadeYuzde and @mysqli_num_rows($result1)>0)		
+	      return 100-round($rank*100/@mysqli_num_rows($result1));
 		  
-       return ($rank."/".@mysql_numrows($result1));
+       return ($rank."/".@mysqli_num_rows($result1));
     }else {
 	   return (0);
 	}
@@ -511,7 +512,7 @@ function dersCalismaRank($id,$grafikli,$sadeYuzde=false){
 }
 /*
 dersCalismaOrtRank:
-kullanýcýnýn ders çalýþma ortalama düzeyi
+kullanÄ±cÄ±nÄ±n ders Ã§alÄ±ÅŸma ortalama dÃ¼zeyi
 */
 function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 	global $yol1;	
@@ -521,22 +522,22 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 		where userID>0 
 		group by userID
 		order by say DESC, userID"; 	
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
     if ($result1){
 		$rank=0;
-		 for($i=0; $i<@mysql_numrows($result1);$i++){
+		 for($i=0; $i<@mysqli_num_rows($result1);$i++){
 			 $rank = $i + 1;
-			 if(mysql_result($result1, $i, "userID")==$id ) break;
+			 if(mysqli_result($result1, $i, "userID")==$id ) break;
 		 }
 		 
 	   if($grafikli) 
-	     rankGrafik(@mysql_numrows($result1)-$rank,@mysql_numrows($result1));
+	     rankGrafik(@mysqli_num_rows($result1)-$rank,@mysqli_num_rows($result1));
 	   
-	   if($sadeYuzde and @mysql_numrows($result1)>0)		
-	      return 100-round($rank*100/@mysql_numrows($result1));
+	   if($sadeYuzde and @mysqli_num_rows($result1)>0)		
+	      return 100-round($rank*100/@mysqli_num_rows($result1));
 		  
-       return ($rank."/".@mysql_numrows($result1));
+       return ($rank."/".@mysqli_num_rows($result1));
     }else {
 	   return (0);
 	}
@@ -546,7 +547,7 @@ function dersCalismaOrtRank($id,$grafikli,$sadeYuzde=false){
 /*main*/
  if (isset($_GET['kim']) && is_numeric($_GET['kim']) && $_GET['kim']>0 && getUserIDrate($_SESSION["usern"],$_SESSION["userp"])!="" and kullAdi($_GET["kim"])<>"") {
 		echo "<h3 style=\"color:#000;\">$metin[312]</h3><p style=\"color:#000;\">";
-		echo "<strong>$metin[17] :</strong> ".kullAdi($_GET["kim"])." - <span style='text-transform: capitalize;'>".strtolower(kullGercekAdi($_GET["kim"]))."</span><br/>";
+		echo "<strong>$metin[17] :</strong> ".kullAdi($_GET["kim"])." - <span style='text-transform: capitalize;'>".mb_strtolower(kullGercekAdi($_GET["kim"]))."</span><br/>";
 		echo "<strong>$metin[22] :</strong> ".kullTur($_GET["kim"])."<br/>";
 		echo "<strong>$metin[23] :</strong> ".uyeTarihi($_GET["kim"])."<br/>";
 	if(sonGiris($_GET["kim"])!="")	

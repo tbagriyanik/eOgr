@@ -18,8 +18,8 @@ function Sql($host, $user, $pass, $db) {
     $this->user=$user;
     $this->pass=$pass;
     $this->db=$db;
-    $this->conn = @mysql_connect($this->host, $this->user, $this->pass);
-    @mysql_select_db($this->db, $this->conn);
+    $this->conn = @mysqli_connect($this->host, $this->user, $this->pass, $this->db );
+    //@mysqli_select_db($this->db, $this->conn);
     
 } 
 
@@ -27,7 +27,7 @@ function Sql($host, $user, $pass, $db) {
 // Perform query
 function query($query) {
     
-    if(!$this->result = @mysql_query($query, $this->conn)) {
+    if(!$this->result = @mysqli_query($this->conn,$query)) {
     return false;
     }
     
@@ -40,7 +40,7 @@ function query($query) {
 // Count rows
 function count_rows($result) {
 		
-    return @mysql_num_rows($this->result);
+    return @mysqli_num_rows($this->result);
 	
 }
 
@@ -48,7 +48,7 @@ function count_rows($result) {
 // Fetch row
 function fetch_row() {
 		
-    return @mysql_fetch_array($this->result, MYSQL_ASSOC);
+    return @mysqli_fetch_array($this->result, mysqli_ASSOC);
 	
 }
 	
@@ -56,7 +56,7 @@ function fetch_row() {
 // Get the id for the last inserted row
 function get_id() {
    
-    $this->lastid = @mysql_insert_id($this->conn);
+    $this->lastid = @mysqli_insert_id($this->conn);
     return  $this->lastid;
 	
 }

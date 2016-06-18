@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -24,11 +23,11 @@ konunun sadece kayýtlý kullanýcýlar bilgisi
 function getKonuKayitliKullanici($gelenID){
 	global $yol1;
 	$sql1	= 	"select sadeceKayitlilarGorebilir from eo_4konu where id ='".temizle($gelenID)."'";
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
-	if($result1 and mysql_num_rows($result1)==1) {
-		mysql_fetch_row($result1);
-		return mysql_result($result1,0,"sadeceKayitlilarGorebilir");
+	if($result1 and mysqli_num_rows($result1)==1) {
+		mysqli_fetch_row($result1);
+		return mysqli_result($result1,0,"sadeceKayitlilarGorebilir");
 	}
 	else
 		return "1";

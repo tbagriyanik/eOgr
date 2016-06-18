@@ -63,21 +63,21 @@ class flood_protection {
 
   // function to connect to MySQL
   function db_connect() {
-    $this -> link = @mysql_connect($this -> host, $this -> username, $this -> password); // connect to MySQL
+    $this -> link = @mysqli_connect($this -> host, $this -> username, $this -> password, $this -> db); // connect to MySQL
     if(!$this -> link) { // test connection
       return false;
     }
-    // select db and check it worked
-    if(mysql_select_db($this -> db)) {
+    /* // select db and check it worked
+    if(mysqli_select_db($this -> db)) {
       return true;
-    }
+    } */
     return false;
   }
 
   // add user ip address to database
   function register_user($ip) {
     // insert ip and currnt time into database
-    $result = mysql_query('INSERT INTO `eo_floodprotection` (`IP`,`TIME`) VALUES(\' '. mysql_real_escape_string( $ip, $this -> link ) . '\', \''. time() .'\') ', $this -> link);
+    $result = mysqli_query($this -> link,'INSERT INTO `eo_floodprotection` (`IP`,`TIME`) VALUES(\' '. mysqli_real_escape_string( $ip, $this -> link ) . '\', \''. time() .'\') ');
     if(!$result) {
       return false;
     }
@@ -105,8 +105,8 @@ class flood_protection {
 
   function user_in_db($ip) {
     // query db to see if there in
-    $result = @mysql_query('SELECT `TIME` FROM `eo_floodprotection` WHERE `IP` = \' '. mysql_real_escape_string( $ip, $this -> link ) . '\' LIMIT 1', $this -> link);
-    if(@mysql_num_rows($result) > 0) { // if more than 0 records are returned there in
+    $result = @mysqli_query($this -> link,'SELECT `TIME` FROM `eo_floodprotection` WHERE `IP` = \' '. mysqli_real_escape_string( $ip, $this -> link ) . '\' LIMIT 1');
+    if(@mysqli_num_rows($result) > 0) { // if more than 0 records are returned there in
       return true;
     }
     return false; // other wise return false
@@ -114,8 +114,8 @@ class flood_protection {
 
   function user_flooding($ip) {
     // query db to see if there flooding
-    $result = @mysql_query('SELECT `TIME` FROM `eo_floodprotection` WHERE `IP` = \' '. mysql_real_escape_string( $ip, $this -> link ) . '\' AND `TIME` >= ' . (time() - $this ->  secs) . ' LIMIT 1', $this -> link);
-    if(@mysql_num_rows($result) > 0) { // if more than 0 records are returned there flooding
+    $result = @mysqli_query($this -> link,'SELECT `TIME` FROM `eo_floodprotection` WHERE `IP` = \' '. mysqli_real_escape_string( $ip, $this -> link ) . '\' AND `TIME` >= ' . (time() - $this ->  secs) . ' LIMIT 1');
+    if(@mysqli_num_rows($result) > 0) { // if more than 0 records are returned there flooding
       return true;
     }
     return false; // other wise return false
@@ -123,16 +123,16 @@ class flood_protection {
 
   function update_user($ip) {
     // query db to update the user last request
-    $result = mysql_query('UPDATE `eo_floodprotection` SET `TIME` = \'' . time() . '\' WHERE `IP` = \' '. mysql_real_escape_string( $ip, $this -> link ) . '\'', $this -> link);
+    $result = mysqli_query($this -> link,'UPDATE `eo_floodprotection` SET `TIME` = \'' . time() . '\' WHERE `IP` = \' '. mysqli_real_escape_string( $ip, $this -> link ) . '\'' );
   }
   
   function remove_old_users() {
     // Query db to remove all the old users
-    mysql_query('DELETE FROM `eo_floodprotection` WHERE `TIME` <= \'' . (time()- $this -> keep_secs) . '\'', $this -> link);
+    mysqli_query($this -> link,'DELETE FROM `eo_floodprotection` WHERE `TIME` <= \'' . (time()- $this -> keep_secs) . '\'');
   }
 
   function close_db() {
-    mysql_close($this -> link);
+    mysqli_close($this -> link);
   }
 }
 

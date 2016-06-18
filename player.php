@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -21,15 +20,15 @@ Lesser General Public License for more details.
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>eOgr - Media Player</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <?php
 
 if(!empty($_GET["id"])){
-	$dosyaAdi = idtoDosyaAdi(RemoveXSS($_GET["id"]));
+	$dosyaAdi = idtoDosyaAdi($_GET["id"]);
 	$yol = ($_source1."/".$_uploadFolder."/".$dosyaAdi);
-	downloadSayac(RemoveXSS($_GET["id"]));	
+	downloadSayac($_GET["id"]);	
 }else
 	die("?");
 
@@ -85,7 +84,7 @@ if(!empty($_GET["id"])){
 <?php		
 		break;
 		case "mp3":
-		//mp3'ler burada değil artık
+		//mp3'ler burada deÄŸil artÄ±k
 ?>
 <object type="audio/mpeg" data="<?php echo $yol;?>" width="465" height="320">
   <param name="src" value="<?php echo $yol;?>">
@@ -97,7 +96,7 @@ if(!empty($_GET["id"])){
 		case "avi":
 		case "asf":
 		case "mp4":
-		//mp4'ler burada değil artık
+		//mp4'ler burada deÄŸil artÄ±k
 		case "mpg":
 		case "mpeg":
 		case "mkv":

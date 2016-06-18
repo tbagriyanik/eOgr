@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -104,10 +103,10 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 			} else {
 				$olayVar = buTarihtekiOlayListesi($onday,$month,$year,$myEkle);
 				if ($onday==date('d') && $month==date('m') && empty($olayVar) ) {
-					//bugünü iþaretle
+					//bugÃ¼nÃ¼ iÅŸaretle
 					echo "<td class=\"today\">{$onday}</td>";
 				} elseif ($onday==date('d') && $month==date('m') && !empty($olayVar) ) {
-					//bugünü ve olay var ise iþaretle
+					//bugÃ¼nÃ¼ ve olay var ise iÅŸaretle
 					echo "<td class=\"date_has_event today\">{$onday}
 					<div class=\"events\">
 						<ul>
@@ -116,7 +115,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 					</div>					
 					</td>";
 				} elseif (!empty($olayVar)) {
-					//bu günde olaylar varsa
+					//bu gÃ¼nde olaylar varsa
 					echo "<td class=\"date_has_event\">{$onday}
 					<div class=\"events\">
 						<ul>
@@ -125,7 +124,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
 					</div>
 					</td>";
 				} else {
-					//boþ bir gün
+					//boÅŸ bir gÃ¼n
 					echo "<td>{$onday}</td>";
 				}
 				$onday++;
@@ -157,7 +156,7 @@ function print_calendar( $month, $year, $weekdaytostart = 0 ) {
         <link rel="stylesheet" href="master.css" type="text/css" media="screen" charset="utf-8" />
         <script src="../jquery-1.9.1.min.js" type="text/javascript"> </script>
         <script src="coda.js" type="text/javascript"> </script>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         </head>
         <body>
 <div style="margin:0 auto;">

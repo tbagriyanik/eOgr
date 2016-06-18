@@ -5,8 +5,8 @@ body {
 }
 tt {
 	font-family: Consolas, "Lucida Console", Monaco, monospace;
-	color:#900;
-	background-color:#CCCC99;
+	color: #900;
+	background-color: #CCCC99;
 }
 th {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -19,35 +19,37 @@ td {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	color: #333;
 	font-size: 11pt;
-	background-color: #CC9;
+	background-color: #F5E2E2;
+	padding:2px;
+	b_order:1px solid #A5DCF7;
 }
 .LinkYan {
 	color: #333;
-	border:thin solid #CCC;
+	border: thin solid #CCC;
 	background-image: url(../img/off_bg.gif);
 	background-repeat: repeat-x;
 	background-position: left top;
-	background-color:#FFF;
-	list-style-type:none;
+	background-color: #F8F0C0;
+	list-style-type: none;
 	padding: 5px;
-	float:left;
-	margin-bottom:10px;
-	display:inline-block;
+	float: left;
+	margin-bottom: 10px;
+	display: inline-block;
 }
 .LinkYan:hover {
 	background: url(../img/on_bg.gif) repeat-x top left;
-	background-color:#FFF;
+	background-color: #FFF;
 }
 .LinkYanAktif {
 	color: #000;
 	padding: 5px;
 	list-style-type: none;
-	background:  url(../img/on_bg.gif) repeat-x top left;
-	background-color:#FFF;
-	border:thin solid #CCC;
-	float:left;
-	display:inline-block;
-	margin-bottom:10px;
+	background: url(../img/on_bg.gif) repeat-x top left;
+	background-color: #FFF;
+	border: thin solid #CCC;
+	float: left;
+	display: inline-block;
+	margin-bottom: 10px;
 }
 .tabloAlt {
 	background-color: #b88;
@@ -62,7 +64,7 @@ td {
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 #oda {
 	background-color: #FFF;
@@ -103,7 +105,7 @@ td {
 	border-left-color: #900;
 }
 #hata li, ul {
-	list-style-type:none;
+	list-style-type: none;
 }
 #tamam {
 	color: #333;
@@ -162,16 +164,16 @@ td {
 	top: 5px;
 }
 #lgout {
-	position:absolute;
-	top:12px;
-	width:auto;
-	height:auto;
-	z-index:1;
+	_position: absolute;
+	top: 12px;
+	width: auto;
+	height: auto;
+	z-index: 1;
 	left: auto;
-	right: 12px;
+	right: auto;
 	background-image: url(../img/close.gif);
 	background-repeat: no-repeat;
-	background-position: 3px 3px;
+	background-position: 3px 5px;
 	padding-top: 3px;
 	padding-right: 5px;
 	padding-bottom: 5px;
@@ -184,12 +186,12 @@ td {
 	vertical-align: text-top;
 }
 #sumb {
-	cursor:pointer;
-	border:outset 1px #ccc;
-	background:#999;
-	color:#444;
-	font-weight:bold;
-	background:url(../img/buttonbg.png) repeat-x left top;
+	cursor: pointer;
+	border: outset 1px #ccc;
+	background: #999;
+	color: #444;
+	font-weight: bold;
+	background: url(../img/buttonbg.png) repeat-x left top;
 	padding-top: 2px;
 	padding-right: 5px;
 	padding-bottom: 2px;
@@ -247,14 +249,14 @@ td {
 #TabbedPanelsContent {
 	padding: 5px;
 	border: 2px groove #930;
-	overflow:auto;
+	overflow: auto;
 }
 #hintList {
-	position:absolute;
-	width:250px;
-	background-color:#FFDF00;
-	margin:0;
-	padding:0;
+	position: absolute;
+	width: 250px;
+	background-color: #FFDF00;
+	margin: 0;
+	padding: 0;
 	z-index: auto;
 	left: 149px;
 	top: 64px;
@@ -262,8 +264,8 @@ td {
 	font-size: 9px;
 }
 #hintList ul {
-	list-style-type:none;
-	padding:0;
+	list-style-type: none;
+	padding: 0;
 	font-size: 9pt;
 	margin-top: 0;
 	margin-right: 0;
@@ -275,13 +277,13 @@ td {
 	font-size: 10px;
 }
 #hintList ul li {
-	list-style-type:none;
-	display:block;
-	margin:0;
-	padding:2px;
-	cursor:pointer;
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 2px;
+	cursor: pointer;
 	font-size: 10px;
-	color:#2A1F00;
+	color: #2A1F00;
 }
 #row1 {
 	background-color: #CCC;
@@ -290,12 +292,12 @@ td {
 	background-color: #CF9;
 }
 input[type=button], input[type=submit], button {
-	cursor:pointer;
-	border:outset 1px #ccc;
-	background:#999;
-	color:#444;
-	font-weight:bold;
-	background:url(../img/buttonbg.png) repeat-x left top;
+	cursor: pointer;
+	border: groove 1px #ccc;
+	background: #999;
+	color: #444;
+	font-weight: bold;
+	background: url(../img/buttonbg.png) repeat-x left top;
 	padding-top: 2px;
 	padding-right: 5px;
 	padding-bottom: 2px;
@@ -304,51 +306,51 @@ input[type=button], input[type=submit], button {
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 input[type=text], input[type=password], select, textarea {
-	border:1px inset #666;
-	color:#444;
+	border: 1px inset #666;
+	color: #444;
 	background-color: #d6e7ef;
 	padding: 2px;
 	-moz-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 input[type=checkbox] {
-	cursor:pointer;
+	cursor: pointer;
 }
 input[type=radio] {
-	cursor:pointer;
+	cursor: pointer;
 }
 #searchterm, #searchterm2 {
-	border-color:#B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
-	border-style:solid;
-	border-width:1px;
-	color:#333333;
-	font-size:11px;
-	padding-right:18px;
-	background:url(../img/view.png) no-repeat right #D6E7EF;
+	border-color: #B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
+	border-style: solid;
+	border-width: 1px;
+	color: #333333;
+	font-size: 11px;
+	padding-right: 18px;
+	background: url(../img/view.png) no-repeat right #D6E7EF;
 	-moz-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 label {
 	cursor: pointer;
 }
 .ikiKolon {
 	position: relative;
-	float:left;
-	width:46%;
+	float: left;
+	width: 46%;
 	border-top: 5px solid #F90;
 	min-width: 10em;
 	margin: 0.5em;
-	background-color:#FFC;
-	color:#000;
+	background-color: #FFC;
+	color: #000;
 	padding-top: 10px;
 	padding-right: 5px;
 	padding-bottom: 5px;
@@ -357,19 +359,19 @@ label {
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 .ikiKolon ul li {
-	color:	#000;
+	color: #000;
 }
 .ikiKolon a {
-	color:	#00f;
+	color: #00f;
 }
 .tekKolon a {
-	color:	#00f;
+	color: #00f;
 }
 tr a {
-	color:	#00f;
+	color: #00f;
 }
 .ikiKolon table {
 	text-align: center;
@@ -378,11 +380,11 @@ tr a {
 }
 .tekKolon {
 	position: relative;
-	float:left;
-	width:94.5%;
+	float: left;
+	width: 94.5%;
 	border-top: 5px solid #6C0;
-	background-color:#FFC;
-	color:#000;
+	background-color: #FFC;
+	color: #000;
 	min-width: 10em;
 	margin-top: 0.5em;
 	margin-right: 0.5em;
@@ -396,46 +398,46 @@ tr a {
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 .aramaDiv {
 	float: right;
-	margin-top:5px;
-	margin-right:5px;
+	margin-top: 5px;
+	margin-right: 5px;
 }
 #contact-wrapper {
-	width:auto;
+	width: auto;
 }
 fieldset {
-	margin:5px;
+	margin: 5px;
 	padding: 5px;
 }
 #contact-wrapper div {
-	margin:1em 0;
-	width:600px;
+	margin: 1em 0;
+	width: 600px;
 }
 #contact-wrapper label {
-	display:inline;
-	float:none;
-	font-size:11px;
-	width:auto;
-	margin-left:5px;
+	display: inline;
+	float: none;
+	font-size: 11px;
+	width: auto;
+	margin-left: 5px;
 }
 form#form1 input, userPassword2 {
-	border-color:#B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
-	border-style:solid;
-	border-width:1px;
-	padding:3px;
-	font-size:11px;
-	color:#333;
+	border-color: #B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
+	border-style: solid;
+	border-width: 1px;
+	padding: 3px;
+	font-size: 11px;
+	color: #333;
 }
 form#form1 textarea {
-	font-family:Arial, Tahoma, Helvetica, sans-serif;
-	font-size:100%;
-	padding:0.6em 0.5em 0.7em;
-	border-color:#B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
-	border-style:solid;
-	border-width:1px;
+	font-family: Arial, Tahoma, Helvetica, sans-serif;
+	font-size: 100%;
+	padding: 0.6em 0.5em 0.7em;
+	border-color: #B7B7B7 #E8E8E8 #E8E8E8 #B7B7B7;
+	border-style: solid;
+	border-width: 1px;
 }
 label.error {
 	color: #F00;
@@ -443,21 +445,20 @@ label.error {
 	font-weight: bold;
 	background-image: url(../img/error.png);
 	background-repeat: no-repeat;
-	background-position:left top;
+	background-position: left top;
 	padding-left: 24px;
 	padding-top: 8px;
 	cursor: pointer;
 }
 .yorumItem {
-	margin: 0px;
-	width: 750px;
+	margin: 0px;	
 	border-left-width: 5px;
 	border-left-style: solid;
 	border-left-color: #C9F;
 	border-top-width: 2px;
 	border-top-style: solid;
 	border-top-color: #C9F;
-	border-bottom-width:1px;
+	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: #666;
 	line-height: 20px;
@@ -465,45 +466,45 @@ label.error {
 	padding-right: 15px;
 	padding-bottom: 3px;
 	padding-left: 3px;
-	background-color:#fee;
-	color:#000;
-	font-size:11px;
+	background-color: #fee;
+	color: #000;
+	font-size: 11px;
 	border-right-width: 1px;
 	border-right-style: solid;
 	border-right-color: #666;
 }
 .yorumItem a:link {
-	color:#00F !important;
+	color: #00F !important;
 }
 .yorumItem a:visited {
-	color:#900 !important;
+	color: #900 !important;
 }
 .yorumItem a:hover {
-	color:#03F !important;
+	color: #03F !important;
 }
 /* Tooltip */
 
 #tooltip {
-	position:absolute;
-	z-index:9999;
-	color:#fff;
-	font-size:10px;
-	width:200px;
+	position: absolute;
+	z-index: 9999;
+	color: #fff;
+	font-size: 10px;
+	width: 200px;
 }
 #tooltip .tipHeader {
-	height:8px;
-	background:url(../img/tipHeader.gif) no-repeat;
+	height: 8px;
+	background: url(../img/tipHeader.gif) no-repeat;
 }
 #tooltip .tipBody {
-	background-color:#000;
-	padding:5px 5px 5px 15px;
+	background-color: #000;
+	padding: 5px 5px 5px 15px;
 }
 #tooltip .tipFooter {
-	height:8px;
-	background:url(../img/tipFooter.gif) no-repeat;
+	height: 8px;
+	background: url(../img/tipFooter.gif) no-repeat;
 }
 .clear {
-	clear:both
+	clear: both
 }
 .external {
 	color: #0000ff;
@@ -519,8 +520,8 @@ label.error {
 	padding: 5px;
 	cursor: pointer;
 	position: relative;
-	margin:5px;
-	font-size:12px;
+	margin: 5px;
+	font-size: 12px;
 }
 .msg_body {
 	padding: 5px 10px 15px;
@@ -529,8 +530,8 @@ label.error {
 	padding: 5px;
 	cursor: pointer;
 	position: relative;
-	margin:5px;
-	font-size:12px;
+	margin: 5px;
+	font-size: 12px;
 }
 .msg_body2 {
 	padding: 5px 10px 15px;
@@ -539,9 +540,9 @@ label.error {
 
 .more {
 	position: relative;
-	float:right;
-	font-weight:bold;
-	display:block;
+	float: right;
+	font-weight: bold;
+	display: block;
 	background-image: url(../img/page-next.gif);
 	background-repeat: no-repeat;
 	background-position: 3px 3px;
@@ -549,21 +550,16 @@ label.error {
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 18px;
-	margin-right:5px;
-	margin-bottom:5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 }
 h1, h2, h3 {
 	text-shadow: gray 0.1em 0.1em 0.1em;
 }
-#cevapVer {
-	padding:3px;
-	margin: 3px;
-	font-weight: bolder;
-}
 .ozetBilgi {
-	margin-top:3px;
-	margin-left:15px;
-	font-size:14px;
+	margin-top: 3px;
+	margin-left: 15px;
+	font-size: 14px;
 }
 #browserWarning {
 	background: #FFDDDD;
@@ -571,28 +567,34 @@ h1, h2, h3 {
 	border-top: solid 1px #7F0000;
 	border-bottom: solid 1px #7F0000;
 	text-align: center;
-	z-index:5000;
-	padding:5px 0px 5px 0px;
-	margin:3px;
-	margin-bottom:10px;
-	margin-left:10px;
+	z-index: 5000;
+	padding: 5px 0px 5px 0px;
+	margin: 3px;
+	margin-bottom: 10px;
+	margin-left: 10px;
 }
 .aramaDiv strong {
 	color: #FFF;
 }
 #dilSecimi {
-	position: absolute;
-	visibility: hidden;
+	width: 100px;
 	margin: 5px;
-	margin-top:-25px;
-	margin-left:150px;
 	padding: 5px;
 	background: #D6E7EF;
 	border: 1px solid #5970B2;
-	z-index:999;
+	z-index: 999;
 	-moz-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-border-radius: 3px;
-	border-radius:3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
+	text-align: center;
+}
+.rss-tag-icon {
+	background-image: url(../img/rssIcon.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+	margin: 0 5px 0 0;
+	height: 25px;
+	width: 32px;
 }

@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -14,7 +13,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 @session_start();
-@header("Content-Type: text/html; charset=iso-8859-9"); 
+@header("Content-Type: text/html; charset=utf-8"); 
 
      $taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
@@ -35,7 +34,7 @@ function baglan2()
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysql_connect($_host, $_username, $_password);
+    return 	@mysqli_connect($_host, $_username, $_password);
 }
 
 if(!baglan2())   
@@ -43,7 +42,7 @@ if(!baglan2())
  
 $yol1 = baglan2();
 
-	if (!@mysql_select_db($_db, $yol1))
+	if (!$yol1)
 	{
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
@@ -80,11 +79,11 @@ function getUserIDrate($usernam, $passwor)
 	$usernam = substr(temizle2($usernam),0,15);
     $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle2($usernam)."' AND userPassword='".temizle2($passwor)."' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-       return (mysql_result($result1, 0, "id"));
+       return (mysqli_result($result1, 0, "id"));
     }else {
 	   return ("");
 	}
@@ -98,23 +97,23 @@ function oyGonder($userID, $konuID, $rate){
 				
     $sql1 = "SELECT id, userID, konuID FROM eo_rating where userID='".temizle2($userID)."' AND konuID='".temizle2($konuID)."' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-        $kayno = mysql_result($result1, 0, "id");
+        $kayno = mysqli_result($result1, 0, "id");
 	   
 		$datem	=	date("Y-n-j H:i:s");		
 			
     	$sql2 = "update eo_rating SET value='$rate', rateDate='$datem' where id = '" .$kayno. "' LIMIT 1";
-	    $result2 = mysql_query($sql2, $yol1); 
+	    $result2 = mysqli_query($yol1,$sql2); 
 		
     }else {
 			
 		$datem	=	date("Y-n-j H:i:s");		
 			
     	$sql2 = "insert into eo_rating VALUES (NULL , '$userID', '$konuID' , '$rate', '$datem')"; 		
-	    $result2 = mysql_query($sql2, $yol1); 
+	    $result2 = mysqli_query($yol1,$sql2); 
 		
 	   	return ("");
 	}
@@ -130,11 +129,11 @@ function oyGetir($userID, $konuID){
 	
     $sql1 = "SELECT value FROM eo_rating where userID='".temizle2($userID)."' AND konuID='".temizle2($konuID)."' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-	   return mysql_result($result1, 0, "value");
+	   return mysqli_result($result1, 0, "value");
 	}
 	return 0;
 }
@@ -147,11 +146,11 @@ function oyToplam($konuID){
 	
     $sql1 = "SELECT count(*) as Toplam FROM eo_rating where konuID='".temizle2($konuID)."'"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-	   return mysql_result($result1, 0, "Toplam");
+	   return mysqli_result($result1, 0, "Toplam");
 	}
 	return 0;
 }
@@ -164,11 +163,11 @@ function oyOrtalama($konuID){
 	
     $sql1 = "SELECT avg(value) as Ort FROM eo_rating where konuID='".temizle2($konuID)."'"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1,$sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-	   return mysql_result($result1, 0, "Ort");
+	   return mysqli_result($result1, 0, "Ort");
 	}
 	return 0;
 }
@@ -190,11 +189,11 @@ if (!empty($id)) {
 		}
 		if (isset($_SESSION["usern"]) && oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))>0) {
 		 echo "
-		 <p>".$metin[249]." :</p>
+		 <p style='margin-top:5px;'>".$metin[249]." :</p>
 		  <ul class=\"rate".oyGetir(getUserIDrate($_SESSION["usern"],$_SESSION["userp"]), temizle2($id ))."\">";
 		 } else {
 		 echo "
-		 <p>".$metin[248]." :</p>
+		 <p style='margin-top:5px;'>".$metin[248]." :</p>
 		  <ul>";
 		}
 		

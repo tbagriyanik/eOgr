@@ -14,26 +14,26 @@ $aUsers =array();
 $aID 	=array();
 $aInfo	=array();
 
-	$result = mysql_query("select konuAdi from eo_4konu order by id");
-	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
+	$result = mysqli_query($yol, "select konuAdi from eo_4konu order by id");
+	for($i = 0; $sonuc = mysqli_fetch_assoc($result); $i++) 
 	{
-		$aUsers[$i] =iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["konuAdi"]))); 
+		$aUsers[$i] =temizle(($sonuc ["konuAdi"])); 
 	};
 	
-	$result = mysql_query("select id from eo_4konu order by id");
-	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
+	$result = mysqli_query($yol, "select id from eo_4konu order by id");
+	for($i = 0; $sonuc = mysqli_fetch_assoc($result); $i++) 
 	{
-		$aID[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["id"])));
+		$aID[$i] = temizle(($sonuc ["id"]));
 	};
 
-	$result = mysql_query("select eo_3ders.dersAdi as dersAdi from eo_3ders,eo_4konu where eo_4konu.dersID=eo_3ders.id order by eo_4konu.id");
-	for($i = 0; $sonuc = mysql_fetch_assoc($result); $i++) 
+	$result = mysqli_query($yol, "select eo_3ders.dersAdi as dersAdi from eo_3ders,eo_4konu where eo_4konu.dersID=eo_3ders.id order by eo_4konu.id");
+	for($i = 0; $sonuc = mysqli_fetch_assoc($result); $i++) 
 	{
-		$aInfo[$i] = iconv( "ISO-8859-9","UTF-8",temizle(htmlentities($sonuc ["dersAdi"])));
+		$aInfo[$i] = temizle(($sonuc ["dersAdi"]));
 	};
 	
 	if(!empty($_GET['input']))
-		$input = strtolower($_GET['input']);
+		$input = mb_strtolower($_GET['input']);
 	else	
 		$input = "";
 																					
@@ -52,7 +52,7 @@ $aInfo	=array();
 			// not necessary if the results are coming from mysql
 			//
 
-			if (strtolower(substr(utf8_decode($aUsers[$i]),0,$len)) == $input || strpos( strtolower($aUsers[$i]),$input) > 0 )
+			if (mb_strtolower(substr(($aUsers[$i]),0,$len)) == $input || strpos( mb_strtolower($aUsers[$i]),$input) > 0 )
 			{
 				$count++;
 				$aResults[] = array( "id"=> $aID[$i] ,"value"=>$aUsers[$i], "info"=>$aInfo[$i] );

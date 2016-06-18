@@ -1,5 +1,4 @@
 <?php
-
 $siteLink = "";
 
 class RSS
@@ -13,19 +12,21 @@ class RSS
 	DEFINE ('DB_NAME', $_db);
 
 // Make the connnection and then select the database.
-$dbc = @mysql_connect (DB_HOST, DB_USER, DB_PASSWORD) OR die ('Could not connect to MySQL: ' . mysql_error() );
-mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_error() );
-
+$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to MySQL: ' . mysqli_error() );
+//mysqli_select_db (DB_NAME) OR die ('Could not select the database: ' . mysqli_error() );
+mysqli_set_charset('utf8'); //UNUTMUŞUM
 	}
 	
 	public function GetFeed()
 	{
+		ob_clean();
+		header("Content-Type: application/rss+xml; charset=utf-8");
 		return $this->getDetails() . $this->getItems();
 	}
 	
 	private function dbConnect()
 	{
-		mysql_connect (DB_HOST, DB_USER, DB_PASSWORD);
+		mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	}
 	
 	private function smileAdd($gelen){
@@ -57,18 +58,18 @@ mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_erro
 	{
 		global $siteLink;
 		$detailsTable = "eo_webref_rss_details";
-		$this->dbConnect($detailsTable);
+
 		$query = "SELECT * FROM ". $detailsTable;
-		$result = mysql_query ($query);
-		
-		while($row = mysql_fetch_array($result))
+		$result = mysqli_query (mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME),$query); 
+		$details ="";
+		while($row = mysqli_fetch_array($result))
 		{
-			$details = '<?xml version="1.0" encoding="ISO-8859-9" ?>
+			$details = '<?xml version="1.0" encoding="UTF-8"?>
 					<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 						<channel>
 							<title>'. $row['title'] .'</title>
 							<link>'. $row['link'] .'</link>
-							<description>'. ($row['description']) .'</description>
+							<description>'.($row['description']) .'</description>
 							<language>'. $row['language'] .'</language>							
 							<atom:link href="'.$row['link'].'/rss.php" rel="self" type="application/rss+xml" />
 ';
@@ -81,18 +82,18 @@ mysql_select_db (DB_NAME) OR die ('Could not select the database: ' . mysql_erro
 	{
 		global $siteLink;
 		$itemsTable = "eo_webref_rss_items";
-		$this->dbConnect($itemsTable);
+		
 		$query = "SELECT * FROM ". $itemsTable;
-		$result = mysql_query ($query);
+		$result = mysqli_query (mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) ,$query);
 		$items = '';
 		$i = 0;
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 			$items .= '<item>
 						 <title><![CDATA['. $row["title"] .']]></title>
 						 <link>'. ((!empty($row["link"]))?$siteLink.'/'.$row["link"]:$siteLink) .'</link>
 						 <guid isPermaLink="false">'. $row["title"] .'</guid>
-						 <description><![CDATA['. $this->smileAdd($row["description"]) .']]></description>
+						 <description><![CDATA['. $this->smileAdd(($row["description"])) .']]></description>
 						 <pubDate>'. date("D, d M Y H:i:s O", strtotime($row["pubDate"])) .'</pubDate>
 					 </item>';
 			$i++;		 

@@ -1,10 +1,9 @@
-<?php
+ï»¿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -19,30 +18,44 @@ Lesser General Public License for more details.
   require("conf.php");  		
   $time = getmicrotime();
   checkLoginLang(false,true,"newUser.php");	   
-  $seciliTema=temaBilgisi();	
+  $seciliTema=temaBilgisi();
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="tarik bagriyanik">
+<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+<link href="theme/docs.min.css" rel="stylesheet">
+<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="theme/justified-nav.css" rel="stylesheet">
+<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+<title>eOgr -<?php echo $metin[64]?></title>
+<link rel="icon" href="img/favicon.ico">
+<link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[64]?></title>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-
+<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+<meta name="description" content="eOgr - Open source online education, elearning project" />
+<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
-<link rel="shortcut icon" href="img/favicon.ico"/>
+<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript" src="lib/jquery.cookie.js"></script>
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript">  
 /*
 test:
-kullanıcı adı testi
+kullanÄ±cÄ± adÄ± testi
 */
 function test(){  
     val = document.getElementById("userName").value;  
@@ -50,16 +63,13 @@ function test(){
 }  
 /*
 test2:
-kullanıcı mail adresi testi
+kullanÄ±cÄ± mail adresi testi
 */
 function test2(){  
     val = document.getElementById("email").value;  
     validate2(val, {'target':'msg2','preloader':'pr2'});  
 }  
 </script>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <style type="text/css">
 /*register texboxes*/
 dl {
@@ -68,7 +78,7 @@ dl {
 }
 dt {
 	clear: both;
-	float:left;
+	float: left;
 	width: 160px;
 	padding: 4px 0 2px 0;
 	text-align: left;
@@ -88,9 +98,9 @@ dd {
 	border: 1px solid #c93;
 	padding: 10px 12px;
 	background: #ffc url(img/pointer.gif) no-repeat -10px 5px;
-	color:#000;
-	text-align:justify;
-	font-size:16px;
+	color: #000;
+	text-align: justify;
+	font-size: 16px;
 }
 .hint .hint-pointer {
 	position: absolute;
@@ -144,80 +154,13 @@ function prepareInputsForHints() {
 }
 addLoadEvent(prepareInputsForHints);
 </script>
+<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 </head>
 <body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
-      </div>
-      <div class="nav">
-        <?php
-				 require("menu.php");
-                ?>
-        <div class="l"> </div>
-        <div class="r">
-          <div>&nbsp;</div>
-        </div>
-      </div>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
+<?php require("menu.php");?>
+<div class="container">
+  <div class="col-lg-12"><div class="PostContent">
+  
                 <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[64]?> </span> </h2>
                 <div class="PostContent">
                   <?php
@@ -267,7 +210,7 @@ if ((!empty($_POST["ccode2"]) and !empty($_SESSION["ccode2"])) and $_POST["ccode
 					trackUser($currentFile,"success,NewUser",$_POST['userName']);
 					echo "<br/>$metin[7], ".temizle($_POST["realN"])."<br/><br/>";	
 					echo ($metin[408]); 
-					$_SESSION["tur"] 	= "0";//varsayılan öğrencidir...
+					$_SESSION["tur"] 	= "0";//varsayÄ±lan Ã¶ÄŸrencidir...
 					$_SESSION["usern"] 	= $_POST['userName'];
 					$_SESSION["userp"] 	= sha1($_POST['userPassword1']);
 					trackUser($currentFile,"success,Login",$_SESSION["usern"]);
@@ -275,11 +218,11 @@ if ((!empty($_POST["ccode2"]) and !empty($_SESSION["ccode2"])) and $_POST["ccode
 						if(ayarGetir("ayar4char")!="") {
 						if (newUserMail($_POST['userName'], $_POST['email'])=="allOK")
 							 {
-								 echo "<br/><br/>Yeni &Uuml;yelik Epostası Başarılıdır.";
+								 echo "<br/><br/>Yeni &Uuml;yelik EpostasÄ± BaÅŸarÄ±lÄ±dÄ±r.";
 							 }
 							 else
 							 {
-								 echo "<br/><br/>Yeni &Uuml;yelik Epostası Başarılı olamadı!";
+								 echo "<br/><br/>Yeni &Uuml;yelik EpostasÄ± BaÅŸarÄ±lÄ± olamadÄ±!";
 							 }
 						}
 				   }
@@ -293,7 +236,7 @@ if ((!empty($_POST["ccode2"]) and !empty($_SESSION["ccode2"])) and $_POST["ccode
 require_once("lib/phplivex.php");
 /*
 validate:
-yeni kullanıcı adı testi
+yeni kullanÄ±cÄ± adÄ± testi
 */
 function validate($username){ 
   global $metin;
@@ -306,7 +249,7 @@ function validate($username){
 }  
 /*
 validate2:
-yeni kullanıcı mail adresi testi
+yeni kullanÄ±cÄ± mail adresi testi
 */
 function validate2($email){ 
   global $metin;
@@ -323,36 +266,7 @@ $ajax->Run();
 ?>
                   <?php echo $metin[165]?> </div>
                 <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <div class="PostContent"> 
+             
                   <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
                   <script type="text/javascript">
 				  $().ready(function() {
@@ -497,24 +411,18 @@ $ajax->Run();
 }	
 ?>
                 </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cleared"></div>
-      <div class="Footer">
-        <div class="Footer-inner">
-          <?php  						
-						 require "footer.php";
-                        ?>
-        </div>
-        <div class="Footer-background"></div>
-      </div>
+                </div>
+  <footer class="footer">
+    <div class="Footer-inner">
+      <?php  require "footer.php";?>
     </div>
-  </div>
-  <div class="cleared"></div>
+  </footer>
 </div>
+<script src="lib/bs_js/bootstrap.js"></script> 
+<script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+?>

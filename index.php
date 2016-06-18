@@ -1,10 +1,9 @@
-<?php  
+﻿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -22,7 +21,7 @@ Lesser General Public License for more details.
 
   require("conf.php");  
   		
-  $time = getmicrotime();
+  $time = microtime(true);
 
   if (empty($_GET["lng"]) && empty($_COOKIE["lng"])){
         $taraDili= browserdili(); 
@@ -89,6 +88,7 @@ Lesser General Public License for more details.
 					"dataFriendActions.php",
 					"askQuestion.php",
 					"lessonsList.php",
+					"chat.php",
 					"install.php"
 					)))
 			header("Location: ".$_GET["oldPath"]);
@@ -125,171 +125,119 @@ Lesser General Public License for more details.
 		@chmod($_uploadFolder,0755);//yetki sorunu var olabilir		
 	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="-1"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
-<meta name="description" content="eOgr - Open source online education, elearning project" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<title>eOgr</title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="lib/script.js"></script>
-<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="lib/facebox/facebox.js"></script>
-<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-        
-      }) 
-    })
-</script>
-<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
-<script type="text/javascript" src="lib/jquery.cookie.js"></script>
-<script type="text/javascript" src="lib/jquery.badBrowser.js"></script>
-<script type="text/javascript">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="tarik bagriyanik">
+	<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+	<link href="theme/docs.min.css" rel="stylesheet">
+	<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="theme/justified-nav.css" rel="stylesheet">
+	<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+	<title>eOgr</title>
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="-1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+	<meta name="description" content="eOgr - Open source online education, elearning project" />
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	
+	<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="lib/script.js"></script>
+	<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
+	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
 		jQuery(document).ready(function($) {
+		  $('a[rel*=facebox]').facebox({
 			
-				//$("#browserWarning").hide(); 
+		  }) 
+		})
+	</script>
+	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
+	<script type="text/javascript" src="lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/jquery.badBrowser.js"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
 				
-				$('#warningClose').click(function(){
-					//setBadBrowser('browserWarning','seen');
-					$.cookie('browserWarning', '1');
-					$('#browserWarning').slideUp('slow');
-					return false;
-				});
+					//$("#browserWarning").hide(); 
 					
-				 if(badBrowser()) {
-					 if(parseInt(getBadBrowser('browserWarning')) == Number.NaN){
-						$('#browserWarning').show(); 
-						$('#browserWarning').slideUp(5);
- 						$('#browserWarning').slideDown(500);
-					 }
-					}else
-					$("#browserWarning").hide();
+					$('#warningClose').click(function(){
+						//setBadBrowser('browserWarning','seen');
+						$.cookie('browserWarning', '1');
+						$('#browserWarning').slideUp('slow');
+						return false;
+					});
+						
+					 if(badBrowser()) {
+						 if(parseInt(getBadBrowser('browserWarning')) == Number.NaN){
+							$('#browserWarning').show(); 
+							$('#browserWarning').slideUp(5);
+							$('#browserWarning').slideDown(500);
+						 }
+						}else
+						$("#browserWarning").hide();
 
-				if(parseInt(getBadBrowser('browserWarning')) > 0) 
-					{
-					$('#browserWarning').slideUp(1);
-					$("#browserWarning").hide();
-					}				
-								
-		})		
-</script>
-<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
-<script type="text/javascript">
-Shadowbox.init({
-    handleOversize: "drag",
-    modal: true
-});
-</script>
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-</head>
-<body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
-      </div>
-      <div class="nav">
-        <?php
+					if(parseInt(getBadBrowser('browserWarning')) > 0) 
+						{
+						$('#browserWarning').slideUp(1);
+						$("#browserWarning").hide();
+						}				
+									
+			})		
+	</script>
+	<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
+	<script type="text/javascript">
+	Shadowbox.init({
+		handleOversize: "drag",
+		modal: true
+	});
+	</script>
+	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+	</head>
+	<body>
+	    <?php
 				 require("menu.php");
-                ?>
-        <div class="l"> </div>
-        <div class="r">
-          <div>&nbsp;</div>
-        </div>
-      </div>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <div class="PostContent">
-                  <?php
+ 		?>
+<div class="container">
+      <div class="well">
+    <p class="lead">
+          <?php
 	
 if($seceneklerimiz[12]=="1"  and $kullaniciSecen[12]=="1" and getStats(16)!="") {
 
 if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 ?>
-                  <div class="ikiKolon">
-                    <div class="BlockHeader-text"><?php echo $metin[84]?></div>
-                    <?php echo getStats(13);?> </div>
-                  <?php
+        <div class="row">
+          <div class="col-lg-6">
+            <h3><?php echo $metin[84]?></h3>
+            <p><?php echo getStats(13);?></p>
+          </div>
+          <?php
 }
 ?>
-                  <div class="ikiKolon">
-                    <div class="BlockHeader-text"><?php echo $metin[675]?></div>
-                    <?php echo getStats(20);?> </div>
-                  <div class="cleared"></div>
-                  <?php
+          <div class="col-lg-6">
+            <h3><?php echo $metin[675]?></h3>
+            <p><?php echo getStats(20);?></p>
+          </div>
+        </div>
+    <?php
 }
 ?>
-                  <?php 				  
+  </div>
+      <div class="row">
+    <div class="col-lg-6">
+          <div class="bs-callout bs-callout-info bg-info" id="callout-helper-bg-specificity">
+        <?php 				  
 					
  if(isset($_SESSION["usern"]))						 
   if (checkRealUser($_SESSION["usern"],$_SESSION["userp"])==-2){
@@ -307,8 +255,8 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 	 } 
 
 ?>
-                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."".$ktut." "?> <?php echo $metin[5]?> </p>
-                  <?php
+        <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."".$ktut." "?> <?php echo $metin[5]?> </p>
+        <?php
 				  if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
 					  if($siniflar!="")
@@ -342,11 +290,11 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 					 if (trim(getStats(6))!="") echo "<strong><img src=\"img/ogrt_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"ogretmen\"/> ".$metin[203]." :</strong> ".getStats(6)."<br/>";
 */	
 				 ?>
-                  <?php
+        <?php
 	echo yaklasanEtkinlikListesi();
 ?>
-                  <br />
-                  <?php
+        <br />
+        <?php
 					 if (trim(getStats(8))!="") echo "<strong>".$metin[204]." :</strong> ".Sec2Time2(round(getStats(8)))."<br/>";
 					 if (trim(getStats(9))!="") echo "<strong>".$metin[205]." :</strong> ".Sec2Time2(round(getStats(9)))."<br/>";
 					 if (trim(getStats(10))!="") echo "<strong>".$metin[206]." :</strong> %".round(getStats(10))."<br/>"; 				
@@ -363,55 +311,38 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 						 }
 					 
 						 ?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </p>
       </div>
-      <div class="cleared"></div>
-      <div class="Block">
-        <div class="Block-tl"></div>
-        <div class="Block-tr"></div>
-        <div class="Block-bl"></div>
-        <div class="Block-br"></div>
-        <div class="Block-tc"></div>
-        <div class="Block-bc"></div>
-        <div class="Block-cl"></div>
-        <div class="Block-cr"></div>
-        <div class="Block-cc"></div>
-        <div class="Block-body">
-          <div class="BlockContent">
-            <div class="BlockContent-body">
-              <div>
-                <?php		
+        </div>
+    <div class="col-lg-6">
+          <div class="bs-callout bs-callout-warning bg-warning" id="callout-helper-bg-specificity">
+        <?php		
 
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 	if(isset($_SESSION["usern"]))
 		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
 ?>
-                <div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div>
-                <ul>
-                  <?php									
+        <div class="BlockHeader-text"><?php echo $metin[153];echo " | <a href='rss.php' target='_blank' class='external'>$metin[480]</a>";?></div>
+        <ul>
+              <?php									
 						if($seceneklerimiz[11]=="1" and $kullaniciSecen[11]=="1") {
 										$sql1	= 	"select id from eo_webref_rss_items ORDER BY pubDate DESC LIMIT 0,".ayarGetir("ayar1int");										
-										$result1= 	@mysql_query($sql1,$yol1);										
+										$result1= 	@mysqli_query($yol1,$sql1);										
 										$i=0;
-										if(@mysql_numrows($result1)>0){
-										while($i<@mysql_numrows($result1)) {	 
+										if(@mysqli_num_rows($result1)>0){
+										while($i<@mysqli_num_rows($result1)) {	 
                                         ?>
-                  <li>
-                    <?php
+              <li>
+            <?php
 												echo "<strong>",haberGetir($i,"title"),"</strong>&nbsp;";
 															  						     
 												$humanRelativeDate = new HumanRelativeDate();
 												$insansi = $humanRelativeDate->getTextForSQLDate(haberGetir($i,"pubDate"));
 
 												echo "<font size='-2'>$insansi</font>";                       ?>
-                    <br />
-                    <p> <?php echo smileAdd(haberGetir($i,"description"))?>
-                      <?php
+            <br />
+            <p> <?php echo smileAdd(haberGetir($i,"description"))?>
+                  <?php
                                                               if (trim(haberGetir($i,"link"))!="")
 																{
 															   echo "<strong><a href='".haberGetir($i,"link")."' class='more'>";
@@ -419,9 +350,9 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 															   echo "</a></strong>";
 															   }
                                                               ?>
-                    </p>
-                  </li>
-                  <?php
+                </p>
+          </li>
+              <?php
 												$i++;
 												}
 												
@@ -432,53 +363,53 @@ if (trim(getStats(13))!=""){//son g&uuml;ncellenen
 						else
 						  echo "<li>$metin[405]</li>";
                                         ?>
-                </ul>
-              </div>
-            </div>
-          </div>
+            </ul>
+      </div>
         </div>
-        <?php
+    <div class="col-lg-12">
+          <?php
 		  if($tur!=-2){
 		  ?>
-        <br />
-        <div class='ikiKolon'>
-          <h2><?php echo $metin[542]?></h2>
-          <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" style="background-color: transparent"></iframe>
-        </div>
-        <div class='ikiKolon'>
-          <h2><?php echo $metin[585]?></h2>
-          <iframe src="lib/iCal/calendar.php?my=1" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45"  style="background-color: transparent"></iframe>
-        </div>
-        <?php
+          <br />
+          <div class='col-lg-6'>
+        <h2><?php echo $metin[542]?></h2>
+        <iframe src="lib/iCal/calendar.php" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45" style="background-color: transparent"></iframe>
+      </div>
+          <div class='col-lg-6'>
+        <h2><?php echo $metin[585]?></h2>
+        <iframe src="lib/iCal/calendar.php?my=1" frameborder="0" scrolling="no" width="430" height="400" align="middle" marginheight="45"  style="background-color: transparent"></iframe>
+      </div>
+          <?php
 	  }
 	  ?>
-        <div class="cleared"></div>
-      </div>
-    </div>
-    <div class="cleared"></div>
-    <div class="Footer">
-      <div class="Footer-inner">
-        <?php  						
+        </div>
+  </div>
+      <footer class="footer">
+    <div class="Footer-inner">
+          <?php  						
 						 require "footer.php";
                         ?>
-        <div id='browserWarning'>"<script>document.write(BrowserDetect.browser+ " " + BrowserDetect.version);</script>" <?php echo $metin[541]?> 
-          <p><a href='http://getfirefox.com'><img src="img/firefox.gif" border="0" style="vertical-align: middle;" alt="FireFox" title="FireFox"/> FireFox</a> <a href='http://www.google.com/chrome'><img src="img/chrome.gif" border="0" style="vertical-align: middle;" alt="Chrome" title="Chrome"/> Chrome</a> <a href='http://www.apple.com/safari/'><img src="img/safari.gif" border="0" style="vertical-align: middle;" alt="Safari" title="Safari"/> Safari</a> <a href='http://www.microsoft.com/windows/downloads/ie/getitnow.mspx'><img src="img/ie.gif" border="0" style="vertical-align: middle;" alt="IE" title="IE"/> Internet Explorer</a></p>
-          <p style="text-align:right !important"><a href='#' id='warningClose'><?php echo $metin[34]?></a></p>
-        </div>
+          <div id='browserWarning'>"<script>document.write(BrowserDetect.browser+ " " + BrowserDetect.version);</script>" <?php echo $metin[541]?>
+        <p><a href='http://getfirefox.com'><img src="img/firefox.gif" border="0" style="vertical-align: middle;" alt="FireFox" title="FireFox"/> FireFox</a> <a href='http://www.google.com/chrome'><img src="img/chrome.gif" border="0" style="vertical-align: middle;" alt="Chrome" title="Chrome"/> Chrome</a> <a href='http://www.apple.com/safari/'><img src="img/safari.gif" border="0" style="vertical-align: middle;" alt="Safari" title="Safari"/> Safari</a> <a href='http://www.microsoft.com/windows/downloads/ie/getitnow.mspx'><img src="img/ie.gif" border="0" style="vertical-align: middle;" alt="IE" title="IE"/> Internet Explorer</a></p>
+        <p style="text-align:right !important"><a href='#' id='warningClose'><?php echo $metin[34]?></a></p>
       </div>
-      <div class="Footer-background"></div>
+        </div>
+  </footer>
     </div>
-  </div>
-</div>
-<div class="cleared"></div>
 <script type="text/javascript">
-<!--
-if (document.getElementById("userP")!=null) 
-   document.getElementById("userP").setAttribute( "autocomplete","off" );
-//-->
-</script>
+				<!--
+				if (document.getElementById("userP")!=null) 
+				   document.getElementById("userP").setAttribute( "autocomplete","off" );
+				//-->
+				</script>
 <?php  						
- require "feedback.php"; 
-?>
+		//		 require "feedback.php"; 
+		?>
+<script src="lib/bs_js/bootstrap.js"></script> 
+<script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+?>

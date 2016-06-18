@@ -7,7 +7,7 @@ body {
 	font-family: Verdana, Geneva, sans-serif;
 	background: white;
 	text-align: center;
-	background: url(body.png) repeat-x;
+	back_ground: url(body.png) repeat-x;
 }
 body h1 {
 	padding-top: 20px;

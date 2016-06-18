@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -68,7 +67,7 @@ Lesser General Public License for more details.
         
         $metin[45]="The database name to be installed :";   
         $metin[46]="Automatic Install";   
-        $metin[47]="To start using the eOgr project, click <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> here</a>!";   
+        $metin[47]="To start using the eOgr project, click <a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> here</a>!";   
   	
 		$metin[48]="<input type='button' onclick='location.href = &quot;siteSettings2.php?dump=1&quot;;' value=\"Click\"/> for the tables' <strong>backup</strong>";   
         $metin[49]="Topic count is";   
@@ -101,7 +100,7 @@ Lesser General Public License for more details.
 		$metin[72]="Database Patch Installation";    
 		$metin[73]="Be sure that you have edited the settings in 'database.php' for MySQL!";    
 		$metin[74]="";    
-		$metin[75]="<p><strong>Developer : </strong>Tarik Bagriyanik<br /><strong>Official Site : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Start Date :</strong> November 2008<br /><br />For Turkish video tutorials click <a href='Video/index.html' target='_blank'>here</a>.</p>";    
+		$metin[75]="<p><strong>Developer : </strong>Tarik Bagriyanik<br /><strong>Official Site : </strong><a href=\"http://yunus.sourceforge.net\" title=\"http://yunus.sourceforge.net\">http://yunus.sourceforge.net</a><br /><strong>Start Date :</strong> November 2008</p>";    
 		$metin[76]="<p>Welcome to <strong>eOgr </strong> project!</p>";    
 		$metin[77]="What is eOgr?";    
 		$metin[78]="Registration Form";    
@@ -147,7 +146,7 @@ Lesser General Public License for more details.
 		$metin[112]=" General Settings";    
 		$metin[113]="Site Options";
 		$metin[114]="School Name (header)";    
-		$metin[115]="Application Version (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";    
+		$metin[115]="Application Version (<a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> index page</a>)";    
 		$metin[116]="Lesson Editing Paging Value (<a href='lessonsEdit.php'>lesson edit</a> page)";    
 		$metin[117]="User Editing Paging Value (<a href='siteSettings.php'>site settings</a> page)";    	
 		$metin[118]="Data Actions Paging Value (<a href='siteSettings.php'>site settings</a> page)";    
@@ -188,7 +187,7 @@ Lesser General Public License for more details.
 		$metin[148]="Change the code";
 		$metin[149]="New User";
 
-		$metin[150]="News Count to Show (<a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> index page</a>)";
+		$metin[150]="News Count to Show (<a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> index page</a>)";
 		$metin[151]="Topic Count to Show (<a href='stats.php'>statistics</a> page)";
 
 		$metin[152]="Repeat Password";
@@ -337,12 +336,12 @@ Lesser General Public License for more details.
 	- Flash player installed <br/><br/>
 
 	 <strong>Installation</strong> (site administrators) :<br/>
-	- This project needs PHP 5<br/>
+	- This project needs PHP 5 - 7<br/>
 	- MySQL 5 database server <br/>
 	- enable .htaccess for security<br/><br/>
 	Older browsers (like Internet Explorer 6) have lots of problems because of Ajax.";				
 		$metin[268]="eOgr is Freeware Open Source project.<br/> Please, read the licence from <a href='http://www.gnu.org/licenses/lgpl-3.0-standalone.html'>LGPL - LESSER GENERAL PUBLIC LICENSE</a>";				
-		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, Artisteer, PHP Manual<br/><br/>
+		$metin[269]="<a href=\"http://www.apachefriends.org/en/xampp.html\">Xampp</a>, <a href=\"http://www.adobe.com\">Adobe Dreamweaver</a>, Notepad++, PHP Manual<br/><br/>
 		Used Classes :<br/>
 - <a href='http://www.brandspankingnew.net/specials/ajax_autosuggest/ajax_autosuggest_autocomplete.html'>autosuggest</a><br/>
 - <a href='http://famspam.com/facebox'>facebox</a><br/>
@@ -399,7 +398,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[293]="Thank you for submitting comment. After confirmation, your comment will be visible. <p style='font-size:11px;'>Teachers and administrators do not need confirmation.</p>";
 		$metin[294]="Comments count waiting for your confirmation";
 		
-		$metin[295]="Invalid source. <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Go Back</a>";
+		$metin[295]="Invalid source. <a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> Go Back</a>";
 		
 		$metin[296]="School";
 		$metin[297]="Class";
@@ -410,7 +409,7 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		$metin[301]="Topic Information";
 		$metin[302]="Last User Works";
 		
-		$metin[303]="Other General Options for <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Main Page</a>";		
+		$metin[303]="Other General Options for <a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> Main Page</a>";		
 		$metin[304]="Enable Chat";
 		$metin[305]="Enable News";
 		$metin[306]="Last unregistered user works and last updated topics";
@@ -532,15 +531,15 @@ For more details <a href=\"INSTALL.html\">click here</a>.
 		
 		$metin[400]="Sorry, unable to login.";
 		$metin[401]="Sorry, unable to respond so quickly! <br/> Please, retry soon.";
-		$metin[402]="To go to the main page, <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a>";
+		$metin[402]="To go to the main page, <a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> click here</a>";
 		$metin[403]="Your user name or password was empty.";
 		$metin[404]="<ul><li>Your user name or password might be wrong.</li><li>Your account may be passive.</li><li>You need to wait for a least 5 minutes to relogin!</li></ul>";
 		$metin[405]="There are no news or this section is disabled.";
 		$metin[406]="Code error! <a href=# onclick=history.go(-1);>Click here</a> to retry.";
-		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a> to go to the main page.";
-		$metin[408]="<font id='uyari'> You are a new member now!</font> To continue, please <a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> click here</a> to go to the main page";
-		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a>  to go to the main page.";
-		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'><img src=\"img/home.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"main\"/> Click here</a> to go to the main page.";
+		$metin[407]="<font id='hata'> There are invalid form values.</font> <ul ><li>User name and password can not be same!<li>No same character repetition in password.<li>Password can not be 12345678.</ul><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> Click here</a> to go to the main page.";
+		$metin[408]="<font id='uyari'> You are a new member now!</font> To continue, please <a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> click here</a> to go to the main page";
+		$metin[409]="<font id='hata'> Unable to finish membership! There are invalid form values.</font><br/><a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> Click here</a>  to go to the main page.";
+		$metin[410]="<font id='hata'> You can not submit again.</font><br/><a href='index.php'><span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span> Click here</a> to go to the main page.";
 		$metin[411]="This user name has been used previously";
 		$metin[412]="This email has been used previously";
 		$metin[413]="New password process is not finished!";

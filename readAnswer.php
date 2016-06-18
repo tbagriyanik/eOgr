@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -27,7 +26,7 @@ Lesser General Public License for more details.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-9'/>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="pragma" content="no-cache"/>
@@ -37,20 +36,20 @@ Lesser General Public License for more details.
 <link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
 <link rel="shortcut icon" href="img/favicon.ico"/>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/bs_js/jquery-2.2.0.js"></script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
 <link href="theme/cevap.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">
 /*
 getHTTPObject:
-Ajax nesnesinin hazırlanması
+Ajax nesnesinin hazÄ±rlanmasÄ±
 */
 function getHTTPObject(){
   var xmlhttp = null;
   if (window.XMLHttpRequest) {
    xmlhttp = new XMLHttpRequest();
    	    if (xmlhttp.overrideMimeType) {
-            xmlhttp.overrideMimeType('text/xml; charset=iso-8859-9');
+            xmlhttp.overrideMimeType('text/xml; charset=UTF-8');
          }
   } else if(window.ActiveXObject) {
    try {
@@ -68,7 +67,7 @@ function getHTTPObject(){
 }
 /*
 trim:
-sağ ve soldaki boşlukları siler
+saÄŸ ve soldaki boÅŸluklarÄ± siler
 */
 function trim(stringToTrim)
 {
@@ -76,7 +75,7 @@ function trim(stringToTrim)
 }
 /*
 setOutputOda:
-sohbet odasının işlemi
+sohbet odasÄ±nÄ±n iÅŸlemi
 */  
 function setOutputOda(){
     if(httpObject.readyState == 4)
@@ -89,20 +88,20 @@ function setOutputOda(){
 }
 /*
 cevapKaydet:
-soruya cevap göndermek
+soruya cevap gÃ¶ndermek
 */
 function cevapKaydet(icerik, gonderen, soruID){    
     httpObject = getHTTPObject();
     if (httpObject != null) {
         httpObject.open("POST", "addCevap.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
   		httpObject.send('cevap='+encodeURIComponent(icerik) + '&gonderen=' + encodeURIComponent(gonderen) + '&soruID=' + encodeURIComponent(soruID) );	
 		httpObject.onreadystatechange = setOutputOda;	
     }
 }
 /*
 setOutputOda2:
-sohbet odasının işlemi
+sohbet odasÄ±nÄ±n iÅŸlemi
 */  
 function setOutputOda2(){
     if(httpObject2.readyState == 4)
@@ -122,7 +121,7 @@ function cevapSil(id, gonderen){
     httpObject2 = getHTTPObject();
     if (httpObject2 != null) {
         httpObject2.open("POST", "delCevap.php", true);
-		httpObject2.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject2.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
   		httpObject2.send('cevap='+encodeURIComponent(id) + '&gonderen=' + encodeURIComponent(gonderen) );	
 		httpObject2.onreadystatechange = setOutputOda2;	
     }
@@ -130,7 +129,7 @@ function cevapSil(id, gonderen){
 }
 /*
 setOutputOda3:
-sohbet odasının işlemi
+sohbet odasÄ±nÄ±n iÅŸlemi
 */  
 function setOutputOda3(){
     if(httpObject3.readyState == 4)
@@ -149,7 +148,7 @@ function cevapOy(deger, gonderen, cevapID){
     httpObject3 = getHTTPObject();
     if (httpObject3 != null) {
         httpObject3.open("POST", "oyCevap.php", true);
-		httpObject3.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject3.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
   		httpObject3.send('deger='+encodeURIComponent(deger) + '&gonderen=' + encodeURIComponent(gonderen) + '&cevapID=' + encodeURIComponent(cevapID) );	
 		httpObject3.onreadystatechange = setOutputOda3;	
     }
@@ -164,12 +163,12 @@ function cevapOy(deger, gonderen, cevapID){
 		$gecerliKullID = getUserID2($adi);
 
 	if ($tur=="2" or $tur=="1" or $tur=="0")	{	
-	 //öğrenci, öğretmen ve yönetici girebilir
+	 //Ã¶ÄŸrenci, Ã¶ÄŸretmen ve yÃ¶netici girebilir
 	 $gelenID = (int)RemoveXSS($_GET["oku"]);
 	 if(!($gelenID>0)) die("?");
 	 $srg = "select * from eo_askquestion where id=$gelenID limit 0,1";
-	 $sorgu = mysql_query($srg);
-	 $soru_bilgileri = mysql_fetch_array($sorgu);	
+	 $sorgu = mysqli_query($yol, $srg);
+	 $soru_bilgileri = mysqli_fetch_array($sorgu);	
 if($soru_bilgileri["question"]<>""){					
 ?>
 <div id="kapsayici">
@@ -196,12 +195,12 @@ if($soru_bilgileri["question"]<>""){
 						) as totalOy from eo_askanswer 
 	 			where eo_askanswer.soruID='$soruID' 
 				order by totalOy DESC, eo_askanswer.eklenmeTarihi DESC";
-	 $sorguCev = mysql_query($srgCev);
-	if(@mysql_num_rows($sorguCev)>0){
+	 $sorguCev = mysqli_query($yol, $srgCev);
+	if(@mysqli_num_rows($sorguCev)>0){
 ?>
 <h4><?php echo $metin[650]?></h4>
 <?php 	 
-	while($cevap_bilgileri = mysql_fetch_array($sorguCev)){		
+	while($cevap_bilgileri = mysqli_fetch_array($sorguCev)){		
 ?>
 <div class="kapsayiciCevap">
   <div class="cevapMetni">
@@ -243,7 +242,7 @@ if($soru_bilgileri["question"]<>""){
 <div id="kapsayiciEkle">
   <form>
     <strong><?php echo $metin[651]?></strong><br />
-    <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:1px solid #000;" ></textarea>
+    <textarea id="cevabim" cols="50" rows="5" style="background-color:#FFF;border:1px solid #000;" title="Max char: 300"></textarea>
     <input type="image" width="20" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/plus.png" onclick=" cevapKaydet(trim(document.getElementById('cevabim').value.substr(0,250)),<?php echo $gecerliKullID ?>,<?php echo $gelenID ?> );
    //$('#kapsayiciEkle').hide('slow');
    return false;">
@@ -260,5 +259,5 @@ if($soru_bilgileri["question"]<>""){
 </body>
 </html>
 <?php 
-@mysql_free_result($eoUsers);
+@mysqli_free_result($eoUsers);
 ?>

@@ -1,10 +1,9 @@
-<?php
+ï»¿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -13,7 +12,6 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-
 require "database.php";
 
 $db_name 		= $_db;
@@ -25,7 +23,7 @@ $db_host 		= $_host ;
 $sessVar =   session_start (); 
 /*
 browserdili:
-tarayýcýnýn dil bilgisini alýr
+tarayÄ±cÄ±nÄ±n dil bilgisini alÄ±r
 */
 function browserdili() {
          $lang=preg_split('/[,;]/i',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
@@ -35,7 +33,7 @@ function browserdili() {
 }
 /*
 is_ajax:
-ajax desteði var mý
+ajax desteÄŸi var mÄ±
 */
 function is_ajax()
 {
@@ -43,7 +41,7 @@ function is_ajax()
 }
 /*
 dilCevir:
-dil deðiþtirme yeri
+dil deÄŸiÅŸtirme yeri
 */
 function dilCevir($dil){
       if ($dil=="TR")
@@ -62,8 +60,8 @@ function dilCevir($dil){
 		
 		dilCevir($taraDili);
 /*
-temizle: metin giriþi, 
-XSS temizliði
+temizle: metin giriÅŸi, 
+XSS temizliÄŸi
 */
 function temizle($metin)
 {
@@ -73,7 +71,7 @@ function temizle($metin)
     $metin = str_replace("\n", "", $metin);
     $metin = str_replace("\r", "", $metin);
     $metin = str_replace("\'", "`", $metin);
-    $metin = str_replace('\"', '¨', $metin);
+    $metin = str_replace('\"', 'Â¨', $metin);
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "<", $metin);
     $metin = str_replace(">", ">", $metin);
@@ -82,7 +80,7 @@ function temizle($metin)
 } 
 /*
 numToTheme:
-sayýsaldan tema klasör adý getirir
+sayÄ±saldan tema klasÃ¶r adÄ± getirir
 */
 function numToTheme($gelen){
 	$result = "";
@@ -99,7 +97,7 @@ function numToTheme($gelen){
 } 
 /*
 temaBilgisi:
-temanýn deðiþtirilmesi
+temanÄ±n deÄŸiÅŸtirilmesi
 */
 function temaBilgisi(){	
 	$result = numToTheme(0);//ilk tema
@@ -133,116 +131,88 @@ require 'lib/flood-protection.php'; // include the class
 
 	$seciliTema= temaBilgisi();
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="-1"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo " ".$metin[71]?></title>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
-<script type="text/javascript">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="tarik bagriyanik">
+	<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+	<link href="theme/docs.min.css" rel="stylesheet">
+	<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="theme/justified-nav.css" rel="stylesheet">
+	<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+	<title>eOgr -<?php echo " ".$metin[71]?></title>
+	<link rel="icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico"/>
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="-1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+	<meta name="description" content="eOgr - Open source online education, elearning project" />
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="lib/script.js"></script>
+	<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
+	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
     jQuery(document).ready(function($) {
 		$("#msg_body2").hide();
 		$("#msg_head").click(function(){
 			$(this).next("#msg_body2").slideToggle(200);
 		});
       }) 
-</script>
-<script type="text/javascript" src="lib/script.js"></script>
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-</head>
-<body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php">eOgr</a></h1>
-          <div id="slogan-text" class="logo-text">&nbsp;</div>
-        </div>
-      </div>
-      <div class="nav">
-        <ul class="artmenu">
-          <li><a href="index.php"><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a></li>
-          <li><a href="install.php" class=" active"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/> <?php echo $metin[71]?> </span></span></a></li>
+	</script>
+	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+	<script type="text/javascript" src="lib/jquery.cookie.js"></script>
+	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+    <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+	</head>
+	<body>
+<?php //require("menu.php");?>
+<div class="container">
+      <div class="logo col-lg-12">
+    <h1 id="name-text" class="logo-name"><a href="index.php">eOgr</a></h1>
+    <div id="slogan-text" class="logo-text">&nbsp;</div>
+  </div>
+      <div class="navbar navbar-default col-lg-12">
+    <ul class="artmenu">
+          <li><a href="index.php" class="navbar-brand"><span><span><img src="img/home.png" border="0" style="vertical-align: middle;" alt="main"/> <?php echo $metin[54]?> </span></span></a></li>
+          <li class="active"><a href="install.php" class=" active navbar-brand"><span><span><img src="img/database.gif" border="0" style="vertical-align: middle;" alt="install"/> <?php echo $metin[71]?> </span></span></a></li>
         </ul>
-        <div class="l"> </div>
-        <div class="r">
+    <div class="l"> </div>
+    <div class="r">
           <div>&nbsp;</div>
         </div>
-      </div>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[71]?> </span> </h2>
-                <div class="PostContent">
-                  <?php
+  </div>
+      <div class="PostContent col-lg-12">
+    <?php if(file_exists("installation_Database.sql")){?>
+    <p><strong> <?php echo $metin[73]?> </strong></p>
+    <p><strong> <?php echo $metin[398]?> </strong></p>
+    <a href="installation_Database.sql"><?php echo $metin[399]?> - <?php echo filesize("installation_Database.sql")?> B</a><br />
+    <br />
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+          <input name="submit" type="submit" value="<?php echo $metin[46]?>" />
+        </form>
+    <?php }else{?>
+    VeritabanÄ± dosyanÄ±z bulunamadÄ±. Kurulum yapÄ±lamÄ±yor!
+    <?php }?>
+  </div>
+      <div class="container">
+    <div class="col-lg-12">
+          <div class="PostContent">
+        <?php
 
 	$currentFile = $_SERVER["PHP_SELF"];
     $parts = Explode('/', $currentFile);
     $currentFile = $parts[count($parts) - 1];
 	
-	if($currentFile!="install.php") echo ("<font id='hata'>Dosya uyumlu deðil!</font><br/>"); 
+	if($currentFile!="install.php") echo ("<font id='hata'>Dosya uyumlu deÄŸil!</font><br/>"); 
 
 	if(isset($_POST['submit']))
 	{
@@ -251,27 +221,27 @@ require 'lib/flood-protection.php'; // include the class
 		  
 					$sqlFile = "installation_Database.sql";
 					
-					$baglan2= @mysql_connect($host, $dbUser, $dbPassword);
+					$baglan2= @mysqli_connect($host, $dbUser, $dbPassword, $_db);
 					
-					if(!$baglan2) echo("<font id='hata'>MySQL sunucuya baðlantý yapýlamadý!<br/> L&#252;ften,'database.php' dosyasýný d&uuml;zenleyiniz veya MySQL sunucunuzun açýk olduðundan emin olunuz.</font>".mysql_error()."<br/>Tekrar denemek i&ccedil;in <a href=install.php>týklatýnýz</a>!");
+					if(!$baglan2) echo("<font id='hata'>MySQL sunucuya baÄŸlantÄ± yapÄ±lamadÄ±!<br/> L&#252;ften,'database.php' dosyasÄ±nÄ± d&uuml;zenleyiniz veya MySQL sunucunuzun aÃ§Ä±k olduÄŸundan emin olunuz.</font>".mysqli_connect_error()."<br/>Tekrar denemek i&ccedil;in <a href=install.php>tÄ±klatÄ±nÄ±z</a>!");
 					else{
 					$yol22 = $baglan2;
-					$vtSec = @mysql_select_db( $_db, $yol22);
-					if(!$vtSec){							 
-					  $vtYapsql = "CREATE DATABASE $db_name;";
-					  $result = @mysql_query($vtYapsql);
+					//$vtSec = @mysqli_select_db( $_db, $yol22);
+					if(!$baglan2){							 
+					  $vtYapsql = "CREATE DATABASE $db_name DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;";
+					  $result = @mysqli_query($yol22,$vtYapsql);
 					  if(!$result) 
-						die ("<font id='hata'>Veritabaný oluþturulamadý. Yetkilerinizi kontrol ediniz!</font>");
+						die ("<font id='hata'>VeritabanÄ± oluÅŸturulamadÄ±. Yetkilerinizi kontrol ediniz!</font>");
 						else
-						 echo("<font id='tamam'>$db_name veritabaný oluþturuldu!</font>");
+						 echo("<font id='tamam'>$db_name veritabanÄ± oluÅŸturuldu!</font>");
 					  	}						 
-					 //2. týklama giderildi
-					mysql_close($baglan2);					 	
-					$baglan2= @mysql_connect($host, $dbUser, $dbPassword);
+					 //2. tÄ±klama giderildi
+					mysqli_close($baglan2);					 	
+					$baglan2= @mysqli_connect($host, $dbUser, $dbPassword, $_db);
 					$yol22 = $baglan2;
-					$vtSec = @mysql_select_db( $_db, $yol22);
+					//$vtSec = @mysqli_select_db( $_db, $yol22);
 							
-					  $newImport = new sqlImport ($host, $dbUser, $dbPassword, $sqlFile);								
+					  $newImport = new sqlImport ($host, $dbUser, $dbPassword, $_db, $sqlFile);								
 					  //$importumuz = $newImport -> importa ();
 					  $newImport -> import ();
 				
@@ -279,7 +249,7 @@ require 'lib/flood-protection.php'; // include the class
 						
 						if ($import["exito"] != 1)
 						{
-							echo "$metin[681]</p>";//baþarýlý kurulum
+							echo "$metin[681]</p>";//baÅŸarÄ±lÄ± kurulum
 						} else {
 							if(isset($import ["errorCode"]) or isset($import ["errorText"]) )
 								echo $import ["errorCode"]." ".$import ["errorText"];
@@ -288,220 +258,147 @@ require 'lib/flood-protection.php'; // include the class
 									
 						
 					}
-	  @mysql_close($yol22);	
+	  @mysqli_close($yol22);	
 	}
 ?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <div class="PostContent">
-                  <?php if(file_exists("installation_Database.sql")){?>
-                  <p><strong> <?php echo $metin[73]?> </strong></p>
-                  <p><strong> <?php echo $metin[398]?> </strong></p>
-                  <a href="installation_Database.sql"><?php echo $metin[399]?> - <?php echo filesize("installation_Database.sql")?> B</a><br />
-                  <br />
-                  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <input name="submit" type="submit" value="<?php echo $metin[46]?>" />
-                  </form>
-                  <?php }else{?>
-                  Veritabaný dosyanýz bulunamadý. Kurulum yapýlamýyor!
-                  <?php }?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <div class="PostContent">
-                  <?php 
+      </div>
+          <div class="PostContent">
+        <?php 
 				  echo "<h2 id='msg_head' style=\"cursor:pointer;\"><img src=\"img/page-next.gif\" alt='next' border='0' style=\"vertical-align: middle;\"/> $metin[579]</h2>";
                 ?>
-                <div id="msg_body2">
-                  <?php 
-				  echo '<ul><li><strong>PHP</strong>\'nin sürümü : ' . phpversion()."</li>";
-				  $baglan3= @mysql_connect($host, $dbUser, $dbPassword);
+        <div id="msg_body2">
+              <?php 
+				  echo '<ul><li><strong>PHP</strong>\'nin sÃ¼rÃ¼mÃ¼ : ' . phpversion()."</li>";
+				  $baglan3= @mysqli_connect($host, $dbUser, $dbPassword, $_db);
 				  
 				  try{
 					if($baglan3)
-					  echo "<li>MySQL <strong>sunucu</strong> sürümü : ".mysql_get_server_info()."</li>"; 	
+					  echo "<li>MySQL <strong>sunucu</strong> sÃ¼rÃ¼mÃ¼ : ".mysqli_get_server_info($baglan3)."</li>"; 	
 					  else
-					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 
+					  echo "<li>MySQL <strong>sunucu</strong> sÃ¼rÃ¼mÃ¼ : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 
 				  }
 				  catch(Exception $e){
-					  echo "<li>MySQL <strong>sunucu</strong> sürümü : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  echo "<li>MySQL <strong>sunucu</strong> sÃ¼rÃ¼mÃ¼ : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  }				  
 				  
-				  echo "<li>MySQL <strong>istemci</strong> sürümü : ".mysql_get_client_info()."</li>"; 	
+				  echo "<li>MySQL <strong>istemci</strong> sÃ¼rÃ¼mÃ¼ : ".mysqli_get_client_info($baglan3)."</li>"; 	
 				  if(!empty($dbPassword))
-					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
+					  echo "<li>VeritabanÄ± baÄŸlantÄ± <strong>parolasÄ±</strong> : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
 					  else
-					  echo "<li>Veritabaný baðlantý <strong>parolasý</strong> : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> boþ!</li>";								  				  				if(file_exists("installation_Database.sql"))
-					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
+					  echo "<li>VeritabanÄ± baÄŸlantÄ± <strong>parolasÄ±</strong> : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> boÅŸ!</li>";								  				  				if(file_exists("installation_Database.sql"))
+					  echo "<li><strong>Kurulum</strong> iÃ§in gereken SQL dosyasÄ± : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>"; 	
 					  else
-					  echo "<li><strong>Kurulum</strong> için gereken SQL dosyasý : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";//mysql_error();
+					  echo "<li><strong>Kurulum</strong> iÃ§in gereken SQL dosyasÄ± : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";//mysqli_error();
 				  try{
 					if(preg_match("/777/",decoct(@fileperms($_uploadFolder))) 
 				  or preg_match("/766/",decoct(@fileperms($_uploadFolder)))) {
-					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+					  echo "<li>Dosya <strong>paylaÅŸÄ±mÄ±</strong> iÃ§in gereken klasÃ¶r : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				  }else{
-					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yazýlabilir deðil!</li>";
+					  echo "<li>Dosya <strong>paylaÅŸÄ±mÄ±</strong> iÃ§in gereken klasÃ¶r : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yazÄ±labilir deÄŸil!</li>";
 					  }  
 				  }
 				  catch(Exception $e){
-					  echo "<li>Dosya <strong>paylaþýmý</strong> için gereken klasör : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> baþka bir sorun!</li>";
+					  echo "<li>Dosya <strong>paylaÅŸÄ±mÄ±</strong> iÃ§in gereken klasÃ¶r : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> baÅŸka bir sorun!</li>";
 				  }	  
 				  
 				  if(function_exists("gzencode"))
-				    echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li>Dosya <strong>sÄ±kÄ±ÅŸtÄ±rma</strong> komutu (gzencode) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li>Dosya <strong>sýkýþtýrma</strong> komutu (gzencode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li>Dosya <strong>sÄ±kÄ±ÅŸtÄ±rma</strong> komutu (gzencode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('gd') && function_exists('gd_info'))
-				    echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li>Grafik <strong>kÃ¼tÃ¼phanesi</strong> desteÄŸi (GD) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li>Grafik <strong>kütüphanesi</strong> desteði (GD) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li>Grafik <strong>kÃ¼tÃ¼phanesi</strong> desteÄŸi (GD) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('iconv') && function_exists('iconv'))
-				    echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li>Karakter kÃ¼mesi <strong>Ã§evrimi</strong> desteÄŸi (iconv) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li>Karakter kümesi <strong>çevrimi</strong> desteði (iconv) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li>Karakter kÃ¼mesi <strong>Ã§evrimi</strong> desteÄŸi (iconv) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('json') && function_exists('json_decode'))
-				    echo "<li><strong>JSON</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>JSON</strong> desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>JSON</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>JSON</strong> desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('curl') && function_exists('curl_init'))
-				    echo "<li><strong>cURL</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>cURL</strong> desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>cURL</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>cURL</strong> desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 					if(extension_loaded('pdf') && function_exists('pdf_new'))
-				    echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>PDFLib</strong> desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>PDFLib</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>PDFLib</strong> desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(extension_loaded('mysqli'))
-				    echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>mySQLi</strong> desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>mySQLi</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>mySQLi</strong> desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  /*if(is_ajax())
-				    echo "<li><strong>AJAX</strong> komutlarý desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>AJAX</strong> komutlarÄ± desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>AJAX</strong> komutlarý desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";*/	
+				   	echo "<li><strong>AJAX</strong> komutlarÄ± desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";*/	
 				  if(ini_get('memory_limit'))
-				    echo "<li><strong>Bellek</strong> maksimum desteði : ".ini_get('memory_limit')."</li>";
+				    echo "<li><strong>Bellek</strong> maksimum desteÄŸi : ".ini_get('memory_limit')."</li>";
 				   else
-				   	echo "<li><strong>Bellek</strong> maksimum desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>Bellek</strong> maksimum desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(ini_get('upload_max_filesize'))
-				    echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : ".ini_get('upload_max_filesize')."</li>";
+				    echo "<li><strong>Dosya</strong> gÃ¶nderim maksimum boyut desteÄŸi : ".ini_get('upload_max_filesize')."</li>";
 				   else
-				   	echo "<li><strong>Dosya</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>Dosya</strong> gÃ¶nderim maksimum boyut desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(ini_get('post_max_size'))
-				    echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : ".ini_get('post_max_size')."</li>";
+				    echo "<li><strong>POST</strong> gÃ¶nderim maksimum boyut desteÄŸi : ".ini_get('post_max_size')."</li>";
 				   else
-				   	echo "<li><strong>POST</strong> gönderim maksimum boyut desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+				   	echo "<li><strong>POST</strong> gÃ¶nderim maksimum boyut desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  if(ini_get('file_uploads')==1)
-				    echo "<li><strong>Dosya</strong> gönderme izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>Dosya</strong> gÃ¶nderme izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Dosya</strong> gönderme izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";		
+				   	echo "<li><strong>Dosya</strong> gÃ¶nderme izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";		
 				  if(ini_get('register_globals')==1)
-				    echo "<li><strong>Global</strong> deðiþkenler (register_globals) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk! - tavsiye edilmez</li>";
+				    echo "<li><strong>Global</strong> deÄŸiÅŸkenler (register_globals) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k! - tavsiye edilmez</li>";
 				   else
-				   	echo "<li><strong>Global</strong> deðiþkenler (register_globals) : kapalý <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
+				   	echo "<li><strong>Global</strong> deÄŸiÅŸkenler (register_globals) : kapalÄ± <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";		
 				  if(ini_get('magic_quotes_gpc')==1)
-				    echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : açýk <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>Ã–zel Ã§ift tÄ±rnak</strong> deÄŸerler (magic_quotes_gpc) : aÃ§Ä±k <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Özel çift týrnak</strong> deðerler (magic_quotes_gpc) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kapalý!</li>";	
+				   	echo "<li><strong>Ã–zel Ã§ift tÄ±rnak</strong> deÄŸerler (magic_quotes_gpc) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> kapalÄ±!</li>";	
 				  try{
 				  $modHT = apache_get_modules()	;
 				  if(in_array("mod_rewrite",$modHT))
-				    echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>htaccess</strong> Ã§alÄ±ÅŸma durumu (mod_rewrite) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";						  
+				   	echo "<li><strong>htaccess</strong> Ã§alÄ±ÅŸma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";						  
 				  }
 				  catch(Exception $e){
-					  echo "<li><strong>htaccess</strong> çalýþma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
+					  echo "<li><strong>htaccess</strong> Ã§alÄ±ÅŸma durumu (mod_rewrite) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";
 				  }						
 				  if($sessVar)
-				    echo "<li><strong>Oturum</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>Oturum</strong> desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Oturum</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
+				   	echo "<li><strong>Oturum</strong> desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
 				  if( ini_get('safe_mode') )
-				    echo "<li><strong>Güvenli</strong> mod (safe_mode) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>GÃ¼venli</strong> mod (safe_mode) : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Güvenli</strong> mod (safe_mode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
+				   	echo "<li><strong>GÃ¼venli</strong> mod (safe_mode) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
 				  if( ini_get('display_errors') )
-				    echo "<li><strong>Hata</strong> bildirimi (display_errors) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";
+				    echo "<li><strong>Hata</strong> bildirimi (display_errors) : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k - tavsiye edilmez!</li>";
 				   else
-				   	echo "<li><strong>Hata</strong> bildirimi (display_errors) : iþlevsiz! <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
+				   	echo "<li><strong>Hata</strong> bildirimi (display_errors) : iÅŸlevsiz! <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";	
 				  if( function_exists('mail') )
-				    echo "<li><strong>Eposta</strong> desteði : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
+				    echo "<li><strong>Eposta</strong> desteÄŸi : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>Eposta</strong> desteði : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
+				   	echo "<li><strong>Eposta</strong> desteÄŸi : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> yok!</li>";	
 				  if(ini_get('allow_url_fopen')!=1)
 				    echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
+				   	echo "<li><strong>allow_url_fopen</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k - tavsiye edilmez!</li>";		
 				  if(ini_get('allow_url_include')!=1)
 				    echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
+				   	echo "<li><strong>allow_url_include</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k - tavsiye edilmez!</li>";		
 				  if(ini_get('display_errors')!=1)
 				    echo "<li><strong>display_errors</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>display_errors</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
+				   	echo "<li><strong>display_errors</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k - tavsiye edilmez!</li>";		
 				  if(ini_get('expose_php')!=1)
 				    echo "<li><strong>expose_php</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>expose_php</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";		
+				   	echo "<li><strong>expose_php</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k - tavsiye edilmez!</li>";		
 				  if(ini_get('open_basedir')==1)
 				    echo "<li><strong>open_basedir</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
@@ -509,42 +406,30 @@ require 'lib/flood-protection.php'; // include the class
 				  if(ini_get('use_trans_sid')!=1)
 				    echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/tick_circle.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/></li>";
 				   else
-				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> açýk - tavsiye edilmez!</li>";	
+				   	echo "<li><strong>use_trans_sid</strong> izni : <img src=\"img/i_high.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"info\"/> aÃ§Ä±k - tavsiye edilmez!</li>";	
 ?>
-	<script language="javascript" type="text/javascript">
+              <script language="javascript" type="text/javascript">
 		document.write("<li>Dil : " + navigator.userLanguage +"</li>")	;
-		document.write("<li>Çerez Desteði : " + navigator.cookieEnabled +"</li>")	;
-		document.write("<li>JavaScript Desteði : " + navigator.javaEnabled() +"</li>")	;
-		document.write("<li>Tarayýcýnýz : " + navigator.userAgent +"</li>")	;
+		document.write("<li>Ã‡erez DesteÄŸi : " + navigator.cookieEnabled +"</li>")	;
+		document.write("<li>JavaScript DesteÄŸi : " + navigator.javaEnabled() +"</li>")	;
+		document.write("<li>TarayÄ±cÄ±nÄ±z : " + navigator.userAgent +"</li>")	;
 	</script>
-<?php						
+              <?php						
 				//--------------------------------------	
 				  echo "</ul>";
 				  echo "<hr noshade=\"noshade\"/><p>$metin[578]</p>";
 				  ?>
-                  </div>
-                </div>
-                <div class="cleared"></div>
-              </div>
             </div>
-          </div>
-        </div>
       </div>
-      <div class="cleared"></div>
-      <div class="Footer">
-        <div class="Footer-inner">
-          <div class="Footer-text"> <a href='index.php?lng=<?php echo $taraDili?>&amp;oldPath=install.php' title='Dil se&ccedil;iniz Choose a language'> <?php echo ($taraDili=="TR")?"<img src='img/turkish.png' border='0' alt='dil' style='vertical-align: bottom;' />":"<img src='img/english.png' border='0' alt='language' style='vertical-align: bottom;'/>"?> </a> </div>
         </div>
-        <div class="Footer-background"></div>
-      </div>
-    </div>
   </div>
-  <div class="cleared"></div>
-</div>
-<script language="javascript" type="text/javascript">
-if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
-if (document.getElementById("uyari")!=null) fadeUp(document.getElementById("uyari"),0,0,255,0,0,150);
-if (document.getElementById("tamam")!=null) fadeUp(document.getElementById("tamam"),0,255,0,0,150,0);  
-</script>
+      <footer class="footer">
+    <div class="Footer-inner">
+          <?php  //require "footer.php";?>
+        </div>
+  </footer>
+    </div>
+<script src="lib/bs_js/bootstrap.js"></script> 
+<script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

@@ -2,7 +2,10 @@
 -- version 3.2.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
+SET NAMES 'utf8';
+SET CHARACTER SET utf8;
+SET COLLATION_CONNECTION = 'utf8_general_ci';
+				
 --
 -- Tablo yapısı: `eo_1okul`
 --
@@ -11,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `eo_1okul` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `okulAdi` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='okul adlari' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='okul adlari' AUTO_INCREMENT=3 ;
 
 --
 -- Tablo döküm verisi `eo_1okul`
@@ -32,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `eo_2sinif` (
   `sinifAdi` varchar(50) NOT NULL,
   `okulID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='sinif adlari' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='sinif adlari' AUTO_INCREMENT=4 ;
 
 --
 -- Tablo döküm verisi `eo_2sinif`
@@ -54,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `eo_3ders` (
   `dersAdi` varchar(50) NOT NULL,
   `sinifID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='ders adlari' AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ders adlari' AUTO_INCREMENT=7 ;
 
 --
 -- Tablo döküm verisi `eo_3ders`
@@ -86,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `eo_4konu` (
   `sadeceKayitlilarGorebilir` tinyint(1) NOT NULL,
   `sinifaDahilKullaniciGorebilir` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='konu adlari' AUTO_INCREMENT=2;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='konu adlari' AUTO_INCREMENT=2;
 
 --
 -- Tablo döküm verisi `eo_4konu`
@@ -118,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `eo_5sayfa` (
   `slideGecisSuresi` int(11) NOT NULL,
   `cevapSuresi` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='sayfa icerigi' AUTO_INCREMENT=2;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='sayfa icerigi' AUTO_INCREMENT=2;
 
 --
 -- Tablo döküm verisi `eo_5sayfa`
@@ -140,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `eo_comments` (
   `commentDate` datetime NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Tablo döküm verisi `eo_comments`
@@ -161,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `eo_floodprotection` (
   `IP` char(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `TIME` char(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`IP`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -176,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `eo_rating` (
   `value` int(11) NOT NULL,
   `rateDate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Tablo döküm verisi `eo_rating`
@@ -196,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `eo_shoutbox` (
   `ip` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`messageid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Tablo yapısı: `eo_sinifogre`
@@ -207,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `eo_sinifogre` (
   `userID` int(11) NOT NULL,
   `sinifID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -238,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `eo_sitesettings` (
   `ayar7char` VARCHAR(50) NOT NULL,  
   `ayar8char` VARCHAR(50) NOT NULL,  
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Tablo döküm verisi `eo_sitesettings`
@@ -274,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `eo_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `userEmail` (`userEmail`),
   UNIQUE KEY `userName` (`userName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2;
 
 --
 -- Tablo döküm verisi `eo_users`
@@ -297,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `eo_usertrack` (
   `userName` varchar(15) NOT NULL,
   `otherInfo` varchar(15) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='user Tracking';
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user Tracking';
 --
 -- Tablo yapısı: `eo_userworks`
 --
@@ -310,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `eo_userworks` (
   `lastPage` int(11) NOT NULL,
   `calismaTarihi` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='kullanici calisma';
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='kullanici calisma';
 --
 -- Tablo yapısı: `eo_webref_rss_details`
 --
@@ -327,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `eo_webref_rss_details` (
   `image_width` text,
   `image_height` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Tablo döküm verisi `eo_webref_rss_details`
@@ -349,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `eo_webref_rss_items` (
   `link` text,
   `pubDate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Tablo döküm verisi `eo_webref_rss_items`

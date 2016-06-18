@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -16,7 +15,7 @@ Lesser General Public License for more details.
 	
 	@session_start();
 	ob_start (); // Buffer output
-	header("Content-Type: text/html; charset=iso-8859-9");          
+	header("Content-Type: text/html; charset=utf-8");          
 
 	$taraDili=(isset($_COOKIE["lng"]))?$_COOKIE["lng"]:"";    
    if(!($taraDili=="TR" || $taraDili=="EN")) $taraDili="EN";
@@ -40,7 +39,7 @@ function baglan2()
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysql_connect($_host, $_username, $_password);
+    return 	@mysqli_connect($_host, $_username, $_password);
 }
 
 if(!baglan2())   
@@ -48,7 +47,7 @@ if(!baglan2())
  
 $yol1 = baglan2();
 
-	if (!@mysql_select_db($_db, $yol1))
+	if (!$yol1)
 	{
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
@@ -71,7 +70,7 @@ function temizle2($metin)
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "‹", $metin);
     $metin = str_replace(">", "›", $metin);
-    $metin = iconv( "ISO-8859-9","ISO-8859-9",trim(htmlentities($metin)));
+    $metin = trim(htmlentities($metin));
     return $metin;
 }
 /*
@@ -106,17 +105,17 @@ function secenekleriGetir($id)
 
     $sql1 = "SELECT id, secenek1, secenek2, secenek3, secenek4, secenek5, secenek6, cevap FROM eo_5sayfa where id='$id' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1, $sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-	   $cevap = temizle2(mysql_result($result1, 0, "cevap"));
-	   $secenek1 = temizle2(mysql_result($result1, 0, "secenek1"));
-	   $secenek2 = temizle2(mysql_result($result1, 0, "secenek2"));
-	   $secenek3 = temizle2(mysql_result($result1, 0, "secenek3"));
-	   $secenek4 = temizle2(mysql_result($result1, 0, "secenek4"));
-	   $secenek5 = temizle2(mysql_result($result1, 0, "secenek5"));
-	   $secenek6 = temizle2(mysql_result($result1, 0, "secenek6"));
+	   $cevap = temizle2(mysqli_result($result1, 0, "cevap"));
+	   $secenek1 = temizle2(mysqli_result($result1, 0, "secenek1"));
+	   $secenek2 = temizle2(mysqli_result($result1, 0, "secenek2"));
+	   $secenek3 = temizle2(mysqli_result($result1, 0, "secenek3"));
+	   $secenek4 = temizle2(mysqli_result($result1, 0, "secenek4"));
+	   $secenek5 = temizle2(mysqli_result($result1, 0, "secenek5"));
+	   $secenek6 = temizle2(mysqli_result($result1, 0, "secenek6"));
 	   
 	   $sonuc = "";
 	   
@@ -311,7 +310,7 @@ function secenekleriGetir($id)
 	   return ("");
 	}
 }
-		echo iconv( "ISO-8859-9","ISO-8859-9", "<h4>$metin[347]</h4>");
+		echo "<h4>$metin[347]</h4>";
 ?>
 
 <div id="cevapSonucu"></div>

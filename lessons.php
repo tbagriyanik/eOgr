@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -41,7 +40,7 @@ ob_start (); // Buffer output
 		  	$eMode = $_SESSION["mode"];
 		}
 		else
-		  	$eMode = "3"; //genel varsayılan
+		  	$eMode = "3"; //genel varsayï¿½lan
   }  
   
   if(!isset($_GET["konu"]))				
@@ -53,360 +52,357 @@ ob_start (); // Buffer output
 	 	$kullaniciSecen = array("","","","","","","","","","","","","","","");
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="01 Jan 1970 00:00:00 GMT"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[55]?>
-<!--TITLE-->
-</title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="lib/script.js"></script>
-<script type="text/javascript" src="lib/flashMode.js"></script>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-<script type="text/javascript" src="lib/hijax.js"></script>
-<link href="theme/ratings.css" rel="stylesheet" type="text/css" />
-<link href="theme/lessons.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<link href="lib/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.10.2.custom.min.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
-<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
-<script type="text/javascript" src="lib/facebox/facebox.js"></script>
-<script src="lib/jquery.cookie.js" type="text/javascript"></script>
-<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-		  $('a[rel*=facebox]').facebox({        
-		  }) ;
-		  $( "#kapsayici" ).resizable({
-			  maxHeight: 510,
-			  maxWidth: 630,
-			  minHeight: 350,
-			  minWidth: 630
-		   }); 
-		  $( "#kapsayici" ).resize(function(){
-			 //$('#kapsayici', this).css('height', size.height - 1 + 'px');
-			 degerYaz('dersYukseklik', $( "#kapsayici" ).height(), 7);					
-		  })  
-		//$(".msg_body").hide();
-		$(".msg_head").click(function(){
-			$(this).next(".msg_body").slideToggle(200);
-		});
-		//$(".msg_body2").hide();
-		$(".msg_head2").click(function(){
-			$(this).next(".msg_body2").slideToggle(200);
-		});
-		
+<html lang="en">
+		<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="tarik bagriyanik">
+		<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+		<link href="theme/docs.min.css" rel="stylesheet">
+		<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+		<link href="theme/justified-nav.css" rel="stylesheet">
+		<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+		<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="01 Jan 1970 00:00:00 GMT"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>eOgr -<?php echo $metin[55]?>
+        <!--TITLE-->
+        </title>
+		<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="lib/script.js"></script>
+		<script type="text/javascript" src="lib/flashMode.js"></script>
+		<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+		<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript" src="lib/hijax.js"></script>
+		<link href="theme/ratings.css" rel="stylesheet" type="text/css" />
+		<link href="theme/lessons.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+		<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+		<script language="javascript" type="text/javascript" src="lib/dataFillLessons.js"></script>
+		<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+		<link href="lib/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" type="text/javascript" src="lib/bs_js/jquery-2.2.0.js"></script>
+		<script language="JavaScript" type="text/javascript" src="lib/jquery-ui-1.10.2.custom.min.js"></script>
+		<script language="javascript" type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
+		<script language="javascript" type="text/javascript" src="lib/jquery-add_bookmark.js"></script>
+		<script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
+		<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+		<script src="lib/jquery.cookie.js" type="text/javascript"></script>
+		<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				  $('a[rel*=facebox]').facebox({        
+				  }) ;				  
+				  
+				//$(".msg_body").hide();
+				$(".msg_head").click(function(){
+					$(this).next(".msg_body").slideToggle(200);
+				});
+				//$(".msg_body2").hide();
+				$(".msg_head2").click(function(){
+					$(this).next(".msg_body2").slideToggle(200);
+				});
+				
 
-	});
+			});
 
-</script>
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script type="text/javascript" language="javascript">
-var ns = (document.layers)? true:false;
-var ie = (document.all)? true:false;
-if (ns) document.captureEvents(Event.MOUSEDOWN || Event.CLICK);
-document.onclick = sourcecodeprotect;
-document.onmousedown = sourcecodeprotect;
+		</script>
+		<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript" language="javascript">
+		var ns = (document.layers)? true:false;
+		var ie = (document.all)? true:false;
+		if (ns) document.captureEvents(Event.MOUSEDOWN || Event.CLICK);
+		document.onclick = sourcecodeprotect;
+		document.onmousedown = sourcecodeprotect;
 
-// ***********************************************************
-function sourcecodeprotect(e) {
-  if (ns&&(e.which==3)) return false;
-  else if (ie&&(window.event.button==2)) {
-    //alert("Source code protected");
-	}
-  else return true;
-  }
+		// ***********************************************************
+		function sourcecodeprotect(e) {
+		  if (ns&&(e.which==3)) return false;
+		  else if (ie&&(window.event.button==2)) {
+			//alert("Source code protected");
+			}
+		  else return true;
+		  }
 
-//***********************************************************
-function cleanup() {
-  if (ns) document.releaseEvents(Event.MOUSEDOWN || Event.CLICK);
-}
-        $(function() {
-            $(this).bind("contextmenu", function(e) {
-                e.preventDefault();
+		//***********************************************************
+		function cleanup() {
+		  if (ns) document.releaseEvents(Event.MOUSEDOWN || Event.CLICK);
+		}
+				$(function() {
+					$(this).bind("contextmenu", function(e) {
+						e.preventDefault();
+					});
+				}); 
+		</script>
+		<link rel="stylesheet" href="lib/scrollTop/ap-scroll-top.css" type="text/css" media="all" />
+		<script src="lib/scrollTop/ap-scroll-top.js"></script>
+		<script type="text/javascript">
+            // Setup plugin with default settings
+            $(document).ready(function() {
+
+                $.apScrollTop({
+                    'onInit': function(evt) {
+                        console.log('apScrollTop: init');
+                    }
+                });
+
+                // Add event listeners
+                $.apScrollTop().on('apstInit', function(evt) {
+                    console.log('apScrollTop: init');
+                });
+
+                $.apScrollTop().on('apstToggle', function(evt, details) {
+                    console.log('apScrollTop: toggle / is visible: ' + details.visible);
+                });
+
+                $.apScrollTop().on('apstCssClassesUpdated', function(evt) {
+                    console.log('apScrollTop: cssClassesUpdated');
+                });
+
+                $.apScrollTop().on('apstPositionUpdated', function(evt) {
+                    console.log('apScrollTop: positionUpdated');
+                });
+
+                $.apScrollTop().on('apstEnabled', function(evt) {
+                    console.log('apScrollTop: enabled');
+                });
+
+                $.apScrollTop().on('apstDisabled', function(evt) {
+                    console.log('apScrollTop: disabled');
+                });
+
+                $.apScrollTop().on('apstBeforeScrollTo', function(evt, details) {
+                    console.log('apScrollTop: beforeScrollTo / position: ' + details.position + ', speed: ' + details.speed);
+
+                    // You can return a single number here, which means that to this position
+                    // browser window scolls to
+                    /*
+                    return 100;
+                    */
+
+                    // .. or you can return an object, containing position and speed:
+                    /*
+                    return {
+                        position: 100,
+                        speed: 100
+                    };
+                    */
+
+                    // .. or do not return anything, so the default values are used to scroll
+                });
+
+                $.apScrollTop().on('apstScrolledTo', function(evt, details) {
+                    console.log('apScrollTop: scrolledTo / position: ' + details.position);
+                });
+
+                $.apScrollTop().on('apstDestroy', function(evt, details) {
+                    console.log('apScrollTop: destroy');
+                });
+
             });
-        }); 
-</script>
-</head>
-<?php flush(); ?>
-<body id="intro" onselectstart="//return false;" ondragstart="return false" oncontextmenu="return false" onunload="cleanup()" >
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <?php
+
+
+            // Add change events for options
+            $('#option-enabled').on('change', function() {
+                var enabled = $(this).is(':checked');
+                $.apScrollTop('option', 'enabled', enabled);
+            });
+
+            $('#option-visibility-trigger').on('change', function() {
+                var value = $(this).val();
+                if (value == 'custom-function') {
+                    $.apScrollTop('option', 'visibilityTrigger', function(currentYPos) {
+                        var imagePosition = $('#image-for-custom-function').offset();
+                        return (currentYPos > imagePosition.top);
+                    });
+                }
+                else {
+                    $.apScrollTop('option', 'visibilityTrigger', parseInt(value));
+                }
+            });
+
+            $('#option-visibility-fade-speed').on('change', function() {
+                var value = parseInt($(this).val());
+                $.apScrollTop('option', 'visibilityFadeSpeed', value);
+            });
+
+            $('#option-scroll-speed').on('change', function() {
+                var value = parseInt($(this).val());
+                $.apScrollTop('option', 'scrollSpeed', value);
+            });
+
+            $('#option-position').on('change', function() {
+                var value = $(this).val();
+                $.apScrollTop('option', 'position', value);
+            });
+		</script>
+		</head>
+		<?php flush(); ?>
+		<body onselectstart="//return false;" ondragstart="return false" oncontextmenu="return false" onunload="cleanup()" >
+        <?php
+				 require("menu.php");
+			?>
+        <div class="container">
+          <?php
 		if($eMode!="1"){
       ?>
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
-      </div>
-      <div class="nav">
-        <?php
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-xs-12">
+                <?php
 	
 	$seceneklerimiz = explode("-",ayarGetir("ayar5char"));
 
 	 if(isset($_SESSION["usern"]))
 		$kullaniciSecen = explode("-",ayarGetir3(RemoveXSS($_SESSION["usern"])));
-
-		require("menu.php");	
+			
                 ?>
-        <div style="position:relative ; padding:2px;margin:5px;background-color:transparent;font-size:11px;clear:left;left:auto;height:20px">
-          <?php				
+                <?php				
 				echo " $metin[556] : ";
-		
-			  if(isset($_GET["konu"]))				
-                if(isKonu($_GET["konu"])){
 				?>
-          <label onclick="location.href='lessons.php';window.open('lessons.php?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=1');return false;" class="external">
-            <?php 	echo $metin[553];?>
-          </label>
-          &nbsp; |
-          <?php
-				}
-        ?>
-          <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2'>
-          <?php 		
-		if($eMode=="2") 
-			echo "<strong>$metin[552]</strong>";
-		else
+                <div class="btn-group"> <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=2' class="btn btn-primary<?php  		
+		if($eMode=="2") echo " active";		
+		?>">
+                  <?php 				
 			echo $metin[552];
 		?>
-          </a> | <a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3'>
-          <?php  		
-		if($eMode=="3") 
-			echo "<strong>$metin[557]</strong>";
-		else
+                  </a><a href='?konu=<?php echo RemoveXSS($_GET["konu"])?>&amp;mode=3' class="btn btn-primary <?php  		
+		if($eMode=="3") echo " active";		
+		?>">
+                  <?php		
 			echo $metin[557];
 		?>
-          </a> | <a href='userSettings.php#ozel'><?php echo $metin[554]?></a>
-          <?php
-		  if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
+                  </a><a href='userSettings.php#ozel' class="btn btn-primary"><?php echo $metin[554]?></a>
+                  <?php
+				  
+		  //if($seceneklerimiz[13]=="1" and $kullaniciSecen[13]=="1" ) require("ping.php");
 		  ?>
-        </div>
-        <div class="l"> </div>
-        <div class="r">
-          <div>&nbsp;</div>
-        </div>
-      </div>
-      <?php
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
 	    }
-		else 
-		echo "<div>&nbsp;</div>";
+		//else 
+		//echo "<div>&nbsp;??</div>"; //
       ?>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <div class="PostContent" style="height:542px;overflow:hidden;">
-                  <?php  
+          <div class="row">
+            <div class="col-lg-8">
+              <?php  
 
 	$_SESSION["cevaplar"] = ""; 
 	//eskiler silinir
 	$_SESSION["hataSay"] = ""; 
 	//eskiler silinir
 	$_SESSION["cevaplar"][0] = ""; 
-	//dizi oluşturuldu
+	//dizi olusturuldu
 	$_SESSION["hataSay"][0] = ""; 
-	//dizi oluşturuldu
+	//dizi olusturuldu
 	$_SESSION['cevapSuresi'] = ""; 
-	//eski deÄYeri yok edelim 
+	//eski degeri yok edelim 
 
 ?>
-                  <div id="oncekiKonu"></div>
-                  <div id="sonrakiKonu"></div>
-                  <div id="kapsayici" class="ui-widget-content"><span id="anaMetin"><font id='uyari'><?php echo $metin[176]?></font></span> </div>
-                  <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
-                    <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
-                    (<span id="eklenmeTarihi">-</span>)<br />
-                    <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <br />
-                    <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
-                    <span id="bitirmeYuzdesi"></span><br />
-                    <?php echo $metin[240]?> : <span id="calismaSuresi">-</span> <?php echo $metin[172]?>&nbsp;
-                    <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
-                    <span id="soruGeriSayim"></span><br/>
-                    <span id="cevapVer" title="<?php echo $metin[664]?>"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span>
-                    <form name="sunum" style="text-align:right">
-                      <span id="cevapSuresi" style="/*position:absolute;top:15px;left:440px;*/font-size:18px;text-align:right;font-weight:bolder;"></span>
-                      <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="<?php echo $metin[604]?>"
-                    value="1" onclick="
-                    if(document.sunum.sunuDurdur.checked)
-	                    $('#cevapSuresi').stopTime();
-                        else
-                        sayacTetik3(document.getElementById('cevapSuresi').innerHTML);
-                    "/>
-                    </form>
-                  </div>
-                  <div id="ileriGeri"> <span id="geriDugmesi"></span> <span id="ileriDugmesi"></span> <span id="hint"><?php echo $metin[486];?><span class="hint-pointer">&nbsp;</span></span></div>
-                  <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
-                  <input type="hidden" id="konu_id" name="konu_id" />
-                  <input type="hidden" id="sayfa_id" name="sayfa_id" />
-                  <span id="gercekCevapSuresi" style="visibility:hidden"></span> <span id="slideGecisSuresi" style="visibility:hidden"></span>
-                  <?php
-                  if($eMode=="1")
-					  	echo ("<div id='lgout' style='top:-13px;'><a href='#' onclick='window.close();'>".$metin[34]."</a></div><br/>");
+              <div id="kapsayici"><span id="anaMetin"><font id='uyari'><?php echo $metin[176]?></font></span> </div>
+            </div>
+            <div class="col-lg-4">
+              <?php
+	if($eMode=="1")
+	  	echo ("<div id='lgout' style='top:-13px;'><a href='#' onclick='window.close();'>".$metin[34]."</a></div>");
+	?>
+              <div id="navigation"><span id="konuAdi">-</span> <span id="aktifKonuNo" style="visibility:hidden"></span><br />
+                <?php echo $metin[174]?> : <span id="hazirlayan">-</span><br/>
+                (<span id="eklenmeTarihi">-</span>)<br />
+                <span id="sayfaNo">-</span> / <span id="sayfaSayisi">-</span> <span id="yukleniyor" style="visibility:hidden;"><img src="img/loadingRect2.gif" border="0" alt="loading"  style="vertical-align:middle"  title="loading" /></span><br />
+                <span id="bitirmeYuzdesi"></span> </div>
+              <input type="hidden" id="sonSayfaHidden" name="sonSayfaHidden" value="0" />
+              <input type="hidden" id="konu_id" name="konu_id" />
+              <input type="hidden" id="sayfa_id" name="sayfa_id" />
+              <?php
+                  
 	    $adi	=temizle(substr((isset($_SESSION["usern"]))?$_SESSION["usern"]:"",0,15));
     	$par	=temizle((isset($_SESSION["userp"]))?$_SESSION["userp"]:"");
 				    $tur = checkRealUser($adi,$par); 
 					
   				   	if($tur!="-2" and !in_array($eMode,array("1","2"))){ 
                   ?>
-                  <div id="navigation2">
-                    <?php 					
+              <div id="navigation2">
+                <?php 					
 					  if(($tur==1 || $tur==2) && isKonu($_GET["konu"])){ 
                     ?>
-                    <label style="color:#0000ff;" onclick='konuDuzenle();'> <img src="img/edit.png" alt="<?php echo $metin[103];?>"  title="<?php echo $metin[103];?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[241]?></label>
-                    <?php
+                <label style="color:#0000ff;" onclick='konuDuzenle();'> <img src="img/edit.png" alt="<?php echo $metin[103];?>"  title="<?php echo $metin[103];?>" width="16" height="16" border="0" style="vertical-align: middle;" /> <?php echo $metin[241]?></label>
+                <?php
 					  }
                     ?>
-                    <?php
+                <?php
 if($seceneklerimiz[7]=="1"  and $kullaniciSecen[7]=="1" and isKonu($_GET["konu"])){
 ?>
-                    <br />
-                    <br />
-                    <label  class="external" onclick="printIt();"> <img src="img/preview.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[207]?>" /> <?php echo $metin[207]?></label>
-                    <?php
+                <br />
+                <br />
+                <label  class="external" onclick="printIt();"> <img src="img/preview.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[207]?>" /> <?php echo $metin[207]?></label>
+                <?php
 					  }
                     ?>
-                    <?php
+                <?php
 if(isKonu($_GET["konu"])){
 ?>
-                    <br />
-                    <br />
-                    <a href="dersBilgisi.php?ders=<?php echo RemoveXSS($_GET["konu"])?>&amp;set=1" rel="facebox"> <img src="img/info.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[301]?>" /> <?php echo $metin[301]?></a>
-                    <?php
+                <br />
+                <br />
+                <a href="dersBilgisi.php?ders=<?php echo RemoveXSS($_GET["konu"])?>&amp;set=1" rel="facebox"> <img src="img/info.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[301]?>" /> <?php echo $metin[301]?></a>
+                <?php
 					  }
                     ?>
-                    <br />
-                    <br />
-                    <label id="addBookmarkContainer" title="<?php echo $metin[300]?>" > <img src="img/favcenter.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[244]?>"/> </label>
-                    <br />
-                    <br />
-                    <a href="askQuestion.php" title="<?php echo $metin[628]?>" > <img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628]?></a>
-                    <?php
+                <br />
+                <br />
+                <label id="addBookmarkContainer" title="<?php echo $metin[300]?>" > <img src="img/favcenter.gif" border="0" style="vertical-align:middle" alt="<?php echo $metin[244]?>"/> </label>
+                <br />
+                <br />
+                <a href="askQuestion.php" title="<?php echo $metin[628]?>" > <img src="img/question.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[628]?>"/> <?php echo $metin[628]?></a>
+                <?php
 if($seceneklerimiz[9]=="1" and $kullaniciSecen[9]=="1"){
    if(isset($_GET["konu"]) && !empty($_GET["konu"]))
 	  if(isKonu($_GET["konu"]))
 	   {		  
 	   
 ?>
-                    <br />
-                    <br />
-                    <div class="rating">
-                      <?php
+                <br />
+                <br />
+                <div class="rating">
+                  <?php
 						$_SESSION["aktifDers"] = RemoveXSS($_GET["konu"]);
 						include "rating.php";
                     ?>
-                    </div>
-                    <?php
+                </div>
+                <?php
 	   }
 }
 ?>
-                  </div>
-                  <?php
+              </div>
+            </div>
+            <?php
 					  }	
                  ?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-              &nbsp;</div>
           </div>
           <?php
 if($seceneklerimiz[8]=="1" and $kullaniciSecen[8]=="1" and isKonu($_GET["konu"]) && $tur>-2 and $eMode!="2" and $eMode!="1"){
 ?>
-          <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <p class="msg_head2"><img src="img/comment.gif" border="0" style="vertical-align: middle;" alt="comment"/>&nbsp;<?php echo $metin[259]?>
-                      <?php 
+          <div class="col-lg-6 msg_head2">
+            <p class="msg_head2"><img src="img/comment.gif" border="0" style="vertical-align: middle;" alt="comment"/>&nbsp;<?php echo $metin[259]?>
+              <?php 
 					 $yorumSayisi = konuYorumSayisiGetir($_GET["konu"]);
 					 echo $yorumSayisi;
 					 ?>
-                    </p>
-                    <div class="msg_body2">
-                      <?php 					
+            </p>
+            <div class="msg_body2">
+              <?php 					
 						$yorumlar = yorumlariGetir($_GET["konu"]); 
 						if ($yorumlar!=""){
 ?>
-                      <link href="lib/pager.css" rel="stylesheet" type="text/css" />
-                      <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
-                      <script type="text/javascript">
+              <link href="lib/pager.css" rel="stylesheet" type="text/css" />
+              <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
+              <script type="text/javascript">
 /* <![CDATA[ */
 
 $(document).ready(function() {
@@ -419,33 +415,34 @@ $(document).ready(function() {
 
 /* ]]> */
 </script>
-                      <table border="0" width="800" cellpadding="5" cellspacing="0" class="pageme">
-                        <tbody>
-                          <?php
+              <table border="0" cellpadding="5" cellspacing="0" class="pageme">
+                <tbody>
+                  <?php
 	  echo $yorumlar;
 ?>
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                            <?php
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <?php
 					if($tur!="-2"){ 
                   	?>
-                            <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/plus.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a> | <a href="#" id="refresh"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a><br />
-                            <br />
-                            <?php 
+                    <a name="yorumlar"></a> <a href="addComment.php?konu3=<?php echo RemoveXSS($_GET["konu"]);?>" rel="facebox"><img src="img/plus.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[242]?>" /> <?php echo $metin[242]?></a> | <a href="#" id="refresh"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="<?php echo $metin[99]?>" /> <?php echo $metin[99]?></a><br />
+                    <br />
+                    <?php 
 					}?>
-                          </tr>
-                        </tfoot>
-                      </table>
-                      <div class="pager"></div>
-                      <?php
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="pager"></div>
+              <?php
 						  
 						}
 						else  
 						  echo $metin[279].' <a name="yorumlar"></a> <a href="addComment.php?konu3='.RemoveXSS($_GET["konu"]).'" rel="facebox"><img src="img/plus.png" border="0" style="vertical-align:middle" alt="$metin[242]" /> '.$metin[242].'</a> | <a href="#" id="refresh"><img src="img/reload.png" border="0" style="vertical-align:middle" alt="'.$metin[99].'" /> '.$metin[99].'</a>';
 					?>
-                    </div>
-                    <script>
+            </div>
+          </div>
+          <script>
 $(document).ready(function() {
 
   $("#refresh").click(function() {
@@ -455,12 +452,7 @@ $(document).ready(function() {
 	});
 });
 
-  </script> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  </script>
           <?php
 }
           
@@ -469,25 +461,10 @@ $(document).ready(function() {
 
 if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"]) and !empty($sampleData2) and count($sampleData2)>1 and $eMode!="2" and $eMode!="1" ){ 
 ?>
-          <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <div>
-                      <div class="msg_list">
-                        <p class="msg_head"><img src="img/history.png" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[197]?></p>
-                        <div class="msg_body">
-                          <?php 							
+          <div class="col-lg-6 msg_list">
+            <p class="msg_head"><img src="img/history.png" border="0" style="vertical-align: middle;" alt="lessons"/>&nbsp;<?php echo $metin[197]?></p>
+            <div class="msg_body">
+              <?php 							
 							include('lib/graphs.inc.php');						
 							$chart2 = new BAR_GRAPH("vBar");
 							$chart2->values = grafikGunNormallestirData($sampleData2,$labels2);
@@ -499,59 +476,91 @@ if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and isKonu($_GET["konu"
 							$chart2->absValuesBorder = "0px";
 						    echo $chart2->create(); 
 						?>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <?php
 }
 	if($seceneklerimiz[14]=="1" and $kullaniciSecen[14]=="1" and ($tur==0 || $tur==1 || $tur==2) && isKonu($_GET["konu"]) and $eMode!="2" and $eMode!="1"){
 ?>
-          <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <div>
-                      <div class="msg_list">
-                        <p class="msg_head"><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="users"/>&nbsp;<?php echo $metin[479]?></p>
-                        <div class="msg_body">
-                          <?php 	
+          <div class="col-lg-6 msg_list">
+            <p class="msg_head"><img src="img/admin.gif" border="0" style="vertical-align: middle;" alt="users"/>&nbsp;<?php echo $metin[479]?></p>
+            <div class="msg_body">
+              <?php 	
 						$gelen = RemoveXSS($_GET["konu"]);						
 	                    echo sonCalisanKullanicilar($gelen);					  
                     ?>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <?php
 	}
 ?>
-          <script language="javascript" type="text/javascript">  
+          <?php	 
+	 if(isset($_GET["konu"]) && isKonu($_GET["konu"])){
+		  echo "<script type=\"text/javascript\">
+		  	document.getElementById('konu_id').value=".RemoveXSS($_GET["konu"]).";
+			document.getElementById('sonSayfaHidden').value=0;
+			konuHazirla(".RemoveXSS($_GET["konu"]).");
+			</script>";
+			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
+			ob_end_clean (); // Wipe the buffer
+			echo str_replace ('<!--TITLE-->', " - ".konuAdiGetir($_GET["konu"]), $pageContents);	   			
+	 }
+	   else{
+			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
+			ob_end_clean (); // Wipe the buffer
+			echo str_replace ('<!--TITLE-->', "", $pageContents);	   
+	   }
+	   
+?>
+        </div>
+        <?php  						
+				 if($eMode!="1") 	{									
+              ?>
+        <footer class="footer">
+          <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+              <div class="navbar-collapse collapse visible-xs">
+                <div class="row"  id="ileriGeri">
+                  <div class="col-xs-1"><span id="oncekiKonu"></span></div>
+                  <div class="col-xs-1"><span id="sonrakiKonu"></span></div>
+                  <div class="col-xs-2"><span id="geriDugmesi"></span></div>
+                  <div class="col-xs-2"><span id="ileriDugmesi"></span></div>
+                  <div class="col-xs-1" style="color:#FCF8E1; text-align:center;"><span id="cevapVer" title="<?php echo $metin[664]?>"><a href='soruCevapla.php' id="cevapLink" rel='facebox' onclick="cevapSureBasla();"><img src="img/hand.up.gif" border="0" style="vertical-align:middle" alt="cevap"/> <?php echo $metin[344]?></a></span></div>
+                  <div class="col-xs-2" style="color:#FCF8E1;"><span id="calismaSuresi" class="badge">-</span> <?php echo $metin[172]?>
+                    <?php (ayarGetir("ayar3int")>0) ? printf($metin[247],ayarGetir("ayar3int")) : ""; ?>
+                  </div>
+                  <div class="col-xs-1"><span id="soruGeriSayim" class="badge"></span></div>
+                  <div class="col-xs-1">
+                    <form name="sunum">
+                      <span id="cevapSuresi" class="badge" style="color:#E8E717;"></span>
+                      <input type="checkbox" id="sunuDurdur" name="sunuDurdur" title="<?php echo $metin[604]?>"
+                    value="1" onclick="
+                    if(document.sunum.sunuDurdur.checked)
+	                    $('#cevapSuresi').stopTime();
+                        else
+                        sayacTetik3(document.getElementById('cevapSuresi').innerHTML);
+                    "/>
+                    </form>
+                  </div>
+                  <div class="col-xs-1"><span id="gercekCevapSuresi" style="visibility:hidden"></span> <span id="slideGecisSuresi" style="visibility:hidden"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <?php  						
+				 }
+              ?>
+        <script src="lib/bs_js/bootstrap.js"></script> 
+        <script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script> 
+        <script language="javascript" type="text/javascript">  
 document.getElementById('ileriGeri').style.visibility = 'visible' ;
 document.getElementById('cevapVer').style.visibility = 'hidden' ;
 document.getElementById('sunuDurdur').style.visibility = 'hidden';
 
 /*
 konuDuzenle:
-konu düzenleme baÄYının çalışması
+konu duzenleme 
 */
 function konuDuzenle(){
 	if(document.getElementById('konu_id').value>0)
@@ -559,7 +568,7 @@ function konuDuzenle(){
 	return false;
 }
 
-window.onbeforeunload = function () {
+window.onbeforeunload = function () {	
   if (bitirmeYuzdesi() < 100 && parseInt(document.getElementById("calismaSuresi").innerHTML)> <?php echo ayarGetir("ayar3int");?> )	
    return "<?php echo $metin[345];?>";
 }
@@ -570,7 +579,7 @@ window.onunload = function () {
 }
 /*
 cevapSureBasla:
-cevaplama için süre başlangıcı
+cevaplama icin sure baslar
 */
 function cevapSureBasla(){
 
@@ -596,54 +605,10 @@ function cevapSureBasla(){
 	}
 	
 fix_flash();	
-</script>
-          <?php	 
-	 if(isset($_GET["konu"]) && isKonu($_GET["konu"])){
-		  echo "<script type=\"text/javascript\">
-		  	document.getElementById('konu_id').value=".RemoveXSS($_GET["konu"]).";
-			document.getElementById('sonSayfaHidden').value=0;
-			konuHazirla(".RemoveXSS($_GET["konu"]).");
-			</script>";
-			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
-			ob_end_clean (); // Wipe the buffer
-			echo str_replace ('<!--TITLE-->', " - ".konuAdiGetir($_GET["konu"]), $pageContents);	   			
-	 }
-	   else{
-			$pageContents = ob_get_contents (); // Get all the page's HTML into a string
-			ob_end_clean (); // Wipe the buffer
-			echo str_replace ('<!--TITLE-->', "", $pageContents);	   
-	   }
-	   
-?>
-          <div class="cleared"></div>
-          <?php  						
-				 if($eMode!="1") 	{									
-              ?>
-          <div class="Footer">
-            <div class="Footer-inner">
-              <?php  						
-						 require "footer.php";
-              ?>
-            </div>
-            <div class="Footer-background"></div>
-            <?php  						
-				 }
-              ?>
-          </div>
-        </div>
-        <div class="cleared"></div>
-      </div>
-      <div class="cleared"></div>
-    </div>
-  </div>
-</div>
-<?php
- if($eMode!="1") 						
-	 require "feedback.php";
-?>
-<script type="text/javascript">
+</script> 
+        <script type="text/javascript">
 
-//ileri ve geri dolaşma klavye tuşları: saÄY ok ve sol ok, Enter: Cevap ver.
+//ileri ve geri dolasma klavye tuslari: sag ok ve sol ok, Enter: Cevap ver.
 	$(document).keydown(function(event) {
 		var sayNosu;
 		sayNosu = parseInt(document.getElementById('sayfaNo').innerHTML);
@@ -685,3 +650,7 @@ $(document).ready(
 </script>
 </body>
 </html>
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+?>

@@ -1,10 +1,9 @@
-<?php
+﻿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -26,36 +25,44 @@ Lesser General Public License for more details.
 		}
   $seciliTema=temaBilgisi();	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="tarik bagriyanik">
+	<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+	<link href="theme/docs.min.css" rel="stylesheet">
+	<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="theme/justified-nav.css" rel="stylesheet">
+	<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+	<title>eOgr - <?php echo $metin[443]?></title>
+	<link rel="icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico"/>
 	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 	<meta http-equiv="cache-control" content="no-cache"/>
 	<meta http-equiv="pragma" content="no-cache"/>
 	<meta http-equiv="Expires" content="-1"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<title>eOgr -<?php echo $metin[443]?></title>
-	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+	<meta name="description" content="eOgr - Open source online education, elearning project" />
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 	<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
-	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
-	<link rel="shortcut icon" href="img/favicon.ico"/>
-	<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-	<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 	<script type="text/javascript" src="lib/script.js"></script>
-	<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-	<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
 	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
 	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
 	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-        
-      }) 
-    })
-</script>
+		jQuery(document).ready(function($) {
+		  $('a[rel*=facebox]').facebox({
+			
+		  }) 
+		})
+	</script>
+	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 	<style type="text/css">
 div.containerStripe {
 	background-color: transparent;
@@ -154,11 +161,8 @@ sinif {
 	float: left;
 }
 </style>
-	<link type="text/css" href="lib/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-	<script type="text/javascript" src="lib/jquery.mousewheel.js"></script>
-	<script type="text/javascript" src="lib/jquery.jscrollpane.min.js"></script>
 	<script language="javascript">
-jQuery.noConflict();
+//jQuery.noConflict();
 jQuery(document).ready(function() {
     /**
      * jQuery Accordion
@@ -234,6 +238,7 @@ var loading = $("#loading");
             $(this).stop().animate({
                 opacity: 0.8
             }, {
+
                 duration: hiz,
                 easing: "swing"
             })
@@ -265,98 +270,27 @@ var loading = $("#loading");
 	</script>
 	</head>
 	<body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-      <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-bl">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-br">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-tc">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-bc">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-cl">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-cr">
-          <div>&nbsp;</div>
-        </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-          <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-              <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-              <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-            </div>
-      </div>
-          <div class="nav">
-        <?php
-				 require("menu.php");
-                ?>
-        <div class="l"> </div>
-        <div class="r">
-              <div>&nbsp;</div>
-            </div>
-      </div>
-          <div class="contentLayout">
-        <div class="content">
-              <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-bl">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-br">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-tc">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-bc">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-cl">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-cr">
-                  <div>&nbsp;</div>
-                </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-                  <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[443]?> </span> </h2>
-                <div class="PostContent" style="overflow:hidden;"><br />
-                      <form name="arama" method="get" action="lessonsList.php">
-                    Ders Arama :
-                    <input type="text" name="ara" id="ara" maxlength="50" size="30" value="<?php
+<?php require("menu.php");?>
+<div class="container">
+      <div class="col-lg-12">
+    <div class="PostContent" style="overflow:hidden;">
+          <form name="arama" method="get" action="lessonsList.php">
+        Ders Arama :
+        <input type="text" name="ara" id="ara" maxlength="50" size="30" value="<?php
 					if (isset($_GET["ara"]))
 						echo RemoveXSS($_GET["ara"]);
-                    ?>" autofocus="true" title="Arama i�in en az 3 harf girilmelidir."/>
-                    <input type="image" name="araImg" src="img/view.png" />
-                  </form>
-                      <br />
-                      <?php
+                    ?>" autofocus title="Arama için en az 3 harf girilmelidir."/>
+        <input type="image" name="araImg" src="img/view.png" />
+      </form>
+          <?php
 if(!empty($_GET["ara"]) and strlen($_GET["ara"])>2 and strlen($_GET["ara"])<51):
 $arananlar = sayfaKonuDersArama($_GET["ara"]);
 
  if(!empty($arananlar)){
 ?>
-                      <link href="lib/pager.css" rel="stylesheet" type="text/css" />
-                      <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
-                      <script type="text/javascript">
+          <link href="lib/pager.css" rel="stylesheet" type="text/css" />
+          <script type="text/javascript" src="lib/jquery.quickpager.js"></script> 
+          <script type="text/javascript">
 /* <![CDATA[ */
 
 $(document).ready(function() {
@@ -369,55 +303,43 @@ $(document).ready(function() {
 
 /* ]]> */
 </script>
-                      <table border="0" width="100%" cellpadding="5" cellspacing="0" class="pageme">
-                    <tbody style="background-color:#eee;font-size:11px;">
-                          <?php
+          <table border="0" width="100%" cellpadding="5" cellspacing="0" class="pageme">
+        <tbody style="background-color:#eee;font-size:11px;">
+              <?php
 	  echo $arananlar;
 ?>
-                        </tbody>
-                  </table>
-                      <div class="pager"></div>
-                      <?php
+            </tbody>
+      </table>
+          <div class="pager"></div>
+          <?php
  }else
-  echo "<font id='uyari'>$metin[497]</font>";
+	echo "<font id='uyari'>$metin[497]</font>";
+else:
+	if(!empty($_GET["ara"]))
+		echo "<font id='uyari'>$metin[497]</font>";
 endif;
 ?>
-                    </div>
-                <?php
-				?>
-                <?php
+        </div>
+    <?php
 $seceneklerimiz = explode("-",ayarGetir("ayar5char"));		  
 if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1")
 {
 ?>
-                <div class="Post">
-                      <div class="Block">
-                    <div class="Block-tl"></div>
-                    <div class="Block-tr"></div>
-                    <div class="Block-bl"></div>
-                    <div class="Block-br"></div>
-                    <div class="Block-tc"></div>
-                    <div class="Block-bc"></div>
-                    <div class="Block-cl"></div>
-                    <div class="Block-cr"></div>
-                    <div class="Block-cc"></div>
-                    <div class="Block-body">
-                          <div id="loading2" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
-                          <?php 
+    <div class="Post">          
+              <div id="loading2" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
+              <?php 
 								if(empty($_GET["ara"]))	{
 						  ?>
-                          <div class="BlockContent" id="dersAgacimiz" style="background-color:#FFA;height:1px;">
-                        <div class="BlockContent-body">
-                              <div>
-                            <div class="msg_list">
-                                  <div class="msg_body">
-                                <div id="sidetreecontrol"><a href="?#"  style="color:#00F"><?php echo $metin[458]?></a> | <a href="?#"  style="color:#00F"><?php echo $metin[459]?></a> | <a  href="#"  style="color:#00F"><?php echo $metin[460]?></a></div>
-                                <?php 
+            
+                <div class="msg_list">
+                    <div class="msg_body">
+                    <div id="sidetreecontrol"><a href="?#"  style="color:#00F"><?php echo $metin[458]?></a> | <a href="?#"  style="color:#00F"><?php echo $metin[459]?></a> | <a  href="#"  style="color:#00F"><?php echo $metin[460]?></a></div>
+                    <?php 
 								  echo dersAgaci(1);
 								?>
-                              </div>
-                                </div>
-                            <!--<div class="containerStripe">
+					</div>
+                </div>
+                <!--<div class="containerStripe">
                                 <div class="outerStripe">
                                       <div class="menu">
                                     <ul>
@@ -454,41 +376,26 @@ if($seceneklerimiz[6]=="1" and $kullaniciSecen[6]=="1")
                                       <div id="loading" align="center"> <img src="img/ajax-loader.gif" alt="Loading/Yukleniyor" /> </div>
                                     </div>
                               </div>--> 
-                          </div>
-                            </div>
-                      </div>
-                        </div>
-                        <?php
+              </div>                
+        <?php
 								}
                         ?>
-                  </div>
-                    </div>
-              </div>
-                  <?php
+      </div>      
+  </div>
+      <?php
 }
 ?>
-                </div>
-            <div class="cleared"></div>
-          </div>
-            </div>
-      </div>
-          <div class="cleared"></div>
-          <div class="Footer">
-        <div class="Footer-inner">
-              <?php  						
-						 require "footer.php";
-                        ?>
-            </div>
-        <div class="Footer-background"></div>
-      </div>
-        </div>
+<footer class="footer">
+      <div class="Footer-inner">
+    <?php  require "footer.php";?>
   </div>
-      <div class="cleared"></div>
-    </div>
+    </footer>
 </div>
-</div>
-<?php  						
- require "feedback.php"; 
-?>
+<script src="lib/bs_js/bootstrap.js"></script> 
+<script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+?>

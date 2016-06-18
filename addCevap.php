@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -14,7 +13,7 @@ version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
 	@session_start();
-	header("Content-Type: text/html; charset=iso-8859-9"); 
+	header("Content-Type: text/html; charset=UTF-8"); 
 	
 	require "conf.php";		
 	checkLoginLang(true,true,"addCevap.php");
@@ -28,7 +27,8 @@ function baglan2()
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysql_connect($_host, $_username, $_password);
+	global  $_db;
+    return 	@mysqli_connect($_host, $_username, $_password, $_db);
 }
 
 if(!baglan2())   
@@ -36,7 +36,7 @@ if(!baglan2())
  
 $yol1 = baglan2();
 
-	if (!@mysql_select_db($_db, $yol1))
+	if (!$yol1)
 	{
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href=install.php>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
@@ -55,11 +55,11 @@ function getUserIDcomment($usernam, $passwor)
 	$usernam = substr(temizle($usernam),0,15);
     $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle($usernam)."' AND userPassword='".temizle($passwor)."' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1, $sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-       return (mysql_result($result1, 0, "id"));
+       return (mysqli_result($result1, 0, "id"));
     }else {
 	   return ("");
 	}
@@ -72,7 +72,7 @@ kullanýcý cevap yazýyor
 function cevapYaz($cevapYazisi, $userID, $soruID){
 	global $yol1,$currentFile;				
 		if(!empty($userID) && !empty($soruID)) {
-			$cevapYazisi = substr(strip_tags(iconv( "UTF-8","ISO-8859-9",$cevapYazisi)),0,300);
+			$cevapYazisi = mb_substr(strip_tags($cevapYazisi),0,300);
 			$cevapYazisi = str_replace("'", "`",$cevapYazisi);
 			$cevapYazisi = RemoveXSS($cevapYazisi);
 			$dateN = date("Y-m-d H:i:s");
@@ -83,7 +83,7 @@ function cevapYaz($cevapYazisi, $userID, $soruID){
 					('$cevapYazisi','$userID', '$soruID', '$dateN')
 					"; 
 
-			$result2 = mysql_query($sql2, $yol1); 			
+			$result2 = mysqli_query($yol1, $sql2); 			
 			if($result2) {
 				echo "Cevabýnýz eklendi.";
 				trackUser($currentFile,"success,AddAnsw",RemoveXSS($_SESSION["usern"]));

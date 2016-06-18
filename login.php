@@ -1,10 +1,9 @@
-<?php
+ï»¿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -68,41 +67,48 @@ Lesser General Public License for more details.
 	currentFileCheck("login.php");	
 	
 	$seciliTema=temaBilgisi();	
-
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="-1"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[60]?></title>
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="lib/script.js"></script>
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
-<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
-<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
-<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script type="text/javascript">
-Shadowbox.init({
-    handleOversize: "drag",
-    modal: true
-});
-</script>
-<script type="text/javascript" src="lib/facebox/facebox.js"></script>
-<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="lib/jquery.validate.min.js"></script>
-<script type="text/javascript">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="tarik bagriyanik">
+	<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+	<link href="theme/docs.min.css" rel="stylesheet">
+	<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="theme/justified-nav.css" rel="stylesheet">
+	<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+	<title>eOgr -<?php echo $metin[60]?></title>
+	<link rel="icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico"/>
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="-1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+	<meta name="description" content="eOgr - Open source online education, elearning project" />
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="lib/script.js"></script>
+	<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
+	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+		  $('a[rel*=facebox]').facebox({
+			
+		  }) 
+		})
+	</script>
+	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
+	<script type="text/javascript" src="lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+	<script type="text/javascript">
 $().ready(function() {
 	
 	/*$(function(){
@@ -141,92 +147,22 @@ $().ready(function() {
 	});	
 });
 </script>
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-        
-      }) 
-    })
-</script>
-
-<!-- HEAD -->
-</head>
-<body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
-      </div>
-      <div class="nav">
-        <?php
-				 require("menu.php");
-                ?>
-        <div class="l"> </div>
-        <div class="r">
-          <div>&nbsp;</div>
-        </div>
-      </div>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[60]?> </span> </h2>
-                <div class="PostContent">
-                  <?php
+	<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+	<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
+	<script type="text/javascript">
+	Shadowbox.init({
+		handleOversize: "drag",
+		modal: true
+	});
+	</script>
+	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+	</head>
+	<body>
+    <?php require("menu.php");?>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <?php
 	$adi	=substr(temizle((isset($_POST["userN"]))?$_POST["userN"]:""),0,15);
 	$par	=sha1(substr(temizle((isset($_POST["userP"]))?$_POST["userP"]:""),0,15));
 	//$adi	=substr(@temizle($_POST["userN"]),0,15);
@@ -247,7 +183,7 @@ $().ready(function() {
 		   	trackUser($currentFile,"fail,Login",$adi);	//first time bad login
 	   else {	
 	   
-			//eğer 5 dakika içinde zaten girmiş ise (flood gibi)			
+			//eÄŸer 5 dakika iÃ§inde zaten girmiÅŸ ise (flood gibi)			
 			  $sonGirisDakikasi=sonLoginDakikasi($adi);			  
 				if ($sonGirisDakikasi>=0 and $sonGirisDakikasi<5) { 
 					sessionDestroy();
@@ -271,7 +207,7 @@ $().ready(function() {
     if($adi!="" && $par!="") {
 		$tur=checkRealUser($adi,$par);
 	
-			//eğer pasif ise 
+			//eÄŸer pasif ise 
 			if ($tur<=-1 || $tur>2) { 
 			   sessionDestroy();
 			   echo ("<font id='hata'> ".$metin[404]." </font><p>".$metin[402]."</p>");
@@ -295,8 +231,9 @@ $().ready(function() {
 	}
 if($pass){
 ?>
-                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
-                  <?php
+          <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])." ".$ktut;?> </p>
+          <div class="row">
+            <?php
 				 if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
 					  if($siniflar!=""){
@@ -313,38 +250,18 @@ if($pass){
 				  }			  
 
 	 if (trim(getStats(11))!=""){
-		 echo "<div class='ikiKolon'>";
+		 echo "<div class='col-lg-6 col-xs-12 bs-callout bs-callout-info bg-info'>";
 		 echo "<strong>".$metin[213]."</strong><br/>".getStats(11)."</div>";
 		 if (trim(getStats(12))!=""){
-			 echo "<div class='ikiKolon'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
+			 echo "<div class='col-lg-6 col-xs-12 bs-callout bs-callout-warning bg-warning'><strong>".$metin[239]."</strong><br/>".getStats(12)."</div>";
 		 }		 
 	 }else
 	  echo "$metin[485]";			
 		 
 ?>
-                </div>
-                <div class="cleared" ></div>
-              </div>
-            </div>
           </div>
-          <div class="Post">
-            <div class="Block">
-              <div class="Block-tl"></div>
-              <div class="Block-tr"></div>
-              <div class="Block-bl"></div>
-              <div class="Block-br"></div>
-              <div class="Block-tc"></div>
-              <div class="Block-bc"></div>
-              <div class="Block-cl"></div>
-              <div class="Block-cr"></div>
-              <div class="Block-cc"></div>
-              <div class="Block-body">
-                <div class="BlockContent">
-                  <div class="BlockContent-body">
-                    <div>
-                      <div class="msg_list">
-                        <p>
-                          <?php
+          <p class="clear"> <a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a>
+            <?php
 					  $bekleyenArkadas = getFriendApprovals();
 					   if(!empty($bekleyenArkadas)) {
 								echo "<font id='tamam'>".$metin[592]." ";
@@ -353,10 +270,7 @@ if($pass){
 							 	echo "<font id='tamam'>$metin[593]</font>" ;
 						   }	   
                       ?>
-                        <p/>
-                        <a href="friends.php"><span><span><img src="img/users.png" border="0" style="vertical-align: middle;" alt="users"/> <?php echo $metin[549]?> </span></span></a> </div>
-                    </div>
-                  </div>
+          </p>
           <?php
 		  	}else{
           ?>
@@ -401,27 +315,26 @@ if($pass){
           <?php 
 			}
 		  ?>
-                </div>
-              </div>
-            </div>
-          </div>		  
-        </div>
-        <div class="cleared"></div>
-        <div class="Footer">
-          <div class="Footer-inner">
-            <?php  						
-						 require "footer.php";
-                        ?>
-          </div>
-          <div class="Footer-background"></div>
         </div>
       </div>
+      <footer class="footer">
+        <div class="Footer-inner">
+          <?php  require "footer.php";?>
+        </div>
+      </footer>
     </div>
-    <div class="cleared"></div>
-  </div>
-</div>
-<?php  						
- require "feedback.php";
-?>
+    </div>
+    <script type="text/javascript">
+				<!--
+				if (document.getElementById("userP")!=null) 
+				   document.getElementById("userP").setAttribute( "autocomplete","off" );
+				//-->
+				</script> 
+    <script src="lib/bs_js/bootstrap.js"></script> 
+    <script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+?>

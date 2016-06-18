@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -24,18 +23,16 @@ Lesser General Public License for more details.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="-1"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
     <title>eOgr</title>
-    <link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-    <!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <li_nk rel="stylesheet" href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" type="text/css" media="screen" />   
     <link rel="stylesheet" href="theme/page.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="lib/bs_js/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="lib/jquery.timers-1.1.2.js"></script>
     <script src="lib/jquery.anythingslider.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="lib/jquery.easing.1.2.js"></script>
@@ -50,8 +47,8 @@ $('#anythingSlider').anythingSlider({
   height              : null,      // Override the default CSS height
   resizeContents      : true,      // If true, solitary images/objects in the panel will expand to fit the viewport
   tooltipClass        : 'tooltip', // Class added to navigation & start/stop button (text copied to title if it is hidden by a negative text indent)
-  theme               : 'metallic', // Theme name
-  themeDirectory      : 'lib/theme-{theme}.css',
+//  theme               : 'metallic', // Theme name
+  //themeDirectory      : 'lib/theme-metallic.css',
 
   // Navigation
   startPanel          : 1,         // This sets the initial panel
@@ -104,18 +101,18 @@ $('#anythingSlider').anythingSlider({
         });
     </script>
     </head>
-    <body>
+    <body bgcolor="#FFFFFF">
     <?php
 /*
 baglan2:
-veritabanı bağlantısı
+veritabanÄ± baÄŸlantÄ±sÄ±
 */
 function baglan2()
 {
 	global  $_host;
 	global  $_username;
 	global  $_password;
-    return 	@mysql_connect($_host, $_username, $_password);
+    return 	@mysqli_connect($_host, $_username, $_password);
 }
 
 if(!baglan2())   
@@ -123,7 +120,7 @@ if(!baglan2())
  
 $yol1 = baglan2();
 
-	if (!@mysql_select_db($_db, $yol1))
+	if (!$yol1)
 	{
 		die("<font id='hata'> 
 		  Veritaban&#305; <a href='install.php'  target='_parent'>ayarlar&#305;n&#305;z&#305;</a> yapmad&#305;n&#305;z!<br/>
@@ -142,16 +139,16 @@ function temizle2($metin)
     $metin = str_replace("\n", "", $metin);
     $metin = str_replace("\r", "", $metin);
     $metin = str_replace("'", "`", $metin);
-    //$metin = str_replace('"', '¨', $metin);
+    //$metin = str_replace('"', 'Â¨', $metin);
     $metin = str_replace("\\", "|", $metin);
     $metin = str_replace("<", "<", $metin);
     $metin = str_replace(">", ">", $metin);
-    $metin = iconv( "UTF-8", "ISO-8859-9",trim(htmlentities($metin)));
+    $metin = trim(htmlentities($metin));
     return $metin;
 }
 /*
 getUserIDcomment:
-kullanıcı kimlik numarası
+kullanÄ±cÄ± kimlik numarasÄ±
 */
 function getUserIDcomment($usernam, $passwor)
 {
@@ -160,18 +157,18 @@ function getUserIDcomment($usernam, $passwor)
 	$usernam = substr(temizle2($usernam),0,15);
     $sql1 = "SELECT id, userName, userPassword FROM eo_users where userName='".temizle2($usernam)."' AND userPassword='".temizle2($passwor)."' limit 0,1"; 	
 
-    $result1 = mysql_query($sql1, $yol1); 
+    $result1 = mysqli_query($yol1, $sql1); 
 
-    if ($result1 && mysql_numrows($result1) == 1)
+    if ($result1 && mysqli_num_rows($result1) == 1)
     {
-       return (mysql_result($result1, 0, "id"));
+       return (mysqli_result($result1, 0, "id"));
     }else {
 	   return ("");
 	}
 }
 /*
 listeGetir:
-belli bir tablodan istenen veri listesini alma (facebox için)
+belli bir tablodan istenen veri listesini alma (facebox iÃ§in)
 */
 function listeGetir($userID, $durum){
 	global $yol1;							
@@ -183,22 +180,22 @@ function listeGetir($userID, $durum){
 				
 				switch($num){
 					case 2:
-					//en fazla &ccedil;alışılan konular
+					//en fazla &ccedil;alÄ±ÅŸÄ±lan konular
 							$sql1 =    "SELECT eo_4konu.id  as id, eo_4konu.konuAdi as konuAdi, count(*) as toplam 
 										FROM eo_4konu,eo_userworks 
 										WHERE eo_4konu.id = eo_userworks.konuID
 										GROUP BY konuAdi
 										ORDER BY toplam DESC, konuAdi";							
 
-							$result1 = mysql_query($sql1, $yol1);
+							$result1 = mysqli_query($yol1, $sql1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)==0)  return "";
+							   if(mysqli_num_rows($result1)==0)  return "";
 							   
 							   $ekle = "<ul id='anythingSlider'><li>";
-							   $donguSon = mysql_num_rows($result1);
+							   $donguSon = mysqli_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
-									$data = mysql_fetch_assoc($result1);
+									$data = mysqli_fetch_assoc($result1);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -217,7 +214,7 @@ function listeGetir($userID, $durum){
 							
 							break;
 					case 11:
-					//şu anki kullanıcının &ccedil;alışma konuları ve sayıları
+					//ÅŸu anki kullanÄ±cÄ±nÄ±n &ccedil;alÄ±ÅŸma konularÄ± ve sayÄ±larÄ±
 							$sql1 =    "SELECT eo_4konu.id  as id, eo_4konu.konuAdi as konuAdi, 
 												count(*) as toplam 
 										FROM eo_4konu,eo_userworks, eo_users 
@@ -227,15 +224,15 @@ function listeGetir($userID, $durum){
 										GROUP BY konuAdi
 										ORDER BY toplam DESC, konuAdi";
 							
-							$result1 = mysql_query($sql1, $yol1);
+							$result1 = mysqli_query($yol1, $sql1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)==0) return "";							   
+							   if(mysqli_num_rows($result1)==0) return "";							   
 							   								
 							   $ekle = "<ul id='anythingSlider'><li>";
-							   $donguSon = mysql_num_rows($result1);
+							   $donguSon = mysqli_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
-									$data = mysql_fetch_assoc($result1);
+									$data = mysqli_fetch_assoc($result1);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -255,9 +252,9 @@ function listeGetir($userID, $durum){
 							break;
 							
 					case 12:
-					//şu anki kullanıcının bitirdiği dersler
+					//ÅŸu anki kullanÄ±cÄ±nÄ±n bitirdiÄŸi dersler
 					if($_GET["user"]!="")
-					//eğer başka kullanıcı inceleniyor ise
+					//eÄŸer baÅŸka kullanÄ±cÄ± inceleniyor ise
 					  $userID = temizle($_GET["user"]);
 					  
 							$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
@@ -274,15 +271,15 @@ function listeGetir($userID, $durum){
 										GROUP BY dersAdi
 										ORDER BY toplam DESC";
 							
-							$result1 = mysql_query($sql1, $yol1);
+							$result1 = mysqli_query($yol1, $sql1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)==0) return "";	 
+							   if(mysqli_num_rows($result1)==0) return "";	 
 							   								
 							   $ekle = "<ul id='anythingSlider'><li>";
-							   $donguSon = mysql_num_rows($result1);
+							   $donguSon = mysqli_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
-									$row_gelen = mysql_fetch_assoc($result1);
+									$row_gelen = mysqli_fetch_assoc($result1);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -310,15 +307,15 @@ function listeGetir($userID, $durum){
 								   "GROUP BY kadi ".
 								   "order by tarih desc,kadi";	
 
-							$result = mysql_query($sql, $yol1);
+							$result = mysqli_query($yol1, $sql);
 							if($result)
 							 {
-								 if (@mysql_numrows($result) > 0) {
+								 if (@mysqli_num_rows($result) > 0) {
 									
 									  $ekle = "<ul id='anythingSlider'><li>";
-									$donguSon = mysql_num_rows($result);
+									$donguSon = mysqli_num_rows($result);
 							   		for($i=0; $i<$donguSon ;$i++){
-										$data = mysql_fetch_assoc($result);
+										$data = mysqli_fetch_assoc($result);
 										if($i % 19 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -350,17 +347,17 @@ function listeGetir($userID, $durum){
 								   "GROUP BY kadi ".
 								   "order by ortalama desc,toplam DESC,konuAdi";	
 
-							$result = mysql_query($sql, $yol1);
+							$result = mysqli_query($yol1, $sql);
 							if($result)
 							 {
-								 if (@mysql_numrows($result) > 0) {
-								$donguSon = @mysql_numrows($result);
+								 if (@mysqli_num_rows($result) > 0) {
+								$donguSon = @mysqli_num_rows($result);
 								
 									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
-									$data = mysql_fetch_assoc($result);
+									$data = mysqli_fetch_assoc($result);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -388,17 +385,17 @@ function listeGetir($userID, $durum){
 								   "GROUP BY kadi ".
 								   "order by toplam desc,kadi";	
 
-							$result = mysql_query($sql, $yol1);
+							$result = mysqli_query($yol1, $sql);
 							if($result)
 							 {
-								 if (@mysql_numrows($result) > 0) {
-								$donguSon = @mysql_numrows($result);
+								 if (@mysqli_num_rows($result) > 0) {
+								$donguSon = @mysqli_num_rows($result);
 								
 									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
-									$data = mysql_fetch_assoc($result);
+									$data = mysqli_fetch_assoc($result);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -417,7 +414,7 @@ function listeGetir($userID, $durum){
 							
 							break;		
 				case 16:
-				//son demo çalışmaları
+				//son demo Ã§alÄ±ÅŸmalarÄ±
 						$sql = "SELECT eo_4konu.id as idsi, eo_4konu.konuAdi as kadi,".
 							   " count(*) as toplam ".
 							   "from eo_userworks, eo_4konu ".
@@ -425,18 +422,18 @@ function listeGetir($userID, $durum){
 							  // " and eo_userworks.userID=-1 ".
 							   "GROUP BY kadi ".
 							   "order by toplam desc,kadi";	
-						$result = mysql_query($sql, $yol1);
+						$result = mysqli_query($yol1, $sql);
 						if($result)
 						 {
-							 if (@mysql_numrows($result) > 0) {
+							 if (@mysqli_num_rows($result) > 0) {
 								
-								$donguSon = @mysql_numrows($result);
+								$donguSon = @mysqli_num_rows($result);
 								
 									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
-									$data = mysql_fetch_assoc($result);
+									$data = mysqli_fetch_assoc($result);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -448,7 +445,7 @@ function listeGetir($userID, $durum){
 									  	$ekle .= "</ul>";
 									
 							 }		
-							 @mysql_free_result($result);
+							 @mysqli_free_result($result);
 							 echo $ekle;
 							return $ekle; 
 						}else {
@@ -458,9 +455,9 @@ function listeGetir($userID, $durum){
 						break;	
 							
 					case 19:
-					//şu anki kullanıcının bitirdiği dersler
+					//ÅŸu anki kullanÄ±cÄ±nÄ±n bitirdiÄŸi dersler
 					if(isset($_SESSION["kursUser2"]))
-					//eğer başka kullanıcı inceleniyor ise
+					//eÄŸer baÅŸka kullanÄ±cÄ± inceleniyor ise
 					  $userID = temizle($_SESSION["kursUser2"]);
 					  
 							$sql1 =    "SELECT  eo_3ders.dersAdi as dersAdi, eo_4konu.konuAdi as konuAdi, 
@@ -477,15 +474,15 @@ function listeGetir($userID, $durum){
 										GROUP BY dersAdi
 										ORDER BY toplam DESC";
 							
-							$result1 = mysql_query($sql1, $yol1);
+							$result1 = mysqli_query($yol1, $sql1);
 							if ($result1)
 							{
-							   if(mysql_num_rows($result1)==0) return "";	 
+							   if(mysqli_num_rows($result1)==0) return "";	 
 							   								
 							   $ekle = "<ul id='anythingSlider'><li>";
-							   $donguSon = mysql_num_rows($result1);
+							   $donguSon = mysqli_num_rows($result1);
 							   for($i=0; $i<$donguSon ;$i++){
-									$row_gelen = mysql_fetch_assoc($result1);
+									$row_gelen = mysqli_fetch_assoc($result1);
 									if($i % 15 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -503,7 +500,7 @@ function listeGetir($userID, $durum){
 							
 							break;
 		case 20:
-		//son çalışılan konular
+		//son Ã§alÄ±ÅŸÄ±lan konular
 					
 				$sql1 =    "SELECT eo_4konu.id as idsi, eo_4konu.konuAdi as kadi,
 					    	MAX(eo_userworks.calismaTarihi) as tarih 
@@ -513,18 +510,18 @@ function listeGetir($userID, $durum){
 					   order by tarih desc,konuAdi";
 				
 				$yol1 = baglan();
-				$result = mysql_query($sql1, $yol1);
+				$result = mysqli_query($yol1, $sql1);
 						if($result)
 						 {
-							 if (@mysql_numrows($result) > 0) {
+							 if (@mysqli_num_rows($result) > 0) {
 								
-								$donguSon = @mysql_numrows($result);
+								$donguSon = @mysqli_num_rows($result);
 								
 									  	$ekle .= "<ul id='anythingSlider'>";
 										$ekle .=  "<li>";
 										
 								for($i=0; $i<$donguSon ;$i++){
-									$data = mysql_fetch_assoc($result);
+									$data = mysqli_fetch_assoc($result);
 									if($i % 19 == 0 and $i>0){
 											$ekle .=  "</li><li>";
 										}
@@ -538,7 +535,7 @@ function listeGetir($userID, $durum){
 									  	$ekle .= "</ul>";
 									
 							 }		
-							 @mysql_free_result($result);
+							 @mysqli_free_result($result);
 							 echo $ekle;
 							return $ekle; 
 						}else {

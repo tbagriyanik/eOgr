@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -31,7 +30,7 @@ Lesser General Public License for more details.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>eOgr -<?php echo $metin[56]?></title>
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/main.css" />
 <link rel="stylesheet" type="text/css" href="lib/wtag/css/main-style.css" />
@@ -57,46 +56,46 @@ body, td, th {
 h4 {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 14px;
-	margin:5px;
+	margin: 5px;
 }
 .ozelli {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 12px;
-	padding:10px;
-	margin:10px;
+	padding: 10px;
+	margin: 10px;
 }
 a {
-	text-decoration:none;
+	text-decoration: none;
 }
 a:hover {
-	text-decoration:underline;
+	text-decoration: underline;
 }
 #whiteBoard {
-	float:right;
+	float: right;
 	height: 340px;
 	width: 300px;
-	margin-left:5px;
-	padding:0;
-	bor_der:thick #F00 solid;
+	margin-left: 5px;
+	padding: 0;
+	bor_der: thick #F00 solid;
 }
 #videoChat {
-	float:left;
+	float: left;
 	height: 340px;
 	width: 300px;
-	margin-left:5px;
-	padding:0;
+	margin-left: 5px;
+	padding: 0;
 }
 #defaultCountdown {
-	float:right;
-	font-family:"Courier New", Courier, monospace;
-	font-size:16px;
+	float: right;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 16px;
 }
 #lgout {
-	position:absolute;
-	top:20px;
-	width:auto;
-	height:auto;
-	z-index:1;
+	position: absolute;
+	top: 20px;
+	width: auto;
+	height: auto;
+	z-index: 1;
 	left: auto;
 	right: 12px;
 	background-image: url(img/close.gif);
@@ -233,8 +232,8 @@ $(function () {
     </div>
   </div>
 </div>
-<div id="videoChat">
-<script id="TB_embed_js" src="http://api.opentok.com/hl/embed/<?php echo $_videoChatSession; ?>/embed.js?width=300&height=340" type="text/javascript" charset="utf-8"></script>
+<div id="videoChat"> 
+  <script id="TB_embed_js" src="http://api.opentok.com/hl/embed/<?php echo $_videoChatSession; ?>/embed.js?width=300&height=340" type="text/javascript" charset="utf-8"></script> 
 </div>
 <div id="whiteBoard">
   <object width="100%" height="100%">

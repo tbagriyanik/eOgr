@@ -1,10 +1,9 @@
-<?php 
+ï»¿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -26,37 +25,38 @@ Lesser General Public License for more details.
 		}	
 	$seciliTema=temaBilgisi();
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-9'/>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="tarik bagriyanik">
+<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+<link href="theme/docs.min.css" rel="stylesheet">
+<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="theme/justified-nav.css" rel="stylesheet">
+<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+<title>eOgr -<?php echo $metin[549]?></title>
+<link rel="icon" href="img/favicon.ico">
+<link rel="shortcut icon" href="img/favicon.ico"/>
 <link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[549]?></title>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" type="text/css" href="lib/shadowbox/shadowbox.css" />
-<script type="text/javascript" src="lib/shadowbox/shadowbox.js"></script>
-<script type="text/javascript">
-Shadowbox.init({
-    handleOversize: "drag",
-    modal: true
-});
-</script>
+<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+<meta name="description" content="eOgr - Open source online education, elearning project" />
+<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="lib/script.js"></script>
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
-<script language="javascript" type="text/javascript" src="lib/dataFill.js"></script>
-<script language="javascript" type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
-<script language="javascript" src="lib/jquery.cookie.js" type="text/javascript"></script>
+<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/facebox/facebox.js"></script>
 <link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
-<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript" src="lib/jquery.cookie.js"></script>
+<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript">
 //http://www.netlobo.com/url_query_string_javascript.html
 function gup( name )
@@ -199,6 +199,7 @@ function gup( name )
     })
 </script>
 <script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+<script type="text/javascript" src="lib/dataFill.js"></script>
 <style type="text/css">
 #tabs {
 	text-align: right;
@@ -206,91 +207,23 @@ function gup( name )
 	border-bottom-style: solid;
 	border-bottom-color: #999;
 	top: 10px;
-	padding:5px;
+	padding: 5px;
 }
 .tabContent {
-	padding:10px;
-	background-color:#FFF;
-	color:#000;
+	padding: 10px;
+	background-color: #FFF;
+	color: #000;
 }
 </style>
 </head>
 <body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><a href="index.php"><?php echo ayarGetir("okulGenelAdi")?></a></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
-      </div>
-      <div class="nav">
+<?php require("menu.php");?>
+<div class="container">
+  <div class="col-lg-12">
+    <div class="Post-inner">
+      <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[549]?> </span> </h2>
+      <div class="PostContent">
         <?php
-				 require("menu.php");
-                ?>
-        <div class="l"> </div>
-        <div class="r">
-          <div>&nbsp;</div>
-        </div>
-      </div>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[549]?> </span> </h2>
-                <div class="PostContent">
-                  <?php
 	if (in_array($tur, array("1","2","0")))	{
 	 //
 
@@ -311,8 +244,8 @@ if(isset($_GET["kisi"]))
 		$_SESSION["seciliArkadas"] = RemoveXSS($_GET["kisi"]);
 	}
 ?>
-                  <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".$geceliKullID."&amp;set=1' rel=\"facebox\">$metin[311]</a> ".$ktut;?> </p>
-                  <?php
+        <p> <?php echo $metin[7]?>, <?php echo temizle($_SESSION["userr"])."&nbsp;<a href='profil.php?kim=".$geceliKullID."&amp;set=1' rel=\"facebox\">$metin[311]</a>".$ktut;?> </p>
+        <?php
 				 if($_SESSION["tur"]=='0') {
 					  $siniflar = getOgrenciSiniflari();
 					  if($siniflar!=""){
@@ -352,7 +285,7 @@ if(isset($_GET["reddet"]))
 		 else
 			echo "<font id='hata'>$metin[626]</font>";
 	}
-	//login sayfasından				 
+	//login sayfasÄ±ndan				 
 	  $bekleyenArkadas = getFriendApprovals();
 	   if(!empty($bekleyenArkadas)) {
 				echo "<font id='uyari'>".$metin[592]." ";
@@ -361,12 +294,12 @@ if(isset($_GET["reddet"]))
 				echo "<font id='tamam'>$metin[593]</font>" ;
 		   }	   
 ?>
-                  
-                  <div class="aramaDiv2">
-                    <p> <?php echo $metin[589]?> :
-                      <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/></p>
-                  </div>
-                  <script type="text/javascript">
+        <div class="aramaDiv2">
+          <p> <?php echo $metin[589]?> :
+            <input name="searchterm2" type="text" id="searchterm2" size="30" maxlength="50" title="<?php echo $metin[590]?>"/>
+          </p>
+        </div>
+        <script type="text/javascript">
                         var options = {
                             script:"lib/as/test2.php?",
                             varname:"input",
@@ -379,9 +312,9 @@ if(isset($_GET["reddet"]))
                         };
                         var as_json = new bsn.AutoSuggest('searchterm2', options);                                                
 </script>
-                  <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[583]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a> | <a href="#" id="tab4D"><span><?php echo $metin[581]?></span></a></div>
-                  <div id="tab1" class="tabContent">
-                    <?php
+        <div id="tabs"> <a href="#" id="tab1D"><span><?php echo $metin[583]?></span></a> | <a href="#" id="tab2D"><span><?php echo $metin[582]?></span></a> | <a href="#" id="tab3D"><span><?php echo $metin[580]?></span></a> | <a href="#" id="tab4D"><span><?php echo $metin[581]?></span></a></div>
+        <div id="tab1" class="tabContent">
+          <?php
 					//ARKADASLARIM
 		
 		$arkadaslarim = arkadasListesi();			
@@ -404,9 +337,9 @@ if(isset($_GET["reddet"]))
 		echo "<font id='uyari'>$metin[588]</font>";
 	}
                   ?>
-                  </div>
-                  <div id="tab2" class="tabContent">
-                    <?php
+        </div>
+        <div id="tab2" class="tabContent">
+          <?php
 					//BEN
 	echo "<h3>$metin[585] : </h3>";			  
 	$bilg_1 = sonBilgileriGetir("sohbet",$geceliKullID);
@@ -424,9 +357,9 @@ if(isset($_GET["reddet"]))
 	if(empty($bilg_1) and empty($bilg_2) and empty($bilg_3) and empty($bilg_4) and empty($bilg_6) and empty($bilg_7))
 	  echo "<font id='uyari'>$metin[586]</font>";			  
                   ?>
-                  </div>
-                  <div id="tab3" class="tabContent">
-                    <?php
+        </div>
+        <div id="tab3" class="tabContent">
+          <?php
 					//ARKADAS
 if(isset($_SESSION["seciliArkadas"]))
 	$seciliKisi = RemoveXSS($_SESSION["seciliArkadas"]);
@@ -461,17 +394,17 @@ if($seciliKisi<>"" and getUserName($seciliKisi)!="-") {
 		echo "<p><a href='friends.php?reddet=$seciliKisi'><img src=\"img/pasif_user.png\" border=\"0\" style=\"vertical-align: middle;\" alt=\"$metin[624]\"/> $metin[624]</a></p>";	
 		echo "<p><strong>$metin[617] :</strong> <br/>";
 ?>
-<script language="javascript" type="text/javascript">
+          <script language="javascript" type="text/javascript">
 /*
 getHTTPObject:
-Ajax nesnesinin hazırlanması
+Ajax nesnesinin hazÄ±rlanmasÄ±
 */
 function getHTTPObject(){
   var xmlhttp = null;
   if (window.XMLHttpRequest) {
    xmlhttp = new XMLHttpRequest();
    	    if (xmlhttp.overrideMimeType) {
-            xmlhttp.overrideMimeType('text/xml; charset=iso-8859-9');
+            xmlhttp.overrideMimeType('text/xml; charset=UTF-8');
          }
   } else if(window.ActiveXObject) {
    try {
@@ -489,28 +422,30 @@ function getHTTPObject(){
 } 
 /*
 duvarKaydet:
-arkadaş ile ortak olan duvara yaz
+arkadaÅŸ ile ortak olan duvara yaz
 */
 function duvarKaydet(icerik, gonderen, alan){    
     httpObject = getHTTPObject();
     if (httpObject != null) {
         httpObject.open("POST", "addWall.php", true);
-		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=iso-8859-9');
+		httpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
   		httpObject.send('duvar='+encodeURIComponent(icerik) + '&gonderen=' + encodeURIComponent(gonderen) + '&alan=' + encodeURIComponent(alan));		
     }
 }
 </script>
-	<textarea id="duvarYazisi" cols="45" rows="4" style="background-color:#FFF;border:thin solid #ccc;"><?php echo arkadasDuvarYazisi($geceliKullID,$seciliKisi)?></textarea>&nbsp;<input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/plus.png" onclick="fadeUp(document.getElementById('duvarYazisi'),255,255,0,150,0,0);
+          <textarea id="duvarYazisi" cols="45" rows="4" style="background-color:#FFF;border:thin solid #ccc;"><?php echo arkadasDuvarYazisi($geceliKullID,$seciliKisi)?></textarea>
+          &nbsp;
+          <input type="image" alt="<?php echo $metin[121]?>" title="<?php echo $metin[121]?>" src="img/plus.png" onclick="fadeUp(document.getElementById('duvarYazisi'),255,255,0,150,0,0);
     duvarKaydet(document.getElementById('duvarYazisi').value.substr(0,139),<?php echo $geceliKullID ?>,<?php echo $seciliKisi ?>);">
-<?php		
+          <?php		
 		echo "</p>";
 	}
 }else
 	echo "<font id='uyari'>$metin[587]</font>";
                   ?>
-                  </div>
-                  <div id="tab4" class="tabContent">
-                    <?php
+        </div>
+        <div id="tab4" class="tabContent">
+          <?php
 					//HERKES 
 	if(in_array($tur, array("0","1","2"))){				
 		$bilgi1 = sonBilgileriGetir("sohbet","");
@@ -531,8 +466,8 @@ function duvarKaydet(icerik, gonderen, alan){
 		echo "<font id='hata'>$metin[400]</font>";
 	}
                   ?>
-                  </div>
-                  <?php	
+        </div>
+        <?php	
 
 //------------------------end of all
 	}
@@ -542,31 +477,22 @@ function duvarKaydet(icerik, gonderen, alan){
 	}
 	
 ?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-            </div>
-          </div>
-          <div class="cleared"></div>
-          <div class="Footer">
-            <div class="Footer-inner">
-              <?php  						
-						 require "footer.php";
-                        ?>
-            </div>
-            <div class="Footer-background"></div>
-          </div>
-        </div>
       </div>
       <div class="cleared"></div>
     </div>
   </div>
+  <footer class="footer">
+    <div class="Footer-inner">
+      <?php  require "footer.php";?>
+    </div>
+  </footer>
 </div>
-<?php  						
- require "feedback.php"; 
-?>
+<script src="lib/bs_js/bootstrap.js"></script> 
+<script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
-<?php 
-@mysql_free_result($eoUsers);
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+ @mysqli_free_result($eoUsers);
 ?>

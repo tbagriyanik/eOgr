@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -13,7 +12,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-header("Content-Type: text/html; charset=iso-8859-9"); 
+header("Content-Type: text/html; charset=UTF-8"); 
 
 	  ob_start();
       session_start (); 
@@ -50,15 +49,15 @@ function anaMetniOku($konuID)
 					(eo_users.id=eo_5sayfa.ekleyenID) and (eo_4konu.id=eo_5sayfa.konuID) and (eo_5sayfa.cevap='')
 					order by eo_5sayfa.sayfaSirasi";
 					// cevap boþ ise SORU deðildir, öyleyse ekrana listelenebilir
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
 	if($result1) {		
 		
-		$kayitSayisi = @mysql_numrows($result1);
+		$kayitSayisi = @mysqli_num_rows($result1);
 		
 		$sonuc = "";
 		
-		while ($row = mysql_fetch_array($result1, MYSQL_ASSOC)) {	
+		while ($row = mysqli_fetch_array($result1, mysqli_ASSOC)) {	
 			
 					$tarih			= tarihOku($row["tarih"]);
 					$user			= $row["user"];

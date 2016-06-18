@@ -5,19 +5,18 @@
 //Rubén Crespo Álvarez - rumailster@gmail.com [peachep.wordpress.com]
 
 class sqlImport {
-    
-    //recogemos las variables
-    function sqlImport ($host, $user,$pass, $ArchivoSql) {
+  
+    function sqlImport ($host, $user, $pass, $db, $ArchivoSql) {
     $this -> host = $host;
     $this -> user = $user;
     $this -> pass = $pass;
+	$this -> db = $db;
     $this -> ArchivoSql = $ArchivoSql;
     }
 
-    //Volcamos los datos
     function import () 
     {   
-    	$this -> con = mysql_connect($this -> host, $this -> user, $this -> pass);
+    	$this -> con = mysqli_connect($this -> host, $this -> user, $this -> pass, $this -> db);
            if ($this -> con !== false) 
            {
 
@@ -29,11 +28,11 @@ class sqlImport {
              {
                    if (strlen($stmt) > 3)
                    {
-                    $result = mysql_query($stmt);
+                    $result = mysqli_query($this -> con,$stmt);
                       if (!$result)
                       {						  
-                     $CodigoError = mysql_errno();
-                     $TextoError = mysql_error();
+                     $CodigoError = mysqli_errno($this -> con);
+                     $TextoError = mysqli_error($this -> con);
                      break;
                       }
               

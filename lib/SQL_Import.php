@@ -6,16 +6,17 @@
 
 class sqlImport {
 	
-	function sqlImport ($host, $user,$pass, $ArchivoSql) {
-	$this -> host = $host;
-	$this -> user = $user;
-	$this -> pass = $pass;
-	$this -> ArchivoSql = ($ArchivoSql);
-	}
+	function sqlImport ($host, $user, $pass, $db, $ArchivoSql) {
+    $this -> host = $host;
+    $this -> user = $user;
+    $this -> pass = $pass;
+	$this -> db = $db;
+    $this -> ArchivoSql = $ArchivoSql;
+    }
 
-	function importa () 
-	{   
-	$this -> con = mysql_connect($this -> host, $this -> user, $this -> pass);
+    function importa () 
+    {   
+    	$this -> con = mysqli_connect($this -> host, $this -> user, $this -> pass, $this -> db);
    		if ($this -> con !== false) 
    		{
 
@@ -26,10 +27,10 @@ class sqlImport {
      		{
        			if (strlen($stmt) > 3)
        			{
-            		$result = mysql_query($stmt);
+            		$result = mysqli_query($this -> con,$stmt);
              	 	if (!$result)
              	 	{
-					$errors = $errors.mysql_errno().": ".htmlentities(mysql_error())."<br/><br/>";					 
+					$errors = $errors.mysqli_errno().": ".htmlentities(mysqli_error())."<br/><br/>";					 
               		}
               
         		}
@@ -38,8 +39,6 @@ class sqlImport {
 
      	 }
      	return $errors; 
-	}//Fin de Dump	
-
-} 
-   
+	}
+}    
 ?> 

@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -54,11 +53,10 @@ require("conf.php");
 	/* 
 	 * MySQL connection
 	 */
-	$gaSql['link'] =  mysql_pconnect( $gaSql['server'], $gaSql['user'], $gaSql['password']  ) or
+	$gaSql['link'] =  mysqli_pconnect( $gaSql['server'], $gaSql['user'], $gaSql['password']  ) or
 		die( 'Could not open connection to server' );
 	
-	mysql_select_db( $gaSql['db'], $gaSql['link'] ) or 
-		die( 'Could not select database '. $gaSql['db'] );
+	//mysqli_select_db( $gaSql['db'], $gaSql['link'] ) or die( 'Could not select database '. $gaSql['db'] );
 	
 	
 	/* 
@@ -67,8 +65,8 @@ require("conf.php");
 	$sLimit = "";
 	if ( isset( $_GET['iDisplayStart'] ) and $_GET['iDisplayLength'] != '-1' )
 	{
-		$sLimit = "LIMIT ".mysql_real_escape_string( $_GET['iDisplayStart'] ).", ".
-			mysql_real_escape_string( $_GET['iDisplayLength'] );
+		$sLimit = "LIMIT ".mysqli_real_escape_string( $_GET['iDisplayStart'] ).", ".
+			mysqli_real_escape_string( $_GET['iDisplayLength'] );
 	}
 	
 	
@@ -84,7 +82,7 @@ require("conf.php");
 			if ( $_GET[ 'bSortable_'.intval($_GET['iSortCol_'.$i]) ] == "true" )
 			{
 				$sOrder .= $aColumns2[ intval( $_GET['iSortCol_'.$i] ) ]."
-				 	".mysql_real_escape_string( $_GET['sSortDir_'.$i] ) .", ";
+				 	".mysqli_real_escape_string( $_GET['sSortDir_'.$i] ) .", ";
 			}
 		}
 		
@@ -114,7 +112,7 @@ require("conf.php");
 		 		
 		for ( $i=0 ; $i<count($aColumns)-1 ; $i++ )
 		{
-			$sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string( $_GET['sSearch'] )."%' OR ";
+			$sWhere .= $aColumns[$i]." LIKE '%".mysqli_real_escape_string( $_GET['sSearch'] )."%' OR ";
 		}
 		$sWhere = substr_replace( $sWhere, "", -3 );
 		$sWhere .= ')';		
@@ -133,19 +131,19 @@ require("conf.php");
 			{
 				$sWhere .= " AND ";
 			}
-			$sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string($_GET['sSearch_'.$i])."%' ";
+			$sWhere .= $aColumns[$i]." LIKE '%".mysqli_real_escape_string($_GET['sSearch_'.$i])."%' ";
 		}
 	}
 	
 		if($tumDosyalar!="1"){
 			if(!empty($_GET['sSearch']))
-					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysql_real_escape_string($_GET['sSearch'])."%') AND fileName not REGEXP '^[0-9]{10,15}' ";		
+					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysqli_real_escape_string($_GET['sSearch'])."%') AND fileName not REGEXP '^[0-9]{10,15}' ";		
 				else
 					$sWhere .= " WHERE fileName not REGEXP '^[0-9]{10,15}' ";
 			}
 		 else{
 			if(!empty($_GET['sSearch']))
-					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysql_real_escape_string($_GET['sSearch'])."%' ";	
+					$sWhere .= " OR (SELECT userName FROM eo_users WHERE eo_users.id=eo_files.userID ) LIKE '%".mysqli_real_escape_string($_GET['sSearch'])."%' ";	
 				else 
 					$sWhere .= "";
 		 }
@@ -170,14 +168,14 @@ require("conf.php");
 		$sLimit
 	";
 	//echo $sQuery;
-	$rResult = mysql_query( $sQuery, $gaSql['link'] ) or die(mysql_error());
+	$rResult = mysqli_query($gaSql['link'] ,$sQuery) or die(mysqli_error());
 	
 	/* Data set length after filtering */
 	$sQuery = "
 		SELECT FOUND_ROWS()
 	";
-	$rResultFilterTotal = mysql_query( $sQuery, $gaSql['link'] ) or die(mysql_error());
-	$aResultFilterTotal = mysql_fetch_array($rResultFilterTotal);
+	$rResultFilterTotal = mysqli_query($gaSql['link'] ,$sQuery) or die(mysqli_error());
+	$aResultFilterTotal = mysqli_fetch_array($rResultFilterTotal);
 	$iFilteredTotal = $aResultFilterTotal[0];
 	
 	/* Total data set length */
@@ -185,8 +183,8 @@ require("conf.php");
 		SELECT COUNT(".$sIndexColumn.")
 		FROM   $sTable
 	";
-	$rResultTotal = mysql_query( $sQuery, $gaSql['link'] ) or die(mysql_error());
-	$aResultTotal = mysql_fetch_array($rResultTotal);
+	$rResultTotal = mysqli_query($gaSql['link'] ,$sQuery) or die(mysqli_error());
+	$aResultTotal = mysqli_fetch_array($rResultTotal);
 	$iTotal = $aResultTotal[0];
 	
 	
@@ -198,7 +196,7 @@ require("conf.php");
 	$sOutput .= '"iTotalRecords": '.$iTotal.', ';
 	$sOutput .= '"iTotalDisplayRecords": '.$iFilteredTotal.', ';
 	$sOutput .= '"aaData": [ ';
-	while ( $aRow = mysql_fetch_array( $rResult ) )
+	while ( $aRow = mysqli_fetch_array( $rResult ) )
 	{
 		$sOutput .= "[";
 		$kayNo = $aRow[ $aColumns[0] ];
@@ -217,7 +215,7 @@ require("conf.php");
 								 '&amp;file='.$aRow[ $aColumns[$i] ].'&amp;islem=goster\" target=\"_blank\"><img src=\"img/preview.png\" border=\"0\" style=\"vertical-align:middle\" alt=\"??\"/></a> ';
 							$sOutput .=  " <font size='-2'>".getSizeAsString(@filesize($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]));
 							$humanRelativeDate = new HumanRelativeDate();
-							$sOutput .=  " ".iconv( "ISO-8859-9","UTF-8",$humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",@filemtime($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]) ))).'</font>",';
+							$sOutput .=  " ".($humanRelativeDate->getTextForSQLDate(date ("Y-m-d H:i:s",@filemtime($_uploadFolder.'/'.$aRow[ $aColumns[$i] ]) ))).'</font>",';
 
 				
 			}

@@ -1,56 +1,55 @@
 <?php
-function _mysqldump($mysql_database)
+function _mysqldump($mysqli_database, $yol)
 {
-			$sonuc = ("SET NAMES 'latin1';\n");
-			$sonuc .=  ("SET CHARACTER SET latin1;\n");
-			$sonuc .=  ("SET COLLATION_CONNECTION = 'latin1_swedish_ci';\n");
-			$sonuc .=  "/*For Turkish Settings*/\n\n";
+			$sonuc = 	("SET NAMES 'utf-8';\n");
+			$sonuc .=  	("SET CHARACTER SET utf8;\n");
+			$sonuc .=  	("SET COLLATION_CONNECTION = 'utf8_general_ci';\n");
 			
-	$sql="SHOW TABLES IN $mysql_database LIKE 'eo_%'";
-	$result= mysql_query($sql);
+	$sql="SHOW TABLES IN $mysqli_database LIKE 'eo_%'";
+	$result= mysqli_query($yol, $sql);
 	if( $result)
 	{
-		while( $row= mysql_fetch_row($result))
+		while( $row= mysqli_fetch_row($result))
 		{
-			$sonuc .= _mysqldump_table_structure($row[0]);
-			$sonuc .= _mysqldump_table_data($row[0]);
+			$sonuc .= _mysqldump_table_structure($row[0], $yol);
+			$sonuc .= _mysqldump_table_data($row[0], $yol);
 		}
 	}
 	else
 	{
-			$sonuc .=  "/* no tables in $mysql_database */\n";
+			$sonuc .=  "/* no tables in $mysqli_database */\n";
 	}
-	mysql_free_result($result);
+	mysqli_free_result($result);
 	return $sonuc;
 }
 
-function _mysqldump_table_structure($table)
+function _mysqldump_table_structure($table, $yol)
 {
 		$sonuc .= "/* Table structure for table `$table` */\n";
 		$sonuc .= "DROP TABLE IF EXISTS `$table`;\n\n";
 
 		$sql="show create table `$table`; ";
-		$result=mysql_query($sql);
+		$result=mysqli_query($yol, $sql);		
 		if( $result)
-		{
-			if($row= mysql_fetch_assoc($result))
+		{ 
+			if($row= mysqli_fetch_assoc($result))
 			{
 				$sonuc .= $row['Create Table'].";\n\n";
 			}
 		}
-		mysql_free_result($result);
+		mysqli_free_result($result);
 		return $sonuc; 
 }
 
-function _mysqldump_table_data($table)
+function _mysqldump_table_data($table, $yol)
 {
 
 	$sql="select * from `$table`;";
-	$result=mysql_query($sql);
+	$result=mysqli_query($yol, $sql);
 	if( $result)
 	{
-		$num_rows= mysql_num_rows($result);
-		$num_fields= mysql_num_fields($result);
+		$num_rows= mysqli_num_rows($result);
+		$num_fields= mysqli_num_fields($result);
 
 		if( $num_rows > 0)
 		{
@@ -60,7 +59,7 @@ function _mysqldump_table_data($table)
 			$i=0;
 			while( $i < $num_fields)
 			{
-				$meta= mysql_fetch_field($result, $i);
+				$meta= mysqli_fetch_field($result, $i);
 				array_push($field_type, $meta->type);
 				$i++;
 			}
@@ -68,7 +67,7 @@ function _mysqldump_table_data($table)
 			//print_r( $field_type);
 			$sonuc .= "insert into `$table` values\n";
 			$index=0;
-			while( $row= mysql_fetch_row($result))
+			while( $row= mysqli_fetch_row($result))
 			{
 				$sonuc .= "(";
 				for( $i=0; $i < $num_fields; $i++)
@@ -104,7 +103,7 @@ function _mysqldump_table_data($table)
 			}
 		}
 	}
-	mysql_free_result($result);
+	mysqli_free_result($result);
 	return $sonuc;
 }
 ?>

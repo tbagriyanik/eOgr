@@ -6,7 +6,7 @@ header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
-header("Content-Type: text/html; charset=iso-8859-9"); 
+header("Content-Type: text/html; charset=UTF-8"); 
 
 // Configuration file is required.
 require_once("conf.php");
@@ -45,9 +45,9 @@ if (((isset($_POST['name']))
     $converted_address=ip2long($remote);
 	$oda=$_SESSION["oda"];
    
-    $name = iconv( "UTF-8", "ISO-8859-9",temizle($name));
-    $url = iconv( "UTF-8", "ISO-8859-9",temizle($url));
-    $msg = iconv( "UTF-8", "ISO-8859-9",temizle($msg));
+    $name = temizle($name);
+    $url = temizle($url);
+    $msg = temizle($msg);
 
 	// Insert a new message into database
   if($msg != "")

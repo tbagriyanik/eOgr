@@ -3,8 +3,7 @@
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -28,11 +27,11 @@ getOncekiKonuAdi:
 function getOncekiKonuAdi($gelenID){
 	global $yol1;
 	$sql1	= 	"select konuAdi from eo_4konu where id ='".temizle($gelenID)."'";
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
 	if($result1) {
-		mysql_fetch_row($result1);
-		return @mysql_result($result1,$sayfaNo,"konuAdi");
+		mysqli_fetch_row($result1);
+		return @mysqli_result($result1,$sayfaNo,"konuAdi");
 	}
 	else
 		return "";
@@ -44,11 +43,11 @@ sonraki konunun bilgisi
 function getSonrakiKonu($suAnkiID, $alanAdi){
 	global $yol1;
 	$sql1	= 	"select $alanAdi from eo_4konu where oncekiKonuID ='".temizle($suAnkiID)."'";
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
 	if($result1) {
-		mysql_fetch_row($result1);
-		return @mysql_result($result1,$sayfaNo,"$alanAdi");
+		mysqli_fetch_row($result1);
+		return @mysqli_result($result1,$sayfaNo,"$alanAdi");
 	}
 	else
 		return "";
@@ -61,11 +60,11 @@ konunun sadece kayýtlý kullanýcýlar bilgisi
 function getKonuKayitliKullanici($gelenID){
 	global $yol1;
 	$sql1	= 	"select sadeceKayitlilarGorebilir from eo_4konu where id ='".temizle($gelenID)."'";
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
-	if($result1 and mysql_num_rows($result1)==1) {
-		mysql_fetch_row($result1);
-		return mysql_result($result1,0,"sadeceKayitlilarGorebilir");
+	if($result1 and mysqli_num_rows($result1)==1) {
+		mysqli_fetch_row($result1);
+		return mysqli_result($result1,0,"sadeceKayitlilarGorebilir");
 	}
 	else
 		return "1";
@@ -81,10 +80,10 @@ function konudakiSayfaSayisi($gelen){
 				from eo_5sayfa, eo_4konu 
 				where eo_5sayfa.konuID='$gelen' and (eo_4konu.id=eo_5sayfa.konuID)";
 				
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
     if($result1) 
-	 return @mysql_numrows($result1);
+	 return @mysqli_num_rows($result1);
 	else 
 	 return 0;	
 }
@@ -117,12 +116,12 @@ function anaMetniOku($gelen, $sayfaNo)
 				(eo_users.id=eo_5sayfa.ekleyenID) and (eo_4konu.id=eo_5sayfa.konuID) 
 				order by eo_5sayfa.sayfaSirasi";
 				
-	$result1= 	mysql_query($sql1,$yol1);
+	$result1= 	mysqli_query($yol1,$sql1);
 
 	if($result1) {
-		mysql_fetch_row($result1);
+		mysqli_fetch_row($result1);
 		
-		$kayitSayisi = @mysql_numrows($result1);
+		$kayitSayisi = @mysqli_num_rows($result1);
 		
 		if ($sayfaNo<0) 
 		  	$sayfaNo=0; 	
@@ -133,21 +132,21 @@ function anaMetniOku($gelen, $sayfaNo)
 		
 	
 	 $humanRelativeDate = new HumanRelativeDate();
-	 $insansi = $humanRelativeDate->getTextForSQLDate(@mysql_result($result1,$sayfaNo,"tarih"));
+	 $insansi = $humanRelativeDate->getTextForSQLDate(@mysqli_result($result1,$sayfaNo,"tarih"));
 		$tarih			= $insansi;
-		$user			= @mysql_result($result1,$sayfaNo,"user");
-		$cevap			= @mysql_result($result1,$sayfaNo,"cevap");
-		$konuAdi		= @mysql_result($result1,$sayfaNo,"konuAdi");
-		$konuyuKilitle	= @mysql_result($result1,$sayfaNo,"konuyuKilitle");
-		$bitisTarihi	= @mysql_result($result1,$sayfaNo,"bitisTarihi");
-		$sKayitlilarG	= @mysql_result($result1,$sayfaNo,"skg");
-		$aktifKonuNo	= @mysql_result($result1,$sayfaNo,"aktifKonuNo");
-		$oncekiKonuID	= @mysql_result($result1,$sayfaNo,"oncekiKonuID");
-		$calismaHakS	= @mysql_result($result1,$sayfaNo,"calismaHakSayisi");
-		$sgSuresi		= temizle(@mysql_result($result1,$sayfaNo,"sgSuresi"));
-		$cSuresi		= temizle(@mysql_result($result1,$sayfaNo,"cSuresi"));
-		$calismaSuresiD	= ($sKayitlilarG)?@mysql_result($result1,$sayfaNo,"calismaSuresiDakika"):"0";
-		$sinifOgreK		= ($sKayitlilarG)?@mysql_result($result1,$sayfaNo,"sinifaDahilKullaniciGorebilir"):"0";
+		$user			= @mysqli_result($result1,$sayfaNo,"user");
+		$cevap			= @mysqli_result($result1,$sayfaNo,"cevap");
+		$konuAdi		= @mysqli_result($result1,$sayfaNo,"konuAdi");
+		$konuyuKilitle	= @mysqli_result($result1,$sayfaNo,"konuyuKilitle");
+		$bitisTarihi	= @mysqli_result($result1,$sayfaNo,"bitisTarihi");
+		$sKayitlilarG	= @mysqli_result($result1,$sayfaNo,"skg");
+		$aktifKonuNo	= @mysqli_result($result1,$sayfaNo,"aktifKonuNo");
+		$oncekiKonuID	= @mysqli_result($result1,$sayfaNo,"oncekiKonuID");
+		$calismaHakS	= @mysqli_result($result1,$sayfaNo,"calismaHakSayisi");
+		$sgSuresi		= temizle(@mysqli_result($result1,$sayfaNo,"sgSuresi"));
+		$cSuresi		= temizle(@mysqli_result($result1,$sayfaNo,"cSuresi"));
+		$calismaSuresiD	= ($sKayitlilarG)?@mysqli_result($result1,$sayfaNo,"calismaSuresiDakika"):"0";
+		$sinifOgreK		= ($sKayitlilarG)?@mysqli_result($result1,$sayfaNo,"sinifaDahilKullaniciGorebilir"):"0";
 		$oncekiKonuAdi	= getOncekiKonuAdi($oncekiKonuID);
 		$sonrakiKonuID	= getSonrakiKonu($gelen,"id");
 		$sonrakiKonuAdi	= getSonrakiKonu($gelen,"konuAdi");		
@@ -183,14 +182,14 @@ function anaMetniOku($gelen, $sayfaNo)
 			if($gunFarki <= 0) 
 				return "<font id='hata'>'$konuAdi' ".$metin[180]."</font>|-|-|-|-|-|-|-|-|-|-|-|-|-|-";				
 				
-			$cevaplanmisMi = @array_key_exists(mysql_result($result1,$sayfaNo,"id"),$_SESSION["cevaplar"]);
+			$cevaplanmisMi = @array_key_exists(mysqli_result($result1,$sayfaNo,"id"),$_SESSION["cevaplar"]);
 			
 			if(($cevap!="" || is_numeric($cevap)) && !$cevaplanmisMi) 
-			   $cevap = mysql_result($result1,$sayfaNo,"id");
+			   $cevap = mysqli_result($result1,$sayfaNo,"id");
 			   else			  
 				$cevap = "-";
 			
-			return html_entity_decode(@mysql_result($result1,$sayfaNo,"ana"))."|".
+			return html_entity_decode(@mysqli_result($result1,$sayfaNo,"ana"))."|".
 					$tarih. "|".$user."|".$kayitSayisi."|".$sayfaNo."|".$konuAdi.
 					"|".$oncekiKonuID."|".$oncekiKonuAdi."|".$sonrakiKonuID.
 					"|".$sonrakiKonuAdi."|".$calismaSuresiD."|".$cevap.
@@ -214,11 +213,11 @@ function konuHazirla($konuID){
 	$sql = "SELECT id FROM eo_5sayfa
 			WHERE konuID = '$konuID'
 			ORDER BY sayfaSirasi";
-	$result = @mysql_query($sql,$yol1);
+	$result = @mysqli_query($yol1,$sql);
 	
 	$_SESSION["sayfalar"]=array();//önce eskileri sileriz
 	$i=1;
-	while($gelen=@mysql_fetch_array($result)){		
+	while($gelen=@mysqli_fetch_array($result)){		
 		$_SESSION["sayfalar"][$i]=anaMetniOku($konuID,$i);
 		$i++;
 	}

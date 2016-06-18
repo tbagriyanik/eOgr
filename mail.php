@@ -1,10 +1,9 @@
-<?php
+ï»¿<?php  
 /*
 eOgr - elearning project
 
 Developer Site: http://yunus.sourceforge.net
-Demo Site:		http://yunus.sourceforge.net/eogr
-Source Track:	http://eogr.googlecode.com 
+
 Support:		http://www.ohloh.net/p/eogr
 
 This project is free software; you can redistribute it and/or
@@ -13,7 +12,7 @@ License as published by the Free Software Foundation; either
 version 3 of the License, or any later version. See the GNU
 Lesser General Public License for more details.
 */
-    header("Expires: Sun, 1 Jan 2000 12:00:00 GMT");
+   header("Expires: Sun, 1 Jan 2000 12:00:00 GMT");
     header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
     header("Cache-Control: no-store, no-cache, must-revalidate");
     header("Cache-Control: post-check=0, pre-check=0", false);
@@ -35,107 +34,69 @@ Lesser General Public License for more details.
 		  '<br/>L&#252;ften bir s&#252;re sonra <a href='.$_SERVER['PHP_SELF'].'>tekrar</a> deneyiniz!'); // die there flooding
 		$hata = true;
 		}
-
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="-1"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>eOgr -<?php echo $metin[69]?></title>
-<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
-
-
-<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
-<script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
-<link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.css" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" href="theme/<?php echo $seciliTema?>/style.ie6.css" type="text/css" media="screen" /><![endif]-->
-</head>
-<body>
-<div class="PageBackgroundGradient"></div>
-<div class="Main">
-  <div class="Sheet">
-    <div class="Sheet-tl"></div>
-    <div class="Sheet-tr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-br">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-tc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-bc">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cl">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cr">
-      <div>&nbsp;</div>
-    </div>
-    <div class="Sheet-cc"></div>
-    <div class="Sheet-body">
-      <div class="Header">
-        <div class="Header-png"></div>
-        <div class="Header-jpeg"></div>
-        <div class="logo">
-          <h1 id="name-text" class="logo-name"><?php echo ayarGetir("okulGenelAdi")?></h1>
-          <div id="slogan-text" class="logo-text"> <?php echo $metin[286]?> </div>
-        </div>
-      </div>
-      <div class="contentLayout">
-        <div class="content">
-          <div class="Post">
-            <div class="Post-tl"></div>
-            <div class="Post-tr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-br">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-tc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-bc">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cl">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cr">
-              <div>&nbsp;</div>
-            </div>
-            <div class="Post-cc"></div>
-            <div class="Post-body">
-              <div class="Post-inner">
-                <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[69]?> </span> </h2>
-                <div class="PostContent">
-                  <?php   
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="tarik bagriyanik">
+	<link href="theme/<?php echo $seciliTema?>/bootstrap-theme.css" rel="stylesheet">
+	<link href="theme/docs.min.css" rel="stylesheet">
+	<link href="theme/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="theme/justified-nav.css" rel="stylesheet">
+	<script src="lib/bs_js/ie-emulation-modes-warning.js"></script>
+	<title>eOgr -<?php echo $metin[69]?></title>
+	<link rel="icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico"/>
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="-1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta name="keywords" content="elearning, cms, lms, learning management, education, eogrenme" />
+	<meta name="description" content="eOgr - Open source online education, elearning project" />
+	<link rel="alternate" type="application/rss+xml" title="eOgr RSS" href="rss.php" />
+	<link href="theme/feedback.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="lib/script.js"></script>
+	<script src="lib/bs_js/jquery-2.2.0.js" type="text/javascript"></script>
+	<script type="text/javascript" src="lib/facebox/facebox.js"></script>
+	<link href="lib/facebox/facebox.css" rel="stylesheet" type="text/css" />
+	<link href="theme/stilGenel.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+		  $('a[rel*=facebox]').facebox({
+			
+		  }) 
+		})
+	</script>
+	<link href="lib/tlogin/style.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
+	<script type="text/javascript" src="lib/jquery.cookie.js"></script>
+	<link rel="stylesheet" href="lib/as/css/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+	<script language="javascript" type="text/javascript" src="lib/fade.js"></script>
+	</head>
+	<body>
+    <?php require("menu.php");?>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="PostHeaderIcon-wrapper"> <span class="PostHeader"><img src="img/logo1.png" border="0" style="vertical-align: middle;" alt="main" title="<?php echo $metin[286]?>"/> - <?php echo $metin[69]?> </span> </h2>
+          <div class="PostContent">
+            <?php   
 echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a></div><br/>");
 				  
    $address1	=	temizle(isset($_REQUEST["to"])?$_REQUEST["to"]:"");
    $address1 	= 	getMailAddress($address1);
 	if(!email_valid($address1) && !empty($address1)){
-			echo "<font id='hata'>&Ouml;z&uuml;r dileriz, kullanýcýnýn eposta adresi bilgisinde sorun var!</font>";
+			echo "<font id='hata'>&Ouml;z&uuml;r dileriz, kullanÄ±cÄ±nÄ±n eposta adresi bilgisinde sorun var!</font>";
 			$hata = true;
 	}
 		
    if(isset($_POST["konu"])){
 
 			if ($_POST["ccode"] != $_SESSION["ccode"]) {
-			  echo ("<font id='hata'> Kod boþ veya hatalý girildi!</font>");
+			  echo ("<font id='hata'> Kod boÅŸ veya hatalÄ± girildi!</font>");
 			  $hata = true;
 			  $_SESSION["ccode"] = "";
 			}else{
@@ -148,21 +109,21 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 				   if($gonderenMail=="")
 				     $gonderenMail=ayarGetir("ayar4char");
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
-	$headers .= 'Content-type: text/html; charset=iso-8859-9' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 	$headers .= "From:".$gonderenMail. "\r\nReply-To:".$gonderenMail. "\r\n" .
 							   'X-Mailer: PHP/' . phpversion();
 					if(email_valid($address)){
 						if (@mail("$address", "eOgr - $subject", "$bodisi",$headers)){
-							 echo("<font id='tamam'>Epostanýz G&ouml;nderildi!</font>");
+							 echo("<font id='tamam'>EpostanÄ±z G&ouml;nderildi!</font>");
 							 $hata = true;
 								}	
 							 else {
-							 echo("<font id='hata'>&Ouml;z&uuml;r dileriz, þu anda mesajýnýz g&ouml;nderilemiyor!</font>");
+							 echo("<font id='hata'>&Ouml;z&uuml;r dileriz, ÅŸu anda mesajÄ±nÄ±z g&ouml;nderilemiyor!</font>");
 							 $hata = true;
 							 }
 					}
 					else 
-						echo "<font id='hata'>&Ouml;z&uuml;r dileriz, kullanýcýnýn eposta adresi bilgisinde sorun var!</font>";
+						echo "<font id='hata'>&Ouml;z&uuml;r dileriz, kullanÄ±cÄ±nÄ±n eposta adresi bilgisinde sorun var!</font>";
 						$hata = true;
 						}
 	   }
@@ -173,7 +134,7 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 				   
    $hata=false;
    if(empty($address) || !is_numeric($address))   {
-	    echo("<font id='hata'>Eposta bilgisi boþ olamaz!</font>");
+	    echo("<font id='hata'>Eposta bilgisi boÅŸ olamaz!</font>");
 		$hata = true;
  	    $_SESSION["ccode"] = "";
 
@@ -184,25 +145,25 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 		$ccode = newPassw();
 		$_SESSION["ccode"]=$ccode;
 ?>
-                  <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
-                  <div id="contact-wrapper">
-                    <form id="form1" method="post" action="mail.php">
-                      <fieldset>
-                        <label for="konu"> <?php echo $metin[124]?> :</label>
-                        <div>
-                          <input name="konu" type="text" id="konu" size="50" maxlength="50" class="required" />
-                        </div>
-                        <label for="icerik"> <?php echo $metin[125]?> :</label>
-                        <div>
-                          <textarea name="icerik" id="icerik" cols="50" rows="8" class="required"></textarea>
-                        </div>
-                        <input type="hidden" name="address" value='<?php echo $address?>'/>
-                        <input type="hidden" name="ccode" value="<?php echo $ccode ?>" />
-                        <input type="submit" name="button" id="button" value="<?php echo $metin[100]?>" />
-                      </fieldset>
-                    </form>
+            <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+            <div id="contact-wrapper">
+              <form id="form1" method="post" action="mail.php">
+                <fieldset>
+                  <label for="konu"> <?php echo $metin[124]?> :</label>
+                  <div>
+                    <input name="konu" type="text" id="konu" size="50" maxlength="50" class="required" />
                   </div>
-                  <script type="text/javascript">
+                  <label for="icerik"> <?php echo $metin[125]?> :</label>
+                  <div>
+                    <textarea name="icerik" id="icerik" cols="50" rows="8" class="required"></textarea>
+                  </div>
+                  <input type="hidden" name="address" value='<?php echo $address?>'/>
+                  <input type="hidden" name="ccode" value="<?php echo $ccode ?>" />
+                  <input type="submit" name="button" id="button" value="<?php echo $metin[100]?>" />
+                </fieldset>
+              </form>
+            </div>
+            <script type="text/javascript">
   $(document).ready(function(){
     $("#form1").validate({
 						rules: {
@@ -229,23 +190,22 @@ echo ("<div id='lgout'><a href='#' onclick='window.close();'>".$metin[34]."</a><
 					});
   });
   </script>
-                  <?php
+            <?php
 	}
 
 ?>
-                </div>
-                <div class="cleared"></div>
-              </div>
-              &nbsp;</div>
           </div>
-          <div class="cleared"></div>
         </div>
       </div>
-      <div class="cleared"></div>
+      <footer class="footer">
+        <div class="Footer-inner">
+          <?php  require "footer.php";?>
+        </div>
+      </footer>
     </div>
-  </div>
-</div>
-<script type="text/javascript" language="javascript">
+    <script src="lib/bs_js/bootstrap.js"></script> 
+    <script src="lib/bs_js/ie10-viewport-bug-workaround.js"></script> 
+    <script type="text/javascript" language="javascript">
 if (document.getElementById("hata")!=null) fadeUp(document.getElementById("hata"),255,0,0,150,0,0);
 if (document.getElementById("uyari")!=null) fadeUp(document.getElementById("uyari"),0,0,255,0,0,150);
 if (document.getElementById("tamam")!=null) fadeUp(document.getElementById("tamam"),0,255,0,0,150,0);  
@@ -253,3 +213,7 @@ if (document.getElementById("konu")!=null)  document.getElementById("konu").focu
 </script>
 </body>
 </html>
+<?php
+ mysqli_close($yol);
+ mysqli_close($yol1);
+?>

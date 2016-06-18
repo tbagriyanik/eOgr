@@ -26,7 +26,7 @@ ErrorDocument 500 /eogr/error.php
 #401 - Authorization Required, 400 - Bad request, 
 #403 - Forbidden, 500 - Internal Server Error, 404 - Wrong page
 
-AddDefaultCharset ISO_8859-9 		
+AddDefaultCharset utf-8 		
 #avoid the 500 error display
 
 DirectoryIndex index.php
@@ -36,7 +36,7 @@ HeaderName /eogr/error.php
 
 <ifModule mod_php4.c>
 	php_value zlib.output_compression 16386	
-	php_value default_charset ISO_8859-9
+	php_value default_charset UTF-8
  </ifModule>
 
 #some tricks from : http://corz.org/serv/tricks/htaccess.php http://cooletips.de/htaccess/
