@@ -42,8 +42,9 @@ Developer Name:
 Developer Site: 
 	http://yunus.sourceforge.net
 
-eOgr Demo Site:		
-	http://eogr.yakuparas.net
+eOgr Demo Sites:		
+	http://tbagriyanik.byethost7.com/eogr/index.php
+	http://yunus.sourceforge.net/eogr/index.php
 
 Download All Versions:	
 	https://1drv.ms/f/s!Aj5BaIj1HbDQhwOD24p4ovsEfhEI
