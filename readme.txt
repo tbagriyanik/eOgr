@@ -61,3 +61,7 @@ Start Date:
 
 LGPL - LESSER GENERAL PUBLIC LICENSE 
 http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+
+![ana](https://github.com/tbagriyanik/eOgr/blob/master/ana.JPG)
+![ders](https://github.com/tbagriyanik/eOgr/blob/master/ders.JPG)
+![site](https://github.com/tbagriyanik/eOgr/blob/master/site.JPG)
